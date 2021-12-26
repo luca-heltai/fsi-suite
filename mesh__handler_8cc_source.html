@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('mesh__handler_8cc_source.html',''); in
 <a href="mesh__handler_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="parsed__grid__generator_8h.html">parsed_grid_generator.h</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keywordtype">int</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">    7</a></span><a class="code hl_function" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keywordflow">try</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
@@ -124,7 +124,7 @@ $(document).ready(function(){initNavTree('mesh__handler_8cc_source.html',''); in
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>      ParsedGridGenerator&lt;2&gt; pgg;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>      <a class="code hl_functionRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a>(par_name);</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      <a class="code hl_classRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;2&gt;</a> <a class="code hl_variableRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      pgg.generate(<a class="code hl_variableRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>      pgg.generate(tria);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">catch</span> (std::exception &amp;exc)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
@@ -160,7 +160,6 @@ $(document).ready(function(){initNavTree('mesh__handler_8cc_source.html',''); in
 <div class="ttc" id="aclassTriangulation_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a></div></div>
 <div class="ttc" id="aclassUtilities_1_1MPI_1_1MPI__InitFinalize_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classUtilities_1_1MPI_1_1MPI__InitFinalize.html">Utilities::MPI::MPI_InitFinalize</a></div></div>
 <div class="ttc" id="alogstream_8h_html_ac643e79bd992f1a9bd0dca5b9f2859fb"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a></div><div class="ttdeci">LogStream deallog</div></div>
-<div class="ttc" id="amesh__handler_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="mesh__handler_8cc_source.html#l00007">mesh_handler.cc:7</a></div></div>
 <div class="ttc" id="anamespaceUtilities_1_1MPI_html_a895dcd8223a0ee6f0e6a80b80e2d5982"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process</a></div><div class="ttdeci">unsigned int this_mpi_process(const MPI_Comm &amp;mpi_communicator)</div></div>
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="aparsed__grid__generator_8h_html"><div class="ttname"><a href="parsed__grid__generator_8h.html">parsed_grid_generator.h</a></div></div>
@@ -171,7 +170,7 @@ $(document).ready(function(){initNavTree('mesh__handler_8cc_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="mesh__handler_8cc.html">mesh_handler.cc</a></li>
-    <li class="footer">Generated on Sun Dec 26 2021 23:35:50 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Sun Dec 26 2021 23:58:57 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

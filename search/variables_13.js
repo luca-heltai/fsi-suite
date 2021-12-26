@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['s_0',['S',['http://www.dealii.org/developer/doxygen/deal.II/classPhysics_1_1Elasticity_1_1StandardTensors.html#aa4fdfc3d894ac5d01b0a7336963bfb84',1,'Physics::Elasticity::StandardTensors']]],
-  ['s_1',['s',['http://www.dealii.org/developer/doxygen/deal.II/structSolverIDR_1_1AdditionalData.html#a111df6eabbfec1d336d905d4dde65379',1,'SolverIDR::AdditionalData']]],
+  ['s_0',['s',['http://www.dealii.org/developer/doxygen/deal.II/structSolverIDR_1_1AdditionalData.html#a111df6eabbfec1d336d905d4dde65379',1,'SolverIDR::AdditionalData']]],
+  ['s_1',['S',['http://www.dealii.org/developer/doxygen/deal.II/classPhysics_1_1Elasticity_1_1StandardTensors.html#aa4fdfc3d894ac5d01b0a7336963bfb84',1,'Physics::Elasticity::StandardTensors']]],
   ['s_5f_2',['s_',['http://www.dealii.org/developer/doxygen/deal.II/classTensorAccessors_1_1internal_1_1StoreIndex_3_011_00_01S_01_4.html#a8ea88d5961f9d03af88ec39bdb81711a',1,'TensorAccessors::internal::StoreIndex&lt; 1, S &gt;::s_()'],['http://www.dealii.org/developer/doxygen/deal.II/classTensorAccessors_1_1internal_1_1StoreIndex.html#a7cbdd3acb89aa8c040c99b8507740779',1,'TensorAccessors::internal::StoreIndex::s_()']]],
   ['same_5fdiagonal_3',['same_diagonal',['http://www.dealii.org/developer/doxygen/deal.II/classPreconditionBlock_1_1AdditionalData.html#afa4a7face3e84e1e01736812a41e607b',1,'PreconditionBlock::AdditionalData::same_diagonal()'],['http://www.dealii.org/developer/doxygen/deal.II/classRelaxationBlock_1_1AdditionalData.html#af1a8dec8099594f91e2c7f78cdb2eaf4',1,'RelaxationBlock::AdditionalData::same_diagonal()']]],
   ['same_5ffor_5fall_4',['same_for_all',['http://www.dealii.org/developer/doxygen/deal.II/classMGTransferBlockMatrixFree.html#ade0bf30f2eb474e7d230dd317c808e62',1,'MGTransferBlockMatrixFree']]],
