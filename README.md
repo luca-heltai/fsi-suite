@@ -32,6 +32,16 @@ What you will learn:
 - How to leverage GitHub actions, google tests, and docker images to test and deploy your application
 - How hybrid parallelisation (threads + MPI + GPU) works in real life FEM applications
 
+Continuous Integration Status:
+-----------------------------
+
+| System | Status                                                                                                                                                                                                                                           |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
+| Indent | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml)|
+| Doxygen  | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml) |
+| Continous Integration  | [![GitHub CI](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml)   |
+
+
 ## Useful links
 
 One of my courses on theory and practice of finite elements:
