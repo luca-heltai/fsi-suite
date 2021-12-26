@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.122.1/containers/docker-existing-dockerfile
+{
+	"name": "deal.II master container",
+	// Sets the run context to one level up instead of the .devcontainer folder.
+	"context": "..",
+	// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+	"dockerFile": "Dockerfile",
+	// Set *default* container specific settings.json values on container create.
+	"settings": {
+		"terminal.integrated.shell.linux": null
+	},
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"davydden.dealii-prm",
+		"johnpapa.vscode-peacock",
+		"alefragnani.project-manager",
+		"ms-vscode.cpptools",
+		"shan.code-settings-sync",
+		"ms-vscode.cmake-tools",
+		"xaver.clang-format",
+		"ms-azuretools.vscode-docker",
+		"davidschuldenfrei.gtest-adapter",
+		"cschleiden.vscode-github-actions",
+		"troelsdamgaard.reflow-paragraph",
+		"github.copilot"
+	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Uncomment the next line to run commands after the container is created - for example installing curl.
+	// "postCreateCommand": "sudo apt-get update && sudo apt-get install -y gdb",
+	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+	// "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "dealii",
+	// Make sure we add a BUILD_POSTFIX environment variable that can be used as in
+	// ${workspaceFolder}/build${env:BUILD_POSTFIX}
+	"containerEnv": {
+		"BUILD_POSTFIX": "-container",
+	},
+	"mounts": [
+		// These are two docker volumes to allow persistent storage for the container.
+		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
+		// And/or for VS Code Insiders
+		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume",
+	],
+	// Uncomment the following if you want to work on docker on a remote machine
+	// In this case, you also need  "docker.host": "ssh://name-of-machine" in your
+	// settings.
+	//"workspaceMount": "source=/home/heltai/codes/theory-and-practice-of-fem,target=/workspace,type=bind,consistency=cached",
+	//"workspaceFolder": "/workspace",
+}
