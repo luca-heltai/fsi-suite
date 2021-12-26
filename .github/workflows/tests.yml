@@ -2,9 +2,9 @@ name: GitHub CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   debug:
@@ -48,4 +48,3 @@ jobs:
          cd build_linux_release
          ctest -N
          ctest --output-on-failure
-         
