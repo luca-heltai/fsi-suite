@@ -25,6 +25,9 @@
 var NAVTREE =
 [
   [ "Fluid structure interaction suite", "index.html", [
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -36,14 +39,25 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ]
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
+      ] ]
     ] ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"annotated.html",
+"namespaceAlgorithms.html#a65de55666348d122ce948f4e11c41567",
+"namespaceFETools.html#ac0fe5c7f55db091a4477af7c3989b83c",
+"namespaceGridTools_1_1internal_1_1FixUpDistortedChildCells.html#a2e5385c15b60e7bfe53e4c6c726bcc47",
+"namespaceOpenCASCADE.html#aed838d4999b4707c48781b8d732058fe",
+"namespaceUtilities_1_1System.html#aab54e4f253eba3082cbc231c2df1f978",
+"namespaceinternal_1_1MGTransfer.html#a677196a84039a5fdc5340fc6838b3e3c",
+""
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

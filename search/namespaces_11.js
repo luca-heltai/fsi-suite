@@ -38,10 +38,11 @@ var searchData=
   ['timeroutput_35',['TimerOutput',['http://www.dealii.org/developer/doxygen/deal.II/classTimerOutput_1_1Scope.html',1,'']]],
   ['timestepbase_5ftria_5fflags_36',['TimeStepBase_Tria_Flags',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTimeStepBase__Tria__Flags.html',1,'']]],
   ['timestepping_37',['TimeStepping',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTimeStepping.html',1,'TimeStepping'],['http://www.dealii.org/developer/doxygen/deal.II/structTimeStepping_1_1TimeStepping_1_1Status.html',1,'TimeStepping::TimeStepping']]],
-  ['triaaccessorexceptions_38',['TriaAccessorExceptions',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTriaAccessorExceptions.html',1,'']]],
-  ['triangulation_39',['Triangulation',['http://www.dealii.org/developer/doxygen/deal.II/structTriangulation_1_1CellWeightSum.html',1,'']]],
-  ['triangulationdescription_40',['TriangulationDescription',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTriangulationDescription.html',1,'']]],
-  ['trilinoswrappers_41',['TrilinosWrappers',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTrilinosWrappers.html',1,'']]],
-  ['types_42',['types',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTrilinosWrappers_1_1types.html',1,'TrilinosWrappers::types'],['http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html',1,'types']]],
-  ['utilities_43',['Utilities',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTriangulationDescription_1_1Utilities.html',1,'TriangulationDescription']]]
+  ['tools_38',['Tools',['../namespace_tools.html',1,'']]],
+  ['triaaccessorexceptions_39',['TriaAccessorExceptions',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTriaAccessorExceptions.html',1,'']]],
+  ['triangulation_40',['Triangulation',['http://www.dealii.org/developer/doxygen/deal.II/structTriangulation_1_1CellWeightSum.html',1,'']]],
+  ['triangulationdescription_41',['TriangulationDescription',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTriangulationDescription.html',1,'']]],
+  ['trilinoswrappers_42',['TrilinosWrappers',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTrilinosWrappers.html',1,'']]],
+  ['types_43',['types',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTrilinosWrappers_1_1types.html',1,'TrilinosWrappers::types'],['http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html',1,'types']]],
+  ['utilities_44',['Utilities',['http://www.dealii.org/developer/doxygen/deal.II/namespaceTriangulationDescription_1_1Utilities.html',1,'TriangulationDescription']]]
 ];

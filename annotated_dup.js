@@ -1,4 +1,6 @@
 var annotated_dup =
 [
-    [ "ParsedGridGenerator", "class_parsed_grid_generator.html", "class_parsed_grid_generator" ]
+    [ "Tools", "namespace_tools.html", [
+      [ "ParsedGridGenerator", "class_tools_1_1_parsed_grid_generator.html", "class_tools_1_1_parsed_grid_generator" ]
+    ] ]
 ];
