@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: heltai/dealii:vscode
 
     steps:
     - uses: actions/checkout@v2
@@ -15,10 +16,8 @@ jobs:
         wget https://www.dealii.org/developer/doxygen/deal.tag
         
     - name: Build Doxygen documentation
-      uses: mattnotmitt/doxygen-action@v1.1.0
-      with:
-        doxyfile-path: "./doc/Doxyfile"
-        working-directory: "."
+      run: |
+        doxygen ./doc/Doxyfile
     
     - name: Publish Doxygen documentation
       uses: peaceiris/actions-gh-pages@v3
