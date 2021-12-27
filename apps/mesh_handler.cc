@@ -34,6 +34,7 @@ main(int argc, char **argv)
       ParameterAcceptor::initialize(par_name);
       Triangulation<2> tria;
       pgg.generate(tria);
+      pgg.write(tria);
       Tools::GridInfo info(tria, info_level);
       info.print_info(deallog);
     }
