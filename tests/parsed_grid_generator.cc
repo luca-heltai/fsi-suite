@@ -18,10 +18,10 @@ using DimSpacedimTypes = ::testing::Types<
   std::tuple<std::integral_constant<int, 3>, std::integral_constant<int, 3>>>;
 
 template <class DimSpacedim>
-class PGGTester : public ::testing::Test
+class ParsedGridGeneratorTester : public ::testing::Test
 {
 public:
-  PGGTester()
+  ParsedGridGeneratorTester()
     : pgg("/"){};
 
   using Tdim      = typename std::tuple_element<0, DimSpacedim>::type;
@@ -42,9 +42,9 @@ public:
   }
 };
 
-TYPED_TEST_CASE(PGGTester, DimSpacedimTypes);
+TYPED_TEST_CASE(ParsedGridGeneratorTester, DimSpacedimTypes);
 
-TYPED_TEST(PGGTester, GenerateHyperCube)
+TYPED_TEST(ParsedGridGeneratorTester, GenerateHyperCube)
 {
   this->parse(R"(
     set Input name = hyper_cube
@@ -63,7 +63,7 @@ TYPED_TEST(PGGTester, GenerateHyperCube)
 }
 
 
-TYPED_TEST(PGGTester, GenerateHyperCubeSimplices)
+TYPED_TEST(ParsedGridGeneratorTester, GenerateHyperCubeSimplices)
 {
   this->parse(R"(
     set Input name = hyper_cube

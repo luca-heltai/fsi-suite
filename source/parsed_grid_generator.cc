@@ -55,34 +55,31 @@ namespace Tools
         try
           {
             // Use default reading algorithm first
-            gi.read(grid_generator_function);
+            if (ext == "msh")
+              gi.read_msh(grid_generator_function);
+            else
+              gi.read(grid_generator_function); // Try default ways
           }
         catch (...)
           {
             // Attempt some of the other things manually
-            // msh new formats, using msh API
-            if (ext == "msh")
-              gi.read_msh(grid_generator_function);
+            std::ifstream in(grid_generator_function);
+            AssertThrow(in, ExcIO());
+            if (ext == "ar")
+              {
+                boost::archive::text_iarchive ia(in);
+                tria.load(ia, 0);
+              }
+            else if (ext == "bin")
+              {
+                boost::archive::binary_iarchive ia(in);
+                tria.load(ia, 0);
+              }
             else
               {
-                std::ifstream in(grid_generator_function);
-                AssertThrow(in, ExcIO());
-                if (ext == "ar")
-                  {
-                    boost::archive::text_iarchive ia(in);
-                    tria.load(ia, 0);
-                  }
-                else if (ext == "bin")
-                  {
-                    boost::archive::binary_iarchive ia(in);
-                    tria.load(ia, 0);
-                  }
-                else
-                  {
-                    in.close();
-                    // try assimp reader as a last resort
-                    gi.read_assimp(grid_generator_function);
-                  }
+                in.close();
+                // try assimp reader as a last resort
+                gi.read_assimp(grid_generator_function);
               }
           }
       }
@@ -166,37 +163,40 @@ namespace Tools
         const auto ext = boost::algorithm::to_lower_copy(
           outname.substr(outname.find_last_of('.') + 1));
 
-        GridOut       go;
-        std::ofstream out(outname);
-        AssertThrow(out, ExcIO());
-
-        go.set_flags(GridOutFlags::Msh(true, true));
-        go.set_flags(GridOutFlags::Ucd(false, true, true));
-        go.set_flags(GridOutFlags::Vtu(true));
-
-        if (ext == "vtk")
-          go.write_vtk(tria, out);
-        else if (ext == "msh")
+        GridOut go;
+        if (ext == "msh")
           go.write_msh(tria, outname); // prefer msh api
-        else if (ext == "vtu")
-          go.write_vtu(tria, out);
-        else if (ext == "ucd" || ext == "inp")
-          go.write_ucd(tria, out);
-        else if (ext == "vtu")
-          go.write_vtu(tria, out);
-        else if (ext == "ar")
-          {
-            boost::archive::text_oarchive oa(out);
-            tria.save(oa, 0);
-          }
-        else if (ext == "bin")
-          {
-            boost::archive::binary_oarchive oa(out);
-            tria.save(oa, 0);
-          }
         else
-          Assert(false, ExcNotImplemented());
-        out.close();
+          {
+            std::ofstream out(outname);
+            AssertThrow(out, ExcIO());
+
+            go.set_flags(GridOutFlags::Msh(true, true));
+            go.set_flags(GridOutFlags::Ucd(false, true, true));
+            go.set_flags(GridOutFlags::Vtu(true));
+
+            if (ext == "vtk")
+              go.write_vtk(tria, out);
+            else if (ext == "vtu")
+              go.write_vtu(tria, out);
+            else if (ext == "ucd" || ext == "inp")
+              go.write_ucd(tria, out);
+            else if (ext == "vtu")
+              go.write_vtu(tria, out);
+            else if (ext == "ar")
+              {
+                boost::archive::text_oarchive oa(out);
+                tria.save(oa, 0);
+              }
+            else if (ext == "bin")
+              {
+                boost::archive::binary_oarchive oa(out);
+                tria.save(oa, 0);
+              }
+            else
+              Assert(false, ExcNotImplemented());
+            out.close();
+          }
       }
   }
 
