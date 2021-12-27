@@ -1,4 +1,4 @@
-#include "parsed_grid_generator.h"
+#include "tools/parsed_grid_generator.h"
 
 /**
  * Generate a mesh reader.
@@ -20,7 +20,7 @@ main(int argc, char **argv)
       else
         deallog.depth_console(0);
 
-      ParsedGridGenerator<2> pgg;
+      Tools::ParsedGridGenerator<2> pgg;
       ParameterAcceptor::initialize(par_name);
       Triangulation<2> tria;
       pgg.generate(tria);

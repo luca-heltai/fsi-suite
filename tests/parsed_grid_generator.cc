@@ -1,4 +1,4 @@
-#include "parsed_grid_generator.h"
+#include "tools/parsed_grid_generator.h"
 
 #include <gtest/gtest.h>
 
@@ -30,7 +30,7 @@ public:
   const unsigned int dim      = Tdim::value;
   const unsigned int spacedim = Tspacedim::value;
 
-  ParsedGridGenerator<Tdim::value, Tspacedim::value> pgg;
+  Tools::ParsedGridGenerator<Tdim::value, Tspacedim::value> pgg;
 
   Triangulation<Tdim::value, Tspacedim::value> tria;
 
