@@ -63,7 +63,7 @@ TYPED_TEST(PGGTester, GenerateHyperCube)
 }
 
 
-TYPED_TEST(PGGTester, DISABLED_GenerateHyperCubeSimplices)
+TYPED_TEST(PGGTester, GenerateHyperCubeSimplices)
 {
   this->parse(R"(
     set Input name = hyper_cube

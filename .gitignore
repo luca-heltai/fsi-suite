@@ -1,6 +1,7 @@
 compile_commands.json
 .ninja_deps
 build.ninja
+.ninja.log
 *include.cmake
 *tests.cmake
 CMakeLists.txt.user
@@ -14,3 +15,5 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+doc/html
+deal.tag*

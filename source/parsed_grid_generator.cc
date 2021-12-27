@@ -177,7 +177,7 @@ namespace Tools
         if (ext == "vtk")
           go.write_vtk(tria, out);
         else if (ext == "msh")
-          go.write_msh(tria, out);
+          go.write_msh(tria, outname); // prefer msh api
         else if (ext == "vtu")
           go.write_vtu(tria, out);
         else if (ext == "ucd" || ext == "inp")

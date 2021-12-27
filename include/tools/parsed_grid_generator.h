@@ -14,10 +14,18 @@
 namespace Tools
 {
   /**
-   * GridGenerator class
+   * GridGenerator class.
+   *
+   * This is common interface to the deal.II function
+   * GridGenerator::generate_from_name_and_arguments(), and to the classes
+   * GridIn and GridOut, driven by a parameter file.
+   *
+   * @ingroup grid
+   *
+   * @author Luca Heltai, 2021.
    */
   template <int dim, int spacedim = dim>
-  class ParsedGridGenerator : dealii::ParameterAcceptor
+  class ParsedGridGenerator : public dealii::ParameterAcceptor
   {
   public:
     /**
@@ -26,10 +34,19 @@ namespace Tools
      */
     ParsedGridGenerator(const std::string &prm_section_path = "");
 
+/**
+ * Fill a triangulation according to the parsed parameters. If the
+ * @p output_file_name variable is not empty, the triangulation is also
+ * saved on disk in the format specified by the the @p output_file_format
+ */
+#ifdef DOXYGEN
     /**
-     * Fill a triangulation according to the parsed parameters.
+     * \return my_void (return type is specified to avoid a compiler warning)
      */
+    return_type
+#else
     void
+#endif
     generate(dealii::Triangulation<dim, spacedim> &tria) const;
 
     /**
