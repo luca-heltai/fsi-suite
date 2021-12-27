@@ -8,15 +8,15 @@
 	"dockerFile": "Dockerfile",
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"davydden.dealii-prm",
-		"johnpapa.vscode-peacock",
 		"alefragnani.project-manager",
-		"ms-vscode.cpptools",
-		"ms-vscode.cmake-tools",
-		"xaver.clang-format",
-		"troelsdamgaard.reflow-paragraph",
+		"bertrand-thierry.vscode-gmsh",
+		"davydden.dealii-prm",
 		"github.copilot",
+		"johnpapa.vscode-peacock",
 		"mhutchie.git-graph",
+		"ms-vscode.cpptools-extension-pack",
+		"troelsdamgaard.reflow-paragraph",
+		"xaver.clang-format",
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
