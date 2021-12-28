@@ -76,7 +76,13 @@
         "typeinfo": "cpp",
         "utility": "cpp",
         "variant": "cpp",
-        "cfenv": "cpp"
+        "cfenv": "cpp",
+        "cinttypes": "cpp",
+        "forward_list": "cpp",
+        "algorithm": "cpp",
+        "iterator": "cpp",
+        "memory_resource": "cpp",
+        "random": "cpp"
     },
     "peacock.remoteColor": "#215732",
     "peacock.color": "#215732",
