@@ -5,47 +5,15 @@
 #include <fstream>
 #include <sstream>
 
-#include "tests.h"
+#include "dim_spacedim_tester.h"
 
 using namespace dealii;
 
-using DimSpacedimTypes = ::testing::Types<
-  std::tuple<std::integral_constant<int, 1>, std::integral_constant<int, 1>>,
-  std::tuple<std::integral_constant<int, 1>, std::integral_constant<int, 2>>,
-  std::tuple<std::integral_constant<int, 1>, std::integral_constant<int, 3>>,
-  std::tuple<std::integral_constant<int, 2>, std::integral_constant<int, 2>>,
-  std::tuple<std::integral_constant<int, 2>, std::integral_constant<int, 3>>,
-  std::tuple<std::integral_constant<int, 3>, std::integral_constant<int, 3>>>;
-
-template <class DimSpacedim>
-class ParsedGridGeneratorTester : public ::testing::Test
+TYPED_TEST(DST, GenerateHyperCube)
 {
-public:
-  ParsedGridGeneratorTester()
-    : pgg("/"){};
+  Tools::ParsedGridGenerator<this->dim, this->spacedim> pgg("/");
+  Triangulation<this->dim, this->spacedim>              tria;
 
-  using Tdim      = typename std::tuple_element<0, DimSpacedim>::type;
-  using Tspacedim = typename std::tuple_element<1, DimSpacedim>::type;
-
-  const unsigned int dim      = Tdim::value;
-  const unsigned int spacedim = Tspacedim::value;
-
-  Tools::ParsedGridGenerator<Tdim::value, Tspacedim::value> pgg;
-
-  Triangulation<Tdim::value, Tspacedim::value> tria;
-
-  void
-  parse(const std::string &prm_string) const
-  {
-    ParameterAcceptor::prm.parse_input_from_string(prm_string);
-    ParameterAcceptor::parse_all_parameters();
-  }
-};
-
-TYPED_TEST_CASE(ParsedGridGeneratorTester, DimSpacedimTypes);
-
-TYPED_TEST(ParsedGridGeneratorTester, GenerateHyperCube)
-{
   this->parse(R"(
     set Input name = hyper_cube
     set Arguments = 0: 1: false
@@ -59,17 +27,21 @@ TYPED_TEST(ParsedGridGeneratorTester, GenerateHyperCube)
 
 
   // After this, we should have a file grid.msh
-  this->pgg.generate(this->tria);
+  pgg.generate(tria);
   ASSERT_TRUE(std::ifstream(grid_name));
   std::remove(grid_name.c_str());
 
   // And the grid should have 1 element
-  ASSERT_EQ(this->tria.n_active_cells(), 1u);
+  ASSERT_EQ(tria.n_active_cells(), 1u);
 }
 
 
-TYPED_TEST(ParsedGridGeneratorTester, GenerateHyperCubeSimplices)
+
+TYPED_TEST(DST, GenerateHyperCubeSimplex)
 {
+  Tools::ParsedGridGenerator<this->dim, this->spacedim> pgg("/");
+  Triangulation<this->dim, this->spacedim>              tria;
+
   this->parse(R"(
     set Input name = hyper_cube
     set Arguments = 0: 1: false
@@ -82,11 +54,11 @@ TYPED_TEST(ParsedGridGeneratorTester, GenerateHyperCubeSimplices)
   this->parse("set Output name = " + grid_name);
 
   // After this, we should have a file grid.msh
-  this->pgg.generate(this->tria);
+  pgg.generate(tria);
   ASSERT_TRUE(std::ifstream(grid_name));
   std::remove(grid_name.c_str());
 
   // And the grid should have 8 elements in 2d, and 24 in 3d
   const unsigned int dims[] = {0, 1, 8, 24};
-  ASSERT_EQ(this->tria.n_active_cells(), dims[this->dim]);
+  ASSERT_EQ(tria.n_active_cells(), dims[this->dim]);
 }

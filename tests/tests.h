@@ -13,8 +13,8 @@
 //
 // ---------------------------------------------------------------------
 
-#ifndef dealii_tests_h
-#define dealii_tests_h
+#ifndef fsi_suite_tests_h
+#define fsi_suite_tests_h
 
 // common definitions used in all the tests
 
@@ -27,10 +27,13 @@
 #include <deal.II/base/logstream.h>
 #include <deal.II/base/mpi.h>
 #include <deal.II/base/multithread_info.h>
+#include <deal.II/base/parameter_acceptor.h>
 #include <deal.II/base/patterns.h>
 #include <deal.II/base/point.h>
 #include <deal.II/base/thread_management.h>
 #include <deal.II/base/utilities.h>
+
+#include <gtest/gtest.h>
 
 #include <cmath>
 #include <cstdlib>
@@ -43,7 +46,6 @@
 #if defined(DEBUG) && defined(DEAL_II_HAVE_FP_EXCEPTIONS)
 #  include <cfenv>
 #endif
-
 
 // silence extra diagnostics in the testsuite
 #ifdef DEAL_II_DISABLE_EXTRA_DIAGNOSTICS

@@ -38,25 +38,28 @@ namespace Tools
     dealii::Triangulation<dim, spacedim> &tria) const
   {
     // TimerOutput::Scope timer_section(timer, "ParsedGridGenerator::generate");
+    const auto ext =
+      boost::algorithm::to_lower_copy(grid_generator_function.substr(
+        grid_generator_function.find_last_of('.') + 1));
 
-    try
+    std::cerr << "Extension: " << ext << std::endl;
+
+    // No extension was found: use grid generator functions
+    if (ext == grid_generator_function)
       {
         GridGenerator::generate_from_name_and_arguments(
           tria, grid_generator_function, grid_generator_arguments);
       }
-    catch (...)
+    else
       {
-        // Generating using dealii::GridGenerator did not work. Use GridIn
+        // grid_generator_function is a filename. Use GridIn
         GridIn<dim, spacedim> gi(tria);
-
-        const auto ext =
-          boost::algorithm::to_lower_copy(grid_generator_function.substr(
-            grid_generator_function.find_last_of('.') + 1));
         try
           {
-            // Use default reading algorithm first
+            // Use gmsh api by default
             if (ext == "msh")
               gi.read_msh(grid_generator_function);
+            // Otherwise try deal.II stdandard way of reading grids
             else
               gi.read(grid_generator_function); // Try default ways
           }
@@ -68,7 +71,7 @@ namespace Tools
                       << std::endl;
             std::cerr << "Exception on processing: " << std::endl
                       << exc.what() << std::endl
-                      << "Trying another strategy." << std::endl
+                      << "Trying other strategies." << std::endl
                       << "----------------------------------------------------"
                       << std::endl;
             // Attempt some of the other things manually
