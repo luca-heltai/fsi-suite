@@ -31,6 +31,12 @@ struct ThreeThree : public std::pair<Three, Three>
 using DimSpacedimTypes =
   ::testing::Types<OneOne, OneTwo, OneThree, TwoTwo, TwoThree, ThreeThree>;
 
+using DimSpacedimTypesNoOne = ::testing::Types<TwoTwo, TwoThree, ThreeThree>;
+
+using DimTypes = ::testing::Types<OneOne, TwoTwo, ThreeThree>;
+
+using DimTypesNoOne = ::testing::Types<TwoTwo, ThreeThree>;
+
 template <class DimSpacedim>
 class DST : public ::testing::Test
 {
@@ -49,6 +55,19 @@ public:
   }
 };
 
+
+template <class DimSpacedim>
+using DSTNoOne = DST<DimSpacedim>;
+
+template <class DimSpacedim>
+using DT = DST<DimSpacedim>;
+
+template <class DimSpacedim>
+using DTNoOne = DST<DimSpacedim>;
+
 TYPED_TEST_CASE(DST, DimSpacedimTypes);
+TYPED_TEST_CASE(DT, DimTypes);
+TYPED_TEST_CASE(DSTNoOne, DimSpacedimTypesNoOne);
+TYPED_TEST_CASE(DTNoOne, DimTypesNoOne);
 
 #endif // dealii_tests_h
