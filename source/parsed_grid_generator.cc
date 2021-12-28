@@ -60,8 +60,17 @@ namespace Tools
             else
               gi.read(grid_generator_function); // Try default ways
           }
-        catch (...)
+        catch (std::exception &exc)
           {
+            std::cerr << std::endl
+                      << std::endl
+                      << "----------------------------------------------------"
+                      << std::endl;
+            std::cerr << "Exception on processing: " << std::endl
+                      << exc.what() << std::endl
+                      << "Trying another strategy." << std::endl
+                      << "----------------------------------------------------"
+                      << std::endl;
             // Attempt some of the other things manually
             std::ifstream in(grid_generator_function);
             AssertThrow(in, ExcIO());
