@@ -35,7 +35,7 @@ namespace Tools
    * on how parameter files and section names are handled.
    *
    * A parameter file that would work with the example above is:
-   * @code
+   * @code{.sh}
    * subsection Grid
    *   set Input name                = hyper_cube
    *   set Arguments                 = 0: 1: false
