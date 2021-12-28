@@ -1,4 +1,9 @@
 var dir_db22b1395f615d1428e10e22469fe87b =
 [
+    [ "grid_info.h", "grid__info_8h.html", [
+      [ "Convert< types::manifold_id >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01types_1_1manifold__id_01_4.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01types_1_1manifold__id_01_4" ],
+      [ "Convert< ReferenceCell >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_reference_cell_01_4.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_reference_cell_01_4" ],
+      [ "GridInfo", "struct_tools_1_1_grid_info.html", "struct_tools_1_1_grid_info" ]
+    ] ],
     [ "parsed_grid_generator.h", "parsed__grid__generator_8h.html", null ]
 ];

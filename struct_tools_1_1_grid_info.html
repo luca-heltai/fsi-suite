@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fluid structure interaction suite: Tools::GridInfo&lt; dim, spacedim &gt; Struct Template Reference</title>
+<title>Fluid structure interaction suite: Tools::GridInfo Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -104,52 +104,113 @@ $(document).ready(function(){initNavTree('struct_tools_1_1_grid_info.html',''); 
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="struct_tools_1_1_grid_info-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Tools::GridInfo&lt; dim, spacedim &gt; Struct Template Reference</div>  </div>
+<div class="title">Tools::GridInfo Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gather information about a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>.  
+ <a href="struct_tools_1_1_grid_info.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="grid__info_8h_source.html">grid_info.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab24937786e8b27976fdb0c902764b2e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ab24937786e8b27976fdb0c902764b2e8">GridInfo</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, const unsigned int <a class="el" href="struct_tools_1_1_grid_info.html#a7a66e1aeeb47a963ec7df29ec33c711f">info_level</a>=0)</td></tr>
-<tr class="separator:ab24937786e8b27976fdb0c902764b2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1038fac45e787964a51eac8f97ded67b"><td class="memTemplParams" colspan="2">template&lt;typename StreamType &gt; </td></tr>
-<tr class="memitem:a1038fac45e787964a51eac8f97ded67b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a1038fac45e787964a51eac8f97ded67b">print_info</a> (StreamType &amp;out)</td></tr>
-<tr class="separator:a1038fac45e787964a51eac8f97ded67b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ba133da243e2695666964c69b3bf7a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a0ba133da243e2695666964c69b3bf7a3">GridInfo</a> (const unsigned int <a class="el" href="struct_tools_1_1_grid_info.html#ad011fa62903f9146247e9dd50a76ffc0">info_level</a>=0)</td></tr>
+<tr class="memdesc:a0ba133da243e2695666964c69b3bf7a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new (empty) Grid Info object.  <a href="struct_tools_1_1_grid_info.html#a0ba133da243e2695666964c69b3bf7a3">More...</a><br /></td></tr>
+<tr class="separator:a0ba133da243e2695666964c69b3bf7a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8fe835aef30ff67fec819fa6fa86a57"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim&gt; </td></tr>
+<tr class="memitem:af8fe835aef30ff67fec819fa6fa86a57"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#af8fe835aef30ff67fec819fa6fa86a57">GridInfo</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, const unsigned int <a class="el" href="struct_tools_1_1_grid_info.html#ad011fa62903f9146247e9dd50a76ffc0">info_level</a>=0)</td></tr>
+<tr class="memdesc:af8fe835aef30ff67fec819fa6fa86a57"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Grid Info object, and gather all information about the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> <code>tria</code>.  <a href="struct_tools_1_1_grid_info.html#af8fe835aef30ff67fec819fa6fa86a57">More...</a><br /></td></tr>
+<tr class="separator:af8fe835aef30ff67fec819fa6fa86a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d6f06a98a5082e9b2cb3ebdecaddc7c"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim&gt; </td></tr>
+<tr class="memitem:a8d6f06a98a5082e9b2cb3ebdecaddc7c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a8d6f06a98a5082e9b2cb3ebdecaddc7c">build_info</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>)</td></tr>
+<tr class="memdesc:a8d6f06a98a5082e9b2cb3ebdecaddc7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually build the information about the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>.  <a href="struct_tools_1_1_grid_info.html#a8d6f06a98a5082e9b2cb3ebdecaddc7c">More...</a><br /></td></tr>
+<tr class="separator:a8d6f06a98a5082e9b2cb3ebdecaddc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09c0ee663e6195989df31bf7f89098fd"><td class="memTemplParams" colspan="2">template&lt;typename StreamType &gt; </td></tr>
+<tr class="memitem:a09c0ee663e6195989df31bf7f89098fd"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a09c0ee663e6195989df31bf7f89098fd">print_info</a> (StreamType &amp;out)</td></tr>
+<tr class="memdesc:a09c0ee663e6195989df31bf7f89098fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print all gathered information about the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>.  <a href="struct_tools_1_1_grid_info.html#a09c0ee663e6195989df31bf7f89098fd">More...</a><br /></td></tr>
+<tr class="separator:a09c0ee663e6195989df31bf7f89098fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a7a66e1aeeb47a963ec7df29ec33c711f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a7a66e1aeeb47a963ec7df29ec33c711f">info_level</a></td></tr>
-<tr class="separator:a7a66e1aeeb47a963ec7df29ec33c711f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa938995bdb30fb4da93b8fe1baeaf2e6"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#aa938995bdb30fb4da93b8fe1baeaf2e6">n_active_cells</a></td></tr>
-<tr class="separator:aa938995bdb30fb4da93b8fe1baeaf2e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5dc13c8bfeb14f0667b8e3aa6fe454a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#af5dc13c8bfeb14f0667b8e3aa6fe454a">n_vertices</a></td></tr>
-<tr class="separator:af5dc13c8bfeb14f0667b8e3aa6fe454a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b32f1fc56b167f210f871cea607423f"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a5b32f1fc56b167f210f871cea607423f">n_used_vertices</a></td></tr>
-<tr class="separator:a5b32f1fc56b167f210f871cea607423f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d8667bf2c300672adf8066a21e57469"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a9d8667bf2c300672adf8066a21e57469">n_levels</a></td></tr>
-<tr class="separator:a9d8667bf2c300672adf8066a21e57469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a260bf62300ef1a63c7a27be1cefe0f51"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a260bf62300ef1a63c7a27be1cefe0f51">n_active_cells_at_level</a></td></tr>
-<tr class="separator:a260bf62300ef1a63c7a27be1cefe0f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34164177c1a3a7bf1ff708d4be865c21"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a34164177c1a3a7bf1ff708d4be865c21">n_cells_at_level</a></td></tr>
-<tr class="separator:a34164177c1a3a7bf1ff708d4be865c21"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc90648a128f07eab8e2f53d965f12b4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#abc90648a128f07eab8e2f53d965f12b4">boundary_ids</a></td></tr>
-<tr class="separator:abc90648a128f07eab8e2f53d965f12b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9043fa6ebf6c92115dbdc7cdd51ade8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ac9043fa6ebf6c92115dbdc7cdd51ade8">material_ids</a></td></tr>
-<tr class="separator:ac9043fa6ebf6c92115dbdc7cdd51ade8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1207d4cf101e78cf1318a896af8bf302"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a1207d4cf101e78cf1318a896af8bf302">manifold_ids</a></td></tr>
-<tr class="separator:a1207d4cf101e78cf1318a896af8bf302"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b63afb8dc69d02092c680128904bbe5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a3b63afb8dc69d02092c680128904bbe5">reference_cell_types</a></td></tr>
-<tr class="separator:a3b63afb8dc69d02092c680128904bbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad011fa62903f9146247e9dd50a76ffc0"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ad011fa62903f9146247e9dd50a76ffc0">info_level</a></td></tr>
+<tr class="separator:ad011fa62903f9146247e9dd50a76ffc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c649fe0f0e1289890f9e2b2034639ce"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a3c649fe0f0e1289890f9e2b2034639ce">n_active_cells</a></td></tr>
+<tr class="separator:a3c649fe0f0e1289890f9e2b2034639ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bb84744a609589566436e61dd3573fd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a5bb84744a609589566436e61dd3573fd">n_vertices</a></td></tr>
+<tr class="separator:a5bb84744a609589566436e61dd3573fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f6e6e29029e6fefe19b96a4ddd90d1"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#af4f6e6e29029e6fefe19b96a4ddd90d1">n_used_vertices</a></td></tr>
+<tr class="separator:af4f6e6e29029e6fefe19b96a4ddd90d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac99a3f7dafd07423d090fb32fadbf084"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ac99a3f7dafd07423d090fb32fadbf084">n_levels</a></td></tr>
+<tr class="separator:ac99a3f7dafd07423d090fb32fadbf084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae16e63e5832019ebc1efcf4687205591"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ae16e63e5832019ebc1efcf4687205591">n_active_cells_at_level</a></td></tr>
+<tr class="separator:ae16e63e5832019ebc1efcf4687205591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acaf6c0345507c5aa5cf1b0b1a35400e4"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#acaf6c0345507c5aa5cf1b0b1a35400e4">n_cells_at_level</a></td></tr>
+<tr class="separator:acaf6c0345507c5aa5cf1b0b1a35400e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56beb73dedb3f254cb38d20bc96102ca"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a56beb73dedb3f254cb38d20bc96102ca">boundary_ids</a></td></tr>
+<tr class="separator:a56beb73dedb3f254cb38d20bc96102ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520fd0bc898baad5e39032e75e333f1e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a520fd0bc898baad5e39032e75e333f1e">material_ids</a></td></tr>
+<tr class="separator:a520fd0bc898baad5e39032e75e333f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6afc6e6197b73ccde1bed33badf1e7c5"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a6afc6e6197b73ccde1bed33badf1e7c5">manifold_ids</a></td></tr>
+<tr class="separator:a6afc6e6197b73ccde1bed33badf1e7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5680d9f4000c109ad5ee159ff10a461"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ae5680d9f4000c109ad5ee159ff10a461">reference_cell_types</a></td></tr>
+<tr class="separator:ae5680d9f4000c109ad5ee159ff10a461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7618622e233f4c566462c566da4c1d0"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#ab7618622e233f4c566462c566da4c1d0">faces_per_boundary_id</a></td></tr>
+<tr class="separator:ab7618622e233f4c566462c566da4c1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52968b3dae250e86cae46a2a00865439"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a52968b3dae250e86cae46a2a00865439">cells_per_material_id</a></td></tr>
+<tr class="separator:a52968b3dae250e86cae46a2a00865439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a770c908bb11656ccda99eab8ac2f1d1a"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a770c908bb11656ccda99eab8ac2f1d1a">faces_per_manifold_id</a></td></tr>
+<tr class="separator:a770c908bb11656ccda99eab8ac2f1d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33bcd1627e818a54f8228998bf03cd1e"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a33bcd1627e818a54f8228998bf03cd1e">cells_per_manifold_id</a></td></tr>
+<tr class="separator:a33bcd1627e818a54f8228998bf03cd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a129d335954006914350513be1c42b414"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a>, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_tools_1_1_grid_info.html#a129d335954006914350513be1c42b414">cells_per_reference_cell_type</a></td></tr>
+<tr class="separator:a129d335954006914350513be1c42b414"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;int dim, int spacedim&gt;<br />
-struct Tools::GridInfo&lt; dim, spacedim &gt;</h3>
+<div class="textblock"><p>Gather information about a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>. </p>
+<p>This class can be used to store information about a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>, such as the number of cells, the number of vertices, etc.</p>
+<p>It is particularly useful when building robust programs w.r.t. boundary conditions, boundary indicators, manifold indicators, etc. </p>
 
-
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00079">79</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00133">133</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab24937786e8b27976fdb0c902764b2e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab24937786e8b27976fdb0c902764b2e8">&#9670;&nbsp;</a></span>GridInfo()</h2>
+<a id="a0ba133da243e2695666964c69b3bf7a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ba133da243e2695666964c69b3bf7a3">&#9670;&nbsp;</a></span>GridInfo() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tools::GridInfo::GridInfo </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>info_level</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new (empty) Grid Info object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">info_level</td><td>Level of information to gather. The higher the number, the more expensive the operation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00141">141</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+</div>
+</div>
+<a id="af8fe835aef30ff67fec819fa6fa86a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8fe835aef30ff67fec819fa6fa86a57">&#9670;&nbsp;</a></span>GridInfo() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,7 +221,7 @@ template&lt;int dim, int spacedim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::<a class="el" href="struct_tools_1_1_grid_info.html">GridInfo</a> </td>
+          <td class="memname">Tools::GridInfo::GridInfo </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
           <td class="paramname"><em>tria</em>, </td>
@@ -184,20 +245,69 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00081">81</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p>Construct a new Grid Info object, and gather all information about the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> <code>tria</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tria</td><td>The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to gather information from. </td></tr>
+    <tr><td class="paramname">info_level</td><td>Level of information to gather. The higher the number, the more expensive the operation. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1TriangulationImplementation.html#a3344398031a9e10cb9eef0784f8da1be">n_active_cells()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00154">154</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">References <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1038fac45e787964a51eac8f97ded67b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1038fac45e787964a51eac8f97ded67b">&#9670;&nbsp;</a></span>print_info()</h2>
+<a id="a8d6f06a98a5082e9b2cb3ebdecaddc7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d6f06a98a5082e9b2cb3ebdecaddc7c">&#9670;&nbsp;</a></span>build_info()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;int dim, int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tools::GridInfo::build_info </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tria</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Actually build the information about the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tria</td><td>The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to gather information from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00168">168</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">References <a class="el" href="grid__info_8h_source.html#l00307">boundary_ids</a>, <a class="el" href="grid__info_8h_source.html#l00328">cells_per_manifold_id</a>, <a class="el" href="grid__info_8h_source.html#l00322">cells_per_material_id</a>, <a class="el" href="grid__info_8h_source.html#l00331">cells_per_reference_cell_type</a>, <a class="el" href="grid__info_8h_source.html#l00319">faces_per_boundary_id</a>, <a class="el" href="grid__info_8h_source.html#l00325">faces_per_manifold_id</a>, <a class="el" href="grid__info_8h_source.html#l00286">info_level</a>, <a class="el" href="grid__info_8h_source.html#l00313">manifold_ids</a>, <a class="el" href="grid__info_8h_source.html#l00310">material_ids</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#a5ea5c9957dbb566a562bbe2c0f3971e9">Triangulation&lt; dim, spacedim &gt;::n_active_cells()</a>, <a class="el" href="grid__info_8h_source.html#l00289">n_active_cells</a>, <a class="el" href="grid__info_8h_source.html#l00301">n_active_cells_at_level</a>, <a class="el" href="grid__info_8h_source.html#l00304">n_cells_at_level</a>, <a class="el" href="grid__info_8h_source.html#l00298">n_levels</a>, <a class="el" href="grid__info_8h_source.html#l00295">n_used_vertices</a>, <a class="el" href="grid__info_8h_source.html#l00292">n_vertices</a>, <a class="el" href="grid__info_8h_source.html#l00316">reference_cell_types</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00154">GridInfo()</a>.</p>
+
+</div>
+</div>
+<a id="a09c0ee663e6195989df31bf7f89098fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09c0ee663e6195989df31bf7f89098fd">&#9670;&nbsp;</a></span>print_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
 <div class="memtemplate">
 template&lt;typename StreamType &gt; </div>
 <table class="mlabels">
@@ -205,7 +315,7 @@ template&lt;typename StreamType &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::print_info </td>
+          <td class="memname">void Tools::GridInfo::print_info </td>
           <td>(</td>
           <td class="paramtype">StreamType &amp;&#160;</td>
           <td class="paramname"><em>out</em></td><td>)</td>
@@ -219,215 +329,329 @@ template&lt;typename StreamType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00109">109</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p>Print all gathered information about the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>The stream to print to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1TriangulationImplementation.html#a3344398031a9e10cb9eef0784f8da1be">n_active_cells()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePatterns_1_1Tools.html#a72743302dcb1a0fb1f2f8dc5122d299e">Patterns::Tools::to_string()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00237">237</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="mesh__handler_8cc_source.html#l00154">main()</a>.</p>
+<p class="reference">References <a class="el" href="grid__info_8h_source.html#l00307">boundary_ids</a>, <a class="el" href="grid__info_8h_source.html#l00328">cells_per_manifold_id</a>, <a class="el" href="grid__info_8h_source.html#l00322">cells_per_material_id</a>, <a class="el" href="grid__info_8h_source.html#l00331">cells_per_reference_cell_type</a>, <a class="el" href="grid__info_8h_source.html#l00319">faces_per_boundary_id</a>, <a class="el" href="grid__info_8h_source.html#l00325">faces_per_manifold_id</a>, <a class="el" href="grid__info_8h_source.html#l00286">info_level</a>, <a class="el" href="grid__info_8h_source.html#l00313">manifold_ids</a>, <a class="el" href="grid__info_8h_source.html#l00310">material_ids</a>, <a class="el" href="grid__info_8h_source.html#l00289">n_active_cells</a>, <a class="el" href="grid__info_8h_source.html#l00301">n_active_cells_at_level</a>, <a class="el" href="grid__info_8h_source.html#l00304">n_cells_at_level</a>, <a class="el" href="grid__info_8h_source.html#l00298">n_levels</a>, <a class="el" href="grid__info_8h_source.html#l00295">n_used_vertices</a>, <a class="el" href="grid__info_8h_source.html#l00292">n_vertices</a>, <a class="el" href="grid__info_8h_source.html#l00316">reference_cell_types</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePatterns_1_1Tools.html#a72743302dcb1a0fb1f2f8dc5122d299e">Patterns::Tools::to_string()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="mesh__handler_8cc_source.html#l00015">main()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="abc90648a128f07eab8e2f53d965f12b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc90648a128f07eab8e2f53d965f12b4">&#9670;&nbsp;</a></span>boundary_ids</h2>
+<a id="a56beb73dedb3f254cb38d20bc96102ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56beb73dedb3f254cb38d20bc96102ca">&#9670;&nbsp;</a></span>boundary_ids</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>&gt; <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::boundary_ids</td>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>&gt; Tools::GridInfo::boundary_ids</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Boundary ids. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00143">143</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00307">307</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a7a66e1aeeb47a963ec7df29ec33c711f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a66e1aeeb47a963ec7df29ec33c711f">&#9670;&nbsp;</a></span>info_level</h2>
+<a id="a33bcd1627e818a54f8228998bf03cd1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33bcd1627e818a54f8228998bf03cd1e">&#9670;&nbsp;</a></span>cells_per_manifold_id</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::info_level</td>
+          <td class="memname">std::map&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a>, unsigned int&gt; Tools::GridInfo::cells_per_manifold_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of cells per manifold id. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00134">134</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00328">328</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a1207d4cf101e78cf1318a896af8bf302"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1207d4cf101e78cf1318a896af8bf302">&#9670;&nbsp;</a></span>manifold_ids</h2>
+<a id="a52968b3dae250e86cae46a2a00865439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52968b3dae250e86cae46a2a00865439">&#9670;&nbsp;</a></span>cells_per_material_id</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a>&gt; <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::manifold_ids</td>
+          <td class="memname">std::map&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a>, unsigned int&gt; Tools::GridInfo::cells_per_material_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of cells per boundary id. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00145">145</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00322">322</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="ac9043fa6ebf6c92115dbdc7cdd51ade8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9043fa6ebf6c92115dbdc7cdd51ade8">&#9670;&nbsp;</a></span>material_ids</h2>
+<a id="a129d335954006914350513be1c42b414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a129d335954006914350513be1c42b414">&#9670;&nbsp;</a></span>cells_per_reference_cell_type</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a>&gt; <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::material_ids</td>
+          <td class="memname">std::map&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a>, unsigned int&gt; Tools::GridInfo::cells_per_reference_cell_type</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of cells per reference cell type. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00144">144</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00331">331</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="aa938995bdb30fb4da93b8fe1baeaf2e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa938995bdb30fb4da93b8fe1baeaf2e6">&#9670;&nbsp;</a></span>n_active_cells</h2>
+<a id="ab7618622e233f4c566462c566da4c1d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7618622e233f4c566462c566da4c1d0">&#9670;&nbsp;</a></span>faces_per_boundary_id</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::n_active_cells</td>
+          <td class="memname">std::map&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>, unsigned int&gt; Tools::GridInfo::faces_per_boundary_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of faces per boundary id. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00135">135</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00319">319</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a260bf62300ef1a63c7a27be1cefe0f51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a260bf62300ef1a63c7a27be1cefe0f51">&#9670;&nbsp;</a></span>n_active_cells_at_level</h2>
+<a id="a770c908bb11656ccda99eab8ac2f1d1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a770c908bb11656ccda99eab8ac2f1d1a">&#9670;&nbsp;</a></span>faces_per_manifold_id</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;unsigned int&gt; <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::n_active_cells_at_level</td>
+          <td class="memname">std::map&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a>, unsigned int&gt; Tools::GridInfo::faces_per_manifold_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of faces per manifold id. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00140">140</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00325">325</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a34164177c1a3a7bf1ff708d4be865c21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34164177c1a3a7bf1ff708d4be865c21">&#9670;&nbsp;</a></span>n_cells_at_level</h2>
+<a id="ad011fa62903f9146247e9dd50a76ffc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad011fa62903f9146247e9dd50a76ffc0">&#9670;&nbsp;</a></span>info_level</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;unsigned int&gt; <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::n_cells_at_level</td>
+          <td class="memname">unsigned int Tools::GridInfo::info_level</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Level of information to gather. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00141">141</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00286">286</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a9d8667bf2c300672adf8066a21e57469"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d8667bf2c300672adf8066a21e57469">&#9670;&nbsp;</a></span>n_levels</h2>
+<a id="a6afc6e6197b73ccde1bed33badf1e7c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6afc6e6197b73ccde1bed33badf1e7c5">&#9670;&nbsp;</a></span>manifold_ids</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::n_levels</td>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">types::manifold_id</a>&gt; Tools::GridInfo::manifold_ids</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classManifold.html">Manifold</a> ids. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00138">138</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00313">313</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a5b32f1fc56b167f210f871cea607423f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b32f1fc56b167f210f871cea607423f">&#9670;&nbsp;</a></span>n_used_vertices</h2>
+<a id="a520fd0bc898baad5e39032e75e333f1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520fd0bc898baad5e39032e75e333f1e">&#9670;&nbsp;</a></span>material_ids</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::n_used_vertices</td>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a>&gt; Tools::GridInfo::material_ids</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Material ids. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00137">137</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00310">310</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="af5dc13c8bfeb14f0667b8e3aa6fe454a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5dc13c8bfeb14f0667b8e3aa6fe454a">&#9670;&nbsp;</a></span>n_vertices</h2>
+<a id="a3c649fe0f0e1289890f9e2b2034639ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c649fe0f0e1289890f9e2b2034639ce">&#9670;&nbsp;</a></span>n_active_cells</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::n_vertices</td>
+          <td class="memname">unsigned int Tools::GridInfo::n_active_cells</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of active cells. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00136">136</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00289">289</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
-<a id="a3b63afb8dc69d02092c680128904bbe5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b63afb8dc69d02092c680128904bbe5">&#9670;&nbsp;</a></span>reference_cell_types</h2>
+<a id="ae16e63e5832019ebc1efcf4687205591"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae16e63e5832019ebc1efcf4687205591">&#9670;&nbsp;</a></span>n_active_cells_at_level</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a>&gt; <a class="el" href="struct_tools_1_1_grid_info.html">Tools::GridInfo</a>&lt; dim, spacedim &gt;::reference_cell_types</td>
+          <td class="memname">std::vector&lt;unsigned int&gt; Tools::GridInfo::n_active_cells_at_level</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Number of active cells at each level. </p>
 
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00146">146</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00301">301</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
+
+</div>
+</div>
+<a id="acaf6c0345507c5aa5cf1b0b1a35400e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaf6c0345507c5aa5cf1b0b1a35400e4">&#9670;&nbsp;</a></span>n_cells_at_level</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;unsigned int&gt; Tools::GridInfo::n_cells_at_level</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of cells at each level. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00304">304</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
+
+</div>
+</div>
+<a id="ac99a3f7dafd07423d090fb32fadbf084"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac99a3f7dafd07423d090fb32fadbf084">&#9670;&nbsp;</a></span>n_levels</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Tools::GridInfo::n_levels</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of levels. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00298">298</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
+
+</div>
+</div>
+<a id="af4f6e6e29029e6fefe19b96a4ddd90d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f6e6e29029e6fefe19b96a4ddd90d1">&#9670;&nbsp;</a></span>n_used_vertices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Tools::GridInfo::n_used_vertices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of used vertices. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00295">295</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
+
+</div>
+</div>
+<a id="a5bb84744a609589566436e61dd3573fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bb84744a609589566436e61dd3573fd">&#9670;&nbsp;</a></span>n_vertices</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Tools::GridInfo::n_vertices</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Number of vertices. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00292">292</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
+
+</div>
+</div>
+<a id="ae5680d9f4000c109ad5ee159ff10a461"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5680d9f4000c109ad5ee159ff10a461">&#9670;&nbsp;</a></span>reference_cell_types</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a>&gt; Tools::GridInfo::reference_cell_types</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Reference cell types. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__info_8h_source.html#l00316">316</a> of file <a class="el" href="grid__info_8h_source.html">grid_info.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__info_8h_source.html#l00168">build_info()</a>, and <a class="el" href="grid__info_8h_source.html#l00237">print_info()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>apps/<a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a></li>
+<li>include/tools/<a class="el" href="grid__info_8h_source.html">grid_info.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -435,7 +659,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="struct_tools_1_1_grid_info.html">GridInfo</a></li>
-    <li class="footer">Generated on Mon Dec 27 2021 15:39:50 for Fluid structure interaction suite by
+    <li class="footer">Generated on Tue Dec 28 2021 15:16:25 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
