@@ -6,7 +6,8 @@ var hierarchy =
     [ "Subscriptor", "http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html", [
       [ "ParameterAcceptor", "http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html", [
         [ "Tools::ParsedFiniteElement< dim, spacedim >", "class_tools_1_1_parsed_finite_element.html", null ],
-        [ "Tools::ParsedGridGenerator< dim, spacedim >", "class_tools_1_1_parsed_grid_generator.html", null ]
+        [ "Tools::ParsedGridGenerator< dim, spacedim >", "class_tools_1_1_parsed_grid_generator.html", null ],
+        [ "Tools::ParsedGridRefinement", "class_tools_1_1_parsed_grid_refinement.html", null ]
       ] ]
     ] ]
 ];
