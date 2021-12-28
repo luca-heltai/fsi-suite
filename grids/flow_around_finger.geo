@@ -5,7 +5,7 @@ cl = 1e22;
 cd = 1;
 
 // Dimensions of flow domain
-LL = 10;
+LL = 9+1e-15;
 H1 = 8;
 H2 = 6;
 
@@ -22,8 +22,6 @@ Point(4) = { LL/2,  0, 0, cl};
 Line(1) = {1, 2};
 Line(2) = {2, 3};
 Line(3) = {3, 4};
-
-
 
 Extrude {0, H, 0} {
     Curve{1}; Curve{2}; Curve{3}; Layers {cd*Ceil(H)}; 
@@ -59,30 +57,29 @@ Line(21) = {13, 12};
 Line(22) = {12, 11};
 
 
-Curve Loop(1) = {19, 20, -18, -4};
+Curve Loop(1) = {4, 18, -20, -19};
 Plane Surface(16) = {1};
-Curve Loop(2) = {18, 21, -17, -8};
+Curve Loop(2) = {-18, -21, 17, 8};
 Plane Surface(17) = {2};
-Curve Loop(3) = {17, 22, -16, -12};
+Curve Loop(3) = {-17, -22, 16, 12};
 Plane Surface(18) = {3};
 
 Transfinite Curve {2, 8, 21} = Ceil(L)*cd Using Progression 1;
 Transfinite Curve {1, 4, 20, 3, 12, 22} = Ceil((LL-L)/2)*cd Using Progression 1;
 Transfinite Curve {5, 6, 10, 14} = Ceil(H)*cd Using Progression 1;
 
-Transfinite Surface {:} Right;
-
-Recombine Surface {:};
+Transfinite Surface {7,11,15} Right;
+Transfinite Surface {16,17,18} Left;
 
 // ------------------------------------------------------------
 // Material IDs
 // ------------------------------------------------------------
 
-// Finger material
-Physical Surface("MaterialID: 1", 1) = {11};
-
 // Flow material
-Physical Surface("MaterialID: 0", 2) = {7,15,16,17,18};
+Physical Surface("MaterialID: 1", 2) = {7,15,16,17,18};
+
+// Finger material
+Physical Surface("MaterialID: 2", 1) = {11};
 
 // ------------------------------------------------------------
 // Boundary and Manifold IDs
@@ -104,6 +101,9 @@ Physical Curve("BoundaryID: 4", 6) = {20, 21, 22};
 Physical Curve("ManifoldID: 1, BoundaryID:-1", 7) = {6, 8, 10};
 
 
-// Mesh.Algorithm = 8; // Delaunay for quads
+// ------------------------------------------------------------
+// Recombine for quad meshes
+// ------------------------------------------------------------
 
-// Mesh.Smoothing = 100;//+
+Recombine Surface {:};
+Mesh.Algorithm = 8; // Delaunay for quads//+
