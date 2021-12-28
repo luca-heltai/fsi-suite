@@ -19,4 +19,6 @@ RUN mkdir -p /root/.vscode-server/extensions \
 
 ENV OMPI_ALLOW_RUN_AS_ROOT 1
 
+ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM 1
+
 ENV HOME /root
