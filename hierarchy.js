@@ -19,7 +19,8 @@ var hierarchy =
         [ "Tools::ParsedFiniteElement< dim, spacedim >", "class_tools_1_1_parsed_finite_element.html", null ],
         [ "Tools::ParsedFunction< dim >", "class_tools_1_1_parsed_function.html", null ],
         [ "Tools::ParsedGridGenerator< dim, spacedim >", "class_tools_1_1_parsed_grid_generator.html", null ],
-        [ "Tools::ParsedGridRefinement", "class_tools_1_1_parsed_grid_refinement.html", null ]
+        [ "Tools::ParsedGridRefinement", "class_tools_1_1_parsed_grid_refinement.html", null ],
+        [ "Tools::ParsedInverseOperator", "class_tools_1_1_parsed_inverse_operator.html", null ]
       ] ]
     ] ]
 ];
