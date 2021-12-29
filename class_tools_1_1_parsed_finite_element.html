@@ -108,6 +108,9 @@ $(document).ready(function(){initNavTree('class_tools_1_1_parsed_finite_element.
 </div><!--header-->
 <div class="contents">
 
+<p>Parsed <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>.  
+ <a href="class_tools_1_1_parsed_finite_element.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Tools::ParsedFiniteElement&lt; dim, spacedim &gt;:</div>
@@ -119,24 +122,34 @@ Inheritance diagram for Tools::ParsedFiniteElement&lt; dim, spacedim &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9b5782ad44ade60e16f24557c5c2bd05"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a9b5782ad44ade60e16f24557c5c2bd05">ParsedFiniteElement</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;, const std::string &amp;<a class="el" href="class_tools_1_1_parsed_finite_element.html#a8013363e75b9130598b530eec859807c">component_names</a>=&quot;u&quot;, const std::string &amp;<a class="el" href="class_tools_1_1_parsed_finite_element.html#aedf141b2e026177a78eeb20f5b0edab6">fe_name</a>=&quot;FE_Q(1)&quot;)</td></tr>
+<tr class="memdesc:a9b5782ad44ade60e16f24557c5c2bd05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_tools_1_1_parsed_finite_element.html#a9b5782ad44ade60e16f24557c5c2bd05">More...</a><br /></td></tr>
 <tr class="separator:a9b5782ad44ade60e16f24557c5c2bd05"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97cc989e8e49fcb9a741cd781084393c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a97cc989e8e49fcb9a741cd781084393c">operator FiniteElement&lt; dim, spacedim &gt; &amp;</a> ()</td></tr>
+<tr class="memdesc:a97cc989e8e49fcb9a741cd781084393c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#a97cc989e8e49fcb9a741cd781084393c">More...</a><br /></td></tr>
 <tr class="separator:a97cc989e8e49fcb9a741cd781084393c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe5a4085477a8b0b24fe46782062e34b"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#afe5a4085477a8b0b24fe46782062e34b">get_joint_component_names</a> () const</td></tr>
+<tr class="memdesc:afe5a4085477a8b0b24fe46782062e34b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the component names for this Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#afe5a4085477a8b0b24fe46782062e34b">More...</a><br /></td></tr>
 <tr class="separator:afe5a4085477a8b0b24fe46782062e34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5999a6f964a3b098506a67997b26ff74"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a5999a6f964a3b098506a67997b26ff74">get_component_names</a> () const</td></tr>
+<tr class="memdesc:a5999a6f964a3b098506a67997b26ff74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the component names for this Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#a5999a6f964a3b098506a67997b26ff74">More...</a><br /></td></tr>
 <tr class="separator:a5999a6f964a3b098506a67997b26ff74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20f9438b34011ee7dcfe13e91b2e245a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a20f9438b34011ee7dcfe13e91b2e245a">get_component_blocks</a> () const</td></tr>
+<tr class="memdesc:a20f9438b34011ee7dcfe13e91b2e245a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the blocking of the components for this finite element.  <a href="class_tools_1_1_parsed_finite_element.html#a20f9438b34011ee7dcfe13e91b2e245a">More...</a><br /></td></tr>
 <tr class="separator:a20f9438b34011ee7dcfe13e91b2e245a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedafa0c6648919b7b0758c21a25af206"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#aedafa0c6648919b7b0758c21a25af206">get_block_names</a> () const</td></tr>
+<tr class="memdesc:aedafa0c6648919b7b0758c21a25af206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the block names for this Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#aedafa0c6648919b7b0758c21a25af206">More...</a><br /></td></tr>
 <tr class="separator:aedafa0c6648919b7b0758c21a25af206"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae7198efbfdbbed2cf9cec3f46803aae"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#aae7198efbfdbbed2cf9cec3f46803aae">n_components</a> () const</td></tr>
+<tr class="memdesc:aae7198efbfdbbed2cf9cec3f46803aae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of components of the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#aae7198efbfdbbed2cf9cec3f46803aae">More...</a><br /></td></tr>
 <tr class="separator:aae7198efbfdbbed2cf9cec3f46803aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8e8762c6f21c14ffd35670c96c1d116"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#ad8e8762c6f21c14ffd35670c96c1d116">n_blocks</a> () const</td></tr>
+<tr class="memdesc:ad8e8762c6f21c14ffd35670c96c1d116"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the number of blocks of the Finite Element, i.e., the number of variables.  <a href="class_tools_1_1_parsed_finite_element.html#ad8e8762c6f21c14ffd35670c96c1d116">More...</a><br /></td></tr>
 <tr class="separator:ad8e8762c6f21c14ffd35670c96c1d116"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5ebb05c25ef6825b36a94d4fd348fe4"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#ab5ebb05c25ef6825b36a94d4fd348fe4">get_first_occurence</a> (const std::string &amp;var) const</td></tr>
+<tr class="memdesc:ab5ebb05c25ef6825b36a94d4fd348fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the first occurence of <code>var</code> in <code>default_component_names</code>.  <a href="class_tools_1_1_parsed_finite_element.html#ab5ebb05c25ef6825b36a94d4fd348fe4">More...</a><br /></td></tr>
 <tr class="separator:ab5ebb05c25ef6825b36a94d4fd348fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60ed19266433b7cfa213e58abf92ba54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a60ed19266433b7cfa213e58abf92ba54">is_vector</a> (const std::string &amp;var) const</td></tr>
+<tr class="memdesc:a60ed19266433b7cfa213e58abf92ba54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return <code>true</code> if <code>var</code> is vector, <code>false</code> otherwise.  <a href="class_tools_1_1_parsed_finite_element.html#a60ed19266433b7cfa213e58abf92ba54">More...</a><br /></td></tr>
 <tr class="separator:a60ed19266433b7cfa213e58abf92ba54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a7bf9ccbc4d618a248324748a41f625cf">ParameterAcceptor</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;)</td></tr>
@@ -222,16 +235,22 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a7a8516dc6535c8d7da73005f2e811c35"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a7a8516dc6535c8d7da73005f2e811c35">joint_component_names</a></td></tr>
+<tr class="memdesc:a7a8516dc6535c8d7da73005f2e811c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Component names as a single comma separated string.  <a href="class_tools_1_1_parsed_finite_element.html#a7a8516dc6535c8d7da73005f2e811c35">More...</a><br /></td></tr>
 <tr class="separator:a7a8516dc6535c8d7da73005f2e811c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8013363e75b9130598b530eec859807c"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a8013363e75b9130598b530eec859807c">component_names</a></td></tr>
+<tr class="memdesc:a8013363e75b9130598b530eec859807c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Component names.  <a href="class_tools_1_1_parsed_finite_element.html#a8013363e75b9130598b530eec859807c">More...</a><br /></td></tr>
 <tr class="separator:a8013363e75b9130598b530eec859807c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf141b2e026177a78eeb20f5b0edab6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#aedf141b2e026177a78eeb20f5b0edab6">fe_name</a></td></tr>
+<tr class="memdesc:aedf141b2e026177a78eeb20f5b0edab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finite Element Name.  <a href="class_tools_1_1_parsed_finite_element.html#aedf141b2e026177a78eeb20f5b0edab6">More...</a><br /></td></tr>
 <tr class="separator:aedf141b2e026177a78eeb20f5b0edab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5523af26ecae6fd6d67789b27ffc4029"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a5523af26ecae6fd6d67789b27ffc4029">component_blocks</a></td></tr>
+<tr class="memdesc:a5523af26ecae6fd6d67789b27ffc4029"><td class="mdescLeft">&#160;</td><td class="mdescRight">The subdivision, in terms of component indices.  <a href="class_tools_1_1_parsed_finite_element.html#a5523af26ecae6fd6d67789b27ffc4029">More...</a><br /></td></tr>
 <tr class="separator:a5523af26ecae6fd6d67789b27ffc4029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87bd54c25d98f8a5a8d12a3523ad311e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a87bd54c25d98f8a5a8d12a3523ad311e">block_names</a></td></tr>
+<tr class="memdesc:a87bd54c25d98f8a5a8d12a3523ad311e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The subdivision, in terms of block names.  <a href="class_tools_1_1_parsed_finite_element.html#a87bd54c25d98f8a5a8d12a3523ad311e">More...</a><br /></td></tr>
 <tr class="separator:a87bd54c25d98f8a5a8d12a3523ad311e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88effe3014564398a90f039d0d71d146"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a88effe3014564398a90f039d0d71d146">fe</a></td></tr>
+<tr class="memdesc:a88effe3014564398a90f039d0d71d146"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> object.  <a href="class_tools_1_1_parsed_finite_element.html#a88effe3014564398a90f039d0d71d146">More...</a><br /></td></tr>
 <tr class="separator:a88effe3014564398a90f039d0d71d146"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a52134c59ec98830230c23e080c841705 inherit pro_attribs_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a></td></tr>
@@ -274,7 +293,8 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><h3>template&lt;int dim, int spacedim = dim&gt;<br />
 class Tools::ParsedFiniteElement&lt; dim, spacedim &gt;</h3>
 
-<p>Parsed <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>. Read from a parameter file the name of a finite element, generate one for you, and return a pointer to it.</p>
+<p>Parsed <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>. </p>
+<p>Read from a parameter file the name of a finite element, generate one for you, and return a pointer to it.</p>
 <p>The name must be in the form which is returned by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html#a09655d1d2555af8dcd48caebd4039d29">FiniteElement::get_name()</a> function, where dimension template parameters &lt;2&gt; etc. can be omitted. Alternatively, the explicit number can be replaced by <code>dim</code> or <code>d</code>. If a number is given, it must match the template parameter of this function.</p>
 <p>The names of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFESystem.html">FESystem</a> elements follow the pattern <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFESystem.html">FESystem</a>[FE_Base1^p1-FE_Base2^p2]</code> The powers p1 etc. may either be numbers or can be replaced by dim or d.</p>
 <p>If no finite element can be reconstructed from this string, an exception of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga29863aa7dd0b071bb6794c7780b59ff8">FETools::ExcInvalidFEName</a> is thrown.</p>
@@ -317,7 +337,9 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor. Takes a name for the section of the Parameter Handler to use.</p>
+
+<p>Constructor. </p>
+<p>Takes a name for the section of the Parameter Handler to use.</p>
 <p>This class is derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>. See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> for a guide on how section names and parameters are parsed by this class.</p>
 <p>The optional parameters specify the component names as a comma separated list of component names, and the default <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> space name to use. This class will throw an exception if the number of components does not match the number of component names.</p>
 <p>The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> space name must be in the form which is returned by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html#a09655d1d2555af8dcd48caebd4039d29">FiniteElement::get_name</a> function, where dimension template parameters &lt;2&gt; etc. can be omitted. Alternatively, the explicit number can be replaced by dim or d. If a number is given, it must match the template parameter of this function.</p>
@@ -346,6 +368,7 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return the block names for this Finite Element. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00097">97</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
@@ -367,7 +390,9 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the blocking of the components for this finite element. This is what's needed by the block renumbering algorithm. </p>
+
+<p>Return the blocking of the components for this finite element. </p>
+<p>This is what's needed by the block renumbering algorithm. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00105">105</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
@@ -386,6 +411,7 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return the component names for this Finite Element. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00089">89</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
@@ -409,7 +435,9 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the first occurence of <code>var</code> in <code>default_component_names</code>. Remark: this is the value required by <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFEValuesExtractors.html">FEValuesExtractors</a>. </p>
+
+<p>Return the first occurence of <code>var</code> in <code>default_component_names</code>. </p>
+<p>Remark: this is the value required by <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFEValuesExtractors.html">FEValuesExtractors</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00112">112</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
@@ -430,6 +458,7 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return the component names for this Finite Element. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00081">81</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
@@ -453,6 +482,7 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return <code>true</code> if <code>var</code> is vector, <code>false</code> otherwise. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00124">124</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
@@ -474,7 +504,9 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the number of blocks of the Finite Element, i.e., the number of variables. For example, simple Heat equation has 1 block, Navier-Stokes 2 blocks (u and p). </p>
+
+<p>Return the number of blocks of the Finite Element, i.e., the number of variables. </p>
+<p>For example, simple Heat equation has 1 block, Navier-Stokes 2 blocks (u and p). </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00073">73</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
@@ -493,6 +525,7 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return the number of components of the Finite Element. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00065">65</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
@@ -512,6 +545,7 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Return a reference to the Finite Element. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00056">56</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
@@ -542,7 +576,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The subdivision, in terms of block names. This is automatically computed from the the component names. </p>
+
+<p>The subdivision, in terms of block names. </p>
+<p>This is automatically computed from the the component names. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00178">178</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
@@ -571,7 +607,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>The subdivision, in terms of component indices. This is automatically computed from the the component names. </p>
+
+<p>The subdivision, in terms of component indices. </p>
+<p>This is automatically computed from the the component names. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00172">172</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
@@ -600,7 +638,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Component names. This is comma separeted list of component names which identifies the Finite Elemenet. If a name is repeated, then that component is assumed to be part of a vector field or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTensor.html">Tensor</a> field, and is treated as a single block. User classes can use this information to construct block matrices and vectors, or to group solution names according to components. For example, a Stokes problem may have "u, u, p" for dim = 2 or "u, u, u, p" for dim = 3. </p>
+
+<p>Component names. </p>
+<p>This is comma separeted list of component names which identifies the Finite Elemenet. If a name is repeated, then that component is assumed to be part of a vector field or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTensor.html">Tensor</a> field, and is treated as a single block. User classes can use this information to construct block matrices and vectors, or to group solution names according to components. For example, a Stokes problem may have "u, u, p" for dim = 2 or "u, u, u, p" for dim = 3. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00161">161</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
@@ -629,6 +669,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> object. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00181">181</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
@@ -658,6 +699,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Finite Element Name. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00166">166</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
@@ -685,6 +727,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Component names as a single comma separated string. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00149">149</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
@@ -703,7 +746,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_tools_1_1_parsed_finite_element.html">ParsedFiniteElement</a></li>
-    <li class="footer">Generated on Tue Dec 28 2021 23:24:26 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Dec 29 2021 14:09:46 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

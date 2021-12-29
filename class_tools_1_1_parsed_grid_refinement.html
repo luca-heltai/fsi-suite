@@ -109,6 +109,9 @@ $(document).ready(function(){initNavTree('class_tools_1_1_parsed_grid_refinement
 </div><!--header-->
 <div class="contents">
 
+<p>A wrapper for refinement strategies.  
+ <a href="class_tools_1_1_parsed_grid_refinement.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="parsed__grid__refinement_8h_source.html">parsed_grid_refinement.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Tools::ParsedGridRefinement:</div>
@@ -120,9 +123,11 @@ Inheritance diagram for Tools::ParsedGridRefinement:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7aa684511fa568b48fa1c1d1e9356d8e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a7aa684511fa568b48fa1c1d1e9356d8e">ParsedGridRefinement</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;, const std::string &amp;<a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a9d8a7d6aae2e9d2b8e469d356e38152a">strategy</a>=&quot;fixed_fraction&quot;, const double &amp;<a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a4114cce6f9714cab6b144d0fcca2c4f9">top_parameter</a>=.3, const double &amp;<a class="el" href="class_tools_1_1_parsed_grid_refinement.html#afa5951efd4b6557823c4c75b20251e0c">bottom_parameter</a>=.1, const unsigned int &amp;<a class="el" href="class_tools_1_1_parsed_grid_refinement.html#ae37bc99b415f5b397b5136b9434088fd">max_cells</a>=0, const int &amp;<a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a2d3e8aa364d7206b4566bb9e3a85f42b">min_level</a>=0, const int &amp;<a class="el" href="class_tools_1_1_parsed_grid_refinement.html#ab4bf83f2addedbaa4abf842cc51dda72">max_level</a>=0)</td></tr>
+<tr class="memdesc:a7aa684511fa568b48fa1c1d1e9356d8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_tools_1_1_parsed_grid_refinement.html#a7aa684511fa568b48fa1c1d1e9356d8e">More...</a><br /></td></tr>
 <tr class="separator:a7aa684511fa568b48fa1c1d1e9356d8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb2f6e18846fa556622c293f8a3ece9a"><td class="memTemplParams" colspan="2">template&lt;int dim, class Vector , int spacedim&gt; </td></tr>
 <tr class="memitem:acb2f6e18846fa556622c293f8a3ece9a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_grid_refinement.html#acb2f6e18846fa556622c293f8a3ece9a">mark_cells</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a> &amp;criteria, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>) const</td></tr>
+<tr class="memdesc:acb2f6e18846fa556622c293f8a3ece9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mark cells a the triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria.  <a href="class_tools_1_1_parsed_grid_refinement.html#acb2f6e18846fa556622c293f8a3ece9a">More...</a><br /></td></tr>
 <tr class="separator:acb2f6e18846fa556622c293f8a3ece9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a7bf9ccbc4d618a248324748a41f625cf">ParameterAcceptor</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;)</td></tr>
@@ -209,11 +214,13 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a31f4483f62dc98b6e9bc9f35beb70604"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim&gt; </td></tr>
 <tr class="memitem:a31f4483f62dc98b6e9bc9f35beb70604"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a31f4483f62dc98b6e9bc9f35beb70604">limit_levels</a> (<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>) const</td></tr>
+<tr class="memdesc:a31f4483f62dc98b6e9bc9f35beb70604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make sure that the refinement level is kept between <code>min_level</code> and <code>max_level</code>.  <a href="class_tools_1_1_parsed_grid_refinement.html#a31f4483f62dc98b6e9bc9f35beb70604">More...</a><br /></td></tr>
 <tr class="separator:a31f4483f62dc98b6e9bc9f35beb70604"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a9d8a7d6aae2e9d2b8e469d356e38152a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a9d8a7d6aae2e9d2b8e469d356e38152a">strategy</a></td></tr>
+<tr class="memdesc:a9d8a7d6aae2e9d2b8e469d356e38152a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default expression of this function.  <a href="class_tools_1_1_parsed_grid_refinement.html#a9d8a7d6aae2e9d2b8e469d356e38152a">More...</a><br /></td></tr>
 <tr class="separator:a9d8a7d6aae2e9d2b8e469d356e38152a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4114cce6f9714cab6b144d0fcca2c4f9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_grid_refinement.html#a4114cce6f9714cab6b144d0fcca2c4f9">top_parameter</a></td></tr>
 <tr class="separator:a4114cce6f9714cab6b144d0fcca2c4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,7 +270,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a7ff0ceba7455971dfbd6cae2c114e0aa inherit pro_attribs_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A wrapper for refinement strategies.</p>
+<div class="textblock"><p>A wrapper for refinement strategies. </p>
 <p>This class implements a parametrized version of the MARK step in AFEM methods. In particular, it allows you to select between</p>
 <ul>
 <li><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridRefinement.html#ae90dc87c4db158b8d01f6d564ac614e5">GridRefinement::refine_and_coarsen_fixed_fraction()</a></li>
@@ -329,6 +336,7 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Constructor. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__refinement_8cc_source.html#l00007">7</a> of file <a class="el" href="parsed__grid__refinement_8cc_source.html">parsed_grid_refinement.cc</a>.</p>
@@ -363,6 +371,7 @@ template&lt;int dim, int spacedim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
 <p>Make sure that the refinement level is kept between <code>min_level</code> and <code>max_level</code>. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__refinement_8h_source.html#l00175">175</a> of file <a class="el" href="parsed__grid__refinement_8h_source.html">parsed_grid_refinement.h</a>.</p>
@@ -400,7 +409,8 @@ template&lt;int dim, class Vector , int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Mark cells a the triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria.</p>
+
+<p>Mark cells a the triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria. </p>
 <p>Cells are only marked for refinement or coarsening. No refinement is actually performed. You need to call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#ac8b4fbb207303ec7f5ef758821ecd8cb">Triangulation::execute_coarsening_and_refinement()</a> yourself. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__refinement_8h_source.html#l00142">142</a> of file <a class="el" href="parsed__grid__refinement_8h_source.html">parsed_grid_refinement.h</a>.</p>
@@ -533,7 +543,9 @@ template&lt;int dim, class Vector , int spacedim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Default expression of this function." </p>
+
+<p>Default expression of this function. </p>
+<p>" </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__refinement_8h_source.html#l00094">94</a> of file <a class="el" href="parsed__grid__refinement_8h_source.html">parsed_grid_refinement.h</a>.</p>
 
@@ -577,7 +589,7 @@ template&lt;int dim, class Vector , int spacedim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_tools_1_1_parsed_grid_refinement.html">ParsedGridRefinement</a></li>
-    <li class="footer">Generated on Tue Dec 28 2021 23:24:26 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Dec 29 2021 14:09:46 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
