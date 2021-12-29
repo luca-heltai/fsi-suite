@@ -42,10 +42,8 @@ namespace Tools
       boost::algorithm::to_lower_copy(grid_generator_function.substr(
         grid_generator_function.find_last_of('.') + 1));
 
-    std::cerr << "Extension: " << ext << std::endl;
-
     // No extension was found: use grid generator functions
-    if (ext == grid_generator_function)
+    if (ext == grid_generator_function || ext == "")
       {
         GridGenerator::generate_from_name_and_arguments(
           tria, grid_generator_function, grid_generator_arguments);

@@ -29,7 +29,7 @@ namespace dealii
         static std::unique_ptr<dealii::Patterns::PatternBase>
         to_pattern()
         {
-          return Convert<int>::to_pattern();
+          return Patterns::Integer(-1).clone();
         }
 
         /**
@@ -44,7 +44,7 @@ namespace dealii
                   const dealii::Patterns::PatternBase &pattern =
                     *Convert<T>::to_pattern())
         {
-          return Convert<int>::to_string((int)(t), pattern);
+          return Convert<int>::to_string(static_cast<int>(t), pattern);
         }
 
         /**
