@@ -28,6 +28,19 @@ namespace Tools
 
     AssertDimension(doc_strings.size(), default_values.size());
 
+    // Before we do anything else, define standard math constants used in
+    // dealii::numbers namespace.
+    constants["E"]       = numbers::E;
+    constants["LOG2E"]   = numbers::LOG2E;
+    constants["LOG10E"]  = numbers::LOG10E;
+    constants["LN2"]     = numbers::LN2;
+    constants["LN10"]    = numbers::LN10;
+    constants["PI"]      = numbers::PI;
+    constants["PI_2"]    = numbers::PI_2;
+    constants["PI_4"]    = numbers::PI_4;
+    constants["SQRT2"]   = numbers::SQRT2;
+    constants["SQRT1_2"] = numbers::SQRT1_2;
+
     for (unsigned int i = 0; i < names.size(); ++i)
       {
         constants[names[i]]                   = default_values[i];

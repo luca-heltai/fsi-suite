@@ -10,14 +10,23 @@ namespace Tools
    * A wrapper for physical constants to be shared among functions and classes.
    *
    * This class can be used to store physical constants that are used in a
-   * simulation, e.g., elastic parameters, densities, etc., and that coule be
+   * simulation, e.g., elastic parameters, densities, etc., and that could be
    * reused when defining ParsedFunction objects.
    *
    * This class behaves like a map, where the keys are strings and the values
    * are the corresponding values.
+   *
+   * In addition to constants defined at construction time, this class also
+   * provides a list of all mathematical constants defined in the
+   * dealii::numbers namespace, i.e., PI, E, LOG2_E, etc.
+   *
+   * Constants given at construction time takes precedence, so if you use "E" as
+   * a constant name, than that value will be used instead of the Nepero
+   * constant numbers::E.
    */
-  struct ParsedConstants : public dealii::ParameterAcceptor
+  class ParsedConstants : public dealii::ParameterAcceptor
   {
+  public:
     /**
      * Build a ParameterAcceptor based collection of constants.
      *
@@ -34,7 +43,9 @@ namespace Tools
      *  ParameterAcceptor::initialize();
      *  // Now use c as a map whenever one is needed, i.e.,
      *  const std::map<std::string, double> &c = constants;
-     *  c["a"] == 1.0; // returns true
+     *  c.at("a") == 1.0; // returns true
+     *  // or directly as
+     *  contants["a"] == 1.0; // returns true
      * @endcode
      *
      * The above snippet of code will delcare the ParameterAcceptor::prm
