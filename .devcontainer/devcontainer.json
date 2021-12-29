@@ -17,6 +17,7 @@
 		"ms-vscode.cpptools-extension-pack",
 		"troelsdamgaard.reflow-paragraph",
 		"xaver.clang-format",
+		"matepek.vscode-catch2-test-adapter",
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

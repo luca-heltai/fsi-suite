@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/build${env:BUILD_POSTFIX}/gtest",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/build${env:BUILD_POSTFIX}/",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",

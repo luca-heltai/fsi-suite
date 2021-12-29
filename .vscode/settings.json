@@ -127,6 +127,6 @@
             }
         ]
     },
-    "gtest-adapter.debugConfig": "gtest launch",
+    "testMate.cpp.test.executables": "{build,Build,BUILD,out,Out,OUT}*/**/*{test,Test,TEST}*"
     // "docker.host": "ssh://ovs"
 }
