@@ -27,10 +27,7 @@ namespace Tools
         variable_names,
         h)
     , expression(expression)
-    , local_constants(constants)
-    , constants(std::is_lvalue_reference<decltype(constants)>::value ?
-                  constants :
-                  local_constants)
+    , constants(constants)
     , variable_names(variable_names)
   {
     std::string doc =
@@ -47,15 +44,43 @@ namespace Tools
     add_parameter(function_description, this->expression, doc);
 
     enter_my_subsection(ParameterAcceptor::prm);
-    ParameterAcceptor::prm.add_action(
-      function_description, [&](const std::string &expr) {
-        this->FunctionParser<dim>::initialize(
-          this->variable_names,
-          expr,
-          this->constants,
-          Utilities::split_string_list(this->variable_names, ",").size() > dim);
-      });
+    ParameterAcceptor::prm.add_action(function_description,
+                                      [&](const std::string &) { reinit(); });
     leave_my_subsection(ParameterAcceptor::prm);
+  }
+
+
+
+  template <int dim>
+  void
+  ParsedFunction<dim>::reinit()
+  {
+    this->FunctionParser<dim>::initialize(
+      variable_names,
+      expression,
+      constants,
+      Utilities::split_string_list(variable_names, ",").size() > dim);
+  }
+
+
+
+  template <int dim>
+  void
+  ParsedFunction<dim>::update_constants(
+    const std::map<std::string, double> &constants)
+  {
+    this->constants = constants;
+    reinit();
+  }
+
+
+
+  template <int dim>
+  void
+  ParsedFunction<dim>::update_expression(const std::string &expression)
+  {
+    this->expression = expression;
+    reinit();
   }
 
   template class ParsedFunction<1>;
