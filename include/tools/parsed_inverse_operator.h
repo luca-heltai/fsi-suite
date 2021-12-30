@@ -104,7 +104,7 @@ namespace Tools
   template <typename Domain,
             typename Payload,
             typename PreconditionerType,
-            typename Range = Domain>
+            typename Range>
   dealii::LinearOperator<Domain, Range, Payload>
   ParsedInverseOperator::operator()(
     const dealii::LinearOperator<Range, Domain, Payload> &op,

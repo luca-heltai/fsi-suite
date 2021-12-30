@@ -25,7 +25,12 @@
                     "description": "Set Disassembly Flavor to Intel",
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
-                }
+                },
+                {
+                    "description": "Load the deal.II gdb pretty printing",
+                    "text": "source ${workspaceFolder}/.vscode/dotgdbinit.py",
+                    "ignoreFailures": true
+                },
             ]
         }
     ]
