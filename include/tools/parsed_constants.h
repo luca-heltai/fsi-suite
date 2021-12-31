@@ -3,6 +3,7 @@
 
 #include <deal.II/base/parameter_acceptor.h>
 
+#include <deal.II/differentiation/sd.h>
 
 namespace Tools
 {
@@ -91,6 +92,15 @@ namespace Tools
      */
     operator const std::map<std::string, double> &() const;
 
+#ifdef DEAL_II_WITH_SYMENGINE
+    /**
+     * Return the constants defined in this class as a
+     * Differentiation::SD::types::substitution_map.
+     */
+    operator const dealii::Differentiation::SD::types::substitution_map &()
+      const;
+#endif
+
     /**
      * Return the constant associated with the given name.
      *
@@ -105,6 +115,17 @@ namespace Tools
      * The actual constants.
      */
     std::map<std::string, double> constants;
+
+
+#ifdef DEAL_II_WITH_SYMENGINE
+    /**
+     * Return the constants defined in this class as a
+     * Differentiation::SD::types::substitution_map.
+     */
+    mutable dealii::Differentiation::SD::types::substitution_map
+      constant_substitution_map;
+#endif
+
 
     /**
      * The documentation string used to parse the constants from thee parameter

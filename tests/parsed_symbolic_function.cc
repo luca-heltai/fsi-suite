@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "dim_spacedim_tester.h"
+#include "tools/parsed_constants.h"
 
 #ifdef DEAL_II_WITH_SYMENGINE
 
@@ -36,6 +37,27 @@ TYPED_TEST(DT, ParsedSymbolicFunctionParsing)
   ASSERT_EQ(function().value(p), 2.0);
 }
 
+
+
+TYPED_TEST(DT, ParsedSymbolicFunctionAndConstants)
+{
+  Tools::ParsedConstants constants("/", {"a"}, {2.0});
+
+  Tools::ParsedSymbolicFunction<this->dim> function("/", "a*x");
+
+  Point<this->dim> p;
+  p[0] = 1.0;
+  function().update_user_substitution_map(constants);
+
+  ASSERT_EQ(function().value(p), 2.0);
+
+  ParameterAcceptor::prm.parse_input_from_string(R"(
+    set a = 3
+  )");
+
+  function().update_user_substitution_map(constants);
+  ASSERT_EQ(function().value(p), 3.0);
+}
 
 
 TYPED_TEST(DT, ParsedSymbolicFunctionParsingVectorValued)

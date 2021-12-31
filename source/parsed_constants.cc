@@ -70,4 +70,25 @@ namespace Tools
     return constants.at(key);
   }
 
+
+
+#ifdef DEAL_II_WITH_SYMENGINE
+  /**
+   * Return the constants defined in this class as a
+   * Differentiation::SD::types::substitution_map.
+   */
+  ParsedConstants::operator const Differentiation::SD::types::
+    substitution_map &() const
+  {
+    constant_substitution_map.clear();
+    for (const auto &p : constants)
+      constant_substitution_map[Differentiation::SD::Expression(p.first,
+                                                                true)] =
+        Differentiation::SD::Expression(p.second);
+    return constant_substitution_map;
+  }
+#endif
+
+
+
 } // namespace Tools
