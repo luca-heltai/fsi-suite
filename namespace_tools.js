@@ -6,5 +6,6 @@ var namespace_tools =
     [ "ParsedFunction", "class_tools_1_1_parsed_function.html", "class_tools_1_1_parsed_function" ],
     [ "ParsedGridGenerator", "class_tools_1_1_parsed_grid_generator.html", "class_tools_1_1_parsed_grid_generator" ],
     [ "ParsedGridRefinement", "class_tools_1_1_parsed_grid_refinement.html", "class_tools_1_1_parsed_grid_refinement" ],
-    [ "ParsedInverseOperator", "class_tools_1_1_parsed_inverse_operator.html", "class_tools_1_1_parsed_inverse_operator" ]
+    [ "ParsedInverseOperator", "class_tools_1_1_parsed_inverse_operator.html", "class_tools_1_1_parsed_inverse_operator" ],
+    [ "ParsedSymbolicFunction", "class_tools_1_1_parsed_symbolic_function.html", "class_tools_1_1_parsed_symbolic_function" ]
 ];

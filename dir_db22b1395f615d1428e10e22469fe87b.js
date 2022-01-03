@@ -5,9 +5,11 @@ var dir_db22b1395f615d1428e10e22469fe87b =
       [ "Convert< ReferenceCell >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_reference_cell_01_4.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_reference_cell_01_4" ],
       [ "GridInfo", "struct_tools_1_1_grid_info.html", "struct_tools_1_1_grid_info" ]
     ] ],
+    [ "magic_enum.hpp", "magic__enum_8hpp.html", "magic__enum_8hpp" ],
     [ "parsed_constants.h", "parsed__constants_8h.html", [
       [ "ParsedConstants", "class_tools_1_1_parsed_constants.html", "class_tools_1_1_parsed_constants" ]
     ] ],
+    [ "parsed_enum.h", "parsed__enum_8h.html", null ],
     [ "parsed_finite_element.h", "parsed__finite__element_8h.html", [
       [ "ParsedFiniteElement", "class_tools_1_1_parsed_finite_element.html", "class_tools_1_1_parsed_finite_element" ]
     ] ],
@@ -21,5 +23,9 @@ var dir_db22b1395f615d1428e10e22469fe87b =
     [ "parsed_inverse_operator.h", "parsed__inverse__operator_8h.html", [
       [ "ParsedInverseOperator", "class_tools_1_1_parsed_inverse_operator.html", "class_tools_1_1_parsed_inverse_operator" ]
     ] ],
-    [ "parsed_symbolic_function.h", "parsed__symbolic__function_8h.html", null ]
+    [ "parsed_symbolic_function.h", "parsed__symbolic__function_8h.html", [
+      [ "Convert< Differentiation::SD::Expression >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4" ],
+      [ "Convert< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44" ],
+      [ "ParsedSymbolicFunction", "class_tools_1_1_parsed_symbolic_function.html", "class_tools_1_1_parsed_symbolic_function" ]
+    ] ]
 ];

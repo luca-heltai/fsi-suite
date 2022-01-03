@@ -127,6 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88c008c07430b4f48537236f73f5f248"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_constants.html#a88c008c07430b4f48537236f73f5f248">operator const std::map&lt; std::string, double &gt; &amp;</a> () const</td></tr>
 <tr class="memdesc:a88c008c07430b4f48537236f73f5f248"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the constants defined in this class as a map.  <a href="class_tools_1_1_parsed_constants.html#a88c008c07430b4f48537236f73f5f248">More...</a><br /></td></tr>
 <tr class="separator:a88c008c07430b4f48537236f73f5f248"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a538bbc5f8fd74d8cbdc4b1e9c876600f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_constants.html#a538bbc5f8fd74d8cbdc4b1e9c876600f">operator const Differentiation::SD::types::substitution_map &amp;</a> () const</td></tr>
+<tr class="memdesc:a538bbc5f8fd74d8cbdc4b1e9c876600f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the constants defined in this class as a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a>.  <a href="class_tools_1_1_parsed_constants.html#a538bbc5f8fd74d8cbdc4b1e9c876600f">More...</a><br /></td></tr>
+<tr class="separator:a538bbc5f8fd74d8cbdc4b1e9c876600f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d9f6873f96ac1397110473ec8c01ae"><td class="memItemLeft" align="right" valign="top">const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_constants.html#ad9d9f6873f96ac1397110473ec8c01ae">operator[]</a> (const std::string &amp;key) const</td></tr>
 <tr class="memdesc:ad9d9f6873f96ac1397110473ec8c01ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the constant associated with the given name.  <a href="class_tools_1_1_parsed_constants.html#ad9d9f6873f96ac1397110473ec8c01ae">More...</a><br /></td></tr>
 <tr class="separator:ad9d9f6873f96ac1397110473ec8c01ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +219,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a8397a9b69edd318a90c53f8c1efcfa8f"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_constants.html#a8397a9b69edd318a90c53f8c1efcfa8f">constants</a></td></tr>
 <tr class="memdesc:a8397a9b69edd318a90c53f8c1efcfa8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual constants.  <a href="class_tools_1_1_parsed_constants.html#a8397a9b69edd318a90c53f8c1efcfa8f">More...</a><br /></td></tr>
 <tr class="separator:a8397a9b69edd318a90c53f8c1efcfa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada67e4858dc86f9f1c8145f76b33b3ae"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_constants.html#ada67e4858dc86f9f1c8145f76b33b3ae">constant_substitution_map</a></td></tr>
+<tr class="memdesc:ada67e4858dc86f9f1c8145f76b33b3ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the constants defined in this class as a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a>.  <a href="class_tools_1_1_parsed_constants.html#ada67e4858dc86f9f1c8145f76b33b3ae">More...</a><br /></td></tr>
+<tr class="separator:ada67e4858dc86f9f1c8145f76b33b3ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa79a4e9c4c51cbf4dcc577054ab03515"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_constants.html#aa79a4e9c4c51cbf4dcc577054ab03515">constants_parameter_entries</a></td></tr>
 <tr class="memdesc:aa79a4e9c4c51cbf4dcc577054ab03515"><td class="mdescLeft">&#160;</td><td class="mdescRight">The documentation string used to parse the constants from thee parameter file.  <a href="class_tools_1_1_parsed_constants.html#aa79a4e9c4c51cbf4dcc577054ab03515">More...</a><br /></td></tr>
 <tr class="separator:aa79a4e9c4c51cbf4dcc577054ab03515"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -351,11 +357,32 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="parsed__constants_8cc_source.html#l00009">9</a> of file <a class="el" href="parsed__constants_8cc_source.html">parsed_constants.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="el" href="parsed__constants_8h_source.html#l00117">constants</a>, <a class="el" href="parsed__constants_8h_source.html#l00139">constants_documentation</a>, <a class="el" href="parsed__constants_8h_source.html#l00134">constants_parameter_entries</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a3c7239f00d5e87dfcf6dd19cbc3ddc74">numbers::E</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#ad343999a80da8a83a7f43148d2aa0c4f">numbers::LN10</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#ad4ab39ac17bcd93f7d4fc0d29c5c8b64">numbers::LN2</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a021c0c69056f3f30c05bc450df948315">numbers::LOG10E</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#af49645a11892d4e524e78fe00530f030">numbers::LOG2E</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a3e24f194a9cb9b6ff4442b8a7a877d4a">numbers::PI</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a05c8aa45b7cf3c1c746cdf79e44dcffe">numbers::PI_2</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#aa36e80e99e5c662879bd3f89c8b9f0e4">numbers::PI_4</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a926438804f37336fd9454dcea3b02314">numbers::SQRT1_2</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a7f90588abd23542c3855a4a3e59766f1">numbers::SQRT2</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="el" href="parsed__constants_8h_source.html#l00117">constants</a>, <a class="el" href="parsed__constants_8h_source.html#l00139">constants_documentation</a>, <a class="el" href="parsed__constants_8h_source.html#l00134">constants_parameter_entries</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a3c7239f00d5e87dfcf6dd19cbc3ddc74">numbers::E</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#ad343999a80da8a83a7f43148d2aa0c4f">numbers::LN10</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#ad4ab39ac17bcd93f7d4fc0d29c5c8b64">numbers::LN2</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a021c0c69056f3f30c05bc450df948315">numbers::LOG10E</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#af49645a11892d4e524e78fe00530f030">numbers::LOG2E</a>, <a class="el" href="magic__enum_8hpp_source.html#l00519">magic_enum::detail::names()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a3e24f194a9cb9b6ff4442b8a7a877d4a">numbers::PI</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a05c8aa45b7cf3c1c746cdf79e44dcffe">numbers::PI_2</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#aa36e80e99e5c662879bd3f89c8b9f0e4">numbers::PI_4</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a926438804f37336fd9454dcea3b02314">numbers::SQRT1_2</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a7f90588abd23542c3855a4a3e59766f1">numbers::SQRT2</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a538bbc5f8fd74d8cbdc4b1e9c876600f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a538bbc5f8fd74d8cbdc4b1e9c876600f">&#9670;&nbsp;</a></span>operator const Differentiation::SD::types::substitution_map &amp;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Tools::ParsedConstants::operator const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a> &amp; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the constants defined in this class as a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="parsed__constants_8cc_source.html#l00081">81</a> of file <a class="el" href="parsed__constants_8cc_source.html">parsed_constants.cc</a>.</p>
+
+</div>
+</div>
 <a id="a88c008c07430b4f48537236f73f5f248"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88c008c07430b4f48537236f73f5f248">&#9670;&nbsp;</a></span>operator const std::map&lt; std::string, double &gt; &amp;()</h2>
 
@@ -407,6 +434,32 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ada67e4858dc86f9f1c8145f76b33b3ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada67e4858dc86f9f1c8145f76b33b3ae">&#9670;&nbsp;</a></span>constant_substitution_map</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a> Tools::ParsedConstants::constant_substitution_map</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the constants defined in this class as a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="parsed__constants_8h_source.html#l00126">126</a> of file <a class="el" href="parsed__constants_8h_source.html">parsed_constants.h</a>.</p>
+
+</div>
+</div>
 <a id="a8397a9b69edd318a90c53f8c1efcfa8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8397a9b69edd318a90c53f8c1efcfa8f">&#9670;&nbsp;</a></span>constants</h2>
 
@@ -504,7 +557,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_tools_1_1_parsed_constants.html">ParsedConstants</a></li>
-    <li class="footer">Generated on Fri Dec 31 2021 12:53:26 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Jan 3 2022 17:51:04 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

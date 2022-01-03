@@ -1,0 +1,7 @@
+var structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44 =
+[
+    [ "T", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html#a7e83e6069c7a440ee55a4e241a1a63c1", null ],
+    [ "to_pattern", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html#ac6d9c9d0e5c48705304eaf00f8013b82", null ],
+    [ "to_string", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html#aa190ebc7295f09624e3c82a3ef332369", null ],
+    [ "to_value", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html#adb2e54460eb7aa3b9234fe849309b68d", null ]
+];
