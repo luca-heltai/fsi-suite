@@ -2145,7 +2145,60 @@ INCLUDE_FILE_PATTERNS  =
 # recursively expanded use the := operator instead of the = operator.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-PREDEFINED             = DOXYGEN
+PREDEFINED             = DOXYGEN=1 \
+                         DEBUG=1 \
+                         DEAL_II_ARPACK_WITH_PARPACK=1 \
+                         DEAL_II_WITH_ASSIMP=1 \
+                         DEAL_II_WITH_BOOST=1 \
+                         DEAL_II_WITH_TASKFLOW=1 \
+                         DEAL_II_WITH_COMPLEX_VALUES=1 \
+                         DEAL_II_WITH_CUDA=1 \
+                         DEAL_II_COMPILER_CUDA_AWARE=1 \
+                         DEAL_II_WITH_GINKGO=1 \
+                         DEAL_II_WITH_GMSH=1 \
+                         DEAL_II_GMSH_WITH_API=1 \
+                         DEAL_II_WITH_GSL=1 \
+                         DEAL_II_WITH_HDF5=1 \
+                         DEAL_II_WITH_LAPACK=1 \
+                         DEAL_II_LAPACK_WITH_MKL=1 \
+                         DEAL_II_WITH_METIS=1 \
+                         DEAL_II_WITH_MPI=1 \
+                         DEAL_II_MPI_WITH_CUDA_SUPPORT=1 \
+                         DEAL_II_MPI_VERSION_MAJOR=3 \
+                         DEAL_II_MPI_VERSION_MINOR=0 \
+                         DEAL_II_WITH_MUPARSER=1 \
+                         DEAL_II_WITH_OPENCASCADE=1 \
+                         DEAL_II_WITH_P4EST=1 \
+                         DEAL_II_P4EST_VERSION_MAJOR=2 \
+                         DEAL_II_P4EST_VERSION_MINOR=0 \
+                         DEAL_II_P4EST_VERSION_SUBMINOR=0 \
+                         DEAL_II_P4EST_VERSION_PATCH=0 \
+                         DEAL_II_P4EST_VERSION_GTE=1 \
+                         DEAL_II_WITH_PETSC=1 \
+                         DEAL_II_PETSC_WITH_COMPLEX=1 \
+                         DEAL_II_PETSC_WITH_HYPRE=1 \
+                         DEAL_II_PETSC_WITH_MUMPS=1 \
+                         DEAL_II_WITH_SCALAPACK=1 \
+                         DEAL_II_WITH_SLEPC=1 \
+                         DEAL_II_WITH_SUNDIALS=1 \
+                         DEAL_II_SUNDIALS_WITH_IDAS=1 \
+                         DEAL_II_SUNDIALS_VERSION_GTE=1 \
+                         DEAL_II_SUNDIALS_VERSION_LT=0 \
+                         DEAL_II_WITH_SYMENGINE=1 \
+                         DEAL_II_SYMENGINE_WITH_LLVM=1 \
+                         DEAL_II_WITH_TBB=1 \
+                         DEAL_II_WITH_TRILINOS=1 \
+                         DEAL_II_TRILINOS_WITH_EPETRAEXT=1 \
+                         DEAL_II_TRILINOS_WITH_MUELU=1 \
+                         DEAL_II_TRILINOS_WITH_ROL=1 \
+                         DEAL_II_TRILINOS_WITH_SACADO=1 \
+                         DEAL_II_TRILINOS_WITH_TPETRA=1 \
+                         DEAL_II_TRILINOS_WITH_ZOLTAN=1 \
+                         DEAL_II_TRILINOS_VERSION_GTE=1 \
+                         DEAL_II_WITH_UMFPACK=1 \
+                         DEAL_II_WITH_ZLIB=1 \
+                         DEAL_II_WARNING(x)= 1
+
 
 # If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The

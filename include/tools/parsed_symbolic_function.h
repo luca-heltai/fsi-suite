@@ -14,29 +14,52 @@ namespace dealii
   {
     namespace Tools
     {
+      /**
+       * Helper class to parse symbolic expressions.
+       */
       template <>
       struct Convert<Differentiation::SD::Expression>
       {
+        /**
+         * Shorthand for the type of the parsed expression.
+         */
         using T = Differentiation::SD::Expression;
 
+        /**
+         * Default pattern for parsing symbolic expressions.
+         *
+         * Since we don't really have many restrictions, this pattern is simply
+         * the Patterns::Anything() pattern.
+         */
         static std::unique_ptr<dealii::Patterns::PatternBase>
         to_pattern()
         {
           return Patterns::Anything().clone();
         }
 
+        /**
+         * Convert a Differentiation::SD::Expression expression to a string.
+         */
         static std::string
-        to_string(const T &t, const dealii::Patterns::PatternBase &)
+        to_string(const T &                            t,
+                  const dealii::Patterns::PatternBase &pattern = *to_pattern())
         {
           std::stringstream ss;
           ss << t;
+          AssertThrow(
+            pattern.match(ss.str()),
+            ExcMessage(
+              "The expression does not satisfy the requirements of the "
+              "pattern."));
           return ss.str();
         }
 
+        /**
+         * Convert a string to a Differentiation::SD::Expression expression.
+         */
         static T
         to_value(const std::string &                  s,
-                 const dealii::Patterns::PatternBase &pattern =
-                   *Convert<T>::to_pattern())
+                 const dealii::Patterns::PatternBase &pattern = *to_pattern())
         {
           AssertThrow(pattern.match(s), ExcMessage("Invalid string."));
           return T(s, true);
@@ -51,7 +74,11 @@ namespace dealii
       template <int dim>
       struct Convert<std::unique_ptr<dealii::Functions::SymbolicFunction<dim>>>
       {
+        /**
+         * Shorthand for the type of the parsed expression.
+         */
         using T = std::unique_ptr<dealii::Functions::SymbolicFunction<dim>>;
+
         /**
          * Pattern for a SymbolicFunction.
          */
