@@ -146,7 +146,7 @@ namespace Tools
      *
      * @code
      * Tools::ParsedSymbolicFunction<dim> my_function("Rhs function","2*x+y");
-     * auto value = my_function.value(some_point);
+     * auto value = my_function().value(some_point);
      * @endcode
      *
      * The above snippet of code will delcare the ParameterAcceptor::prm
@@ -164,7 +164,9 @@ namespace Tools
       const std::string &function_description = "Function expression");
 
     /**
-     * Act as an actual dealii::Functions::SymbolicFunction.
+     * Act as an actual dealii::Functions::SymbolicFunction, so that we can pass
+     * this object to any function that expects a dealii::Functions::Function
+     * object.
      */
     operator dealii::Functions::SymbolicFunction<dim> &()
     {
@@ -185,6 +187,14 @@ namespace Tools
      * The actual dealii::Functions::SymbolicFunction object.
      */
     std::unique_ptr<dealii::Functions::SymbolicFunction<dim>> symbolic_function;
+
+    /**
+     * The number of components of the function. This number is constructed from
+     * the expression given at construction time. If you reinitialize the
+     * function, make sure you use the same number of components, or an
+     * exception will be thrown.
+     */
+    const unsigned int n_components;
   };
 } // namespace Tools
 #endif

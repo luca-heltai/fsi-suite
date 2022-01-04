@@ -77,6 +77,18 @@ TYPED_TEST(DT, ParsedSymbolicFunctionParsingVectorValued)
   ASSERT_EQ(function().value(p, 0), 2.0);
   ASSERT_EQ(function().value(p, 1), 3.0);
 
-  function().print(std::cout);
+  // Now check that the function throws when the number of components is not
+  // what the function has been built with
+  try
+    {
+      ParameterAcceptor::prm.parse_input_from_string(
+        "set Function expression = 2*x");
+      FAIL() << "Expected exception.";
+    }
+  catch (...)
+    {
+      // This is expected
+      SUCCEED() << "Expected exception.";
+    }
 }
 #endif
