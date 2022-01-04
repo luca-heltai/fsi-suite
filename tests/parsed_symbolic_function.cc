@@ -79,16 +79,9 @@ TYPED_TEST(DT, ParsedSymbolicFunctionParsingVectorValued)
 
   // Now check that the function throws when the number of components is not
   // what the function has been built with
-  try
-    {
-      ParameterAcceptor::prm.parse_input_from_string(
-        "set Function expression = 2*x");
-      FAIL() << "Expected exception.";
-    }
-  catch (...)
-    {
-      // This is expected
-      SUCCEED() << "Expected exception.";
-    }
+  ASSERT_ANY_THROW({
+    ParameterAcceptor::prm.parse_input_from_string(
+      "set Function expression = 2*x");
+  });
 }
 #endif
