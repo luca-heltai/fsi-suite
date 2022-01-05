@@ -125,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af03a9449924e2bbd62bb65dbd033b63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build a <a class="el" href="class_tools_1_1_parsed_symbolic_function.html" title="A wrapper for the Functions::SymbolicFunction class.">ParsedSymbolicFunction</a> based on the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class.  <a href="class_tools_1_1_parsed_symbolic_function.html#af03a9449924e2bbd62bb65dbd033b63a">More...</a><br /></td></tr>
 <tr class="separator:af03a9449924e2bbd62bb65dbd033b63a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc13196dcca3a87816062b8193cdc169"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_symbolic_function.html#afc13196dcca3a87816062b8193cdc169">operator Functions::SymbolicFunction&lt; dim &gt; &amp;</a> ()</td></tr>
-<tr class="memdesc:afc13196dcca3a87816062b8193cdc169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Act as an actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>.  <a href="class_tools_1_1_parsed_symbolic_function.html#afc13196dcca3a87816062b8193cdc169">More...</a><br /></td></tr>
+<tr class="memdesc:afc13196dcca3a87816062b8193cdc169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Act as an actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>, so that we can pass this object to any function that expects a Functions::Function object.  <a href="class_tools_1_1_parsed_symbolic_function.html#afc13196dcca3a87816062b8193cdc169">More...</a><br /></td></tr>
 <tr class="separator:afc13196dcca3a87816062b8193cdc169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb5b6bbad7bf930b2d3746d34cedb003"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>&lt; dim &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_symbolic_function.html#aeb5b6bbad7bf930b2d3746d34cedb003">operator()</a> ()</td></tr>
 <tr class="memdesc:aeb5b6bbad7bf930b2d3746d34cedb003"><td class="mdescLeft">&#160;</td><td class="mdescRight">Act as an actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>.  <a href="class_tools_1_1_parsed_symbolic_function.html#aeb5b6bbad7bf930b2d3746d34cedb003">More...</a><br /></td></tr>
@@ -216,6 +216,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a5c68ebe1563530a0f0e6c035e2c60e1e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>&lt; dim &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_symbolic_function.html#a5c68ebe1563530a0f0e6c035e2c60e1e">symbolic_function</a></td></tr>
 <tr class="memdesc:a5c68ebe1563530a0f0e6c035e2c60e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> object.  <a href="class_tools_1_1_parsed_symbolic_function.html#a5c68ebe1563530a0f0e6c035e2c60e1e">More...</a><br /></td></tr>
 <tr class="separator:a5c68ebe1563530a0f0e6c035e2c60e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c8bb22402c54d127817b77482a09f61"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_symbolic_function.html#a5c8bb22402c54d127817b77482a09f61">n_components</a></td></tr>
+<tr class="memdesc:a5c8bb22402c54d127817b77482a09f61"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of components of the function.  <a href="class_tools_1_1_parsed_symbolic_function.html#a5c8bb22402c54d127817b77482a09f61">More...</a><br /></td></tr>
+<tr class="separator:a5c8bb22402c54d127817b77482a09f61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -259,7 +262,7 @@ class Tools::ParsedSymbolicFunction&lt; dim &gt;</h3>
 
 <p>A wrapper for the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> class. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00139">139</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00150">150</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af03a9449924e2bbd62bb65dbd033b63a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af03a9449924e2bbd62bb65dbd033b63a">&#9670;&nbsp;</a></span>ParsedSymbolicFunction()</h2>
@@ -298,7 +301,7 @@ template&lt;int dim&gt; </div>
 <p>Build a <a class="el" href="class_tools_1_1_parsed_symbolic_function.html" title="A wrapper for the Functions::SymbolicFunction class.">ParsedSymbolicFunction</a> based on the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class. </p>
 <p>An example usage of this class is the following:</p>
 <div class="fragment"><div class="line"><a class="code" href="class_tools_1_1_parsed_symbolic_function.html">Tools::ParsedSymbolicFunction&lt;dim&gt;</a> my_function(<span class="stringliteral">&quot;Rhs function&quot;</span>,<span class="stringliteral">&quot;2*x+y&quot;</span>);</div>
-<div class="line"><span class="keyword">auto</span> <a class="code" href="namespacemagic__enum_1_1detail.html#a8e06754b490522d8ae02cd8983e3fcbf">value</a> = my_function.value(some_point);</div>
+<div class="line"><span class="keyword">auto</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal.html#aa5bef221c94bc6b9c5441c306a72cdbaa2063c1608d6e0baf80249c42e2be5804">value</a> = my_function().value(some_point);</div>
 </div><!-- fragment --><p>The above snippet of code will delcare the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a> <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html">ParameterHandler</a> with the following entries:</p>
 <div class="fragment"><div class="line">subsection RHS function</div>
 <div class="line">  set Function expression = &quot;2*x+y&quot;</div>
@@ -306,7 +309,7 @@ template&lt;int dim&gt; </div>
 </div><!-- fragment --> 
 <p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8cc_source.html#l00011">11</a> of file <a class="el" href="parsed__symbolic__function_8cc_source.html">parsed_symbolic_function.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, and <a class="el" href="parsed__symbolic__function_8h_source.html#l00187">Tools::ParsedSymbolicFunction&lt; dim &gt;::symbolic_function</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html#a59f3996003757093fb0e050a6729e81b">ParameterHandler::add_action()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aceb1a78960d51e44d8187995307756b4">ParameterAcceptor::enter_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a9d1dd13bdde04afcd1ec4b9a78776827">ParameterAcceptor::leave_my_subsection()</a>, <a class="el" href="parsed__symbolic__function_8h_source.html#l00208">Tools::ParsedSymbolicFunction&lt; dim &gt;::n_components</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>, and <a class="el" href="parsed__symbolic__function_8h_source.html#l00200">Tools::ParsedSymbolicFunction&lt; dim &gt;::symbolic_function</a>.</p>
 
 </div>
 </div>
@@ -336,11 +339,11 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Act as an actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>. </p>
+<p>Act as an actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>, so that we can pass this object to any function that expects a Functions::Function object. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00169">169</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00182">182</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
 
-<p class="reference">References <a class="el" href="parsed__symbolic__function_8h_source.html#l00187">Tools::ParsedSymbolicFunction&lt; dim &gt;::symbolic_function</a>.</p>
+<p class="reference">References <a class="el" href="parsed__symbolic__function_8h_source.html#l00200">Tools::ParsedSymbolicFunction&lt; dim &gt;::symbolic_function</a>.</p>
 
 </div>
 </div>
@@ -371,13 +374,44 @@ template&lt;int dim&gt; </div>
 
 <p>Act as an actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00178">178</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00191">191</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
 
-<p class="reference">References <a class="el" href="parsed__symbolic__function_8h_source.html#l00187">Tools::ParsedSymbolicFunction&lt; dim &gt;::symbolic_function</a>.</p>
+<p class="reference">References <a class="el" href="parsed__symbolic__function_8h_source.html#l00200">Tools::ParsedSymbolicFunction&lt; dim &gt;::symbolic_function</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a5c8bb22402c54d127817b77482a09f61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c8bb22402c54d127817b77482a09f61">&#9670;&nbsp;</a></span>n_components</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int <a class="el" href="class_tools_1_1_parsed_symbolic_function.html">Tools::ParsedSymbolicFunction</a>&lt; dim &gt;::n_components</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The number of components of the function. </p>
+<p>This number is constructed from the expression given at construction time. If you reinitialize the function, make sure you use the same number of components, or an exception will be thrown. </p>
+
+<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00208">208</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="parsed__symbolic__function_8cc_source.html#l00011">Tools::ParsedSymbolicFunction&lt; dim &gt;::ParsedSymbolicFunction()</a>.</p>
+
+</div>
+</div>
 <a id="a5c68ebe1563530a0f0e6c035e2c60e1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5c68ebe1563530a0f0e6c035e2c60e1e">&#9670;&nbsp;</a></span>symbolic_function</h2>
 
@@ -402,9 +436,9 @@ template&lt;int dim&gt; </div>
 
 <p>The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00187">187</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__symbolic__function_8h_source.html#l00200">200</a> of file <a class="el" href="parsed__symbolic__function_8h_source.html">parsed_symbolic_function.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="parsed__symbolic__function_8h_source.html#l00169">Tools::ParsedSymbolicFunction&lt; dim &gt;::operator Functions::SymbolicFunction&lt; dim &gt; &amp;()</a>, <a class="el" href="parsed__symbolic__function_8h_source.html#l00178">Tools::ParsedSymbolicFunction&lt; dim &gt;::operator()()</a>, and <a class="el" href="parsed__symbolic__function_8cc_source.html#l00011">Tools::ParsedSymbolicFunction&lt; dim &gt;::ParsedSymbolicFunction()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="parsed__symbolic__function_8h_source.html#l00182">Tools::ParsedSymbolicFunction&lt; dim &gt;::operator Functions::SymbolicFunction&lt; dim &gt; &amp;()</a>, <a class="el" href="parsed__symbolic__function_8h_source.html#l00191">Tools::ParsedSymbolicFunction&lt; dim &gt;::operator()()</a>, and <a class="el" href="parsed__symbolic__function_8cc_source.html#l00011">Tools::ParsedSymbolicFunction&lt; dim &gt;::ParsedSymbolicFunction()</a>.</p>
 
 </div>
 </div>
@@ -414,13 +448,13 @@ template&lt;int dim&gt; </div>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespacemagic__enum_1_1detail_html_a8e06754b490522d8ae02cd8983e3fcbf"><div class="ttname"><a href="namespacemagic__enum_1_1detail.html#a8e06754b490522d8ae02cd8983e3fcbf">magic_enum::detail::value</a></div><div class="ttdeci">constexpr E value(std::size_t i) noexcept</div><div class="ttdef"><b>Definition:</b> <a href="magic__enum_8hpp_source.html#l00372">magic_enum.hpp:372</a></div></div>
-<div class="ttc" id="aclass_tools_1_1_parsed_symbolic_function_html"><div class="ttname"><a href="class_tools_1_1_parsed_symbolic_function.html">Tools::ParsedSymbolicFunction</a></div><div class="ttdoc">A wrapper for the Functions::SymbolicFunction class.</div><div class="ttdef"><b>Definition:</b> <a href="parsed__symbolic__function_8h_source.html#l00139">parsed_symbolic_function.h:139</a></div></div>
+<div class="ttc" id="anamespaceinternal_html_aa5bef221c94bc6b9c5441c306a72cdbaa2063c1608d6e0baf80249c42e2be5804"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal.html#aa5bef221c94bc6b9c5441c306a72cdbaa2063c1608d6e0baf80249c42e2be5804">EvaluatorQuantity::value</a></div><div class="ttdeci">@ value</div></div>
+<div class="ttc" id="aclass_tools_1_1_parsed_symbolic_function_html"><div class="ttname"><a href="class_tools_1_1_parsed_symbolic_function.html">Tools::ParsedSymbolicFunction</a></div><div class="ttdoc">A wrapper for the Functions::SymbolicFunction class.</div><div class="ttdef"><b>Definition:</b> <a href="parsed__symbolic__function_8h_source.html#l00150">parsed_symbolic_function.h:150</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_tools_1_1_parsed_symbolic_function.html">ParsedSymbolicFunction</a></li>
-    <li class="footer">Generated on Mon Jan 3 2022 17:56:03 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 5 2022 17:06:32 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

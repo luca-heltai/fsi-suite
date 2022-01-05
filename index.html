@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fluid structure interaction suite: Main Page</title>
+<title>Fluid structure interaction suite: Continuum mechanics and fluid-structure interaction problems</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -98,34 +98,107 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Fluid structure interaction suite Documentation</div>  </div>
+<div class="title">Continuum mechanics and fluid-structure interaction problems </div>  </div>
 </div><!--header-->
 <div class="contents">
-<ul><li><a href="index.html"><span>Main&#160;Page</span></a>
-</li><li><a href="pages.html"><span>Related&#160;Pages</span></a>
-</li><li><a href="namespaces.html"><span>Namespaces</span></a>
-<ul><li><a href="namespaces.html"><span>Namespace&#160;List</span></a>
-</li><li><a href="namespacemembers.html"><span>Namespace&#160;Members</span></a>
-</li></ul>
-</li><li><a href="annotated.html"><span>Classes</span></a>
-<ul><li><a href="annotated.html"><span>Class&#160;List</span></a>
-</li><li><a href="classes.html"><span>Class&#160;Index</span></a>
-</li><li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a>
-</li><li><a href="functions.html"><span>Class&#160;Members</span></a>
-</li></ul>
-</li><li><a href="files.html"><span>Files</span></a>
-<ul><li><a href="files.html"><span>File&#160;List</span></a>
-</li><li><a href="globals.html"><span>File&#160;Members</span></a>
-</li></ul>
-</li></ul>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+mathematical modeling and numerical approximation</h1>
+<p>Fluid-structure interaction (FSI) refers to the multiphysics coupling between the laws that describe fluid dynamics and structural mechanics. This course covers three main topics: i) basics of continuum mechanics, ii) mathematical modeling of FSI problems, and iii) numerical implementations based on the finite element method. Theoretical lectures are backed up by applied laboratories based on the C++ language, using example codes developed with the open source finite element library deal.II (www.dealii.org). I cover basic principles of continuum mechanics, discuss Lagrangian, Eulerian, and Arbitrary Lagrangian-Eulerian formulations, and cover different coupling strategies, both from the theoretical point of view, and with the aid of computational laboratories.</p>
+<p>The students will learn how to develop, use, and analyze state-of-the-art finite element approximations for the solution of continuum mechanics problems, including non-linear mechanics, computational fluid dynamic, and fluid-structure-interaction problems.</p>
+<p>The laboratory part should enable a PhD student working on numerical analysis of PDEs to implement a state-of-the-art adaptive finite element codes for FSI problems, that run in parallel, using modern C++ libraries. The implementation will be based on the <code>deal.II</code> library (www.dealii.org).</p>
+<p>What you will learn:</p><ul>
+<li>Advanced Finite Element theory</li>
+<li>How to use a modern C++ IDE, to build and debug your codes</li>
+<li>How to use a large FEM library to solve complex PDE problems</li>
+<li>How to properly document your code using Doxygen</li>
+<li>How to use a proper Git workflow to develop your applications</li>
+<li>How to leverage GitHub actions, google tests, and docker images to test and deploy your application</li>
+<li>How hybrid parallelisation (threads + MPI + GPU) works in real life FEM applications</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Continuous Integration Status:</h1>
+<p>Up to date online documentation is here:</p>
+<p><a href="https://luca-heltai.github.io/fsi-suite/">https://luca-heltai.github.io/fsi-suite/</a></p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">System </th><th class="markdownTableHeadNone">Status  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Indent </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg" style="pointer-events: none;">Indent</object></a>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Doxygen </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg" style="pointer-events: none;">Doxygen</object></a>  </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Continous Integration </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg" style="pointer-events: none;">GitHub CI</object></a>  </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Useful links</h1>
+<p>One of my courses on theory and practice of finite elements:</p><ul>
+<li><a href="https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods">https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods</a></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md4"></a>
+Course program</h1>
+<p>A tentative detailed program is shown below (this will be updated during the course to reflect the actual course content)</p>
+<ol type="1">
+<li>Course introduction.<ul>
+<li>Motivating examples</li>
+<li>Basic principles and background knowledge.</li>
+</ul>
+</li>
+<li>Recap on Finite Element Methods<ul>
+<li>Introduction to deal.II.</li>
+</ul>
+</li>
+<li>Basic principles of continuum mechanics<ul>
+<li>conservation equations</li>
+<li>constitutive equations</li>
+<li>kinematics</li>
+<li>transport theorems</li>
+</ul>
+</li>
+</ol>
+<ol type="1">
+<li>Lagrangian formulation of continuum mechanics (solids).<ul>
+<li>Static and compressible linear elasticity</li>
+</ul>
+</li>
+<li>Recap on mixed problems<ul>
+<li>Static incompressible linear elasticity</li>
+</ul>
+</li>
+<li>Eulerian formulation of continuum mechanics<ul>
+<li>Stokes problem</li>
+</ul>
+</li>
+<li>Recap on time discretization schemes<ul>
+<li>Time dependent Stokes problem</li>
+<li>Time dependent linear elasticity (wave equations)</li>
+</ul>
+</li>
+<li>Treating non-linearities<ul>
+<li>IMEX</li>
+<li>predictor corrector</li>
+<li>fixed point</li>
+<li>Newton</li>
+</ul>
+</li>
+<li>Navier-Stokes equations</li>
+<li>Segregated coupling<ul>
+<li>Lagrangian domain deformation</li>
+</ul>
+</li>
+<li>Arbitrary Lagrangian Eulerian formulation</li>
+<li>Immersed Boundary/Immersed Finite Element Method</li>
+<li>Distributed Lagrange multiplier formulation</li>
+<li>Students' projects. </li>
+</ol>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jan 3 2022 17:56:03 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 5 2022 17:06:32 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

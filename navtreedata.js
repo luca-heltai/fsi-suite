@@ -23,13 +23,18 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Fluid structure interaction suite", "index.html", [
+    [ "Continuum mechanics and fluid-structure interaction problems", "index.html", [
+      [ "mathematical modeling and numerical approximation", "index.html#autotoc_md1", null ],
+      [ "Continuous Integration Status:", "index.html#autotoc_md2", null ],
+      [ "Useful links", "index.html#autotoc_md3", null ],
+      [ "Course program", "index.html#autotoc_md4", null ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Classes", "annotated.html", [
@@ -47,8 +52,7 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ],
-        [ "Macros", "globals_defs.html", null ]
+        [ "Functions", "globals_func.html", null ]
       ] ]
     ] ]
   ] ]
@@ -56,8 +60,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"parsed__symbolic__function_8h_source.html"
+"annotated.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

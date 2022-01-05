@@ -1,0 +1,5 @@
+var structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d =
+[
+    [ "list_rank", "structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d.html#ac7a4d3615538c57785a44518fc0d16b5", null ],
+    [ "map_rank", "structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d.html#adde04712aa61645fc6962844f0d82595", null ]
+];
