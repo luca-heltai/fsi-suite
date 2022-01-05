@@ -47,17 +47,17 @@ namespace Tools
      * Constructor.
      */
     ParsedBoundaryConditions(
-      const std::string &                          section_name    = "",
-      const std::string &                          component_names = "u",
-      const std::vector<IdsAndBoundaryConditions> &ids_and_bcs     = {
-        {{dealii::numbers::invalid_boundary_id},
-         "u",
-         BoundaryIdType::dirichlet,
-         "0.0"}});
+      const std::string &section_name    = "",
+      const std::string &component_names = "u",
+      const std::vector<std::set<dealii::types::boundary_id>> &ids =
+        {{dealii::numbers::internal_face_boundary_id}},
+      const std::vector<std::string> &   selected_components = {"u"},
+      const std::vector<BoundaryIdType> &bc_type = {BoundaryIdType::dirichlet},
+      const std::vector<std::string> &   expressions = {"0"});
 
     /**
-     * Update the substitition map of every dealii::Functions::SymbolicFunction
-     * defined in this object.
+     * Update the substitition map of every
+     * dealii::Functions::SymbolicFunction defined in this object.
      *
      * See the documentation of
      * dealii::Functions::SymbolicFunction::update_user_substitution_map().
@@ -87,7 +87,8 @@ namespace Tools
     set_time(const double &time);
 
     /**
-     * Check that the grid is compatible with this boundary condition object.
+     * Check that the grid is compatible with this boundary condition object,
+     * and that the boundary conditions are self consistent.
      */
     template <typename Tria>
     void
@@ -96,7 +97,6 @@ namespace Tools
       grid_info.build_info(tria);
       check_consistency();
     }
-
 
     /**
      * Make sure the specified boundary conditions make sense. Do this,
@@ -112,9 +112,34 @@ namespace Tools
     const std::string component_names;
 
     /**
-     * The boundary conditions.
+     * Number of components of the problem.
      */
-    std::vector<IdsAndBoundaryConditions> ids_and_bcs;
+    const unsigned int n_components;
+
+    /**
+     * Number of boundary conditions.
+     */
+    mutable unsigned int n_boundary_conditions;
+
+    /**
+     * Ids on which this object applies boundary conditions.
+     */
+    std::vector<std::set<dealii::types::boundary_id>> ids;
+
+    /**
+     * Component on which to apply the boundary condition.
+     */
+    std::vector<std::string> selected_components;
+
+    /**
+     * Type of boundary conditions.
+     */
+    std::vector<BoundaryIdType> bc_type;
+
+    /**
+     * Expressions for the boundary conditions.
+     */
+    std::vector<std::string> expressions;
 
     /**
      * The actual functions.

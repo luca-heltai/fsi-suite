@@ -11,7 +11,7 @@ using namespace dealii;
 
 TYPED_TEST(DimSpacedimTester, ParsedFiniteElementScalar)
 {
-  Tools::ParsedFiniteElement<this->dim, this->spacedim> pfe("/fe" + this->id(),
+  Tools::ParsedFiniteElement<this->dim, this->spacedim> pfe(this->id("pfe"),
                                                             "u",
                                                             "FE_Q(1)");
 

@@ -66,9 +66,14 @@ public:
   }
 
   std::string
-  id() const
+  id(const std::string &suffix = "") const
   {
-    return std::to_string(dim) + "D-" + std::to_string(spacedim) + "D";
+    const testing::TestInfo *const test_info =
+      testing::UnitTest::GetInstance()->current_test_info();
+
+    return std::string("/") + test_info->test_suite_name() + "/" +
+           std::to_string(dim) + "D-" + std::to_string(spacedim) + "D/" +
+           suffix;
   }
 };
 

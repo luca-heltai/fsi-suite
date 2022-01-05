@@ -1,0 +1,25 @@
+#include <deal.II/base/config.h>
+
+#include <gtest/gtest.h>
+
+#include <fstream>
+#include <sstream>
+
+#include "dim_spacedim_tester.h"
+
+using namespace dealii;
+
+TEST(Example, CheckOne)
+{}
+
+TYPED_TEST(DimSpacedimTester, CheckOne)
+{}
+
+TYPED_TEST(DimTester, CheckOne)
+{}
+
+TYPED_TEST(DimSpacedimTesterNoOne, CheckOne)
+{}
+
+TYPED_TEST(DimTesterNoOne, CheckOne)
+{}
