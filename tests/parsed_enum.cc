@@ -32,7 +32,7 @@ TEST(ParsedEnum, CheckFEValuesFlags)
   )");
 
   auto s = Patterns::Tools::Convert<UpdateFlags>::to_string(flags);
-  ASSERT_EQ(s, "update_values| update_gradients");
+  ASSERT_EQ(s, "update_default| update_values| update_gradients");
   ASSERT_TRUE(flags & (update_values | update_gradients));
 }
 

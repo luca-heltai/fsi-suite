@@ -9,7 +9,7 @@
 
 using namespace dealii;
 
-TYPED_TEST(DST, GenerateHyperCube)
+TYPED_TEST(DimSpacedimTester, GenerateHyperCube)
 {
   Tools::ParsedGridGenerator<this->dim, this->spacedim> pgg("/");
   Triangulation<this->dim, this->spacedim>              tria;
@@ -37,7 +37,7 @@ TYPED_TEST(DST, GenerateHyperCube)
 
 
 
-TYPED_TEST(DST, GenerateHyperCubeSimplex)
+TYPED_TEST(DimSpacedimTester, GenerateHyperCubeSimplex)
 {
   Tools::ParsedGridGenerator<this->dim, this->spacedim> pgg("/");
   Triangulation<this->dim, this->spacedim>              tria;

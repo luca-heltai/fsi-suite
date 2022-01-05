@@ -9,9 +9,9 @@
 
 using namespace dealii;
 
-TYPED_TEST(DT, ParsedFunctionConstruction)
+TYPED_TEST(DimTester, ParsedFunctionConstruction)
 {
-  Tools::ParsedFunction<this->dim> function("/", "x");
+  Tools::ParsedFunction<this->dim> function("/fun" + this->id(), "x");
 
   Point<this->dim> p;
   p[0] = 1.0;
@@ -20,13 +20,14 @@ TYPED_TEST(DT, ParsedFunctionConstruction)
 }
 
 
-TYPED_TEST(DT, ParsedFunctionParsing)
+TYPED_TEST(DimTester, ParsedFunctionParsing)
 {
-  Tools::ParsedFunction<this->dim> function("/", "x");
+  Tools::ParsedFunction<this->dim> function("/fun2" + this->id(), "x");
 
-  ParameterAcceptor::prm.parse_input_from_string(R"(
+  this->parse(R"(
     set Function expression = 2*x
-  )");
+  )",
+              function);
 
   Point<this->dim> p;
   p[0] = 1.0;
@@ -36,9 +37,9 @@ TYPED_TEST(DT, ParsedFunctionParsing)
 
 
 
-TYPED_TEST(DT, ParsedFunctionParsingVectorValued)
+TYPED_TEST(DimTester, ParsedFunctionParsingVectorValued)
 {
-  Tools::ParsedFunction<this->dim> function("/", "x; 2*x");
+  Tools::ParsedFunction<this->dim> function("/fun3" + this->id(), "x; 2*x");
 
   Point<this->dim> p;
   p[0] = 1.0;
@@ -46,25 +47,20 @@ TYPED_TEST(DT, ParsedFunctionParsingVectorValued)
   ASSERT_EQ(function.value(p, 0), 1.0);
   ASSERT_EQ(function.value(p, 1), 2.0);
 
-  ParameterAcceptor::prm.parse_input_from_string(R"(
+  this->parse(R"(
     set Function expression = 2*x; 3*x
-  )");
+  )",
+              function);
 
   ASSERT_EQ(function.value(p, 0), 2.0);
   ASSERT_EQ(function.value(p, 1), 3.0);
 
   // Make sure that the function throws if we pass the wrong number of
   // expressions
-
-  try
-    {
-      ParameterAcceptor::prm.parse_input_from_string(R"(
+  ASSERT_ANY_THROW({
+    this->parse(R"(
         set Function expression = x
-      )");
-      FAIL() << "Expected an exception";
-    }
-  catch (...)
-    {
-      SUCCEED();
-    }
+      )",
+                function);
+  });
 }

@@ -11,7 +11,7 @@
 
 using namespace dealii;
 
-TYPED_TEST(DSTNoOne, ParsedGridRefinementGlobal)
+TYPED_TEST(DimSpacedimTesterNoOne, ParsedGridRefinementGlobal)
 {
   Triangulation<this->dim, this->spacedim> tria;
   GridGenerator::hyper_cube(tria);

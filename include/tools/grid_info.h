@@ -283,19 +283,19 @@ namespace Tools
     }
 
     /** Level of information to gather. */
-    unsigned int info_level;
+    unsigned int info_level = 0;
 
     /** Number of active cells. */
-    unsigned int n_active_cells;
+    unsigned int n_active_cells = 0;
 
     /** Number of vertices. */
-    unsigned int n_vertices;
+    unsigned int n_vertices = 0;
 
     /** Number of used vertices. */
-    unsigned int n_used_vertices;
+    unsigned int n_used_vertices = 0;
 
     /** Number of levels. */
-    unsigned int n_levels;
+    unsigned int n_levels = 0;
 
     /** Number of active cells at each level. */
     std::vector<unsigned int> n_active_cells_at_level;

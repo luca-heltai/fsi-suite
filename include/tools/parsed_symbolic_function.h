@@ -66,6 +66,17 @@ namespace dealii
         }
       };
 
+      namespace internal
+      {
+        // Rank of SymbolicFunction
+        template <int dim>
+        struct RankInfo<
+          std::unique_ptr<dealii::Functions::SymbolicFunction<dim>>>
+        {
+          static constexpr int list_rank = 1;
+          static constexpr int map_rank  = 0;
+        };
+      } // namespace internal
 
       /**
        * @brief Instruct deal.II on how to convert a SymbolicFunctions

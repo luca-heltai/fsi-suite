@@ -9,15 +9,16 @@
 
 using namespace dealii;
 
-TYPED_TEST(DST, ParsedFiniteElementScalar)
+TYPED_TEST(DimSpacedimTester, ParsedFiniteElementScalar)
 {
-  Tools::ParsedFiniteElement<this->dim, this->spacedim> pfe("/",
+  Tools::ParsedFiniteElement<this->dim, this->spacedim> pfe("/fe" + this->id(),
                                                             "u",
                                                             "FE_Q(1)");
 
   this->parse(R"(
     set Finite element space (u) = FE_Q(1)
-  )");
+  )",
+              pfe);
 
   FiniteElement<this->dim, this->spacedim> &fe = pfe;
 

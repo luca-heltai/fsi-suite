@@ -23,4 +23,6 @@ ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM 1
 
 ENV HOME /root
 
+RUN mkdir /root/.ssh
+
 ADD dotgdbinit.py /root/.gdbinit

@@ -47,7 +47,7 @@ namespace dealii
           const auto               values = magic_enum::enum_values<T>();
           std::vector<std::string> names;
           for (const auto &v : values)
-            if (B::operator&(value, v))
+            if (B::operator&(value, v) == v)
               names.push_back(std::string(magic_enum::enum_name(v)));
           return Patterns::Tools::Convert<decltype(names)>::to_string(names, p);
         }

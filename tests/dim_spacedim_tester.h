@@ -38,7 +38,7 @@ using DimTypes = ::testing::Types<OneOne, TwoTwo, ThreeThree>;
 using DimTypesNoOne = ::testing::Types<TwoTwo, ThreeThree>;
 
 template <class DimSpacedim>
-class DST : public ::testing::Test
+class DimSpacedimTester : public ::testing::Test
 {
 public:
   using Tdim      = typename DimSpacedim::first_type;
@@ -47,27 +47,44 @@ public:
   static constexpr unsigned int dim      = Tdim::value;
   static constexpr unsigned int spacedim = Tspacedim::value;
 
+  // Helper function to parse a string into the parameter acceptor
   void
-  parse(const std::string &prm_string) const
+  parse(const std::string &prm_string)
   {
     ParameterAcceptor::prm.parse_input_from_string(prm_string);
     ParameterAcceptor::parse_all_parameters();
+  }
+
+  template <class T>
+  void
+  parse(const std::string &prm_string, T &t)
+  {
+    t.ParameterAcceptor::enter_my_subsection(ParameterAcceptor::prm);
+    ParameterAcceptor::prm.parse_input_from_string(prm_string);
+    t.ParameterAcceptor::leave_my_subsection(ParameterAcceptor::prm);
+    ParameterAcceptor::parse_all_parameters();
+  }
+
+  std::string
+  id() const
+  {
+    return std::to_string(dim) + "D-" + std::to_string(spacedim) + "D";
   }
 };
 
 
 template <class DimSpacedim>
-using DSTNoOne = DST<DimSpacedim>;
+using DimSpacedimTesterNoOne = DimSpacedimTester<DimSpacedim>;
 
 template <class DimSpacedim>
-using DT = DST<DimSpacedim>;
+using DimTester = DimSpacedimTester<DimSpacedim>;
 
 template <class DimSpacedim>
-using DTNoOne = DST<DimSpacedim>;
+using DimTesterNoOne = DimSpacedimTester<DimSpacedim>;
 
-TYPED_TEST_CASE(DST, DimSpacedimTypes);
-TYPED_TEST_CASE(DT, DimTypes);
-TYPED_TEST_CASE(DSTNoOne, DimSpacedimTypesNoOne);
-TYPED_TEST_CASE(DTNoOne, DimTypesNoOne);
+TYPED_TEST_CASE(DimSpacedimTester, DimSpacedimTypes);
+TYPED_TEST_CASE(DimTester, DimTypes);
+TYPED_TEST_CASE(DimSpacedimTesterNoOne, DimSpacedimTypesNoOne);
+TYPED_TEST_CASE(DimTesterNoOne, DimTypesNoOne);
 
-#endif // dealii_tests_h
+#endif // fsi_dim_spacedim_tester_h

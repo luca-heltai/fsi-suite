@@ -2,6 +2,7 @@
 #include <deal.II/base/utilities.h>
 
 #include <gtest/gtest.h>
+
 // Make sure we output just on proc zero when run in parallel.
 int
 main(int argc, char *argv[])
