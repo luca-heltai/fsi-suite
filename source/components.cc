@@ -168,8 +168,8 @@ namespace Tools
 
 
     Type
-    component_type(const std::string &component_names,
-                   const std::string &selected_component)
+    type(const std::string &component_names,
+         const std::string &selected_component)
     {
       // Simple case: all components
       if (selected_component == "all" || selected_component == "ALL")

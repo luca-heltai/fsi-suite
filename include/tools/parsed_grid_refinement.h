@@ -89,7 +89,7 @@ namespace Tools
     limit_levels(dealii::Triangulation<dim, spacedim> &tria) const;
 
     /**
-     * Default expression of this function."
+     * Default expression of this function.
      */
     std::string  strategy;
     double       top_parameter;
@@ -118,7 +118,7 @@ namespace Tools
           criteria,
           top_parameter,
           bottom_parameter,
-          max_cells ? max_cells : std::numeric_limits<unsigned int>::max());
+          max_cells > 0 ? max_cells : std::numeric_limits<unsigned int>::max());
     else if (strategy == "fixed_fraction")
       dealii::parallel::distributed::GridRefinement::
         refine_and_coarsen_fixed_fraction(tria,
@@ -149,14 +149,14 @@ namespace Tools
         criteria,
         top_parameter,
         bottom_parameter,
-        max_cells ? max_cells : std::numeric_limits<unsigned int>::max());
+        max_cells > 0 ? max_cells : std::numeric_limits<unsigned int>::max());
     else if (strategy == "fixed_fraction")
       dealii::GridRefinement::refine_and_coarsen_fixed_fraction(
         tria,
         criteria,
         top_parameter,
         bottom_parameter,
-        max_cells ? max_cells : std::numeric_limits<unsigned int>::max());
+        max_cells > 0 ? max_cells : std::numeric_limits<unsigned int>::max());
     else if (strategy == "global")
       {
         for (const auto cell : tria.active_cell_iterators())
@@ -176,19 +176,18 @@ namespace Tools
     dealii::Triangulation<dim, spacedim> &tria) const
   {
     if (min_level != 0 || max_level != 0)
-      {
-        for (const auto cell : tria.active_cell_iterators())
+      for (const auto cell : tria.active_cell_iterators())
+        if (cell->is_locally_owned())
           {
-            if (cell->level() < min_level)
+            if (min_level != 0 && cell->level() < min_level)
               cell->set_refine_flag();
-            else if (cell->level() > max_level)
+            else if (max_level != 0 && cell->level() > max_level)
               cell->set_coarsen_flag();
-            else if (cell->level() == max_level)
+            else if (max_level != 0 && cell->level() == max_level)
               cell->clear_refine_flag();
-            else if (cell->level() == min_level)
+            else if (min_level != 0 && cell->level() == min_level)
               cell->clear_coarsen_flag();
           }
-      }
   }
 } // namespace Tools
 

@@ -60,6 +60,17 @@ namespace Tools
   }
 
 
+
+  template <int dim, int spacedim>
+  FiniteElement<dim, spacedim> &
+  ParsedFiniteElement<dim, spacedim>::operator()()
+  {
+    AssertThrow(fe, ExcNotInitialized());
+    return *fe;
+  }
+
+
+
   template <int dim, int spacedim>
   unsigned int
   ParsedFiniteElement<dim, spacedim>::n_components() const

@@ -201,17 +201,17 @@ namespace Tools
      * Examples:
      * @code
      * std::string names="u,u,p";
-     * auto r = component_type(names, "u"); // vector
-     * r = component_type(names, "p"); // scalar
-     * r = component_type(names, "1"); // vector
-     * r = component_type(names, "2"); // scalar
-     * r = component_type(names, "u.n"); // normal
-     * r = component_type(names, "u.t"); // tangential
+     * auto r = type(names, "u"); // vector
+     * r = type(names, "p"); // scalar
+     * r = type(names, "1"); // vector
+     * r = type(names, "2"); // scalar
+     * r = type(names, "u.n"); // normal
+     * r = type(names, "u.t"); // tangential
      * @endcode
      */
     Type
-    component_type(const std::string &component_name,
-                   const std::string &selected_component);
+    type(const std::string &component_name,
+         const std::string &selected_component);
 
     /**
      * Return a component mask corresponding to a given selected component, from

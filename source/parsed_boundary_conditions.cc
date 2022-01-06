@@ -14,9 +14,9 @@ namespace Tools
     const std::string &                                      section_name,
     const std::string &                                      component_names,
     const std::vector<std::set<dealii::types::boundary_id>> &ids,
-    const std::vector<std::string> &   selected_components,
-    const std::vector<BoundaryIdType> &bc_type,
-    const std::vector<std::string> &   expressions)
+    const std::vector<std::string> &          selected_components,
+    const std::vector<BoundaryConditionType> &bc_type,
+    const std::vector<std::string> &          expressions)
     : ParameterAcceptor(section_name)
     , component_names(component_names)
     , n_components(Components::n_components(component_names))
@@ -61,11 +61,15 @@ namespace Tools
       for (const auto &exp : this->expressions)
         functions.emplace_back(
           std::make_unique<dealii::Functions::SymbolicFunction<spacedim>>(exp));
-      masks.clear();
 
-      // Parse components into masks
+      // Parse components into masks and types
+      masks.clear();
+      types.clear();
       for (const auto &comp : this->selected_components)
-        masks.push_back(Components::mask(this->component_names, comp));
+        {
+          masks.push_back(Components::mask(this->component_names, comp));
+          types.push_back(Components::type(this->component_names, comp));
+        }
 
       // Check that everything is consistent
       check_consistency();
@@ -121,6 +125,37 @@ namespace Tools
                         ExcMessage("The number of boundary ids specified in "
                                    "the input file does not match the number "
                                    "of boundary ids in the triangulation"));
+          }
+      }
+
+    // Now check that the types are valid in this dimension
+    AssertDimension(n_boundary_conditions, types.size());
+    AssertDimension(n_boundary_conditions, masks.size());
+    for (unsigned int i = 0; i < n_boundary_conditions; ++i)
+      {
+        if (types[i] == Components::Type::vector ||
+            types[i] == Components::Type::normal ||
+            types[i] == Components::Type::tangential)
+          {
+            AssertThrow(masks[i].n_selected_components() == spacedim,
+                        ExcDimensionMismatch(masks[i].n_selected_components(),
+                                             spacedim));
+          }
+        if (types[i] == Components::Type::normal ||
+            types[i] == Components::Type::tangential)
+          {
+            AssertThrow(functions[i]->n_components == spacedim,
+                        ExcDimensionMismatch(functions[i]->n_components,
+                                             spacedim));
+          }
+        else
+          {
+            // In all other cases, it is the mask that determines the number of
+            // of components, but the function needs to be of the correct
+            // dimension
+            AssertThrow(functions[i]->n_components == n_components,
+                        ExcDimensionMismatch(functions[i]->n_components,
+                                             n_components));
           }
       }
   }

@@ -155,3 +155,43 @@ TEST(Components, Mask)
   ASSERT_ANY_THROW(mask(names, "v"));
   ASSERT_ANY_THROW(mask(names, "3"));
 }
+
+
+
+TEST(Components, Type)
+{
+  const std::string names = "u, u, p";
+
+  auto t = type(names, "u");
+  ASSERT_EQ(t, Type::vector);
+
+  t = type(names, "u.n");
+  ASSERT_EQ(t, Type::normal);
+
+  t = type(names, "u.N");
+  ASSERT_EQ(t, Type::normal);
+
+  t = type(names, "u.t");
+  ASSERT_EQ(t, Type::tangential);
+
+  t = type(names, "u.T");
+  ASSERT_EQ(t, Type::tangential);
+
+  t = type(names, "all");
+  ASSERT_EQ(t, Type::all);
+
+  t = type(names, "ALL");
+  ASSERT_EQ(t, Type::all);
+
+  t = type(names, "1");
+  ASSERT_EQ(t, Type::vector);
+
+  t = type(names, "0");
+  ASSERT_EQ(t, Type::vector);
+
+  t = type(names, "2");
+  ASSERT_EQ(t, Type::scalar);
+
+  ASSERT_ANY_THROW(type(names, "v"));
+  ASSERT_ANY_THROW(type(names, "3"));
+}
