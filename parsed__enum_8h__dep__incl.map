@@ -1,5 +1,10 @@
 <map id="include/tools/parsed_enum.h" name="include/tools/parsed_enum.h">
-<area shape="rect" id="node1" title=" " alt="" coords="19,5,173,47"/>
-<area shape="rect" id="node2" href="$parsed__boundary__conditions_8h.html" title=" " alt="" coords="8,95,184,136"/>
-<area shape="rect" id="node3" href="$parsed__boundary__conditions_8cc.html" title=" " alt="" coords="5,184,187,225"/>
+<area shape="rect" id="node1" title=" " alt="" coords="256,5,409,47"/>
+<area shape="rect" id="node2" href="$parsed__boundary__conditions_8h.html" title=" " alt="" coords="182,169,358,211"/>
+<area shape="rect" id="node7" href="$components_8h.html" title=" " alt="" coords="301,95,503,121"/>
+<area shape="rect" id="node3" href="$parsed__boundary__conditions_8cc.html" title=" " alt="" coords="307,259,489,300"/>
+<area shape="rect" id="node4" href="$serial__poisson_8h.html" title=" " alt="" coords="105,266,283,293"/>
+<area shape="rect" id="node5" href="$source_2serial__poisson_8cc.html" title=" " alt="" coords="5,348,185,375"/>
+<area shape="rect" id="node6" href="$apps_2serial__poisson_8cc.html" title=" " alt="" coords="210,348,378,375"/>
+<area shape="rect" id="node8" href="$components_8cc.html" title=" " alt="" coords="436,177,603,203"/>
 </map>

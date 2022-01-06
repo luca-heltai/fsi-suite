@@ -1,4 +1,4 @@
-<map id="Tools::ParsedBoundaryConditions&lt; dim &gt;" name="Tools::ParsedBoundaryConditions&lt; dim &gt;">
+<map id="Tools::ParsedBoundaryConditions&lt; spacedim &gt;" name="Tools::ParsedBoundaryConditions&lt; spacedim &gt;">
 <area shape="rect" id="node1" title="A wrapper for boundary conditions." alt="" coords="5,155,244,196"/>
 <area shape="rect" id="node2" href="/__w/fsi-suite/fsi-suite/deal.tag$classParameterAcceptor.html" title=" " alt="" coords="51,80,198,107"/>
 <area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$classSubscriptor.html" title=" " alt="" coords="77,5,172,32"/>

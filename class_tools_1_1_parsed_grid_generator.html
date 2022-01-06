@@ -320,8 +320,6 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8cc_source.html#l00023">23</a> of file <a class="el" href="parsed__grid__generator_8cc_source.html">parsed_grid_generator.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="el" href="parsed__grid__generator_8h_source.html#l00127">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::grid_generator_arguments</a>, <a class="el" href="parsed__grid__generator_8h_source.html#l00120">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::grid_generator_function</a>, <a class="el" href="parsed__grid__generator_8h_source.html#l00136">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::initial_grid_refinement</a>, <a class="el" href="parsed__grid__generator_8h_source.html#l00130">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::output_file_name</a>, and <a class="el" href="parsed__grid__generator_8h_source.html#l00133">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::transform_to_simplex_grid</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -349,8 +347,6 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>If the triangulation would be refined before output, running the same program twice with input and output grid with the same name, would produce more and more refined grids. If you really want to output the same grid in the refined case, simply call the <a class="el" href="class_tools_1_1_parsed_grid_generator.html#a72468eff6813d67051db232a2cdbf939" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> function again. </p><dl class="section return"><dt>Returns</dt><dd>my_void (return type is specified to avoid a compiler warning) </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8cc_source.html#l00037">37</a> of file <a class="el" href="parsed__grid__generator_8cc_source.html">parsed_grid_generator.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#ac7515d2b17c025dddc0e37286fb8d216">GridGenerator::convert_hypercube_to_simplex_mesh()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#a1f2bf1d34aacdba358add7fd59b32822">Triangulation&lt; dim, spacedim &gt;::copy_triangulation()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a9c39a5de95e4d11173378431dc2131fe">numbers::flat_manifold_id</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga2131fc63fb23e2e7eabb570b1e852e4a">Triangulation&lt; dim, spacedim &gt;::get_manifold()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga41320ae1978763a1b83608e10408d68f">Triangulation&lt; dim, spacedim &gt;::get_manifold_ids()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#ad30d9d6f2ff9920c4285e795c4495826">GridIn&lt; dim, spacedim &gt;::read()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#a4346650869f7bdf91ef5a301f1980d22">GridIn&lt; dim, spacedim &gt;::read_assimp()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__simplex.html#ga83872db02e04f52ac52d578912f6da5e">GridIn&lt; dim, spacedim &gt;::read_msh()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="mesh__handler_8cc_source.html#l00015">main()</a>.</p>
 
@@ -389,8 +385,6 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8cc_source.html#l00166">166</a> of file <a class="el" href="parsed__grid__generator_8cc_source.html">parsed_grid_generator.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">GridOut::set_flags()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a7491903aeb666c909a7251fc17bf3831">GridOut::write_msh()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#ac2644adf53415185e3886a1248911bd4">GridOut::write_ucd()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a6b72484c35abc1f84abb8bf1bc1048dc">GridOut::write_vtk()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a8bd3a74b86d7c0eb792d2efca7f945f1">GridOut::write_vtu()</a>.</p>
-
 <p class="reference">Referenced by <a class="el" href="mesh__handler_8cc_source.html#l00015">main()</a>.</p>
 
 </div>
@@ -423,8 +417,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8h_source.html#l00127">127</a> of file <a class="el" href="parsed__grid__generator_8h_source.html">parsed_grid_generator.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="parsed__grid__generator_8cc_source.html#l00023">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::ParsedGridGenerator()</a>.</p>
-
 </div>
 </div>
 <a id="a06e1845e1220f22a1e28e9359b2bcb26"></a>
@@ -455,8 +447,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8h_source.html#l00120">120</a> of file <a class="el" href="parsed__grid__generator_8h_source.html">parsed_grid_generator.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="parsed__grid__generator_8cc_source.html#l00023">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::ParsedGridGenerator()</a>.</p>
-
 </div>
 </div>
 <a id="ac48f17567a403958d6f45a12bc32949b"></a>
@@ -484,8 +474,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>Initial global refinement of the grid. </p>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8h_source.html#l00136">136</a> of file <a class="el" href="parsed__grid__generator_8h_source.html">parsed_grid_generator.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="parsed__grid__generator_8cc_source.html#l00023">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::ParsedGridGenerator()</a>.</p>
 
 </div>
 </div>
@@ -515,8 +503,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8h_source.html#l00130">130</a> of file <a class="el" href="parsed__grid__generator_8h_source.html">parsed_grid_generator.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="parsed__grid__generator_8cc_source.html#l00023">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::ParsedGridGenerator()</a>.</p>
-
 </div>
 </div>
 <a id="a59a559657d33d44584fb190a315e0dd3"></a>
@@ -545,8 +531,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="parsed__grid__generator_8h_source.html#l00133">133</a> of file <a class="el" href="parsed__grid__generator_8h_source.html">parsed_grid_generator.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="parsed__grid__generator_8cc_source.html#l00023">Tools::ParsedGridGenerator&lt; dim, spacedim &gt;::ParsedGridGenerator()</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -562,7 +546,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_tools_1_1_parsed_grid_generator.html">ParsedGridGenerator</a></li>
-    <li class="footer">Generated on Wed Jan 5 2022 17:06:32 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Jan 6 2022 23:21:25 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

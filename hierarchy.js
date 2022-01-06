@@ -19,6 +19,10 @@ var hierarchy =
       [ "Function< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", null ],
       [ "ParameterAcceptor", "http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html", [
         [ "Tools::ParsedBoundaryConditions< dim >", "class_tools_1_1_parsed_boundary_conditions.html", null ],
+        [ "Tools::ParsedFiniteElement< dim, dim >", "class_tools_1_1_parsed_finite_element.html", null ],
+        [ "Tools::ParsedGridGenerator< dim, dim >", "class_tools_1_1_parsed_grid_generator.html", null ],
+        [ "PDEs::SerialPoisson< dim, spacedim >", "class_p_d_es_1_1_serial_poisson.html", null ],
+        [ "Tools::ParsedBoundaryConditions< spacedim >", "class_tools_1_1_parsed_boundary_conditions.html", null ],
         [ "Tools::ParsedConstants", "class_tools_1_1_parsed_constants.html", null ],
         [ "Tools::ParsedFiniteElement< dim, spacedim >", "class_tools_1_1_parsed_finite_element.html", null ],
         [ "Tools::ParsedFunction< dim >", "class_tools_1_1_parsed_function.html", null ],

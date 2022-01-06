@@ -108,6 +108,7 @@ $(document).ready(function(){initNavTree('components_8cc.html',''); initResizabl
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="components_8h_source.html">tools/components.h</a>&quot;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/patterns_8h.html">deal.II/base/patterns.h</a>&gt;</code><br />
+<code>#include &lt;numeric&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for components.cc:</div>
 <div class="dyncontent">
@@ -122,6 +123,7 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespace_tools"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html">Tools</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_tools_1_1_components"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html">Tools::Components</a></td></tr>
+<tr class="memdesc:namespace_tools_1_1_components"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a> for extracting components and boundary condition types from strings. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -135,6 +137,21 @@ Functions</h2></td></tr>
 <tr class="memitem:ae20ad35875e08a9656c5a42ba2e4e821"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::vector&lt; std::string &gt;, std::vector&lt; unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#ae20ad35875e08a9656c5a42ba2e4e821">Tools::Components::names_to_blocks</a> (const std::string &amp;component_names)</td></tr>
 <tr class="memdesc:ae20ad35875e08a9656c5a42ba2e4e821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build block names and multiplicities from component names.  <a href="namespace_tools_1_1_components.html#ae20ad35875e08a9656c5a42ba2e4e821">More...</a><br /></td></tr>
 <tr class="separator:ae20ad35875e08a9656c5a42ba2e4e821"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a841bf5cb239b2ecdd2c79da9628bf14c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#a841bf5cb239b2ecdd2c79da9628bf14c">Tools::Components::component_name</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:a841bf5cb239b2ecdd2c79da9628bf14c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the canonical component name for the given selected component.  <a href="namespace_tools_1_1_components.html#a841bf5cb239b2ecdd2c79da9628bf14c">More...</a><br /></td></tr>
+<tr class="separator:a841bf5cb239b2ecdd2c79da9628bf14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9daa0c82a81c9222ab52fe77fd17442c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#a9daa0c82a81c9222ab52fe77fd17442c">Tools::Components::block_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_components)</td></tr>
+<tr class="memdesc:a9daa0c82a81c9222ab52fe77fd17442c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the block corresponding to the given selected components, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_tools_1_1_components.html#a9daa0c82a81c9222ab52fe77fd17442c">More...</a><br /></td></tr>
+<tr class="separator:a9daa0c82a81c9222ab52fe77fd17442c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f65db4111ad8c65b44f02f6f3d7dee1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#a8f65db4111ad8c65b44f02f6f3d7dee1">Tools::Components::component_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_components)</td></tr>
+<tr class="memdesc:a8f65db4111ad8c65b44f02f6f3d7dee1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the components corresponding to first component of the given selected components, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_tools_1_1_components.html#a8f65db4111ad8c65b44f02f6f3d7dee1">More...</a><br /></td></tr>
+<tr class="separator:a8f65db4111ad8c65b44f02f6f3d7dee1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bcdc1966709048a8e78b49874ecf374"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned int, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#a3bcdc1966709048a8e78b49874ecf374">Tools::Components::component_to_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:a3bcdc1966709048a8e78b49874ecf374"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the components and within the blocks corresponding to first component of the given selected component, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_tools_1_1_components.html#a3bcdc1966709048a8e78b49874ecf374">More...</a><br /></td></tr>
+<tr class="separator:a3bcdc1966709048a8e78b49874ecf374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac23dc55d728f4a353d3fb176291b52"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#a2ac23dc55d728f4a353d3fb176291b52">Tools::Components::type</a> (const std::string &amp;component_name, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:a2ac23dc55d728f4a353d3fb176291b52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the component type for the given selected component.  <a href="namespace_tools_1_1_components.html#a2ac23dc55d728f4a353d3fb176291b52">More...</a><br /></td></tr>
+<tr class="separator:a2ac23dc55d728f4a353d3fb176291b52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9679c2a499ea48a301e2613cb5736bde"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools_1_1_components.html#a9679c2a499ea48a301e2613cb5736bde">Tools::Components::n_blocks</a> (const std::string &amp;component_names)</td></tr>
 <tr class="memdesc:a9679c2a499ea48a301e2613cb5736bde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count the number of components in the given list of comma separated components.  <a href="namespace_tools_1_1_components.html#a9679c2a499ea48a301e2613cb5736bde">More...</a><br /></td></tr>
 <tr class="separator:a9679c2a499ea48a301e2613cb5736bde"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,7 +165,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="components_8cc.html">components.cc</a></li>
-    <li class="footer">Generated on Wed Jan 5 2022 17:06:32 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Jan 6 2022 23:21:25 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

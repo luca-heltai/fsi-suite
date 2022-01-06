@@ -29,6 +29,7 @@ var NAVTREE =
       [ "Useful links", "index.html#autotoc_md3", null ],
       [ "Course program", "index.html#autotoc_md4", null ]
     ] ],
+    [ "Collection of PDEs", "_p_d_es.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -60,7 +61,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_p_d_es.html",
+"structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4.html#ab241bd8a1a7528f4ca9c8b17920a527a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
