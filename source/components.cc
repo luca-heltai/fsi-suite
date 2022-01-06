@@ -2,10 +2,15 @@
 
 #include <deal.II/base/patterns.h>
 
+#include <numeric>
 using namespace dealii;
 
 namespace Tools
 {
+  /**
+   * Utilities for extracting components and boundary condition types from
+   * strings.
+   */
   namespace Components
   {
     unsigned int
@@ -48,6 +53,149 @@ namespace Tools
       return std::make_pair(blocks, multiplicities);
     }
 
+    std::string
+    component_name(const std::string &component_names,
+                   const std::string &selected_component)
+    {
+      const auto  components = Utilities::split_string_list(component_names);
+      std::string name       = selected_component;
+      // Try normal and tangential components
+      {
+        const auto c = Utilities::split_string_list(selected_component, ".");
+        if (c.size() == 2)
+          {
+            if (c[1] == "n" || c[1] == "t" || c[1] == "N" || c[1] == "T")
+              name = c[0];
+            else
+              {
+                AssertThrow(false,
+                            ExcMessage("You asked for " + selected_component +
+                                       ", but I don' know how to interpret " +
+                                       c[1]));
+              }
+          }
+      }
+      // Try direct name now
+      if (std::find(components.begin(), components.end(), name) !=
+          components.end())
+        {
+          return name;
+        }
+      // That didn't work. Se if we are asking for all components
+      if (selected_component == "all" || selected_component == "ALL")
+        {
+          // We return the first component
+          return components[0];
+        }
+      // Nothing else worked. Try numbers.
+      else
+        {
+          try
+            {
+              unsigned int c = Utilities::string_to_int(selected_component);
+              AssertThrow(c < components.size(),
+                          ExcMessage(
+                            "You asked for component " + selected_component +
+                            ", but there are only " +
+                            Utilities::int_to_string(components.size()) +
+                            " components."));
+              return components[c];
+            }
+          catch (...)
+            {
+              // Nothing else worked. Throw an exception.
+              AssertThrow(false,
+                          ExcMessage("You asked for " + selected_component +
+                                     ", but I don' know how to interpret it " +
+                                     "with names " + component_names));
+            }
+        }
+      return "";
+    }
+
+
+
+    std::vector<unsigned int>
+    block_indices(const std::string &component_names,
+                  const std::string &selected_components)
+    {
+      const auto &[b, m] = names_to_blocks(component_names);
+      const auto comps   = Utilities::split_string_list(selected_components);
+      std::vector<unsigned int> indices;
+      for (const auto &c : comps)
+        {
+          const auto name  = component_name(component_names, c);
+          const auto index = std::find(b.begin(), b.end(), name);
+          AssertThrow(index != b.end(),
+                      ExcMessage("You asked for " + name +
+                                 ", but I don' know how to interpret it " +
+                                 "with names " + component_names));
+          indices.push_back(std::distance(b.begin(), index));
+        }
+      return indices;
+    }
+
+
+
+    std::vector<unsigned int>
+    component_indices(const std::string &component_names,
+                      const std::string &selected_components)
+    {
+      const auto &[b, m] = names_to_blocks(component_names);
+      const auto bi      = block_indices(component_names, selected_components);
+      std::vector<unsigned int> indices;
+      for (const auto &i : bi)
+        indices.push_back(std::accumulate(m.begin(), m.begin() + i, 0));
+      return indices;
+    }
+
+
+
+    std::pair<unsigned int, unsigned int>
+    component_to_indices(const std::string &component_names,
+                         const std::string &selected_component)
+    {
+      const auto i1 = component_indices(component_names, selected_component);
+      const auto i2 = block_indices(component_names, selected_component);
+      AssertDimension(i1.size(), i2.size());
+      AssertThrow(i1.size() == 1,
+                  ExcMessage("You asked for " + selected_component +
+                             " components, but only one component at a time "
+                             "should be passed to this function."));
+      return std::make_pair(i1[0], i2[0]);
+    }
+
+
+
+    Type
+    component_type(const std::string &component_names,
+                   const std::string &selected_component)
+    {
+      // Simple case: all components
+      if (selected_component == "all" || selected_component == "ALL")
+        return Type::all;
+
+      const auto &[b, m] = names_to_blocks(component_names);
+      {
+        // Normal and tangential
+        const auto c = Utilities::split_string_list(selected_component, ".");
+        if (c.size() == 2)
+          {
+            if (c[1] == "n" || c[1] == "N")
+              return Type::normal;
+            else if (c[1] == "t" || c[1] == "T")
+              return Type::tangential;
+          }
+      }
+      // Now check if we have a scalar or a vector
+      const auto &[ci, bi] =
+        component_to_indices(component_names, selected_component);
+      if (m[bi] == 1)
+        return Type::scalar;
+      else
+        return Type::vector;
+    }
+
 
 
     unsigned int
@@ -62,69 +210,47 @@ namespace Tools
     ComponentMask
     mask(const std::string &component_names, const std::string &comp)
     {
-      std::string selected_component;
-      {
-        // Try to extrac normal component first
-        auto sc            = Utilities::split_string_list(comp, ".");
-        selected_component = sc[0];
-        if (sc.size() > 1)
-          {
-            AssertThrow(sc[1] == "N" || sc[1] == "n",
-                        ExcMessage("Invalid normal component specification"));
-            // Now check if the selected component is a vector
-            const auto &[c, m] = names_to_blocks(component_names);
-            const auto pos = std::find(c.begin(), c.end(), selected_component);
-            AssertThrow(pos != c.end(),
-                        ExcMessage("Invalid normal component specification"));
-            AssertThrow(m[pos - c.begin()] > 1,
-                        ExcMessage("Normal component specification is only "
-                                   "valid for vector components"));
-          }
-      }
       const unsigned int n = n_components(component_names);
       std::vector<bool>  _mask(n, false);
-
-      if (selected_component == "ALL" || selected_component == "all")
+      // Treat differently the case of numbers and the case of strings
+      try
         {
-          for (unsigned int j = 0; j < n; ++j)
-            _mask[j] = true;
+          const auto comps =
+            Patterns::Tools::Convert<std::vector<unsigned int>>::to_value(comp);
+          for (const auto &c : comps)
+            {
+              AssertThrow(c < n,
+                          ExcMessage("You asked for component " +
+                                     Utilities::int_to_string(c) +
+                                     ", but there are only " +
+                                     Utilities::int_to_string(n) +
+                                     " components."));
+              _mask[c] = true;
+            }
           return ComponentMask(_mask);
         }
-
-      const auto components = Utilities::split_string_list(component_names);
-
-      bool found = false;
-      for (unsigned int c = 0; c < components.size(); ++c)
+      catch (...)
         {
-          if (components[c] == selected_component)
+          // First the "ALL" case.
+          if (comp == "ALL" || comp == "all")
             {
-              _mask[c] = true;
-              found    = true;
+              for (unsigned int j = 0; j < n; ++j)
+                _mask[j] = true;
+              return ComponentMask(_mask);
             }
+          // Then standard cases
+          const auto ids     = component_indices(component_names, comp);
+          const auto bids    = block_indices(component_names, comp);
+          const auto &[b, m] = names_to_blocks(component_names);
+          AssertDimension(ids.size(), bids.size());
+          for (unsigned int i = 0; i < ids.size(); ++i)
+            {
+              _mask[ids[i]] = true;
+              for (unsigned int j = 0; j < m[bids[i]]; ++j)
+                _mask[ids[i] + j] = true;
+            }
+          return ComponentMask(_mask);
         }
-      if (found == true)
-        return ComponentMask(_mask);
-
-      // If we got here the selected component is not in the list of
-      // components. Try to see if numbers were used.
-      std::vector<unsigned int> selected_ids =
-        Patterns::Tools::Convert<std::vector<unsigned int>>::to_value(
-          selected_component);
-      for (const auto i : selected_ids)
-        {
-          AssertThrow(i < n, ExcIndexRange(i, 0, n));
-          _mask[i] = true;
-          found    = true;
-        }
-      if (found == true)
-        return ComponentMask(_mask);
-      else
-        AssertThrow(false,
-                    ExcMessage("The selected component is not in the list "
-                               "of components or the selected component "
-                               "could not be converted to a list of "
-                               "component ids."));
-      return ComponentMask(); // Make compilers happy
     }
   } // namespace Components
 } // namespace Tools

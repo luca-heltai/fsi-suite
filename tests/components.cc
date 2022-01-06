@@ -11,14 +11,17 @@
 
 #include "dim_spacedim_tester.h"
 using namespace dealii;
+using namespace Tools::Components;
 
-TEST(Components, SimpleComponentsChecks)
+
+
+TEST(Components, NamesToBlocks)
 {
   const std::string names = "u, u, p";
-  ASSERT_EQ(Tools::Components::n_components(names), 3u);
-  ASSERT_EQ(Tools::Components::n_blocks(names), 2u);
+  ASSERT_EQ(n_components(names), 3u);
+  ASSERT_EQ(n_blocks(names), 2u);
 
-  const auto &[b, m] = Tools::Components::names_to_blocks(names);
+  const auto &[b, m] = names_to_blocks(names);
   ASSERT_EQ(b.size(), 2u);
   ASSERT_EQ(m.size(), 2u);
   ASSERT_EQ(b[0], "u");
@@ -26,37 +29,129 @@ TEST(Components, SimpleComponentsChecks)
   ASSERT_EQ(b[1], "p");
   ASSERT_EQ(m[1], 1u);
 
-  ASSERT_EQ(Tools::Components::blocks_to_names(b, m), names);
+  ASSERT_EQ(blocks_to_names(b, m), names);
+}
 
-  // Now test that masks work correctly.
-  auto mask = Tools::Components::mask(names, "u");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, true, false");
 
-  mask = Tools::Components::mask(names, "p");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "false, false, true");
 
-  mask = Tools::Components::mask(names, "u.N");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, true, false");
+TEST(Components, BlockIndices)
+{
+  const std::string names = "u, u, p";
 
-  mask = Tools::Components::mask(names, "u.n");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, true, false");
+  auto r = block_indices(names, "u");
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
 
-  mask = Tools::Components::mask(names, "0, 1");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, true, false");
+  r = block_indices(names, "u, p"); // {0,1
+  ASSERT_EQ(r.size(), 2u);
+  ASSERT_EQ(r[0], 0u);
+  ASSERT_EQ(r[1], 1u);
 
-  mask = Tools::Components::mask(names, "0");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, false, false");
+  r = block_indices(names, "p"); // {1}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 1u);
 
-  mask = Tools::Components::mask(names, "1, 2");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "false, true, true");
+  r = block_indices(names, "2"); // {1}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 1u);
 
-  mask = Tools::Components::mask(names, "ALL");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, true, true");
+  r = block_indices(names, "1"); // {0}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
 
-  mask = Tools::Components::mask(names, "all");
-  ASSERT_EQ(Patterns::Tools::to_string(mask), "true, true, true");
+  r = block_indices(names, "0,1,2"); // {0,0,1}
+  ASSERT_EQ(r.size(), 3u);
+  ASSERT_EQ(r[0], 0u);
+  ASSERT_EQ(r[1], 0u);
+  ASSERT_EQ(r[2], 1u);
 
-  ASSERT_ANY_THROW(Tools::Components::mask(names, "u.T"));
-  ASSERT_ANY_THROW(Tools::Components::mask(names, "v"));
-  ASSERT_ANY_THROW(Tools::Components::mask(names, "3"));
+  r = block_indices(names, "u.n"); // {0}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
+
+  r = block_indices(names, "u.t"); // {0}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
+}
+
+
+
+TEST(Components, ComponentIndices)
+{
+  const std::string names = "u, u, p";
+
+  auto r = component_indices(names, "u");
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
+
+  r = component_indices(names, "u, p"); // {0,2}
+  ASSERT_EQ(r.size(), 2u);
+  ASSERT_EQ(r[0], 0u);
+  ASSERT_EQ(r[1], 2u);
+
+  r = component_indices(names, "p"); // {2}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 2u);
+
+  r = component_indices(names, "2"); // {2}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 2u);
+
+  r = component_indices(names, "1"); // {0}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
+
+  r = component_indices(names, "0,1,2"); // {0,0,2}
+  ASSERT_EQ(r.size(), 3u);
+  ASSERT_EQ(r[0], 0u);
+  ASSERT_EQ(r[1], 0u);
+  ASSERT_EQ(r[2], 2u);
+
+  r = component_indices(names, "u.n"); // {0}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
+
+  r = component_indices(names, "u.t"); // {0}
+  ASSERT_EQ(r.size(), 1u);
+  ASSERT_EQ(r[0], 0u);
+}
+
+
+
+TEST(Components, Mask)
+{
+  const std::string names = "u, u, p";
+
+  auto m = mask(names, "u");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, false");
+
+  m = mask(names, "p");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "false, false, true");
+
+  m = mask(names, "u.N");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, false");
+
+  m = mask(names, "u.n");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, false");
+
+  m = mask(names, "0, 1");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, false");
+
+  m = mask(names, "0");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, false, false");
+
+  m = mask(names, "1, 2");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "false, true, true");
+
+  m = mask(names, "ALL");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, true");
+
+  m = mask(names, "all");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, true");
+
+  m = mask(names, "u.T");
+  ASSERT_EQ(Patterns::Tools::to_string(m), "true, true, false");
+
+  ASSERT_ANY_THROW(mask(names, "v"));
+  ASSERT_ANY_THROW(mask(names, "3"));
 }

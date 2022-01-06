@@ -60,7 +60,7 @@ TYPED_TEST(DimTester, ParsedBoundaryConditions)
   // Check we fail if ids are set in the wrong way
   ASSERT_ANY_THROW({
     this->parse(R"(
-       set Boundary id sets (u) = 1, 1
+       set Boundary id sets (u) = 1; 1
        set Selected components (u) = u; u
        set Boundary condition types (u) = dirichlet, dirichlet
        set Expressions (u) = 0 % 0

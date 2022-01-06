@@ -9,8 +9,8 @@ using namespace dealii;
 
 namespace Tools
 {
-  template <int dim>
-  ParsedBoundaryConditions<dim>::ParsedBoundaryConditions(
+  template <int spacedim>
+  ParsedBoundaryConditions<spacedim>::ParsedBoundaryConditions(
     const std::string &                                      section_name,
     const std::string &                                      component_names,
     const std::vector<std::set<dealii::types::boundary_id>> &ids,
@@ -56,19 +56,27 @@ namespace Tools
                   expr_pattern);
 
     this->parse_parameters_call_back.connect([&]() {
+      // Parse expressions into functions.
       functions.clear();
       for (const auto &exp : this->expressions)
         functions.emplace_back(
-          std::make_unique<dealii::Functions::SymbolicFunction<dim>>(exp));
+          std::make_unique<dealii::Functions::SymbolicFunction<spacedim>>(exp));
+      masks.clear();
+
+      // Parse components into masks
+      for (const auto &comp : this->selected_components)
+        masks.push_back(Components::mask(this->component_names, comp));
+
+      // Check that everything is consistent
       check_consistency();
     });
   }
 
 
 
-  template <int dim>
+  template <int spacedim>
   void
-  ParsedBoundaryConditions<dim>::check_consistency() const
+  ParsedBoundaryConditions<spacedim>::check_consistency() const
   {
     n_boundary_conditions = ids.size();
     AssertThrow(n_boundary_conditions == bc_type.size(),
@@ -119,9 +127,9 @@ namespace Tools
 
 
 
-  template <int dim>
+  template <int spacedim>
   void
-  ParsedBoundaryConditions<dim>::update_substitution_map(
+  ParsedBoundaryConditions<spacedim>::update_substitution_map(
     const dealii::Differentiation::SD::types::substitution_map
       &substitution_map)
   {
@@ -131,9 +139,9 @@ namespace Tools
 
 
 
-  template <int dim>
+  template <int spacedim>
   void
-  ParsedBoundaryConditions<dim>::set_additional_function_arguments(
+  ParsedBoundaryConditions<spacedim>::set_additional_function_arguments(
     const Differentiation::SD::types::substitution_map &arguments)
   {
     for (auto &f : functions)
@@ -142,9 +150,9 @@ namespace Tools
 
 
 
-  template <int dim>
+  template <int spacedim>
   void
-  ParsedBoundaryConditions<dim>::set_time(const double &time)
+  ParsedBoundaryConditions<spacedim>::set_time(const double &time)
   {
     for (auto &f : functions)
       f->set_time(time);
