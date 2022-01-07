@@ -233,12 +233,12 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  };</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">#  ifndef DOXYGEN</span></div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="comment">// Template implementations</span></div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">typename</span> MatrixType, <span class="keyword">typename</span> VectorType&gt;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00238"></a><span class="lineno"><a class="line" href="class_tools_1_1_parsed_boundary_conditions.html#a324a075f1d9c5f9d6621746b090aa011">  238</a></span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;   mapping,</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints,</div>
@@ -258,7 +258,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">typename</span> MatrixType, <span class="keyword">typename</span> VectorType&gt;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="class_tools_1_1_parsed_boundary_conditions.html#a854347a557e12842e71e84806738a671">  258</a></span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints,</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    MatrixType &amp;                             matrix,</div>
@@ -266,7 +266,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="keyword">  </span>{</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;mapping =</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(dof_handler.get_triangulation());</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    apply_boundary_conditions(mapping, dof_handler, constraints, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, rhs);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    apply_boundary_conditions(mapping, dof_handler, constraints, matrix, rhs);</div>
 <div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  }</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
@@ -274,7 +274,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">  274</a></span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints,</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;                             ignore_unsupported)<span class="keyword"> const</span></div>
@@ -292,7 +292,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="class_tools_1_1_parsed_boundary_conditions.html#af97609d61ce55234b13463a969646a8f">  292</a></span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <a class="code" href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">ParsedBoundaryConditions&lt;spacedim&gt;::apply_boundary_conditions</a>(</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;   mapping,</div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints,</div>
@@ -349,7 +349,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;              {</div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga5e6b9de5ad09eb5009075618f08eb129">dealii::VectorTools::interpolate_boundary_values</a>(</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                  mapping, dof_handler, fmap, constraints, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                  mapping, dof_handler, fmap, constraints, mask);</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;              }</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;          }</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keywordflow">else</span></div>
@@ -358,9 +358,10 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;          }</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      }</div>
 <div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;} <span class="comment">// namespace Tools</span></div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor">#  endif</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;} <span class="comment">// namespace Tools</span></div>
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aparsed__symbolic__function_8h_html"><div class="ttname"><a href="parsed__symbolic__function_8h.html">parsed_symbolic_function.h</a></div></div>
@@ -405,7 +406,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div class="ttc" id="aclassParameterAcceptor_html_a52134c59ec98830230c23e080c841705"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">ParameterAcceptor::section_name</a></div><div class="ttdeci">const std::string section_name</div></div>
 <div class="ttc" id="avector__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">vector_tools.h</a></div></div>
 <div class="ttc" id="adofs_2dof__handler_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">dof_handler.h</a></div></div>
-<div class="ttc" id="aclass_tools_1_1_parsed_boundary_conditions_html_a086a17682b62f35ec0a7ad61762d0b1a"><div class="ttname"><a href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">Tools::ParsedBoundaryConditions::apply_boundary_conditions</a></div><div class="ttdeci">void apply_boundary_conditions(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, AffineConstraints&lt; double &gt; &amp;constraints, const bool &amp;ignore_unsopported=false) const</div><div class="ttdoc">Add the boundary conditions computed with this object to the specified constraints.</div><div class="ttdef"><b>Definition:</b> <a href="parsed__boundary__conditions_8h_source.html#l00274">parsed_boundary_conditions.h:274</a></div></div>
+<div class="ttc" id="aclass_tools_1_1_parsed_boundary_conditions_html_a086a17682b62f35ec0a7ad61762d0b1a"><div class="ttname"><a href="class_tools_1_1_parsed_boundary_conditions.html#a086a17682b62f35ec0a7ad61762d0b1a">Tools::ParsedBoundaryConditions::apply_boundary_conditions</a></div><div class="ttdeci">void apply_boundary_conditions(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, AffineConstraints&lt; double &gt; &amp;constraints, const bool &amp;ignore_unsopported=false) const</div><div class="ttdoc">Add the boundary conditions computed with this object to the specified constraints.</div></div>
 <div class="ttc" id="aaffine__constraints_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/affine__constraints_8h.html">affine_constraints.h</a></div></div>
 <div class="ttc" id="anamespace_tools_1_1_components_html_ace3762474c48ee9cc0225284d7541f7bafea087517c26fadd409bd4b9dc642555"><div class="ttname"><a href="namespace_tools_1_1_components.html#ace3762474c48ee9cc0225284d7541f7bafea087517c26fadd409bd4b9dc642555">Tools::Components::Type::normal</a></div><div class="ttdeci">@ normal</div><div class="ttdoc">Normal component of a vector.</div></div>
 <div class="ttc" id="aclass_tools_1_1_parsed_boundary_conditions_html_a63eb32063b65d65a73325ee0cd8ee290"><div class="ttname"><a href="class_tools_1_1_parsed_boundary_conditions.html#a63eb32063b65d65a73325ee0cd8ee290">Tools::ParsedBoundaryConditions::grid_info</a></div><div class="ttdeci">GridInfo grid_info</div><div class="ttdoc">Information about the grid this BC applies to.</div><div class="ttdef"><b>Definition:</b> <a href="parsed__boundary__conditions_8h_source.html#l00229">parsed_boundary_conditions.h:229</a></div></div>
@@ -425,7 +426,7 @@ $(document).ready(function(){initNavTree('parsed__boundary__conditions_8h_source
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_db22b1395f615d1428e10e22469fe87b.html">tools</a></li><li class="navelem"><a class="el" href="parsed__boundary__conditions_8h.html">parsed_boundary_conditions.h</a></li>
-    <li class="footer">Generated on Thu Jan 6 2022 23:21:25 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 7 2022 15:56:25 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

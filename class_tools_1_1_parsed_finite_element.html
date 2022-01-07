@@ -127,9 +127,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a97cc989e8e49fcb9a741cd781084393c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a97cc989e8e49fcb9a741cd781084393c">operator FiniteElement&lt; dim, spacedim &gt; &amp;</a> ()</td></tr>
 <tr class="memdesc:a97cc989e8e49fcb9a741cd781084393c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#a97cc989e8e49fcb9a741cd781084393c">More...</a><br /></td></tr>
 <tr class="separator:a97cc989e8e49fcb9a741cd781084393c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5a10e33e2e7a458f233156f0845a108"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#ab5a10e33e2e7a458f233156f0845a108">operator()</a> ()</td></tr>
-<tr class="memdesc:ab5a10e33e2e7a458f233156f0845a108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#ab5a10e33e2e7a458f233156f0845a108">More...</a><br /></td></tr>
-<tr class="separator:ab5a10e33e2e7a458f233156f0845a108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eadc28b8fa633dcc54c8650552c0412"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a6eadc28b8fa633dcc54c8650552c0412">operator const FiniteElement&lt; dim, spacedim &gt; &amp;</a> () const</td></tr>
+<tr class="memdesc:a6eadc28b8fa633dcc54c8650552c0412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a const reference to the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#a6eadc28b8fa633dcc54c8650552c0412">More...</a><br /></td></tr>
+<tr class="separator:a6eadc28b8fa633dcc54c8650552c0412"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a51a8ed51572fd246328a27b6fbd48e"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#a8a51a8ed51572fd246328a27b6fbd48e">operator()</a> ()</td></tr>
+<tr class="memdesc:a8a51a8ed51572fd246328a27b6fbd48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a reference to the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#a8a51a8ed51572fd246328a27b6fbd48e">More...</a><br /></td></tr>
+<tr class="separator:a8a51a8ed51572fd246328a27b6fbd48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abafd66aaea84e0d9da741f4503c20fd9"><td class="memItemLeft" align="right" valign="top">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#abafd66aaea84e0d9da741f4503c20fd9">operator()</a> () const</td></tr>
+<tr class="memdesc:abafd66aaea84e0d9da741f4503c20fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a const reference to the Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#abafd66aaea84e0d9da741f4503c20fd9">More...</a><br /></td></tr>
+<tr class="separator:abafd66aaea84e0d9da741f4503c20fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe5a4085477a8b0b24fe46782062e34b"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tools_1_1_parsed_finite_element.html#afe5a4085477a8b0b24fe46782062e34b">get_joint_component_names</a> () const</td></tr>
 <tr class="memdesc:afe5a4085477a8b0b24fe46782062e34b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the component names for this Finite Element.  <a href="class_tools_1_1_parsed_finite_element.html#afe5a4085477a8b0b24fe46782062e34b">More...</a><br /></td></tr>
 <tr class="separator:afe5a4085477a8b0b24fe46782062e34b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -351,7 +357,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Explicit conversion to the stored <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> is possible after parsing has occurred.</p>
 <p>If a component name is repeated, then that component is assumed to be part of a vector or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTensor.html">Tensor</a> field, and it is treated as a single block. User classes can use this information to construct block matrices and vectors, or to group solution names according to components. For example, a Stokes problem may have "u,u,p" for dim = 2 or "u, u, u, p" for dim = 3, resulting in a vector-valued system with two blocks (one for the velocity, and one for the pressure), and dim+1 components. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00016">16</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00017">17</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -372,7 +378,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the block names for this Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00108">108</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00140">140</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -393,7 +399,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return the blocking of the components for this finite element. </p>
 <p>This is what's needed by the block renumbering algorithm. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00116">116</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00148">148</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -413,7 +419,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the component names for this Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00100">100</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00132">132</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -438,7 +444,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return the first occurence of <code>var</code> in <code>default_component_names</code>. </p>
 <p>Remark: this is the value required by <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFEValuesExtractors.html">FEValuesExtractors</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00123">123</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00155">155</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -458,7 +464,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the component names for this Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00092">92</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00124">124</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -482,7 +488,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return <code>true</code> if <code>var</code> is vector, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00135">135</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00167">167</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -503,7 +509,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return the number of blocks of the Finite Element, i.e., the number of variables. </p>
 <p>For example, simple Heat equation has 1 block, Navier-Stokes 2 blocks (u and p). </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00084">84</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00116">116</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -523,7 +529,27 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the number of components of the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00076">76</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00108">108</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+
+</div>
+</div>
+<a id="a6eadc28b8fa633dcc54c8650552c0412"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6eadc28b8fa633dcc54c8650552c0412">&#9670;&nbsp;</a></span>operator const FiniteElement&lt; dim, spacedim &gt; &amp;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tools_1_1_parsed_finite_element.html">Tools::ParsedFiniteElement</a>&lt; dim, spacedim &gt;::operator const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &amp;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a const reference to the Finite Element. </p>
+
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00077">77</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -543,12 +569,12 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return a reference to the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00056">56</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00067">67</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
 
 </div>
 </div>
-<a id="ab5a10e33e2e7a458f233156f0845a108"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5a10e33e2e7a458f233156f0845a108">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a8a51a8ed51572fd246328a27b6fbd48e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a51a8ed51572fd246328a27b6fbd48e">&#9670;&nbsp;</a></span>operator()() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -556,14 +582,35 @@ template&lt;int dim, int spacedim&gt; </div>
 template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &amp; <a class="el" href="class_tools_1_1_parsed_finite_element.html">Tools::ParsedFiniteElement</a>&lt; dim, spacedim &gt;::operator()</td>
+          <td class="memname">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &amp; <a class="el" href="class_tools_1_1_parsed_finite_element.html">Tools::ParsedFiniteElement</a>&lt; dim, spacedim &gt;::operator()</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Return a reference to the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00066">66</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8cc_source.html#l00088">88</a> of file <a class="el" href="parsed__finite__element_8cc_source.html">parsed_finite_element.cc</a>.</p>
+
+</div>
+</div>
+<a id="abafd66aaea84e0d9da741f4503c20fd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abafd66aaea84e0d9da741f4503c20fd9">&#9670;&nbsp;</a></span>operator()() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;dim, spacedim&gt;&amp; <a class="el" href="class_tools_1_1_parsed_finite_element.html">Tools::ParsedFiniteElement</a>&lt; dim, spacedim &gt;::operator() </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a const reference to the Finite Element. </p>
 
 </div>
 </div>
@@ -593,7 +640,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>The subdivision, in terms of block names. </p>
 <p>This is automatically computed from the the component names. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00185">185</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00196">196</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
 </div>
 </div>
@@ -622,7 +669,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>The subdivision, in terms of component indices. </p>
 <p>This is automatically computed from the the component names. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00179">179</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00190">190</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
 </div>
 </div>
@@ -651,7 +698,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>Component names. </p>
 <p>This is comma separeted list of component names which identifies the Finite Elemenet. If a name is repeated, then that component is assumed to be part of a vector field or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTensor.html">Tensor</a> field, and is treated as a single block. User classes can use this information to construct block matrices and vectors, or to group solution names according to components. For example, a Stokes problem may have "u, u, p" for dim = 2 or "u, u, u, p" for dim = 3. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00168">168</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00179">179</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
 </div>
 </div>
@@ -679,7 +726,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> object. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00188">188</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00199">199</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
 </div>
 </div>
@@ -707,7 +754,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Finite Element Name. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00173">173</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00184">184</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
 </div>
 </div>
@@ -735,7 +782,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Component names as a single comma separated string. </p>
 
-<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00156">156</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="parsed__finite__element_8h_source.html#l00167">167</a> of file <a class="el" href="parsed__finite__element_8h_source.html">parsed_finite_element.h</a>.</p>
 
 </div>
 </div>
@@ -749,7 +796,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_tools_1_1_parsed_finite_element.html">ParsedFiniteElement</a></li>
-    <li class="footer">Generated on Thu Jan 6 2022 23:21:25 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 7 2022 15:56:25 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

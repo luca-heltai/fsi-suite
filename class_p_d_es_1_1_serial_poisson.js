@@ -18,7 +18,7 @@ var class_p_d_es_1_1_serial_poisson =
     [ "grid_generator", "class_p_d_es_1_1_serial_poisson.html#a66bab8e5899598ac3037674393559b8c", null ],
     [ "grid_refinement", "class_p_d_es_1_1_serial_poisson.html#aa53bc6c99c4d60b36fb056000f35220c", null ],
     [ "inverse_operator", "class_p_d_es_1_1_serial_poisson.html#a3ece4151ec7169c01601f292f5616592", null ],
-    [ "n_refinement_cycles", "class_p_d_es_1_1_serial_poisson.html#a0b7d168087bd9fed60ea5589601be856", null ],
+    [ "mapping", "class_p_d_es_1_1_serial_poisson.html#a711cba0991fda731fd8fbc31608f115c", null ],
     [ "output_filename", "class_p_d_es_1_1_serial_poisson.html#a261afa8a31f358b67e015ea5e7338be2", null ],
     [ "solution", "class_p_d_es_1_1_serial_poisson.html#affab8a4ded65820e0a9522007c748a60", null ],
     [ "sparsity_pattern", "class_p_d_es_1_1_serial_poisson.html#a202f371a40d9ecad947e3346b0bff408", null ],

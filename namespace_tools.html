@@ -151,6 +151,12 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a724f4dcaa0ce268dc74bb817a75f172c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implemented boundary ids.  <a href="namespace_tools.html#a724f4dcaa0ce268dc74bb817a75f172c">More...</a><br /></td></tr>
 <tr class="separator:a724f4dcaa0ce268dc74bb817a75f172c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7802c7c039ee3c94a59111348266c740"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_tools.html#a7802c7c039ee3c94a59111348266c740">RefinementStrategy</a> { <a class="el" href="namespace_tools.html#a7802c7c039ee3c94a59111348266c740a9c70933aff6b2a6d08c687a6cbb6b765">RefinementStrategy::global</a> = 1, 
+<a class="el" href="namespace_tools.html#a7802c7c039ee3c94a59111348266c740a42940874f384ad36899ee9a693dddb10">RefinementStrategy::fixed_fraction</a> = 2, 
+<a class="el" href="namespace_tools.html#a7802c7c039ee3c94a59111348266c740a95596ea7481f6215f58d37ab484621fe">RefinementStrategy::fixed_number</a> = 3
+ }</td></tr>
+<tr class="memdesc:a7802c7c039ee3c94a59111348266c740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refinement strategy implemented in the ParsedGridRefinement class.  <a href="namespace_tools.html#a7802c7c039ee3c94a59111348266c740">More...</a><br /></td></tr>
+<tr class="separator:a7802c7c039ee3c94a59111348266c740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -187,6 +193,37 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7802c7c039ee3c94a59111348266c740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7802c7c039ee3c94a59111348266c740">&#9670;&nbsp;</a></span>RefinementStrategy</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_tools.html#a7802c7c039ee3c94a59111348266c740">Tools::RefinementStrategy</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Refinement strategy implemented in the <a class="el" href="class_tools_1_1_parsed_grid_refinement.html" title="A wrapper for refinement strategies.">ParsedGridRefinement</a> class. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7802c7c039ee3c94a59111348266c740a9c70933aff6b2a6d08c687a6cbb6b765"></a>global&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7802c7c039ee3c94a59111348266c740a42940874f384ad36899ee9a693dddb10"></a>fixed_fraction&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a7802c7c039ee3c94a59111348266c740a95596ea7481f6215f58d37ab484621fe"></a>fixed_number&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="parsed__grid__refinement_8h_source.html#l00028">28</a> of file <a class="el" href="parsed__grid__refinement_8h_source.html">parsed_grid_refinement.h</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a61876026541cf0b54e4912fd5b16623d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a61876026541cf0b54e4912fd5b16623d">&#9670;&nbsp;</a></span>ParsedConstants::operator const std::map&lt; std::string, double &gt; &amp;()</h2>
@@ -213,7 +250,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_tools.html">Tools</a></li>
-    <li class="footer">Generated on Thu Jan 6 2022 23:21:25 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 7 2022 15:56:25 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -18,9 +18,7 @@ var dir_db22b1395f615d1428e10e22469fe87b =
       [ "ParsedFunction", "class_tools_1_1_parsed_function.html", "class_tools_1_1_parsed_function" ]
     ] ],
     [ "parsed_grid_generator.h", "parsed__grid__generator_8h.html", null ],
-    [ "parsed_grid_refinement.h", "parsed__grid__refinement_8h.html", [
-      [ "ParsedGridRefinement", "class_tools_1_1_parsed_grid_refinement.html", "class_tools_1_1_parsed_grid_refinement" ]
-    ] ],
+    [ "parsed_grid_refinement.h", "parsed__grid__refinement_8h.html", "parsed__grid__refinement_8h" ],
     [ "parsed_inverse_operator.h", "parsed__inverse__operator_8h.html", [
       [ "ParsedInverseOperator", "class_tools_1_1_parsed_inverse_operator.html", "class_tools_1_1_parsed_inverse_operator" ]
     ] ],
