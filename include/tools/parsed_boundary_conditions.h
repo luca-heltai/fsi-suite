@@ -230,7 +230,7 @@ namespace Tools
   };
 
 
-
+#  ifndef DOXYGEN
   // Template implementations
   template <int spacedim>
   template <int dim, typename MatrixType, typename VectorType>
@@ -355,6 +355,7 @@ namespace Tools
           }
       }
   }
+#  endif
 } // namespace Tools
 #endif
 #endif

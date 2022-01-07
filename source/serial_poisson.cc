@@ -29,7 +29,6 @@ namespace PDEs
     , boundary_conditions("/Serial Poisson/Boundary conditions")
   {
     add_parameter("Output filename", output_filename);
-    add_parameter("Number of refinement cycles", n_refinement_cycles);
 
     enter_subsection("Error table");
     enter_my_subsection(this->prm);
@@ -49,6 +48,7 @@ namespace PDEs
     forcing_term().update_user_substitution_map(constants);
 
     dof_handler.distribute_dofs(finite_element);
+    mapping = get_default_linear_mapping(triangulation).clone();
 
     constraints.clear();
     DoFTools::make_hanging_node_constraints(dof_handler, constraints);
@@ -71,16 +71,28 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::assemble_system()
   {
-    QGauss<dim>     quadrature_formula(finite_element().degree + 1);
-    QGauss<dim - 1> face_quadrature_formula(finite_element().degree + 1);
+    const ReferenceCell cell_type = finite_element().reference_cell();
 
-    FEValues<dim, spacedim> fe_values(finite_element,
+    // TODO: make sure we work also for wedges and pyramids
+    const ReferenceCell face_type = cell_type.face_reference_cell(0);
+
+    const Quadrature<dim> quadrature_formula =
+      cell_type.get_gauss_type_quadrature<dim>(
+        finite_element().tensor_degree() + 1);
+
+    const Quadrature<dim - 1> face_quadrature_formula =
+      face_type.get_gauss_type_quadrature<dim - 1>(
+        finite_element().tensor_degree() + 1);
+
+    FEValues<dim, spacedim> fe_values(*mapping,
+                                      finite_element,
                                       quadrature_formula,
                                       update_values | update_gradients |
                                         update_quadrature_points |
                                         update_JxW_values);
 
-    FEFaceValues<dim, spacedim> fe_face_values(finite_element,
+    FEFaceValues<dim, spacedim> fe_face_values(*mapping,
+                                               finite_element,
                                                face_quadrature_formula,
                                                update_values |
                                                  update_quadrature_points |
@@ -154,7 +166,9 @@ namespace PDEs
     DataOut<dim, spacedim> data_out;
     data_out.attach_dof_handler(dof_handler);
     data_out.add_data_vector(solution, "solution");
-    data_out.build_patches();
+    data_out.build_patches(*mapping,
+                           finite_element().degree,
+                           DataOut<dim, spacedim>::curved_inner_cells);
     std::string fname = output_filename + "_" + std::to_string(cycle) + ".vtu";
     std::ofstream output(fname);
     data_out.write_vtu(output);
@@ -167,25 +181,36 @@ namespace PDEs
   SerialPoisson<dim, spacedim>::run()
   {
     grid_generator.generate(triangulation);
-    for (unsigned int cycle = 0; cycle < n_refinement_cycles; ++cycle)
+    for (unsigned int cycle = 0;
+         cycle < grid_refinement.get_n_refinement_cycles();
+         ++cycle)
       {
         setup_system();
         assemble_system();
         solve();
         error_table.error_from_exact(dof_handler, solution, exact_solution());
         output_results(cycle);
-        if (cycle < n_refinement_cycles - 1)
+        if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
           {
-            Vector<float> estimated_error_per_cell(
-              triangulation.n_active_cells());
-            KellyErrorEstimator<dim, spacedim>::estimate(
-              dof_handler,
-              QGauss<dim - 1>(finite_element().degree + 1),
-              {},
-              solution,
-              estimated_error_per_cell);
-            grid_refinement.mark_cells(estimated_error_per_cell, triangulation);
-            triangulation.execute_coarsening_and_refinement();
+            if (grid_refinement.get_strategy() !=
+                Tools::RefinementStrategy::global)
+              {
+                Vector<float> estimated_error_per_cell(
+                  triangulation.n_active_cells());
+                KellyErrorEstimator<dim, spacedim>::estimate(
+                  dof_handler,
+                  QGauss<dim - 1>(finite_element().degree + 1),
+                  {},
+                  solution,
+                  estimated_error_per_cell);
+                grid_refinement.mark_cells(estimated_error_per_cell,
+                                           triangulation);
+                triangulation.execute_coarsening_and_refinement();
+              }
+            else
+              {
+                triangulation.refine_global(1);
+              }
           }
       }
     error_table.output_table(std::cout);

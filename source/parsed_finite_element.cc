@@ -4,7 +4,8 @@
 
 #include <deal.II/base/patterns.h>
 
-#include <deal.II/fe/fe_tools.h>
+#include <deal.II/fe/fe_simplex_p.h>
+#include <deal.II/fe/fe_tools.templates.h>
 
 #include <algorithm> // std::find
 
@@ -48,6 +49,16 @@ namespace Tools
                           "for the ParsedFiniteElement."));
       });
     leave_my_subsection(this->prm);
+
+    // Add some of the deal.II new FE classes.
+    if (dim > 1)
+      {
+        FETools::add_fe_name<dim, spacedim>(
+          "FE_SimplexP", new FETools::FEFactory<FE_SimplexP<dim, spacedim>>());
+        FETools::add_fe_name<dim, spacedim>(
+          "FE_SimplexDGP",
+          new FETools::FEFactory<FE_SimplexDGP<dim, spacedim>>());
+      }
   }
 
 
@@ -62,8 +73,29 @@ namespace Tools
 
 
   template <int dim, int spacedim>
+  ParsedFiniteElement<dim, spacedim>::operator const FiniteElement<dim,
+                                                                   spacedim> &()
+    const
+  {
+    AssertThrow(fe, ExcNotInitialized());
+    return *fe;
+  }
+
+
+
+  template <int dim, int spacedim>
   FiniteElement<dim, spacedim> &
   ParsedFiniteElement<dim, spacedim>::operator()()
+  {
+    AssertThrow(fe, ExcNotInitialized());
+    return *fe;
+  }
+
+
+
+  template <int dim, int spacedim>
+  const FiniteElement<dim, spacedim> &
+  ParsedFiniteElement<dim, spacedim>::operator()() const
   {
     AssertThrow(fe, ExcNotInitialized());
     return *fe;

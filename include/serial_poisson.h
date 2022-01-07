@@ -56,13 +56,13 @@ namespace PDEs
    * When dim and spacedim are not the same, we solve the LaplaceBeltrami
    * equation.
    *
-   * $$
+   * \f[
    * \begin{cases}
-   *  - \Delta u = f & \text{in} \Omega \subset R^{\text{spacedim}}\\
-   * u = u_D & \text{on} \partial \Omega_D \\
-   * \frac{\partial u}{\partial n} u = u_N & \text{on} \partial \Omega_N \\
-   * \frac{\partial u}{\partial n} u + \rho u= u_R & \text{on} \partial \Omega_R
-   * $$
+   *  - \Delta u = f & \text{ in } \Omega \subset R^{\text{spacedim}}\\
+   * u = u_D & \text{ on } \partial \Omega_D \\
+   * \frac{\partial u}{\partial n} u = u_N & \text{ on } \partial \Omega_N \\
+   * \frac{\partial u}{\partial n} u + \rho u= u_R & \text{ on } \partial
+   * \Omega_R \end{cases} \f]
    *
    * @ingroup PDEs
    */
@@ -101,6 +101,7 @@ namespace PDEs
     // FE and dofs classes
     Tools::ParsedFiniteElement<dim, spacedim> finite_element;
     DoFHandler<dim, spacedim>                 dof_handler;
+    std::unique_ptr<Mapping<dim, spacedim>>   mapping;
 
     // Linear algebra classes
     AffineConstraints<double>    constraints;
@@ -119,8 +120,7 @@ namespace PDEs
     // Error convergence tables
     ParsedConvergenceTable error_table;
 
-    unsigned int n_refinement_cycles = 1;
-    std::string  output_filename     = "poisson";
+    std::string output_filename = "poisson";
   };
 } // namespace PDEs
 #endif

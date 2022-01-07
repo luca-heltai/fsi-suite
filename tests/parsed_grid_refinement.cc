@@ -16,7 +16,8 @@ TYPED_TEST(DimSpacedimTesterNoOne, ParsedGridRefinementGlobal)
   Triangulation<this->dim, this->spacedim> tria;
   GridGenerator::hyper_cube(tria);
   tria.refine_global(1);
-  Tools::ParsedGridRefinement pgr("/", "global", .3, 0.0, 0, 0, 0);
+  Tools::ParsedGridRefinement pgr(
+    "/", 1, Tools::RefinementStrategy::global, .3, 0.0, 0, 0, 0);
   ParameterAcceptor::initialize();
 
   Vector<float> criteria(tria.n_active_cells());

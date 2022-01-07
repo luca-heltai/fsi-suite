@@ -13,9 +13,20 @@
 #  endif
 #endif
 
+#include "tools/parsed_enum.h"
 
 namespace Tools
 {
+  /**
+   * Refinement strategy implemented in the ParsedGridRefinement class.
+   */
+  enum class RefinementStrategy
+  {
+    global         = 1,
+    fixed_fraction = 2,
+    fixed_number   = 3,
+  };
+
   /**
    * A wrapper for refinement strategies.
    *
@@ -36,13 +47,15 @@ namespace Tools
     /**
      * Constructor.
      */
-    ParsedGridRefinement(const std::string & section_name  = "",
-                         const std::string & strategy      = "fixed_fraction",
-                         const double &      top_parameter = .3,
-                         const double &      bottom_parameter = .1,
-                         const unsigned int &max_cells        = 0,
-                         const int &         min_level        = 0,
-                         const int &         max_level        = 0);
+    ParsedGridRefinement(
+      const std::string &       section_name        = "",
+      const unsigned int &      n_refinement_cycles = 1,
+      const RefinementStrategy &strategy         = RefinementStrategy::global,
+      const double &            top_parameter    = .3,
+      const double &            bottom_parameter = .1,
+      const unsigned int &      max_cells        = 0,
+      const int &               min_level        = 0,
+      const int &               max_level        = 0);
 
     /**
      * Mark cells a the triangulation for refinement or coarsening,
@@ -79,6 +92,24 @@ namespace Tools
 #  endif
 #endif
 
+    /**
+     * Get the current strategy object.
+     */
+    const RefinementStrategy &
+    get_strategy() const
+    {
+      return strategy;
+    }
+
+    /**
+     * Get the total number of refinemt cycles.
+     */
+    const unsigned int &
+    get_n_refinement_cycles() const
+    {
+      return n_refinement_cycles;
+    }
+
   private:
     /**
      * Make sure that the refinement level is kept between `min_level` and
@@ -88,30 +119,29 @@ namespace Tools
     void
     limit_levels(dealii::Triangulation<dim, spacedim> &tria) const;
 
-    /**
-     * Default expression of this function.
-     */
-    std::string  strategy;
-    double       top_parameter;
-    double       bottom_parameter;
-    unsigned int max_cells;
-    int          min_level;
-    int          max_level;
+    unsigned int       n_refinement_cycles;
+    RefinementStrategy strategy;
+    double             top_parameter;
+    double             bottom_parameter;
+    unsigned int       max_cells;
+    int                min_level;
+    int                max_level;
   };
 
   // ================================================================
   // Template implementation
   // ================================================================
+#ifndef DOXYGEN
 
-#ifdef DEAL_II_WITH_MPI
-#  ifdef DEAL_II_WITH_P4EST
+#  ifdef DEAL_II_WITH_MPI
+#    ifdef DEAL_II_WITH_P4EST
   template <int dim, class Vector, int spacedim>
   void
   ParsedGridRefinement::mark_cells(
     const Vector &                                               criteria,
     dealii::parallel::distributed::Triangulation<dim, spacedim> &tria) const
   {
-    if (strategy == "fixed_number")
+    if (strategy == RefinementStrategy::fixed_number)
       dealii::parallel::distributed::GridRefinement::
         refine_and_coarsen_fixed_number(
           tria,
@@ -119,21 +149,21 @@ namespace Tools
           top_parameter,
           bottom_parameter,
           max_cells > 0 ? max_cells : std::numeric_limits<unsigned int>::max());
-    else if (strategy == "fixed_fraction")
+    else if (strategy == RefinementStrategy::fixed_fraction)
       dealii::parallel::distributed::GridRefinement::
         refine_and_coarsen_fixed_fraction(tria,
                                           criteria,
                                           top_parameter,
                                           bottom_parameter);
-    else if (strategy == "global")
+    else if (strategy == RefinementStrategy::global)
       for (const auto cell : tria.active_cell_iterators())
         cell->set_refine_flag();
     else
       Assert(false, dealii::ExcInternalError());
     limit_levels(tria);
   }
+#    endif
 #  endif
-#endif
 
 
 
@@ -143,21 +173,21 @@ namespace Tools
     const Vector &                        criteria,
     dealii::Triangulation<dim, spacedim> &tria) const
   {
-    if (strategy == "fixed_number")
+    if (strategy == RefinementStrategy::fixed_number)
       dealii::GridRefinement::refine_and_coarsen_fixed_number(
         tria,
         criteria,
         top_parameter,
         bottom_parameter,
         max_cells > 0 ? max_cells : std::numeric_limits<unsigned int>::max());
-    else if (strategy == "fixed_fraction")
+    else if (strategy == RefinementStrategy::fixed_fraction)
       dealii::GridRefinement::refine_and_coarsen_fixed_fraction(
         tria,
         criteria,
         top_parameter,
         bottom_parameter,
         max_cells > 0 ? max_cells : std::numeric_limits<unsigned int>::max());
-    else if (strategy == "global")
+    else if (strategy == RefinementStrategy::global)
       {
         for (const auto cell : tria.active_cell_iterators())
           if (cell->is_locally_owned())
@@ -189,6 +219,8 @@ namespace Tools
               cell->clear_coarsen_flag();
           }
   }
+#endif
+
 } // namespace Tools
 
 

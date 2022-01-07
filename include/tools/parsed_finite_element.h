@@ -88,11 +88,22 @@ namespace Tools
     operator dealii::FiniteElement<dim, spacedim> &();
 
     /**
+     * Return a const reference to the Finite Element.
+     */
+    operator const dealii::FiniteElement<dim, spacedim> &() const;
+
+
+    /**
      * Return a reference to the Finite Element.
      */
     dealii::FiniteElement<dim, spacedim> &
     operator()();
 
+    /**
+     * Return a const reference to the Finite Element.
+     */
+    const dealii::FiniteElement<dim, spacedim> &
+    operator()() const;
 
     /**
      * Return the component names for this Finite Element.

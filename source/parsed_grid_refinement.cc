@@ -4,14 +4,17 @@ using namespace dealii;
 
 namespace Tools
 {
-  ParsedGridRefinement::ParsedGridRefinement(const std::string &name,
-                                             const std::string &strategy,
-                                             const double &     top_parameter,
-                                             const double &bottom_parameter,
-                                             const unsigned int &max_cells,
-                                             const int &         min_level,
-                                             const int &         max_level)
+  ParsedGridRefinement::ParsedGridRefinement(
+    const std::string &       name,
+    const unsigned int &      n_refinement_cycles,
+    const RefinementStrategy &strategy,
+    const double &            top_parameter,
+    const double &            bottom_parameter,
+    const unsigned int &      max_cells,
+    const int &               min_level,
+    const int &               max_level)
     : ParameterAcceptor(name)
+    , n_refinement_cycles(n_refinement_cycles)
     , strategy(strategy)
     , top_parameter(top_parameter)
     , bottom_parameter(bottom_parameter)
@@ -19,11 +22,9 @@ namespace Tools
     , min_level(min_level)
     , max_level(max_level)
   {
-    add_parameter("Refinement strategy",
-                  this->strategy,
-                  "Refinement strategy to use. fraction|number",
-                  this->prm,
-                  Patterns::Selection("fixed_fraction|fixed_number|global"));
+    add_parameter("Number of refinement cycles", this->n_refinement_cycles);
+
+    add_parameter("Refinement strategy", this->strategy);
 
     add_parameter("Refinement parameter",
                   this->top_parameter,
