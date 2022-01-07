@@ -43,6 +43,18 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::setup_system()
   {
+    // No mixed grids
+    const auto ref_cells = triangulation.get_reference_cells();
+    AssertThrow(
+      ref_cells.size() == 1,
+      ExcMessage(
+        "This program does nots support mixed simplx/hex grid types."));
+
+    // Compatible FE space and grid.
+    AssertThrow(finite_element().reference_cell() == ref_cells[0],
+                ExcMessage("The finite element must be defined on the same "
+                           "cell type as the grid."));
+
     boundary_conditions.update_substitution_map(constants);
     exact_solution().update_user_substitution_map(constants);
     forcing_term().update_user_substitution_map(constants);
