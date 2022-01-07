@@ -21,7 +21,7 @@ namespace PDEs
                 {1.0},
                 {"Diffusion coefficient"})
     , forcing_term("/Serial Poisson/Functions",
-                   "kappa*sin(2*pi*x)*sin(2*pi*y)",
+                   "kappa*8*pi^2*sin(2*pi*x)*sin(2*pi*y)",
                    "Forcing term")
     , exact_solution("/Serial Poisson/Functions",
                      "sin(2*pi*x)*sin(2*pi*y)",
@@ -112,7 +112,8 @@ namespace PDEs
             for (const unsigned int i : fe_values.dof_indices())
               for (const unsigned int j : fe_values.dof_indices())
                 cell_matrix(i, j) +=
-                  (fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
+                  (constants["kappa"] *
+                   fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
                    fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
                    fe_values.JxW(q_index));           // dx
             for (const unsigned int i : fe_values.dof_indices())
@@ -191,27 +192,10 @@ namespace PDEs
         error_table.error_from_exact(dof_handler, solution, exact_solution());
         output_results(cycle);
         if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
-          {
-            if (grid_refinement.get_strategy() !=
-                Tools::RefinementStrategy::global)
-              {
-                Vector<float> estimated_error_per_cell(
-                  triangulation.n_active_cells());
-                KellyErrorEstimator<dim, spacedim>::estimate(
-                  dof_handler,
-                  QGauss<dim - 1>(finite_element().degree + 1),
-                  {},
-                  solution,
-                  estimated_error_per_cell);
-                grid_refinement.mark_cells(estimated_error_per_cell,
-                                           triangulation);
-                triangulation.execute_coarsening_and_refinement();
-              }
-            else
-              {
-                triangulation.refine_global(1);
-              }
-          }
+          grid_refinement.estimate_mark_refine(*mapping,
+                                               dof_handler,
+                                               solution,
+                                               triangulation);
       }
     error_table.output_table(std::cout);
   }
