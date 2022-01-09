@@ -67,29 +67,23 @@ namespace Tools
      */
     ParsedGridGenerator(const std::string &prm_section_path = "");
 
-/**
- * Fill a triangulation according to the parsed parameters. If the
- * @p output_file_name variable is not empty, the coarse triangulation is also
- * saved to disk in the format specified by the the @p output_file_format.
- *
- * Notice that the triangulation is written to disk before any initial
- * refinement occurs. This allows you to store the Triangulation to a file, and
- * then use the same input file you used here with the exception of the
- * input/output grid names, and reproduce the same results.
- *
- * If the triangulation would be refined before output, running the same program
- * twice with input and output grid with the same name, would produce more and
- * more refined grids. If you really want to output the same grid in the refined
- * case, simply call the write() function again.
- */
-#ifdef DOXYGEN
     /**
-     * \return my_void (return type is specified to avoid a compiler warning)
+     * Fill a triangulation according to the parsed parameters. If the
+     * @p output_file_name variable is not empty, the coarse triangulation is
+     * also
+     * saved to disk in the format specified by the the @p output_file_format.
+     *
+     * Notice that the triangulation is written to disk before any initial
+     * refinement occurs. This allows you to store the Triangulation to a file,
+     * and then use the same input file you used here with the exception of the
+     * input/output grid names, and reproduce the same results.
+     *
+     * If the triangulation would be refined before output, running the same
+     * program twice with input and output grid with the same name, would
+     * produce more and more refined grids. If you really want to output the
+     * same grid in the refined case, simply call the write() function again.
      */
-    return_type
-#else
     void
-#endif
     generate(dealii::Triangulation<dim, spacedim> &tria) const;
 
     /**
