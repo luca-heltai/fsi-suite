@@ -38,6 +38,7 @@
 #include "tools/parsed_grid_generator.h"
 #include "tools/parsed_grid_refinement.h"
 #include "tools/parsed_inverse_operator.h"
+#include "tools/parsed_preconditioner/amg.h"
 #include "tools/parsed_symbolic_function.h"
 
 /**
@@ -105,12 +106,13 @@ namespace PDEs
     std::unique_ptr<Mapping<dim, spacedim>>   mapping;
 
     // Linear algebra classes
-    AffineConstraints<double>    constraints;
-    SparsityPattern              sparsity_pattern;
-    SparseMatrix<double>         system_matrix;
-    Vector<double>               solution;
-    Vector<double>               system_rhs;
-    Tools::ParsedInverseOperator inverse_operator;
+    AffineConstraints<double>      constraints;
+    SparsityPattern                sparsity_pattern;
+    SparseMatrix<double>           system_matrix;
+    Vector<double>                 solution;
+    Vector<double>                 system_rhs;
+    Tools::ParsedInverseOperator   inverse_operator;
+    Tools::ParsedAMGPreconditioner preconditioner;
 
     // Forcing terms and boundary conditions
     Tools::ParsedConstants                    constants;

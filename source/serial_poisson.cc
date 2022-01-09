@@ -16,6 +16,7 @@ namespace PDEs
     , finite_element("/Serial Poisson/", "u", "FE_Q(1)")
     , dof_handler(triangulation)
     , inverse_operator("/Serial Poisson/Solver")
+    , preconditioner("/Serial Poisson/Solver/AMG Preconditioner")
     , constants("/Serial Poisson/Constants",
                 {"kappa"},
                 {1.0},
@@ -163,8 +164,9 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::solve()
   {
+    preconditioner.initialize(system_matrix);
     const auto A    = linear_operator<Vector<double>>(system_matrix);
-    const auto Ainv = inverse_operator(A, PreconditionIdentity());
+    const auto Ainv = inverse_operator(A, preconditioner);
     solution        = Ainv * system_rhs;
     constraints.distribute(solution);
   }

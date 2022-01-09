@@ -32,6 +32,35 @@
                     "ignoreFailures": true
                 },
             ]
+        },
+        {
+            "name": "Serial poisson",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build${env:BUILD_POSTFIX}/serial_poisson",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build${env:BUILD_POSTFIX}/",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Load the deal.II gdb pretty printing",
+                    "text": "source ${workspaceFolder}/.vscode/dotgdbinit.py",
+                    "ignoreFailures": true
+                },
+            ]
         }
     ]
 }
