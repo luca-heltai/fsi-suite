@@ -19,6 +19,42 @@
 #  include "tools/parsed_enum.h"
 #  include "tools/parsed_symbolic_function.h"
 
+namespace dealii
+{
+  namespace Patterns
+  {
+    class UnsignedInteger : public PatternBase
+    {
+    public:
+      static const unsigned int min_int_value;
+
+      static const unsigned int max_int_value;
+
+      UnsignedInteger(const unsigned int lower_bound = min_int_value,
+                      const unsigned int upper_bound = max_int_value);
+
+      virtual bool
+      match(const std::string &test_string) const override;
+
+      virtual std::string
+      description(const OutputStyle style = Machine) const override;
+
+      virtual std::unique_ptr<PatternBase>
+      clone() const override;
+
+      static std::unique_ptr<UnsignedInteger>
+      create(const std::string &description);
+
+    private:
+      const unsigned int lower_bound;
+
+      const unsigned int upper_bound;
+
+      static const char *description_init;
+    };
+  } // namespace Patterns
+} // namespace dealii
+
 namespace Tools
 {
   /**
@@ -84,15 +120,15 @@ namespace Tools
       const dealii::Differentiation::SD::types::substitution_map &arguments);
 
     /**
-     * Update time in each dealii::Functions::SymbolicFunction defined in this
-     * object.
+     * Update time in each dealii::Functions::SymbolicFunction defined in
+     * this object.
      */
     void
     set_time(const double &time);
 
     /**
-     * Check that the grid is compatible with this boundary condition object,
-     * and that the boundary conditions are self consistent.
+     * Check that the grid is compatible with this boundary condition
+     * object, and that the boundary conditions are self consistent.
      */
     template <typename Tria>
     void
@@ -110,8 +146,8 @@ namespace Tools
     check_consistency() const;
 
     /**
-     * Add the boundary conditions computed with this object to the specified
-     * constraints.
+     * Add the boundary conditions computed with this object to the
+     * specified constraints.
      */
     template <int dim>
     void
@@ -121,8 +157,8 @@ namespace Tools
       const bool &ignore_unsopported = false) const;
 
     /**
-     * Add the boundary conditions computed with this object to the specified
-     * constraints for non standard mapping.
+     * Add the boundary conditions computed with this object to the
+     * specified constraints for non standard mapping.
      */
     template <int dim>
     void
@@ -133,12 +169,12 @@ namespace Tools
       const bool &                             ignore_unsopported) const;
 
     /**
-     * Add the boundary conditions computed with this object to the specified
-     * constraints, matrix, and rhs.
+     * Add the boundary conditions computed with this object to the
+     * specified constraints, matrix, and rhs.
      *
-     * Notice that constraintes must be still open before calling this function,
-     * and will be used to assemble the matrix and rhs parts of the boundary
-     * conditions.
+     * Notice that constraintes must be still open before calling this
+     * function, and will be used to assemble the matrix and rhs parts of
+     * the boundary conditions.
      *
      * Call this function after you have added all constraints to your
      * constraints object. After this call, the constraints will be closed.
@@ -154,9 +190,9 @@ namespace Tools
     /**
      * Same as above for non standard mapping.
      *
-     * Notice that constraintes must be still open before calling this function,
-     * and will be used to assemble the matrix and rhs parts of the boundary
-     * conditions.
+     * Notice that constraintes must be still open before calling this
+     * function, and will be used to assemble the matrix and rhs parts of
+     * the boundary conditions.
      *
      * Call this function after you have added all constraints to your
      * constraints object. After this call, the constraints will be closed.
@@ -295,8 +331,8 @@ namespace Tools
     dealii::AffineConstraints<double> &      constraints,
     const bool &                             ignore_unsopported) const
   {
-    // Take care of boundary conditions that don't need anything else than the
-    // constraints.
+    // Take care of boundary conditions that don't need anything else than
+    // the constraints.
     for (unsigned int i = 0; i < n_boundary_conditions; ++i)
       {
         const auto &boundary_ids = ids[i];
