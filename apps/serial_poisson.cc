@@ -12,7 +12,8 @@ main(int argc, char **argv)
 {
   try
     {
-      std::string par_name = "poisson_parameters_2d.prm";
+      Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv);
+      std::string                      par_name = "poisson_parameters_2d.prm";
       if (argc > 1)
         par_name = argv[1];
       PDEs::SerialPoisson<2> poisson;

@@ -33,6 +33,7 @@
 
 #include "tools/parsed_boundary_conditions.h"
 #include "tools/parsed_constants.h"
+#include "tools/parsed_data_out.h"
 #include "tools/parsed_finite_element.h"
 #include "tools/parsed_grid_generator.h"
 #include "tools/parsed_grid_refinement.h"
@@ -120,7 +121,8 @@ namespace PDEs
     // Error convergence tables
     ParsedConvergenceTable error_table;
 
-    std::string output_filename = "poisson";
+    // Output class
+    mutable Tools::ParsedDataOut<dim, spacedim> data_out;
   };
 } // namespace PDEs
 #endif

@@ -27,9 +27,8 @@ namespace PDEs
                      "sin(2*pi*x)*sin(2*pi*y)",
                      "Exact solution")
     , boundary_conditions("/Serial Poisson/Boundary conditions")
+    , data_out("/Serial Poisson/Output")
   {
-    add_parameter("Output filename", output_filename);
-
     enter_subsection("Error table");
     enter_my_subsection(this->prm);
     error_table.add_parameters(this->prm);
@@ -176,15 +175,14 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::output_results(const unsigned cycle) const
   {
-    DataOut<dim, spacedim> data_out;
-    data_out.attach_dof_handler(dof_handler);
-    data_out.add_data_vector(solution, "solution");
-    data_out.build_patches(*mapping,
-                           finite_element().degree,
-                           DataOut<dim, spacedim>::curved_inner_cells);
-    std::string fname = output_filename + "_" + std::to_string(cycle) + ".vtu";
-    std::ofstream output(fname);
-    data_out.write_vtu(output);
+    // Save each cycle in its own file
+    const auto suffix =
+      Utilities::int_to_string(cycle,
+                               Utilities::needed_digits(
+                                 grid_refinement.get_n_refinement_cycles()));
+    data_out.attach_dof_handler(dof_handler, suffix);
+    data_out.add_data_vector(solution, component_names);
+    data_out.write_data_and_clear(*mapping);
   }
 
 
