@@ -41,10 +41,9 @@ https://luca-heltai.github.io/fsi-suite/
 
 | System | Status                                                                                                                                                                                                                                           |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
-| Indent | [![Indent](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml) |
-| Doxygen  | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml) |
 | Continous Integration  | [![GitHub CI](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml)   |
-
+| Doxygen  | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml) |
+| Indent | [![Indent](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml) |
 
 ## Useful links
 

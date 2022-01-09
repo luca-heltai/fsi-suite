@@ -125,6 +125,9 @@ namespace PDEs
 
     // Output class
     mutable Tools::ParsedDataOut<dim, spacedim> data_out;
+
+    // Console level
+    unsigned int console_level = 1;
   };
 } // namespace PDEs
 #endif

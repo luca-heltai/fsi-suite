@@ -35,6 +35,7 @@ namespace PDEs
     error_table.add_parameters(this->prm);
     leave_my_subsection(this->prm);
     leave_subsection();
+    add_parameter("Console level", this->console_level);
   }
 
 
@@ -43,6 +44,7 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::setup_system()
   {
+    deallog << "System setup" << std::endl;
     // No mixed grids
     const auto ref_cells = triangulation.get_reference_cells();
     AssertThrow(
@@ -61,6 +63,8 @@ namespace PDEs
 
     dof_handler.distribute_dofs(finite_element);
     mapping = get_default_linear_mapping(triangulation).clone();
+
+    deallog << "Number of dofs " << dof_handler.n_dofs() << std::endl;
 
     constraints.clear();
     DoFTools::make_hanging_node_constraints(dof_handler, constraints);
@@ -83,6 +87,7 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::assemble_system()
   {
+    deallog << "Assemble system" << std::endl;
     const ReferenceCell cell_type = finite_element().reference_cell();
 
     // TODO: make sure we work also for wedges and pyramids
@@ -164,6 +169,7 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::solve()
   {
+    deallog << "Solve system" << std::endl;
     preconditioner.initialize(system_matrix);
     const auto A    = linear_operator<Vector<double>>(system_matrix);
     const auto Ainv = inverse_operator(A, preconditioner);
@@ -177,6 +183,7 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::output_results(const unsigned cycle) const
   {
+    deallog << "Output results" << std::endl;
     // Save each cycle in its own file
     const auto suffix =
       Utilities::int_to_string(cycle,
@@ -193,11 +200,14 @@ namespace PDEs
   void
   SerialPoisson<dim, spacedim>::run()
   {
+    deallog.pop();
+    deallog.depth_console(console_level);
     grid_generator.generate(triangulation);
     for (unsigned int cycle = 0;
          cycle < grid_refinement.get_n_refinement_cycles();
          ++cycle)
       {
+        deallog.push("Cycle " + Utilities::int_to_string(cycle));
         setup_system();
         assemble_system();
         solve();
@@ -208,6 +218,7 @@ namespace PDEs
                                                dof_handler,
                                                solution,
                                                triangulation);
+        deallog.pop();
       }
     error_table.output_table(std::cout);
   }
