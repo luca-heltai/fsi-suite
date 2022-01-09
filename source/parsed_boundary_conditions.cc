@@ -329,7 +329,7 @@ namespace Tools
 
   template <int spacedim>
   void
-  ParsedBoundaryConditions<spacedim>::update_substitution_map(
+  ParsedBoundaryConditions<spacedim>::update_user_substitution_map(
     const dealii::Differentiation::SD::types::substitution_map
       &substitution_map)
   {

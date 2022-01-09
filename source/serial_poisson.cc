@@ -55,7 +55,7 @@ namespace PDEs
                 ExcMessage("The finite element must be defined on the same "
                            "cell type as the grid."));
 
-    boundary_conditions.update_substitution_map(constants);
+    boundary_conditions.update_user_substitution_map(constants);
     exact_solution().update_user_substitution_map(constants);
     forcing_term().update_user_substitution_map(constants);
 

@@ -103,7 +103,7 @@ namespace Tools
      * dealii::Functions::SymbolicFunction::update_user_substitution_map().
      */
     void
-    update_substitution_map(
+    update_user_substitution_map(
       const dealii::Differentiation::SD::types::substitution_map
         &substitution_map);
 
