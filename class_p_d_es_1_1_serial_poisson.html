@@ -247,6 +247,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:ad4c185da8ab72970c8f78cfe3491a8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ece4151ec7169c01601f292f5616592"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tools_1_1_parsed_inverse_operator.html">Tools::ParsedInverseOperator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#a3ece4151ec7169c01601f292f5616592">inverse_operator</a></td></tr>
 <tr class="separator:a3ece4151ec7169c01601f292f5616592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea78b1b47066c8825fa22b32f0d93299"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tools_1_1_parsed_a_m_g_preconditioner.html">Tools::ParsedAMGPreconditioner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#aea78b1b47066c8825fa22b32f0d93299">preconditioner</a></td></tr>
+<tr class="separator:aea78b1b47066c8825fa22b32f0d93299"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7a4a7613fa4f625da08719b699c2390"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tools_1_1_parsed_constants.html">Tools::ParsedConstants</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#af7a4a7613fa4f625da08719b699c2390">constants</a></td></tr>
 <tr class="separator:af7a4a7613fa4f625da08719b699c2390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20f4d5e80c73cd7cddd72e6a152eb7bf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tools_1_1_parsed_symbolic_function.html">Tools::ParsedSymbolicFunction</a>&lt; spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#a20f4d5e80c73cd7cddd72e6a152eb7bf">forcing_term</a></td></tr>
@@ -257,8 +259,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a98603186c242637bd6afb238410a120b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad92463d9c87ff84913f9515b8a91fc24"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#ad92463d9c87ff84913f9515b8a91fc24">error_table</a></td></tr>
 <tr class="separator:ad92463d9c87ff84913f9515b8a91fc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a261afa8a31f358b67e015ea5e7338be2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#a261afa8a31f358b67e015ea5e7338be2">output_filename</a> = &quot;poisson&quot;</td></tr>
-<tr class="separator:a261afa8a31f358b67e015ea5e7338be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca5dc83271dd608447a543c98ed41fb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_tools_1_1_parsed_data_out.html">Tools::ParsedDataOut</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html#aca5dc83271dd608447a543c98ed41fb5">data_out</a></td></tr>
+<tr class="separator:aca5dc83271dd608447a543c98ed41fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a52134c59ec98830230c23e080c841705 inherit pro_attribs_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a></td></tr>
 <tr class="separator:a52134c59ec98830230c23e080c841705 inherit pro_attribs_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -306,7 +308,7 @@ class PDEs::SerialPoisson&lt; dim, spacedim &gt;</h3>
 \[ \begin{cases} - \Delta u = f &amp; \text{ in } \Omega \subset R^{\text{spacedim}}\\ u = u_D &amp; \text{ on } \partial \Omega_D \\ \frac{\partial u}{\partial n} u = u_N &amp; \text{ on } \partial \Omega_N \\ \frac{\partial u}{\partial n} u + \rho u= u_R &amp; \text{ on } \partial \Omega_R \end{cases} \]
 </p>
  
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00070">70</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00072">72</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a54f97e3014e4838750ee00babaad1892"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54f97e3014e4838750ee00babaad1892">&#9670;&nbsp;</a></span>SerialPoisson()</h2>
@@ -351,7 +353,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00072">72</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00084">84</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#acc87b5e39e346e39b34c732cf3da5821">ReferenceCell::face_reference_cell()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a>.</p>
 
@@ -383,9 +385,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00165">165</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00178">178</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut__DoFData.html#ac43d3b1f6e67424f36e474627fe8e401">DataOut&lt; dim, spacedim &gt;::add_data_vector()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut__DoFData.html#a6ed7c846331069f406b8c9933c37fda4">DataOut&lt; dim, spacedim &gt;::attach_dof_handler()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html#a087f63e22f0614bca326dbdca288c646">DataOut&lt; dim, spacedim &gt;::build_patches()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOutInterface.html#a93c780f93105e0daaa76c6c43694b4ae">DataOut&lt; dim, spacedim &gt;::write_vtu()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits()</a>.</p>
 
 </div>
 </div>
@@ -403,7 +405,7 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00182">182</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00194">194</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
@@ -435,7 +437,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00044">44</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
 </div>
 </div>
@@ -461,7 +463,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00153">153</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2serial__poisson_8cc_source.html#l00165">165</a> of file <a class="el" href="source_2serial__poisson_8cc_source.html">serial_poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>.</p>
 
@@ -490,7 +492,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00118">118</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00121">121</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -518,7 +520,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>How we identify the component names. </p>
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00094">94</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00096">96</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -544,7 +546,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00115">115</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00118">118</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -570,7 +572,33 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00107">107</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00109">109</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+
+</div>
+</div>
+<a id="aca5dc83271dd608447a543c98ed41fb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca5dc83271dd608447a543c98ed41fb5">&#9670;&nbsp;</a></span>data_out</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_tools_1_1_parsed_data_out.html">Tools::ParsedDataOut</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_poisson.html">PDEs::SerialPoisson</a>&lt; dim, spacedim &gt;::data_out</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00127">127</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -596,7 +624,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00103">103</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00105">105</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -622,7 +650,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00121">121</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00124">124</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -648,7 +676,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00117">117</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00120">120</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -674,7 +702,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00102">102</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00104">104</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -700,7 +728,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00116">116</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00119">119</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -726,7 +754,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00097">97</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00099">99</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -752,7 +780,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00098">98</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00100">100</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -778,7 +806,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00112">112</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00114">114</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -804,12 +832,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00104">104</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00106">106</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
-<a id="a261afa8a31f358b67e015ea5e7338be2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a261afa8a31f358b67e015ea5e7338be2">&#9670;&nbsp;</a></span>output_filename</h2>
+<a id="aea78b1b47066c8825fa22b32f0d93299"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea78b1b47066c8825fa22b32f0d93299">&#9670;&nbsp;</a></span>preconditioner</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -820,7 +848,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="class_p_d_es_1_1_serial_poisson.html">PDEs::SerialPoisson</a>&lt; dim, spacedim &gt;::output_filename = &quot;poisson&quot;</td>
+          <td class="memname"><a class="el" href="class_tools_1_1_parsed_a_m_g_preconditioner.html">Tools::ParsedAMGPreconditioner</a> <a class="el" href="class_p_d_es_1_1_serial_poisson.html">PDEs::SerialPoisson</a>&lt; dim, spacedim &gt;::preconditioner</td>
         </tr>
       </table>
   </td>
@@ -830,7 +858,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00123">123</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00115">115</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -856,7 +884,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00110">110</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00112">112</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -882,7 +910,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00108">108</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00110">110</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -908,7 +936,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00109">109</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00111">111</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -934,7 +962,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00111">111</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00113">113</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -960,7 +988,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00099">99</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="serial__poisson_8h_source.html#l00101">101</a> of file <a class="el" href="serial__poisson_8h_source.html">serial_poisson.h</a>.</p>
 
 </div>
 </div>
@@ -974,7 +1002,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_poisson.html">SerialPoisson</a></li>
-    <li class="footer">Generated on Fri Jan 7 2022 15:56:25 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Jan 9 2022 23:23:33 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

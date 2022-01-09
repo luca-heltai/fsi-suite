@@ -9,7 +9,7 @@ var class_tools_1_1_parsed_boundary_conditions =
     [ "check_consistency", "class_tools_1_1_parsed_boundary_conditions.html#a22a3f6f52ab1c276f692e8dc6b7f1a78", null ],
     [ "set_additional_function_arguments", "class_tools_1_1_parsed_boundary_conditions.html#ae169384ff3aed32babe7fbb2e2327f72", null ],
     [ "set_time", "class_tools_1_1_parsed_boundary_conditions.html#a1b23a29fe506f216b35b05a5bd0d0529", null ],
-    [ "update_substitution_map", "class_tools_1_1_parsed_boundary_conditions.html#a4602cc060f6b74f040aa83347a6c0187", null ],
+    [ "update_user_substitution_map", "class_tools_1_1_parsed_boundary_conditions.html#a0e9658e28141f25405a3fcd888743ada", null ],
     [ "bc_type", "class_tools_1_1_parsed_boundary_conditions.html#a1dbdd5d9c6f3c180fec4dad56deb9b8a", null ],
     [ "component_names", "class_tools_1_1_parsed_boundary_conditions.html#a04598a7f39b75baf9e2a7014fd3dd659", null ],
     [ "expressions", "class_tools_1_1_parsed_boundary_conditions.html#a30a60f3b2cb82479dfb39ee4ebaa8cca", null ],
