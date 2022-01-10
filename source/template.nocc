@@ -1,0 +1,8 @@
+#include "XXX"
+
+using namespace dealii;
+
+namespace Tools
+{
+
+} // namespace Tools

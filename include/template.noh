@@ -1,0 +1,11 @@
+#ifndef XXX_h
+#define XXX_h
+
+#include <deal.II/base/config.h>
+#include <deal.II/base/parameter_acceptor.h>
+
+namespace Tools
+{
+
+} // namespace Tools
+#endif
