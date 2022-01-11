@@ -90,16 +90,23 @@ namespace PDEs
     deallog << "Assemble system" << std::endl;
     const ReferenceCell cell_type = finite_element().reference_cell();
 
-    // TODO: make sure we work also for wedges and pyramids
-    const ReferenceCell face_type = cell_type.face_reference_cell(0);
-
     const Quadrature<dim> quadrature_formula =
       cell_type.get_gauss_type_quadrature<dim>(
         finite_element().tensor_degree() + 1);
 
-    const Quadrature<dim - 1> face_quadrature_formula =
-      face_type.get_gauss_type_quadrature<dim - 1>(
-        finite_element().tensor_degree() + 1);
+    Quadrature<dim - 1> face_quadrature_formula;
+    if constexpr (dim > 1)
+      {
+        // TODO: make sure we work also for wedges and pyramids
+        const ReferenceCell face_type = cell_type.face_reference_cell(0);
+        face_quadrature_formula = face_type.get_gauss_type_quadrature<dim - 1>(
+          finite_element().tensor_degree() + 1);
+      }
+    else
+      {
+        face_quadrature_formula =
+          QGauss<dim - 1>(finite_element().tensor_degree() + 1);
+      }
 
     FEValues<dim, spacedim> fe_values(*mapping,
                                       finite_element,
@@ -223,6 +230,10 @@ namespace PDEs
     error_table.output_table(std::cout);
   }
 
+  template class SerialPoisson<1, 1>;
+  template class SerialPoisson<1, 2>;
+  template class SerialPoisson<1, 3>;
   template class SerialPoisson<2, 2>;
+  template class SerialPoisson<2, 3>;
   template class SerialPoisson<3, 3>;
 } // namespace PDEs

@@ -44,7 +44,9 @@ namespace
     else
       rel = "./";
     // Check if it exists, if not, create it
-    std::system(("test -d " + rel + " || mkdir -p " + rel).c_str());
+    AssertThrow(std::system(
+                  ("test -d " + rel + " || mkdir -p " + rel).c_str()) == 0,
+                ExcMessage("Could not create directory " + rel));
     return rel;
   }
 } // namespace

@@ -3,6 +3,7 @@
 
 #include "tools/components.h"
 #include "tools/grid_info.h"
+#include "tools/patterns_unsigned_int.h"
 
 #ifdef DEAL_II_WITH_SYMENGINE
 
@@ -154,6 +155,7 @@ namespace Tools
                         ExcDimensionMismatch(masks[i].n_selected_components(),
                                              spacedim));
           }
+
         if (types[i] == Components::Type::normal ||
             types[i] == Components::Type::tangential)
           {

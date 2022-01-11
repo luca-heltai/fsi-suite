@@ -9,7 +9,57 @@
 
 #include <gtest/gtest.h>
 
+/**
+ * @brief Wrap a code block with try-catch, handle exceptions thrown, print them
+ * into EXCEPT_STREAM and rethrow.
+ */
+#define PRINT_AND_RETHROW(CODE_BLOCK, EXCEPT_STREAM)                        \
+  try                                                                       \
+    {                                                                       \
+      do                                                                    \
+        {                                                                   \
+          CODE_BLOCK                                                        \
+        }                                                                   \
+      while (0);                                                            \
+    }                                                                       \
+  catch (const std::exception &ex)                                          \
+    {                                                                       \
+      EXCEPT_STREAM << "std::exception thrown: " << ex.what() << std::endl; \
+      throw;                                                                \
+    }                                                                       \
+  catch (...)                                                               \
+    {                                                                       \
+      EXCEPT_STREAM << "unknown structure thrown" << std::endl;             \
+      throw;                                                                \
+    }
+
+
+/**
+ * @brief Wrap a code block with try-catch, handle exceptions thrown, print them
+ * into std::cerr and rethrow.
+ */
+#define PRINT_STDERR_AND_RETHROW(CODE_BLOCK) \
+  PRINT_AND_RETHROW(CODE_BLOCK, std::cerr)
+
+#define EXPECT_NO_THROW_PRINT(CODE_BLOCK) \
+  EXPECT_NO_THROW(PRINT_STDERR_AND_RETHROW(CODE_BLOCK))
+
+#define ASSERT_NO_THROW_PRINT(CODE_BLOCK) \
+  ASSERT_NO_THROW(PRINT_STDERR_AND_RETHROW(CODE_BLOCK))
+
+
 using namespace dealii;
+
+
+template <class T>
+void
+parse(const std::string &prm_string, T &t)
+{
+  t.ParameterAcceptor::enter_my_subsection(ParameterAcceptor::prm);
+  ParameterAcceptor::prm.parse_input_from_string(prm_string);
+  t.ParameterAcceptor::leave_my_subsection(ParameterAcceptor::prm);
+  ParameterAcceptor::parse_all_parameters();
+}
 
 using One   = std::integral_constant<int, 1>;
 using Two   = std::integral_constant<int, 2>;
@@ -86,6 +136,15 @@ using DimTester = DimSpacedimTester<DimSpacedim>;
 
 template <class DimSpacedim>
 using DimTesterNoOne = DimSpacedimTester<DimSpacedim>;
+
+using OneTester      = DimSpacedimTester<OneOne>;
+using OneTwoTester   = DimSpacedimTester<OneTwo>;
+using OneThreeTester = DimSpacedimTester<OneThree>;
+using TwoTester      = DimSpacedimTester<TwoTwo>;
+using ThreeTester    = DimSpacedimTester<ThreeThree>;
+using TwoThreeTester = DimSpacedimTester<TwoThree>;
+using ThreeTester    = DimSpacedimTester<ThreeThree>;
+
 
 TYPED_TEST_CASE(DimSpacedimTester, DimSpacedimTypes);
 TYPED_TEST_CASE(DimTester, DimTypes);

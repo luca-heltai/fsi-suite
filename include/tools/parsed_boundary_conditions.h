@@ -320,38 +320,54 @@ namespace Tools
             fmap[id] = function.get();
 
         // In this function, we only do Dirichlet boundary conditions.
-        if (bc == BoundaryConditionType::dirichlet)
+        switch (bc)
           {
-            if (type == Components::Type::normal)
-              {
-                dealii::VectorTools::compute_nonzero_normal_flux_constraints(
-                  dof_handler,
-                  mask.first_selected_component(),
-                  boundary_ids,
-                  fmap,
-                  constraints,
-                  mapping);
-              }
-            else if (type == Components::Type::tangential)
-              {
-                dealii::VectorTools::
-                  compute_nonzero_tangential_flux_constraints(
-                    dof_handler,
-                    mask.first_selected_component(),
-                    boundary_ids,
-                    fmap,
-                    constraints,
-                    mapping);
-              }
-            else
-              {
-                dealii::VectorTools::interpolate_boundary_values(
-                  mapping, dof_handler, fmap, constraints, mask);
-              }
-          }
-        else
-          {
-            AssertThrow(ignore_unsopported, dealii::ExcNotImplemented());
+            case BoundaryConditionType::dirichlet:
+              switch (type)
+                {
+                  case Components::Type::normal:
+                    if constexpr (dim == spacedim && dim > 1)
+                      dealii::VectorTools::
+                        compute_nonzero_normal_flux_constraints(
+                          dof_handler,
+                          mask.first_selected_component(),
+                          boundary_ids,
+                          fmap,
+                          constraints,
+                          mapping);
+                    else
+                      AssertThrow(false,
+                                  dealii::ExcMessage(
+                                    "Cannot use normal "
+                                    "flux boundary conditions "
+                                    "for this dim and spacedim"));
+                    break;
+                  case Components::Type::tangential:
+                    if constexpr (dim == spacedim && dim > 1)
+                      dealii::VectorTools::
+                        compute_nonzero_tangential_flux_constraints(
+                          dof_handler,
+                          mask.first_selected_component(),
+                          boundary_ids,
+                          fmap,
+                          constraints,
+                          mapping);
+                    else
+                      AssertThrow(false,
+                                  dealii::ExcMessage(
+                                    "Cannot use tangential "
+                                    "flux boundary conditions "
+                                    "for this dim and spacedim"));
+                    break;
+                  default:
+                    dealii::VectorTools::interpolate_boundary_values(
+                      mapping, dof_handler, fmap, constraints, mask);
+                    break;
+                }
+              break;
+            default:
+              AssertThrow(ignore_unsopported, dealii::ExcNotImplemented());
+              break;
           }
       }
   }
