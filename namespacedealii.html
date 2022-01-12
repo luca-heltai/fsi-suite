@@ -100,7 +100,8 @@ $(document).ready(function(){initNavTree('namespacedealii.html',''); initResizab
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">dealii Namespace Reference</div>  </div>
 </div><!--header-->
@@ -110,14 +111,104 @@ $(document).ready(function(){initNavTree('namespacedealii.html',''); initResizab
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacedealii_1_1_patterns"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacedealii_1_1_patterns.html">Patterns</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:abd4e50e30f64abeaa4ec50743212cbcb"><td class="memTemplParams" colspan="2">template&lt;typename Range , typename Domain , typename Payload  = internal::LinearOperatorImplementation::EmptyPayload&gt; </td></tr>
+<tr class="memitem:abd4e50e30f64abeaa4ec50743212cbcb"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt; Range, Domain, Payload &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">projection_operator</a> (const Range &amp;range_exemplar, const std::vector&lt; std::reference_wrapper&lt; const Domain &gt;&gt; &amp;local_basis, const Domain *domain_exemplar=nullptr, const Payload &amp;payload=Payload())</td></tr>
+<tr class="memdesc:abd4e50e30f64abeaa4ec50743212cbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a> object that projects a vector onto a basis.  <a href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">More...</a><br /></td></tr>
+<tr class="separator:abd4e50e30f64abeaa4ec50743212cbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="abd4e50e30f64abeaa4ec50743212cbcb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd4e50e30f64abeaa4ec50743212cbcb">&#9670;&nbsp;</a></span>projection_operator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Range , typename Domain , typename Payload  = internal::LinearOperatorImplementation::EmptyPayload&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt;Range, Domain, Payload&gt; dealii::projection_operator </td>
+          <td>(</td>
+          <td class="paramtype">const Range &amp;&#160;</td>
+          <td class="paramname"><em>range_exemplar</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::reference_wrapper&lt; const Domain &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>local_basis</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Domain *&#160;</td>
+          <td class="paramname"><em>domain_exemplar</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Payload &amp;&#160;</td>
+          <td class="paramname"><em>payload</em> = <code>Payload()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a> object that projects a vector onto a basis. </p>
+<p>This function can be used to perform model order reduction, i.e. to project a large dimensional vector onto a smaller dimensional subspace. Typical usage of this class is the following:</p>
+<div class="fragment"><div class="line">// Build a reduced vector space, i.e., a VectorType (either serial or</div>
+<div class="line">// parallel) that is an element of the Range space of the LinearOperator</div>
+<div class="line">VectorType exemplar_range(...);</div>
+<div class="line"> </div>
+<div class="line">// Initialize a vector of references to the locally owned basis vectors</div>
+<div class="line">// onto which we want to project.</div>
+<div class="line">std::vector&lt;std::reference_wrapper&lt;VectorType&gt;&gt; basis(...);</div>
+<div class="line"> </div>
+<div class="line">P = projection_operator(exemplar_range, basis);</div>
+<div class="line">Pt = transpose_operator(P);</div>
+<div class="line"> </div>
+<div class="line">// Project a vector onto the reduced space</div>
+<div class="line">VectorType elements = P * v;</div>
+<div class="line"> </div>
+<div class="line">// If the basis was orthogonal, then we could compute an orthogonal</div>
+<div class="line">// projection of v onto the subspace identified by the basis as</div>
+<div class="line">VectorType  v_reduced = Pt * v;</div>
+<div class="line"> </div>
+<div class="line">// The above could also be achieved with the following:</div>
+<div class="line">VectorType  v_reduced = (Pt*P) * v;</div>
+<div class="line"> </div>
+<div class="line">// If we want to project an operator A onto the reduced space, we could do</div>
+<div class="line">// the following:</div>
+<div class="line">auto A_reduced = Pt*A*P;</div>
+</div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">range_exemplar</td><td>An exmeplar vector of the range space. We'll make a few copies of this vector to allow the operator to be used with intermediate storage. </td></tr>
+    <tr><td class="paramname">local_basis</td><td>A vector of references to the locally owned basis vectors. These vectors must be ordered according to the Range::locally_owned_elements() of the range space. </td></tr>
+    <tr><td class="paramname">domain_exemplar</td><td>If used in parallel, it may happen that some processes do not own any index of the Range space. In this case, you need to provide a pointer to a Domain vector to be used as an exemplar vector.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>LinearOperator&lt;Range, Domain, Payload&gt; </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="projection__operator_8h_source.html#l00062">62</a> of file <a class="el" href="projection__operator_8h_source.html">projection_operator.h</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structVectorOperation.html#a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708">VectorOperation::add</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedealii.html">dealii</a></li>
-    <li class="footer">Generated on Sun Jan 9 2022 23:23:33 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 12 2022 10:14:16 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

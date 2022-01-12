@@ -8,6 +8,7 @@ var class_p_d_es_1_1_serial_poisson =
     [ "solve", "class_p_d_es_1_1_serial_poisson.html#a430a09659ca614d4aefb4ef1091dedb2", null ],
     [ "boundary_conditions", "class_p_d_es_1_1_serial_poisson.html#a98603186c242637bd6afb238410a120b", null ],
     [ "component_names", "class_p_d_es_1_1_serial_poisson.html#a48fbe43c9f3ab69c17fca7725f76a386", null ],
+    [ "console_level", "class_p_d_es_1_1_serial_poisson.html#ac7fc05432f5869edf81f8d0613e60f42", null ],
     [ "constants", "class_p_d_es_1_1_serial_poisson.html#af7a4a7613fa4f625da08719b699c2390", null ],
     [ "constraints", "class_p_d_es_1_1_serial_poisson.html#a7fe16b00fd8828fba07493265e25545d", null ],
     [ "data_out", "class_p_d_es_1_1_serial_poisson.html#aca5dc83271dd608447a543c98ed41fb5", null ],
