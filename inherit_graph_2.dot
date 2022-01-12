@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="dealii::Patterns::Tools\l::Convert\< std::unique\l_ptr\< Functions::SymbolicFunction\l\< dim \> \> \>",height=0.2,width=0.4,color="black",URL="$structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html",tooltip="Instruct deal.II on how to convert a SymbolicFunctions to a string."];
+}

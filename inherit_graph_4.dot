@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="dealii::Patterns::Tools\l::internal::RankInfo\<\l std::unique_ptr\< Functions\l::SymbolicFunction\< dim \> \> \>",height=0.2,width=0.4,color="black",URL="$structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d.html",tooltip=" "];
+}

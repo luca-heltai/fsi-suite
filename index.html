@@ -103,12 +103,21 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="title">Continuum mechanics and fluid-structure interaction problems </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md1"></a>
+<div class="textblock"><p>Author: Luca Heltai <a href="#" onclick="location.href='mai'+'lto:'+'luc'+'a.'+'hel'+'ta'+'i@s'+'is'+'sa.'+'it'; return false;">luca.<span style="display: none;">.nosp@m.</span>helt<span style="display: none;">.nosp@m.</span>ai@si<span style="display: none;">.nosp@m.</span>ssa.<span style="display: none;">.nosp@m.</span>it</a> GitHub Repository: <a href="https://github.com/luca-heltai/fsi-suite">https://github.com/luca-heltai/fsi-suite</a> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
 mathematical modeling and numerical approximation</h1>
-<p>Fluid-structure interaction (FSI) refers to the multiphysics coupling between the laws that describe fluid dynamics and structural mechanics. This course covers three main topics: i) basics of continuum mechanics, ii) mathematical modeling of FSI problems, and iii) numerical implementations based on the finite element method. Theoretical lectures are backed up by applied laboratories based on the C++ language, using example codes developed with the open source finite element library deal.II (www.dealii.org). I cover basic principles of continuum mechanics, discuss Lagrangian, Eulerian, and Arbitrary Lagrangian-Eulerian formulations, and cover different coupling strategies, both from the theoretical point of view, and with the aid of computational laboratories.</p>
+<p>Fluid-structure interaction (FSI) refers to the multiphysics coupling between the laws that describe fluid dynamics and structural mechanics.</p>
+<p>This page collects the material that I have used for a course given at Kaust (<a href="https://www.kaust.edu.sa/en">https://www.kaust.edu.sa/en</a>) during the spring semester of 2022.</p>
+<p>The course covers three main topics: i) basics of continuum mechanics, ii) mathematical modeling of FSI problems, and iii) numerical implementations based on the finite element method. Theoretical lectures are backed up by applied laboratories based on the C++ language, using example codes developed with the open source finite element library deal.II (www.dealii.org). I cover basic principles of continuum mechanics, discuss Lagrangian, Eulerian, and Arbitrary Lagrangian-Eulerian formulations, and cover different coupling strategies, both from the theoretical point of view, and with the aid of computational laboratories.</p>
 <p>The students will learn how to develop, use, and analyze state-of-the-art finite element approximations for the solution of continuum mechanics problems, including non-linear mechanics, computational fluid dynamic, and fluid-structure-interaction problems.</p>
-<p>The laboratory part should enable a PhD student working on numerical analysis of <a class="el" href="namespace_p_d_es.html">PDEs</a> to implement a state-of-the-art adaptive finite element codes for FSI problems, that run in parallel, using modern C++ libraries. The implementation will be based on the <code>deal.II</code> library (www.dealii.org).</p>
-<p>What you will learn:</p><ul>
+<p>A glimpse of the <a class="el" href="namespace_p_d_es.html" title="This namespace contains a collection of PDEs.">PDEs</a> that are discussed in the course is given by the following graph:</p>
+<div class="image">
+<object type="image/svg+xml" data="serial.svg" style="pointer-events: none;"></object>
+<div class="caption">
+PDEs</div></div>
+   <p>The laboratory part should enable a PhD student working on numerical analysis of <a class="el" href="namespace_p_d_es.html" title="This namespace contains a collection of PDEs.">PDEs</a> to implement a state-of-the-art adaptive finite element codes for FSI problems, that run in parallel, using modern C++ libraries. The implementation will are based on the <code>deal.II</code> library (www.dealii.org).</p>
+<p>Main topics covered by these lectures:</p>
+<ul>
 <li>Advanced Finite Element theory</li>
 <li>How to use a modern C++ IDE, to build and debug your codes</li>
 <li>How to use a large FEM library to solve complex PDE problems</li>
@@ -119,7 +128,7 @@ mathematical modeling and numerical approximation</h1>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Continuous Integration Status:</h1>
-<p>Up to date online documentation is here:</p>
+<p>Up to date online documentation for the codes used in the laboratories is here:</p>
 <p><a href="https://luca-heltai.github.io/fsi-suite/">https://luca-heltai.github.io/fsi-suite/</a></p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -135,6 +144,10 @@ Continuous Integration Status:</h1>
 Useful links</h1>
 <p>One of my courses on theory and practice of finite elements:</p><ul>
 <li><a href="https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods">https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods</a></li>
+</ul>
+<p>Exceptional video lectures by Prof. Wolfgang Bangerth, that covers all the things you will ever need for finite element programming.</p>
+<ul>
+<li><a href="https://www.math.colostate.edu/~bangerth/videos.html">https://www.math.colostate.edu/~bangerth/videos.html</a></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Course program</h1>
@@ -198,7 +211,7 @@ Course program</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Jan 12 2022 10:14:16 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 12 2022 21:33:49 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

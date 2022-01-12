@@ -1017,9 +1017,8 @@ var searchData=
   ['internal_1771',['internal',['http://www.dealii.org/developer/doxygen/deal.II/namespaceColorEnriched_1_1internal.html',1,'ColorEnriched::internal'],['http://www.dealii.org/developer/doxygen/deal.II/namespaceCUDAWrappers_1_1internal.html',1,'CUDAWrappers::internal']]],
   ['iterator_1772',['Iterator',['http://www.dealii.org/developer/doxygen/deal.II/classChunkSparseMatrix.html#a74cf5b08f0b774007e4ef33922c0bdcb',1,'ChunkSparseMatrix']]],
   ['matrixfree_1773',['MatrixFree',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1MatrixFree_1_1AdditionalData.html',1,'CUDAWrappers']]],
-  ['collection_20of_20pdes_1774',['Collection of PDEs',['../_p_d_es.html',1,'']]],
-  ['preconditionic_1775',['PreconditionIC',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1PreconditionIC_1_1AdditionalData.html',1,'CUDAWrappers']]],
-  ['preconditionilu_1776',['PreconditionILU',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1PreconditionILU_1_1AdditionalData.html',1,'CUDAWrappers']]],
-  ['changes_20since_20the_20last_20release_1777',['Changes since the last release',['http://www.dealii.org/developer/doxygen/deal.II/recent_changes.html',1,'']]],
-  ['solverdirect_1778',['SolverDirect',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1SolverDirect_1_1AdditionalData.html',1,'CUDAWrappers']]]
+  ['preconditionic_1774',['PreconditionIC',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1PreconditionIC_1_1AdditionalData.html',1,'CUDAWrappers']]],
+  ['preconditionilu_1775',['PreconditionILU',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1PreconditionILU_1_1AdditionalData.html',1,'CUDAWrappers']]],
+  ['changes_20since_20the_20last_20release_1776',['Changes since the last release',['http://www.dealii.org/developer/doxygen/deal.II/recent_changes.html',1,'']]],
+  ['solverdirect_1777',['SolverDirect',['http://www.dealii.org/developer/doxygen/deal.II/structCUDAWrappers_1_1SolverDirect_1_1AdditionalData.html',1,'CUDAWrappers']]]
 ];

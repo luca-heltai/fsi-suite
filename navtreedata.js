@@ -29,7 +29,12 @@ var NAVTREE =
       [ "Useful links", "index.html#autotoc_md3", null ],
       [ "Course program", "index.html#autotoc_md4", null ]
     ] ],
-    [ "Collection of PDEs", "_p_d_es.html", null ],
+    [ "Example Page", "page1.html", [
+      [ "An example section", "page1.html#sec", [
+        [ "The first subsection", "page1.html#subsection1", null ],
+        [ "The second subsection", "page1.html#subsection2", null ]
+      ] ]
+    ] ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -61,8 +66,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_p_d_es.html",
-"components_8h_source.html"
+"amg_8cc.html",
+"dir_25b0047c997e71f43e38b32819a59b26.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

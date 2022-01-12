@@ -162,30 +162,30 @@ template&lt;typename Range , typename Domain , typename Payload  = internal::Lin
 
 <p>Construct a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a> object that projects a vector onto a basis. </p>
 <p>This function can be used to perform model order reduction, i.e. to project a large dimensional vector onto a smaller dimensional subspace. Typical usage of this class is the following:</p>
-<div class="fragment"><div class="line">// Build a reduced vector space, i.e., a VectorType (either serial or</div>
-<div class="line">// parallel) that is an element of the Range space of the LinearOperator</div>
+<div class="fragment"><div class="line"><span class="comment">// Build a reduced vector space, i.e., a VectorType (either serial or</span></div>
+<div class="line"><span class="comment">// parallel) that is an element of the Range space of the LinearOperator</span></div>
 <div class="line">VectorType exemplar_range(...);</div>
 <div class="line"> </div>
-<div class="line">// Initialize a vector of references to the locally owned basis vectors</div>
-<div class="line">// onto which we want to project.</div>
+<div class="line"><span class="comment">// Initialize a vector of references to the locally owned basis vectors</span></div>
+<div class="line"><span class="comment">// onto which we want to project.</span></div>
 <div class="line">std::vector&lt;std::reference_wrapper&lt;VectorType&gt;&gt; basis(...);</div>
 <div class="line"> </div>
-<div class="line">P = projection_operator(exemplar_range, basis);</div>
-<div class="line">Pt = transpose_operator(P);</div>
+<div class="line">P = <a class="code" href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">projection_operator</a>(exemplar_range, basis);</div>
+<div class="line">Pt = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator</a>(P);</div>
 <div class="line"> </div>
-<div class="line">// Project a vector onto the reduced space</div>
+<div class="line"><span class="comment">// Project a vector onto the reduced space</span></div>
 <div class="line">VectorType elements = P * v;</div>
 <div class="line"> </div>
-<div class="line">// If the basis was orthogonal, then we could compute an orthogonal</div>
-<div class="line">// projection of v onto the subspace identified by the basis as</div>
+<div class="line"><span class="comment">// If the basis was orthogonal, then we could compute an orthogonal</span></div>
+<div class="line"><span class="comment">// projection of v onto the subspace identified by the basis as</span></div>
 <div class="line">VectorType  v_reduced = Pt * v;</div>
 <div class="line"> </div>
-<div class="line">// The above could also be achieved with the following:</div>
+<div class="line"><span class="comment">// The above could also be achieved with the following:</span></div>
 <div class="line">VectorType  v_reduced = (Pt*P) * v;</div>
 <div class="line"> </div>
-<div class="line">// If we want to project an operator A onto the reduced space, we could do</div>
-<div class="line">// the following:</div>
-<div class="line">auto A_reduced = Pt*A*P;</div>
+<div class="line"><span class="comment">// If we want to project an operator A onto the reduced space, we could do</span></div>
+<div class="line"><span class="comment">// the following:</span></div>
+<div class="line"><span class="keyword">auto</span> A_reduced = Pt*A*P;</div>
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">range_exemplar</td><td>An exmeplar vector of the range space. We'll make a few copies of this vector to allow the operator to be used with intermediate storage. </td></tr>
@@ -204,11 +204,13 @@ template&lt;typename Range , typename Domain , typename Payload  = internal::Lin
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="agroup__LAOperators_html_ga6bdc65fb2db56230e6bc7d545e81295d"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator</a></div><div class="ttdeci">LinearOperator&lt; Domain, Range, Payload &gt; transpose_operator(const LinearOperator&lt; Range, Domain, Payload &gt; &amp;op)</div></div>
+<div class="ttc" id="anamespacedealii_html_abd4e50e30f64abeaa4ec50743212cbcb"><div class="ttname"><a href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">dealii::projection_operator</a></div><div class="ttdeci">LinearOperator&lt; Range, Domain, Payload &gt; projection_operator(const Range &amp;range_exemplar, const std::vector&lt; std::reference_wrapper&lt; const Domain &gt;&gt; &amp;local_basis, const Domain *domain_exemplar=nullptr, const Payload &amp;payload=Payload())</div><div class="ttdoc">Construct a LinearOperator object that projects a vector onto a basis.</div><div class="ttdef"><b>Definition:</b> <a href="projection__operator_8h_source.html#l00062">projection_operator.h:62</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedealii.html">dealii</a></li>
-    <li class="footer">Generated on Wed Jan 12 2022 10:14:16 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 12 2022 21:33:49 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
