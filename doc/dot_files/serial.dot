@@ -1,5 +1,5 @@
 digraph G {
-    newrank=true;
+    // newrank=true;
 
     // edge [color="#FBEC5D", arrowsize=".8", penwidth="2"];
     node [color="#5D8AA8", fillcolor="#5D8AA8", shape=box,
@@ -8,7 +8,7 @@ digraph G {
     {
         rank=min;
         Poisson; // First node.
-        QuasiStaticPoisson [label="QuasiStatic\nPoisson"];
+        QuasiStaticPoisson [label="QuasiStatic\nPoisson", style="invis"];
         HeatEquation;
     }
 
@@ -39,6 +39,16 @@ digraph G {
         SemiImplicitALE;
     }
 
+     {
+        rank = max;
+        nmfsi [label="Non-matching Fluid\nStructure Interaction", shape="none", style=""];
+        QuasiStaticLinearIFEM [label="QuasiStatic\nLinearIFEM"];
+        DynamicLinearIFEM;
+        SemiImplicitIFEM;
+        ImmersedInteface;
+        FictitiousDomain;
+    }
+
     subgraph legends {
         csd;
         cfd;
@@ -53,23 +63,28 @@ digraph G {
 
     subgraph cluster_1 {
         label="Quasi-static linear PDEs";
-        QuasiStaticPoisson -> QuasiStaticLinearElasticity ->
+        // QuasiStaticPoisson -> 
+        QuasiStaticLinearElasticity ->
         QuasiStaticStokes -> QuasiStaticLinearFSI;
+        QuasiStaticLinearFSI -> QuasiStaticLinearIFEM [style="invis"];
     }
 
     subgraph cluster_2 {
        label="Dynamic linear PDEs";
        HeatEquation -> WaveEquation -> 
        DynamicStokes -> DynamicLinearFSI;
+       DynamicLinearFSI -> DynamicLinearIFEM [style="invis"];
     }
 
     subgraph cluster_3 {
        label="Dynamic non-linear PDEs";
        HyperElasticity -> NavierStokes -> SemiImplicitALE;
+       SemiImplicitALE -> SemiImplicitIFEM [style="invis"];
     }
 
     // Horizontal grouping
-    Poisson -> QuasiStaticPoisson -> HeatEquation;
+    Poisson -> HeatEquation
+    // QuasiStaticPoisson -> HeatEquation;
 
     // Solids
     csd -> LinearElasticity -> QuasiStaticLinearElasticity ->  WaveEquation -> HyperElasticity;
@@ -78,11 +93,16 @@ digraph G {
     cfd -> Stokes -> QuasiStaticStokes -> DynamicStokes -> NavierStokes;
 
     // FSI
-    QuasiStaticLinearElasticity -> QuasiStaticLinearFSI;
-
-    WaveEquation -> DynamicLinearFSI;
-
-    HyperElasticity -> SemiImplicitALE;
-
     fsi -> QuasiStaticLinearFSI  -> DynamicLinearFSI -> SemiImplicitALE;
+    nmfsi -> QuasiStaticLinearIFEM  -> DynamicLinearIFEM -> SemiImplicitIFEM;
+
+    QuasiStaticLinearElasticity -> {QuasiStaticLinearFSI, QuasiStaticLinearIFEM};
+
+    WaveEquation -> {DynamicLinearFSI, DynamicLinearIFEM};
+
+    HyperElasticity -> {SemiImplicitALE, SemiImplicitIFEM};
+
+    Poisson -> ImmersedInteface  -> FictitiousDomain;
+    // {NavierStokes, LinearElasticity} -> FictitiousDomain;
+    // Poisson -> FictitiousDomain;
 }
