@@ -10,14 +10,16 @@
 	"extensions": [
 		"alefragnani.project-manager",
 		"bertrand-thierry.vscode-gmsh",
+		"betwo.vscode-doxygen-runner",
 		"davydden.dealii-prm",
 		"github.copilot",
+		"joaompinto.vscode-graphviz",
 		"johnpapa.vscode-peacock",
+		"matepek.vscode-catch2-test-adapter",
 		"mhutchie.git-graph",
 		"ms-vscode.cpptools-extension-pack",
 		"troelsdamgaard.reflow-paragraph",
 		"xaver.clang-format",
-		"matepek.vscode-catch2-test-adapter",
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],

@@ -1,0 +1,88 @@
+digraph G {
+    newrank=true;
+
+    // edge [color="#FBEC5D", arrowsize=".8", penwidth="2"];
+    node [color="#5D8AA8", fillcolor="#5D8AA8", shape=box,
+        fixedsize=true, width="1.8", height=".6", style="filled,rounded"];
+    
+    {
+        rank=min;
+        Poisson; // First node.
+        QuasiStaticPoisson [label="QuasiStatic\nPoisson"];
+        HeatEquation;
+    }
+
+    // Labels on the left
+    { 
+        rank = same;
+        csd [label="Compututational\nSolid Dynamics", shape="none", style=""];
+        LinearElasticity;
+        QuasiStaticLinearElasticity [label="QuasiStatic\nLinearElasticity"];
+        WaveEquation;
+        HyperElasticity;
+    }
+
+    {
+        rank = same;
+        cfd [label="Compututational\nFluid Dynamics", shape="none", style=""];
+        Stokes;
+        QuasiStaticStokes [label="QuasiStatic\nStokes"];
+        DynamicStokes;
+        NavierStokes;
+    }
+
+    {
+        rank = same;
+        fsi [label="Matching Fluid\nStructure Interaction", shape="none", style=""];
+        QuasiStaticLinearFSI [label="QuasiStatic\nLinearFSI"];
+        DynamicLinearFSI;
+        SemiImplicitALE;
+    }
+
+    subgraph legends {
+        csd;
+        cfd;
+        fsi;
+    }
+
+    // Vertical grouping
+    subgraph cluster_0 {
+        label="Static linear PDEs";
+        Poisson -> LinearElasticity -> Stokes;
+    }
+
+    subgraph cluster_1 {
+        label="Quasi-static linear PDEs";
+        QuasiStaticPoisson -> QuasiStaticLinearElasticity ->
+        QuasiStaticStokes -> QuasiStaticLinearFSI;
+    }
+
+    subgraph cluster_2 {
+       label="Dynamic linear PDEs";
+       HeatEquation -> WaveEquation -> 
+       DynamicStokes -> DynamicLinearFSI;
+    }
+
+    subgraph cluster_3 {
+       label="Dynamic non-linear PDEs";
+       HyperElasticity -> NavierStokes -> SemiImplicitALE;
+    }
+
+    // Horizontal grouping
+    Poisson -> QuasiStaticPoisson -> HeatEquation;
+
+    // Solids
+    csd -> LinearElasticity -> QuasiStaticLinearElasticity ->  WaveEquation -> HyperElasticity;
+
+    // Fluids
+    cfd -> Stokes -> QuasiStaticStokes -> DynamicStokes -> NavierStokes;
+
+    // FSI
+    QuasiStaticLinearElasticity -> QuasiStaticLinearFSI;
+
+    WaveEquation -> DynamicLinearFSI;
+
+    HyperElasticity -> SemiImplicitALE;
+
+    fsi -> QuasiStaticLinearFSI  -> DynamicLinearFSI -> SemiImplicitALE;
+}

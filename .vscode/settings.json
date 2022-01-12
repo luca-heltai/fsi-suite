@@ -16,6 +16,11 @@
     "files.associations": {
         "*.inst": "cpp",
         "*.inst.in": "cpp",
+        "*.dox": [
+            "cpp",
+            "markdown",
+            "graphviz"
+        ],
         "*.h": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -127,6 +132,7 @@
             }
         ]
     },
-    "testMate.cpp.test.executables": "{build,Build,BUILD,out,Out,OUT}*/**/*{test,Test,TEST}*"
+    "testMate.cpp.test.executables": "{build,Build,BUILD,out,Out,OUT}*/**/*{test,Test,TEST}*",
     // "docker.host": "ssh://ovs"
+    "doxygen_runner.configuration_file_override": "${workspaceFolder}/doc/Doxyfile",
 }

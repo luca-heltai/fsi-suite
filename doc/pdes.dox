@@ -1,0 +1,12 @@
+/**
+ * This namespace contains a collection of PDEs. All pdes are derived from
+ * ParameterAcceptor, and use as many as possible of the objects defined in the
+ * Tools namespace.
+ *
+ * @section pdes_relation Relationship between PDEs
+ *
+ * @dotfile serial.dot
+ */
+namespace PDEs
+{} // namespace PDEs
+#endif

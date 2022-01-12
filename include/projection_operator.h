@@ -15,7 +15,7 @@ namespace dealii
    * a large dimensional vector onto a smaller dimensional subspace. Typical
    * usage of this class is the following:
    *
-   * @code
+   * @code{.cpp}
    * // Build a reduced vector space, i.e., a VectorType (either serial or
    * // parallel) that is an element of the Range space of the LinearOperator
    * VectorType exemplar_range(...);

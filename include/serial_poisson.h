@@ -41,13 +41,6 @@
 #include "tools/parsed_preconditioner/amg.h"
 #include "tools/parsed_symbolic_function.h"
 
-/**
- * @page PDEs Collection of PDEs
- *
- * This namespace contains a collection of PDEs. All pdes are derived from
- * ParameterAcceptor, and use as many as possible of the objects defined in the
- * Tools namespace.
- */
 namespace PDEs
 {
   using namespace dealii;
