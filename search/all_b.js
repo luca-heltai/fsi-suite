@@ -243,10 +243,11 @@ var searchData=
   ['build_5ftriangulation_5ffrom_5fpatch_748',['build_triangulation_from_patch',['http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#aca3b216d4efc9d4add312c055a5ec95f',1,'GridTools']]],
   ['bvh_749',['BVH',['http://www.dealii.org/developer/doxygen/deal.II/classArborXWrappers_1_1BVH.html',1,'ArborXWrappers::BVH'],['http://www.dealii.org/developer/doxygen/deal.II/classArborXWrappers_1_1BVH.html#a20f36483696d26db11714402442bfd3f',1,'ArborXWrappers::BVH::bvh()'],['http://www.dealii.org/developer/doxygen/deal.II/classArborXWrappers_1_1BVH.html#a7fdceb93b7c7a94ec7042aa48232f4e0',1,'ArborXWrappers::BVH::BVH(const std::vector&lt; BoundingBox&lt; dim, Number &gt;&gt; &amp;bounding_boxes)'],['http://www.dealii.org/developer/doxygen/deal.II/classArborXWrappers_1_1BVH.html#a424efa29fe23a86056aa6642527534ad',1,'ArborXWrappers::BVH::BVH(const std::vector&lt; Point&lt; dim, Number &gt;&gt; &amp;points)']]],
   ['bvh_2eh_750',['bvh.h',['http://www.dealii.org/developer/doxygen/deal.II/bvh_8h.html',1,'']]],
-  ['base_20classes_751',['Base classes',['http://www.dealii.org/developer/doxygen/deal.II/group__febase.html',1,'']]],
-  ['geometry_752',['geometry',['http://www.dealii.org/developer/doxygen/deal.II/namespaceboost_1_1geometry.html',1,'boost']]],
-  ['index_753',['index',['http://www.dealii.org/developer/doxygen/deal.II/namespaceboost_1_1geometry_1_1index.html',1,'boost::geometry']]],
-  ['basic_20matrices_754',['Basic matrices',['http://www.dealii.org/developer/doxygen/deal.II/group__Matrix1.html',1,'']]],
-  ['mpl_755',['mpl',['http://www.dealii.org/developer/doxygen/deal.II/classboost_1_1mpl_1_1int__.html',1,'boost']]],
-  ['traits_756',['traits',['http://www.dealii.org/developer/doxygen/deal.II/namespaceboost_1_1geometry_1_1traits.html',1,'boost::geometry']]]
+  ['bibliography_751',['Bibliography',['../citelist.html',1,'']]],
+  ['base_20classes_752',['Base classes',['http://www.dealii.org/developer/doxygen/deal.II/group__febase.html',1,'']]],
+  ['geometry_753',['geometry',['http://www.dealii.org/developer/doxygen/deal.II/namespaceboost_1_1geometry.html',1,'boost']]],
+  ['index_754',['index',['http://www.dealii.org/developer/doxygen/deal.II/namespaceboost_1_1geometry_1_1index.html',1,'boost::geometry']]],
+  ['basic_20matrices_755',['Basic matrices',['http://www.dealii.org/developer/doxygen/deal.II/group__Matrix1.html',1,'']]],
+  ['mpl_756',['mpl',['http://www.dealii.org/developer/doxygen/deal.II/classboost_1_1mpl_1_1int__.html',1,'boost']]],
+  ['traits_757',['traits',['http://www.dealii.org/developer/doxygen/deal.II/namespaceboost_1_1geometry_1_1traits.html',1,'boost::geometry']]]
 ];

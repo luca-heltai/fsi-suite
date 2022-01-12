@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['glossary_22995',['Glossary',['http://www.dealii.org/developer/doxygen/deal.II/DEALGlossary.html',1,'']]]
+  ['fluid_2dstructure_20interaction_20problems_22992',['FLuid-Structure Interaction problems',['../index.html',1,'']]]
 ];
