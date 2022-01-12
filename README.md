@@ -29,7 +29,6 @@ A glimpse of the PDEs that are discussed in the course is given by the following
 graph:
 
 ![PDEs](./doc/dot_files/serial.svg)
-<img src="./doc/dot_files/serial.svg">
 
 The laboratory part should enable a PhD student working on numerical analysis
 of PDEs to implement a state-of-the-art adaptive finite element codes for FSI
