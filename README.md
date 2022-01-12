@@ -63,7 +63,7 @@ https://luca-heltai.github.io/fsi-suite/
 One of my courses on theory and practice of finite elements:
 - https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods
 
-Exceptional video lectures by Prof. Wolfgang Bangerth, that covers all the
+Exceptional video lectures by Prof. Wolfgang Bangerth, that cover all the
 things you will ever need for finite element programming.
 
 - https://www.math.colostate.edu/~bangerth/videos.html
