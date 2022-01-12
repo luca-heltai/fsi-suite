@@ -1,8 +1,13 @@
-# Continuum mechanics and fluid-structure interaction problems
+# FLuid-Structure Interaction problems
 
-Author: Luca Heltai <luca.heltai@sissa.it>
-GitHub Repository: https://github.com/luca-heltai/fsi-suite
-## mathematical modeling and numerical approximation
+**Lecture materials for the course "Continuum mechanics and fluid-structure
+interaction problems: mathematical modeling and numerical approximation"**
+
+- *Author:* Luca Heltai <luca.heltai@sissa.it>
+- *GitHub Repository:* https://github.com/luca-heltai/fsi-suite
+- *Licence:* see the file [LICENCE.md](./LICENCE.md)
+
+## Course Introduction
 
 Fluid-structure interaction (FSI) refers to the multiphysics coupling between
 the laws that describe fluid dynamics and structural mechanics. 
@@ -31,9 +36,9 @@ graph:
 ![PDEs](./doc/dot_files/serial.svg)
 
 The laboratory part should enable a PhD student working on numerical analysis
-of PDEs to implement a state-of-the-art adaptive finite element codes for FSI
+of PDEs to implement state-of-the-art adaptive finite element codes for FSI
 problems, that run in parallel, using modern C++ libraries. The implementation
-will are based on the `deal.II` library (www.dealii.org).
+are based on the `deal.II` library (www.dealii.org).
 
 Main topics covered by these lectures:
 

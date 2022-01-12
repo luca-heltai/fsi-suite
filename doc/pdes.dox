@@ -1,11 +1,88 @@
 /**
- * This namespace contains a collection of PDEs. All pdes are derived from
- * ParameterAcceptor, and use as many as possible of the objects defined in the
- * Tools namespace.
+ * We collect in this namespace all PDEs that are relevant to Fluid Structure
+ * Interaction Problems.
  *
  * @section pdes_relation Relationship between PDEs
  *
  * @dotfile serial.dot
+ *
+ * @section design General design principles of the FSI-suite
+ *
+ * This project collects a series of codes that I have written during the years
+ * for my own research. I found myself writing the same code over and over
+ * again, and tried several approaches to unify everything under a single
+ * master application that would do everything I ever needed.
+ *
+ * This never really worked out as expected. One of the most advanced tool that
+ * was developed in our group with this principle in mind was the pi-DoMUS
+ * library (https://github.com/mathLab/pi-DoMUS). After a couple of years of
+ * intense development, that project was abandoned as it became more and more
+ * difficult to maintain. That project relied eavily on a tool kit library,
+ * which we named deal2lkit (https://github.com/mathLab/deal2lkit)
+ * \cite SartoriGiulianiBardelloni-2018-a
+ *
+ * The deal2lkit library was a good starting point, but we quickly found out
+ * that the development of the deal.II library itself runs way faster than we
+ * could ever hope to keep up with, and we decided to slowly incorporate
+ * anything that could be savaged from deal2lkit into deal.II itself.
+ *
+ * ParsedFunction and FunctionParser, Manifold, ParameterAcceptor, and the
+ * LinearOperator classes are some of the results of this effort, and are
+ * currently used widely by the deal.II community
+ * \cite HeltaiBangerthKronbichler-2021, \cite MaierBardelloniHeltai-2016-a.
+ *
+ * The task is not finished yet. It is painful to port code from user
+ * space into a large library. The documentation requirements are
+ * stringent, proper testing is mandatory, and time always runs out.
+ *
+ * When I started working on fluid structure interaction problems (2004), it was
+ * very difficult to find advanced codes that one could learn from. Deal.II
+ * itself only had 17 tutorial programs (step-17 was the most advanced one).
+ * Today there are exceptional examples that show how to do everything, often in
+ * different ways, and the number of example programs is growing at a speed
+ * which is very difficult to keep up with.
+ *
+ * This project is what I wish I had at my disposal when I started working
+ * on FSI using deal.II. I collect here all the codes that I have written that
+ * relate in one way or another to fluid structure interaction problems.
+ *
+ * Documentation is still largely missing. But I have tried to keep up with the
+ * main classes and functions. Since I have given up trying to build a
+ * "one-fits-all" code, this project goes in the opposite directino. I collected
+ * every common bit of code that I found mymeslf rewriting over and over again
+ * in the Tools namespace.
+ *
+ * Whenever possible, I try to let my programs be driven by parameter files,
+ * rather than compile-time variables. For example, this implies that I use a
+ * ParsedGridGenerator object to decide what grid to generate and read, or a
+ * ParsedFiniteElement object to decide what finite element to use, and so on.
+ *
+ * Individual programs are as small as possible, and as clean as possible.
+ * Each code solves a single problem. A lot of duplication is unavoidable, but
+ * this has the advantage that it is easy to make incremental steps, and
+ * understand the most difficult parts of the FSI suite by walking through
+ * examples that increase in complexity, pretty much like it is done in the
+ * deal.II tutorial programs.
+ *
+ * Each example is documented in the source code, and in the documentation
+ *
+ * @subsection general_structure General structure of the FSI-suite
+ *
+ * The main source directories of the FSI-suite are:
+ *
+ * - \ref include, containing the declaration for each of the classes and
+ * functions of the FSI-suite
+ * - \ref source, containing the implementations and instantiations of most
+ * objects
+ * - \ref tests, containing all the tests that are run on the FSI-suite with
+ * continuous integration based on github (see
+ * https://github.com/luca-heltai/fsi-suite/actions)
+ * - \ref apps, containing the main files, used to generate the actual
+ * applications.
+ *
+ * Other directories are accessible on the main repository page, and contain
+ * links to the video lectures, slides of each lecture, lecture notes, grids,
+ * and the input parameters used in the examples.
  */
 namespace PDEs
 {} // namespace PDEs

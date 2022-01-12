@@ -16,11 +16,7 @@
     "files.associations": {
         "*.inst": "cpp",
         "*.inst.in": "cpp",
-        "*.dox": [
-            "cpp",
-            "markdown",
-            "graphviz"
-        ],
+        "*.dox": "cpp",
         "*.h": "cpp",
         "array": "cpp",
         "atomic": "cpp",
