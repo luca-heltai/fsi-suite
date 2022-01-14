@@ -53,7 +53,7 @@ namespace PDEs
      * @addtogroup basics
      *
      * Solve the Poisson equation in arbitrary dimensions and space dimensions.
-     * When dim and spacedim are not the same, we solve the LaplaceBeltrami
+     * When dim and spacedim are not the same, we solve the Laplace-Beltrami
      * equation.
      *
      * \f[
@@ -62,7 +62,9 @@ namespace PDEs
      * u = u_D & \text{ on } \partial \Omega_D \\
      * \frac{\partial u}{\partial n} u = u_N & \text{ on } \partial \Omega_N \\
      * \frac{\partial u}{\partial n} u + \rho u= u_R & \text{ on } \partial
-     * \Omega_R \end{cases} \f]
+     * \Omega_R
+     * \end{cases}
+     * \f]
      *
      * @ingroup PDEs
      */
