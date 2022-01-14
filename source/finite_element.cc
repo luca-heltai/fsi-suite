@@ -1,13 +1,13 @@
 
 
+#include "parsed_tools/finite_element.h"
+
 #include <deal.II/base/patterns.h>
 
 #include <deal.II/fe/fe_simplex_p.h>
 #include <deal.II/fe/fe_tools.templates.h>
 
 #include <algorithm> // std::find
-
-#include "parsed_tools/finite_element.h"
 
 using namespace dealii;
 

@@ -1,3 +1,5 @@
+#include "parsed_lac/inverse_operator.h"
+
 #include <deal.II/base/quadrature_lib.h>
 
 #include <deal.II/dofs/dof_handler.h>
@@ -22,8 +24,6 @@
 
 #include <fstream>
 #include <sstream>
-
-#include "parsed_lac/inverse_operator.h"
 
 using namespace dealii;
 

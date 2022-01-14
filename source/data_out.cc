@@ -1,3 +1,5 @@
+#include "parsed_tools/data_out.h"
+
 #include <deal.II/base/logstream.h>
 #include <deal.II/base/quadrature_lib.h>
 #include <deal.II/base/utilities.h>
@@ -17,8 +19,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
-#include "parsed_tools/data_out.h"
 
 using namespace dealii;
 

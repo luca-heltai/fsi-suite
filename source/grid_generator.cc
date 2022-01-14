@@ -1,10 +1,10 @@
+#include "parsed_tools/grid_generator.h"
+
 #include <deal.II/grid/grid_in.h>
 #include <deal.II/grid/grid_out.h>
 
 #include <deal.II/opencascade/manifold_lib.h>
 #include <deal.II/opencascade/utilities.h>
-
-#include "parsed_tools/grid_generator.h"
 #ifdef DEAL_II_WITH_OPENCASCADE
 #  include <TopoDS.hxx>
 #endif

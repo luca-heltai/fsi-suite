@@ -1,3 +1,5 @@
+#include "parsed_tools/symbolic_function.h"
+
 #include <gtest/gtest.h>
 
 #include <fstream>
@@ -5,7 +7,6 @@
 
 #include "dim_spacedim_tester.h"
 #include "parsed_tools/constants.h"
-#include "parsed_tools/symbolic_function.h"
 
 #ifdef DEAL_II_WITH_SYMENGINE
 

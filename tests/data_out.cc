@@ -1,5 +1,7 @@
 #include <deal.II/base/config.h>
 
+#include "parsed_tools/data_out.h"
+
 #include <deal.II/dofs/dof_handler.h>
 
 #include <deal.II/fe/fe_q.h>
@@ -14,7 +16,6 @@
 #include <sstream>
 
 #include "dim_spacedim_tester.h"
-#include "parsed_tools/data_out.h"
 
 using namespace dealii;
 

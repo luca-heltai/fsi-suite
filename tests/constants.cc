@@ -1,9 +1,10 @@
+#include "parsed_tools/constants.h"
+
 #include <gtest/gtest.h>
 
 #include <fstream>
 #include <sstream>
 
-#include "parsed_tools/constants.h"
 #include "parsed_tools/function.h"
 
 using namespace dealii;

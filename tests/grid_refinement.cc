@@ -1,3 +1,5 @@
+#include "parsed_tools/grid_refinement.h"
+
 #include <deal.II/grid/grid_generator.h>
 
 #include <gtest/gtest.h>
@@ -6,7 +8,6 @@
 #include <sstream>
 
 #include "dim_spacedim_tester.h"
-#include "parsed_tools/grid_refinement.h"
 
 using namespace dealii;
 

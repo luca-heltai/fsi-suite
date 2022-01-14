@@ -1,10 +1,11 @@
+#include "parsed_tools/function.h"
+
 #include <gtest/gtest.h>
 
 #include <fstream>
 #include <sstream>
 
 #include "dim_spacedim_tester.h"
-#include "parsed_tools/function.h"
 
 using namespace dealii;
 

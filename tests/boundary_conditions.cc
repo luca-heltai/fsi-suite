@@ -1,9 +1,10 @@
 #include <deal.II/base/config.h>
 
+#include "parsed_tools/boundary_conditions.h"
+
 #include <gtest/gtest.h>
 
 #include "dim_spacedim_tester.h"
-#include "parsed_tools/boundary_conditions.h"
 
 #ifdef DEAL_II_WITH_SYMENGINE
 #  include <fstream>
