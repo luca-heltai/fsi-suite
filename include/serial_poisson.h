@@ -1,6 +1,6 @@
 
-#ifndef poisson_include_file
-#define poisson_include_file
+#ifndef serial_poisson_h
+#define serial_poisson_h
 
 #include <deal.II/base/function.h>
 #include <deal.II/base/parameter_acceptor.h>
@@ -31,96 +31,102 @@
 #include <fstream>
 #include <iostream>
 
-#include "tools/parsed_boundary_conditions.h"
-#include "tools/parsed_constants.h"
-#include "tools/parsed_data_out.h"
-#include "tools/parsed_finite_element.h"
-#include "tools/parsed_grid_generator.h"
-#include "tools/parsed_grid_refinement.h"
-#include "tools/parsed_inverse_operator.h"
-#include "tools/parsed_preconditioner/amg.h"
-#include "tools/parsed_symbolic_function.h"
+#include "parsed_lac/amg.h"
+#include "parsed_lac/inverse_operator.h"
+#include "parsed_tools/boundary_conditions.h"
+#include "parsed_tools/constants.h"
+#include "parsed_tools/data_out.h"
+#include "parsed_tools/finite_element.h"
+#include "parsed_tools/grid_generator.h"
+#include "parsed_tools/grid_refinement.h"
+#include "parsed_tools/symbolic_function.h"
 
 namespace PDEs
 {
   using namespace dealii;
-  /**
-   * Serial Poisson problem.
-   *
-   * Solve the Poisson equation in arbitrary dimensions and space dimensions.
-   * When dim and spacedim are not the same, we solve the LaplaceBeltrami
-   * equation.
-   *
-   * \f[
-   * \begin{cases}
-   *  - \Delta u = f & \text{ in } \Omega \subset R^{\text{spacedim}}\\
-   * u = u_D & \text{ on } \partial \Omega_D \\
-   * \frac{\partial u}{\partial n} u = u_N & \text{ on } \partial \Omega_N \\
-   * \frac{\partial u}{\partial n} u + \rho u= u_R & \text{ on } \partial
-   * \Omega_R \end{cases} \f]
-   *
-   * @ingroup PDEs
-   */
-  template <int dim, int spacedim = dim>
-  class SerialPoisson : public ParameterAcceptor
+
+  namespace Serial
   {
-  public:
-    SerialPoisson();
-
-    void
-    run();
-
-  protected:
-    void
-    setup_system();
-
-    void
-    assemble_system();
-
-    void
-    solve();
-
-    void
-    output_results(const unsigned cycle) const;
-
     /**
-     * How we identify the component names.
+     * Serial Poisson problem.
+     *
+     * @addtogroup basics
+     *
+     * Solve the Poisson equation in arbitrary dimensions and space dimensions.
+     * When dim and spacedim are not the same, we solve the LaplaceBeltrami
+     * equation.
+     *
+     * \f[
+     * \begin{cases}
+     *  - \Delta u = f & \text{ in } \Omega \subset R^{\text{spacedim}}\\
+     * u = u_D & \text{ on } \partial \Omega_D \\
+     * \frac{\partial u}{\partial n} u = u_N & \text{ on } \partial \Omega_N \\
+     * \frac{\partial u}{\partial n} u + \rho u= u_R & \text{ on } \partial
+     * \Omega_R \end{cases} \f]
+     *
+     * @ingroup PDEs
      */
-    const std::string component_names = "u";
+    template <int dim, int spacedim = dim>
+    class Poisson : public ParameterAcceptor
+    {
+    public:
+      Poisson();
 
-    // Grid classes
-    Tools::ParsedGridGenerator<dim, spacedim> grid_generator;
-    Tools::ParsedGridRefinement               grid_refinement;
-    Triangulation<dim, spacedim>              triangulation;
+      void
+      run();
 
-    // FE and dofs classes
-    Tools::ParsedFiniteElement<dim, spacedim> finite_element;
-    DoFHandler<dim, spacedim>                 dof_handler;
-    std::unique_ptr<Mapping<dim, spacedim>>   mapping;
+    protected:
+      void
+      setup_system();
 
-    // Linear algebra classes
-    AffineConstraints<double>      constraints;
-    SparsityPattern                sparsity_pattern;
-    SparseMatrix<double>           system_matrix;
-    Vector<double>                 solution;
-    Vector<double>                 system_rhs;
-    Tools::ParsedInverseOperator   inverse_operator;
-    Tools::ParsedAMGPreconditioner preconditioner;
+      void
+      assemble_system();
 
-    // Forcing terms and boundary conditions
-    Tools::ParsedConstants                    constants;
-    Tools::ParsedSymbolicFunction<spacedim>   forcing_term;
-    Tools::ParsedSymbolicFunction<spacedim>   exact_solution;
-    Tools::ParsedBoundaryConditions<spacedim> boundary_conditions;
+      void
+      solve();
 
-    // Error convergence tables
-    ParsedConvergenceTable error_table;
+      void
+      output_results(const unsigned cycle) const;
 
-    // Output class
-    mutable Tools::ParsedDataOut<dim, spacedim> data_out;
+      /**
+       * How we identify the component names.
+       */
+      const std::string component_names = "u";
 
-    // Console level
-    unsigned int console_level = 1;
-  };
+      // Grid classes
+      ParsedTools::GridGenerator<dim, spacedim> grid_generator;
+      ParsedTools::GridRefinement               grid_refinement;
+      Triangulation<dim, spacedim>              triangulation;
+
+      // FE and dofs classes
+      ParsedTools::FiniteElement<dim, spacedim> finite_element;
+      DoFHandler<dim, spacedim>                 dof_handler;
+      std::unique_ptr<Mapping<dim, spacedim>>   mapping;
+
+      // Linear algebra classes
+      AffineConstraints<double>    constraints;
+      SparsityPattern              sparsity_pattern;
+      SparseMatrix<double>         system_matrix;
+      Vector<double>               solution;
+      Vector<double>               system_rhs;
+      ParsedLAC::InverseOperator   inverse_operator;
+      ParsedLAC::AMGPreconditioner preconditioner;
+
+      // Forcing terms and boundary conditions
+      ParsedTools::Constants                    constants;
+      ParsedTools::SymbolicFunction<spacedim>   forcing_term;
+      ParsedTools::SymbolicFunction<spacedim>   exact_solution;
+      ParsedTools::BoundaryConditions<spacedim> boundary_conditions;
+
+      // Error convergence tables
+      ParsedConvergenceTable error_table;
+
+      // Output class
+      mutable ParsedTools::DataOut<dim, spacedim> data_out;
+
+      // Console level
+      unsigned int console_level = 1;
+    };
+  } // namespace Serial
 } // namespace PDEs
 #endif

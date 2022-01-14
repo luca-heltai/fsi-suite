@@ -1,18 +1,18 @@
 
 
-#include <tools/parsed_preconditioner/ilu.h>
+#include <parsed_lac/ilu.h>
 
 #ifdef DEAL_II_WITH_TRILINOS
 
 using namespace dealii;
 
-namespace Tools
+namespace ParsedLAC
 {
-  ParsedILUPreconditioner::ParsedILUPreconditioner(const std::string & name,
-                                                   const unsigned int &ilu_fill,
-                                                   const double &      ilu_atol,
-                                                   const double &      ilu_rtol,
-                                                   const unsigned int &overlap)
+  ILUPreconditioner::ILUPreconditioner(const std::string & name,
+                                       const unsigned int &ilu_fill,
+                                       const double &      ilu_atol,
+                                       const double &      ilu_rtol,
+                                       const unsigned int &overlap)
     : ParameterAcceptor(name)
     , PreconditionILU()
     , ilu_fill(ilu_fill)
@@ -24,7 +24,7 @@ namespace Tools
   }
 
   void
-  ParsedILUPreconditioner::add_parameters()
+  ILUPreconditioner::add_parameters()
   {
     add_parameter("Fill-in", ilu_fill, "Additional fill-in.");
 
@@ -39,7 +39,7 @@ namespace Tools
 
   template <typename Matrix>
   void
-  ParsedILUPreconditioner::initialize_preconditioner(const Matrix &matrix)
+  ILUPreconditioner::initialize_preconditioner(const Matrix &matrix)
   {
     TrilinosWrappers::PreconditionILU::AdditionalData data;
 
@@ -49,10 +49,10 @@ namespace Tools
     data.overlap  = overlap;
     this->initialize(matrix, data);
   }
-} // namespace Tools
+} // namespace ParsedLAC
 
 template void
-Tools::ParsedILUPreconditioner::initialize_preconditioner<
+ParsedLAC::ILUPreconditioner::initialize_preconditioner<
   dealii::TrilinosWrappers::SparseMatrix>(
   const dealii::TrilinosWrappers::SparseMatrix &);
 

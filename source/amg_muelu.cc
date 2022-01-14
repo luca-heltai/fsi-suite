@@ -1,15 +1,16 @@
-#include <tools/parsed_preconditioner/amg_muelu.h>
+#include <parsed_lac/amg_muelu.h>
 
 #if defined(DEAL_II_WITH_TRILINOS) && defined(DEAL_II_TRILINOS_WITH_MUELU)
 
 #  include <deal.II/dofs/dof_tools.h>
 
 #  include <deal.II/lac/sparse_matrix.h>
+
 using namespace dealii;
 
-namespace Tools
+namespace ParsedLAC
 {
-  ParsedAMGMueLuPreconditioner::ParsedAMGMueLuPreconditioner(
+  AMGMueLuPreconditioner::AMGMueLuPreconditioner(
     const std::string & name,
     const bool &        elliptic,
     const unsigned int &n_cycles,
@@ -36,7 +37,7 @@ namespace Tools
   }
 
   void
-  ParsedAMGMueLuPreconditioner::add_parameters()
+  AMGMueLuPreconditioner::add_parameters()
   {
     add_parameter(
       "Elliptic",
@@ -127,7 +128,7 @@ namespace Tools
 
   template <typename Matrix>
   void
-  ParsedAMGMueLuPreconditioner::initialize_preconditioner(const Matrix &matrix)
+  AMGMueLuPreconditioner::initialize_preconditioner(const Matrix &matrix)
   {
     TrilinosWrappers::PreconditionAMGMueLu::AdditionalData data;
 
@@ -143,15 +144,15 @@ namespace Tools
     data.coarse_type           = coarse_type.c_str();
     this->initialize(matrix, data);
   }
-} // namespace Tools
+} // namespace ParsedLAC
 
 template void
-Tools::ParsedAMGMueLuPreconditioner::initialize_preconditioner<
+ParsedLAC::AMGMueLuPreconditioner::initialize_preconditioner<
   dealii::TrilinosWrappers::SparseMatrix>(
   const dealii::TrilinosWrappers::SparseMatrix &);
 
 template void
-Tools::ParsedAMGMueLuPreconditioner::initialize_preconditioner<
+ParsedLAC::AMGMueLuPreconditioner::initialize_preconditioner<
   dealii::SparseMatrix<double>>(const dealii::SparseMatrix<double> &);
 
 #endif

@@ -1,4 +1,4 @@
-#include "tools/parsed_preconditioner/amg.h"
+#include "parsed_lac/amg.h"
 
 #ifdef DEAL_II_WITH_TRILINOS
 
@@ -8,20 +8,19 @@
 
 using namespace dealii;
 
-namespace Tools
+namespace ParsedLAC
 {
-  ParsedAMGPreconditioner::ParsedAMGPreconditioner(
-    const std::string & name,
-    const bool &        elliptic,
-    const bool &        higher_order_elements,
-    const unsigned int &n_cycles,
-    const bool &        w_cycle,
-    const double &      aggregation_threshold,
-    const unsigned int &smoother_sweeps,
-    const unsigned int &smoother_overlap,
-    const bool &        output_details,
-    const std::string & smoother_type,
-    const std::string & coarse_type)
+  AMGPreconditioner::AMGPreconditioner(const std::string &name,
+                                       const bool &       elliptic,
+                                       const bool &       higher_order_elements,
+                                       const unsigned int &n_cycles,
+                                       const bool &        w_cycle,
+                                       const double &aggregation_threshold,
+                                       const unsigned int &smoother_sweeps,
+                                       const unsigned int &smoother_overlap,
+                                       const bool &        output_details,
+                                       const std::string & smoother_type,
+                                       const std::string & coarse_type)
     : ParameterAcceptor(name)
     , PreconditionAMG()
     , elliptic(elliptic)
@@ -39,7 +38,7 @@ namespace Tools
   }
 
   void
-  ParsedAMGPreconditioner::add_parameters()
+  AMGPreconditioner::add_parameters()
   {
     add_parameter(
       "Elliptic",
@@ -137,7 +136,7 @@ namespace Tools
 
 
   void
-  ParsedAMGPreconditioner::set_constant_modes(
+  AMGPreconditioner::set_constant_modes(
     const std::vector<std::vector<bool>> &constant_modes)
   {
     this->constant_modes = constant_modes;
@@ -147,7 +146,7 @@ namespace Tools
 
   template <typename Matrix>
   void
-  ParsedAMGPreconditioner::initialize(const Matrix &matrix)
+  AMGPreconditioner::initialize(const Matrix &matrix)
   {
     TrilinosWrappers::PreconditionAMG::AdditionalData data;
 
@@ -164,18 +163,16 @@ namespace Tools
     data.coarse_type           = coarse_type.c_str();
     this->TrilinosWrappers::PreconditionAMG::initialize(matrix, data);
   }
-
-
-} // namespace Tools
+} // namespace ParsedLAC
 
 template void
-Tools::ParsedAMGPreconditioner::initialize<
+ParsedLAC::AMGPreconditioner::initialize<
   dealii::TrilinosWrappers::SparseMatrix>(
   const dealii::TrilinosWrappers::SparseMatrix &);
 
 
 template void
-Tools::ParsedAMGPreconditioner::initialize<dealii::SparseMatrix<double>>(
+ParsedLAC::AMGPreconditioner::initialize<dealii::SparseMatrix<double>>(
   const dealii::SparseMatrix<double> &);
 
 #endif

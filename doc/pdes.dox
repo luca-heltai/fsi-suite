@@ -4,7 +4,7 @@
  *
  * @section pdes_relation Relationship between PDEs
  *
- * @dotfile serial.dot
+ * @dotfile serial.dot "Relationship between PDEs"
  *
  * @section design General design principles of the FSI-suite
  *
@@ -26,7 +26,7 @@
  * could ever hope to keep up with, and we decided to slowly incorporate
  * anything that could be savaged from deal2lkit into deal.II itself.
  *
- * ParsedFunction and FunctionParser, Manifold, ParameterAcceptor, and the
+ * Function and FunctionParser, Manifold, ParameterAcceptor, and the
  * LinearOperator classes are some of the results of this effort, and are
  * currently used widely by the deal.II community
  * \cite HeltaiBangerthKronbichler-2021, \cite MaierBardelloniHeltai-2016-a.
@@ -50,12 +50,12 @@
  * main classes and functions. Since I have given up trying to build a
  * "one-fits-all" code, this project goes in the opposite directino. I collected
  * every common bit of code that I found mymeslf rewriting over and over again
- * in the Tools namespace.
+ * in the ParsedTools namespace.
  *
  * Whenever possible, I try to let my programs be driven by parameter files,
  * rather than compile-time variables. For example, this implies that I use a
- * ParsedGridGenerator object to decide what grid to generate and read, or a
- * ParsedFiniteElement object to decide what finite element to use, and so on.
+ * GridGenerator object to decide what grid to generate and read, or a
+ * FiniteElement object to decide what finite element to use, and so on.
  *
  * Individual programs are as small as possible, and as clean as possible.
  * Each code solves a single problem. A lot of duplication is unavoidable, but
@@ -85,5 +85,17 @@
  * and the input parameters used in the examples.
  */
 namespace PDEs
-{} // namespace PDEs
+{
+  /**
+   * @defgroup basics Basic applications
+   */
+
+  /**
+   * @defgroup csd Computational solid dynamic applications
+   */
+
+  /**
+   * @defgroup cfd Computational fluid dynamic applications
+   */
+} // namespace PDEs
 #endif

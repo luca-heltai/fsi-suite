@@ -1,11 +1,11 @@
-#include "tools/components.h"
+#include "parsed_tools/components.h"
 
 #include <deal.II/base/patterns.h>
 
 #include <numeric>
 using namespace dealii;
 
-namespace Tools
+namespace ParsedTools
 {
   /**
    * Utilities for extracting components and boundary condition types from
@@ -253,4 +253,4 @@ namespace Tools
         }
     }
   } // namespace Components
-} // namespace Tools
+} // namespace ParsedTools

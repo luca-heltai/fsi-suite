@@ -1,6 +1,6 @@
 #include <deal.II/base/config.h>
 
-#include "tools/components.h"
+#include "parsed_tools/components.h"
 
 #include <deal.II/base/patterns.h>
 
@@ -11,7 +11,7 @@
 
 #include "dim_spacedim_tester.h"
 using namespace dealii;
-using namespace Tools::Components;
+using namespace ParsedTools::Components;
 
 
 

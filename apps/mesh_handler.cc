@@ -1,7 +1,7 @@
 #include <deal.II/grid/reference_cell.h>
 
-#include "tools/grid_info.h"
-#include "tools/parsed_grid_generator.h"
+#include "parsed_tools/grid_generator.h"
+#include "parsed_tools/grid_info.h"
 
 using namespace dealii;
 
@@ -30,12 +30,12 @@ main(int argc, char **argv)
       else
         deallog.depth_console(0);
 
-      Tools::ParsedGridGenerator<2> pgg;
+      ParsedTools::GridGenerator<2> pgg;
       ParameterAcceptor::initialize(par_name);
       Triangulation<2> tria;
       pgg.generate(tria);
       pgg.write(tria);
-      Tools::GridInfo info(tria, info_level);
+      ParsedTools::GridInfo info(tria, info_level);
       info.print_info(deallog);
     }
   catch (std::exception &exc)

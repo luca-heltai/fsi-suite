@@ -1,6 +1,8 @@
 digraph G {
     // newrank=true;
-    bgcolor="transparent";
+    // bgcolor="transparent";
+    // ratio="compress";
+    // size="6,12";
 
     // edge [color="#FBEC5D", arrowsize=".8", penwidth="2"];
     node [color="#5D8AA8", fillcolor="#5D8AA8", shape=box,

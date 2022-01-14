@@ -1,5 +1,5 @@
-#ifndef projection_operator_basis_h
-#define projection_operator_basis_h
+#ifndef projection_operator_h
+#define projection_operator_h
 
 #include <deal.II/base/config.h>
 

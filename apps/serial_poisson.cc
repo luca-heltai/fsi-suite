@@ -1,6 +1,6 @@
 #include "serial_poisson.h"
 
-#include "tools/parsed_grid_generator.h"
+#include "parsed_tools/grid_generator.h"
 
 using namespace dealii;
 
@@ -16,7 +16,7 @@ main(int argc, char **argv)
       std::string                      par_name = "poisson_parameters_2d.prm";
       if (argc > 1)
         par_name = argv[1];
-      PDEs::SerialPoisson<2> poisson;
+      PDEs::Serial::Poisson<2> poisson;
       ParameterAcceptor::initialize(par_name, "used_" + par_name);
       poisson.run();
     }

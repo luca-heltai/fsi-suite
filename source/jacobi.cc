@@ -1,16 +1,15 @@
-#include "tools/parsed_preconditioner/jacobi.h"
+#include "parsed_lac/jacobi.h"
 
 #ifdef DEAL_II_WITH_TRILINOS
 
 using namespace dealii;
 
-namespace Tools
+namespace ParsedLAC
 {
-  ParsedJacobiPreconditioner::ParsedJacobiPreconditioner(
-    const std::string & name,
-    const double &      omega,
-    const double &      min_diagonal,
-    const unsigned int &n_sweeps)
+  JacobiPreconditioner::JacobiPreconditioner(const std::string & name,
+                                             const double &      omega,
+                                             const double &      min_diagonal,
+                                             const unsigned int &n_sweeps)
     : ParameterAcceptor(name)
     , PreconditionJacobi()
     , omega(omega)
@@ -21,7 +20,7 @@ namespace Tools
   }
 
   void
-  ParsedJacobiPreconditioner::add_parameters()
+  JacobiPreconditioner::add_parameters()
   {
     add_parameter(
       "Omega",
@@ -44,7 +43,7 @@ namespace Tools
 
   template <typename Matrix>
   void
-  ParsedJacobiPreconditioner::initialize_preconditioner(const Matrix &matrix)
+  JacobiPreconditioner::initialize_preconditioner(const Matrix &matrix)
   {
     TrilinosWrappers::PreconditionJacobi::AdditionalData data;
 
@@ -53,10 +52,10 @@ namespace Tools
     data.n_sweeps     = n_sweeps;
     this->initialize(matrix, data);
   }
-} // namespace Tools
+} // namespace ParsedLAC
 
 template void
-Tools::ParsedJacobiPreconditioner::initialize_preconditioner<
+ParsedLAC::JacobiPreconditioner::initialize_preconditioner<
   dealii::TrilinosWrappers::SparseMatrix>(
   const dealii::TrilinosWrappers::SparseMatrix &);
 

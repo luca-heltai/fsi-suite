@@ -2,7 +2,7 @@
 
 using namespace dealii;
 
-namespace Tools
+namespace ParsedTools
 {
 
-} // namespace Tools
+} // namespace ParsedTools

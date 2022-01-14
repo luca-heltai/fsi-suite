@@ -1,4 +1,4 @@
-# FLuid-Structure Interaction problems
+# Fluid-Structure Interaction suite
 
 **Lecture materials for the course "Continuum mechanics and fluid-structure
 interaction problems: mathematical modeling and numerical approximation"**
@@ -31,7 +31,9 @@ including non-linear mechanics, computational fluid dynamic, and
 fluid-structure-interaction problems.
 
 A glimpse of the PDEs that are discussed in the course is given by the following 
-graph:
+graph 
+
+@dotfile serial.dot
 
 ![PDEs](./doc/dot_files/serial.svg)
 
