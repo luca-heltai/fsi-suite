@@ -1,4 +1,4 @@
 var amg__muelu_8cc =
 [
-    [ "Tools::ParsedAMGMueLuPreconditioner::initialize_preconditioner< TrilinosWrappers::SparseMatrix >", "amg__muelu_8cc.html#a97288897c6c34cf47843448d4e1bf542", null ]
+    [ "ParsedLAC::AMGMueLuPreconditioner::initialize_preconditioner< TrilinosWrappers::SparseMatrix >", "amg__muelu_8cc.html#acf31bf28a48fdd6eee5c93c0ea94d0cc", null ]
 ];

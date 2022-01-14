@@ -1,4 +1,4 @@
 var amg_8cc =
 [
-    [ "Tools::ParsedAMGPreconditioner::initialize< TrilinosWrappers::SparseMatrix >", "amg_8cc.html#a37c23e6a4c807aad538da3e7d71c4d7b", null ]
+    [ "ParsedLAC::AMGPreconditioner::initialize< TrilinosWrappers::SparseMatrix >", "amg_8cc.html#af30fbfa3374844811c9efb7962776328", null ]
 ];

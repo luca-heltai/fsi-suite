@@ -6,7 +6,7 @@ digraph "source/components.cc"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="source/components.cc",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="tools/components.h",height=0.2,width=0.4,color="black",URL="$components_8h.html",tooltip=" "];
+  Node2 [label="parsed_tools/components.h",height=0.2,width=0.4,color="black",URL="$components_8h.html",tooltip=" "];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="deal.II/base/config.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$config_8h.html",tooltip=" "];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -96,7 +96,7 @@ digraph "source/components.cc"
   Node24 [label="deal.II/base/memory\l_consumption.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$memory__consumption_8h.html",tooltip=" "];
   Node24 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 -> Node25 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node25 [label="tools/parsed_enum.h",height=0.2,width=0.4,color="black",URL="$parsed__enum_8h.html",tooltip=" "];
+  Node25 [label="parsed_tools/enum.h",height=0.2,width=0.4,color="black",URL="$enum_8h.html",tooltip=" "];
   Node25 -> Node26 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node26 [label="deal.II/base/patterns.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$patterns_8h.html",tooltip=" "];
   Node26 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

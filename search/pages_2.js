@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fluid_2dstructure_20interaction_20problems_22992',['FLuid-Structure Interaction problems',['../index.html',1,'']]]
+  ['fluid_2dstructure_20interaction_20suite_22978',['Fluid-Structure Interaction suite',['../index.html',1,'']]]
 ];

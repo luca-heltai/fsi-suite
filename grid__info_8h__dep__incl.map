@@ -1,9 +1,9 @@
-<map id="include/tools/grid_info.h" name="include/tools/grid_info.h">
-<area shape="rect" id="node1" title=" " alt="" coords="154,5,289,47"/>
-<area shape="rect" id="node2" href="$parsed__boundary__conditions_8cc.html" title=" " alt="" coords="5,184,187,225"/>
-<area shape="rect" id="node3" href="$parsed__boundary__conditions_8h.html" title=" " alt="" coords="133,95,309,136"/>
-<area shape="rect" id="node7" href="$mesh__handler_8cc.html" title=" " alt="" coords="334,102,501,129"/>
-<area shape="rect" id="node4" href="$serial__poisson_8h.html" title=" " alt="" coords="211,191,389,218"/>
-<area shape="rect" id="node5" href="$source_2serial__poisson_8cc.html" title=" " alt="" coords="110,273,290,300"/>
-<area shape="rect" id="node6" href="$apps_2serial__poisson_8cc.html" title=" " alt="" coords="315,273,483,300"/>
+<map id="include/parsed_tools/grid_info.h" name="include/parsed_tools/grid_info.h">
+<area shape="rect" id="node1" title=" " alt="" coords="163,5,319,47"/>
+<area shape="rect" id="node2" href="$boundary__conditions_8cc.html" title=" " alt="" coords="5,184,228,211"/>
+<area shape="rect" id="node3" href="$boundary__conditions_8h.html" title=" " alt="" coords="154,95,327,136"/>
+<area shape="rect" id="node7" href="$mesh__handler_8cc.html" title=" " alt="" coords="352,102,519,129"/>
+<area shape="rect" id="node4" href="$serial__poisson_8h.html" title=" " alt="" coords="253,184,431,211"/>
+<area shape="rect" id="node5" href="$source_2serial__poisson_8cc.html" title=" " alt="" coords="152,259,332,285"/>
+<area shape="rect" id="node6" href="$apps_2serial__poisson_8cc.html" title=" " alt="" coords="357,259,525,285"/>
 </map>

@@ -128,19 +128,19 @@ $(document).ready(function(){initNavTree('serial__poisson_8h.html',''); initResi
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
-<code>#include &quot;<a class="el" href="parsed__boundary__conditions_8h_source.html">tools/parsed_boundary_conditions.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__constants_8h_source.html">tools/parsed_constants.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__data__out_8h_source.html">tools/parsed_data_out.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__finite__element_8h_source.html">tools/parsed_finite_element.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__grid__generator_8h_source.html">tools/parsed_grid_generator.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__grid__refinement_8h_source.html">tools/parsed_grid_refinement.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__inverse__operator_8h_source.html">tools/parsed_inverse_operator.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="amg_8h_source.html">tools/parsed_preconditioner/amg.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="parsed__symbolic__function_8h_source.html">tools/parsed_symbolic_function.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="amg_8h_source.html">parsed_lac/amg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="inverse__operator_8h_source.html">parsed_lac/inverse_operator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="boundary__conditions_8h_source.html">parsed_tools/boundary_conditions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="constants_8h_source.html">parsed_tools/constants.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="data__out_8h_source.html">parsed_tools/data_out.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="finite__element_8h_source.html">parsed_tools/finite_element.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid__generator_8h_source.html">parsed_tools/grid_generator.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="grid__refinement_8h_source.html">parsed_tools/grid_refinement.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="symbolic__function_8h_source.html">parsed_tools/symbolic_function.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for serial_poisson.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="serial__poisson_8h__incl.svg" width="5016" height="902"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="serial__poisson_8h__incl.svg" width="4564" height="976"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -154,14 +154,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_poisson.html">PDEs::SerialPoisson&lt; dim, spacedim &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serial Poisson problem.  <a href="class_p_d_es_1_1_serial_poisson.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespace_p_d_es"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es.html">PDEs</a></td></tr>
 <tr class="memdesc:namespace_p_d_es"><td class="mdescLeft">&#160;</td><td class="mdescRight">We collect in this namespace all <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> that are relevant to Fluid Structure Interaction Problems. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_p_d_es_1_1_serial"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_serial.html">PDEs::Serial</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -170,7 +171,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="serial__poisson_8h.html">serial_poisson.h</a></li>
-    <li class="footer">Generated on Wed Jan 12 2022 23:23:22 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 14 2022 15:23:20 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
