@@ -27,15 +27,15 @@ laboratories.
 
 The students will learn how to develop, use, and analyze state-of-the-art
 finite element approximations for the solution of continuum mechanics problems,
-including non-linear mechanics, computational fluid dynamic, and
+including non-linear mechanics, computational fluid dynamics, and
 fluid-structure-interaction problems.
 
 A glimpse of the PDEs that are discussed in the course is given by the following 
 graph 
 
-@dotfile serial.dot
+@dotfile serial.dot width=100%
 
-![PDEs](./doc/dot_files/serial.svg)
+![](./doc/dot_files/serial.svg)
 
 The laboratory part should enable a PhD student working on numerical analysis
 of PDEs to implement state-of-the-art adaptive finite element codes for FSI

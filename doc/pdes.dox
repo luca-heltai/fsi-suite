@@ -48,14 +48,16 @@
  *
  * Documentation is still largely missing. But I have tried to keep up with the
  * main classes and functions. Since I have given up trying to build a
- * "one-fits-all" code, this project goes in the opposite directino. I collected
+ * "one-fits-all" code, this project goes in the opposite direction. I collected
  * every common bit of code that I found mymeslf rewriting over and over again
- * in the ParsedTools namespace.
- *
- * Whenever possible, I try to let my programs be driven by parameter files,
- * rather than compile-time variables. For example, this implies that I use a
- * GridGenerator object to decide what grid to generate and read, or a
- * FiniteElement object to decide what finite element to use, and so on.
+ * in the ParsedTools namespace, and rewrote every basic tutorial of deal.II
+ * that has to do with FSI using the ParsedTools namespace. This allows you to
+ * use the same base code for many different problems, and to keep the code as
+ * similar as possible, even when they solve very different problems. All
+ * repetitive tasks (like the creation of a mesh, the creation of a finite
+ * element space, the creation of a linear solver, etc.) are handled via objects
+ * that understand how to parse options from parameter files (i.e., they are
+ * derived from the ParameterAcceptor class)
  *
  * Individual programs are as small as possible, and as clean as possible.
  * Each code solves a single problem. A lot of duplication is unavoidable, but
@@ -64,7 +66,9 @@
  * examples that increase in complexity, pretty much like it is done in the
  * deal.II tutorial programs.
  *
- * Each example is documented in the source code, and in the documentation
+ * The structure of the FSI suite programs follows very closely deal.II tutorial
+ * programs. In each program, I try to point the reader to the steps that are
+ * required to understand what is going on.
  *
  * @subsection general_structure General structure of the FSI-suite
  *
