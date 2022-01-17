@@ -148,7 +148,7 @@ TEST_F(TwoTester, BoundaryConditionsVector)
     parse(R"(
          set Boundary id sets (u, u, p) = 0; 1; 2,3
          set Selected components (u, u, p) = u; u.t; p
-         set Boundary condition types (u, u, p) = dirichlet, dirichlet, dirichlet
+         set Boundary condition types (u, u, p) = dirichlet, dirichlet, neumann
          set Expressions (u, u, p) = 0;0;0 % 0;0 % 0;0;0
       )",
           pbc);

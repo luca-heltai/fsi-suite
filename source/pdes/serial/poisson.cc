@@ -1,4 +1,4 @@
-#include "serial_poisson.h"
+#include "pdes/serial/poisson.h"
 
 #include <deal.II/lac/linear_operator_tools.h>
 
@@ -12,25 +12,25 @@ namespace PDEs
   {
     template <int dim, int spacedim>
     Poisson<dim, spacedim>::Poisson()
-      : ParameterAcceptor("/Serial Poisson/")
-      , grid_generator("/Serial Poisson/Grid")
-      , grid_refinement("/Serial Poisson/Grid/Refinement")
-      , finite_element("/Serial Poisson/", "u", "FE_Q(1)")
+      : ParameterAcceptor("/Poisson/")
+      , grid_generator("/Poisson/Grid")
+      , grid_refinement("/Poisson/Grid/Refinement")
+      , finite_element("/Poisson/", "u", "FE_Q(1)")
       , dof_handler(triangulation)
-      , inverse_operator("/Serial Poisson/Solver")
-      , preconditioner("/Serial Poisson/Solver/AMG Preconditioner")
-      , constants("/Serial Poisson/Constants",
+      , inverse_operator("/Poisson/Solver")
+      , preconditioner("/Poisson/Solver/AMG Preconditioner")
+      , constants("/Poisson/Constants",
                   {"kappa"},
                   {1.0},
                   {"Diffusion coefficient"})
-      , forcing_term("/Serial Poisson/Functions",
+      , forcing_term("/Poisson/Functions",
                      "kappa*8*pi^2*sin(2*pi*x)*sin(2*pi*y)",
                      "Forcing term")
-      , exact_solution("/Serial Poisson/Functions",
+      , exact_solution("/Poisson/Functions",
                        "sin(2*pi*x)*sin(2*pi*y)",
                        "Exact solution")
-      , boundary_conditions("/Serial Poisson/Boundary conditions")
-      , data_out("/Serial Poisson/Output")
+      , boundary_conditions("/Poisson/Boundary conditions")
+      , data_out("/Poisson/Output")
     {
       enter_subsection("Error table");
       enter_my_subsection(this->prm);
@@ -71,7 +71,9 @@ namespace PDEs
       constraints.clear();
       DoFTools::make_hanging_node_constraints(dof_handler, constraints);
       boundary_conditions.check_consistency(triangulation);
-      boundary_conditions.apply_boundary_conditions(dof_handler, constraints);
+      boundary_conditions.apply_essential_boundary_conditions(*mapping,
+                                                              dof_handler,
+                                                              constraints);
       constraints.close();
 
 
@@ -81,6 +83,8 @@ namespace PDEs
       system_matrix.reinit(sparsity_pattern);
       solution.reinit(dof_handler.n_dofs());
       system_rhs.reinit(dof_handler.n_dofs());
+      boundary_conditions.apply_natural_boundary_conditions(
+        *mapping, dof_handler, constraints, system_matrix, system_rhs);
     }
 
 
@@ -96,34 +100,12 @@ namespace PDEs
         cell_type.get_gauss_type_quadrature<dim>(
           finite_element().tensor_degree() + 1);
 
-      Quadrature<dim - 1> face_quadrature_formula;
-      if constexpr (dim > 1)
-        {
-          // TODO: make sure we work also for wedges and pyramids
-          const ReferenceCell face_type = cell_type.face_reference_cell(0);
-          face_quadrature_formula =
-            face_type.get_gauss_type_quadrature<dim - 1>(
-              finite_element().tensor_degree() + 1);
-        }
-      else
-        {
-          face_quadrature_formula =
-            QGauss<dim - 1>(finite_element().tensor_degree() + 1);
-        }
-
       FEValues<dim, spacedim> fe_values(*mapping,
                                         finite_element,
                                         quadrature_formula,
                                         update_values | update_gradients |
                                           update_quadrature_points |
                                           update_JxW_values);
-
-      FEFaceValues<dim, spacedim> fe_face_values(*mapping,
-                                                 finite_element,
-                                                 face_quadrature_formula,
-                                                 update_values |
-                                                   update_quadrature_points |
-                                                   update_JxW_values);
 
       const unsigned int dofs_per_cell = finite_element().n_dofs_per_cell();
       FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
@@ -151,23 +133,6 @@ namespace PDEs
                      fe_values.quadrature_point(q_index)) * // f(x_q)
                    fe_values.JxW(q_index));                 // dx
             }
-
-          // if (cell->at_boundary())
-          //   //  for(const auto face: cell->face_indices())
-          //   for (const unsigned int f : cell->face_indices())
-          //     if (neumann_ids.find(cell->face(f)->boundary_id()) !=
-          //         neumann_ids.end())
-          //       {
-          //         fe_face_values.reinit(cell, f);
-          //         for (const unsigned int q_index :
-          //              fe_face_values.quadrature_point_indices())
-          //           for (const unsigned int i : fe_face_values.dof_indices())
-          //             cell_rhs(i) += fe_face_values.shape_value(i, q_index) *
-          //                            neumann_boundary_condition.value(
-          //                              fe_face_values.quadrature_point(q_index))
-          //                              *
-          //                            fe_face_values.JxW(q_index);
-          //       }
 
           cell->get_dof_indices(local_dof_indices);
           constraints.distribute_local_to_global(cell_matrix,

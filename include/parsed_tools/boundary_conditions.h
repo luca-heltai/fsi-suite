@@ -27,7 +27,7 @@ namespace ParsedTools
   enum class BoundaryConditionType
   {
     dirichlet = 0,
-    // neumann           = 1,
+    neumann   = 1,
     // robin             = 2,
     // dirichlet_nitsche = 3,
     // neumann_nitsche   = 4,
@@ -110,15 +110,14 @@ namespace ParsedTools
     check_consistency() const;
 
     /**
-     * Add the boundary conditions computed with this object to the
+     * Add essential boundary conditions computed with this object to the
      * specified constraints.
      */
     template <int dim>
     void
-    apply_boundary_conditions(
+    apply_essential_boundary_conditions(
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      dealii::AffineConstraints<double> &      constraints,
-      const bool &ignore_unsopported = false) const;
+      dealii::AffineConstraints<double> &      constraints) const;
 
     /**
      * Add the boundary conditions computed with this object to the
@@ -126,14 +125,13 @@ namespace ParsedTools
      */
     template <int dim>
     void
-    apply_boundary_conditions(
+    apply_essential_boundary_conditions(
       const dealii::Mapping<dim, spacedim> &   mapping,
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      dealii::AffineConstraints<double> &      constraints,
-      const bool &                             ignore_unsopported) const;
+      dealii::AffineConstraints<double> &      constraints) const;
 
     /**
-     * Add the boundary conditions computed with this object to the
+     * Add natural boundary conditions computed with this object to the
      * specified constraints, matrix, and rhs.
      *
      * Notice that constraintes must be still open before calling this
@@ -145,9 +143,9 @@ namespace ParsedTools
      */
     template <int dim, typename MatrixType, typename VectorType>
     void
-    apply_boundary_conditions(
+    apply_natural_boundary_conditions(
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      dealii::AffineConstraints<double> &      constraints,
+      const dealii::AffineConstraints<double> &constraints,
       MatrixType &                             matrix,
       VectorType &                             rhs) const;
 
@@ -163,10 +161,10 @@ namespace ParsedTools
      */
     template <int dim, typename MatrixType, typename VectorType>
     void
-    apply_boundary_conditions(
+    apply_natural_boundary_conditions(
       const dealii::Mapping<dim, spacedim> &   mapping,
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      dealii::AffineConstraints<double> &      constraints,
+      const dealii::AffineConstraints<double> &constraints,
       MatrixType &                             matrix,
       VectorType &                             rhs) const;
 
@@ -230,24 +228,98 @@ namespace ParsedTools
   };
 
 
+
 #  ifndef DOXYGEN
   // Template implementations
   template <int spacedim>
   template <int dim, typename MatrixType, typename VectorType>
   void
-  BoundaryConditions<spacedim>::apply_boundary_conditions(
+  BoundaryConditions<spacedim>::apply_natural_boundary_conditions(
     const dealii::Mapping<dim, spacedim> &   mapping,
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    dealii::AffineConstraints<double> &      constraints,
+    const dealii::AffineConstraints<double> &constraints,
     MatrixType &                             matrix,
     VectorType &                             rhs) const
   {
-    apply_boundary_conditions(mapping, dof_handler, constraints, true);
     for (unsigned int i = 0; i < n_boundary_conditions; ++i)
-      if (bc_type[i] != BoundaryConditionType::dirichlet)
-        AssertThrow(false, dealii::ExcNotImplemented());
+      if (bc_type[i] == BoundaryConditionType::neumann)
+        {
+          const auto &neumann_ids = ids[i];
+          const auto &function    = functions[i];
+          const auto &mask        = masks[i];
+          const auto &type        = types[i];
+          const auto &fe          = dof_handler.get_fe();
+
+          if (type == Components::Type::normal ||
+              type == Components::Type::tangential)
+            AssertThrow(false,
+                        dealii::ExcNotImplemented(
+                          "Neumann boundary conditions for normal and "
+                          "tangential components are not implemented yet."));
+
+          const dealii::ReferenceCell cell_type = fe.reference_cell();
+          dealii::Quadrature<dim - 1> face_quadrature_formula;
+          if constexpr (dim > 1)
+            {
+              // TODO: make sure we work also for wedges and pyramids
+              const dealii::ReferenceCell face_type =
+                cell_type.face_reference_cell(0);
+              face_quadrature_formula =
+                face_type.get_gauss_type_quadrature<dim - 1>(
+                  fe.tensor_degree() + 1);
+            }
+          else
+            {
+              face_quadrature_formula =
+                dealii::QGauss<dim - 1>(fe.tensor_degree() + 1);
+            }
+
+          dealii::FEFaceValues<dim, spacedim> fe_face_values(
+            mapping,
+            fe,
+            face_quadrature_formula,
+            dealii::update_values | dealii::update_quadrature_points |
+              dealii::update_JxW_values);
+
+          const unsigned int         dofs_per_cell = fe.n_dofs_per_cell();
+          dealii::FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
+
+          dealii::Vector<double> cell_rhs(dofs_per_cell);
+
+          std::vector<dealii::types::global_dof_index> local_dof_indices(
+            dofs_per_cell);
+          for (const auto &cell : dof_handler.active_cell_iterators())
+            if (cell->at_boundary())
+              {
+                cell_rhs = 0;
+                //  for(const auto face: cell->face_indices())
+                for (const unsigned int f : cell->face_indices())
+                  if (neumann_ids.find(cell->face(f)->boundary_id()) !=
+                      neumann_ids.end())
+                    {
+                      fe_face_values.reinit(cell, f);
+                      for (const unsigned int i : fe_face_values.dof_indices())
+                        {
+                          const auto comp_i =
+                            fe.system_to_component_index(i).first;
+                          if (mask[comp_i])
+                            for (const unsigned int q_index :
+                                 fe_face_values.quadrature_point_indices())
+                              cell_rhs(i) +=
+                                fe_face_values.shape_value(i, q_index) *
+                                function->value(fe_face_values.quadrature_point(
+                                                  q_index),
+                                                comp_i) *
+                                fe_face_values.JxW(q_index);
+                        }
+                    }
+                cell->get_dof_indices(local_dof_indices);
+                constraints.distribute_local_to_global(cell_rhs,
+                                                       local_dof_indices,
+                                                       rhs);
+              }
+        }
     (void)matrix;
-    (void)rhs;
   }
 
 
@@ -255,15 +327,16 @@ namespace ParsedTools
   template <int spacedim>
   template <int dim, typename MatrixType, typename VectorType>
   void
-  BoundaryConditions<spacedim>::apply_boundary_conditions(
+  BoundaryConditions<spacedim>::apply_natural_boundary_conditions(
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    dealii::AffineConstraints<double> &      constraints,
+    const dealii::AffineConstraints<double> &constraints,
     MatrixType &                             matrix,
     VectorType &                             rhs) const
   {
     const auto &mapping =
       get_default_linear_mapping(dof_handler.get_triangulation());
-    apply_boundary_conditions(mapping, dof_handler, constraints, matrix, rhs);
+    apply_natural_boundary_conditions(
+      mapping, dof_handler, constraints, matrix, rhs);
   }
 
 
@@ -271,17 +344,13 @@ namespace ParsedTools
   template <int spacedim>
   template <int dim>
   void
-  BoundaryConditions<spacedim>::apply_boundary_conditions(
+  BoundaryConditions<spacedim>::apply_essential_boundary_conditions(
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    dealii::AffineConstraints<double> &      constraints,
-    const bool &                             ignore_unsupported) const
+    dealii::AffineConstraints<double> &      constraints) const
   {
     const auto &mapping =
       get_default_linear_mapping(dof_handler.get_triangulation());
-    apply_boundary_conditions(mapping,
-                              dof_handler,
-                              constraints,
-                              ignore_unsupported);
+    apply_essential_boundary_conditions(mapping, dof_handler, constraints);
   }
 
 
@@ -289,11 +358,10 @@ namespace ParsedTools
   template <int spacedim>
   template <int dim>
   void
-  BoundaryConditions<spacedim>::apply_boundary_conditions(
+  BoundaryConditions<spacedim>::apply_essential_boundary_conditions(
     const dealii::Mapping<dim, spacedim> &   mapping,
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    dealii::AffineConstraints<double> &      constraints,
-    const bool &                             ignore_unsopported) const
+    dealii::AffineConstraints<double> &      constraints) const
   {
     // Take care of boundary conditions that don't need anything else than
     // the constraints.
@@ -366,7 +434,7 @@ namespace ParsedTools
                 }
               break;
             default:
-              AssertThrow(ignore_unsopported, dealii::ExcNotImplemented());
+              // Nothing to do in this function call
               break;
           }
       }

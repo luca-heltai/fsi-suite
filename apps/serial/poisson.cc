@@ -1,4 +1,4 @@
-#include "serial_poisson.h"
+#include "pdes/serial/poisson.h"
 
 #include "parsed_tools/grid_generator.h"
 
