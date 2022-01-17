@@ -11,13 +11,13 @@ DEAL_II_INITIALIZE_CACHED_VARIABLES()
 SET(CMAKE_MACOSX_RPATH 1)
 
 # Common library files
-file(GLOB LIB_SOURCES source/*.cc )
-file(GLOB LIB_HEADERS lib/*.h )
+file(GLOB LIB_SOURCES source/*.cc source/*/*.cc source/*/*/*.cc)
+file(GLOB LIB_HEADERS include/*.h include/*/*.h include/*/*/*.h)
 ADD_LIBRARY(fsi-lib SHARED ${LIB_SOURCES} ${LIB_HEADERS})
 DEAL_II_SETUP_TARGET(fsi-lib)
 
 # Variuous executables
-file(GLOB APP_SOURCES apps/*.cc )
+file(GLOB APP_SOURCES apps/*.cc apps/*/*.cc)
 foreach(sourcefile ${APP_SOURCES} )
     # I used a simple string replace, to cut off .cpp.
     get_filename_component(name ${sourcefile} NAME_WE)
