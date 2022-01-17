@@ -13,6 +13,21 @@ namespace ParsedTools
    */
   namespace Components
   {
+    std::string
+    join(const std::vector<std::string> &strings, const std::string &separator)
+    {
+      std::string result;
+      for (unsigned int i = 0; i < strings.size(); ++i)
+        {
+          if (i > 0)
+            result += separator;
+          result += strings[i];
+        }
+      return result;
+    };
+
+
+
     unsigned int
     n_components(const std::string &component_names)
     {

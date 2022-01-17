@@ -27,7 +27,7 @@
 
 using namespace dealii;
 
-TEST(InverseOperatorFactory, InvertPoisson)
+TEST(InverseOperator, InvertPoisson)
 {
   static const int dim = 2;
 

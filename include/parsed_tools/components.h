@@ -27,6 +27,12 @@ namespace ParsedTools
     };
 
     /**
+     * Join strings together using a given separator.
+     */
+    std::string
+    join(const std::vector<std::string> &strings, const std::string &separator);
+
+    /**
      * Count the number of components in the given list of comma separated
      * components.
      */

@@ -1,6 +1,5 @@
-
-#ifndef pdes_serial_poisson_h
-#define pdes_serial_poisson_h
+#ifndef pdes_serial_linear_elasticity_h
+#define pdes_serial_linear_elasticity_h
 
 #include <deal.II/base/function.h>
 #include <deal.II/base/parameter_acceptor.h>
@@ -48,13 +47,13 @@ namespace PDEs
   namespace Serial
   {
     /**
-     * Serial Poisson problem.
+     * Serial LinearElasticity problem.
      *
-     * @addtogroup basics
+     * @addtogroup csd
      *
-     * Solve the Poisson equation in arbitrary dimensions and space dimensions.
-     * When dim and spacedim are not the same, we solve the Laplace-Beltrami
-     * equation.
+     * Solve the LinearElasticity equation in arbitrary dimensions and space
+     * dimensions. When dim and spacedim are not the same, we solve the
+     * vector Laplace-Beltrami equation.
      *
      * \f[
      * \begin{cases}
@@ -69,10 +68,10 @@ namespace PDEs
      * @ingroup PDEs
      */
     template <int dim, int spacedim = dim>
-    class Poisson : public ParameterAcceptor
+    class LinearElasticity : public ParameterAcceptor
     {
     public:
-      Poisson();
+      LinearElasticity();
 
       void
       run();
@@ -93,7 +92,7 @@ namespace PDEs
       /**
        * How we identify the component names.
        */
-      const std::string component_names = "u";
+      const std::string component_names;
 
       // Grid classes
       ParsedTools::GridGenerator<dim, spacedim> grid_generator;
@@ -128,6 +127,9 @@ namespace PDEs
 
       // Console level
       unsigned int console_level = 1;
+
+      // Extractor for vector components
+      const FEValuesExtractors::Vector displacement;
     };
   } // namespace Serial
 } // namespace PDEs
