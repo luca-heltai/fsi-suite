@@ -1,10 +1,10 @@
 var class_parsed_tools_1_1_boundary_conditions =
 [
     [ "BoundaryConditions", "class_parsed_tools_1_1_boundary_conditions.html#ab88051ef30878fd8a9673f18209d9f85", null ],
-    [ "apply_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#af5109cf6388a0f04dc2744dcff34c6ee", null ],
-    [ "apply_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#aeb391f03556cdb68b72cf7206a5c9ac4", null ],
-    [ "apply_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#a811a3c359a77deeed4d8ac2e8cbb690e", null ],
-    [ "apply_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#ace9de8f37208747c972a5ef0f8ce5089", null ],
+    [ "apply_essential_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8", null ],
+    [ "apply_essential_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#add8379a82cf7c3ef2df50958ab760958", null ],
+    [ "apply_natural_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d", null ],
+    [ "apply_natural_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#a5696c80b0854e1bb3e7ee81426a644d8", null ],
     [ "check_consistency", "class_parsed_tools_1_1_boundary_conditions.html#a88a989e14fc1223f7a811891d6f9a663", null ],
     [ "check_consistency", "class_parsed_tools_1_1_boundary_conditions.html#affecd599e5c2916a94d747f8b153e208", null ],
     [ "set_additional_function_arguments", "class_parsed_tools_1_1_boundary_conditions.html#ad1e95a27c09a71ff01fbb6d3980bdc17", null ],

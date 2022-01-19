@@ -43,6 +43,7 @@ var hierarchy =
         [ "ParsedTools::GridRefinement", "class_parsed_tools_1_1_grid_refinement.html", null ],
         [ "ParsedTools::MappingEulerian< dim, spacedim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "ParsedTools::SymbolicFunction< dim >", "class_parsed_tools_1_1_symbolic_function.html", null ],
+        [ "PDEs::Serial::LinearElasticity< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_linear_elasticity.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ]
       ] ],
       [ "TrilinosWrappers::PreconditionBase", "http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionBase.html", [

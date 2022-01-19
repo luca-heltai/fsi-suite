@@ -1,7 +1,10 @@
 <map id="include/parsed_lac/amg.h" name="include/parsed_lac/amg.h">
-<area shape="rect" id="node1" title=" " alt="" coords="77,5,220,47"/>
-<area shape="rect" id="node2" href="$amg_8cc.html" title=" " alt="" coords="5,95,121,121"/>
-<area shape="rect" id="node3" href="$serial__poisson_8h.html" title=" " alt="" coords="146,95,325,121"/>
-<area shape="rect" id="node4" href="$source_2serial__poisson_8cc.html" title=" " alt="" coords="45,169,225,196"/>
-<area shape="rect" id="node5" href="$apps_2serial__poisson_8cc.html" title=" " alt="" coords="250,169,418,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="221,5,364,47"/>
+<area shape="rect" id="node2" href="$amg_8cc.html" title=" " alt="" coords="5,102,196,129"/>
+<area shape="rect" id="node3" href="$linear__elasticity_8h.html" title=" " alt="" coords="221,95,365,136"/>
+<area shape="rect" id="node6" href="$poisson_8h.html" title=" " alt="" coords="389,95,533,136"/>
+<area shape="rect" id="node4" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="55,184,202,225"/>
+<area shape="rect" id="node5" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="227,184,361,225"/>
+<area shape="rect" id="node7" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="388,184,528,225"/>
+<area shape="rect" id="node8" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="553,191,718,218"/>
 </map>

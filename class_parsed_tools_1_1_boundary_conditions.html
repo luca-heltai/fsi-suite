@@ -140,22 +140,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a88a989e14fc1223f7a811891d6f9a663"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#a88a989e14fc1223f7a811891d6f9a663">check_consistency</a> () const</td></tr>
 <tr class="memdesc:a88a989e14fc1223f7a811891d6f9a663"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make sure the specified boundary conditions make sense.  <a href="class_parsed_tools_1_1_boundary_conditions.html#a88a989e14fc1223f7a811891d6f9a663">More...</a><br /></td></tr>
 <tr class="separator:a88a989e14fc1223f7a811891d6f9a663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5109cf6388a0f04dc2744dcff34c6ee"><td class="memTemplParams" colspan="2">template&lt;int dim&gt; </td></tr>
-<tr class="memitem:af5109cf6388a0f04dc2744dcff34c6ee"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#af5109cf6388a0f04dc2744dcff34c6ee">apply_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints, const bool &amp;ignore_unsopported=false) const</td></tr>
-<tr class="memdesc:af5109cf6388a0f04dc2744dcff34c6ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the boundary conditions computed with this object to the specified constraints.  <a href="class_parsed_tools_1_1_boundary_conditions.html#af5109cf6388a0f04dc2744dcff34c6ee">More...</a><br /></td></tr>
-<tr class="separator:af5109cf6388a0f04dc2744dcff34c6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a811a3c359a77deeed4d8ac2e8cbb690e"><td class="memTemplParams" colspan="2">template&lt;int dim&gt; </td></tr>
-<tr class="memitem:a811a3c359a77deeed4d8ac2e8cbb690e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#a811a3c359a77deeed4d8ac2e8cbb690e">apply_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;mapping, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints, const bool &amp;ignore_unsopported) const</td></tr>
-<tr class="memdesc:a811a3c359a77deeed4d8ac2e8cbb690e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the boundary conditions computed with this object to the specified constraints for non standard mapping.  <a href="class_parsed_tools_1_1_boundary_conditions.html#a811a3c359a77deeed4d8ac2e8cbb690e">More...</a><br /></td></tr>
-<tr class="separator:a811a3c359a77deeed4d8ac2e8cbb690e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb391f03556cdb68b72cf7206a5c9ac4"><td class="memTemplParams" colspan="2">template&lt;int dim, typename MatrixType , typename VectorType &gt; </td></tr>
-<tr class="memitem:aeb391f03556cdb68b72cf7206a5c9ac4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#aeb391f03556cdb68b72cf7206a5c9ac4">apply_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints, MatrixType &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, VectorType &amp;rhs) const</td></tr>
-<tr class="memdesc:aeb391f03556cdb68b72cf7206a5c9ac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the boundary conditions computed with this object to the specified constraints, matrix, and rhs.  <a href="class_parsed_tools_1_1_boundary_conditions.html#aeb391f03556cdb68b72cf7206a5c9ac4">More...</a><br /></td></tr>
-<tr class="separator:aeb391f03556cdb68b72cf7206a5c9ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace9de8f37208747c972a5ef0f8ce5089"><td class="memTemplParams" colspan="2">template&lt;int dim, typename MatrixType , typename VectorType &gt; </td></tr>
-<tr class="memitem:ace9de8f37208747c972a5ef0f8ce5089"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#ace9de8f37208747c972a5ef0f8ce5089">apply_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;mapping, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints, MatrixType &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, VectorType &amp;rhs) const</td></tr>
-<tr class="memdesc:ace9de8f37208747c972a5ef0f8ce5089"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as above for non standard mapping.  <a href="class_parsed_tools_1_1_boundary_conditions.html#ace9de8f37208747c972a5ef0f8ce5089">More...</a><br /></td></tr>
-<tr class="separator:ace9de8f37208747c972a5ef0f8ce5089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab477df00529bd891ee3f590c4d8b70f8"><td class="memTemplParams" colspan="2">template&lt;int dim&gt; </td></tr>
+<tr class="memitem:ab477df00529bd891ee3f590c4d8b70f8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">apply_essential_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints) const</td></tr>
+<tr class="memdesc:ab477df00529bd891ee3f590c4d8b70f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add essential boundary conditions computed with this object to the specified constraints.  <a href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">More...</a><br /></td></tr>
+<tr class="separator:ab477df00529bd891ee3f590c4d8b70f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add8379a82cf7c3ef2df50958ab760958"><td class="memTemplParams" colspan="2">template&lt;int dim&gt; </td></tr>
+<tr class="memitem:add8379a82cf7c3ef2df50958ab760958"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#add8379a82cf7c3ef2df50958ab760958">apply_essential_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;mapping, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints) const</td></tr>
+<tr class="memdesc:add8379a82cf7c3ef2df50958ab760958"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the boundary conditions computed with this object to the specified constraints for non standard mapping.  <a href="class_parsed_tools_1_1_boundary_conditions.html#add8379a82cf7c3ef2df50958ab760958">More...</a><br /></td></tr>
+<tr class="separator:add8379a82cf7c3ef2df50958ab760958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf8c0acca58ef71d3c5f458f192efd2d"><td class="memTemplParams" colspan="2">template&lt;int dim, typename MatrixType , typename VectorType &gt; </td></tr>
+<tr class="memitem:abf8c0acca58ef71d3c5f458f192efd2d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d">apply_natural_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints, MatrixType &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, VectorType &amp;rhs) const</td></tr>
+<tr class="memdesc:abf8c0acca58ef71d3c5f458f192efd2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add natural boundary conditions computed with this object to the specified constraints, matrix, and rhs.  <a href="class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d">More...</a><br /></td></tr>
+<tr class="separator:abf8c0acca58ef71d3c5f458f192efd2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5696c80b0854e1bb3e7ee81426a644d8"><td class="memTemplParams" colspan="2">template&lt;int dim, typename MatrixType , typename VectorType &gt; </td></tr>
+<tr class="memitem:a5696c80b0854e1bb3e7ee81426a644d8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#a5696c80b0854e1bb3e7ee81426a644d8">apply_natural_boundary_conditions</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;mapping, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dof_handler, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;constraints, MatrixType &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, VectorType &amp;rhs) const</td></tr>
+<tr class="memdesc:a5696c80b0854e1bb3e7ee81426a644d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Same as above for non standard mapping.  <a href="class_parsed_tools_1_1_boundary_conditions.html#a5696c80b0854e1bb3e7ee81426a644d8">More...</a><br /></td></tr>
+<tr class="separator:a5696c80b0854e1bb3e7ee81426a644d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a7bf9ccbc4d618a248324748a41f625cf">ParameterAcceptor</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;)</td></tr>
 <tr class="separator:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -377,8 +377,8 @@ template&lt;int spacedim&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af5109cf6388a0f04dc2744dcff34c6ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5109cf6388a0f04dc2744dcff34c6ee">&#9670;&nbsp;</a></span>apply_boundary_conditions() <span class="overload">[1/4]</span></h2>
+<a id="ab477df00529bd891ee3f590c4d8b70f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab477df00529bd891ee3f590c4d8b70f8">&#9670;&nbsp;</a></span>apply_essential_boundary_conditions() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -388,7 +388,7 @@ template&lt;int spacedim&gt; </div>
 template&lt;int dim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_boundary_conditions </td>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_essential_boundary_conditions </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
           <td class="paramname"><em>dof_handler</em>, </td>
@@ -397,13 +397,7 @@ template&lt;int dim&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>constraints</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool &amp;&#160;</td>
-          <td class="paramname"><em>ignore_unsopported</em> = <code>false</code>&#160;</td>
+          <td class="paramname"><em>constraints</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -413,12 +407,52 @@ template&lt;int dim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Add the boundary conditions computed with this object to the specified constraints. </p>
+<p>Add essential boundary conditions computed with this object to the specified constraints. </p>
 
 </div>
 </div>
-<a id="aeb391f03556cdb68b72cf7206a5c9ac4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb391f03556cdb68b72cf7206a5c9ac4">&#9670;&nbsp;</a></span>apply_boundary_conditions() <span class="overload">[2/4]</span></h2>
+<a id="add8379a82cf7c3ef2df50958ab760958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add8379a82cf7c3ef2df50958ab760958">&#9670;&nbsp;</a></span>apply_essential_boundary_conditions() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<div class="memtemplate">
+template&lt;int dim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_essential_boundary_conditions </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mapping</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dof_handler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>constraints</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add the boundary conditions computed with this object to the specified constraints for non standard mapping. </p>
+
+</div>
+</div>
+<a id="abf8c0acca58ef71d3c5f458f192efd2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf8c0acca58ef71d3c5f458f192efd2d">&#9670;&nbsp;</a></span>apply_natural_boundary_conditions() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -428,7 +462,7 @@ template&lt;int spacedim&gt; </div>
 template&lt;int dim, typename MatrixType , typename VectorType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_boundary_conditions </td>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_natural_boundary_conditions </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
           <td class="paramname"><em>dof_handler</em>, </td>
@@ -436,7 +470,7 @@ template&lt;int dim, typename MatrixType , typename VectorType &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
           <td class="paramname"><em>constraints</em>, </td>
         </tr>
         <tr>
@@ -459,60 +493,14 @@ template&lt;int dim, typename MatrixType , typename VectorType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Add the boundary conditions computed with this object to the specified constraints, matrix, and rhs. </p>
+<p>Add natural boundary conditions computed with this object to the specified constraints, matrix, and rhs. </p>
 <p>Notice that constraintes must be still open before calling this function, and will be used to assemble the matrix and rhs parts of the boundary conditions.</p>
 <p>Call this function after you have added all constraints to your constraints object. After this call, the constraints will be closed. </p>
 
 </div>
 </div>
-<a id="a811a3c359a77deeed4d8ac2e8cbb690e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a811a3c359a77deeed4d8ac2e8cbb690e">&#9670;&nbsp;</a></span>apply_boundary_conditions() <span class="overload">[3/4]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<div class="memtemplate">
-template&lt;int dim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_boundary_conditions </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>mapping</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>dof_handler</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>constraints</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const bool &amp;&#160;</td>
-          <td class="paramname"><em>ignore_unsopported</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add the boundary conditions computed with this object to the specified constraints for non standard mapping. </p>
-
-</div>
-</div>
-<a id="ace9de8f37208747c972a5ef0f8ce5089"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace9de8f37208747c972a5ef0f8ce5089">&#9670;&nbsp;</a></span>apply_boundary_conditions() <span class="overload">[4/4]</span></h2>
+<a id="a5696c80b0854e1bb3e7ee81426a644d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5696c80b0854e1bb3e7ee81426a644d8">&#9670;&nbsp;</a></span>apply_natural_boundary_conditions() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -522,7 +510,7 @@ template&lt;int spacedim&gt; </div>
 template&lt;int dim, typename MatrixType , typename VectorType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_boundary_conditions </td>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::apply_natural_boundary_conditions </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
           <td class="paramname"><em>mapping</em>, </td>
@@ -536,7 +524,7 @@ template&lt;int dim, typename MatrixType , typename VectorType &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt; &amp;&#160;</td>
           <td class="paramname"><em>constraints</em>, </td>
         </tr>
         <tr>
@@ -727,7 +715,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Type of boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00202">202</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00200">200</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -755,7 +743,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component names of the boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00177">177</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00175">175</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -783,7 +771,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Expressions for the boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00207">207</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00205">205</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -811,7 +799,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>The actual functions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00213">213</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00211">211</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -839,7 +827,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Information about the grid this BC applies to. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00229">229</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00227">227</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="boundary__conditions_8h_source.html#l00099">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>.</p>
 
@@ -869,7 +857,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Ids on which this object applies boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00192">192</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00190">190</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +885,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component on which to apply the boundary condition. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00218">218</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00216">216</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -925,7 +913,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Number of boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00187">187</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00185">185</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -953,7 +941,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Number of components of the problem. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00182">182</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00180">180</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -981,7 +969,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component on which to apply the boundary condition. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00197">197</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00195">195</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +997,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component types. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00223">223</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00221">221</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1011,7 @@ template&lt;int spacedim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">BoundaryConditions</a></li>
-    <li class="footer">Generated on Fri Jan 14 2022 20:36:40 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 19 2022 22:07:51 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -1,0 +1,16 @@
+digraph "source/pdes" {
+  bgcolor=transparent;
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_b2f33c71d4aa5e7af42a1ca61ff5af1b {
+    graph [ bgcolor="#ddddee", pencolor="black", label="source" fontname="Helvetica", fontsize="10", URL="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html"]
+  subgraph clusterdir_863924b7d266e6f7561da03323982265 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_863924b7d266e6f7561da03323982265.html"];
+    dir_863924b7d266e6f7561da03323982265 [shape=plaintext label="pdes"];
+    dir_50f223c273824013943d646bc691d39f [shape=box label="serial" color="black" fillcolor="white" style="filled" URL="dir_50f223c273824013943d646bc691d39f.html"];
+  }
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" color="red" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_50f223c273824013943d646bc691d39f->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="2", labeldistance=1.5 headhref="dir_000010_000002.html"];
+}

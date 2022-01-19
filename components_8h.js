@@ -12,6 +12,7 @@ var components_8h =
     [ "component_indices", "components_8h.html#aa205b06920c0629d02af91d7cbb05bf9", null ],
     [ "component_name", "components_8h.html#a4297df9e7f3a5b7cd6f7d622ab246436", null ],
     [ "component_to_indices", "components_8h.html#a142db55bccdbb263b8acca778ed1c9b5", null ],
+    [ "join", "components_8h.html#a4ebb5062add6037ee368c3ed70878c02", null ],
     [ "mask", "components_8h.html#ac8c056bb7fbded2e979016d6a2519570", null ],
     [ "n_blocks", "components_8h.html#a4c54312d350a7af3d45f36396a988b62", null ],
     [ "n_components", "components_8h.html#aeba21d2bf70c7483ead7c117fcda11df", null ],

@@ -6,5 +6,5 @@ digraph "include/parsed_lac/amg_muelu.h"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="include/parsed_lac\l/amg_muelu.h",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="source/amg_muelu.cc",height=0.2,width=0.4,color="black",URL="$amg__muelu_8cc.html",tooltip=" "];
+  Node2 [label="source/parsed_lac/amg\l_muelu.cc",height=0.2,width=0.4,color="black",URL="$amg__muelu_8cc.html",tooltip=" "];
 }
