@@ -357,7 +357,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Explicit conversion to the stored <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a> is possible after parsing has occurred.</p>
 <p>If a component name is repeated, then that component is assumed to be part of a vector or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTensor.html">Tensor</a> field, and it is treated as a single block. User classes can use this information to construct block matrices and vectors, or to group solution names according to components. For example, a Stokes problem may have "u,u,p" for dim = 2 or "u, u, u, p" for dim = 3, resulting in a vector-valued system with two blocks (one for the velocity, and one for the pressure), and dim+1 components. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00017">17</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00018">18</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -378,7 +378,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the block names for this Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00140">140</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00144">144</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -399,7 +399,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return the blocking of the components for this finite element. </p>
 <p>This is what's needed by the block renumbering algorithm. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00148">148</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00152">152</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -419,7 +419,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the component names for this Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00132">132</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00136">136</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -444,7 +444,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return the first occurence of <code>var</code> in <code>default_component_names</code>. </p>
 <p>Remark: this is the value required by <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFEValuesExtractors.html">FEValuesExtractors</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00155">155</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00159">159</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -464,7 +464,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the component names for this Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00124">124</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00128">128</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -488,7 +488,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return <code>true</code> if <code>var</code> is vector, <code>false</code> otherwise. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00167">167</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00171">171</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -509,7 +509,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return the number of blocks of the Finite Element, i.e., the number of variables. </p>
 <p>For example, simple Heat equation has 1 block, Navier-Stokes 2 blocks (u and p). </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00116">116</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00120">120</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -529,7 +529,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return the number of components of the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00108">108</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00112">112</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -549,7 +549,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return a const reference to the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00078">78</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00082">82</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -569,7 +569,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return a reference to the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00068">68</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00072">72</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -589,7 +589,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Return a reference to the Finite Element. </p>
 
-<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00088">88</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="finite__element_8cc_source.html#l00092">92</a> of file <a class="el" href="finite__element_8cc_source.html">finite_element.cc</a>.</p>
 
 </div>
 </div>
@@ -796,7 +796,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_finite_element.html">FiniteElement</a></li>
-    <li class="footer">Generated on Wed Jan 19 2022 22:07:51 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Jan 19 2022 23:59:48 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

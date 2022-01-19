@@ -1,10 +1,13 @@
 <map id="include/parsed_tools/finite_element.h" name="include/parsed_tools/finite_element.h">
-<area shape="rect" id="node1" title=" " alt="" coords="207,5,363,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="291,5,447,47"/>
 <area shape="rect" id="node2" href="$finite__element_8cc.html" title=" " alt="" coords="5,102,188,129"/>
 <area shape="rect" id="node3" href="$linear__elasticity_8h.html" title=" " alt="" coords="213,95,357,136"/>
 <area shape="rect" id="node6" href="$poisson_8h.html" title=" " alt="" coords="381,95,525,136"/>
-<area shape="rect" id="node4" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="47,184,194,225"/>
-<area shape="rect" id="node5" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="219,184,353,225"/>
-<area shape="rect" id="node7" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="380,184,520,225"/>
-<area shape="rect" id="node8" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="545,191,710,218"/>
+<area shape="rect" id="node9" href="$stokes_8h.html" title=" " alt="" coords="729,95,873,136"/>
+<area shape="rect" id="node4" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="46,184,193,225"/>
+<area shape="rect" id="node5" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="217,184,352,225"/>
+<area shape="rect" id="node7" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="376,184,516,225"/>
+<area shape="rect" id="node8" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="541,191,706,218"/>
+<area shape="rect" id="node10" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="731,184,871,225"/>
+<area shape="rect" id="node11" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="895,191,1053,218"/>
 </map>

@@ -100,8 +100,11 @@
 <!-- Stokes -->
 <g id="node9" class="node">
 <title>Stokes</title>
+<g id="a_node9"><a xlink:href="class_p_d_es_1_1_serial_1_1_stokes.html" target="_top" xlink:title="Stokes">
 <path fill="#5d8aa8" stroke="#5d8aa8" d="M359,-201C359,-201 253,-201 253,-201 247,-201 241,-195 241,-189 241,-189 241,-170 241,-170 241,-164 247,-158 253,-158 253,-158 359,-158 359,-158 365,-158 371,-164 371,-170 371,-170 371,-189 371,-189 371,-195 365,-201 359,-201"/>
 <text text-anchor="middle" x="306" y="-175.8" font-family="Times,serif" font-size="14.00">Stokes</text>
+</a>
+</g>
 </g>
 <!-- LinearElasticity&#45;&gt;Stokes -->
 <g id="edge2" class="edge">

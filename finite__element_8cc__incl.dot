@@ -33,18 +33,13 @@ digraph "source/finite_element.cc"
   Node10 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node12 [label="deal.II/differentiation\l/ad/adolc_math.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$adolc__math_8h.html",tooltip=" "];
   Node12 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node13 [label="deal.II/base/table\l_indices.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$table__indices_8h.html",tooltip=" "];
-  Node13 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node13 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node13 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="deal.II/base/template\l_constraints.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$template__constraints_8h.html",tooltip=" "];
   Node14 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node15 [label="deal.II/base/complex\l_overloads.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$complex__overloads_8h.html",tooltip=" "];
   Node15 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node15 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node16 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node16 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node18 [label="deal.II/base/utilities.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$include_2deal_8II_2base_2utilities_8h.html",tooltip=" "];
   Node18 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -144,7 +139,6 @@ digraph "source/finite_element.cc"
   Node43 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node43 -> Node32 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node43 -> Node26 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node43 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node41 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node33 -> Node48 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node48 [label="deal.II/fe/fe_values\l_extractors.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$fe__values__extractors_8h.html",tooltip=" "];
@@ -219,7 +213,12 @@ digraph "source/finite_element.cc"
   Node82 -> Node81 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node82 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node83 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node83 [label="deal.II/fe/fe_tools.templates.h",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node83 [label="deal.II/fe/fe_simplex\l_p_bubbles.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$fe__simplex__p__bubbles_8h.html",tooltip=" "];
+  Node83 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node83 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node83 -> Node79 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node84 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node84 [label="algorithm",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node84 [label="deal.II/fe/fe_tools.templates.h",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node1 -> Node85 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node85 [label="algorithm",height=0.2,width=0.4,color="grey75",tooltip=" "];
 }

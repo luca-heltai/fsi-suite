@@ -1,12 +1,15 @@
 <map id="include/parsed_tools/components.h" name="include/parsed_tools/components.h">
-<area shape="rect" id="node1" title=" " alt="" coords="107,5,263,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="160,5,316,47"/>
 <area shape="rect" id="node2" href="$boundary__conditions_8cc.html" title=" " alt="" coords="5,191,228,218"/>
-<area shape="rect" id="node3" href="$components_8cc.html" title=" " alt="" coords="101,102,268,129"/>
-<area shape="rect" id="node4" href="$boundary__conditions_8h.html" title=" " alt="" coords="293,95,466,136"/>
-<area shape="rect" id="node5" href="$linear__elasticity_8h.html" title=" " alt="" coords="279,184,423,225"/>
-<area shape="rect" id="node8" href="$poisson_8h.html" title=" " alt="" coords="447,184,591,225"/>
-<area shape="rect" id="node6" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="114,273,261,315"/>
-<area shape="rect" id="node7" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="285,273,420,315"/>
-<area shape="rect" id="node9" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="447,273,587,315"/>
-<area shape="rect" id="node10" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="611,281,777,307"/>
+<area shape="rect" id="node3" href="$components_8cc.html" title=" " alt="" coords="155,102,321,129"/>
+<area shape="rect" id="node4" href="$boundary__conditions_8h.html" title=" " alt="" coords="346,95,519,136"/>
+<area shape="rect" id="node5" href="$linear__elasticity_8h.html" title=" " alt="" coords="253,184,397,225"/>
+<area shape="rect" id="node8" href="$poisson_8h.html" title=" " alt="" coords="421,184,565,225"/>
+<area shape="rect" id="node11" href="$stokes_8h.html" title=" " alt="" coords="769,184,913,225"/>
+<area shape="rect" id="node6" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="86,273,233,315"/>
+<area shape="rect" id="node7" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="257,273,392,315"/>
+<area shape="rect" id="node9" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="416,273,556,315"/>
+<area shape="rect" id="node10" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="581,281,746,307"/>
+<area shape="rect" id="node12" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="771,273,911,315"/>
+<area shape="rect" id="node13" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="935,281,1093,307"/>
 </map>

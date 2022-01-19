@@ -1,10 +1,13 @@
 <map id="include/parsed_tools/function.h" name="include/parsed_tools/function.h">
-<area shape="rect" id="node1" title=" " alt="" coords="164,5,320,47"/>
-<area shape="rect" id="node2" href="$function_8cc.html" title=" " alt="" coords="5,102,145,129"/>
-<area shape="rect" id="node3" href="$linear__elasticity_8h.html" title=" " alt="" coords="170,95,314,136"/>
-<area shape="rect" id="node6" href="$poisson_8h.html" title=" " alt="" coords="338,95,482,136"/>
-<area shape="rect" id="node4" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="6,184,153,225"/>
-<area shape="rect" id="node5" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="177,184,312,225"/>
-<area shape="rect" id="node7" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="339,184,479,225"/>
-<area shape="rect" id="node8" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="503,191,669,218"/>
+<area shape="rect" id="node1" title=" " alt="" coords="250,5,406,47"/>
+<area shape="rect" id="node2" href="$function_8cc.html" title=" " alt="" coords="7,102,147,129"/>
+<area shape="rect" id="node3" href="$linear__elasticity_8h.html" title=" " alt="" coords="172,95,316,136"/>
+<area shape="rect" id="node6" href="$poisson_8h.html" title=" " alt="" coords="340,95,484,136"/>
+<area shape="rect" id="node9" href="$stokes_8h.html" title=" " alt="" coords="688,95,832,136"/>
+<area shape="rect" id="node4" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="5,184,152,225"/>
+<area shape="rect" id="node5" href="$apps_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="177,184,311,225"/>
+<area shape="rect" id="node7" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="335,184,475,225"/>
+<area shape="rect" id="node8" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="500,191,665,218"/>
+<area shape="rect" id="node10" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="690,184,830,225"/>
+<area shape="rect" id="node11" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="855,191,1012,218"/>
 </map>
