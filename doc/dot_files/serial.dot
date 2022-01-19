@@ -27,7 +27,7 @@ digraph FSISuite {
     {
         rank = same;
         cfd [label="Compututational\nFluid Dynamics", shape="none", style="", URL="\ref cfd"];
-        Stokes;
+        Stokes [URL="\ref PDEs::Serial::Stokes"];
         QuasiStaticStokes [label="QuasiStatic\nStokes"];
         DynamicStokes;
         NavierStokes;

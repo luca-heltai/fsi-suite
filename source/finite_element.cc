@@ -5,6 +5,7 @@
 #include <deal.II/base/patterns.h>
 
 #include <deal.II/fe/fe_simplex_p.h>
+#include <deal.II/fe/fe_simplex_p_bubbles.h>
 #include <deal.II/fe/fe_tools.templates.h>
 
 #include <algorithm> // std::find
@@ -58,6 +59,9 @@ namespace ParsedTools
         FETools::add_fe_name<dim, spacedim>(
           "FE_SimplexDGP",
           new FETools::FEFactory<FE_SimplexDGP<dim, spacedim>>());
+        FETools::add_fe_name<dim, spacedim>(
+          "FE_SimplexP_Bubbles",
+          new FETools::FEFactory<FE_SimplexP_Bubbles<dim, spacedim>>());
       }
   }
 
