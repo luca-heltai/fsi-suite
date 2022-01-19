@@ -36,9 +36,9 @@
 #include "parsed_tools/constants.h"
 #include "parsed_tools/data_out.h"
 #include "parsed_tools/finite_element.h"
+#include "parsed_tools/function.h"
 #include "parsed_tools/grid_generator.h"
 #include "parsed_tools/grid_refinement.h"
-#include "parsed_tools/symbolic_function.h"
 
 namespace PDEs
 {
@@ -115,8 +115,8 @@ namespace PDEs
 
       // Forcing terms and boundary conditions
       ParsedTools::Constants                    constants;
-      ParsedTools::SymbolicFunction<spacedim>   forcing_term;
-      ParsedTools::SymbolicFunction<spacedim>   exact_solution;
+      ParsedTools::Function<spacedim>           forcing_term;
+      ParsedTools::Function<spacedim>           exact_solution;
       ParsedTools::BoundaryConditions<spacedim> boundary_conditions;
 
       // Error convergence tables

@@ -11,6 +11,9 @@ RUN apt-get update \
     doxygen \
     gdb \
     graphviz \
+    linux-tools-common \
+    linux-tools-generic \
+    valgrind \
     vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

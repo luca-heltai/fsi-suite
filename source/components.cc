@@ -24,7 +24,7 @@ namespace ParsedTools
           result += strings[i];
         }
       return result;
-    };
+    }
 
 
 

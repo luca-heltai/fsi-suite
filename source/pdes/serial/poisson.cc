@@ -60,8 +60,8 @@ namespace PDEs
                              "cell type as the grid."));
 
       boundary_conditions.update_user_substitution_map(constants);
-      exact_solution().update_user_substitution_map(constants);
-      forcing_term().update_user_substitution_map(constants);
+      exact_solution.update_constants(constants);
+      forcing_term.update_constants(constants);
 
       dof_handler.distribute_dofs(finite_element);
       mapping = get_default_linear_mapping(triangulation).clone();
@@ -129,7 +129,7 @@ namespace PDEs
               for (const unsigned int i : fe_values.dof_indices())
                 cell_rhs(i) +=
                   (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                   forcing_term().value(
+                   forcing_term.value(
                      fe_values.quadrature_point(q_index)) * // f(x_q)
                    fe_values.JxW(q_index));                 // dx
             }
@@ -191,7 +191,7 @@ namespace PDEs
           setup_system();
           assemble_system();
           solve();
-          error_table.error_from_exact(dof_handler, solution, exact_solution());
+          error_table.error_from_exact(dof_handler, solution, exact_solution);
           output_results(cycle);
           if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
             grid_refinement.estimate_mark_refine(*mapping,

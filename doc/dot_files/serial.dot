@@ -10,15 +10,15 @@ digraph FSISuite {
     
     {
         rank=min;
-        Poisson; // First node.
+        Poisson [URL="\ref PDEs::Serial::Poisson"]; // First node.
         HeatEquation;
     }
 
     // Labels on the left
     { 
         rank = same;
-        csd [label="Compututational\nSolid Dynamics", shape="none", style=""];
-        LinearElasticity;
+        csd [label="Compututational\nSolid Dynamics", shape="none", style="", URL="\ref csd"];
+        LinearElasticity [URL="\ref PDEs::Serial::LinearElasticity"];
         QuasiStaticLinearElasticity [label="QuasiStatic\nLinearElasticity"];
         WaveEquation;
         HyperElasticity;
@@ -26,7 +26,7 @@ digraph FSISuite {
 
     {
         rank = same;
-        cfd [label="Compututational\nFluid Dynamics", shape="none", style=""];
+        cfd [label="Compututational\nFluid Dynamics", shape="none", style="", URL="\ref cfd"];
         Stokes;
         QuasiStaticStokes [label="QuasiStatic\nStokes"];
         DynamicStokes;

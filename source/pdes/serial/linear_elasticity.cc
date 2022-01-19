@@ -72,8 +72,8 @@ namespace PDEs
                              "cell type as the grid."));
 
       boundary_conditions.update_user_substitution_map(constants);
-      exact_solution().update_user_substitution_map(constants);
-      forcing_term().update_user_substitution_map(constants);
+      exact_solution.update_constants(constants);
+      forcing_term.update_constants(constants);
 
       dof_handler.distribute_dofs(finite_element);
       mapping = get_default_linear_mapping(triangulation).clone();
@@ -147,31 +147,33 @@ namespace PDEs
                fe_values.quadrature_point_indices())
             {
               for (const unsigned int i : fe_values.dof_indices())
-                for (const unsigned int j : fe_values.dof_indices())
-                  {
-                    const auto &sym_grad_v =
-                      fe_values[displacement].symmetric_gradient(i, q_index);
-                    const auto &sym_grad_u =
-                      fe_values[displacement].symmetric_gradient(j, q_index);
-                    const auto &div_v =
-                      fe_values[displacement].divergence(i, q_index);
-                    const auto &div_u =
-                      fe_values[displacement].divergence(j, q_index);
+                {
+                  const auto &eps_v =
+                    fe_values[displacement].symmetric_gradient(i, q_index);
+                  const auto &div_v =
+                    fe_values[displacement].divergence(i, q_index);
 
-                    cell_matrix(i, j) +=
-                      (constants["mu"] * sym_grad_v * sym_grad_u +
-                       constants["lambda"] * div_v * div_u) *
-                      fe_values.JxW(q_index); // dx
-                    for (const unsigned int i : fe_values.dof_indices())
-                      cell_rhs(i) +=
-                        (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                         forcing_term().value(fe_values.quadrature_point(
-                                                q_index),
-                                              finite_element()
-                                                .system_to_component_index(i)
-                                                .first) * // f(x_q)
-                         fe_values.JxW(q_index));         // dx
-                  }
+                  for (const unsigned int j : fe_values.dof_indices())
+                    {
+                      const auto &eps_u =
+                        fe_values[displacement].symmetric_gradient(j, q_index);
+                      const auto &div_u =
+                        fe_values[displacement].divergence(j, q_index);
+
+                      cell_matrix(i, j) +=
+                        (constants["mu"] * eps_v * eps_u +
+                         constants["lambda"] * div_v * div_u) *
+                        fe_values.JxW(q_index); // dx
+                    }
+
+                  cell_rhs(i) +=
+                    (fe_values.shape_value(i, q_index) * // phi_i(x_q)
+                     forcing_term.value(fe_values.quadrature_point(q_index),
+                                        finite_element()
+                                          .system_to_component_index(i)
+                                          .first) * // f(x_q)
+                     fe_values.JxW(q_index));       // dx
+                }
             }
           cell->get_dof_indices(local_dof_indices);
           constraints.distribute_local_to_global(cell_matrix,
@@ -230,7 +232,7 @@ namespace PDEs
           setup_system();
           assemble_system();
           solve();
-          error_table.error_from_exact(dof_handler, solution, exact_solution());
+          error_table.error_from_exact(dof_handler, solution, exact_solution);
           output_results(cycle);
           if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
             grid_refinement.estimate_mark_refine(*mapping,
