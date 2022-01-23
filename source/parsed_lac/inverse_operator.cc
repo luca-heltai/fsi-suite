@@ -27,4 +27,11 @@ namespace ParsedLAC
     add_parameter("Absolute tolerance", tolerance);
     add_parameter("Relative tolerance", reduction);
   }
+
+  std::string
+  InverseOperator::get_solver_name() const
+  {
+    return solver_name;
+  }
+
 } // namespace ParsedLAC

@@ -3,6 +3,8 @@
 
 #include <deal.II/base/config.h>
 
+#include <deal.II/algorithms/general_data_storage.h>
+
 #include <deal.II/base/parameter_acceptor.h>
 
 #include <deal.II/lac/linear_operator.h>
@@ -68,6 +70,12 @@ namespace ParsedLAC
     operator()(const dealii::LinearOperator<Range, Domain, Payload> &op,
                const PreconditionerType &prec) const;
 
+    /**
+     * Get the solver name.
+     */
+    std::string
+    get_solver_name() const;
+
   private:
     /**
      * ReductionControl. Used internally by the solver.
@@ -96,6 +104,11 @@ namespace ParsedLAC
      * step.
      */
     double reduction;
+
+    /**
+     * Local storage for the actual solver object.
+     */
+    mutable dealii::GeneralDataStorage storage;
   };
 
   // ============================================================
@@ -115,8 +128,11 @@ namespace ParsedLAC
     control.set_tolerance(tolerance);
 
     // Make sure this is left around until the object is destroyed
-    static std::unique_ptr<dealii::SolverBase<Range>> solver;
-    dealii::LinearOperator<Domain, Range, Payload>    inverse;
+    using SolverType = std::shared_ptr<dealii::SolverBase<Range>>;
+    auto &solver =
+      storage.template get_or_add_object_with_name<SolverType>("solver");
+
+    dealii::LinearOperator<Domain, Range, Payload> inverse;
 
     auto initialize_solver = [&](auto *s) {
       solver.reset(s);

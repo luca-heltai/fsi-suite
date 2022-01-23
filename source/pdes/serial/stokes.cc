@@ -23,8 +23,7 @@ namespace PDEs
                        component_names,
                        "FESystem[FE_Q(2)^d-FE_Q(1)]")
       , dof_handler(triangulation)
-      , inner_inverse_operator("/Stokes/Inner solver")
-      , outer_inverse_operator("/Stokes/Outer solver")
+      , inverse_operator("/Stokes/Solver")
       , velocity_preconditioner("/Stokes/Solver/AMG Velocity preconditioner")
       , schur_preconditioner("/Stokes/Solver/AMG Schur preconditioner")
       , constants("/Stokes/Constants", {"eta"}, {1.0}, {"Viscosity"})
@@ -160,8 +159,7 @@ namespace PDEs
             {
               for (const unsigned int i : fe_values.dof_indices())
                 {
-                  const auto &eps_v =
-                    fe_values[velocity].symmetric_gradient(i, q_index);
+                  const auto &eps_v = fe_values[velocity].gradient(i, q_index);
                   const auto &div_v =
                     fe_values[velocity].divergence(i, q_index);
                   const auto &q = fe_values[pressure].value(i, q_index);
@@ -169,13 +167,14 @@ namespace PDEs
                   for (const unsigned int j : fe_values.dof_indices())
                     {
                       const auto &eps_u =
-                        fe_values[velocity].symmetric_gradient(j, q_index);
+                        fe_values[velocity].gradient(j, q_index);
                       const auto &div_u =
                         fe_values[velocity].divergence(j, q_index);
                       const auto &p = fe_values[pressure].value(j, q_index);
-                      cell_matrix(i, j) += (constants["eta"] * eps_v * eps_u +
-                                            -p * div_v - q * div_u) *
-                                           fe_values.JxW(q_index); // dx
+                      cell_matrix(i, j) +=
+                        (constants["eta"] * scalar_product(eps_v, eps_u) -
+                         p * div_v - q * div_u + q * p / constants["eta"]) *
+                        fe_values.JxW(q_index); // dx
                     }
 
                   cell_rhs(i) +=
@@ -203,14 +202,49 @@ namespace PDEs
     Stokes<dim>::solve()
     {
       deallog << "Solve system" << std::endl;
-      SparseDirectUMFPACK A_direct;
-      A_direct.initialize(system_matrix);
-      A_direct.vmult(solution, system_rhs);
-      constraints.distribute(solution);
 
-      // velocity_preconditioner.initialize(system_matrix.block(0, 0));
-      // schur_preconditioner.initialize(system_matrix.block(1, 1));
-      // deallog << "Preconditioners initialized" << std::endl;
+      // SparseDirectUMFPACK A_direct;
+      // A_direct.initialize(system_matrix);
+      // A_direct.vmult(solution, system_rhs);
+      // constraints.distribute(solution);
+
+      velocity_preconditioner.initialize(system_matrix.block(0, 0));
+      schur_preconditioner.initialize(system_matrix.block(1, 1));
+      deallog << "Preconditioners initialized" << std::endl;
+
+      auto precA =
+        linear_operator(system_matrix.block(0, 0), velocity_preconditioner);
+
+      auto precS =
+        -1 * linear_operator(system_matrix.block(1, 1), schur_preconditioner);
+
+      // Force compiler to understand what's going on...
+      std::array<decltype(precA), 2> tmp_prec = {{precA, precS}};
+      const auto diagprecAA = block_diagonal_operator<2>(tmp_prec);
+
+      const auto A    = linear_operator(system_matrix.block(0, 0));
+      const auto B    = linear_operator(system_matrix.block(1, 0));
+      const auto Bt   = linear_operator(system_matrix.block(0, 1));
+      const auto M    = linear_operator(system_matrix.block(1, 1));
+      const auto Zero = 0 * M;
+
+      const auto AA = block_operator<2, 2>({{{{A, Bt}}, {{B, Zero}}}});
+
+      // If we use gmres or another non symmetric solver, use a non-symmetric
+      // preconditioner
+      if (inverse_operator.get_solver_name() != "cg")
+        {
+          const auto precAA = block_back_substitution(AA, diagprecAA);
+          const auto inv    = inverse_operator(AA, precAA);
+          solution          = inv * system_rhs;
+        }
+      else
+        {
+          const auto inv = inverse_operator(AA, diagprecAA);
+          solution       = inv * system_rhs;
+        }
+
+      constraints.distribute(solution);
 
       // const auto A = linear_operator<Vector<double>>(system_matrix.block(0,
       // 0)); const auto invA = inner_inverse_operator(A,
@@ -231,11 +265,14 @@ namespace PDEs
       // const auto &f = system_rhs.block(0);
       // const auto &g = system_rhs.block(1);
 
-      // deallog << "Solving schur" << std::endl;
-      // // p = invS * (B * invA * f - g);
-      // deallog << "Compute p (norm = " << p.l2_norm() << ")" << std::endl;
+      // deallog << "Solving schur complement" << std::endl;
+
+      // p = invS * (B * invA * f - g);
+      // deallog << "Computed p (norm = " << p.l2_norm() << ")" << std::endl;
+
+      // deallog << "Solving for velocity" << std::endl;
       // u = invA * (f - Bt * p);
-      // deallog << "Compute u (norm = " << u.l2_norm() << ")"
+      // deallog << "Computed u (norm = " << u.l2_norm() << ")"
       //         << ")" << std::endl;
 
       // constraints.distribute(solution);

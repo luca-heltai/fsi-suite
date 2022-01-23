@@ -105,8 +105,7 @@ namespace PDEs
       BlockSparseMatrix<double>    system_matrix;
       BlockVector<double>          solution;
       BlockVector<double>          system_rhs;
-      ParsedLAC::InverseOperator   inner_inverse_operator;
-      ParsedLAC::InverseOperator   outer_inverse_operator;
+      ParsedLAC::InverseOperator   inverse_operator;
       ParsedLAC::AMGPreconditioner velocity_preconditioner;
       ParsedLAC::AMGPreconditioner schur_preconditioner;
 
