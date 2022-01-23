@@ -245,10 +245,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a3809fb5a443b0c3ea636a287a2389c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70e05546b55ac4f71ad22a053fe25adb"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classBlockVector.html">BlockVector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a70e05546b55ac4f71ad22a053fe25adb">system_rhs</a></td></tr>
 <tr class="separator:a70e05546b55ac4f71ad22a053fe25adb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a412721bcedae452308cc6e489392d06c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a412721bcedae452308cc6e489392d06c">inner_inverse_operator</a></td></tr>
-<tr class="separator:a412721bcedae452308cc6e489392d06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca22a56417f2850f8e134e004c819f2d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#aca22a56417f2850f8e134e004c819f2d">outer_inverse_operator</a></td></tr>
-<tr class="separator:aca22a56417f2850f8e134e004c819f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba96298f3d97b484564fe20642c6acd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#aba96298f3d97b484564fe20642c6acd3">inverse_operator</a></td></tr>
+<tr class="separator:aba96298f3d97b484564fe20642c6acd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae432ba4cfa73c7e053ee3df033ce0572"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#ae432ba4cfa73c7e053ee3df033ce0572">velocity_preconditioner</a></td></tr>
 <tr class="separator:ae432ba4cfa73c7e053ee3df033ce0572"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace6c3f9b95ed116b08c7934ca895915e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#ace6c3f9b95ed116b08c7934ca895915e">schur_preconditioner</a></td></tr>
@@ -356,9 +354,9 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00118">118</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00117">117</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#a93872d888911cda7e2e716168afc1b3f">FEValues&lt; dim, spacedim &gt;::dof_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#acc87b5e39e346e39b34c732cf3da5821">ReferenceCell::face_reference_cell()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__out_8cc.html#a827a345f29da7caeb588b11013869a01">first</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#abade89efb068b71b7ced7082012a2441">FEValues&lt; dim, spacedim &gt;::JxW()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#ab123e5da03736be4977c76fbcb6a2e37">FEValues&lt; dim, spacedim &gt;::quadrature_point()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#aada8380792b5e6a1f91dcba94b558cb8">FEValues&lt; dim, spacedim &gt;::quadrature_point_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html#a21f914e63d588e2652a9514620653d77">FEValues&lt; dim, spacedim &gt;::reinit()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#a1dd48cb744013c448d57f8f77640c08d">FEValues&lt; dim, spacedim &gt;::shape_value()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#a93872d888911cda7e2e716168afc1b3f">FEValues&lt; dim, spacedim &gt;::dof_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#acc87b5e39e346e39b34c732cf3da5821">ReferenceCell::face_reference_cell()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__out_8cc.html#a827a345f29da7caeb588b11013869a01">first</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#abade89efb068b71b7ced7082012a2441">FEValues&lt; dim, spacedim &gt;::JxW()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#ab123e5da03736be4977c76fbcb6a2e37">FEValues&lt; dim, spacedim &gt;::quadrature_point()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#aada8380792b5e6a1f91dcba94b558cb8">FEValues&lt; dim, spacedim &gt;::quadrature_point_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html#a21f914e63d588e2652a9514620653d77">FEValues&lt; dim, spacedim &gt;::reinit()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/symmetric__tensor_8h.html#ab14ac27fc9ab74d4de531698b492d8de">scalar_product()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#a1dd48cb744013c448d57f8f77640c08d">FEValues&lt; dim, spacedim &gt;::shape_value()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a>.</p>
 
 </div>
 </div>
@@ -388,7 +386,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00248">248</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00285">285</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits()</a>.</p>
 
@@ -408,7 +406,7 @@ template&lt;int dim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00265">265</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00302">302</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
@@ -438,7 +436,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00061">61</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00060">60</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="el" href="components_8cc_source.html#l00134">ParsedTools::Components::block_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDoFRenumbering.html#a52c1941406d1ce2937e29a46edf111f4">DoFRenumbering::component_wise()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDoFTools.html#a796721b56b3a90e4e3973c7caae4c3d8">DoFTools::count_dofs_per_fe_block()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
@@ -466,9 +464,9 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00203">203</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00202">202</a> of file <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html">stokes.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseDirectUMFPACK.html#a25b1d3c7dbb88158a76165a4a56a16d6">SparseDirectUMFPACK::initialize()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseDirectUMFPACK.html#adc154e4830b0e16be265f10a5c8b7103">SparseDirectUMFPACK::vmult()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga8b2bf4fd828e4ee7539bcc16c8b19777">block_back_substitution()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>.</p>
 
 </div>
 </div>
@@ -495,7 +493,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00117">117</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00116">116</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -549,7 +547,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00126">126</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00125">125</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -575,7 +573,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00114">114</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00113">113</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -627,7 +625,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00123">123</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00122">122</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -707,7 +705,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00120">120</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00119">119</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -733,7 +731,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00116">116</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00115">115</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -785,7 +783,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00115">115</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00114">114</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -841,8 +839,8 @@ template&lt;int dim&gt; </div>
 
 </div>
 </div>
-<a id="a412721bcedae452308cc6e489392d06c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a412721bcedae452308cc6e489392d06c">&#9670;&nbsp;</a></span>inner_inverse_operator</h2>
+<a id="aba96298f3d97b484564fe20642c6acd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba96298f3d97b484564fe20642c6acd3">&#9670;&nbsp;</a></span>inverse_operator</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -853,7 +851,7 @@ template&lt;int dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html">PDEs::Serial::Stokes</a>&lt; dim &gt;::inner_inverse_operator</td>
+          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html">PDEs::Serial::Stokes</a>&lt; dim &gt;::inverse_operator</td>
         </tr>
       </table>
   </td>
@@ -893,32 +891,6 @@ template&lt;int dim&gt; </div>
 
 </div>
 </div>
-<a id="aca22a56417f2850f8e134e004c819f2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca22a56417f2850f8e134e004c819f2d">&#9670;&nbsp;</a></span>outer_inverse_operator</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html">PDEs::Serial::Stokes</a>&lt; dim &gt;::outer_inverse_operator</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00109">109</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
-
-</div>
-</div>
 <a id="a8ae95bc0851dbe54e3da0a11d5907174"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ae95bc0851dbe54e3da0a11d5907174">&#9670;&nbsp;</a></span>pressure</h2>
 
@@ -941,7 +913,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00130">130</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00129">129</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -967,7 +939,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00111">111</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00110">110</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -1123,7 +1095,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00129">129</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00128">128</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -1149,7 +1121,7 @@ template&lt;int dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00110">110</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="stokes_8h_source.html#l00109">109</a> of file <a class="el" href="stokes_8h_source.html">stokes.h</a>.</p>
 
 </div>
 </div>
@@ -1163,7 +1135,7 @@ template&lt;int dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html">Stokes</a></li>
-    <li class="footer">Generated on Wed Jan 19 2022 23:59:49 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Jan 23 2022 19:24:19 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

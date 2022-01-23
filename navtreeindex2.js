@@ -1,5 +1,6 @@
 var NAVTREEINDEX2 =
 {
+"group__Exceptions.html#ga18fc32e3ed383e4e25df8b10801164fe":[2,10,174],
 "group__Exceptions.html#ga195f0336a776cf08c0a7872d7ee4393a":[2,10,111],
 "group__Exceptions.html#ga1964d29d3dd7fab64ca4a4bd1a2bbed5":[2,10,50],
 "group__Exceptions.html#ga19a43c92ec3cacaf605a2d08199b655f":[2,10,227],
@@ -248,6 +249,5 @@ var NAVTREEINDEX2 =
 "group__Exceptions.html#gaae752462b9ed5b3b54da6f6eb58f8693":[2,10,136],
 "group__Exceptions.html#gaaef67cc35b59482d28758bb4f32b1161":[2,10,383],
 "group__Exceptions.html#gaaf7a82dea92795d1e2b7efe1d79dd2c9":[2,10,179],
-"group__Exceptions.html#gab0d0c095b4783c19dcf35296dc76d4cb":[2,10,350],
-"group__Exceptions.html#gab23c09b7ec6168d48ffa904c5d0ec459":[2,10,90]
+"group__Exceptions.html#gab0d0c095b4783c19dcf35296dc76d4cb":[2,10,350]
 };
