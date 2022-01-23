@@ -20,22 +20,54 @@
 namespace ParsedLAC
 {
   /**
+   *
+   */
+  enum class SolverControlType
+  {
+    tolerance              = 1 << 0, //!< Use SolverControl
+    consecutive_iterations = 1 << 1, //!< Use ConsecutiveControl
+    iteration_number       = 1 << 2, //!< Use IterationNumberControl
+    reduction              = 1 << 3, //!< Use ReductionControl
+  };
+  /**
    * A factory that can generate inverse operators according to parameter files.
    *
    * This object is a parsed inverse operator, which uses a parameter file to
-   * select a solver type, maximum iterators, an absolute tolerance, and a
-   * relative tolerance.
+   * select a Solver type and SolverControl type.
    *
    * Example usage is the following:
    *
    * @code
-   * InverseOperator inverse("/", "cg", 100, 1e-12, 1e-12);
+   * InverseOperator inverse("/", "cg");
    * ParameterAcceptor::initialize(...);
    *
    * auto Ainv = inverse(linear_operator<VEC>(A), preconditioner);
    *
    * x = Ainv*b;
    * @endcode
+   *
+   * The parameter file is expected to have the following structure:
+   * @code{.sh}
+   * set Solver name            = cg
+   * set Solver control type    = tolerance
+   * set Absolute tolerance     = 1e-12
+   * set Relative tolerance     = 1e-12
+   * set Maximum iterations     = 1000
+   * set Consecutive iterations = 2
+   * set Log history            = false
+   * set Log result             = false
+   * @endcode
+   *
+   * Every solver control type uses the absolute tolerance, the maximum
+   * iterations, and the log parameters. The relative tolerance is used only by
+   * the ReductionControl type, i.e., SolverControlType::reduction, while
+   * consecutive iterations is used only by the ConsecutiveControl, i.e.,
+   * SolverControlType::consecutive_iterations. The special case
+   * SolverControlType::iteration_number uses the same parameters of the default
+   * one, but it does not fail when reaching the maximum number of iterations.
+   * It is thought to be used as an inner solver, for the cases in which you
+   * want to apply a fixed number of smoothing iterations, regardless of the
+   * reached tolerance.
    */
   class InverseOperator : public dealii::ParameterAcceptor
   {
@@ -49,11 +81,16 @@ namespace ParsedLAC
      * will need, you can also supply them here. They default to the
      * identity, and you can assign them later by setting op and prec.
      */
-    InverseOperator(const std::string &section_name   = "",
-                    const std::string &default_solver = "cg",
-                    const unsigned int max_iter       = 1000,
-                    const double       tolerance      = 1e-12,
-                    const double       reduction      = 1e-12);
+    InverseOperator(
+      const std::string &      section_name   = "",
+      const std::string &      default_solver = "cg",
+      const SolverControlType &control_type   = SolverControlType::tolerance,
+      const unsigned int       max_iterations = 1000,
+      const double             tolerance      = 1e-12,
+      const double             reduction      = 1e-6,
+      const unsigned int       consecutive_iterations = 2,
+      const bool &             log_history            = false,
+      const bool &             log_result             = false);
 
     /**
      * Create an inverse operator according to the parameters given in the
@@ -78,9 +115,30 @@ namespace ParsedLAC
 
   private:
     /**
-     * ReductionControl. Used internally by the solver.
+     * Create a new solver control according to the parameters
      */
-    mutable dealii::ReductionControl control;
+    std::unique_ptr<dealii::SolverControl>
+    setup_new_solver_control() const;
+
+    /**
+     * Defines the behaviour of the solver control.
+     */
+    SolverControlType control_type;
+
+    /**
+     * Used internally by the solver.
+     */
+    mutable std::unique_ptr<dealii::SolverControl> control;
+
+    /**
+     * Log the solver history.
+     */
+    bool log_history;
+
+    /**
+     * Log the final result.
+     */
+    bool log_result;
 
     /**
      * Solver name.
@@ -92,6 +150,11 @@ namespace ParsedLAC
      * complete a solution step.
      */
     unsigned int max_iterations;
+
+    /**
+     * Number of consecutive iterations (used only for ConsecutiveControl).
+     */
+    unsigned int consecutive_iterations;
 
     /**
      * Default reduction required to succesfully complete a solution
@@ -123,11 +186,11 @@ namespace ParsedLAC
     const dealii::LinearOperator<Range, Domain, Payload> &op,
     const PreconditionerType &                            prec) const
   {
-    control.set_max_steps(max_iterations);
-    control.set_reduction(reduction);
-    control.set_tolerance(tolerance);
+    control = setup_new_solver_control();
 
-    // Make sure this is left around until the object is destroyed
+    // Make sure the solver itself is left around until the object is destroyed
+    // we need a general storage class, since we have no idea what types are
+    // used when calling this function.
     using SolverType = std::shared_ptr<dealii::SolverBase<Range>>;
     auto &solver =
       storage.template get_or_add_object_with_name<SolverType>("solver");
@@ -141,31 +204,31 @@ namespace ParsedLAC
 
     if (solver_name == "cg")
       {
-        initialize_solver(new dealii::SolverCG<Range>(control));
+        initialize_solver(new dealii::SolverCG<Range>(*control));
       }
     else if (solver_name == "bicgstab")
       {
-        initialize_solver(new dealii::SolverBicgstab<Range>(control));
+        initialize_solver(new dealii::SolverBicgstab<Range>(*control));
       }
     else if (solver_name == "gmres")
       {
-        initialize_solver(new dealii::SolverGMRES<Range>(control));
+        initialize_solver(new dealii::SolverGMRES<Range>(*control));
       }
     else if (solver_name == "fgmres")
       {
-        initialize_solver(new dealii::SolverFGMRES<Range>(control));
+        initialize_solver(new dealii::SolverFGMRES<Range>(*control));
       }
     else if (solver_name == "minres")
       {
-        initialize_solver(new dealii::SolverMinRes<Range>(control));
+        initialize_solver(new dealii::SolverMinRes<Range>(*control));
       }
     else if (solver_name == "qmrs")
       {
-        initialize_solver(new dealii::SolverQMRS<Range>(control));
+        initialize_solver(new dealii::SolverQMRS<Range>(*control));
       }
     else if (solver_name == "richardson")
       {
-        initialize_solver(new dealii::SolverRichardson<Range>(control));
+        initialize_solver(new dealii::SolverRichardson<Range>(*control));
       }
     else
       {

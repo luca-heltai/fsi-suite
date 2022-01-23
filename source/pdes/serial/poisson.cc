@@ -24,10 +24,10 @@ namespace PDEs
                   {1.0},
                   {"Diffusion coefficient"})
       , forcing_term("/Poisson/Functions",
-                     "kappa*8*pi^2*sin(2*pi*x)*sin(2*pi*y)",
+                     "kappa*8*PI^2*sin(2*PI*x)*sin(2*PI*y)",
                      "Forcing term")
       , exact_solution("/Poisson/Functions",
-                       "sin(2*pi*x)*sin(2*pi*y)",
+                       "sin(2*PI*x)*sin(2*PI*y)",
                        "Exact solution")
       , boundary_conditions("/Poisson/Boundary conditions")
       , data_out("/Poisson/Output")

@@ -54,10 +54,9 @@ TEST(InverseOperator, InvertPoisson)
 
   auto op_a = linear_operator<Vector<double>>(A);
 
-  ParsedLAC::InverseOperator inverse_operator_factory(
-    "/", "cg", 1000, 1e-12, 1e-12);
+  ParsedLAC::InverseOperator inverse_op("/", "cg");
 
-  auto inv_a = inverse_operator_factory(op_a, PreconditionIdentity());
+  auto inv_a = inverse_op(op_a, PreconditionIdentity());
 
   Vector<double> u;
   op_a.reinit_domain_vector(u, true);
