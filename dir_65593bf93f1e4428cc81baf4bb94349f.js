@@ -9,9 +9,7 @@ var dir_65593bf93f1e4428cc81baf4bb94349f =
     [ "ilu.h", "ilu_8h.html", [
       [ "ILUPreconditioner", "class_parsed_l_a_c_1_1_i_l_u_preconditioner.html", "class_parsed_l_a_c_1_1_i_l_u_preconditioner" ]
     ] ],
-    [ "inverse_operator.h", "inverse__operator_8h.html", [
-      [ "InverseOperator", "class_parsed_l_a_c_1_1_inverse_operator.html", "class_parsed_l_a_c_1_1_inverse_operator" ]
-    ] ],
+    [ "inverse_operator.h", "inverse__operator_8h.html", "inverse__operator_8h" ],
     [ "jacobi.h", "jacobi_8h.html", [
       [ "JacobiPreconditioner", "class_parsed_l_a_c_1_1_jacobi_preconditioner.html", "class_parsed_l_a_c_1_1_jacobi_preconditioner" ]
     ] ]
