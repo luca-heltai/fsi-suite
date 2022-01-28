@@ -49,6 +49,7 @@ digraph FSISuite {
         SemiImplicitIFEM;
         ImmersedInteface;
         FictitiousDomain;
+        DistributedLagrange [URL="\ref PDEs::Serial::DistributedLagrange"];
     }
 
     subgraph legends {
@@ -104,7 +105,7 @@ digraph FSISuite {
 
     HyperElasticity -> {SemiImplicitALE, SemiImplicitIFEM};
 
-    Poisson -> ImmersedInteface  -> FictitiousDomain;
+    Poisson -> ImmersedInteface  -> FictitiousDomain -> DistributedLagrange;
     // {NavierStokes, LinearElasticity} -> FictitiousDomain;
     // Poisson -> FictitiousDomain;
 }
