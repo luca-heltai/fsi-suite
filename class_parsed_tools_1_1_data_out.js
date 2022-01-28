@@ -2,7 +2,7 @@ var class_parsed_tools_1_1_data_out =
 [
     [ "DataOut", "class_parsed_tools_1_1_data_out.html#a86991b7f585b9c3147db4f3136d4fe6d", null ],
     [ "add_data_vector", "class_parsed_tools_1_1_data_out.html#aa1ca15467186508f98e94bd146308a43", null ],
-    [ "add_data_vector", "class_parsed_tools_1_1_data_out.html#af5f9e8d735eee0c58832eaea77c24865", null ],
+    [ "add_data_vector", "class_parsed_tools_1_1_data_out.html#a77ccde5f5eb59370ee76cbac85f257b9", null ],
     [ "attach_dof_handler", "class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61", null ],
     [ "clear_pvd_record", "class_parsed_tools_1_1_data_out.html#af7882b4b1d10ab0b06fe83757e49d842", null ],
     [ "write_data_and_clear", "class_parsed_tools_1_1_data_out.html#a631160a2bacdfe43ce4a228bb6d36f3b", null ],

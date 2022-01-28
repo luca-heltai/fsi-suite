@@ -124,10 +124,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:acc3a5b1731fe2feb146f868fc9d66b61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61">attach_dof_handler</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dh, const std::string &amp;suffix=&quot;&quot;)</td></tr>
 <tr class="memdesc:acc3a5b1731fe2feb146f868fc9d66b61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prepare to output data on the given file.  <a href="class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61">More...</a><br /></td></tr>
 <tr class="separator:acc3a5b1731fe2feb146f868fc9d66b61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5f9e8d735eee0c58832eaea77c24865"><td class="memTemplParams" colspan="2">template&lt;typename VECTOR &gt; </td></tr>
-<tr class="memitem:af5f9e8d735eee0c58832eaea77c24865"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_data_out.html#af5f9e8d735eee0c58832eaea77c24865">add_data_vector</a> (const VECTOR &amp;data_vector, const std::string &amp;desc)</td></tr>
-<tr class="memdesc:af5f9e8d735eee0c58832eaea77c24865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the given vector to the output file.  <a href="class_parsed_tools_1_1_data_out.html#af5f9e8d735eee0c58832eaea77c24865">More...</a><br /></td></tr>
-<tr class="separator:af5f9e8d735eee0c58832eaea77c24865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77ccde5f5eb59370ee76cbac85f257b9"><td class="memTemplParams" colspan="2">template&lt;typename VECTOR &gt; </td></tr>
+<tr class="memitem:a77ccde5f5eb59370ee76cbac85f257b9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_data_out.html#a77ccde5f5eb59370ee76cbac85f257b9">add_data_vector</a> (const VECTOR &amp;data_vector, const std::string &amp;desc, const typename <a class="el" href="class_parsed_tools_1_1_data_out.html">DataOut</a>&lt; dim, spacedim &gt;::DataVectorType &amp;type=<a class="el" href="class_parsed_tools_1_1_data_out.html">DataOut</a>&lt; dim, spacedim &gt;::type_automatic)</td></tr>
+<tr class="memdesc:a77ccde5f5eb59370ee76cbac85f257b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the given vector to the output file.  <a href="class_parsed_tools_1_1_data_out.html#a77ccde5f5eb59370ee76cbac85f257b9">More...</a><br /></td></tr>
+<tr class="separator:a77ccde5f5eb59370ee76cbac85f257b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1ca15467186508f98e94bd146308a43"><td class="memTemplParams" colspan="2">template&lt;typename VECTOR &gt; </td></tr>
 <tr class="memitem:aa1ca15467186508f98e94bd146308a43"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_data_out.html#aa1ca15467186508f98e94bd146308a43">add_data_vector</a> (const VECTOR &amp;data_vector, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataPostprocessor.html">DataPostprocessor</a>&lt; spacedim &gt; &amp;postproc)</td></tr>
 <tr class="memdesc:aa1ca15467186508f98e94bd146308a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper for the corrisponding function in dealii.  <a href="class_parsed_tools_1_1_data_out.html#aa1ca15467186508f98e94bd146308a43">More...</a><br /></td></tr>
@@ -420,12 +420,12 @@ template&lt;typename VECTOR &gt; </div>
 
 <p>Wrapper for the corrisponding function in dealii. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00211">211</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00216">216</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
-<a id="af5f9e8d735eee0c58832eaea77c24865"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5f9e8d735eee0c58832eaea77c24865">&#9670;&nbsp;</a></span>add_data_vector() <span class="overload">[2/2]</span></h2>
+<a id="a77ccde5f5eb59370ee76cbac85f257b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77ccde5f5eb59370ee76cbac85f257b9">&#9670;&nbsp;</a></span>add_data_vector() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -444,7 +444,13 @@ template&lt;typename VECTOR &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>desc</em>&#160;</td>
+          <td class="paramname"><em>desc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename <a class="el" href="class_parsed_tools_1_1_data_out.html">DataOut</a>&lt; dim, spacedim &gt;::DataVectorType &amp;&#160;</td>
+          <td class="paramname"><em>type</em> = <code><a class="el" href="class_parsed_tools_1_1_data_out.html">DataOut</a>&lt;dim,&#160;spacedim&gt;::type_automatic</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -457,7 +463,7 @@ template&lt;typename VECTOR &gt; </div>
 <p>Add the given vector to the output file. </p>
 <p>Prior to calling this method, you have to call the <a class="el" href="class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61" title="Prepare to output data on the given file.">attach_dof_handler()</a> method. The string can be a comma separated list of components, or a single description. In this latter case, a progressive number per component is added in the end. In the former case, if a string is reapeated, its respective components are interepreted as components of a vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00162">162</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00166">166</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -537,7 +543,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Actually write the file. </p>
 <p>Once the data_out has been prepared, vectors have been added, the data can be written to a file. This is done in this method. At the end of this function call the process can be started again. <code>used_files</code> is an optional variable that takes a list of useful files (ex. "parameter.prm time.dat") and copies these files in the <code>incremental_run_prefix</code> of the costructor function. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8cc_source.html#l00173">173</a> of file <a class="el" href="data__out_8cc_source.html">data_out.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8cc_source.html#l00179">179</a> of file <a class="el" href="data__out_8cc_source.html">data_out.cc</a>.</p>
 
 </div>
 </div>
@@ -567,7 +573,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>Base name for output files. </p>
 <p>This base is used to generate all filenames. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00117">117</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00121">121</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -595,7 +601,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>MPI communicator. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00098">98</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00102">102</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -623,7 +629,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Initialization flag. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00095">95</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00099">99</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -651,7 +657,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Folder where solutions are stored. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00120">120</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00124">124</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -679,7 +685,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>The name of last written filew. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00123">123</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00127">127</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -708,7 +714,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>Current output name. </p>
 <p>When preparing data_out, this name will contain the base for the current output. This allows the user to use a different output name in different part of the program. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00131">131</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00135">135</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -734,7 +740,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00146">146</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00150">150</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -762,7 +768,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Outputs only the data that refers to this process. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00143">143</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00147">147</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -790,7 +796,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>The name used for the master pvd file. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00126">126</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00130">130</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -818,7 +824,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Number of processes. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00101">101</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00105">105</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -846,7 +852,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Output file. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00140">140</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00144">144</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -874,7 +880,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Output format. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00107">107</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00111">111</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -902,7 +908,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Output the material ids of the domain. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00137">137</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00141">141</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -930,7 +936,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Output the partitioning of the domain. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00134">134</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00138">138</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -958,7 +964,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Record of all output files and times. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00151">151</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00155">155</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -986,7 +992,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Number of subdivisions. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00110">110</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00114">114</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -1014,7 +1020,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>My mpi process. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00104">104</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00108">108</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1048,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>If available, output high order data. </p>
 
-<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00113">113</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="data__out_8h_source.html#l00117">117</a> of file <a class="el" href="data__out_8h_source.html">data_out.h</a>.</p>
 
 </div>
 </div>
@@ -1056,7 +1062,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_data_out.html">DataOut</a></li>
-    <li class="footer">Generated on Fri Jan 28 2022 20:49:07 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 28 2022 22:01:44 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
