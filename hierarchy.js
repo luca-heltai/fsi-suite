@@ -39,6 +39,7 @@ var hierarchy =
         [ "ParsedTools::FiniteElement< dim, dim >", "class_parsed_tools_1_1_finite_element.html", null ],
         [ "ParsedTools::GridGenerator< dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::GridGenerator< dim, dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
+        [ "ParsedTools::MappingEulerian< dim, dim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "ParsedLAC::AMGMueLuPreconditioner", "class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html", null ],
         [ "ParsedLAC::AMGPreconditioner", "class_parsed_l_a_c_1_1_a_m_g_preconditioner.html", null ],
         [ "ParsedLAC::ILUPreconditioner", "class_parsed_l_a_c_1_1_i_l_u_preconditioner.html", null ],
@@ -53,6 +54,7 @@ var hierarchy =
         [ "ParsedTools::GridRefinement", "class_parsed_tools_1_1_grid_refinement.html", null ],
         [ "ParsedTools::MappingEulerian< dim, spacedim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "ParsedTools::SymbolicFunction< dim >", "class_parsed_tools_1_1_symbolic_function.html", null ],
+        [ "PDEs::Serial::DistributedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
         [ "PDEs::Serial::LinearElasticity< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_linear_elasticity.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
         [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ]

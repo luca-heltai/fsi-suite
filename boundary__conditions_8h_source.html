@@ -260,192 +260,179 @@ $(document).ready(function(){initNavTree('boundary__conditions_8h_source.html','
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                          <span class="stringliteral">&quot;Neumann boundary conditions for normal and &quot;</span></div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                          <span class="stringliteral">&quot;tangential components are not implemented yet.&quot;</span>));</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;          <span class="keyword">const</span> dealii::ReferenceCell cell_type = fe.reference_cell();</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;          dealii::Quadrature&lt;dim - 1&gt; face_quadrature_formula;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;          <span class="keywordflow">if</span> constexpr (dim &gt; 1)</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;              <span class="comment">// TODO: make sure we work also for wedges and pyramids</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;              <span class="keyword">const</span> dealii::ReferenceCell face_type =</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                cell_type.face_reference_cell(0);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;              face_quadrature_formula =</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                face_type.get_gauss_type_quadrature&lt;dim - 1&gt;(</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                  fe.tensor_degree() + 1);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;          <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            {</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;              face_quadrature_formula =</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                dealii::QGauss&lt;dim - 1&gt;(fe.tensor_degree() + 1);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            }</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;          dealii::FEFaceValues&lt;dim, spacedim&gt; fe_face_values(</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            mapping,</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            fe,</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            face_quadrature_formula,</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">dealii::update_values</a> | <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">dealii::update_quadrature_points</a> |</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;              <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">dealii::update_JxW_values</a>);</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;          <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>         dofs_per_cell = fe.n_dofs_per_cell();</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;          dealii::FullMatrix&lt;double&gt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(dofs_per_cell, dofs_per_cell);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;          dealii::Vector&lt;double&gt; cell_rhs(dofs_per_cell);</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;          std::vector&lt;dealii::types::global_dof_index&gt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>(</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            dofs_per_cell);</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : dof_handler.active_cell_iterators())</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">if</span> (cell-&gt;at_boundary())</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;              {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                cell_rhs = 0;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                <span class="comment">//  for(const auto face: cell-&gt;face_indices())</span></div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> f : cell-&gt;face_indices())</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                  <span class="keywordflow">if</span> (neumann_ids.find(cell-&gt;face(f)-&gt;boundary_id()) !=</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                      neumann_ids.end())</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    {</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                      fe_face_values.reinit(cell, f);</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_face_values.dof_indices())</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                        {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                          <span class="keyword">const</span> <span class="keyword">auto</span> comp_i =</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                            fe.system_to_component_index(i).first;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                          <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>[comp_i])</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> q_index :</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                                 fe_face_values.quadrature_point_indices())</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                              cell_rhs(i) +=</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                                fe_face_values.shape_value(i, q_index) *</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                                <span class="keyword">function</span>-&gt;value(fe_face_values.quadrature_point(</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                                                  q_index),</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                                                comp_i) *</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                                fe_face_values.JxW(q_index);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                        }</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    }</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                cell-&gt;get_dof_indices(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                constraints.distribute_local_to_global(cell_rhs,</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                                       <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>,</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                                                       rhs);</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;              }</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    (void)matrix;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  }</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">typename</span> MatrixType, <span class="keyword">typename</span> VectorType&gt;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <a class="code" href="class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d">BoundaryConditions&lt;spacedim&gt;::apply_natural_boundary_conditions</a>(</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keyword">const</span> dealii::AffineConstraints&lt;double&gt; &amp;constraints,</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    MatrixType &amp;                             matrix,</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    VectorType &amp;                             rhs)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;mapping =</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(dof_handler.get_triangulation());</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    apply_natural_boundary_conditions(</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      mapping, dof_handler, constraints, matrix, rhs);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;          <span class="keyword">const</span> <span class="keyword">auto</span> face_quadrature_formula =</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <a class="code" href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">Components::get_face_quadrature</a>(dof_handler.get_triangulation(),</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                            fe.tensor_degree() + 1);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;          dealii::FEFaceValues&lt;dim, spacedim&gt; fe_face_values(</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            mapping,</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            fe,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            face_quadrature_formula,</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">dealii::update_values</a> | <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">dealii::update_quadrature_points</a> |</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;              <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">dealii::update_JxW_values</a>);</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;          <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>         dofs_per_cell = fe.n_dofs_per_cell();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;          dealii::FullMatrix&lt;double&gt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(dofs_per_cell, dofs_per_cell);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;          dealii::Vector&lt;double&gt; cell_rhs(dofs_per_cell);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;          std::vector&lt;dealii::types::global_dof_index&gt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>(</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            dofs_per_cell);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : dof_handler.active_cell_iterators())</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="keywordflow">if</span> (cell-&gt;at_boundary())</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;              {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                cell_rhs = 0;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                <span class="comment">//  for(const auto face: cell-&gt;face_indices())</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> f : cell-&gt;face_indices())</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                  <span class="keywordflow">if</span> (neumann_ids.find(cell-&gt;face(f)-&gt;boundary_id()) !=</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                      neumann_ids.end())</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                    {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                      fe_face_values.reinit(cell, f);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_face_values.dof_indices())</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                          <span class="keyword">const</span> <span class="keyword">auto</span> comp_i =</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                            fe.system_to_component_index(i).first;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                          <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>[comp_i])</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> q_index :</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                 fe_face_values.quadrature_point_indices())</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                              cell_rhs(i) +=</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                                fe_face_values.shape_value(i, q_index) *</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                                <span class="keyword">function</span>-&gt;value(fe_face_values.quadrature_point(</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                                                  q_index),</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                                                comp_i) *</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                                fe_face_values.JxW(q_index);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                        }</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                    }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                cell-&gt;get_dof_indices(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                constraints.distribute_local_to_global(cell_rhs,</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                                                       <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>,</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                                                       rhs);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;              }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    (void)matrix;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">typename</span> MatrixType, <span class="keyword">typename</span> VectorType&gt;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <a class="code" href="class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d">BoundaryConditions&lt;spacedim&gt;::apply_natural_boundary_conditions</a>(</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keyword">const</span> dealii::AffineConstraints&lt;double&gt; &amp;constraints,</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    MatrixType &amp;                             matrix,</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    VectorType &amp;                             rhs)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;mapping =</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(dof_handler.get_triangulation());</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    apply_natural_boundary_conditions(</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;      mapping, dof_handler, constraints, matrix, rhs);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">BoundaryConditions&lt;spacedim&gt;::apply_essential_boundary_conditions</a>(</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;mapping =</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(dof_handler.get_triangulation());</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    apply_essential_boundary_conditions(mapping, dof_handler, constraints);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  }</div>
 <div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <a class="code" href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">BoundaryConditions&lt;spacedim&gt;::apply_essential_boundary_conditions</a>(</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;mapping =</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(dof_handler.get_triangulation());</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    apply_essential_boundary_conditions(mapping, dof_handler, constraints);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <a class="code" href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">BoundaryConditions&lt;spacedim&gt;::apply_essential_boundary_conditions</a>(</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;   mapping,</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="comment">// Take care of boundary conditions that don&#39;t need anything else than</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="comment">// the constraints.</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; n_boundary_conditions; ++i)</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      {</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;boundary_ids = ids[i];</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;bc           = bc_type[i];</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<span class="keyword">function</span>     = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1p4est.html#a4b980c7b4b4d9984e93d73c7d30173ea">functions</a>[i];</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>         = masks[i];</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a>         = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html">types</a>[i];</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        std::map&lt;dealii::types::boundary_id, const dealii::Function&lt;spacedim&gt; *&gt;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;          fmap;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">if</span> (boundary_ids.find(dealii::numbers::internal_face_boundary_id) !=</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            boundary_ids.end())</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;          {</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> all_ids =</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;              dof_handler.get_triangulation().get_boundary_ids();</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<span class="keywordtype">id</span> : all_ids)</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;              fmap[id] = <span class="keyword">function</span>.get();</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;          }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<span class="keywordtype">id</span> : boundary_ids)</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            fmap[id] = <span class="keyword">function</span>.get();</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="comment">// In this function, we only do Dirichlet boundary conditions.</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">switch</span> (bc)</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;          {</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="namespace_parsed_tools.html#a9dc7820b7314138c9689541378680fb9a503b9bc8f55d2a048f0cb35ddf3fb4ec">BoundaryConditionType::dirichlet</a>:</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;              <span class="keywordflow">switch</span> (<a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a>)</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                {</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                  <span class="keywordflow">case</span> <a class="code" href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919afea087517c26fadd409bd4b9dc642555">Components::Type::normal</a>:</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                    <span class="keywordflow">if</span> constexpr (dim == spacedim &amp;&amp; dim &gt; 1)</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                      <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html">VectorTools</a>::</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga54fdd3b0f9e4e4ad02cf932901bd0659">compute_nonzero_normal_flux_constraints</a>(</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                          dof_handler,</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                          mask.first_selected_component(),</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                          boundary_ids,</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                          fmap,</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                          constraints,</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                          mapping);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    else</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                      AssertThrow(false,</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                                  <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                                    &quot;Cannot use normal &quot;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                                    &quot;flux boundary conditions &quot;</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                                    &quot;for this dim and spacedim&quot;));</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                    break;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                  case Components::<a class="code" href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919">Type</a>::tangential:</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                    if constexpr (dim == spacedim &amp;&amp; dim &gt; 1)</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                      <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html">VectorTools</a>::</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga1b73118e3a950d33515ae649b9014d04">compute_nonzero_tangential_flux_constraints</a>(</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                          dof_handler,</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                          mask.first_selected_component(),</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                          boundary_ids,</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                          fmap,</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                          constraints,</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                          mapping);</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                    else</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                      AssertThrow(false,</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                                  <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                                    &quot;Cannot use tangential &quot;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                                    &quot;flux boundary conditions &quot;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                                    &quot;for this dim and spacedim&quot;));</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                    break;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                  default:</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                    <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html">VectorTools</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga5e6b9de5ad09eb5009075618f08eb129">interpolate_boundary_values</a>(</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                      mapping, dof_handler, fmap, constraints, mask);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                    break;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                }</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;              break;</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            default:</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;              <span class="comment">// Nothing to do in this function call</span></div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;              break;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;          }</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;      }</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  }</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">#  endif</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <a class="code" href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">BoundaryConditions&lt;spacedim&gt;::apply_essential_boundary_conditions</a>(</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;   mapping,</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dof_handler,</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    dealii::AffineConstraints&lt;double&gt; &amp;      constraints)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="comment">// Take care of boundary conditions that don&#39;t need anything else than</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">// the constraints.</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; n_boundary_conditions; ++i)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;      {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;boundary_ids = ids[i];</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;bc           = bc_type[i];</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<span class="keyword">function</span>     = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1p4est.html#a4b980c7b4b4d9984e93d73c7d30173ea">functions</a>[i];</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>         = masks[i];</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> &amp;<a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a>         = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html">types</a>[i];</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        std::map&lt;dealii::types::boundary_id, const dealii::Function&lt;spacedim&gt; *&gt;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;          fmap;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="keywordflow">if</span> (boundary_ids.find(dealii::numbers::internal_face_boundary_id) !=</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            boundary_ids.end())</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;          {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> all_ids =</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;              dof_handler.get_triangulation().get_boundary_ids();</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<span class="keywordtype">id</span> : all_ids)</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;              fmap[id] = <span class="keyword">function</span>.get();</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;          }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;<span class="keywordtype">id</span> : boundary_ids)</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            fmap[id] = <span class="keyword">function</span>.get();</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="comment">// In this function, we only do Dirichlet boundary conditions.</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">switch</span> (bc)</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;          {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="namespace_parsed_tools.html#a9dc7820b7314138c9689541378680fb9a503b9bc8f55d2a048f0cb35ddf3fb4ec">BoundaryConditionType::dirichlet</a>:</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;              <span class="keywordflow">switch</span> (<a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a>)</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                {</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                  <span class="keywordflow">case</span> <a class="code" href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919afea087517c26fadd409bd4b9dc642555">Components::Type::normal</a>:</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                    <span class="keywordflow">if</span> constexpr (dim == spacedim &amp;&amp; dim &gt; 1)</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;                      <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html">VectorTools</a>::</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga54fdd3b0f9e4e4ad02cf932901bd0659">compute_nonzero_normal_flux_constraints</a>(</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                          dof_handler,</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                          mask.first_selected_component(),</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;                          boundary_ids,</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                          fmap,</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;                          constraints,</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                          mapping);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                    else</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;                      AssertThrow(false,</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                                  <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                                    &quot;Cannot use normal &quot;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                                    &quot;flux boundary conditions &quot;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                                    &quot;for this dim and spacedim&quot;));</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                    break;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                  case Components::<a class="code" href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919">Type</a>::tangential:</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    if constexpr (dim == spacedim &amp;&amp; dim &gt; 1)</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                      <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html">VectorTools</a>::</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga1b73118e3a950d33515ae649b9014d04">compute_nonzero_tangential_flux_constraints</a>(</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                          dof_handler,</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                          mask.first_selected_component(),</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                          boundary_ids,</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                          fmap,</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                          constraints,</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                          mapping);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                    else</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                      AssertThrow(false,</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                                  <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                                    &quot;Cannot use tangential &quot;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                                    &quot;flux boundary conditions &quot;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                                    &quot;for this dim and spacedim&quot;));</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                    break;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                  default:</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                    <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html">VectorTools</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga5e6b9de5ad09eb5009075618f08eb129">interpolate_boundary_values</a>(</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                      mapping, dof_handler, fmap, constraints, mask);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                    break;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                }</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;              break;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            default:</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;              <span class="comment">// Nothing to do in this function call</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;              break;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;          }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;      }</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  }</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">#  endif</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_ab2438d73984c4b328734cfa38081c7f8"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#ab2438d73984c4b328734cfa38081c7f8">ParsedTools::BoundaryConditions::expressions</a></div><div class="ttdeci">std::vector&lt; std::string &gt; expressions</div><div class="ttdoc">Expressions for the boundary conditions.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00205">boundary_conditions.h:205</a></div></div>
@@ -456,13 +443,13 @@ $(document).ready(function(){initNavTree('boundary__conditions_8h_source.html','
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_a0ae5c52f300bd503421f88b1a9e5c9de"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#a0ae5c52f300bd503421f88b1a9e5c9de">ParsedTools::BoundaryConditions::set_time</a></div><div class="ttdeci">void set_time(const double &amp;time)</div><div class="ttdoc">Update time in each Functions::SymbolicFunction defined in this object.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8cc_source.html#l00205">boundary_conditions.cc:205</a></div></div>
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="aclassFEValuesBase_html_aada8380792b5e6a1f91dcba94b558cb8"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#aada8380792b5e6a1f91dcba94b558cb8">FEFaceValues::quadrature_point_indices</a></div><div class="ttdeci">std_cxx20::ranges::iota_view&lt; unsigned int, unsigned int &gt; quadrature_point_indices() const</div></div>
+<div class="ttc" id="aclassLinearAlgebra_1_1distributed_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_a55ed4a362b26cbe2dd311afca0d981dc"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#a55ed4a362b26cbe2dd311afca0d981dc">ParsedTools::BoundaryConditions::grid_info</a></div><div class="ttdeci">GridInfo grid_info</div><div class="ttdoc">Information about the grid this BC applies to.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00227">boundary_conditions.h:227</a></div></div>
 <div class="ttc" id="astruct_parsed_tools_1_1_grid_info_html"><div class="ttname"><a href="struct_parsed_tools_1_1_grid_info.html">ParsedTools::GridInfo</a></div><div class="ttdoc">Gather information about a Triangulation.</div><div class="ttdef"><b>Definition:</b> <a href="grid__info_8h_source.html#l00133">grid_info.h:133</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga7b52b286796c23ef9ff178faf7a4b68f"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcNotImplemented()</div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_afc81c409005846a604c1c07ec709ec50"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#afc81c409005846a604c1c07ec709ec50">ParsedTools::BoundaryConditions::update_user_substitution_map</a></div><div class="ttdeci">void update_user_substitution_map(const Differentiation::SD::types::substitution_map &amp;substitution_map)</div><div class="ttdoc">Update the substitition map of every Functions::SymbolicFunction defined in this object.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8cc_source.html#l00182">boundary_conditions.cc:182</a></div></div>
 <div class="ttc" id="agroup__feaccess_html_ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a></div><div class="ttdeci">update_values</div></div>
 <div class="ttc" id="agroup__constraints_html_ga1b73118e3a950d33515ae649b9014d04"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga1b73118e3a950d33515ae649b9014d04">compute_nonzero_tangential_flux_constraints</a></div><div class="ttdeci">void compute_nonzero_tangential_flux_constraints(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, const unsigned int first_vector_component, const std::set&lt; types::boundary_id &gt; &amp;boundary_ids, const std::map&lt; types::boundary_id, const Function&lt; spacedim, double &gt; * &gt; &amp;function_map, AffineConstraints&lt; double &gt; &amp;constraints, const Mapping&lt; dim, spacedim &gt; &amp;mapping=(ReferenceCells::get_hypercube&lt; dim &gt;() .template get_default_linear_mapping&lt; dim, spacedim &gt;()))</div></div>
-<div class="ttc" id="aclassReferenceCell_html_a56bb8396fda394d712fc4f19de4b02c4"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim &gt; get_gauss_type_quadrature(const unsigned n_points_1D) const</div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_affecd599e5c2916a94d747f8b153e208"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#affecd599e5c2916a94d747f8b153e208">ParsedTools::BoundaryConditions::check_consistency</a></div><div class="ttdeci">void check_consistency(const Tria &amp;tria) const</div><div class="ttdoc">Check that the grid is compatible with this boundary condition object, and that the boundary conditio...</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00099">boundary_conditions.h:99</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_ab88051ef30878fd8a9673f18209d9f85"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#ab88051ef30878fd8a9673f18209d9f85">ParsedTools::BoundaryConditions::BoundaryConditions</a></div><div class="ttdeci">BoundaryConditions(const std::string &amp;section_name=&quot;&quot;, const std::string &amp;component_names=&quot;u&quot;, const std::vector&lt; std::set&lt; types::boundary_id &gt;&gt; &amp;ids={{numbers::internal_face_boundary_id}}, const std::vector&lt; std::string &gt; &amp;selected_components={&quot;u&quot;}, const std::vector&lt; BoundaryConditionType &gt; &amp;bc_type={BoundaryConditionType::dirichlet}, const std::vector&lt; std::string &gt; &amp;expressions={&quot;0&quot;})</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8cc_source.html#l00015">boundary_conditions.cc:15</a></div></div>
 <div class="ttc" id="asymbolic__function_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/symbolic__function_8h.html">symbolic_function.h</a></div></div>
@@ -492,7 +479,6 @@ $(document).ready(function(){initNavTree('boundary__conditions_8h_source.html','
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_ad62257caa7e5a8a33a66f6987c3aa6b3"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#ad62257caa7e5a8a33a66f6987c3aa6b3">ParsedTools::BoundaryConditions::n_boundary_conditions</a></div><div class="ttdeci">unsigned int n_boundary_conditions</div><div class="ttdoc">Number of boundary conditions.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00185">boundary_conditions.h:185</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_abf8c0acca58ef71d3c5f458f192efd2d"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d">ParsedTools::BoundaryConditions::apply_natural_boundary_conditions</a></div><div class="ttdeci">void apply_natural_boundary_conditions(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, const AffineConstraints&lt; double &gt; &amp;constraints, MatrixType &amp;matrix, VectorType &amp;rhs) const</div><div class="ttdoc">Add natural boundary conditions computed with this object to the specified constraints,...</div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_a2bf5d69aa22ef33e94e146ee19b867d6"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#a2bf5d69aa22ef33e94e146ee19b867d6">ParsedTools::BoundaryConditions::bc_type</a></div><div class="ttdeci">std::vector&lt; BoundaryConditionType &gt; bc_type</div><div class="ttdoc">Type of boundary conditions.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00200">boundary_conditions.h:200</a></div></div>
-<div class="ttc" id="aclassQGauss_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classQGauss.html">QGauss</a></div></div>
 <div class="ttc" id="acomponents_8h_html"><div class="ttname"><a href="components_8h.html">components.h</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_a5c9a43e40157ab2496466f0b7007541c"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#a5c9a43e40157ab2496466f0b7007541c">ParsedTools::BoundaryConditions::component_names</a></div><div class="ttdeci">const std::string component_names</div><div class="ttdoc">Component names of the boundary conditions.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00175">boundary_conditions.h:175</a></div></div>
 <div class="ttc" id="aclassAffineConstraints_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt; double &gt;</a></div></div>
@@ -502,7 +488,7 @@ $(document).ready(function(){initNavTree('boundary__conditions_8h_source.html','
 <div class="ttc" id="agrid__info_8h_html"><div class="ttname"><a href="grid__info_8h.html">grid_info.h</a></div></div>
 <div class="ttc" id="aclassParameterAcceptor_html_a52134c59ec98830230c23e080c841705"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">ParameterAcceptor::section_name</a></div><div class="ttdeci">const std::string section_name</div></div>
 <div class="ttc" id="avector__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">vector_tools.h</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a435ca50fe64ba85584a0e57f79c21919"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919">ParsedTools::Components::Type</a></div><div class="ttdeci">Type</div><div class="ttdoc">Enumerator used to identify patterns of components and their size in the a block system.</div><div class="ttdef"><b>Definition:</b> <a href="components_8h_source.html#l00020">components.h:20</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a435ca50fe64ba85584a0e57f79c21919"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919">ParsedTools::Components::Type</a></div><div class="ttdeci">Type</div><div class="ttdoc">Enumerator used to identify patterns of components and their size in the a block system.</div><div class="ttdef"><b>Definition:</b> <a href="components_8h_source.html#l00028">components.h:28</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_ab477df00529bd891ee3f590c4d8b70f8"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#ab477df00529bd891ee3f590c4d8b70f8">ParsedTools::BoundaryConditions::apply_essential_boundary_conditions</a></div><div class="ttdeci">void apply_essential_boundary_conditions(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, AffineConstraints&lt; double &gt; &amp;constraints) const</div><div class="ttdoc">Add essential boundary conditions computed with this object to the specified constraints.</div></div>
 <div class="ttc" id="aclassFEFaceValues_html_a49db483b7252515ea578be6d57c5874b"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFEFaceValues.html#a49db483b7252515ea578be6d57c5874b">FEFaceValues::reinit</a></div><div class="ttdeci">void reinit(const TriaIterator&lt; DoFCellAccessor&lt; dim, spacedim, level_dof_access &gt;&gt; &amp;cell, const unsigned int face_no)</div></div>
 <div class="ttc" id="adofs_2dof__handler_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">dof_handler.h</a></div></div>
@@ -519,22 +505,19 @@ $(document).ready(function(){initNavTree('boundary__conditions_8h_source.html','
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a></div><div class="ttdoc">A wrapper for boundary conditions.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00046">boundary_conditions.h:46</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_boundary_conditions_html_a423cb015d2bac2fc890f0e23728baf34"><div class="ttname"><a href="class_parsed_tools_1_1_boundary_conditions.html#a423cb015d2bac2fc890f0e23728baf34">ParsedTools::BoundaryConditions::n_components</a></div><div class="ttdeci">const unsigned int n_components</div><div class="ttdoc">Number of components of the problem.</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00180">boundary_conditions.h:180</a></div></div>
 <div class="ttc" id="aclassMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData_html_ac423aa5e1211ba2cd230a778c8df0b0d"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a></div><div class="ttdeci">ComponentMask mask</div></div>
-<div class="ttc" id="aclassQuadrature_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a></div></div>
 <div class="ttc" id="aclassParameterAcceptor_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">ParsedTools::Components::type</a></div><div class="ttdeci">Type type(const std::string &amp;component_names, const std::string &amp;selected_component)</div><div class="ttdoc">Return the component type for the given selected component.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00186">components.cc:186</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a324f3c93e74a8b9d225bda8342521ba7"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">ParsedTools::Components::get_face_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim - 1 &gt; get_face_quadrature(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const unsigned int degree)</div><div class="ttdoc">Return a Qadrature object that can be used on the given Triangulation faces.</div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">ParsedTools::Components::type</a></div><div class="ttdeci">Type type(const std::string &amp;component_names, const std::string &amp;selected_component)</div><div class="ttdoc">Return the component type for the given selected component.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00171">components.cc:171</a></div></div>
 <div class="ttc" id="agroup__constraints_html_ga54fdd3b0f9e4e4ad02cf932901bd0659"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga54fdd3b0f9e4e4ad02cf932901bd0659">compute_nonzero_normal_flux_constraints</a></div><div class="ttdeci">void compute_nonzero_normal_flux_constraints(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, const unsigned int first_vector_component, const std::set&lt; types::boundary_id &gt; &amp;boundary_ids, const std::map&lt; types::boundary_id, const Function&lt; spacedim, double &gt; * &gt; &amp;function_map, AffineConstraints&lt; double &gt; &amp;constraints, const Mapping&lt; dim, spacedim &gt; &amp;mapping=(ReferenceCells::get_hypercube&lt; dim &gt;() .template get_default_linear_mapping&lt; dim, spacedim &gt;()))</div></div>
 <div class="ttc" id="aclassDoFHandler_html_ac1fedeb50b5f03b13d8b69f86e33f726"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#ac1fedeb50b5f03b13d8b69f86e33f726">DoFHandler::get_fe</a></div><div class="ttdeci">const FiniteElement&lt; dim, spacedim &gt; &amp; get_fe(const unsigned int index=0) const</div></div>
 <div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
 <div class="ttc" id="anamespace_parsed_tools_html"><div class="ttname"><a href="namespace_parsed_tools.html">ParsedTools</a></div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8cc_source.html#l00012">boundary_conditions.cc:12</a></div></div>
-<div class="ttc" id="astructDataPostprocessorInputs_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
-<div class="ttc" id="aclassReferenceCell_html_acc87b5e39e346e39b34c732cf3da5821"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#acc87b5e39e346e39b34c732cf3da5821">ReferenceCell::face_reference_cell</a></div><div class="ttdeci">ReferenceCell face_reference_cell(const unsigned int face_no) const</div></div>
 <div class="ttc" id="aenum_8h_html"><div class="ttname"><a href="enum_8h.html">enum.h</a></div></div>
-<div class="ttc" id="aclassReferenceCell_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_8e8448d9aef603b86753e7cb911804a9.html">parsed_tools</a></li><li class="navelem"><a class="el" href="boundary__conditions_8h.html">boundary_conditions.h</a></li>
-    <li class="footer">Generated on Tue Jan 25 2022 08:01:27 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 28 2022 19:18:00 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -121,8 +121,8 @@ Inheritance diagram for ParsedTools::MappingEulerian&lt; dim, spacedim &gt;:</di
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a14a280ddef7b58755d1741b33269ae76"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a14a280ddef7b58755d1741b33269ae76">MappingEulerian</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dh=&quot;&quot;, const std::string &amp;initial_configuration_or_displacement=&quot;&quot;, const bool <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a>=false, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;<a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>())</td></tr>
-<tr class="separator:a14a280ddef7b58755d1741b33269ae76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6617efa6a999856b1bb88e9568862527"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527">MappingEulerian</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;dh, const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;, const std::string &amp;initial_configuration_or_displacement=&quot;&quot;, const bool <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a>=false, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;<a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>())</td></tr>
+<tr class="separator:a6617efa6a999856b1bb88e9568862527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecbda13eb03064bf9700507e9156ae5c"><td class="memTemplParams" colspan="2">template&lt;typename VectorType &gt; </td></tr>
 <tr class="memitem:aecbda13eb03064bf9700507e9156ae5c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">initialize</a> (VectorType &amp;configuration_or_displacement)</td></tr>
 <tr class="memdesc:aecbda13eb03064bf9700507e9156ae5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually build the mapping from the given configuration or displacement.  <a href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">More...</a><br /></td></tr>
@@ -277,7 +277,7 @@ class ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</h3>
 <p>This class is used in the following way: </p><div class="fragment"><div class="line"><a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian&lt;dim, spacedim&gt;</a> <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">mapping</a>(<span class="stringliteral">&quot;/&quot;</span>,</div>
 <div class="line">                                                   <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>,</div>
 <div class="line">                                                   <span class="stringliteral">&quot;2*x; .5*y&quot;</span>);</div>
-<div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt;double&gt;</a> position(<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>.n_dofs());</div>
+<div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt;double&gt;</a> position(<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>.n_dofs());</div>
 <div class="line"><a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">mapping</a>.initialize(position);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// using mapping, now you can initialize an FEValues object which will see</span></div>
@@ -290,8 +290,8 @@ class ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</h3>
 
 <p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00059">59</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a14a280ddef7b58755d1741b33269ae76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14a280ddef7b58755d1741b33269ae76">&#9670;&nbsp;</a></span>MappingEulerian()</h2>
+<a id="a6617efa6a999856b1bb88e9568862527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6617efa6a999856b1bb88e9568862527">&#9670;&nbsp;</a></span>MappingEulerian()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -301,14 +301,14 @@ template&lt;int dim, int spacedim&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a>&lt; dim, spacedim &gt;::<a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">MappingEulerian</a> </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>section_name</em> = <code>&quot;&quot;</code>, </td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dh</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>dh</em> = <code>&quot;&quot;</code>, </td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>section_name</em> = <code>&quot;&quot;</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -337,8 +337,6 @@ template&lt;int dim, int spacedim&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="mapping__eulerian_8cc_source.html#l00008">8</a> of file <a class="el" href="mapping__eulerian_8cc_source.html">mapping_eulerian.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#ac1fedeb50b5f03b13d8b69f86e33f726">DoFHandler&lt; dim, spacedim &gt;::get_fe()</a>, <a class="el" href="mapping__eulerian_8h_source.html#l00110">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;::initial_configuration_or_displacement_expression</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>, <a class="el" href="mapping__eulerian_8h_source.html#l00100">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;::mask</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html#ad2826c43e4d6b3c2fbb87e64c7c58780">ComponentMask::n_selected_components()</a>.</p>
 
 </div>
 </div>
@@ -386,8 +384,6 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="mapping__eulerian_8cc_source.html#l00042">42</a> of file <a class="el" href="mapping__eulerian_8cc_source.html">mapping_eulerian.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
-
 </div>
 </div>
 <a id="a7dfe82f8f76cabe1373454a6b4e096c1"></a>
@@ -407,8 +403,6 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Return a reference to the actual mapping. </p>
 
 <p class="definition">Definition at line <a class="el" href="mapping__eulerian_8cc_source.html#l00055">55</a> of file <a class="el" href="mapping__eulerian_8cc_source.html">mapping_eulerian.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
 
 </div>
 </div>
@@ -467,8 +461,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00110">110</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="mapping__eulerian_8cc_source.html#l00008">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;::MappingEulerian()</a>.</p>
-
 </div>
 </div>
 <a id="a6d22bbb6cfec918be9d909e8739cb67a"></a>
@@ -525,8 +517,6 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00100">100</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="mapping__eulerian_8cc_source.html#l00008">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;::MappingEulerian()</a>.</p>
-
 </div>
 </div>
 <a id="a6b2e6967bb74d33619f674f818210edf"></a>
@@ -563,16 +553,16 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassLinearAlgebra_1_1distributed_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aa85329e29bb855eb77ee1c1cdf0dabd0"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian::dof_handler</a></div><div class="ttdeci">const SmartPointer&lt; const DoFHandler&lt; dim, spacedim &gt; &gt; dof_handler</div><div class="ttdoc">A pointer to the dof handler.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00095">mapping_eulerian.h:95</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6d22bbb6cfec918be9d909e8739cb67a"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">ParsedTools::MappingEulerian::mapping</a></div><div class="ttdeci">std::unique_ptr&lt; Mapping&lt; dim, spacedim &gt; &gt; mapping</div><div class="ttdoc">The actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00115">mapping_eulerian.h:115</a></div></div>
 <div class="ttc" id="aclassFEValues_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a></div><div class="ttdoc">A wrapper class for MappingFEField or MappingQEulerian.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00059">mapping_eulerian.h:59</a></div></div>
-<div class="ttc" id="astructDataPostprocessorInputs_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">MappingEulerian</a></li>
-    <li class="footer">Generated on Tue Jan 25 2022 08:01:28 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 28 2022 19:18:01 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

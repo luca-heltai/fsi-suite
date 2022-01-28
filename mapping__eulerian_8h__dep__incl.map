@@ -1,4 +1,7 @@
 <map id="include/parsed_tools/mapping_eulerian.h" name="include/parsed_tools/mapping_eulerian.h">
-<area shape="rect" id="node1" title=" " alt="" coords="29,5,185,47"/>
-<area shape="rect" id="node2" href="$mapping__eulerian_8cc.html" title=" " alt="" coords="5,95,209,121"/>
+<area shape="rect" id="node1" title=" " alt="" coords="135,5,291,47"/>
+<area shape="rect" id="node2" href="$mapping__eulerian_8cc.html" title=" " alt="" coords="5,102,209,129"/>
+<area shape="rect" id="node3" href="$distributed__lagrange_8h.html" title=" " alt="" coords="233,95,405,136"/>
+<area shape="rect" id="node4" href="$source_2pdes_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="131,184,310,225"/>
+<area shape="rect" id="node5" href="$apps_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="335,184,501,225"/>
 </map>
