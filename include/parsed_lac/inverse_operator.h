@@ -7,7 +7,7 @@
 
 #include <deal.II/base/parameter_acceptor.h>
 
-#include <deal.II/lac/linear_operator.h>
+#include <deal.II/lac/linear_operator_tools.h>
 #include <deal.II/lac/solver.h>
 #include <deal.II/lac/solver_bicgstab.h>
 #include <deal.II/lac/solver_cg.h>
