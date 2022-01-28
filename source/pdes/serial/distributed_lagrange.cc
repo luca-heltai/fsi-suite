@@ -317,7 +317,7 @@ namespace PDEs
       TimerOutput::Scope timer_section(monitor, "Output results");
       data_out.attach_dof_handler(space_dh);
       data_out.add_data_vector(solution, component_names);
-      data_out.write_data_and_clear();
+      data_out.write_data_and_clear(*space_mapping);
 
       embedded_data_out.attach_dof_handler(embedded_dh);
       embedded_data_out.add_data_vector(lambda, "lambda");
