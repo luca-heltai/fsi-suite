@@ -208,8 +208,8 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a5612887e6db7e2a289444a74051fa3d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a5612887e6db7e2a289444a74051fa3d5">generate_grids_and_fes</a> ()</td></tr>
 <tr class="separator:a5612887e6db7e2a289444a74051fa3d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a352424510e10b0ef101a182b0cd44cce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a352424510e10b0ef101a182b0cd44cce">adjust_embedded_grid</a> ()</td></tr>
-<tr class="separator:a352424510e10b0ef101a182b0cd44cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b90d43e46da25dac1fdef91546f9eee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a6b90d43e46da25dac1fdef91546f9eee">adjust_embedded_grid</a> (const bool apply_delta_refinement=true)</td></tr>
+<tr class="separator:a6b90d43e46da25dac1fdef91546f9eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50139f07333d2ae746a4a9c658d35431"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a50139f07333d2ae746a4a9c658d35431">setup_dofs</a> ()</td></tr>
 <tr class="separator:a50139f07333d2ae746a4a9c658d35431"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bb466a07c98c06c25a29b037b4b24a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a9bb466a07c98c06c25a29b037b4b24a8">setup_coupling</a> ()</td></tr>
@@ -378,8 +378,8 @@ template&lt;int dim, int spacedim&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a352424510e10b0ef101a182b0cd44cce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a352424510e10b0ef101a182b0cd44cce">&#9670;&nbsp;</a></span>adjust_embedded_grid()</h2>
+<a id="a6b90d43e46da25dac1fdef91546f9eee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b90d43e46da25dac1fdef91546f9eee">&#9670;&nbsp;</a></span>adjust_embedded_grid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -390,7 +390,11 @@ template&lt;int dim, int spacedim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::adjust_embedded_grid</td>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::adjust_embedded_grid </td>
+          <td>(</td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>apply_delta_refinement</em> = <code>true</code></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -400,7 +404,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00119">119</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00104">104</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/data__out__base_8cc.html#a8188ef4709fc9a4cc076d37447783ba1">center</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#acd5ccc543d561cfb086b571d1f7818cb">diameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#ae8409fa9cb46a0070abc4da7de0f47f2">GridTools::maximal_cell_diameter()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#a47c293eff2ec7ce4b90ba08b35d1f2e2">GridTools::minimal_cell_diameter()</a>.</p>
 
@@ -428,7 +432,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00232">232</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00250">250</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#ac3821491559b8a76af0be66736fe4c6f">NonMatching::create_coupling_mass_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a6e325333a138893e181da47f29ac680a">VectorTools::create_right_hand_side()</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate()</a>.</p>
 
@@ -456,9 +460,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00062">62</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00068">68</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#a8e8bb9211264d2106758ac4d7184117e">GridTools::compute_point_locations()</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">ParsedTools::Components::get_lagrangian_finite_element()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDoFTools.html#a495fa975b1d6b81f0875bf641f266ce5">DoFTools::map_dofs_to_support_points()</a>.</p>
+<p class="reference">References <a class="el" href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">ParsedTools::Components::get_lagrangian_finite_element()</a>.</p>
 
 </div>
 </div>
@@ -484,7 +488,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00292">292</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00315">315</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>.</p>
 
@@ -504,7 +508,7 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00309">309</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00332">332</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>.</p>
 
@@ -534,7 +538,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00210">210</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00228">228</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#a8829bfa8e55c21b8eeaafd086c53680d">NonMatching::create_coupling_sparsity_pattern()</a>.</p>
 
@@ -562,7 +566,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00180">180</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00195">195</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>.</p>
 
@@ -590,7 +594,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00271">271</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00294">294</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a09916360abaee5f1fb31994dbc96787b">C()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga1a0a3fb15266869710e63e78658cfaed">identity_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator()</a>.</p>
 
@@ -1787,7 +1791,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">DistributedLagrange</a></li>
-    <li class="footer">Generated on Fri Jan 28 2022 19:27:12 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Jan 28 2022 20:49:07 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
