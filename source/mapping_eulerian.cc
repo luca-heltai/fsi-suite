@@ -6,8 +6,8 @@ namespace ParsedTools
 {
   template <int dim, int spacedim>
   MappingEulerian<dim, spacedim>::MappingEulerian(
-    const std::string &              section_name,
     const DoFHandler<dim, spacedim> &dh,
+    const std::string &              section_name,
     const std::string &              initial_configuration_or_displacement,
     const bool                       use_displacement,
     const ComponentMask &            mask)

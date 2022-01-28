@@ -32,8 +32,8 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
 
   Vector<double> displacement(dh.n_dofs());
 
-  ParsedTools::MappingEulerian<this->dim, this->spacedim> mff(this->id("mff"),
-                                                              dh);
+  ParsedTools::MappingEulerian<this->dim, this->spacedim> mff(dh,
+                                                              this->id("mff"));
 
   ASSERT_NO_THROW({
     parse(R"(
@@ -140,8 +140,8 @@ TYPED_TEST(DimTesterNoOne, MappingEulerianSimplices)
 
   Vector<double> displacement(dh.n_dofs());
 
-  ParsedTools::MappingEulerian<this->dim, this->spacedim> mff(this->id("mff"),
-                                                              dh);
+  ParsedTools::MappingEulerian<this->dim, this->spacedim> mff(dh,
+                                                              this->id("mff"));
 
   ASSERT_NO_THROW({
     parse(R"(
