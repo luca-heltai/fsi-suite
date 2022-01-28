@@ -28,22 +28,28 @@ namespace PDEs
   {
     template <int dim, int spacedim>
     DistributedLagrange<dim, spacedim>::DistributedLagrange()
-      : ParameterAcceptor("/Distributed Lagrange/")
+      : ParameterAcceptor("/")
       , space_dh(space_grid)
       , embedded_dh(embedded_grid)
       , embedded_configuration_dh(embedded_grid)
       , monitor(std::cout,
                 TimerOutput::summary,
                 TimerOutput::cpu_and_wall_times)
-      , grid_generator("Grid/Ambient")
-      , grid_refinement("Grid/Refinement")
-      , embedded_grid_generator("Grid/Embedded")
-      , embedded_mapping(embedded_configuration_dh, "Grid/Embedded/Mapping")
-      , embedded_value_function("Functions")
-      , stiffness_inverse_operator("Solver/Stiffness")
-      , stiffness_preconditioner("Solver/Stiffness AMG")
-      , schur_inverse_operator("Solver/Schur")
-      , schur_preconditioner("Solver/Schur AMG")
+      , grid_generator("/Grid/Ambient")
+      , grid_refinement("/Grid/Refinement")
+      , embedded_grid_generator("/Grid/Embedded")
+      , embedded_mapping(embedded_configuration_dh, "/Grid/Embedded/Mapping")
+      , constants("/Functions")
+      , embedded_value_function("/Functions", "0", "Embedded value")
+      , forcing_term("/Functions", "0", "Forcing term")
+      , exact_solution("/Functions", "0", "Exact solution")
+      , boundary_conditions("/Boundary conditions")
+      , stiffness_inverse_operator("/Solver/Stiffness")
+      , stiffness_preconditioner("/Solver/Stiffness AMG")
+      , schur_inverse_operator("/Solver/Schur")
+      , schur_preconditioner("/Solver/Schur AMG")
+      , data_out("/Data out/Space", "output/embedded")
+      , embedded_data_out("/Data out/Embedded", "output/solution")
     {
       add_parameter("Coupling quadrature order", coupling_quadrature_order);
       add_parameter("Console level", console_level);
@@ -71,7 +77,6 @@ namespace PDEs
       embedded_fe = ParsedTools::Components::get_lagrangian_finite_element(
         embedded_grid, embedded_space_finite_element_degree);
 
-
       const auto embedded_base_fe =
         ParsedTools::Components::get_lagrangian_finite_element(
           embedded_grid, embedded_space_finite_element_degree);
@@ -89,26 +94,6 @@ namespace PDEs
       embedded_configuration.reinit(embedded_configuration_dh.n_dofs());
       embedded_mapping.initialize(embedded_configuration);
 
-      std::vector<Point<spacedim>> support_points(embedded_dh.n_dofs());
-      if (delta_refinement != 0)
-        DoFTools::map_dofs_to_support_points(embedded_mapping(),
-                                             embedded_dh,
-                                             support_points);
-      for (unsigned int i = 0; i < delta_refinement; ++i)
-        {
-          const auto point_locations =
-            GridTools::compute_point_locations(*space_grid_tools_cache,
-                                               support_points);
-          const auto &cells = std::get<0>(point_locations);
-          for (auto &cell : cells)
-            {
-              cell->set_refine_flag();
-              for (const auto face_no : cell->face_indices())
-                if (!cell->at_boundary(face_no))
-                  cell->neighbor(face_no)->set_refine_flag();
-            }
-          space_grid.execute_coarsening_and_refinement();
-        }
       adjust_embedded_grid();
     }
 
@@ -116,21 +101,44 @@ namespace PDEs
 
     template <int dim, int spacedim>
     void
-    DistributedLagrange<dim, spacedim>::adjust_embedded_grid()
+    DistributedLagrange<dim, spacedim>::adjust_embedded_grid(
+      const bool apply_delta_refinement)
     {
+      namespace bgi = boost::geometry::index;
       // Now get a vector of all cell centers of the embedded grid and refine
       // them  untill every cell is of diameter smaller than the space
       // surrounding cells
+      std::vector<
+        std::tuple<Point<spacedim>, decltype(embedded_grid.begin_active())>>
+        centers(embedded_grid.n_active_cells());
+
+      for (const auto &cell : embedded_grid.active_cell_iterators())
+        centers.emplace_back(
+          std::make_tuple(embedded_mapping().get_center(cell), cell));
+
+      // Refine the space grid according to the delta refinement
+      if (apply_delta_refinement && delta_refinement != 0)
+        for (unsigned int i = 0; i < delta_refinement; ++i)
+          {
+            const auto &tree =
+              space_grid_tools_cache
+                ->get_locally_owned_cell_bounding_boxes_rtree();
+            for (const auto &[center, cell] : centers)
+              for (const auto &[space_box, space_cell] :
+                   tree | bgi::adaptors::queried(bgi::contains(center)))
+                {
+                  space_cell->set_refine_flag();
+                  for (const auto face_no : space_cell->face_indices())
+                    if (!space_cell->at_boundary(face_no))
+                      cell->neighbor(face_no)->set_refine_flag();
+                }
+            space_grid.execute_coarsening_and_refinement();
+          }
+
       bool done = false;
       while (done == false)
         {
-          std::vector<
-            std::tuple<Point<spacedim>, decltype(embedded_grid.begin_active())>>
-            centers(embedded_grid.n_active_cells());
-          for (const auto &cell : embedded_grid.active_cell_iterators())
-            centers.emplace_back(
-              std::make_tuple(embedded_mapping().get_center(cell), cell));
-
+          // Now refine the embedded grid if required
           const auto &tree = space_grid_tools_cache
                                ->get_locally_owned_cell_bounding_boxes_rtree();
           // Let's check all cells whose bounding box contains an embedded
@@ -158,6 +166,13 @@ namespace PDEs
                 *embedded_configuration_fe);
               embedded_configuration.reinit(embedded_configuration_dh.n_dofs());
               embedded_mapping.initialize(embedded_configuration);
+
+              // Rebuild the centers vector
+              centers.clear();
+
+              for (const auto &cell : embedded_grid.active_cell_iterators())
+                centers.emplace_back(
+                  std::make_tuple(embedded_mapping().get_center(cell), cell));
             }
         }
 
@@ -201,6 +216,9 @@ namespace PDEs
       embedded_rhs.reinit(embedded_dh.n_dofs());
       embedded_value.reinit(embedded_dh.n_dofs());
       deallog << "Embedded dofs: " << embedded_dh.n_dofs() << std::endl;
+
+      boundary_conditions.apply_natural_boundary_conditions(
+        *space_mapping, space_dh, constraints, stiffness_matrix, rhs);
     }
 
 
@@ -237,12 +255,17 @@ namespace PDEs
         embedded_grid, embedded_fe->tensor_degree() + 1);
       {
         TimerOutput::Scope timer_section(monitor, "Assemble system");
+        // Stiffness matrix and rhs
         MatrixTools::create_laplace_matrix(
           space_dh,
           space_quad,
           stiffness_matrix,
+          forcing_term,
+          rhs,
           static_cast<const Function<spacedim> *>(nullptr),
           constraints);
+
+        // The rhs of the Lagrange multiplier
         VectorTools::create_right_hand_side(embedded_mapping(),
                                             embedded_dh,
                                             embedded_quad,
