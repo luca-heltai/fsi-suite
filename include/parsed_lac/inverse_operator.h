@@ -131,16 +131,6 @@ namespace ParsedLAC
     mutable std::unique_ptr<dealii::SolverControl> control;
 
     /**
-     * Log the solver history.
-     */
-    bool log_history;
-
-    /**
-     * Log the final result.
-     */
-    bool log_result;
-
-    /**
      * Solver name.
      */
     std::string solver_name;
@@ -167,6 +157,16 @@ namespace ParsedLAC
      * step.
      */
     double reduction;
+
+    /**
+     * Log the solver history.
+     */
+    bool log_history;
+
+    /**
+     * Log the final result.
+     */
+    bool log_result;
 
     /**
      * Local storage for the actual solver object.
