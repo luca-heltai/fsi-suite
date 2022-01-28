@@ -53,6 +53,7 @@ namespace PDEs
     {
       add_parameter("Coupling quadrature order", coupling_quadrature_order);
       add_parameter("Console level", console_level);
+      add_parameter("Delta refinement", delta_refinement);
       add_parameter("Finite element degree (ambient space)",
                     finite_element_degree);
       add_parameter("Finite element degree (embedded space)",
@@ -110,7 +111,7 @@ namespace PDEs
       // surrounding cells
       std::vector<
         std::tuple<Point<spacedim>, decltype(embedded_grid.begin_active())>>
-        centers(embedded_grid.n_active_cells());
+        centers;
 
       for (const auto &cell : embedded_grid.active_cell_iterators())
         centers.emplace_back(
@@ -130,7 +131,7 @@ namespace PDEs
                   space_cell->set_refine_flag();
                   for (const auto face_no : space_cell->face_indices())
                     if (!space_cell->at_boundary(face_no))
-                      cell->neighbor(face_no)->set_refine_flag();
+                      space_cell->neighbor(face_no)->set_refine_flag();
                 }
             space_grid.execute_coarsening_and_refinement();
           }
@@ -146,18 +147,19 @@ namespace PDEs
           done          = true;
           namespace bgi = boost::geometry::index;
           for (const auto &[center, cell] : centers)
-            for (const auto &[space_box, space_cell] :
-                 tree | bgi::adaptors::queried(bgi::contains(center)))
-              {
-                const auto &[p1, p2] =
-                  space_mapping->get_bounding_box(cell).get_boundary_points();
-                const auto diameter = p1.distance(p2);
+            {
+              const auto &[p1, p2] =
+                embedded_mapping().get_bounding_box(cell).get_boundary_points();
+              const auto diameter = p1.distance(p2);
+
+              for (const auto &[space_box, space_cell] :
+                   tree | bgi::adaptors::queried(bgi::contains(center)))
                 if (space_cell->diameter() < diameter)
                   {
                     cell->set_refine_flag();
                     done = false;
                   }
-              }
+            }
           if (done == false)
             {
               // Compute again the embedded displacement grid
@@ -303,8 +305,8 @@ namespace PDEs
       auto S_prec = identity_operator(S);
       // SolverCG<Vector<double>> solver_cg(schur_solver_control);
       auto S_inv = schur_inverse_operator(S, S_prec);
-      lambda     = S_inv * embedded_rhs;
-      solution   = K_inv * Ct * lambda;
+      lambda     = S_inv * (C * K_inv * rhs - embedded_rhs);
+      solution   = K_inv * (rhs - Ct * lambda);
       constraints.distribute(solution);
     }
 
@@ -320,8 +322,10 @@ namespace PDEs
       data_out.write_data_and_clear(*space_mapping);
 
       embedded_data_out.attach_dof_handler(embedded_dh);
-      embedded_data_out.add_data_vector(lambda, "lambda");
-      embedded_data_out.add_data_vector(embedded_value, "g");
+      embedded_data_out.add_data_vector(
+        lambda, "lambda", dealii::DataOut<dim, spacedim>::type_dof_data);
+      embedded_data_out.add_data_vector(
+        embedded_value, "g", dealii::DataOut<dim, spacedim>::type_dof_data);
       embedded_data_out.write_data_and_clear(embedded_mapping);
     }
 

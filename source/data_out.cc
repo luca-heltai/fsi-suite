@@ -151,7 +151,10 @@ namespace ParsedTools
                   partitioning(i) = this_mpi_process;
                 static Vector<float> static_partitioning;
                 static_partitioning.swap(partitioning);
-                data_out->add_data_vector(static_partitioning, "partitioning");
+                data_out->add_data_vector(
+                  static_partitioning,
+                  "partitioning",
+                  dealii::DataOut<dim, spacedim>::type_cell_data);
               }
           }
         // Output the materialids
@@ -161,7 +164,10 @@ namespace ParsedTools
             material_ids.reinit(dh.get_triangulation().n_active_cells());
             for (const auto cell : dh.active_cell_iterators())
               material_ids(cell->active_cell_index()) = cell->material_id();
-            data_out->add_data_vector(material_ids, "material_id");
+            data_out->add_data_vector(
+              material_ids,
+              "material_id",
+              dealii::DataOut<dim, spacedim>::type_cell_data);
           }
       }
   }

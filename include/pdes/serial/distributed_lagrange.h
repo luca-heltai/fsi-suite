@@ -60,7 +60,7 @@ namespace PDEs
       const std::string component_names = "u";
 
       unsigned int coupling_quadrature_order = 3;
-      unsigned int delta_refinement          = 3;
+      unsigned int delta_refinement          = 0;
       unsigned int console_level             = 1;
 
       Triangulation<spacedim>                  space_grid;

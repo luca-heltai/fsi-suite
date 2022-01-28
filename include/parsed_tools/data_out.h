@@ -62,7 +62,11 @@ namespace ParsedTools
      */
     template <typename VECTOR>
     void
-    add_data_vector(const VECTOR &data_vector, const std::string &desc);
+    add_data_vector(
+      const VECTOR &     data_vector,
+      const std::string &desc,
+      const typename dealii::DataOut<dim, spacedim>::DataVectorType &type =
+        dealii::DataOut<dim, spacedim>::type_automatic);
 
     /**
      * Wrapper for the corrisponding function in dealii.
@@ -159,15 +163,17 @@ namespace ParsedTools
   template <int dim, int spacedim>
   template <typename VECTOR>
   void
-  DataOut<dim, spacedim>::add_data_vector(const VECTOR &     data_vector,
-                                          const std::string &desc)
+  DataOut<dim, spacedim>::add_data_vector(
+    const VECTOR &                                                 data_vector,
+    const std::string &                                            desc,
+    const typename dealii::DataOut<dim, spacedim>::DataVectorType &type)
   {
     std::vector<std::string> dd = dealii::Utilities::split_string_list(desc);
     if (data_out->default_suffix() != "")
       {
         if (dd.size() == 1)
           {
-            data_out->add_data_vector(data_vector, desc);
+            data_out->add_data_vector(data_vector, desc, type);
           }
         else
           {
@@ -195,11 +201,10 @@ namespace ParsedTools
                     dealii::DataComponentInterpretation::component_is_scalar);
               }
 
-            data_out->add_data_vector(
-              data_vector,
-              dd,
-              dealii::DataOut<dim, spacedim>::type_dof_data,
-              data_component_interpretation);
+            data_out->add_data_vector(data_vector,
+                                      dd,
+                                      type,
+                                      data_component_interpretation);
           }
       }
   }
