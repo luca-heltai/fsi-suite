@@ -3,9 +3,17 @@
 
 #include <deal.II/base/config.h>
 
+#include <deal.II/base/quadrature.h>
+#include <deal.II/base/quadrature_lib.h>
 #include <deal.II/base/utilities.h>
 
 #include <deal.II/fe/component_mask.h>
+#include <deal.II/fe/fe_dgq.h>
+#include <deal.II/fe/fe_q.h>
+#include <deal.II/fe/fe_simplex_p.h>
+#include <deal.II/fe/fe_system.h>
+
+#include <deal.II/grid/tria.h>
 
 #include "parsed_tools/enum.h"
 
@@ -27,10 +35,61 @@ namespace ParsedTools
     };
 
     /**
-     * Join strings together using a given separator.
+     * Get a Lagrangian FiniteElement object compatible with the given
+     * Triangulation object.
+     *
+     * The returned object can be either FE_Q, FE_DGQ, FE_P, or FE_DGP according
+     * to the types of elements of the Triangulation (quads/hexes VS tria/tets)
+     *
+     * @param tria The triangulation to inspect
+     * @param degree The polynomial degree of the Lagrangian FiniteElement
+     * @param continuity The continuity of the Lagrangian FiniteElement: 0 for
+     * continuous, -1 for discontinuous
+     *
+     * @return std::unique_ptr<dealii::FiniteElement<dim, spacedim>>
      */
+    template <int dim, int spacedim>
+    std::unique_ptr<dealii::FiniteElement<dim, spacedim>>
+    get_lagrangian_finite_element(
+      const dealii::Triangulation<dim, spacedim> &tria,
+      const unsigned int                          degree     = 1,
+      const int                                   continuity = 0);
+
+    /**
+     * Return a Qadrature object that can be used on the given Triangulation
+     * cells.
+     *
+     * @param tria Triangulation to insepct
+     * @param degree The degree of the 1d quadrature used to generate the actual
+     * quadrature.
+     * @return dealii::Quadrature<dim>
+     */
+    template <int dim, int spacedim>
+    dealii::Quadrature<dim>
+    get_cell_quadrature(const dealii::Triangulation<dim, spacedim> &tria,
+                        const unsigned int                          degree);
+
+    /**
+     * Return a Qadrature object that can be used on the given Triangulation
+     * faces.
+     *
+     * @param tria Triangulation to insepct
+     * @param degree The degree of the 1d quadrature used to generate the actual
+     * quadrature.
+     * @return dealii::Quadrature<dim>
+     */
+    template <int dim, int spacedim>
+    dealii::Quadrature<dim - 1>
+    get_face_quadrature(const dealii::Triangulation<dim, spacedim> &tria,
+                        const unsigned int                          degree);
+
+    /**
+     * Join strings in a container together using
+     * a given separator.
+     */
+    template <typename Container>
     std::string
-    join(const std::vector<std::string> &strings, const std::string &separator);
+    join(const Container &strings, const std::string &separator);
 
     /**
      * Count the number of components in the given list of comma separated
@@ -226,6 +285,105 @@ namespace ParsedTools
     dealii::ComponentMask
     mask(const std::string &component_names,
          const std::string &selected_component);
+
+
+
+#ifndef DOXYGEN
+    // Template implementation
+    template <typename Container>
+    std::string
+    join(const Container &strings, const std::string &separator)
+    {
+      std::string result;
+      std::string sep = "";
+      for (const auto &s : strings)
+        {
+          result += sep + s;
+          sep = separator;
+        }
+      return result;
+    }
+
+
+
+    template <int dim, int spacedim>
+    std::unique_ptr<dealii::FiniteElement<dim, spacedim>>
+    get_lagrangian_finite_element(
+      const dealii::Triangulation<dim, spacedim> &tria,
+      const unsigned int                          degree,
+      const int                                   continuity)
+    {
+      const auto ref_cells = tria.get_reference_cells();
+      AssertThrow(
+        ref_cells.size() == 1,
+        dealii::ExcMessage(
+          "This function does nots support mixed simplx/hex grid types."));
+      AssertThrow(continuity == -1 || continuity == 0,
+                  dealii::ExcMessage(
+                    "only -1 and 0 are supported for continuity"));
+      std::unique_ptr<dealii::FiniteElement<dim, spacedim>> result;
+      if (ref_cells[0].is_simplex())
+        {
+          if (continuity == 0)
+            result.reset(new dealii::FE_SimplexP<dim, spacedim>(degree));
+          else
+            result.reset(new dealii::FE_SimplexDGP<dim, spacedim>(degree));
+        }
+      else
+        {
+          Assert(ref_cells[0].is_hyper_cube(),
+                 dealii::ExcMessage(
+                   "Only simplex and hex cells are supported"));
+          if (continuity == 0)
+            result.reset(new dealii::FE_Q<dim, spacedim>(degree));
+          else
+            result.reset(new dealii::FE_DGQ<dim, spacedim>(degree));
+        }
+      return result;
+    }
+
+
+
+    template <int dim, int spacedim>
+    dealii::Quadrature<dim>
+    get_cell_quadrature(const dealii::Triangulation<dim, spacedim> &tria,
+                        const unsigned int                          degree)
+    {
+      const auto ref_cells = tria.get_reference_cells();
+
+      AssertThrow(
+        ref_cells.size() == 1,
+        dealii::ExcMessage(
+          "This function does nots support mixed simplx/hex grid types."));
+      return ref_cells[0].template get_gauss_type_quadrature<dim>(degree);
+    }
+
+
+
+    template <int dim, int spacedim>
+    dealii::Quadrature<dim - 1>
+    get_face_quadrature(const dealii::Triangulation<dim, spacedim> &tria,
+                        const unsigned int                          degree)
+    {
+      if constexpr (dim == 1)
+        {
+          return dealii::QGauss<dim - 1>(degree);
+        }
+      else
+        {
+          const auto ref_cells = tria.get_reference_cells();
+
+          AssertThrow(
+            ref_cells.size() == 1,
+            dealii::ExcMessage(
+              "This function does nots support mixed simplx/hex grid types."));
+
+          const dealii::ReferenceCell face_type =
+            ref_cells[0].face_reference_cell(0);
+          return face_type.template get_gauss_type_quadrature<dim - 1>(degree);
+        }
+    }
+#endif
   } // namespace Components
 } // namespace ParsedTools
 #endif

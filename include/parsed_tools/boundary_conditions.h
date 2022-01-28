@@ -257,22 +257,9 @@ namespace ParsedTools
                           "Neumann boundary conditions for normal and "
                           "tangential components are not implemented yet."));
 
-          const dealii::ReferenceCell cell_type = fe.reference_cell();
-          dealii::Quadrature<dim - 1> face_quadrature_formula;
-          if constexpr (dim > 1)
-            {
-              // TODO: make sure we work also for wedges and pyramids
-              const dealii::ReferenceCell face_type =
-                cell_type.face_reference_cell(0);
-              face_quadrature_formula =
-                face_type.get_gauss_type_quadrature<dim - 1>(
-                  fe.tensor_degree() + 1);
-            }
-          else
-            {
-              face_quadrature_formula =
-                dealii::QGauss<dim - 1>(fe.tensor_degree() + 1);
-            }
+          const auto face_quadrature_formula =
+            Components::get_face_quadrature(dof_handler.get_triangulation(),
+                                            fe.tensor_degree() + 1);
 
           dealii::FEFaceValues<dim, spacedim> fe_face_values(
             mapping,
