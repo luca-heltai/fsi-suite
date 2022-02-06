@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"group__LAOperators.html#ga31f822e8264ec476eb33d256a02789ce":[2,31,40],
+"group__LAOperators.html#ga3deff1665b4dad59643251895e7f5239":[2,31,13],
 "group__LAOperators.html#ga484b23159d208db5fc2706b470bf3863":[2,31,11],
 "group__LAOperators.html#ga52a70111839180da28ccfebb4c588eca":[2,31,16],
 "group__LAOperators.html#ga592c1896d2eab9faca22a852384f0079":[2,31,19],
@@ -62,12 +64,12 @@ var NAVTREEINDEX4 =
 "group__TrilinosWrappers.html":[2,53],
 "group__TrilinosWrappers.html#ga1a4d9f9d4df8d42c5b6208777659dc0d":[2,53,8],
 "group__TrilinosWrappers.html#ga1a4d9f9d4df8d42c5b6208777659dc0d":[2,53,9],
-"group__TrilinosWrappers.html#gaabd9b8d1fe16dec03b4d2ad52afbccea":[2,53,11],
 "group__TrilinosWrappers.html#gaabd9b8d1fe16dec03b4d2ad52afbccea":[2,53,10],
+"group__TrilinosWrappers.html#gaabd9b8d1fe16dec03b4d2ad52afbccea":[2,53,11],
 "group__TrilinosWrappers.html#gac758e883f3ff164794fd8f15c9903abd":[2,53,6],
 "group__TrilinosWrappers.html#gac758e883f3ff164794fd8f15c9903abd":[2,53,7],
-"group__TrilinosWrappers.html#gae8322b033f19516dd6fa4566568ced12":[2,53,4],
 "group__TrilinosWrappers.html#gae8322b033f19516dd6fa4566568ced12":[2,53,5],
+"group__TrilinosWrappers.html#gae8322b033f19516dd6fa4566568ced12":[2,53,4],
 "group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4":[2,53,12],
 "group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4":[2,53,13],
 "group__TrilinosWrappers.html#gaf7aa0f99cb6a693c6e0bac93f693b764":[2,53,3],
@@ -240,14 +242,12 @@ var NAVTREEINDEX4 =
 "ilu_8cc_source.html":[5,0,3,0,2],
 "ilu_8h.html":[5,0,2,0,2],
 "ilu_8h_source.html":[5,0,2,0,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md2":[0,1],
 "index.html#autotoc_md3":[0,2],
 "index.html#autotoc_md4":[0,3],
 "inverse__operator_8cc.html":[5,0,3,0,3],
-"inverse__operator_8cc_source.html":[5,0,3,0,3],
-"inverse__operator_8h.html":[5,0,2,0,3],
-"inverse__operator_8h.html#af2ee974cc058a3a69d2828d90138b3d7":[5,0,2,0,3,1]
+"inverse__operator_8cc_source.html":[5,0,3,0,3]
 };

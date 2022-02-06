@@ -6,6 +6,7 @@ var class_parsed_tools_1_1_grid_refinement =
     [ "estimate_mark_refine", "class_parsed_tools_1_1_grid_refinement.html#a0358d438b6483907e24b795e8f998584", null ],
     [ "estimate_mark_refine", "class_parsed_tools_1_1_grid_refinement.html#a5d7e2717e1f9bdc441ff4760db8480e6", null ],
     [ "get_n_refinement_cycles", "class_parsed_tools_1_1_grid_refinement.html#a66af6a2813c0d20f24ca6a7855503dab", null ],
+    [ "get_refinement_cycles", "class_parsed_tools_1_1_grid_refinement.html#a432ff5d013056842da6059661d5609ea", null ],
     [ "get_strategy", "class_parsed_tools_1_1_grid_refinement.html#aa233b2028f7340be3d3d224cba077638", null ],
     [ "limit_levels", "class_parsed_tools_1_1_grid_refinement.html#a703b29a7fd53fa07e4ae194222908ca2", null ],
     [ "mark_cells", "class_parsed_tools_1_1_grid_refinement.html#adb3e21f4a2a552da7bccab7e468fa786", null ],
