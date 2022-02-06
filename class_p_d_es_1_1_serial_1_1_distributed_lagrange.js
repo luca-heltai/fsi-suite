@@ -53,5 +53,6 @@ var class_p_d_es_1_1_serial_1_1_distributed_lagrange =
     [ "stiffness_inverse_operator", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a21b2ea5f4a77f773d69484f525224825", null ],
     [ "stiffness_matrix", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a2c05febf6320e1ed2a3162fa7ecc58b5", null ],
     [ "stiffness_preconditioner", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a76b05b9c04dfd3ba43f0e0f80daa8cdb", null ],
-    [ "stiffness_sparsity", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a8166bba0c2a48fed11860bdaf3550314", null ]
+    [ "stiffness_sparsity", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a8166bba0c2a48fed11860bdaf3550314", null ],
+    [ "use_direct_solver", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a096e9df768d1d174e7a1863c82e1418c", null ]
 ];
