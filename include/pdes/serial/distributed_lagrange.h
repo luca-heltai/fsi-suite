@@ -1,5 +1,5 @@
-#ifndef pdes_mpi_fictitious_domain_h
-#define pdes_mpi_fictitious_domain_h
+#ifndef pdes_serial_fictitious_domain_h
+#define pdes_serial_fictitious_domain_h
 
 #include <deal.II/base/config.h>
 
@@ -114,8 +114,7 @@ namespace PDEs
       ParsedLAC::InverseOperator   stiffness_inverse_operator;
       ParsedLAC::AMGPreconditioner stiffness_preconditioner;
 
-      ParsedLAC::InverseOperator   schur_inverse_operator;
-      ParsedLAC::AMGPreconditioner schur_preconditioner;
+      ParsedLAC::InverseOperator schur_inverse_operator;
 
       mutable ParsedTools::DataOut<spacedim>      data_out;
       mutable ParsedTools::DataOut<dim, spacedim> embedded_data_out;

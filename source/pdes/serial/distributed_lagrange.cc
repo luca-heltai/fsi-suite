@@ -47,7 +47,6 @@ namespace PDEs
       , stiffness_inverse_operator("/Solver/Stiffness")
       , stiffness_preconditioner("/Solver/Stiffness AMG")
       , schur_inverse_operator("/Solver/Schur")
-      , schur_preconditioner("/Solver/Schur AMG")
       , data_out("/Data out/Space", "output/embedded")
       , embedded_data_out("/Data out/Embedded", "output/solution")
     {
@@ -60,7 +59,11 @@ namespace PDEs
                     embedded_space_finite_element_degree);
       add_parameter("Finite element degree (configuration)",
                     embedded_configuration_finite_element_degree);
+      enter_subsection("Solver");
+      enter_subsection("Stiffness");
       add_parameter("Use direct solver", use_direct_solver);
+      leave_subsection();
+      leave_subsection();
     }
 
 
@@ -181,15 +184,19 @@ namespace PDEs
 
       const double embedded_space_maximal_diameter =
         GridTools::maximal_cell_diameter(embedded_grid, embedded_mapping());
-      double embedding_space_minimal_diameter =
+      const double embedded_space_minimal_diameter =
+        GridTools::minimal_cell_diameter(embedded_grid, embedded_mapping());
+
+      double space_minimal_diameter =
         GridTools::minimal_cell_diameter(space_grid);
-      deallog << "Embedding minimal diameter: "
-              << embedding_space_minimal_diameter
-              << ", embedded maximal diameter: "
-              << embedded_space_maximal_diameter << ", ratio: "
-              << embedded_space_maximal_diameter /
-                   embedding_space_minimal_diameter
-              << std::endl;
+      double space_maximal_diameter =
+        GridTools::maximal_cell_diameter(space_grid);
+
+      deallog << "Space min/max diameters: " << space_minimal_diameter << "/"
+              << space_maximal_diameter << std::endl
+              << "Embedded space min/max diameters: "
+              << embedded_space_minimal_diameter << "/"
+              << embedded_space_maximal_diameter << std::endl;
     }
 
 
@@ -267,13 +274,6 @@ namespace PDEs
           rhs,
           static_cast<const Function<spacedim> *>(nullptr),
           constraints);
-
-        // The rhs of the Lagrange multiplier
-        VectorTools::create_right_hand_side(embedded_mapping(),
-                                            embedded_dh,
-                                            embedded_quad,
-                                            embedded_value_function,
-                                            embedded_rhs);
       }
       {
         TimerOutput::Scope timer_section(monitor, "Assemble coupling system");
@@ -282,15 +282,23 @@ namespace PDEs
                                                  embedded_dh,
                                                  embedded_quad,
                                                  coupling_matrix,
-                                                 constraints,
+                                                 AffineConstraints<double>(),
                                                  ComponentMask(),
                                                  ComponentMask(),
                                                  embedded_mapping());
 
+        // The rhs of the Lagrange multiplier as a function to plot
         VectorTools::interpolate(embedded_mapping(),
                                  embedded_dh,
                                  embedded_value_function,
                                  embedded_value);
+
+        // The rhs of the Lagrange multiplier
+        VectorTools::create_right_hand_side(embedded_mapping(),
+                                            embedded_dh,
+                                            embedded_quad,
+                                            embedded_value_function,
+                                            embedded_rhs);
       }
     }
     template <int dim, int spacedim>
@@ -312,15 +320,17 @@ namespace PDEs
       else
         {
           stiffness_preconditioner.initialize(stiffness_matrix);
-          auto A_inv = stiffness_inverse_operator(A, stiffness_preconditioner);
+          A_inv = stiffness_inverse_operator(A, stiffness_preconditioner);
         }
+
+
 
       auto S      = B * A_inv * Bt;
       auto S_prec = identity_operator(S);
-      // SolverCG<Vector<double>> solver_cg(schur_solver_control);
-      auto S_inv = schur_inverse_operator(S, S_prec);
-      lambda     = S_inv * (B * A_inv * rhs - embedded_rhs);
-      solution   = A_inv * (rhs - Bt * lambda);
+      auto S_inv  = schur_inverse_operator(S, S_prec);
+
+      lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
+      solution = A_inv * (rhs - Bt * lambda);
       constraints.distribute(solution);
     }
 
