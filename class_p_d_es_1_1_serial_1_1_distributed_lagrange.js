@@ -43,7 +43,6 @@ var class_p_d_es_1_1_serial_1_1_distributed_lagrange =
     [ "monitor", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#abb71e9e2dc1df37fe9462c7dd276e6e1", null ],
     [ "rhs", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#af336dd5bdb1948f704f3da629b61228b", null ],
     [ "schur_inverse_operator", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#ac51fc39d77b154a6b2e66a61f4da93c6", null ],
-    [ "schur_preconditioner", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a18be4403eb6ccdc4e51d5fabb478823f", null ],
     [ "solution", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#ac20416ec0d16d14e8515525c23530638", null ],
     [ "space_dh", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a3052d773110f5a794d1acfc3eb731527", null ],
     [ "space_fe", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a91666b15ffe49a5993bf78ab9a231883", null ],
