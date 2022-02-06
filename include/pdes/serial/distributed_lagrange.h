@@ -62,6 +62,7 @@ namespace PDEs
       unsigned int coupling_quadrature_order = 3;
       unsigned int delta_refinement          = 0;
       unsigned int console_level             = 1;
+      bool         use_direct_solver         = true;
 
       Triangulation<spacedim>                  space_grid;
       std::unique_ptr<FiniteElement<spacedim>> space_fe;

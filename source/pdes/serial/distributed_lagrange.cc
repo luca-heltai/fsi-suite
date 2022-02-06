@@ -60,6 +60,7 @@ namespace PDEs
                     embedded_space_finite_element_degree);
       add_parameter("Finite element degree (configuration)",
                     embedded_configuration_finite_element_degree);
+      add_parameter("Use direct solver", use_direct_solver);
     }
 
 
@@ -285,6 +286,7 @@ namespace PDEs
                                                  ComponentMask(),
                                                  ComponentMask(),
                                                  embedded_mapping());
+
         VectorTools::interpolate(embedded_mapping(),
                                  embedded_dh,
                                  embedded_value_function,
@@ -296,17 +298,29 @@ namespace PDEs
     DistributedLagrange<dim, spacedim>::solve()
     {
       TimerOutput::Scope timer_section(monitor, "Solve system");
-      stiffness_preconditioner.initialize(stiffness_matrix);
-      auto K      = linear_operator(stiffness_matrix);
-      auto Ct     = linear_operator(coupling_matrix);
-      auto C      = transpose_operator(Ct);
-      auto K_inv  = stiffness_inverse_operator(K, stiffness_preconditioner);
-      auto S      = C * K_inv * Ct;
+
+      auto                A     = linear_operator(stiffness_matrix);
+      auto                Bt    = linear_operator(coupling_matrix);
+      auto                B     = transpose_operator(Bt);
+      auto                A_inv = A;
+      SparseDirectUMFPACK A_inv_direct;
+      if (use_direct_solver)
+        {
+          A_inv_direct.initialize(stiffness_matrix);
+          A_inv = linear_operator(A, A_inv_direct);
+        }
+      else
+        {
+          stiffness_preconditioner.initialize(stiffness_matrix);
+          auto A_inv = stiffness_inverse_operator(A, stiffness_preconditioner);
+        }
+
+      auto S      = B * A_inv * Bt;
       auto S_prec = identity_operator(S);
       // SolverCG<Vector<double>> solver_cg(schur_solver_control);
       auto S_inv = schur_inverse_operator(S, S_prec);
-      lambda     = S_inv * (C * K_inv * rhs - embedded_rhs);
-      solution   = K_inv * (rhs - Ct * lambda);
+      lambda     = S_inv * (B * A_inv * rhs - embedded_rhs);
+      solution   = A_inv * (rhs - Bt * lambda);
       constraints.distribute(solution);
     }
 
@@ -320,7 +334,6 @@ namespace PDEs
       data_out.attach_dof_handler(space_dh);
       data_out.add_data_vector(solution, component_names);
       data_out.write_data_and_clear(*space_mapping);
-
       embedded_data_out.attach_dof_handler(embedded_dh);
       embedded_data_out.add_data_vector(
         lambda, "lambda", dealii::DataOut<dim, spacedim>::type_dof_data);
