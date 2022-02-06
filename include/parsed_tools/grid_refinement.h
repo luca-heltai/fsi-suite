@@ -3,6 +3,7 @@
 
 #include <deal.II/base/parameter_acceptor.h>
 #include <deal.II/base/quadrature_lib.h>
+#include <deal.II/base/std_cxx20/iota_view.h>
 
 #include <deal.II/dofs/dof_handler.h>
 
@@ -160,6 +161,17 @@ namespace ParsedTools
     get_n_refinement_cycles() const
     {
       return n_refinement_cycles;
+    }
+
+    /**
+     * Get Return an object that can be thought of as an array containing all
+     * indices from zero to @p n_refinement_cycles
+     */
+    dealii::std_cxx20::ranges::iota_view<unsigned int, unsigned int>
+    get_refinement_cycles() const
+    {
+      return dealii::std_cxx20::ranges::iota_view<unsigned int, unsigned int>(
+        0, n_refinement_cycles);
     }
 
     /**

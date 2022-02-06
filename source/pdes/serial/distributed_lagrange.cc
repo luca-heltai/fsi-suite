@@ -64,6 +64,12 @@ namespace PDEs
       add_parameter("Use direct solver", use_direct_solver);
       leave_subsection();
       leave_subsection();
+
+      enter_subsection("Error table");
+      enter_my_subsection(this->prm);
+      error_table.add_parameters(this->prm);
+      leave_my_subsection(this->prm);
+      leave_subsection();
     }
 
 
@@ -207,6 +213,7 @@ namespace PDEs
       TimerOutput::Scope timer_section(monitor, "setup_dofs");
 
       space_dh.distribute_dofs(*space_fe);
+      constraints.clear();
       DoFTools::make_hanging_node_constraints(space_dh, constraints);
       boundary_conditions.apply_essential_boundary_conditions(*space_mapping,
                                                               space_dh,
@@ -338,13 +345,19 @@ namespace PDEs
 
     template <int dim, int spacedim>
     void
-    DistributedLagrange<dim, spacedim>::output_results()
+    DistributedLagrange<dim, spacedim>::output_results(const unsigned int cycle)
     {
       TimerOutput::Scope timer_section(monitor, "Output results");
-      data_out.attach_dof_handler(space_dh);
+      const auto         suffix =
+        Utilities::int_to_string(cycle,
+                                 Utilities::needed_digits(
+                                   grid_refinement.get_n_refinement_cycles()));
+
+      data_out.attach_dof_handler(space_dh, suffix);
       data_out.add_data_vector(solution, component_names);
       data_out.write_data_and_clear(*space_mapping);
-      embedded_data_out.attach_dof_handler(embedded_dh);
+
+      embedded_data_out.attach_dof_handler(embedded_dh, suffix);
       embedded_data_out.add_data_vector(
         lambda, "lambda", dealii::DataOut<dim, spacedim>::type_dof_data);
       embedded_data_out.add_data_vector(
@@ -360,11 +373,25 @@ namespace PDEs
     {
       deallog.depth_console(console_level);
       generate_grids_and_fes();
-      setup_dofs();
-      setup_coupling();
-      assemble_system();
-      solve();
-      output_results();
+      for (const auto &cycle : grid_refinement.get_refinement_cycles())
+        {
+          deallog.push("Cycle " + Utilities::int_to_string(cycle));
+          setup_dofs();
+          setup_coupling();
+          assemble_system();
+          solve();
+          error_table.error_from_exact(space_dh, solution, exact_solution);
+          output_results(cycle);
+          if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
+            {
+              grid_refinement.estimate_mark_refine(space_dh,
+                                                   solution,
+                                                   space_grid);
+              adjust_embedded_grid(false);
+            }
+          deallog.pop();
+        }
+      error_table.output_table(std::cout);
     }
 
     template class DistributedLagrange<1, 2>;

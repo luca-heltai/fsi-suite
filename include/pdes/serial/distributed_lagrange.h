@@ -4,6 +4,7 @@
 #include <deal.II/base/config.h>
 
 #include <deal.II/base/parameter_acceptor.h>
+#include <deal.II/base/parsed_convergence_table.h>
 #include <deal.II/base/timer.h>
 #include <deal.II/base/utilities.h>
 
@@ -54,7 +55,7 @@ namespace PDEs
       void
       solve();
       void
-      output_results();
+      output_results(const unsigned int cycle);
 
       // Const members go first
       const std::string component_names = "u";
@@ -118,6 +119,7 @@ namespace PDEs
 
       mutable ParsedTools::DataOut<spacedim>      data_out;
       mutable ParsedTools::DataOut<dim, spacedim> embedded_data_out;
+      ParsedConvergenceTable                      error_table;
     };
   } // namespace Serial
 
