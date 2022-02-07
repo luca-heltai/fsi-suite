@@ -5,9 +5,7 @@
 
 #include <deal.II/differentiation/sd.h>
 
-#ifdef DEAL_II_HAVE_CXX17
-
-#  include "parsed_tools/magic_enum.hpp"
+#include "parsed_tools/magic_enum.hpp"
 
 namespace dealii
 {
@@ -75,5 +73,4 @@ namespace dealii
     } // namespace Tools
   }   // namespace Patterns
 } // namespace dealii
-#endif
 #endif

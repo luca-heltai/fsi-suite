@@ -1,17 +1,15 @@
 #include <deal.II/base/config.h>
 
+#include "parsed_tools/enum.h"
+
 #include <deal.II/base/parameter_acceptor.h>
+
+#include <deal.II/fe/fe_values.h>
 
 #include <gtest/gtest.h>
 
-#ifdef DEAL_II_HAVE_CXX17
-
-#  include <deal.II/fe/fe_values.h>
-
-#  include <fstream>
-#  include <sstream>
-
-#  include "parsed_tools/enum.h"
+#include <fstream>
+#include <sstream>
 
 using namespace dealii;
 
@@ -35,6 +33,3 @@ TEST(ParsedEnum, CheckFEValuesFlags)
   ASSERT_EQ(s, "update_default| update_values| update_gradients");
   ASSERT_TRUE(flags & (update_values | update_gradients));
 }
-
-
-#endif

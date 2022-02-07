@@ -9,6 +9,7 @@ DEAL_II_INITIALIZE_CACHED_VARIABLES()
 
 # Fix warning on mac
 SET(CMAKE_MACOSX_RPATH 1)
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 # Common library files
 file(GLOB LIB_SOURCES source/*.cc source/*/*.cc source/*/*/*.cc)
