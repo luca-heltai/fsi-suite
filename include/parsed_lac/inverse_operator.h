@@ -73,13 +73,26 @@ namespace ParsedLAC
   {
   public:
     /**
-     * Store the parameters that will be needed to create a linear operator.
+     * Store and parse the parameters that will be needed to create a linear
+     * operator that computes the inverse of a matrix via an iterative solver.
      *
-     * A section name can be specified, the solver type, the
-     * maximum number of iterations, and the reduction to reach
-     * convergence. If you know in advance the operators this object
-     * will need, you can also supply them here. They default to the
-     * identity, and you can assign them later by setting op and prec.
+     * This object allows you to create an instance of an inverse_operator()
+     * LinearOperator, using the selected linear solver and the the selected
+     * SolverControl type.
+     *
+     * @param section_name The name of the section in the parameter file where
+     * the pamaeters are stored.  If empty, the section name is the class name.
+     * @param default_solver The default solver type.
+     * @param control_type The type of solver control to use.
+     * @param max_iterations Maximum number of iterations.
+     * @param tolerance Absolute tolerance.
+     * @param reduction Relative tolerance. Used only if @p control_type is
+     * SolverControlType::reduction.
+     * @param consecutive_iterations Number of consecutive iterations. Used only
+     * if @p control_type is SolverControlType::consecutive_iterations.
+     * @param log_history Print the residual at each iteration on deallog.
+     * @param log_result Print the number of iterations and the final residual
+     * on deallog.
      */
     InverseOperator(
       const std::string &      section_name   = "",
@@ -113,13 +126,13 @@ namespace ParsedLAC
     std::string
     get_solver_name() const;
 
-  private:
     /**
      * Create a new solver control according to the parameters
      */
     std::unique_ptr<dealii::SolverControl>
     setup_new_solver_control() const;
 
+  private:
     /**
      * Defines the behaviour of the solver control.
      */
