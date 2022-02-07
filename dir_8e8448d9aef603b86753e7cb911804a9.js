@@ -8,7 +8,9 @@ var dir_8e8448d9aef603b86753e7cb911804a9 =
     [ "data_out.h", "data__out_8h.html", [
       [ "DataOut", "class_parsed_tools_1_1_data_out.html", "class_parsed_tools_1_1_data_out" ]
     ] ],
-    [ "enum.h", "enum_8h.html", null ],
+    [ "enum.h", "enum_8h.html", [
+      [ "Convert< T, typename std::enable_if< std::is_enum< T >::value >::type >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_t_00_01typename_01std_1_1enable__if_3_01std2b5d6a398d4624a6eb59ef399db80e09.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_t_00_01typename_01std_1_1enable__if_3_01std2b5d6a398d4624a6eb59ef399db80e09" ]
+    ] ],
     [ "finite_element.h", "finite__element_8h.html", [
       [ "FiniteElement", "class_parsed_tools_1_1_finite_element.html", "class_parsed_tools_1_1_finite_element" ]
     ] ],

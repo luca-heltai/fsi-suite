@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="dealii::Patterns::Tools\l::Convert\< types::manifold_id \>",height=0.2,width=0.4,color="black",URL="$structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01types_1_1manifold__id_01_4.html",tooltip="Instruct deal.II on how to convert a manifold_id to a string."];
+  Node0 [label="dealii::Patterns::Tools\l::Convert\< T, typename\l std::enable_if\< std::is\l_enum\< T \>::value \>::type \>",height=0.2,width=0.4,color="black",URL="$structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_t_00_01typename_01std_1_1enable__if_3_01std2b5d6a398d4624a6eb59ef399db80e09.html",tooltip="Helper class to convert enum types to strings and viceversa."];
 }

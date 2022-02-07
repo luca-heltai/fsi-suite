@@ -200,16 +200,13 @@ digraph "source/parsed_lac/inverse_operator.cc"
   Node79 [label="deal.II/differentiation\l/sd/symengine_math.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__math_8h.html",tooltip=" "];
   Node79 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node79 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node80 [label="deal.II/differentiation\l/sd/symengine_number_types.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__number__types_8h.html",tooltip=" "];
+  Node80 [label="deal.II/differentiation\l/sd/symengine_number_types.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__number__types_8h.html",tooltip=" "];
   Node80 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node80 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node80 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node80 -> Node81 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node81 [label="deal.II/differentiation\l/sd/symengine_number_traits.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__number__traits_8h.html",tooltip=" "];
   Node81 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node80 -> Node82 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node82 [label="deal.II/differentiation\l/sd/symengine_types.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__types_8h.html",tooltip=" "];
-  Node82 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node78 -> Node81 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node78 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node78 -> Node83 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -220,17 +217,15 @@ digraph "source/parsed_lac/inverse_operator.cc"
   Node83 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node83 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node83 -> Node86 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node86 [label="deal.II/differentiation\l/sd/symengine_scalar_operations.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__scalar__operations_8h.html",tooltip=" "];
+  Node86 [label="deal.II/differentiation\l/sd/symengine_scalar_operations.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__scalar__operations_8h.html",tooltip=" "];
   Node86 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node86 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node86 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node86 -> Node82 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node83 -> Node87 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node87 [label="deal.II/differentiation\l/sd/symengine_tensor_operations.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__tensor__operations_8h.html",tooltip=" "];
   Node87 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node87 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node87 -> Node86 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node87 -> Node82 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node78 -> Node88 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node88 [label="deal.II/differentiation\l/sd/symengine_product\l_types.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$symengine__product__types_8h.html",tooltip=" "];
   Node88 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -238,5 +233,6 @@ digraph "source/parsed_lac/inverse_operator.cc"
   Node88 -> Node80 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node78 -> Node86 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node78 -> Node87 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node78 -> Node82 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node77 -> Node89 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node89 [label="parsed_tools/magic\l_enum.hpp",height=0.2,width=0.4,color="grey75",tooltip=" "];
 }

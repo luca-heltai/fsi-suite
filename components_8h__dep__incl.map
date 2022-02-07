@@ -1,8 +1,9 @@
 <map id="include/parsed_tools/components.h" name="include/parsed_tools/components.h">
-<area shape="rect" id="node1" title=" " alt="" coords="258,5,414,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="355,5,511,47"/>
 <area shape="rect" id="node2" href="$boundary__conditions_8cc.html" title=" " alt="" coords="38,191,261,218"/>
 <area shape="rect" id="node3" href="$components_8cc.html" title=" " alt="" coords="253,102,419,129"/>
-<area shape="rect" id="node4" href="$boundary__conditions_8h.html" title=" " alt="" coords="455,95,628,136"/>
+<area shape="rect" id="node4" href="$boundary__conditions_8h.html" title=" " alt="" coords="444,95,617,136"/>
+<area shape="rect" id="node17" href="$dof__plotter_8cc.html" title=" " alt="" coords="641,102,788,129"/>
 <area shape="rect" id="node5" href="$distributed__lagrange_8h.html" title=" " alt="" coords="285,184,457,225"/>
 <area shape="rect" id="node8" href="$linear__elasticity_8h.html" title=" " alt="" coords="481,184,625,225"/>
 <area shape="rect" id="node11" href="$poisson_8h.html" title=" " alt="" coords="728,184,872,225"/>

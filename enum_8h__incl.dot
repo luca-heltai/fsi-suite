@@ -181,4 +181,6 @@ digraph "include/parsed_tools/enum.h"
   Node27 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node27 -> Node31 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node27 -> Node37 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node41 [label="parsed_tools/magic\l_enum.hpp",height=0.2,width=0.4,color="grey75",tooltip=" "];
 }

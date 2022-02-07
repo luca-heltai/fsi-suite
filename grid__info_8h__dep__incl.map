@@ -1,8 +1,9 @@
 <map id="include/parsed_tools/grid_info.h" name="include/parsed_tools/grid_info.h">
-<area shape="rect" id="node1" title=" " alt="" coords="383,5,539,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="475,5,631,47"/>
 <area shape="rect" id="node2" href="$boundary__conditions_8cc.html" title=" " alt="" coords="38,191,261,218"/>
 <area shape="rect" id="node3" href="$boundary__conditions_8h.html" title=" " alt="" coords="375,95,548,136"/>
-<area shape="rect" id="node16" href="$mesh__handler_8cc.html" title=" " alt="" coords="573,102,739,129"/>
+<area shape="rect" id="node16" href="$dof__plotter_8cc.html" title=" " alt="" coords="572,102,719,129"/>
+<area shape="rect" id="node17" href="$mesh__handler_8cc.html" title=" " alt="" coords="743,102,910,129"/>
 <area shape="rect" id="node4" href="$distributed__lagrange_8h.html" title=" " alt="" coords="285,184,457,225"/>
 <area shape="rect" id="node7" href="$linear__elasticity_8h.html" title=" " alt="" coords="481,184,625,225"/>
 <area shape="rect" id="node10" href="$poisson_8h.html" title=" " alt="" coords="728,184,872,225"/>

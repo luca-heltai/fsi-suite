@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['simplex_20support_20_28experimental_29_23128',['Simplex support (experimental)',['http://www.dealii.org/developer/doxygen/deal.II/group__simplex.html',1,'']]],
-  ['slepcwrappers_23129',['SLEPcWrappers',['http://www.dealii.org/developer/doxygen/deal.II/group__SLEPcWrappers.html',1,'']]],
-  ['sparsity_20patterns_23130',['Sparsity patterns',['http://www.dealii.org/developer/doxygen/deal.II/group__Sparsity.html',1,'']]]
+  ['simplex_20support_20_28experimental_29_23132',['Simplex support (experimental)',['http://www.dealii.org/developer/doxygen/deal.II/group__simplex.html',1,'']]],
+  ['slepcwrappers_23133',['SLEPcWrappers',['http://www.dealii.org/developer/doxygen/deal.II/group__SLEPcWrappers.html',1,'']]],
+  ['sparsity_20patterns_23134',['Sparsity patterns',['http://www.dealii.org/developer/doxygen/deal.II/group__Sparsity.html',1,'']]]
 ];

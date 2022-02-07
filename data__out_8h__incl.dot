@@ -101,14 +101,7 @@ digraph "include/parsed_tools/data_out.h"
   Node32 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node32 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node32 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node33 [label="deal.II/base/function.h",height=0.2,width=0.4,color="black",URL="$function_8h.html",tooltip=" "];
-  Node33 -> Node34 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node34 [label="deal.II/base/function\l_parser.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$function__parser_8h.html",tooltip=" "];
-  Node34 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node34 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node34 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node34 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node34 -> Node25 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node33 [label="deal.II/base/function.h",height=0.2,width=0.4,color="red",URL="$function_8h.html",tooltip=" "];
   Node33 -> Node26 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node32 -> Node36 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node36 [label="deal.II/base/function.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$function_8h.html",tooltip=" "];
@@ -222,4 +215,6 @@ digraph "include/parsed_tools/data_out.h"
   Node115 -> Node116 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node116 [label="deal.II/differentiation/sd.h",height=0.2,width=0.4,color="red",URL="/__w/fsi-suite/fsi-suite/deal.tag$sd_8h.html",tooltip=" "];
   Node116 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node115 -> Node127 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node127 [label="parsed_tools/magic\l_enum.hpp",height=0.2,width=0.4,color="grey75",tooltip=" "];
 }

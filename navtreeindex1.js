@@ -188,6 +188,9 @@ var NAVTREEINDEX1 =
 "dir_e7245891811a18a2b76d3fc59ab1e2d7.html":[5,0,0,0],
 "distributed__lagrange_8h.html":[5,0,2,2,0,0],
 "distributed__lagrange_8h_source.html":[5,0,2,2,0,0],
+"dof__plotter_8cc.html":[5,0,0,1],
+"dof__plotter_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627":[5,0,0,1,0],
+"dof__plotter_8cc_source.html":[5,0,0,1],
 "enum_8h.html":[5,0,2,1,4],
 "enum_8h_source.html":[5,0,2,1,4],
 "files.html":[5,0],
@@ -222,8 +225,8 @@ var NAVTREEINDEX1 =
 "functions_type.html":[4,3,3],
 "functions_u.html":[4,3,0,18],
 "functions_v.html":[4,3,0,19],
-"functions_vars.html":[4,3,2],
 "functions_vars.html":[4,3,2,0],
+"functions_vars.html":[4,3,2],
 "functions_vars_b.html":[4,3,2,1],
 "functions_vars_c.html":[4,3,2,2],
 "functions_vars_d.html":[4,3,2,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "functions_vars_w.html":[4,3,2,20],
 "functions_w.html":[4,3,0,20],
 "globals.html":[5,1,0],
-"globals_func.html":[5,1,1],
-"grid__generator_8cc.html":[5,0,3,8],
-"grid__generator_8cc_source.html":[5,0,3,8],
-"grid__generator_8h.html":[5,0,2,1,7]
+"globals_func.html":[5,1,1]
 };
