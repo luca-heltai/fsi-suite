@@ -2,7 +2,7 @@ var class_parsed_l_a_c_1_1_inverse_operator =
 [
     [ "InverseOperator", "class_parsed_l_a_c_1_1_inverse_operator.html#a78c98a09d109613874ecbaa0763184e8", null ],
     [ "get_solver_name", "class_parsed_l_a_c_1_1_inverse_operator.html#a58e11ba39955880152529c4e79fcff2a", null ],
-    [ "operator()", "class_parsed_l_a_c_1_1_inverse_operator.html#afe14312fabf64d8a271799a4ccb53468", null ],
+    [ "operator()", "class_parsed_l_a_c_1_1_inverse_operator.html#a1afbf077c1c6b380ce5c5230dd2ef152", null ],
     [ "setup_new_solver_control", "class_parsed_l_a_c_1_1_inverse_operator.html#a1d9405b169e9384cd16c72e62a83cfca", null ],
     [ "consecutive_iterations", "class_parsed_l_a_c_1_1_inverse_operator.html#a79e2503fbd499f40d6c5b539a17cf5fc", null ],
     [ "control", "class_parsed_l_a_c_1_1_inverse_operator.html#ae9e5e8402805f90987fb66db2b7236a1", null ],
