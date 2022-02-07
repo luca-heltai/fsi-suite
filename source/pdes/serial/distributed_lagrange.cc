@@ -10,6 +10,7 @@
 
 #include <deal.II/lac/linear_operator_tools.h>
 #include <deal.II/lac/precondition.h>
+#include <deal.II/lac/trilinos_solver.h>
 
 #include <deal.II/non_matching/coupling.h>
 
@@ -319,10 +320,23 @@ namespace PDEs
       auto                B     = transpose_operator(Bt);
       auto                A_inv = A;
       SparseDirectUMFPACK A_inv_direct;
+
+      // auto control = stiffness_inverse_operator.setup_new_solver_control();
+      // TrilinosWrappers::SolverDirect solver_direct(
+      //   *control,
+      //   TrilinosWrappers::SolverDirect::AdditionalData(true,
+      //   "Amesos_Pardiso"));
+
       if (use_direct_solver)
         {
           A_inv_direct.initialize(stiffness_matrix);
           A_inv = linear_operator(A, A_inv_direct);
+
+          // solver_direct.initialize(stiffness_matrix);
+          // A_inv       = A;
+          // A_inv.vmult = [&](Vector<double> &dst, const Vector<double> &src) {
+          //   solver_direct.solve(dst, src);
+          // };
         }
       else
         {

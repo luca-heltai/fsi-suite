@@ -20,7 +20,8 @@
 namespace ParsedLAC
 {
   /**
-   *
+   * An enum class used to identify different classes derived from
+   * SolverControl.
    */
   enum class SolverControlType
   {
@@ -29,6 +30,7 @@ namespace ParsedLAC
     iteration_number       = 1 << 2, //!< Use IterationNumberControl
     reduction              = 1 << 3, //!< Use ReductionControl
   };
+
   /**
    * A factory that can generate inverse operators according to parameter files.
    *
@@ -187,6 +189,8 @@ namespace ParsedLAC
     mutable dealii::GeneralDataStorage storage;
   };
 
+
+#ifndef DOXYGEN
   // ============================================================
   // Explicit template instantiation
   // ============================================================
@@ -250,6 +254,7 @@ namespace ParsedLAC
       }
     return inverse;
   }
+#endif
 } // namespace ParsedLAC
 
 
