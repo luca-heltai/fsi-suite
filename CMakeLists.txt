@@ -49,3 +49,9 @@ if(DOXYGEN_FOUND)
     COMMENT "Generating API documentation with Doxygen" VERBATIM)
     MESSAGE("-- Configured Doxygen")
 endif(DOXYGEN_FOUND)
+
+add_custom_target(copyright
+    ${CMAKE_CURRENT_SOURCE_DIR}/scripts/update_copyright.sh
+    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+    COMMENT "Updating copyright information" VERBATIM)
+MESSAGE("-- Configured Copyright")
