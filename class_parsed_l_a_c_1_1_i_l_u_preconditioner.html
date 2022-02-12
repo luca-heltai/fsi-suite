@@ -407,7 +407,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>A parsed ILU preconditioner which uses parameter files to choose between different options. </p>
 <p>This object is a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionILU.html">TrilinosWrappers::PreconditionILU</a> which can be called in place of the preconditioner. </p>
 
-<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00024">24</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00039">39</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a0a646c7e863c7ec87a6e04dc89f0a776"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0a646c7e863c7ec87a6e04dc89f0a776">&#9670;&nbsp;</a></span>ILUPreconditioner()</h2>
@@ -456,13 +456,39 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructor. </p>
 <p>Build the preconditioner of a matrix using ILU. </p>
 
-<p class="definition">Definition at line <a class="el" href="ilu_8cc_source.html#l00011">11</a> of file <a class="el" href="ilu_8cc_source.html">ilu.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ilu_8cc_source.html#l00026">26</a> of file <a class="el" href="ilu_8cc_source.html">ilu.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="ilu_8cc_source.html#l00027">add_parameters()</a>.</p>
+<p class="reference">References <a class="el" href="ilu_8cc_source.html#l00042">add_parameters()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7bc5f60db1180d5fd1d1db68e72febce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc5f60db1180d5fd1d1db68e72febce">&#9670;&nbsp;</a></span>initialize_preconditioner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParsedLAC::ILUPreconditioner::initialize_preconditioner </td>
+          <td>(</td>
+          <td class="paramtype">const Matrix &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the preconditioner using <code>matrix</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="ilu_8cc_source.html#l00057">57</a> of file <a class="el" href="ilu_8cc_source.html">ilu.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="ilu_8h_source.html#l00094">ilu_atol</a>, <a class="el" href="ilu_8h_source.html#l00078">ilu_fill</a>, <a class="el" href="ilu_8h_source.html#l00110">ilu_rtol</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize()</a>, and <a class="el" href="ilu_8h_source.html#l00125">overlap</a>.</p>
+
+</div>
+</div>
 <a id="ab3db4bda6b0e4f4966b4f17f7005d123"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab3db4bda6b0e4f4966b4f17f7005d123">&#9670;&nbsp;</a></span>add_parameters()</h2>
 
@@ -488,70 +514,15 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Declare preconditioner options. </p>
 
-<p class="definition">Definition at line <a class="el" href="ilu_8cc_source.html#l00027">27</a> of file <a class="el" href="ilu_8cc_source.html">ilu.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="el" href="ilu_8h_source.html#l00079">ilu_atol</a>, <a class="el" href="ilu_8h_source.html#l00063">ilu_fill</a>, <a class="el" href="ilu_8h_source.html#l00095">ilu_rtol</a>, and <a class="el" href="ilu_8h_source.html#l00110">overlap</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00011">ILUPreconditioner()</a>.</p>
-
-</div>
-</div>
-<a id="a7bc5f60db1180d5fd1d1db68e72febce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7bc5f60db1180d5fd1d1db68e72febce">&#9670;&nbsp;</a></span>initialize_preconditioner()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ParsedLAC::ILUPreconditioner::initialize_preconditioner </td>
-          <td>(</td>
-          <td class="paramtype">const Matrix &amp;&#160;</td>
-          <td class="paramname"><em>matrix</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the preconditioner using <code>matrix</code>. </p>
-
 <p class="definition">Definition at line <a class="el" href="ilu_8cc_source.html#l00042">42</a> of file <a class="el" href="ilu_8cc_source.html">ilu.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="ilu_8h_source.html#l00079">ilu_atol</a>, <a class="el" href="ilu_8h_source.html#l00063">ilu_fill</a>, <a class="el" href="ilu_8h_source.html#l00095">ilu_rtol</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize()</a>, and <a class="el" href="ilu_8h_source.html#l00110">overlap</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="el" href="ilu_8h_source.html#l00094">ilu_atol</a>, <a class="el" href="ilu_8h_source.html#l00078">ilu_fill</a>, <a class="el" href="ilu_8h_source.html#l00110">ilu_rtol</a>, and <a class="el" href="ilu_8h_source.html#l00125">overlap</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00026">ILUPreconditioner()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae21a86dd5c0d850c5037c6a73801847d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae21a86dd5c0d850c5037c6a73801847d">&#9670;&nbsp;</a></span>ilu_atol</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ParsedLAC::ILUPreconditioner::ilu_atol</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The amount of perturbation to add to diagonal entries. </p>
-<p>This parameter allows perturbation of the diagonal of the matrix, which sometimes can help to get better preconditioners especially in the case of bad conditioning. Before factorization, the diagonal entry \f \(a_{ii}\f\) is replaced by \f \(\alpha sign(a_{ii})+\beta a_{ii}\f\), where \f \(\alpha \geq 0\f\) is the absolute threshold <code>ilu_atol</code> and \f \(\beta \geq 1\f\) is the relative threshold <code>ilu_rtol</code>. The default values \f \((\alpha=1, \beta=1)\f\) therefore use the original, unmodified diagonal entry. Suggested values are in the order of \f \(10^{−5}\f\) to \f \(10^{−2}\f\) for <code>ilu_atol</code> and \f \(1.01\f\) for <code>ilu_rtol</code>. </p>
-
-<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00079">79</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00027">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00042">initialize_preconditioner()</a>.</p>
-
-</div>
-</div>
 <a id="a8096be9227ea961fdc4be31b1e1c9353"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8096be9227ea961fdc4be31b1e1c9353">&#9670;&nbsp;</a></span>ilu_fill</h2>
 
@@ -575,9 +546,38 @@ template&lt;typename Matrix &gt; </div>
 <p>This specifies the amount of additional fill-in elements besides the original sparse matrix structure. </p>
 <p>If \f \(k\f\) is fill, the sparsity pattern of \f \(Ak+1\f\) is used for the storage of the result of the Gaussian elimination. This is known as \f \(ILU( k)\f\) in the literature. When <code>ilu_fill</code> is large, the preconditioner comes closer to a (direct) sparse LU decomposition. </p><dl class="section note"><dt>Note</dt><dd>however, that this will drastically increase the memory requirement, especially when the preconditioner is used in 3D. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00063">63</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00078">78</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00027">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00042">initialize_preconditioner()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00042">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00057">initialize_preconditioner()</a>.</p>
+
+</div>
+</div>
+<a id="ae21a86dd5c0d850c5037c6a73801847d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae21a86dd5c0d850c5037c6a73801847d">&#9670;&nbsp;</a></span>ilu_atol</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ParsedLAC::ILUPreconditioner::ilu_atol</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The amount of perturbation to add to diagonal entries. </p>
+<p>This parameter allows perturbation of the diagonal of the matrix, which sometimes can help to get better preconditioners especially in the case of bad conditioning. Before factorization, the diagonal entry \f \(a_{ii}\f\) is replaced by \f \(\alpha sign(a_{ii})+\beta a_{ii}\f\), where \f \(\alpha \geq 0\f\) is the absolute threshold <code>ilu_atol</code> and \f \(\beta \geq 1\f\) is the relative threshold <code>ilu_rtol</code>. The default values \f \((\alpha=1, \beta=1)\f\) therefore use the original, unmodified diagonal entry. Suggested values are in the order of \f \(10^{−5}\f\) to \f \(10^{−2}\f\) for <code>ilu_atol</code> and \f \(1.01\f\) for <code>ilu_rtol</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00094">94</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00042">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00057">initialize_preconditioner()</a>.</p>
 
 </div>
 </div>
@@ -604,9 +604,9 @@ template&lt;typename Matrix &gt; </div>
 <p>Scaling factor for diagonal entries. </p>
 <p>This parameter allows perturbation of the diagonal of the matrix, which sometimes can help to get better preconditioners especially in the case of bad conditioning. Before factorization, the diagonal entry \f \(a_{ii}\f\) is replaced by \f \(\alpha sign(a_{ii})+\beta a_{ii}\f\), where \f \(\alpha \geq 0\f\) is the absolute threshold <code>ilu_atol</code> and \f \(\beta \geq 1\f\) is the relative threshold <code>ilu_rtol</code>. The default values \f \((\alpha=1, \beta=1)\f\) therefore use the original, unmodified diagonal entry. Suggested values are in the order of \f \(10^{−5}\f\) to \f \(10^{−2}\f\) for <code>ilu_atol</code> and \f \(1.01\f\) for <code>ilu_rtol</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00095">95</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00110">110</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00027">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00042">initialize_preconditioner()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00042">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00057">initialize_preconditioner()</a>.</p>
 
 </div>
 </div>
@@ -633,9 +633,9 @@ template&lt;typename Matrix &gt; </div>
 <p>Overlap between processors. </p>
 <p>This determines how large the overlap of the local matrix portions on each processor in a parallel application should be. An overlap of 0 corresponds to a block diagonal decomposition on each processor, an overlap of 1 will additionally include a row \f \(j\f\) if there is a nonzero entry in column \f \(j\f\) in one of the own rows. Higher overlap numbers work accordingly in a recursive fashion. Increasing overlap will increase communication and storage cost. According to the IFPACK documentation, an overlap of 1 is often effective and values of more than 3 are rarely needed. </p>
 
-<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00110">110</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ilu_8h_source.html#l00125">125</a> of file <a class="el" href="ilu_8h_source.html">ilu.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00027">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00042">initialize_preconditioner()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ilu_8cc_source.html#l00042">add_parameters()</a>, and <a class="el" href="ilu_8cc_source.html#l00057">initialize_preconditioner()</a>.</p>
 
 </div>
 </div>
@@ -649,7 +649,7 @@ template&lt;typename Matrix &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_l_a_c.html">ParsedLAC</a></li><li class="navelem"><a class="el" href="class_parsed_l_a_c_1_1_i_l_u_preconditioner.html">ILUPreconditioner</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -447,13 +447,39 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructor. </p>
 <p>Build the preconditioner of a matrix using Jacobi. </p>
 
-<p class="definition">Definition at line <a class="el" href="jacobi_8cc_source.html#l00009">9</a> of file <a class="el" href="jacobi_8cc_source.html">jacobi.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="jacobi_8cc_source.html#l00024">24</a> of file <a class="el" href="jacobi_8cc_source.html">jacobi.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="jacobi_8cc_source.html#l00023">add_parameters()</a>.</p>
+<p class="reference">References <a class="el" href="jacobi_8cc_source.html#l00038">add_parameters()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9bd3b4b3731173c32a70c6f558b1ab44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bd3b4b3731173c32a70c6f558b1ab44">&#9670;&nbsp;</a></span>initialize_preconditioner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParsedLAC::JacobiPreconditioner::initialize_preconditioner </td>
+          <td>(</td>
+          <td class="paramtype">const Matrix &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the preconditioner using <code>matrix</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="jacobi_8cc_source.html#l00061">61</a> of file <a class="el" href="jacobi_8cc_source.html">jacobi.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize()</a>, <a class="el" href="jacobi_8h_source.html#l00078">min_diagonal</a>, <a class="el" href="jacobi_8h_source.html#l00084">n_sweeps</a>, and <a class="el" href="jacobi_8h_source.html#l00069">omega</a>.</p>
+
+</div>
+</div>
 <a id="aebb5b6bd0ef48751608f2ca411a1ee45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aebb5b6bd0ef48751608f2ca411a1ee45">&#9670;&nbsp;</a></span>add_parameters()</h2>
 
@@ -479,41 +505,43 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Declare preconditioner options. </p>
 
-<p class="definition">Definition at line <a class="el" href="jacobi_8cc_source.html#l00023">23</a> of file <a class="el" href="jacobi_8cc_source.html">jacobi.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="jacobi_8cc_source.html#l00038">38</a> of file <a class="el" href="jacobi_8cc_source.html">jacobi.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="el" href="jacobi_8h_source.html#l00078">min_diagonal</a>, <a class="el" href="jacobi_8h_source.html#l00084">n_sweeps</a>, and <a class="el" href="jacobi_8h_source.html#l00069">omega</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00009">JacobiPreconditioner()</a>.</p>
-
-</div>
-</div>
-<a id="a9bd3b4b3731173c32a70c6f558b1ab44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bd3b4b3731173c32a70c6f558b1ab44">&#9670;&nbsp;</a></span>initialize_preconditioner()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ParsedLAC::JacobiPreconditioner::initialize_preconditioner </td>
-          <td>(</td>
-          <td class="paramtype">const Matrix &amp;&#160;</td>
-          <td class="paramname"><em>matrix</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the preconditioner using <code>matrix</code>. </p>
-
-<p class="definition">Definition at line <a class="el" href="jacobi_8cc_source.html#l00046">46</a> of file <a class="el" href="jacobi_8cc_source.html">jacobi.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize()</a>, <a class="el" href="jacobi_8h_source.html#l00078">min_diagonal</a>, <a class="el" href="jacobi_8h_source.html#l00084">n_sweeps</a>, and <a class="el" href="jacobi_8h_source.html#l00069">omega</a>.</p>
+<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00024">JacobiPreconditioner()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a97d15007b8676cf7ee3179b112162b7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97d15007b8676cf7ee3179b112162b7f">&#9670;&nbsp;</a></span>omega</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ParsedLAC::JacobiPreconditioner::omega</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>This specifies the relaxation parameter in the Jacobi preconditioner. </p>
+
+<p class="definition">Definition at line <a class="el" href="jacobi_8h_source.html#l00069">69</a> of file <a class="el" href="jacobi_8h_source.html">jacobi.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00038">add_parameters()</a>, and <a class="el" href="jacobi_8cc_source.html#l00061">initialize_preconditioner()</a>.</p>
+
+</div>
+</div>
 <a id="a7db40b66e1f2f967d2fd6d50ef855bcd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7db40b66e1f2f967d2fd6d50ef855bcd">&#9670;&nbsp;</a></span>min_diagonal</h2>
 
@@ -539,7 +567,7 @@ template&lt;typename Matrix &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="jacobi_8h_source.html#l00078">78</a> of file <a class="el" href="jacobi_8h_source.html">jacobi.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00023">add_parameters()</a>, and <a class="el" href="jacobi_8cc_source.html#l00046">initialize_preconditioner()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00038">add_parameters()</a>, and <a class="el" href="jacobi_8cc_source.html#l00061">initialize_preconditioner()</a>.</p>
 
 </div>
 </div>
@@ -567,35 +595,7 @@ template&lt;typename Matrix &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="jacobi_8h_source.html#l00084">84</a> of file <a class="el" href="jacobi_8h_source.html">jacobi.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00023">add_parameters()</a>, and <a class="el" href="jacobi_8cc_source.html#l00046">initialize_preconditioner()</a>.</p>
-
-</div>
-</div>
-<a id="a97d15007b8676cf7ee3179b112162b7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97d15007b8676cf7ee3179b112162b7f">&#9670;&nbsp;</a></span>omega</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ParsedLAC::JacobiPreconditioner::omega</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This specifies the relaxation parameter in the Jacobi preconditioner. </p>
-
-<p class="definition">Definition at line <a class="el" href="jacobi_8h_source.html#l00069">69</a> of file <a class="el" href="jacobi_8h_source.html">jacobi.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00023">add_parameters()</a>, and <a class="el" href="jacobi_8cc_source.html#l00046">initialize_preconditioner()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="jacobi_8cc_source.html#l00038">add_parameters()</a>, and <a class="el" href="jacobi_8cc_source.html#l00061">initialize_preconditioner()</a>.</p>
 
 </div>
 </div>
@@ -609,7 +609,7 @@ template&lt;typename Matrix &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_l_a_c.html">ParsedLAC</a></li><li class="navelem"><a class="el" href="class_parsed_l_a_c_1_1_jacobi_preconditioner.html">JacobiPreconditioner</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

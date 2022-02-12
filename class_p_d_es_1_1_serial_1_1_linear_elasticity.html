@@ -304,7 +304,7 @@ Additional Inherited Members</h2></td></tr>
 class PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00071">71</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00086">86</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a921c9cbc4b43f909a06d9a4837dfaa57"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a921c9cbc4b43f909a06d9a4837dfaa57">&#9670;&nbsp;</a></span>LinearElasticity()</h2>
@@ -320,11 +320,61 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00014">14</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00029">29</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="accb71b0a21907b578f3f70d4a8e5f7a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accb71b0a21907b578f3f70d4a8e5f7a9">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::run</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00237">237</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="apps_2serial_2linear__elasticity_8cc_source.html#l00026">main()</a>.</p>
+
+</div>
+</div>
+<a id="ad6bc7a7eab987c9682e027c3e692b15f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6bc7a7eab987c9682e027c3e692b15f">&#9670;&nbsp;</a></span>setup_system()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::setup_system</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00074">74</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
+
+</div>
+</div>
 <a id="a90acff4f3fa076f154a8feca514e6f2a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a90acff4f3fa076f154a8feca514e6f2a">&#9670;&nbsp;</a></span>assemble_system()</h2>
 
@@ -347,9 +397,37 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00106">106</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00121">121</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#a93872d888911cda7e2e716168afc1b3f">FEValues&lt; dim, spacedim &gt;::dof_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#acc87b5e39e346e39b34c732cf3da5821">ReferenceCell::face_reference_cell()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__out_8cc.html#a827a345f29da7caeb588b11013869a01">first</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#abade89efb068b71b7ced7082012a2441">FEValues&lt; dim, spacedim &gt;::JxW()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#ab123e5da03736be4977c76fbcb6a2e37">FEValues&lt; dim, spacedim &gt;::quadrature_point()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#aada8380792b5e6a1f91dcba94b558cb8">FEValues&lt; dim, spacedim &gt;::quadrature_point_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html#a21f914e63d588e2652a9514620653d77">FEValues&lt; dim, spacedim &gt;::reinit()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValuesBase.html#a1dd48cb744013c448d57f8f77640c08d">FEValues&lt; dim, spacedim &gt;::shape_value()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a>.</p>
+
+</div>
+</div>
+<a id="a5926fe1c099a96501481133a11888504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5926fe1c099a96501481133a11888504">&#9670;&nbsp;</a></span>solve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::solve</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00206">206</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>.</p>
 
 </div>
 </div>
@@ -379,117 +457,13 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00205">205</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00220">220</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits()</a>.</p>
 
 </div>
 </div>
-<a id="accb71b0a21907b578f3f70d4a8e5f7a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accb71b0a21907b578f3f70d4a8e5f7a9">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::run</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00222">222</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="apps_2serial_2linear__elasticity_8cc_source.html#l00011">main()</a>.</p>
-
-</div>
-</div>
-<a id="ad6bc7a7eab987c9682e027c3e692b15f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6bc7a7eab987c9682e027c3e692b15f">&#9670;&nbsp;</a></span>setup_system()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::setup_system</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00059">59</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
-
-</div>
-</div>
-<a id="a5926fe1c099a96501481133a11888504"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5926fe1c099a96501481133a11888504">&#9670;&nbsp;</a></span>solve()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::solve</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00191">191</a> of file <a class="el" href="source_2pdes_2serial_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5d79498b1466a4b58af9c5c98efc38cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d79498b1466a4b58af9c5c98efc38cf">&#9670;&nbsp;</a></span>boundary_conditions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::boundary_conditions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00120">120</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
 <a id="a7c1db3c791a06572c75f44acd630f646"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7c1db3c791a06572c75f44acd630f646">&#9670;&nbsp;</a></span>component_names</h2>
 
@@ -514,12 +488,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>How we identify the component names. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00095">95</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00110">110</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="a19b4a615750a024b5c0be5392dc27d44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19b4a615750a024b5c0be5392dc27d44">&#9670;&nbsp;</a></span>console_level</h2>
+<a id="af77ab587934b4c47b33e77650ad85bbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77ab587934b4c47b33e77650ad85bbf">&#9670;&nbsp;</a></span>grid_generator</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -530,7 +504,319 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::console_level = 1</td>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::grid_generator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00113">113</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="a44257e82c0842b47276a75353b45ed0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44257e82c0842b47276a75353b45ed0b">&#9670;&nbsp;</a></span>grid_refinement</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_refinement.html">ParsedTools::GridRefinement</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::grid_refinement</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00114">114</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="aebb0931637854da3607e19d9fc6edd8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb0931637854da3607e19d9fc6edd8e">&#9670;&nbsp;</a></span>triangulation</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::triangulation</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00115">115</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="af3de91a2ad85e08efb2a15fc39bb9fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3de91a2ad85e08efb2a15fc39bb9fb8">&#9670;&nbsp;</a></span>finite_element</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_finite_element.html">ParsedTools::FiniteElement</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::finite_element</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00118">118</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="ae419dc276e74ce95b19fe70d2400a1d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae419dc276e74ce95b19fe70d2400a1d6">&#9670;&nbsp;</a></span>dof_handler</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::dof_handler</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00119">119</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="a657d69a8dd00cf451a4867e34df690a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657d69a8dd00cf451a4867e34df690a4">&#9670;&nbsp;</a></span>mapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::mapping</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00120">120</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="a9b8c0ddf6fd0f8ffd755e1ff8e1ea4ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b8c0ddf6fd0f8ffd755e1ff8e1ea4ff">&#9670;&nbsp;</a></span>constraints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::constraints</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00123">123</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="abcbc896009ca41edf367ad9a2a0d266a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcbc896009ca41edf367ad9a2a0d266a">&#9670;&nbsp;</a></span>sparsity_pattern</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::sparsity_pattern</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00124">124</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="a27ac9c61925ed9d5edd14aac8bbefc7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ac9c61925ed9d5edd14aac8bbefc7b">&#9670;&nbsp;</a></span>system_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::system_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00125">125</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="abd607410de6558b560b23d0822e066ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd607410de6558b560b23d0822e066ff">&#9670;&nbsp;</a></span>solution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::solution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00126">126</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="ad4863744b6a7140e19c3513aed33be05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4863744b6a7140e19c3513aed33be05">&#9670;&nbsp;</a></span>system_rhs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::system_rhs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00127">127</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="a3527cc3e365274a185ca9298d7162cd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3527cc3e365274a185ca9298d7162cd9">&#9670;&nbsp;</a></span>inverse_operator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::inverse_operator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00128">128</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+
+</div>
+</div>
+<a id="a0f0c669dcd3514a6cfc13c3053f4a14e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f0c669dcd3514a6cfc13c3053f4a14e">&#9670;&nbsp;</a></span>preconditioner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::preconditioner</td>
         </tr>
       </table>
   </td>
@@ -566,189 +852,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00117">117</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="a9b8c0ddf6fd0f8ffd755e1ff8e1ea4ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b8c0ddf6fd0f8ffd755e1ff8e1ea4ff">&#9670;&nbsp;</a></span>constraints</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::constraints</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00108">108</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="a938c61c91b49b71a2d1ab88d757d9870"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a938c61c91b49b71a2d1ab88d757d9870">&#9670;&nbsp;</a></span>data_out</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::data_out</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00126">126</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="a04c7e5f9611f984e5eaac60ae6d7215e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04c7e5f9611f984e5eaac60ae6d7215e">&#9670;&nbsp;</a></span>displacement</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesExtractors_1_1Vector.html">FEValuesExtractors::Vector</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::displacement</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 <p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00132">132</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="ae419dc276e74ce95b19fe70d2400a1d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae419dc276e74ce95b19fe70d2400a1d6">&#9670;&nbsp;</a></span>dof_handler</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::dof_handler</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00104">104</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="a66f474a6315456914fbfe802bfbd1985"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66f474a6315456914fbfe802bfbd1985">&#9670;&nbsp;</a></span>error_table</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::error_table</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00123">123</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="a048d756bf7385bd7593f3088b379c2f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a048d756bf7385bd7593f3088b379c2f6">&#9670;&nbsp;</a></span>exact_solution</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::exact_solution</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00119">119</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="af3de91a2ad85e08efb2a15fc39bb9fb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3de91a2ad85e08efb2a15fc39bb9fb8">&#9670;&nbsp;</a></span>finite_element</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_finite_element.html">ParsedTools::FiniteElement</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::finite_element</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00103">103</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
@@ -774,12 +878,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00118">118</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00133">133</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="af77ab587934b4c47b33e77650ad85bbf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af77ab587934b4c47b33e77650ad85bbf">&#9670;&nbsp;</a></span>grid_generator</h2>
+<a id="a048d756bf7385bd7593f3088b379c2f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a048d756bf7385bd7593f3088b379c2f6">&#9670;&nbsp;</a></span>exact_solution</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -790,7 +894,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::grid_generator</td>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::exact_solution</td>
         </tr>
       </table>
   </td>
@@ -800,12 +904,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00098">98</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00134">134</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="a44257e82c0842b47276a75353b45ed0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a44257e82c0842b47276a75353b45ed0b">&#9670;&nbsp;</a></span>grid_refinement</h2>
+<a id="a5d79498b1466a4b58af9c5c98efc38cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d79498b1466a4b58af9c5c98efc38cf">&#9670;&nbsp;</a></span>boundary_conditions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -816,7 +920,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_refinement.html">ParsedTools::GridRefinement</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::grid_refinement</td>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::boundary_conditions</td>
         </tr>
       </table>
   </td>
@@ -826,12 +930,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00099">99</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00135">135</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="a3527cc3e365274a185ca9298d7162cd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3527cc3e365274a185ca9298d7162cd9">&#9670;&nbsp;</a></span>inverse_operator</h2>
+<a id="a66f474a6315456914fbfe802bfbd1985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66f474a6315456914fbfe802bfbd1985">&#9670;&nbsp;</a></span>error_table</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -842,7 +946,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::inverse_operator</td>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::error_table</td>
         </tr>
       </table>
   </td>
@@ -852,12 +956,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00113">113</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00138">138</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="a657d69a8dd00cf451a4867e34df690a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a657d69a8dd00cf451a4867e34df690a4">&#9670;&nbsp;</a></span>mapping</h2>
+<a id="a938c61c91b49b71a2d1ab88d757d9870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a938c61c91b49b71a2d1ab88d757d9870">&#9670;&nbsp;</a></span>data_out</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -868,22 +972,22 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::mapping</td>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::data_out</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00105">105</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00141">141</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="a0f0c669dcd3514a6cfc13c3053f4a14e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f0c669dcd3514a6cfc13c3053f4a14e">&#9670;&nbsp;</a></span>preconditioner</h2>
+<a id="a19b4a615750a024b5c0be5392dc27d44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19b4a615750a024b5c0be5392dc27d44">&#9670;&nbsp;</a></span>console_level</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -894,7 +998,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::preconditioner</td>
+          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::console_level = 1</td>
         </tr>
       </table>
   </td>
@@ -904,12 +1008,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00114">114</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00144">144</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
-<a id="abd607410de6558b560b23d0822e066ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd607410de6558b560b23d0822e066ff">&#9670;&nbsp;</a></span>solution</h2>
+<a id="a04c7e5f9611f984e5eaac60ae6d7215e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04c7e5f9611f984e5eaac60ae6d7215e">&#9670;&nbsp;</a></span>displacement</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -920,7 +1024,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::solution</td>
+          <td class="memname">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesExtractors_1_1Vector.html">FEValuesExtractors::Vector</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::displacement</td>
         </tr>
       </table>
   </td>
@@ -930,111 +1034,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00111">111</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="abcbc896009ca41edf367ad9a2a0d266a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcbc896009ca41edf367ad9a2a0d266a">&#9670;&nbsp;</a></span>sparsity_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::sparsity_pattern</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00109">109</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="a27ac9c61925ed9d5edd14aac8bbefc7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27ac9c61925ed9d5edd14aac8bbefc7b">&#9670;&nbsp;</a></span>system_matrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::system_matrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00110">110</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="ad4863744b6a7140e19c3513aed33be05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4863744b6a7140e19c3513aed33be05">&#9670;&nbsp;</a></span>system_rhs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::system_rhs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00112">112</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
-
-</div>
-</div>
-<a id="aebb0931637854da3607e19d9fc6edd8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebb0931637854da3607e19d9fc6edd8e">&#9670;&nbsp;</a></span>triangulation</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>&lt; dim, spacedim &gt;::triangulation</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00100">100</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00147">147</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
@@ -1048,7 +1048,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">LinearElasticity</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:06 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:36 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -103,93 +103,108 @@ $(document).ready(function(){initNavTree('mesh__handler_8cc_source.html',''); in
 <div class="title">mesh_handler.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="mesh__handler_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html">deal.II/grid/reference_cell.h</a>&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid__generator_8h.html">parsed_tools/grid_generator.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid__info_8h.html">parsed_tools/grid_info.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">int</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">   15</a></span>&#160;<a class="code" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classUtilities_1_1MPI_1_1MPI__InitFinalize.html">Utilities::MPI::MPI_InitFinalize</a> mpi_initialization(argc, argv, 1);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;      std::string                      par_name   = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                     info_level = 0;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <span class="keywordflow">if</span> (argc &gt; 1)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        par_name = argv[1];</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <span class="keywordflow">if</span> (argc &gt; 2)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        info_level = std::atoi(argv[2]);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;      <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process</a>(MPI_COMM_WORLD) == 0)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">depth_console</a>(2);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">depth_console</a>(0);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      <a class="code" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator&lt;2&gt;</a> pgg;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a>(par_name);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;2&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      pgg.<a class="code" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597">generate</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      pgg.<a class="code" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2">write</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <a class="code" href="struct_parsed_tools_1_1_grid_info.html">ParsedTools::GridInfo</a> info(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, info_level);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      info.<a class="code" href="struct_parsed_tools_1_1_grid_info.html#a3a90b9eaf1e3efce862b029030e41311">print_info</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keywordflow">catch</span> (std::exception &amp;exc)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      std::cerr &lt;&lt; std::endl</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                &lt;&lt; std::endl</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception on processing: &quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                &lt;&lt; exc.what() &lt;&lt; std::endl</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Aborting!&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordflow">catch</span> (...)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      std::cerr &lt;&lt; std::endl</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                &lt;&lt; std::endl</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      std::cerr &lt;&lt; <span class="stringliteral">&quot;Unknown exception!&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Aborting!&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<a href="mesh__handler_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (C) 2022 by Luca Heltai</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// This file is part of the FSI-suite platform, based on the deal.II library.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// The FSI-suite platform is free software; you can use it, redistribute it,</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// and/or modify it under the terms of the GNU Lesser General Public License as</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// published by the Free Software Foundation; either version 3.0 of the License,</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// or (at your option) any later version. The full text of the license can be</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// found in the file LICENSE at the top level of the FSI-suite platform</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html">deal.II/grid/reference_cell.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid__generator_8h.html">parsed_tools/grid_generator.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid__info_8h.html">parsed_tools/grid_info.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keywordtype">int</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">   30</a></span>&#160;<a class="code" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classUtilities_1_1MPI_1_1MPI__InitFinalize.html">Utilities::MPI::MPI_InitFinalize</a> mpi_initialization(argc, argv, 1);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      std::string                      par_name   = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                     info_level = 0;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="keywordflow">if</span> (argc &gt; 1)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        par_name = argv[1];</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <span class="keywordflow">if</span> (argc &gt; 2)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        info_level = std::atoi(argv[2]);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process</a>(MPI_COMM_WORLD) == 0)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">depth_console</a>(2);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">depth_console</a>(0);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <a class="code" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator&lt;2&gt;</a> pgg;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a>(par_name);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;2&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      pgg.<a class="code" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597">generate</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      pgg.<a class="code" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2">write</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <a class="code" href="struct_parsed_tools_1_1_grid_info.html">ParsedTools::GridInfo</a> info(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, info_level);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      info.<a class="code" href="struct_parsed_tools_1_1_grid_info.html#a3a90b9eaf1e3efce862b029030e41311">print_info</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">catch</span> (std::exception &amp;exc)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      std::cerr &lt;&lt; std::endl</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                &lt;&lt; std::endl</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception on processing: &quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                &lt;&lt; exc.what() &lt;&lt; std::endl</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Aborting!&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordflow">catch</span> (...)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      std::cerr &lt;&lt; std::endl</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                &lt;&lt; std::endl</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      std::cerr &lt;&lt; <span class="stringliteral">&quot;Unknown exception!&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Aborting!&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
-<div class="ttc" id="astruct_parsed_tools_1_1_grid_info_html"><div class="ttname"><a href="struct_parsed_tools_1_1_grid_info.html">ParsedTools::GridInfo</a></div><div class="ttdoc">Gather information about a Triangulation.</div><div class="ttdef"><b>Definition:</b> <a href="grid__info_8h_source.html#l00133">grid_info.h:133</a></div></div>
+<div class="ttc" id="astruct_parsed_tools_1_1_grid_info_html"><div class="ttname"><a href="struct_parsed_tools_1_1_grid_info.html">ParsedTools::GridInfo</a></div><div class="ttdoc">Gather information about a Triangulation.</div><div class="ttdef"><b>Definition:</b> <a href="grid__info_8h_source.html#l00148">grid_info.h:148</a></div></div>
 <div class="ttc" id="aclassTriangulation_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a></div></div>
-<div class="ttc" id="astruct_parsed_tools_1_1_grid_info_html_a3a90b9eaf1e3efce862b029030e41311"><div class="ttname"><a href="struct_parsed_tools_1_1_grid_info.html#a3a90b9eaf1e3efce862b029030e41311">ParsedTools::GridInfo::print_info</a></div><div class="ttdeci">void print_info(StreamType &amp;out)</div><div class="ttdoc">Print all gathered information about the Triangulation.</div><div class="ttdef"><b>Definition:</b> <a href="grid__info_8h_source.html#l00237">grid_info.h:237</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_grid_generator_html_a2bf9463a190983c0c3c1310e3158e597"><div class="ttname"><a href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597">ParsedTools::GridGenerator::generate</a></div><div class="ttdeci">void generate(Triangulation&lt; dim, spacedim &gt; &amp;tria) const</div><div class="ttdoc">Fill a triangulation according to the parsed parameters.</div><div class="ttdef"><b>Definition:</b> <a href="grid__generator_8cc_source.html#l00037">grid_generator.cc:37</a></div></div>
+<div class="ttc" id="astruct_parsed_tools_1_1_grid_info_html_a3a90b9eaf1e3efce862b029030e41311"><div class="ttname"><a href="struct_parsed_tools_1_1_grid_info.html#a3a90b9eaf1e3efce862b029030e41311">ParsedTools::GridInfo::print_info</a></div><div class="ttdeci">void print_info(StreamType &amp;out)</div><div class="ttdoc">Print all gathered information about the Triangulation.</div><div class="ttdef"><b>Definition:</b> <a href="grid__info_8h_source.html#l00252">grid_info.h:252</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_grid_generator_html_a2bf9463a190983c0c3c1310e3158e597"><div class="ttname"><a href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597">ParsedTools::GridGenerator::generate</a></div><div class="ttdeci">void generate(Triangulation&lt; dim, spacedim &gt; &amp;tria) const</div><div class="ttdoc">Fill a triangulation according to the parsed parameters.</div><div class="ttdef"><b>Definition:</b> <a href="grid__generator_8cc_source.html#l00052">grid_generator.cc:52</a></div></div>
 <div class="ttc" id="alogstream_8h_html_ac643e79bd992f1a9bd0dca5b9f2859fb"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a></div><div class="ttdeci">LogStream deallog</div></div>
 <div class="ttc" id="atria__description_8cc_html_ab695339a227bd369fcea767631247cff"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a></div><div class="ttdeci">const ::Triangulation&lt; dim, spacedim &gt; &amp; tria</div></div>
 <div class="ttc" id="aclassParameterAcceptor_html_a8c735525d2865112e5d67f9ba697224e"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a></div><div class="ttdeci">static void initialize(const std::string &amp;filename=&quot;&quot;, const std::string &amp;output_filename=&quot;&quot;, const ParameterHandler::OutputStyle output_style_for_output_filename=ParameterHandler::Short, ParameterHandler &amp;prm=ParameterAcceptor::prm, const ParameterHandler::OutputStyle output_style_for_filename=ParameterHandler::DefaultStyle)</div></div>
-<div class="ttc" id="amesh__handler_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdoc">Mesh generator and reader.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__handler_8cc_source.html#l00015">mesh_handler.cc:15</a></div></div>
+<div class="ttc" id="amesh__handler_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdoc">Mesh generator and reader.</div><div class="ttdef"><b>Definition:</b> <a href="mesh__handler_8cc_source.html#l00030">mesh_handler.cc:30</a></div></div>
 <div class="ttc" id="aclassLogStream_html_a8028e970ad8388596d625ed463894e98"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console</a></div><div class="ttdeci">unsigned int depth_console(const unsigned int n)</div></div>
 <div class="ttc" id="anamespaceUtilities_1_1MPI_html_a895dcd8223a0ee6f0e6a80b80e2d5982"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process</a></div><div class="ttdeci">unsigned int this_mpi_process(const MPI_Comm &amp;mpi_communicator)</div></div>
 <div class="ttc" id="agrid__info_8h_html"><div class="ttname"><a href="grid__info_8h.html">grid_info.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_grid_generator_html_aa0916dd4512a04185ed82f88da5c1ad2"><div class="ttname"><a href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2">ParsedTools::GridGenerator::write</a></div><div class="ttdeci">void write(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const std::string &amp;filename=&quot;&quot;) const</div><div class="ttdoc">Write the given Triangulation to the output file specified in Output file name, or in the optional fi...</div><div class="ttdef"><b>Definition:</b> <a href="grid__generator_8cc_source.html#l00166">grid_generator.cc:166</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_grid_generator_html_aa0916dd4512a04185ed82f88da5c1ad2"><div class="ttname"><a href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2">ParsedTools::GridGenerator::write</a></div><div class="ttdeci">void write(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const std::string &amp;filename=&quot;&quot;) const</div><div class="ttdoc">Write the given Triangulation to the output file specified in Output file name, or in the optional fi...</div><div class="ttdef"><b>Definition:</b> <a href="grid__generator_8cc_source.html#l00181">grid_generator.cc:181</a></div></div>
 <div class="ttc" id="areference__cell_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html">reference_cell.h</a></div></div>
 <div class="ttc" id="agrid__generator_8h_html"><div class="ttname"><a href="grid__generator_8h.html">grid_generator.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_grid_generator_html"><div class="ttname"><a href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a></div><div class="ttdoc">GridGenerator class.</div><div class="ttdef"><b>Definition:</b> <a href="grid__generator_8h_source.html#l00059">grid_generator.h:59</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_grid_generator_html"><div class="ttname"><a href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a></div><div class="ttdoc">GridGenerator class.</div><div class="ttdef"><b>Definition:</b> <a href="grid__generator_8h_source.html#l00074">grid_generator.h:74</a></div></div>
 <div class="ttc" id="aclassUtilities_1_1MPI_1_1MPI__InitFinalize_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classUtilities_1_1MPI_1_1MPI__InitFinalize.html">Utilities::MPI::MPI_InitFinalize</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="mesh__handler_8cc.html">mesh_handler.cc</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:04 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:34 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

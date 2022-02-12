@@ -533,13 +533,63 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructor. </p>
 <p>Build the preconditioner of a matrix using AMG. </p>
 
-<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00013">13</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00028">28</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>.</p>
+<p class="reference">References <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="abff4cbf55a16cffa48e31fff42aa874e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abff4cbf55a16cffa48e31fff42aa874e">&#9670;&nbsp;</a></span>initialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Matrix &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">template void ParsedLAC::AMGPreconditioner::initialize&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt; double &gt; &gt; </td>
+          <td>(</td>
+          <td class="paramtype">const Matrix &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the preconditioner using <code>matrix</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00164">164</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="amg_8h_source.html#l00112">aggregation_threshold</a>, <a class="el" href="amg_8h_source.html#l00163">coarse_type</a>, <a class="el" href="amg_8h_source.html#l00168">constant_modes</a>, <a class="el" href="amg_8h_source.html#l00083">elliptic</a>, <a class="el" href="amg_8h_source.html#l00089">higher_order_elements</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionAMG.html#af36504290094ae83e3d0ff50c03d548a">TrilinosWrappers::PreconditionAMG::initialize()</a>, <a class="el" href="amg_8h_source.html#l00095">n_cycles</a>, <a class="el" href="amg_8h_source.html#l00144">output_details</a>, <a class="el" href="amg_8h_source.html#l00137">smoother_overlap</a>, <a class="el" href="amg_8h_source.html#l00131">smoother_sweeps</a>, <a class="el" href="amg_8h_source.html#l00157">smoother_type</a>, and <a class="el" href="amg_8h_source.html#l00101">w_cycle</a>.</p>
+
+</div>
+</div>
+<a id="ab9dc27f605a928e232477d96c21f7ba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9dc27f605a928e232477d96c21f7ba4">&#9670;&nbsp;</a></span>set_constant_modes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParsedLAC::AMGPreconditioner::set_constant_modes </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::vector&lt; bool &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>constant_modes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the constant modes of the AMG preconditioner. </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00154">154</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="amg_8h_source.html#l00168">constant_modes</a>.</p>
+
+</div>
+</div>
 <a id="a1028fcebfd973899aaf5331e3ef7107c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1028fcebfd973899aaf5331e3ef7107c">&#9670;&nbsp;</a></span>add_parameters()</h2>
 
@@ -565,151 +615,15 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Declare preconditioner options. </p>
 
-<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00041">41</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00056">56</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="el" href="amg_8h_source.html#l00112">aggregation_threshold</a>, <a class="el" href="amg_8h_source.html#l00163">coarse_type</a>, <a class="el" href="amg_8h_source.html#l00083">elliptic</a>, <a class="el" href="amg_8h_source.html#l00089">higher_order_elements</a>, <a class="el" href="amg_8h_source.html#l00095">n_cycles</a>, <a class="el" href="amg_8h_source.html#l00144">output_details</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>, <a class="el" href="amg_8h_source.html#l00137">smoother_overlap</a>, <a class="el" href="amg_8h_source.html#l00131">smoother_sweeps</a>, <a class="el" href="amg_8h_source.html#l00157">smoother_type</a>, and <a class="el" href="amg_8h_source.html#l00101">w_cycle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00013">AMGPreconditioner()</a>.</p>
-
-</div>
-</div>
-<a id="abff4cbf55a16cffa48e31fff42aa874e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abff4cbf55a16cffa48e31fff42aa874e">&#9670;&nbsp;</a></span>initialize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Matrix &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">template void ParsedLAC::AMGPreconditioner::initialize&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt; double &gt; &gt; </td>
-          <td>(</td>
-          <td class="paramtype">const Matrix &amp;&#160;</td>
-          <td class="paramname"><em>matrix</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Initialize the preconditioner using <code>matrix</code>. </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00149">149</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
-
-<p class="reference">References <a class="el" href="amg_8h_source.html#l00112">aggregation_threshold</a>, <a class="el" href="amg_8h_source.html#l00163">coarse_type</a>, <a class="el" href="amg_8h_source.html#l00168">constant_modes</a>, <a class="el" href="amg_8h_source.html#l00083">elliptic</a>, <a class="el" href="amg_8h_source.html#l00089">higher_order_elements</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionAMG.html#af36504290094ae83e3d0ff50c03d548a">TrilinosWrappers::PreconditionAMG::initialize()</a>, <a class="el" href="amg_8h_source.html#l00095">n_cycles</a>, <a class="el" href="amg_8h_source.html#l00144">output_details</a>, <a class="el" href="amg_8h_source.html#l00137">smoother_overlap</a>, <a class="el" href="amg_8h_source.html#l00131">smoother_sweeps</a>, <a class="el" href="amg_8h_source.html#l00157">smoother_type</a>, and <a class="el" href="amg_8h_source.html#l00101">w_cycle</a>.</p>
-
-</div>
-</div>
-<a id="ab9dc27f605a928e232477d96c21f7ba4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9dc27f605a928e232477d96c21f7ba4">&#9670;&nbsp;</a></span>set_constant_modes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ParsedLAC::AMGPreconditioner::set_constant_modes </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::vector&lt; bool &gt;&gt; &amp;&#160;</td>
-          <td class="paramname"><em>constant_modes</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Set the constant modes of the AMG preconditioner. </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8cc_source.html#l00139">139</a> of file <a class="el" href="amg_8cc_source.html">amg.cc</a>.</p>
-
-<p class="reference">References <a class="el" href="amg_8h_source.html#l00168">constant_modes</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00028">AMGPreconditioner()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a06dc8a9ccdd8961a28afa580ce69b37b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06dc8a9ccdd8961a28afa580ce69b37b">&#9670;&nbsp;</a></span>aggregation_threshold</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ParsedLAC::AMGPreconditioner::aggregation_threshold</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This threshold tells the AMG setup how the coarsening should be performed. </p>
-<p>In the AMG used by ML, all points that strongly couple with the tentative coarse-level point form one aggregate. The term strong coupling is controlled by the variable aggregation_threshold, meaning that all elements that are not smaller than aggregation_threshold times the diagonal element do couple strongly. </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00112">112</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
-
-</div>
-</div>
-<a id="a5a5f829a16f4930c8b6e08370aeea569"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a5f829a16f4930c8b6e08370aeea569">&#9670;&nbsp;</a></span>coarse_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ParsedLAC::AMGPreconditioner::coarse_type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Determines which solver to use on the coarsest level. </p>
-<p>The same settings as for the smoother type are possible. </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00163">163</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
-
-</div>
-</div>
-<a id="a6877bb39373f44095721fe3613f99e93"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6877bb39373f44095721fe3613f99e93">&#9670;&nbsp;</a></span>constant_modes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::vector&lt;bool&gt; &gt; ParsedLAC::AMGPreconditioner::constant_modes</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constant modes of the matrix. </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00168">168</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>, and <a class="el" href="amg_8cc_source.html#l00139">set_constant_modes()</a>.</p>
-
-</div>
-</div>
 <a id="a049c357965ea5d502b0840fd82721bbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a049c357965ea5d502b0840fd82721bbf">&#9670;&nbsp;</a></span>elliptic</h2>
 
@@ -734,7 +648,7 @@ template&lt;typename Matrix &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00083">83</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
 
 </div>
 </div>
@@ -762,7 +676,7 @@ template&lt;typename Matrix &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00089">89</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
 
 </div>
 </div>
@@ -790,12 +704,12 @@ template&lt;typename Matrix &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00095">95</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
 
 </div>
 </div>
-<a id="a7167da0f5db61d06e8b96fc5bd743da0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7167da0f5db61d06e8b96fc5bd743da0">&#9670;&nbsp;</a></span>output_details</h2>
+<a id="a67eeace2f8ae6e9cc81273cce87e6684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67eeace2f8ae6e9cc81273cce87e6684">&#9670;&nbsp;</a></span>w_cycle</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -804,7 +718,7 @@ template&lt;typename Matrix &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ParsedLAC::AMGPreconditioner::output_details</td>
+          <td class="memname">bool ParsedLAC::AMGPreconditioner::w_cycle</td>
         </tr>
       </table>
   </td>
@@ -814,17 +728,16 @@ template&lt;typename Matrix &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>If this flag is set to true, then internal information from the ML preconditioner is printed to screen. </p>
-<p>This can be useful when debugging the preconditioner. </p>
+<p>Defines whether a w-cycle should be used instead of the standard setting of a v-cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00144">144</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00101">101</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
 
 </div>
 </div>
-<a id="a9c2ac5eb3e462d0ff96aa77d26e1b731"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c2ac5eb3e462d0ff96aa77d26e1b731">&#9670;&nbsp;</a></span>smoother_overlap</h2>
+<a id="a06dc8a9ccdd8961a28afa580ce69b37b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06dc8a9ccdd8961a28afa580ce69b37b">&#9670;&nbsp;</a></span>aggregation_threshold</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -833,7 +746,7 @@ template&lt;typename Matrix &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned int ParsedLAC::AMGPreconditioner::smoother_overlap</td>
+          <td class="memname">double ParsedLAC::AMGPreconditioner::aggregation_threshold</td>
         </tr>
       </table>
   </td>
@@ -843,71 +756,12 @@ template&lt;typename Matrix &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Determines the overlap in the SSOR/Chebyshev error smoother when run in parallel. </p>
+<p>This threshold tells the AMG setup how the coarsening should be performed. </p>
+<p>In the AMG used by ML, all points that strongly couple with the tentative coarse-level point form one aggregate. The term strong coupling is controlled by the variable aggregation_threshold, meaning that all elements that are not smaller than aggregation_threshold times the diagonal element do couple strongly. </p>
 
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00137">137</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00112">112</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
-
-</div>
-</div>
-<a id="afe989108b18bcd3ba9721a639ce6ef20"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe989108b18bcd3ba9721a639ce6ef20">&#9670;&nbsp;</a></span>smoother_sweeps</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int ParsedLAC::AMGPreconditioner::smoother_sweeps</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Determines how many sweeps of the smoother should be performed. </p>
-<p>When the flag elliptic is set to true, i.e., for elliptic or almost elliptic problems, the polynomial degree of the Chebyshev smoother is set to smoother_sweeps. The term sweeps refers to the number of matrix-vector products performed in the Chebyshev case. In the non-elliptic case, smoother_sweeps sets the number of SSOR relaxation sweeps for post-smoothing to be performed. </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00131">131</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
-
-</div>
-</div>
-<a id="a485f947eb56363ffdcc4edea181f5fb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a485f947eb56363ffdcc4edea181f5fb2">&#9670;&nbsp;</a></span>smoother_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ParsedLAC::AMGPreconditioner::smoother_type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Determines which smoother to use for the AMG cycle. </p>
-<p>Possibilities for smoother_type are the following: "Aztec", "IFPACK", "Jacobi", "ML symmetric Gauss-Seidel", "symmetric Gauss-Seidel", "ML
-Gauss-Seidel", "Gauss-Seidel", "block Gauss-Seidel", "symmetric
-block Gauss-Seidel", "Chebyshev", "MLS", "Hiptmair", "Amesos-KLU", "Amesos-Superlu", "Amesos-UMFPACK", "Amesos-Superludist", "Amesos-MUMPS", "user-defined", "SuperLU", "IFPACK-Chebyshev", "self", "do-nothing", "IC", "ICT", "ILU", "ILUT", "Block Chebyshev", "IFPACK-Block Chebyshev" </p>
-
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00157">157</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
 
 </div>
 </div>
@@ -938,8 +792,8 @@ block Gauss-Seidel", "Chebyshev", "MLS", "Hiptmair", "Amesos-KLU", "Amesos-Super
 
 </div>
 </div>
-<a id="a67eeace2f8ae6e9cc81273cce87e6684"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67eeace2f8ae6e9cc81273cce87e6684">&#9670;&nbsp;</a></span>w_cycle</h2>
+<a id="afe989108b18bcd3ba9721a639ce6ef20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe989108b18bcd3ba9721a639ce6ef20">&#9670;&nbsp;</a></span>smoother_sweeps</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -948,7 +802,7 @@ block Gauss-Seidel", "Chebyshev", "MLS", "Hiptmair", "Amesos-KLU", "Amesos-Super
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool ParsedLAC::AMGPreconditioner::w_cycle</td>
+          <td class="memname">unsigned int ParsedLAC::AMGPreconditioner::smoother_sweeps</td>
         </tr>
       </table>
   </td>
@@ -958,11 +812,157 @@ block Gauss-Seidel", "Chebyshev", "MLS", "Hiptmair", "Amesos-KLU", "Amesos-Super
 </table>
 </div><div class="memdoc">
 
-<p>Defines whether a w-cycle should be used instead of the standard setting of a v-cycle. </p>
+<p>Determines how many sweeps of the smoother should be performed. </p>
+<p>When the flag elliptic is set to true, i.e., for elliptic or almost elliptic problems, the polynomial degree of the Chebyshev smoother is set to smoother_sweeps. The term sweeps refers to the number of matrix-vector products performed in the Chebyshev case. In the non-elliptic case, smoother_sweeps sets the number of SSOR relaxation sweeps for post-smoothing to be performed. </p>
 
-<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00101">101</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00131">131</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00041">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00149">initialize()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a9c2ac5eb3e462d0ff96aa77d26e1b731"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c2ac5eb3e462d0ff96aa77d26e1b731">&#9670;&nbsp;</a></span>smoother_overlap</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ParsedLAC::AMGPreconditioner::smoother_overlap</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines the overlap in the SSOR/Chebyshev error smoother when run in parallel. </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00137">137</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a7167da0f5db61d06e8b96fc5bd743da0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7167da0f5db61d06e8b96fc5bd743da0">&#9670;&nbsp;</a></span>output_details</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ParsedLAC::AMGPreconditioner::output_details</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>If this flag is set to true, then internal information from the ML preconditioner is printed to screen. </p>
+<p>This can be useful when debugging the preconditioner. </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00144">144</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a485f947eb56363ffdcc4edea181f5fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a485f947eb56363ffdcc4edea181f5fb2">&#9670;&nbsp;</a></span>smoother_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ParsedLAC::AMGPreconditioner::smoother_type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines which smoother to use for the AMG cycle. </p>
+<p>Possibilities for smoother_type are the following: "Aztec", "IFPACK", "Jacobi", "ML symmetric Gauss-Seidel", "symmetric Gauss-Seidel", "ML
+Gauss-Seidel", "Gauss-Seidel", "block Gauss-Seidel", "symmetric
+block Gauss-Seidel", "Chebyshev", "MLS", "Hiptmair", "Amesos-KLU", "Amesos-Superlu", "Amesos-UMFPACK", "Amesos-Superludist", "Amesos-MUMPS", "user-defined", "SuperLU", "IFPACK-Chebyshev", "self", "do-nothing", "IC", "ICT", "ILU", "ILUT", "Block Chebyshev", "IFPACK-Block Chebyshev" </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00157">157</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a5a5f829a16f4930c8b6e08370aeea569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5f829a16f4930c8b6e08370aeea569">&#9670;&nbsp;</a></span>coarse_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ParsedLAC::AMGPreconditioner::coarse_type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines which solver to use on the coarsest level. </p>
+<p>The same settings as for the smoother type are possible. </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00163">163</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00056">add_parameters()</a>, and <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>.</p>
+
+</div>
+</div>
+<a id="a6877bb39373f44095721fe3613f99e93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6877bb39373f44095721fe3613f99e93">&#9670;&nbsp;</a></span>constant_modes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::vector&lt;bool&gt; &gt; ParsedLAC::AMGPreconditioner::constant_modes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Constant modes of the matrix. </p>
+
+<p class="definition">Definition at line <a class="el" href="amg_8h_source.html#l00168">168</a> of file <a class="el" href="amg_8h_source.html">amg.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="amg_8cc_source.html#l00164">initialize()</a>, and <a class="el" href="amg_8cc_source.html#l00154">set_constant_modes()</a>.</p>
 
 </div>
 </div>
@@ -976,7 +976,7 @@ block Gauss-Seidel", "Chebyshev", "MLS", "Hiptmair", "Amesos-KLU", "Amesos-Super
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_l_a_c.html">ParsedLAC</a></li><li class="navelem"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">AMGPreconditioner</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -126,36 +126,6 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aeba21d2bf70c7483ead7c117fcda11df"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">n_components</a> (const std::string &amp;component_names)</td></tr>
-<tr class="memdesc:aeba21d2bf70c7483ead7c117fcda11df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count the number of components in the given list of comma separated components.  <a href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">More...</a><br /></td></tr>
-<tr class="separator:aeba21d2bf70c7483ead7c117fcda11df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54e7fe3f31017316e724c2a5f712ee8e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a54e7fe3f31017316e724c2a5f712ee8e">blocks_to_names</a> (const std::vector&lt; std::string &gt; &amp;components, const std::vector&lt; unsigned int &gt; &amp;multiplicities)</td></tr>
-<tr class="memdesc:a54e7fe3f31017316e724c2a5f712ee8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build component names from block names and multiplicities.  <a href="namespace_parsed_tools_1_1_components.html#a54e7fe3f31017316e724c2a5f712ee8e">More...</a><br /></td></tr>
-<tr class="separator:a54e7fe3f31017316e724c2a5f712ee8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c96f33b31633430364a75f2f905944d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::vector&lt; std::string &gt;, std::vector&lt; unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a2c96f33b31633430364a75f2f905944d">names_to_blocks</a> (const std::string &amp;component_names)</td></tr>
-<tr class="memdesc:a2c96f33b31633430364a75f2f905944d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build block names and multiplicities from component names.  <a href="namespace_parsed_tools_1_1_components.html#a2c96f33b31633430364a75f2f905944d">More...</a><br /></td></tr>
-<tr class="separator:a2c96f33b31633430364a75f2f905944d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4297df9e7f3a5b7cd6f7d622ab246436"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
-<tr class="memdesc:a4297df9e7f3a5b7cd6f7d622ab246436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the canonical component name for the given selected component.  <a href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">More...</a><br /></td></tr>
-<tr class="separator:a4297df9e7f3a5b7cd6f7d622ab246436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a973d211175725cc54189cf8108bfe8b0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">block_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_components)</td></tr>
-<tr class="memdesc:a973d211175725cc54189cf8108bfe8b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the block corresponding to the given selected components, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">More...</a><br /></td></tr>
-<tr class="separator:a973d211175725cc54189cf8108bfe8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa205b06920c0629d02af91d7cbb05bf9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">component_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_components)</td></tr>
-<tr class="memdesc:aa205b06920c0629d02af91d7cbb05bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the components corresponding to first component of the given selected components, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">More...</a><br /></td></tr>
-<tr class="separator:aa205b06920c0629d02af91d7cbb05bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a142db55bccdbb263b8acca778ed1c9b5"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned int, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a142db55bccdbb263b8acca778ed1c9b5">component_to_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
-<tr class="memdesc:a142db55bccdbb263b8acca778ed1c9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the components and within the blocks corresponding to first component of the given selected component, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_parsed_tools_1_1_components.html#a142db55bccdbb263b8acca778ed1c9b5">More...</a><br /></td></tr>
-<tr class="separator:a142db55bccdbb263b8acca778ed1c9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a> (const std::string &amp;<a class="el" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>, const std::string &amp;selected_component)</td></tr>
-<tr class="memdesc:a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the component type for the given selected component.  <a href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">More...</a><br /></td></tr>
-<tr class="separator:a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c54312d350a7af3d45f36396a988b62"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a4c54312d350a7af3d45f36396a988b62">n_blocks</a> (const std::string &amp;component_names)</td></tr>
-<tr class="memdesc:a4c54312d350a7af3d45f36396a988b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count the number of components in the given list of comma separated components.  <a href="namespace_parsed_tools_1_1_components.html#a4c54312d350a7af3d45f36396a988b62">More...</a><br /></td></tr>
-<tr class="separator:a4c54312d350a7af3d45f36396a988b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8c056bb7fbded2e979016d6a2519570"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#ac8c056bb7fbded2e979016d6a2519570">mask</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
-<tr class="memdesc:ac8c056bb7fbded2e979016d6a2519570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a component mask corresponding to a given selected component, from a list of comma separated components.  <a href="namespace_parsed_tools_1_1_components.html#ac8c056bb7fbded2e979016d6a2519570">More...</a><br /></td></tr>
-<tr class="separator:ac8c056bb7fbded2e979016d6a2519570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28994869c8ecfdd8ff43806bdc25fbba"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim&gt; </td></tr>
 <tr class="memitem:a28994869c8ecfdd8ff43806bdc25fbba"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="class_parsed_tools_1_1_finite_element.html">FiniteElement</a>&lt; dim, spacedim &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">get_lagrangian_finite_element</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, const unsigned int degree=1, const int continuity=0)</td></tr>
 <tr class="memdesc:a28994869c8ecfdd8ff43806bdc25fbba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a> object compatible with the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> object.  <a href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">More...</a><br /></td></tr>
@@ -172,6 +142,36 @@ Functions</h2></td></tr>
 <tr class="memitem:ac45952841c084c7f403d6b054d5d1c13"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#ac45952841c084c7f403d6b054d5d1c13">join</a> (const Container &amp;strings, const std::string &amp;separator)</td></tr>
 <tr class="memdesc:ac45952841c084c7f403d6b054d5d1c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Join strings in a container together using a given separator.  <a href="namespace_parsed_tools_1_1_components.html#ac45952841c084c7f403d6b054d5d1c13">More...</a><br /></td></tr>
 <tr class="separator:ac45952841c084c7f403d6b054d5d1c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeba21d2bf70c7483ead7c117fcda11df"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">n_components</a> (const std::string &amp;component_names)</td></tr>
+<tr class="memdesc:aeba21d2bf70c7483ead7c117fcda11df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count the number of components in the given list of comma separated components.  <a href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">More...</a><br /></td></tr>
+<tr class="separator:aeba21d2bf70c7483ead7c117fcda11df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c54312d350a7af3d45f36396a988b62"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a4c54312d350a7af3d45f36396a988b62">n_blocks</a> (const std::string &amp;component_names)</td></tr>
+<tr class="memdesc:a4c54312d350a7af3d45f36396a988b62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count the number of components in the given list of comma separated components.  <a href="namespace_parsed_tools_1_1_components.html#a4c54312d350a7af3d45f36396a988b62">More...</a><br /></td></tr>
+<tr class="separator:a4c54312d350a7af3d45f36396a988b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54e7fe3f31017316e724c2a5f712ee8e"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a54e7fe3f31017316e724c2a5f712ee8e">blocks_to_names</a> (const std::vector&lt; std::string &gt; &amp;components, const std::vector&lt; unsigned int &gt; &amp;multiplicities)</td></tr>
+<tr class="memdesc:a54e7fe3f31017316e724c2a5f712ee8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build component names from block names and multiplicities.  <a href="namespace_parsed_tools_1_1_components.html#a54e7fe3f31017316e724c2a5f712ee8e">More...</a><br /></td></tr>
+<tr class="separator:a54e7fe3f31017316e724c2a5f712ee8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c96f33b31633430364a75f2f905944d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::vector&lt; std::string &gt;, std::vector&lt; unsigned int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a2c96f33b31633430364a75f2f905944d">names_to_blocks</a> (const std::string &amp;component_names)</td></tr>
+<tr class="memdesc:a2c96f33b31633430364a75f2f905944d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build block names and multiplicities from component names.  <a href="namespace_parsed_tools_1_1_components.html#a2c96f33b31633430364a75f2f905944d">More...</a><br /></td></tr>
+<tr class="separator:a2c96f33b31633430364a75f2f905944d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a973d211175725cc54189cf8108bfe8b0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">block_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_components)</td></tr>
+<tr class="memdesc:a973d211175725cc54189cf8108bfe8b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the block corresponding to the given selected components, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">More...</a><br /></td></tr>
+<tr class="separator:a973d211175725cc54189cf8108bfe8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa205b06920c0629d02af91d7cbb05bf9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">component_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_components)</td></tr>
+<tr class="memdesc:aa205b06920c0629d02af91d7cbb05bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the components corresponding to first component of the given selected components, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">More...</a><br /></td></tr>
+<tr class="separator:aa205b06920c0629d02af91d7cbb05bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a142db55bccdbb263b8acca778ed1c9b5"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned int, unsigned int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a142db55bccdbb263b8acca778ed1c9b5">component_to_indices</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:a142db55bccdbb263b8acca778ed1c9b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the indices within the components and within the blocks corresponding to first component of the given selected component, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a8ae36952c7e0cc778b47b5371b3aeff1">numbers::invalid_unsigned_int</a> if the selected components could not be found.  <a href="namespace_parsed_tools_1_1_components.html#a142db55bccdbb263b8acca778ed1c9b5">More...</a><br /></td></tr>
+<tr class="separator:a142db55bccdbb263b8acca778ed1c9b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4297df9e7f3a5b7cd6f7d622ab246436"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:a4297df9e7f3a5b7cd6f7d622ab246436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the canonical component name for the given selected component.  <a href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">More...</a><br /></td></tr>
+<tr class="separator:a4297df9e7f3a5b7cd6f7d622ab246436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_parsed_tools_1_1_components.html#a435ca50fe64ba85584a0e57f79c21919">Type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a> (const std::string &amp;<a class="el" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the component type for the given selected component.  <a href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">More...</a><br /></td></tr>
+<tr class="separator:a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8c056bb7fbded2e979016d6a2519570"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#ac8c056bb7fbded2e979016d6a2519570">mask</a> (const std::string &amp;component_names, const std::string &amp;selected_component)</td></tr>
+<tr class="memdesc:ac8c056bb7fbded2e979016d6a2519570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a component mask corresponding to a given selected component, from a list of comma separated components.  <a href="namespace_parsed_tools_1_1_components.html#ac8c056bb7fbded2e979016d6a2519570">More...</a><br /></td></tr>
+<tr class="separator:ac8c056bb7fbded2e979016d6a2519570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a> for extracting components and boundary condition types from strings. </p>
@@ -210,11 +210,285 @@ Functions</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="components_8h_source.html#l00028">28</a> of file <a class="el" href="components_8h_source.html">components.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="components_8h_source.html#l00043">43</a> of file <a class="el" href="components_8h_source.html">components.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a28994869c8ecfdd8ff43806bdc25fbba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28994869c8ecfdd8ff43806bdc25fbba">&#9670;&nbsp;</a></span>get_lagrangian_finite_element()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="el" href="class_parsed_tools_1_1_finite_element.html">FiniteElement</a>&lt;dim, spacedim&gt; &gt; ParsedTools::Components::get_lagrangian_finite_element </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tria</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>degree</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>continuity</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a> object compatible with the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> object. </p>
+<p>The returned object can be either <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__Q.html">FE_Q</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__DGQ.html">FE_DGQ</a>, FE_P, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__DGP.html">FE_DGP</a> according to the types of elements of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> (quads/hexes VS tria/tets)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tria</td><td>The triangulation to inspect </td></tr>
+    <tr><td class="paramname">degree</td><td>The polynomial degree of the Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a> </td></tr>
+    <tr><td class="paramname">continuity</td><td>The continuity of the Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a>: 0 for continuous, -1 for discontinuous</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;FiniteElement&lt;dim, spacedim&gt;&gt; </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00095">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::generate_grids_and_fes()</a>.</p>
+
+</div>
+</div>
+<a id="abfd995fb831c2525c681af93c22c3574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfd995fb831c2525c681af93c22c3574">&#9670;&nbsp;</a></span>get_cell_quadrature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;dim&gt; ParsedTools::Components::get_cell_quadrature </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tria</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>degree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> cells. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tria</td><td><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to insepct </td></tr>
+    <tr><td class="paramname">degree</td><td>The degree of the 1d quadrature used to generate the actual quadrature. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Quadrature&lt;dim&gt; </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00283">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::assemble_system()</a>, and <a class="el" href="dof__plotter_8cc_source.html#l00051">main()</a>.</p>
+
+</div>
+</div>
+<a id="a324f3c93e74a8b9d225bda8342521ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324f3c93e74a8b9d225bda8342521ba7">&#9670;&nbsp;</a></span>get_face_quadrature()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;dim - 1&gt; ParsedTools::Components::get_face_quadrature </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tria</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>degree</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> faces. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tria</td><td><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to insepct </td></tr>
+    <tr><td class="paramname">degree</td><td>The degree of the 1d quadrature used to generate the actual quadrature. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Quadrature&lt;dim&gt; </dd></dl>
+
+</div>
+</div>
+<a id="ac45952841c084c7f403d6b054d5d1c13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac45952841c084c7f403d6b054d5d1c13">&#9670;&nbsp;</a></span>join()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Container &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ParsedTools::Components::join </td>
+          <td>(</td>
+          <td class="paramtype">const Container &amp;&#160;</td>
+          <td class="paramname"><em>strings</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>separator</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Join strings in a container together using a given separator. </p>
+
+</div>
+</div>
+<a id="aeba21d2bf70c7483ead7c117fcda11df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeba21d2bf70c7483ead7c117fcda11df">&#9670;&nbsp;</a></span>n_components()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ParsedTools::Components::n_components </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>component_names</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count the number of components in the given list of comma separated components. </p>
+
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00032">32</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00030">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>, <a class="el" href="boundary__conditions_8cc_source.html#l00112">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>, and <a class="el" href="components_8cc_source.html#l00226">mask()</a>.</p>
+
+</div>
+</div>
+<a id="a4c54312d350a7af3d45f36396a988b62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c54312d350a7af3d45f36396a988b62">&#9670;&nbsp;</a></span>n_blocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ParsedTools::Components::n_blocks </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>component_names</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count the number of components in the given list of comma separated components. </p>
+
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00217">217</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, and <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>.</p>
+
+</div>
+</div>
+<a id="a54e7fe3f31017316e724c2a5f712ee8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54e7fe3f31017316e724c2a5f712ee8e">&#9670;&nbsp;</a></span>blocks_to_names()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ParsedTools::Components::blocks_to_names </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>components</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; unsigned int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>multiplicities</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build component names from block names and multiplicities. </p>
+
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00040">40</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePatterns_1_1Tools.html#a72743302dcb1a0fb1f2f8dc5122d299e">Patterns::Tools::to_string()</a>.</p>
+
+</div>
+</div>
+<a id="a2c96f33b31633430364a75f2f905944d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c96f33b31633430364a75f2f905944d">&#9670;&nbsp;</a></span>names_to_blocks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; std::vector&lt; std::string &gt;, std::vector&lt; unsigned int &gt; &gt; ParsedTools::Components::names_to_blocks </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>component_names</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Build block names and multiplicities from component names. </p>
+
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00056">56</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00156">component_indices()</a>, <a class="el" href="components_8cc_source.html#l00226">mask()</a>, <a class="el" href="components_8cc_source.html#l00217">n_blocks()</a>, and <a class="el" href="components_8cc_source.html#l00186">type()</a>.</p>
+
+</div>
+</div>
 <a id="a973d211175725cc54189cf8108bfe8b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a973d211175725cc54189cf8108bfe8b0">&#9670;&nbsp;</a></span>block_indices()</h2>
 
@@ -259,45 +533,11 @@ Functions</h2></td></tr>
 <div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">block_indices</a>(names, <span class="stringliteral">&quot;u.n&quot;</span>); <span class="comment">// {0}</span></div>
 <div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">block_indices</a>(names, <span class="stringliteral">&quot;u.t&quot;</span>); <span class="comment">// {0}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00119">119</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00134">134</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00057">component_name()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal.html#aa1c66592673b9ca3c1f4adecdc7897cea6a992d5529f459a44fee58c733255e86">index</a>, <a class="el" href="components_8cc_source.html#l00041">names_to_blocks()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00072">component_name()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal.html#aa1c66592673b9ca3c1f4adecdc7897cea6a992d5529f459a44fee58c733255e86">index</a>, <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00141">component_indices()</a>, <a class="el" href="components_8cc_source.html#l00155">component_to_indices()</a>, <a class="el" href="components_8cc_source.html#l00211">mask()</a>, and <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00060">PDEs::Serial::Stokes&lt; dim &gt;::setup_system()</a>.</p>
-
-</div>
-</div>
-<a id="a54e7fe3f31017316e724c2a5f712ee8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54e7fe3f31017316e724c2a5f712ee8e">&#9670;&nbsp;</a></span>blocks_to_names()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ParsedTools::Components::blocks_to_names </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>components</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::vector&lt; unsigned int &gt; &amp;&#160;</td>
-          <td class="paramname"><em>multiplicities</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Build component names from block names and multiplicities. </p>
-
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00025">25</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePatterns_1_1Tools.html#a72743302dcb1a0fb1f2f8dc5122d299e">Patterns::Tools::to_string()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00156">component_indices()</a>, <a class="el" href="components_8cc_source.html#l00170">component_to_indices()</a>, <a class="el" href="components_8cc_source.html#l00226">mask()</a>, and <a class="el" href="source_2pdes_2serial_2stokes_8cc_source.html#l00075">PDEs::Serial::Stokes&lt; dim &gt;::setup_system()</a>.</p>
 
 </div>
 </div>
@@ -346,60 +586,11 @@ Functions</h2></td></tr>
 <div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">component_indices</a>(names, <span class="stringliteral">&quot;u.T&quot;</span>); <span class="comment">// {0}</span></div>
 </div><!-- fragment --><p>If the component names are unique, this is the same as the <a class="el" href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0" title="Return the indices within the block corresponding to the given selected components,...">block_indices()</a> function, otherwise it returns the first component indices. </p>
 
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00141">141</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00156">156</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00119">block_indices()</a>, and <a class="el" href="components_8cc_source.html#l00041">names_to_blocks()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>, and <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00155">component_to_indices()</a>, and <a class="el" href="components_8cc_source.html#l00211">mask()</a>.</p>
-
-</div>
-</div>
-<a id="a4297df9e7f3a5b7cd6f7d622ab246436"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4297df9e7f3a5b7cd6f7d622ab246436">&#9670;&nbsp;</a></span>component_name()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ParsedTools::Components::component_name </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>component_names</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>selected_component</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return the canonical component name for the given selected component. </p>
-<p>For example, for component names "u,u,p", there are three components (two for "u" and one for "p"), and two blocks ("u" and "p").</p>
-<p>This function returns the canonical component name for an associated pattern of components.</p>
-<p>Accepted patterns are the following string types:</p><ul>
-<li>single component or block names, e.g., "p"</li>
-<li>a single component index, e.g., "0"</li>
-<li>a normal component name, e.g., "u.n" or "u.N"</li>
-</ul>
-<p>Examples: </p><div class="fragment"><div class="line">std::string names=<span class="stringliteral">&quot;u,u,p&quot;</span>;</div>
-<div class="line"><span class="keyword">auto</span> r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;u&quot;</span>); <span class="comment">// &quot;u&quot;</span></div>
-<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;p&quot;</span>); <span class="comment">// &quot;p&quot;</span></div>
-<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;1&quot;</span>); <span class="comment">// &quot;u&quot;</span></div>
-<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;2&quot;</span>); <span class="comment">// &quot;p&quot;</span></div>
-<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;u.n&quot;</span>); <span class="comment">// &quot;u&quot;</span></div>
-</div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00057">57</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#af7e8ff146c677d8a2408b88e4936f57d">Utilities::string_to_int()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00119">block_indices()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00170">component_to_indices()</a>, and <a class="el" href="components_8cc_source.html#l00226">mask()</a>.</p>
 
 </div>
 </div>
@@ -448,186 +639,22 @@ Functions</h2></td></tr>
 <div class="line">r = component_to_block_indices_map(names, <span class="stringliteral">&quot;u.n&quot;</span>); <span class="comment">// {0}</span></div>
 <div class="line">r = component_to_block_indices_map(names, <span class="stringliteral">&quot;u.t&quot;</span>); <span class="comment">// {0}</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00155">155</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00170">170</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="el" href="components_8cc_source.html#l00119">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00141">component_indices()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00156">component_indices()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00171">type()</a>.</p>
-
-</div>
-</div>
-<a id="abfd995fb831c2525c681af93c22c3574"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfd995fb831c2525c681af93c22c3574">&#9670;&nbsp;</a></span>get_cell_quadrature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;dim&gt; ParsedTools::Components::get_cell_quadrature </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tria</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>degree</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> cells. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tria</td><td><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to insepct </td></tr>
-    <tr><td class="paramname">degree</td><td>The degree of the 1d quadrature used to generate the actual quadrature. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Quadrature&lt;dim&gt; </dd></dl>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00268">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::assemble_system()</a>, and <a class="el" href="dof__plotter_8cc_source.html#l00036">main()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00186">type()</a>.</p>
 
 </div>
 </div>
-<a id="a324f3c93e74a8b9d225bda8342521ba7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a324f3c93e74a8b9d225bda8342521ba7">&#9670;&nbsp;</a></span>get_face_quadrature()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;dim - 1&gt; ParsedTools::Components::get_face_quadrature </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tria</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>degree</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> faces. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tria</td><td><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to insepct </td></tr>
-    <tr><td class="paramname">degree</td><td>The degree of the 1d quadrature used to generate the actual quadrature. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Quadrature&lt;dim&gt; </dd></dl>
-
-</div>
-</div>
-<a id="a28994869c8ecfdd8ff43806bdc25fbba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28994869c8ecfdd8ff43806bdc25fbba">&#9670;&nbsp;</a></span>get_lagrangian_finite_element()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="el" href="class_parsed_tools_1_1_finite_element.html">FiniteElement</a>&lt;dim, spacedim&gt; &gt; ParsedTools::Components::get_lagrangian_finite_element </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tria</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>degree</em> = <code>1</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>continuity</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get a Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a> object compatible with the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> object. </p>
-<p>The returned object can be either <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__Q.html">FE_Q</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__DGQ.html">FE_DGQ</a>, FE_P, or <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__DGP.html">FE_DGP</a> according to the types of elements of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> (quads/hexes VS tria/tets)</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tria</td><td>The triangulation to inspect </td></tr>
-    <tr><td class="paramname">degree</td><td>The polynomial degree of the Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a> </td></tr>
-    <tr><td class="paramname">continuity</td><td>The continuity of the Lagrangian <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">FiniteElement</a>: 0 for continuous, -1 for discontinuous</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;FiniteElement&lt;dim, spacedim&gt;&gt; </dd></dl>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00080">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::generate_grids_and_fes()</a>.</p>
-
-</div>
-</div>
-<a id="ac45952841c084c7f403d6b054d5d1c13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac45952841c084c7f403d6b054d5d1c13">&#9670;&nbsp;</a></span>join()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Container &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ParsedTools::Components::join </td>
-          <td>(</td>
-          <td class="paramtype">const Container &amp;&#160;</td>
-          <td class="paramname"><em>strings</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>separator</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Join strings in a container together using a given separator. </p>
-
-</div>
-</div>
-<a id="ac8c056bb7fbded2e979016d6a2519570"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8c056bb7fbded2e979016d6a2519570">&#9670;&nbsp;</a></span>mask()</h2>
+<a id="a4297df9e7f3a5b7cd6f7d622ab246436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4297df9e7f3a5b7cd6f7d622ab246436">&#9670;&nbsp;</a></span>component_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> ParsedTools::Components::mask </td>
+          <td class="memname">std::string ParsedTools::Components::component_name </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>component_names</em>, </td>
@@ -636,7 +663,7 @@ template&lt;typename Container &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>comp</em>&#160;</td>
+          <td class="paramname"><em>selected_component</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -646,89 +673,26 @@ template&lt;typename Container &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Return a component mask corresponding to a given selected component, from a list of comma separated components. </p>
+<p>Return the canonical component name for the given selected component. </p>
+<p>For example, for component names "u,u,p", there are three components (two for "u" and one for "p"), and two blocks ("u" and "p").</p>
+<p>This function returns the canonical component name for an associated pattern of components.</p>
+<p>Accepted patterns are the following string types:</p><ul>
+<li>single component or block names, e.g., "p"</li>
+<li>a single component index, e.g., "0"</li>
+<li>a normal component name, e.g., "u.n" or "u.N"</li>
+</ul>
+<p>Examples: </p><div class="fragment"><div class="line">std::string names=<span class="stringliteral">&quot;u,u,p&quot;</span>;</div>
+<div class="line"><span class="keyword">auto</span> r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;u&quot;</span>); <span class="comment">// &quot;u&quot;</span></div>
+<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;p&quot;</span>); <span class="comment">// &quot;p&quot;</span></div>
+<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;1&quot;</span>); <span class="comment">// &quot;u&quot;</span></div>
+<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;2&quot;</span>); <span class="comment">// &quot;p&quot;</span></div>
+<div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">component_name</a>(names, <span class="stringliteral">&quot;u.n&quot;</span>); <span class="comment">// &quot;u&quot;</span></div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00072">72</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00211">211</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#af7e8ff146c677d8a2408b88e4936f57d">Utilities::string_to_int()</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00119">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00141">component_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>, <a class="el" href="components_8cc_source.html#l00017">n_components()</a>, and <a class="el" href="components_8cc_source.html#l00041">names_to_blocks()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00015">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
-
-</div>
-</div>
-<a id="a4c54312d350a7af3d45f36396a988b62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c54312d350a7af3d45f36396a988b62">&#9670;&nbsp;</a></span>n_blocks()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int ParsedTools::Components::n_blocks </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>component_names</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Count the number of components in the given list of comma separated components. </p>
-
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00202">202</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, and <a class="el" href="components_8cc_source.html#l00041">names_to_blocks()</a>.</p>
-
-</div>
-</div>
-<a id="aeba21d2bf70c7483ead7c117fcda11df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeba21d2bf70c7483ead7c117fcda11df">&#9670;&nbsp;</a></span>n_components()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int ParsedTools::Components::n_components </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>component_names</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Count the number of components in the given list of comma separated components. </p>
-
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00017">17</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00015">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>, <a class="el" href="boundary__conditions_8cc_source.html#l00097">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>, and <a class="el" href="components_8cc_source.html#l00211">mask()</a>.</p>
-
-</div>
-</div>
-<a id="a2c96f33b31633430364a75f2f905944d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c96f33b31633430364a75f2f905944d">&#9670;&nbsp;</a></span>names_to_blocks()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::pair&lt; std::vector&lt; std::string &gt;, std::vector&lt; unsigned int &gt; &gt; ParsedTools::Components::names_to_blocks </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>component_names</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Build block names and multiplicities from component names. </p>
-
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00041">41</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00119">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00141">component_indices()</a>, <a class="el" href="components_8cc_source.html#l00211">mask()</a>, <a class="el" href="components_8cc_source.html#l00202">n_blocks()</a>, and <a class="el" href="components_8cc_source.html#l00171">type()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>.</p>
 
 </div>
 </div>
@@ -775,25 +739,61 @@ template&lt;typename Container &gt; </div>
 <div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a>(names, <span class="stringliteral">&quot;u.n&quot;</span>); <span class="comment">// normal</span></div>
 <div class="line">r = <a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">type</a>(names, <span class="stringliteral">&quot;u.t&quot;</span>); <span class="comment">// tangential</span></div>
 </div><!-- fragment --> 
-<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00171">171</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00186">186</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00155">component_to_indices()</a>, <a class="el" href="components_8cc_source.html#l00041">names_to_blocks()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00170">component_to_indices()</a>, <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="data__out_8h_source.html#l00166">ParsedTools::DataOut&lt; dim &gt;::add_data_vector()</a>, and <a class="el" href="boundary__conditions_8cc_source.html#l00015">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="data__out_8h_source.html#l00181">ParsedTools::DataOut&lt; dim &gt;::add_data_vector()</a>, and <a class="el" href="boundary__conditions_8cc_source.html#l00030">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
+
+</div>
+</div>
+<a id="ac8c056bb7fbded2e979016d6a2519570"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c056bb7fbded2e979016d6a2519570">&#9670;&nbsp;</a></span>mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> ParsedTools::Components::mask </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>component_names</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>selected_component</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return a component mask corresponding to a given selected component, from a list of comma separated components. </p>
+
+<p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00226">226</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00156">component_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>, <a class="el" href="components_8cc_source.html#l00032">n_components()</a>, and <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00030">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a973d211175725cc54189cf8108bfe8b0"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">ParsedTools::Components::block_indices</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; block_indices(const std::string &amp;component_names, const std::string &amp;selected_components)</div><div class="ttdoc">Return the indices within the block corresponding to the given selected components,...</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00119">components.cc:119</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a4297df9e7f3a5b7cd6f7d622ab246436"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">ParsedTools::Components::component_name</a></div><div class="ttdeci">std::string component_name(const std::string &amp;component_names, const std::string &amp;selected_component)</div><div class="ttdoc">Return the canonical component name for the given selected component.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00057">components.cc:57</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_aa205b06920c0629d02af91d7cbb05bf9"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">ParsedTools::Components::component_indices</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; component_indices(const std::string &amp;component_names, const std::string &amp;selected_components)</div><div class="ttdoc">Return the indices within the components corresponding to first component of the given selected compo...</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00141">components.cc:141</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">ParsedTools::Components::type</a></div><div class="ttdeci">Type type(const std::string &amp;component_names, const std::string &amp;selected_component)</div><div class="ttdoc">Return the component type for the given selected component.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00171">components.cc:171</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a973d211175725cc54189cf8108bfe8b0"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a973d211175725cc54189cf8108bfe8b0">ParsedTools::Components::block_indices</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; block_indices(const std::string &amp;component_names, const std::string &amp;selected_components)</div><div class="ttdoc">Return the indices within the block corresponding to the given selected components,...</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00134">components.cc:134</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a4297df9e7f3a5b7cd6f7d622ab246436"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a4297df9e7f3a5b7cd6f7d622ab246436">ParsedTools::Components::component_name</a></div><div class="ttdeci">std::string component_name(const std::string &amp;component_names, const std::string &amp;selected_component)</div><div class="ttdoc">Return the canonical component name for the given selected component.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00072">components.cc:72</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_aa205b06920c0629d02af91d7cbb05bf9"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#aa205b06920c0629d02af91d7cbb05bf9">ParsedTools::Components::component_indices</a></div><div class="ttdeci">std::vector&lt; unsigned int &gt; component_indices(const std::string &amp;component_names, const std::string &amp;selected_components)</div><div class="ttdoc">Return the indices within the components corresponding to first component of the given selected compo...</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00156">components.cc:156</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a6e6a1f22ae28a6e7a8a9c5f6f5c87a01"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">ParsedTools::Components::type</a></div><div class="ttdeci">Type type(const std::string &amp;component_name, const std::string &amp;selected_component)</div><div class="ttdoc">Return the component type for the given selected component.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00186">components.cc:186</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="namespace_parsed_tools_1_1_components.html">Components</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

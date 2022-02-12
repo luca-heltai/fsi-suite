@@ -103,196 +103,211 @@ $(document).ready(function(){initNavTree('mapping__eulerian_8h_source.html','');
 <div class="title">mapping_eulerian.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="mapping__eulerian_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef parsed_tools_mapping_fe_field_h</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define parsed_tools_mapping_fe_field_h</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">deal.II/base/config.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/general__data__storage_8h.html">deal.II/algorithms/general_data_storage.h</a>&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/function__parser_8h.html">deal.II/base/function_parser.h</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html">deal.II/base/parameter_acceptor.h</a>&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">deal.II/dofs/dof_handler.h</a>&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__fe__field_8h.html">deal.II/fe/mapping_fe_field.h</a>&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q__eulerian_8h.html">deal.II/fe/mapping_q_eulerian.h</a>&gt;</span></div>
+<a href="mapping__eulerian_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (C) 2022 by Luca Heltai</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// This file is part of the FSI-suite platform, based on the deal.II library.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// The FSI-suite platform is free software; you can use it, redistribute it,</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// and/or modify it under the terms of the GNU Lesser General Public License as</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// published by the Free Software Foundation; either version 3.0 of the License,</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// or (at your option) any later version. The full text of the license can be</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// found in the file LICENSE at the top level of the FSI-suite platform</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim = dim&gt;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html">   59</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html">MappingEulerian</a> : <span class="keyword">public</span> dealii::ParameterAcceptor</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527">MappingEulerian</a>(</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dh,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <span class="keyword">const</span> std::string &amp;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>              = <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="keyword">const</span> std::string &amp;          initial_configuration_or_displacement = <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">bool</span>                   <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a> = <span class="keyword">false</span>,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <span class="keyword">const</span> dealii::ComponentMask &amp;<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>             = dealii::ComponentMask());</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> VectorType&gt;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">initialize</a>(VectorType &amp;configuration_or_displacement);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">operator</span> <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#ifndef parsed_tools_mapping_fe_field_h</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define parsed_tools_mapping_fe_field_h</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">deal.II/base/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/general__data__storage_8h.html">deal.II/algorithms/general_data_storage.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/function__parser_8h.html">deal.II/base/function_parser.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html">deal.II/base/parameter_acceptor.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">deal.II/dofs/dof_handler.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__fe__field_8h.html">deal.II/fe/mapping_fe_field.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q__eulerian_8h.html">deal.II/fe/mapping_q_eulerian.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim = dim&gt;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html">   74</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html">MappingEulerian</a> : <span class="keyword">public</span> dealii::ParameterAcceptor</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527">MappingEulerian</a>(</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dh,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keyword">const</span> std::string &amp;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>              = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keyword">const</span> std::string &amp;          initial_configuration_or_displacement = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">bool</span>                   <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a> = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keyword">const</span> dealii::ComponentMask &amp;<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>             = dealii::ComponentMask());</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">operator()</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">const</span> dealii::SmartPointer&lt;const dealii::DoFHandler&lt;dim, spacedim&gt;&gt;</div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">   95</a></span>&#160;      <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">  100</a></span>&#160;    <span class="keyword">const</span> dealii::ComponentMask <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">  105</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#acd8750c8b393d06ffe635ed996d17756">  110</a></span>&#160;    std::string <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#acd8750c8b393d06ffe635ed996d17756">initial_configuration_or_displacement_expression</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> VectorType&gt;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">initialize</a>(VectorType &amp;configuration_or_displacement);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">operator</span> <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim, spacedim&gt; &amp;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">operator()</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">const</span> dealii::SmartPointer&lt;const dealii::DoFHandler&lt;dim, spacedim&gt;&gt;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">  110</a></span>&#160;      <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">  115</a></span>&#160;    std::unique_ptr&lt;dealii::Mapping&lt;dim, spacedim&gt;&gt; <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">mapping</a>;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  };</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">// Template implementation</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> VectorType&gt;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">MappingEulerian&lt;dim, spacedim&gt;::initialize</a>(</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    VectorType &amp;configuration_or_displacement)</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Interpolate the user data</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (initial_configuration_or_displacement_expression != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        dealii::FunctionParser&lt;spacedim&gt; initial_configuration(</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;          initial_configuration_or_displacement_expression);</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">  115</a></span>&#160;    <span class="keyword">const</span> dealii::ComponentMask <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">  120</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#acd8750c8b393d06ffe635ed996d17756">  125</a></span>&#160;    std::string <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#acd8750c8b393d06ffe635ed996d17756">initial_configuration_or_displacement_expression</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">  130</a></span>&#160;    std::unique_ptr&lt;dealii::Mapping&lt;dim, spacedim&gt;&gt; <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">mapping</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  };</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(initial_configuration.n_components ==</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                      dof_handler-&gt;get_fe().n_components(),</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The number of components in the &quot;</span></div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                                       <span class="stringliteral">&quot;configuration expression must be equal &quot;</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                                       <span class="stringliteral">&quot;to the number of components in the &quot;</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                                       <span class="stringliteral">&quot;fe.&quot;</span>));</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        dealii::VectorTools::interpolate(*dof_handler,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                         initial_configuration,</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                         configuration_or_displacement,</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                         <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;      }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span> (use_displacement)</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          configuration_or_displacement = 0;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;          {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">if</span> (dof_handler-&gt;get_triangulation()</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                  .all_reference_cells_are_hyper_cube())</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;              dealii::VectorTools::get_position_vector(</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                *dof_handler, configuration_or_displacement, mask);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;              {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="comment">// Use interpolation to get the position vector.</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keyword">const</span> std::string <span class="keywordtype">id</span>[3] = {<span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;y&quot;</span>, <span class="stringliteral">&quot;z&quot;</span>};</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                std::string       id_expression;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                std::string       sep = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>      j   = 0;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                     i &lt; dof_handler-&gt;get_fe().<a class="code" href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">n_components</a>();</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                     ++i)</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                  {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                    <span class="keywordflow">if</span> (mask[i] &amp;&amp; j &lt; spacedim)</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                      id_expression += sep + <span class="keywordtype">id</span>[j++];</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                      id_expression += sep + <span class="stringliteral">&quot;0&quot;</span>;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                    sep = <span class="stringliteral">&quot;; &quot;</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                  }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                dealii::FunctionParser&lt;spacedim&gt; initial_configuration(</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                  id_expression);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                dealii::VectorTools::interpolate(*dof_handler,</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                                                 initial_configuration,</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                                                 configuration_or_displacement,</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                                                 mask);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;              }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;          }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      }</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordflow">if</span> (use_displacement)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;      <span class="comment">// Finallly initialize the mapping with our own configuration</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="comment">// vector.</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      {</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          dof_handler-&gt;get_triangulation().all_reference_cells_are_hyper_cube(),</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The displacement mapping is only &quot;</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                             <span class="stringliteral">&quot;supported for hypercube grids.&quot;</span>));</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(mask == dealii::ComponentMask(),</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                      <span class="stringliteral">&quot;Using the displacement is only possible with default &quot;</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                      <span class="stringliteral">&quot;component mask.&quot;</span>));</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> degree = dof_handler-&gt;get_fe().degree;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        mapping.reset(<span class="keyword">new</span> dealii::MappingQEulerian&lt;dim, VectorType, spacedim&gt;(</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;          degree, *dof_handler, configuration_or_displacement));</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="comment">// Finallly initialize the mapping with our own configuration</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="comment">// vector.</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        mapping.reset(<span class="keyword">new</span> dealii::MappingFEField&lt;dim, spacedim, VectorType&gt;(</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;          *dof_handler, configuration_or_displacement, mask));</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;      }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">// Template implementation</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span> VectorType&gt;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">MappingEulerian&lt;dim, spacedim&gt;::initialize</a>(</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    VectorType &amp;configuration_or_displacement)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// Interpolate the user data</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> (initial_configuration_or_displacement_expression != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        dealii::FunctionParser&lt;spacedim&gt; initial_configuration(</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;          initial_configuration_or_displacement_expression);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(initial_configuration.n_components ==</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                      dof_handler-&gt;get_fe().n_components(),</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The number of components in the &quot;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                                       <span class="stringliteral">&quot;configuration expression must be equal &quot;</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                       <span class="stringliteral">&quot;to the number of components in the &quot;</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                       <span class="stringliteral">&quot;fe.&quot;</span>));</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        dealii::VectorTools::interpolate(*dof_handler,</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                         initial_configuration,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                                         configuration_or_displacement,</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                                         <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">if</span> (use_displacement)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;          configuration_or_displacement = 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;          {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">if</span> (dof_handler-&gt;get_triangulation()</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                  .all_reference_cells_are_hyper_cube())</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;              dealii::VectorTools::get_position_vector(</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                *dof_handler, configuration_or_displacement, mask);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;              {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                <span class="comment">// Use interpolation to get the position vector.</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keyword">const</span> std::string <span class="keywordtype">id</span>[3] = {<span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;y&quot;</span>, <span class="stringliteral">&quot;z&quot;</span>};</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                std::string       id_expression;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                std::string       sep = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>      j   = 0;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                     i &lt; dof_handler-&gt;get_fe().<a class="code" href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">n_components</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                     ++i)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                  {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    <span class="keywordflow">if</span> (mask[i] &amp;&amp; j &lt; spacedim)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                      id_expression += sep + <span class="keywordtype">id</span>[j++];</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                      id_expression += sep + <span class="stringliteral">&quot;0&quot;</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    sep = <span class="stringliteral">&quot;; &quot;</span>;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                  }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                dealii::FunctionParser&lt;spacedim&gt; initial_configuration(</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                  id_expression);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                dealii::VectorTools::interpolate(*dof_handler,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                                                 initial_configuration,</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                                 configuration_or_displacement,</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                                                 mask);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;              }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;          }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">if</span> (use_displacement)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="comment">// Finallly initialize the mapping with our own configuration</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      <span class="comment">// vector.</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;          dof_handler-&gt;get_triangulation().all_reference_cells_are_hyper_cube(),</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The displacement mapping is only &quot;</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                             <span class="stringliteral">&quot;supported for hypercube grids.&quot;</span>));</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(mask == dealii::ComponentMask(),</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                      <span class="stringliteral">&quot;Using the displacement is only possible with default &quot;</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                      <span class="stringliteral">&quot;component mask.&quot;</span>));</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> degree = dof_handler-&gt;get_fe().degree;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        mapping.reset(<span class="keyword">new</span> dealii::MappingQEulerian&lt;dim, VectorType, spacedim&gt;(</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;          degree, *dof_handler, configuration_or_displacement));</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;      }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">// Finallly initialize the mapping with our own configuration</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="comment">// vector.</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        mapping.reset(<span class="keyword">new</span> dealii::MappingFEField&lt;dim, spacedim, VectorType&gt;(</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          *dof_handler, configuration_or_displacement, mask));</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="amapping__q__eulerian_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q__eulerian_8h.html">mapping_q_eulerian.h</a></div></div>
 <div class="ttc" id="anamespaceVectorTools_html_a761f008bdeb7d94a69205ae824deefad"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate</a></div><div class="ttdeci">void interpolate(const Mapping&lt; dim, spacedim &gt; &amp;mapping, const DoFHandler&lt; dim, spacedim &gt; &amp;dof, const Function&lt; spacedim, typename VectorType::value_type &gt; &amp;function, VectorType &amp;vec, const ComponentMask &amp;component_mask=ComponentMask())</div></div>
 <div class="ttc" id="aclassMappingFEField_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField.html">MappingFEField</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aa85329e29bb855eb77ee1c1cdf0dabd0"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian::dof_handler</a></div><div class="ttdeci">const SmartPointer&lt; const DoFHandler&lt; dim, spacedim &gt; &gt; dof_handler</div><div class="ttdoc">A pointer to the dof handler.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00095">mapping_eulerian.h:95</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aa85329e29bb855eb77ee1c1cdf0dabd0"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian::dof_handler</a></div><div class="ttdeci">const SmartPointer&lt; const DoFHandler&lt; dim, spacedim &gt; &gt; dof_handler</div><div class="ttdoc">A pointer to the dof handler.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00110">mapping_eulerian.h:110</a></div></div>
 <div class="ttc" id="amapping__fe__field_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__fe__field_8h.html">mapping_fe_field.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6d22bbb6cfec918be9d909e8739cb67a"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">ParsedTools::MappingEulerian::mapping</a></div><div class="ttdeci">std::unique_ptr&lt; Mapping&lt; dim, spacedim &gt; &gt; mapping</div><div class="ttdoc">The actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00115">mapping_eulerian.h:115</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6d22bbb6cfec918be9d909e8739cb67a"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">ParsedTools::MappingEulerian::mapping</a></div><div class="ttdeci">std::unique_ptr&lt; Mapping&lt; dim, spacedim &gt; &gt; mapping</div><div class="ttdoc">The actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00130">mapping_eulerian.h:130</a></div></div>
 <div class="ttc" id="aclassFunction_html_a7248c7e11dc434fb7d16cdc5e41e3770"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFunction.html#a7248c7e11dc434fb7d16cdc5e41e3770">FunctionParser&lt; spacedim &gt;::n_components</a></div><div class="ttdeci">const unsigned int n_components</div></div>
 <div class="ttc" id="anamespaceVectorTools_html_afcb40e50d2fa4807762faefed206f5e3"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#afcb40e50d2fa4807762faefed206f5e3">VectorTools::get_position_vector</a></div><div class="ttdeci">void get_position_vector(const DoFHandler&lt; dim, spacedim &gt; &amp;dh, VectorType &amp;vector, const ComponentMask &amp;mask=ComponentMask())</div></div>
 <div class="ttc" id="aclassComponentMask_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a></div></div>
 <div class="ttc" id="aclassDoFHandler_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a2b713d6fa0a43765aad589bcd0671dc4"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">ParsedTools::MappingEulerian::mask</a></div><div class="ttdeci">const ComponentMask mask</div><div class="ttdoc">What components should be interpreted as the displacement.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00100">mapping_eulerian.h:100</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a2b713d6fa0a43765aad589bcd0671dc4"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">ParsedTools::MappingEulerian::mask</a></div><div class="ttdeci">const ComponentMask mask</div><div class="ttdoc">What components should be interpreted as the displacement.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00115">mapping_eulerian.h:115</a></div></div>
 <div class="ttc" id="aclassMapping_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a></div></div>
 <div class="ttc" id="aparameter__acceptor_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html">parameter_acceptor.h</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_gae9a45f517af1401c50811a11083f9114"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
 <div class="ttc" id="ageneral__data__storage_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/general__data__storage_8h.html">general_data_storage.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6617efa6a999856b1bb88e9568862527"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527">ParsedTools::MappingEulerian::MappingEulerian</a></div><div class="ttdeci">MappingEulerian(const DoFHandler&lt; dim, spacedim &gt; &amp;dh, const std::string &amp;section_name=&quot;&quot;, const std::string &amp;initial_configuration_or_displacement=&quot;&quot;, const bool use_displacement=false, const ComponentMask &amp;mask=ComponentMask())</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8cc_source.html#l00008">mapping_eulerian.cc:8</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6617efa6a999856b1bb88e9568862527"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527">ParsedTools::MappingEulerian::MappingEulerian</a></div><div class="ttdeci">MappingEulerian(const DoFHandler&lt; dim, spacedim &gt; &amp;dh, const std::string &amp;section_name=&quot;&quot;, const std::string &amp;initial_configuration_or_displacement=&quot;&quot;, const bool use_displacement=false, const ComponentMask &amp;mask=ComponentMask())</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8cc_source.html#l00023">mapping_eulerian.cc:23</a></div></div>
 <div class="ttc" id="afunction__parser_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/function__parser_8h.html">function_parser.h</a></div></div>
 <div class="ttc" id="aclassSmartPointer_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classSmartPointer.html">SmartPointer</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_aeba21d2bf70c7483ead7c117fcda11df"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">ParsedTools::Components::n_components</a></div><div class="ttdeci">unsigned int n_components(const std::string &amp;component_names)</div><div class="ttdoc">Count the number of components in the given list of comma separated components.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00017">components.cc:17</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_aeba21d2bf70c7483ead7c117fcda11df"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">ParsedTools::Components::n_components</a></div><div class="ttdeci">unsigned int n_components(const std::string &amp;component_names)</div><div class="ttdoc">Count the number of components in the given list of comma separated components.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00032">components.cc:32</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aecbda13eb03064bf9700507e9156ae5c"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">ParsedTools::MappingEulerian::initialize</a></div><div class="ttdeci">void initialize(VectorType &amp;configuration_or_displacement)</div><div class="ttdoc">Actually build the mapping from the given configuration or displacement.</div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a></div><div class="ttdoc">A wrapper class for MappingFEField or MappingQEulerian.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00059">mapping_eulerian.h:59</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a></div><div class="ttdoc">A wrapper class for MappingFEField or MappingQEulerian.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00074">mapping_eulerian.h:74</a></div></div>
 <div class="ttc" id="aclassParameterAcceptor_html_a52134c59ec98830230c23e080c841705"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">ParameterAcceptor::section_name</a></div><div class="ttdeci">const std::string section_name</div></div>
 <div class="ttc" id="avector__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">vector_tools.h</a></div></div>
 <div class="ttc" id="adofs_2dof__handler_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">dof_handler.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a7dfe82f8f76cabe1373454a6b4e096c1"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">ParsedTools::MappingEulerian::operator()</a></div><div class="ttdeci">const Mapping&lt; dim, spacedim &gt; &amp; operator()() const</div><div class="ttdoc">Return a reference to the actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8cc_source.html#l00055">mapping_eulerian.cc:55</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_acd8750c8b393d06ffe635ed996d17756"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#acd8750c8b393d06ffe635ed996d17756">ParsedTools::MappingEulerian::initial_configuration_or_displacement_expression</a></div><div class="ttdeci">std::string initial_configuration_or_displacement_expression</div><div class="ttdoc">What configuration to store when the mapping is initialized.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00110">mapping_eulerian.h:110</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a7dfe82f8f76cabe1373454a6b4e096c1"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">ParsedTools::MappingEulerian::operator()</a></div><div class="ttdeci">const Mapping&lt; dim, spacedim &gt; &amp; operator()() const</div><div class="ttdoc">Return a reference to the actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8cc_source.html#l00070">mapping_eulerian.cc:70</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_acd8750c8b393d06ffe635ed996d17756"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#acd8750c8b393d06ffe635ed996d17756">ParsedTools::MappingEulerian::initial_configuration_or_displacement_expression</a></div><div class="ttdeci">std::string initial_configuration_or_displacement_expression</div><div class="ttdoc">What configuration to store when the mapping is initialized.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00125">mapping_eulerian.h:125</a></div></div>
 <div class="ttc" id="aclassMappingQEulerian_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQEulerian.html">MappingQEulerian</a></div></div>
 <div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6b2e6967bb74d33619f674f818210edf"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">ParsedTools::MappingEulerian::use_displacement</a></div><div class="ttdeci">bool use_displacement</div><div class="ttdoc">Switch from displacement to configuration.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00105">mapping_eulerian.h:105</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6b2e6967bb74d33619f674f818210edf"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">ParsedTools::MappingEulerian::use_displacement</a></div><div class="ttdeci">bool use_displacement</div><div class="ttdoc">Switch from displacement to configuration.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00120">mapping_eulerian.h:120</a></div></div>
 <div class="ttc" id="aclassMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData_html_ac423aa5e1211ba2cd230a778c8df0b0d"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a></div><div class="ttdeci">ComponentMask mask</div></div>
 <div class="ttc" id="aclassParameterAcceptor_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
-<div class="ttc" id="anamespace_parsed_tools_html"><div class="ttname"><a href="namespace_parsed_tools.html">ParsedTools</a></div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8cc_source.html#l00012">boundary_conditions.cc:12</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_html"><div class="ttname"><a href="namespace_parsed_tools.html">ParsedTools</a></div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00037">boundary_conditions.h:37</a></div></div>
 <div class="ttc" id="aclassFunctionParser_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html">FunctionParser&lt; spacedim &gt;</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_8e8448d9aef603b86753e7cb911804a9.html">parsed_tools</a></li><li class="navelem"><a class="el" href="mapping__eulerian_8h.html">mapping_eulerian.h</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

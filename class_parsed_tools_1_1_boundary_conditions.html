@@ -316,7 +316,7 @@ class ParsedTools::BoundaryConditions&lt; spacedim &gt;</h3>
 <p>A wrapper for boundary conditions. </p>
 <p>This class can be used to store different types of boundary conditions, applied to different ids of the domain boundary. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00046">46</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00061">61</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab88051ef30878fd8a9673f18209d9f85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab88051ef30878fd8a9673f18209d9f85">&#9670;&nbsp;</a></span>BoundaryConditions()</h2>
@@ -372,11 +372,148 @@ template&lt;int spacedim&gt; </div>
 
 <p>Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00015">15</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00030">30</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="afc81c409005846a604c1c07ec709ec50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc81c409005846a604c1c07ec709ec50">&#9670;&nbsp;</a></span>update_user_substitution_map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::update_user_substitution_map </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a> &amp;&#160;</td>
+          <td class="paramname"><em>substitution_map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update the substitition map of every <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> defined in this object. </p>
+<p>See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html#a98ed0e06b9e5da65ab6ce09bd27473d7">Functions::SymbolicFunction::update_user_substitution_map()</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00197">197</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00197">ParsedTools::BoundaryConditions&lt; dim &gt;::update_user_substitution_map()</a>.</p>
+
+</div>
+</div>
+<a id="ad1e95a27c09a71ff01fbb6d3980bdc17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1e95a27c09a71ff01fbb6d3980bdc17">&#9670;&nbsp;</a></span>set_additional_function_arguments()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::set_additional_function_arguments </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a> &amp;&#160;</td>
+          <td class="paramname"><em>arguments</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html#a7ad742d6b3841d324f6d092ff2b62c41">Functions::SymbolicFunction::set_additional_function_arguments()</a> for every function defined in this object. </p>
+<p>See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html#a7ad742d6b3841d324f6d092ff2b62c41">Functions::SymbolicFunction::set_additional_function_arguments()</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00209">209</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00209">ParsedTools::BoundaryConditions&lt; dim &gt;::set_additional_function_arguments()</a>.</p>
+
+</div>
+</div>
+<a id="a0ae5c52f300bd503421f88b1a9e5c9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae5c52f300bd503421f88b1a9e5c9de">&#9670;&nbsp;</a></span>set_time()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::set_time </td>
+          <td>(</td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>time</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update time in each <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> defined in this object. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00220">220</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00220">ParsedTools::BoundaryConditions&lt; dim &gt;::set_time()</a>.</p>
+
+</div>
+</div>
+<a id="affecd599e5c2916a94d747f8b153e208"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affecd599e5c2916a94d747f8b153e208">&#9670;&nbsp;</a></span>check_consistency() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<div class="memtemplate">
+template&lt;typename Tria &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::check_consistency </td>
+          <td>(</td>
+          <td class="paramtype">const Tria &amp;&#160;</td>
+          <td class="paramname"><em>tria</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check that the grid is compatible with this boundary condition object, and that the boundary conditions are self consistent. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00114">114</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="a88a989e14fc1223f7a811891d6f9a663"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88a989e14fc1223f7a811891d6f9a663">&#9670;&nbsp;</a></span>check_consistency() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::check_consistency</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Make sure the specified boundary conditions make sense. </p>
+<p>Do this, independently of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> this object is associated with. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00112">112</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8h_source.html#l00114">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>.</p>
+
+</div>
+</div>
 <a id="ab477df00529bd891ee3f590c4d8b70f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab477df00529bd891ee3f590c4d8b70f8">&#9670;&nbsp;</a></span>apply_essential_boundary_conditions() <span class="overload">[1/2]</span></h2>
 
@@ -553,172 +690,7 @@ template&lt;int dim, typename MatrixType , typename VectorType &gt; </div>
 
 </div>
 </div>
-<a id="a88a989e14fc1223f7a811891d6f9a663"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a88a989e14fc1223f7a811891d6f9a663">&#9670;&nbsp;</a></span>check_consistency() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::check_consistency</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Make sure the specified boundary conditions make sense. </p>
-<p>Do this, independently of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> this object is associated with. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00097">97</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8h_source.html#l00099">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>.</p>
-
-</div>
-</div>
-<a id="affecd599e5c2916a94d747f8b153e208"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affecd599e5c2916a94d747f8b153e208">&#9670;&nbsp;</a></span>check_consistency() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<div class="memtemplate">
-template&lt;typename Tria &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::check_consistency </td>
-          <td>(</td>
-          <td class="paramtype">const Tria &amp;&#160;</td>
-          <td class="paramname"><em>tria</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check that the grid is compatible with this boundary condition object, and that the boundary conditions are self consistent. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00099">99</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
-<a id="ad1e95a27c09a71ff01fbb6d3980bdc17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1e95a27c09a71ff01fbb6d3980bdc17">&#9670;&nbsp;</a></span>set_additional_function_arguments()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::set_additional_function_arguments </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a> &amp;&#160;</td>
-          <td class="paramname"><em>arguments</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html#a7ad742d6b3841d324f6d092ff2b62c41">Functions::SymbolicFunction::set_additional_function_arguments()</a> for every function defined in this object. </p>
-<p>See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html#a7ad742d6b3841d324f6d092ff2b62c41">Functions::SymbolicFunction::set_additional_function_arguments()</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00194">194</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00194">ParsedTools::BoundaryConditions&lt; dim &gt;::set_additional_function_arguments()</a>.</p>
-
-</div>
-</div>
-<a id="a0ae5c52f300bd503421f88b1a9e5c9de"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ae5c52f300bd503421f88b1a9e5c9de">&#9670;&nbsp;</a></span>set_time()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::set_time </td>
-          <td>(</td>
-          <td class="paramtype">const double &amp;&#160;</td>
-          <td class="paramname"><em>time</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Update time in each <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> defined in this object. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00205">205</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00205">ParsedTools::BoundaryConditions&lt; dim &gt;::set_time()</a>.</p>
-
-</div>
-</div>
-<a id="afc81c409005846a604c1c07ec709ec50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc81c409005846a604c1c07ec709ec50">&#9670;&nbsp;</a></span>update_user_substitution_map()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::update_user_substitution_map </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD_1_1types.html#adbe765402ca6453f5f4e8ef744967468">Differentiation::SD::types::substitution_map</a> &amp;&#160;</td>
-          <td class="paramname"><em>substitution_map</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Update the substitition map of every <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a> defined in this object. </p>
-<p>See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html#a98ed0e06b9e5da65ab6ce09bd27473d7">Functions::SymbolicFunction::update_user_substitution_map()</a>. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8cc_source.html#l00182">182</a> of file <a class="el" href="boundary__conditions_8cc_source.html">boundary_conditions.cc</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00182">ParsedTools::BoundaryConditions&lt; dim &gt;::update_user_substitution_map()</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a2bf5d69aa22ef33e94e146ee19b867d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bf5d69aa22ef33e94e146ee19b867d6">&#9670;&nbsp;</a></span>bc_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="el" href="namespace_parsed_tools.html#a9dc7820b7314138c9689541378680fb9">BoundaryConditionType</a>&gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::bc_type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Type of boundary conditions. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00200">200</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
 <a id="a5c9a43e40157ab2496466f0b7007541c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5c9a43e40157ab2496466f0b7007541c">&#9670;&nbsp;</a></span>component_names</h2>
 
@@ -743,177 +715,7 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component names of the boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00175">175</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
-<a id="ab2438d73984c4b328734cfa38081c7f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2438d73984c4b328734cfa38081c7f8">&#9670;&nbsp;</a></span>expressions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::string&gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::expressions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Expressions for the boundary conditions. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00205">205</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
-<a id="aca8a12d14da41b58735bbf473f1d2713"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca8a12d14da41b58735bbf473f1d2713">&#9670;&nbsp;</a></span>functions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>&lt;spacedim&gt; &gt; &gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::functions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The actual functions. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00211">211</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
-<a id="a55ed4a362b26cbe2dd311afca0d981dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55ed4a362b26cbe2dd311afca0d981dc">&#9670;&nbsp;</a></span>grid_info</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="struct_parsed_tools_1_1_grid_info.html">GridInfo</a> <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::grid_info</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Information about the grid this BC applies to. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00227">227</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8h_source.html#l00099">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>.</p>
-
-</div>
-</div>
-<a id="ab37df567edd4d8d7d07b17a3f869615c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab37df567edd4d8d7d07b17a3f869615c">&#9670;&nbsp;</a></span>ids</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__CUDAWrappers.html#gabb7130e2cea54654455ca41ef304f939">std::set</a>&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>&gt; &gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::ids</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Ids on which this object applies boundary conditions. </p>
-
 <p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00190">190</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
-<a id="aeaf5244188e5d7b759cc942caf6015c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaf5244188e5d7b759cc942caf6015c2">&#9670;&nbsp;</a></span>masks</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>&gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::masks</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Component on which to apply the boundary condition. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00216">216</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
-
-</div>
-</div>
-<a id="ad62257caa7e5a8a33a66f6987c3aa6b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad62257caa7e5a8a33a66f6987c3aa6b3">&#9670;&nbsp;</a></span>n_boundary_conditions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::n_boundary_conditions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of boundary conditions. </p>
-
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00185">185</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -941,7 +743,63 @@ template&lt;int spacedim&gt; </div>
 
 <p>Number of components of the problem. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00180">180</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00195">195</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="ad62257caa7e5a8a33a66f6987c3aa6b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad62257caa7e5a8a33a66f6987c3aa6b3">&#9670;&nbsp;</a></span>n_boundary_conditions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::n_boundary_conditions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Number of boundary conditions. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00200">200</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="ab37df567edd4d8d7d07b17a3f869615c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37df567edd4d8d7d07b17a3f869615c">&#9670;&nbsp;</a></span>ids</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__CUDAWrappers.html#gabb7130e2cea54654455ca41ef304f939">std::set</a>&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>&gt; &gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::ids</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ids on which this object applies boundary conditions. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00205">205</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -969,7 +827,119 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component on which to apply the boundary condition. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00195">195</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00210">210</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="a2bf5d69aa22ef33e94e146ee19b867d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf5d69aa22ef33e94e146ee19b867d6">&#9670;&nbsp;</a></span>bc_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="namespace_parsed_tools.html#a9dc7820b7314138c9689541378680fb9">BoundaryConditionType</a>&gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::bc_type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Type of boundary conditions. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00215">215</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="ab2438d73984c4b328734cfa38081c7f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2438d73984c4b328734cfa38081c7f8">&#9670;&nbsp;</a></span>expressions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::expressions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Expressions for the boundary conditions. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00220">220</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="aca8a12d14da41b58735bbf473f1d2713"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca8a12d14da41b58735bbf473f1d2713">&#9670;&nbsp;</a></span>functions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1SymbolicFunction.html">Functions::SymbolicFunction</a>&lt;spacedim&gt; &gt; &gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::functions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The actual functions. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00226">226</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="aeaf5244188e5d7b759cc942caf6015c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf5244188e5d7b759cc942caf6015c2">&#9670;&nbsp;</a></span>masks</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>&gt; <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::masks</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Component on which to apply the boundary condition. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00231">231</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
 
 </div>
 </div>
@@ -997,7 +967,37 @@ template&lt;int spacedim&gt; </div>
 
 <p>Component types. </p>
 
-<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00221">221</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00236">236</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+</div>
+</div>
+<a id="a55ed4a362b26cbe2dd311afca0d981dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55ed4a362b26cbe2dd311afca0d981dc">&#9670;&nbsp;</a></span>grid_info</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_parsed_tools_1_1_grid_info.html">GridInfo</a> <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;::grid_info</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Information about the grid this BC applies to. </p>
+
+<p class="definition">Definition at line <a class="el" href="boundary__conditions_8h_source.html#l00242">242</a> of file <a class="el" href="boundary__conditions_8h_source.html">boundary_conditions.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="boundary__conditions_8h_source.html#l00114">ParsedTools::BoundaryConditions&lt; dim &gt;::check_consistency()</a>.</p>
 
 </div>
 </div>
@@ -1011,7 +1011,7 @@ template&lt;int spacedim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">BoundaryConditions</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

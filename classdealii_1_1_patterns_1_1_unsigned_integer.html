@@ -156,7 +156,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00012">12</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00027">27</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afe40123fff516ab54b7172bd45b6eacc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe40123fff516ab54b7172bd45b6eacc">&#9670;&nbsp;</a></span>UnsignedInteger()</h2>
@@ -184,17 +184,17 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00015">15</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00030">30</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#aaa0f9cd449850bf25160131cc4bc5668">lower_bound()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00107">clone()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00122">clone()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a878b19557ad87924baa1c8a4dc0099c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a878b19557ad87924baa1c8a4dc0099c9">&#9670;&nbsp;</a></span>clone()</h2>
+<a id="a0d51122d5639da72febc396410a491bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d51122d5639da72febc396410a491bb">&#9670;&nbsp;</a></span>match()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -203,9 +203,10 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; PatternBase &gt; dealii::Patterns::UnsignedInteger::clone </td>
+          <td class="memname">bool dealii::Patterns::UnsignedInteger::match </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>test_string</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -216,39 +217,9 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00107">107</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00038">38</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="patterns__unsigned__int_8h_source.html#l00035">lower_bound</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00015">UnsignedInteger()</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00037">upper_bound</a>.</p>
-
-</div>
-</div>
-<a id="acb290fc62e2c62b5fdf50e012610eda4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb290fc62e2c62b5fdf50e012610eda4">&#9670;&nbsp;</a></span>create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classdealii_1_1_patterns_1_1_unsigned_integer.html">UnsignedInteger</a> &gt; dealii::Patterns::UnsignedInteger::create </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>description</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00116">116</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
-
-<p class="reference">References <a class="el" href="patterns__unsigned__int_8cc_source.html#l00045">description()</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00039">description_init</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00035">lower_bound</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00037">upper_bound</a>.</p>
+<p class="reference">References <a class="el" href="patterns__unsigned__int_8h_source.html#l00050">lower_bound</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00052">upper_bound</a>.</p>
 
 </div>
 </div>
@@ -276,16 +247,16 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00045">45</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00060">60</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00039">description_init</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented()</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00035">lower_bound</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00037">upper_bound</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00054">description_init</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented()</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00050">lower_bound</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00052">upper_bound</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00116">create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00131">create()</a>.</p>
 
 </div>
 </div>
-<a id="a0d51122d5639da72febc396410a491bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d51122d5639da72febc396410a491bb">&#9670;&nbsp;</a></span>match()</h2>
+<a id="a878b19557ad87924baa1c8a4dc0099c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878b19557ad87924baa1c8a4dc0099c9">&#9670;&nbsp;</a></span>clone()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -294,10 +265,9 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool dealii::Patterns::UnsignedInteger::match </td>
+          <td class="memname">std::unique_ptr&lt; PatternBase &gt; dealii::Patterns::UnsignedInteger::clone </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>test_string</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -308,15 +278,45 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00023">23</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00122">122</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="patterns__unsigned__int_8h_source.html#l00035">lower_bound</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00037">upper_bound</a>.</p>
+<p class="reference">References <a class="el" href="patterns__unsigned__int_8h_source.html#l00050">lower_bound</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00030">UnsignedInteger()</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00052">upper_bound</a>.</p>
+
+</div>
+</div>
+<a id="acb290fc62e2c62b5fdf50e012610eda4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb290fc62e2c62b5fdf50e012610eda4">&#9670;&nbsp;</a></span>create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classdealii_1_1_patterns_1_1_unsigned_integer.html">UnsignedInteger</a> &gt; dealii::Patterns::UnsignedInteger::create </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>description</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8cc_source.html#l00131">131</a> of file <a class="el" href="patterns__unsigned__int_8cc_source.html">patterns_unsigned_int.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="patterns__unsigned__int_8cc_source.html#l00060">description()</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00054">description_init</a>, <a class="el" href="patterns__unsigned__int_8h_source.html#l00050">lower_bound</a>, and <a class="el" href="patterns__unsigned__int_8h_source.html#l00052">upper_bound</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af38e573a9c94d636bf0512d003abdc0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af38e573a9c94d636bf0512d003abdc0c">&#9670;&nbsp;</a></span>description_init</h2>
+<a id="a108ed2814d223994ab8c0b417a099fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a108ed2814d223994ab8c0b417a099fdb">&#9670;&nbsp;</a></span>min_int_value</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -325,45 +325,19 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const char * dealii::Patterns::UnsignedInteger::description_init = &quot;[UnsignedInteger&quot;</td>
+          <td class="memname">const unsigned int dealii::Patterns::UnsignedInteger::min_int_value</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00039">39</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00116">create()</a>, and <a class="el" href="patterns__unsigned__int_8cc_source.html#l00045">description()</a>.</p>
-
-</div>
-</div>
-<a id="a6de1e327701b6aa2ec4e06d7039d3cb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6de1e327701b6aa2ec4e06d7039d3cb5">&#9670;&nbsp;</a></span>lower_bound</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned int dealii::Patterns::UnsignedInteger::lower_bound</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00035">35</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00107">clone()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00116">create()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00045">description()</a>, and <a class="el" href="patterns__unsigned__int_8cc_source.html#l00023">match()</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      std::numeric_limits&lt;unsigned int&gt;::min()</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00030">30</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
 
 </div>
 </div>
@@ -389,12 +363,12 @@ Static Private Attributes</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      std::numeric_limits&lt;unsigned int&gt;::max()</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00017">17</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00032">32</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
 
 </div>
 </div>
-<a id="a108ed2814d223994ab8c0b417a099fdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a108ed2814d223994ab8c0b417a099fdb">&#9670;&nbsp;</a></span>min_int_value</h2>
+<a id="a6de1e327701b6aa2ec4e06d7039d3cb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6de1e327701b6aa2ec4e06d7039d3cb5">&#9670;&nbsp;</a></span>lower_bound</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -403,19 +377,19 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const unsigned int dealii::Patterns::UnsignedInteger::min_int_value</td>
+          <td class="memname">const unsigned int dealii::Patterns::UnsignedInteger::lower_bound</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">      std::numeric_limits&lt;unsigned int&gt;::min()</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00015">15</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00050">50</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00122">clone()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00131">create()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00060">description()</a>, and <a class="el" href="patterns__unsigned__int_8cc_source.html#l00038">match()</a>.</p>
 
 </div>
 </div>
@@ -439,9 +413,35 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00037">37</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00052">52</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00107">clone()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00116">create()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00045">description()</a>, and <a class="el" href="patterns__unsigned__int_8cc_source.html#l00023">match()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00122">clone()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00131">create()</a>, <a class="el" href="patterns__unsigned__int_8cc_source.html#l00060">description()</a>, and <a class="el" href="patterns__unsigned__int_8cc_source.html#l00038">match()</a>.</p>
+
+</div>
+</div>
+<a id="af38e573a9c94d636bf0512d003abdc0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38e573a9c94d636bf0512d003abdc0c">&#9670;&nbsp;</a></span>description_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * dealii::Patterns::UnsignedInteger::description_init = &quot;[UnsignedInteger&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="patterns__unsigned__int_8h_source.html#l00054">54</a> of file <a class="el" href="patterns__unsigned__int_8h_source.html">patterns_unsigned_int.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="patterns__unsigned__int_8cc_source.html#l00131">create()</a>, and <a class="el" href="patterns__unsigned__int_8cc_source.html#l00060">description()</a>.</p>
 
 </div>
 </div>
@@ -455,7 +455,7 @@ Static Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedealii.html">dealii</a></li><li class="navelem"><a class="el" href="namespacedealii_1_1_patterns.html">Patterns</a></li><li class="navelem"><a class="el" href="classdealii_1_1_patterns_1_1_unsigned_integer.html">UnsignedInteger</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

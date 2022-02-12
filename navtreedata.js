@@ -23,11 +23,16 @@ for the JavaScript code in this file
 var NAVTREE =
 [
   [ "Fluid structure interaction suite", "index.html", [
-    [ "Fluid-Structure Interaction suite", "index.html", [
+    [ "Continuum mechanics and fluid-structure interaction problems", "index.html", [
       [ "Course Introduction", "index.html#autotoc_md1", null ],
-      [ "Continuous Integration Status:", "index.html#autotoc_md2", null ],
+      [ "Continuous Integration Status", "index.html#autotoc_md2", null ],
       [ "Useful links", "index.html#autotoc_md3", null ],
       [ "Course program", "index.html#autotoc_md4", null ]
+    ] ],
+    [ "Introduction to the FSI-suite", "design.html", [
+      [ "Installation", "design.html#installation", null ],
+      [ "General structure of the FSI-suite", "design.html#general_structure", null ],
+      [ "Where to start?", "design.html#start_here", null ]
     ] ],
     [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -64,10 +69,7 @@ var NAVTREEINDEX =
 [
 "amg_8cc.html",
 "class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d",
-"grid__generator_8cc.html",
-"group__Exceptions.html#ga75f5d3b73811bc94f6b6abcc770060eb",
-"group__LAOperators.html#ga1ddbda7644b9b62e30e4b45d8ed0ec09",
-"index.html#autotoc_md4"
+"grid__info_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

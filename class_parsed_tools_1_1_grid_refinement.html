@@ -320,7 +320,7 @@ Additional Inherited Members</h2></td></tr>
 <p>and to use <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classKellyErrorEstimator.html">KellyErrorEstimator</a>, or a custom estimator, to compute the error indicators in the first two cases.</p>
 <p>In addition we have also some control parameters to guarantee that the number of cells is maintained under a maximum, and that the refinement level is kept between <code>min_level</code> and <code>max_level</code>. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00053">53</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00068">68</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a1f65871cdb3af759e93abb94b16f936e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1f65871cdb3af759e93abb94b16f936e">&#9670;&nbsp;</a></span>GridRefinement()</h2>
@@ -410,56 +410,32 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8cc_source.html#l00007">7</a> of file <a class="el" href="grid__refinement_8cc_source.html">grid_refinement.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8cc_source.html#l00022">22</a> of file <a class="el" href="grid__refinement_8cc_source.html">grid_refinement.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a9587d5229555daa5b1fa1ba2f8a40adb">e()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aa5bd2385b9c9dea5664813eb63e0b8fe">ParameterAcceptor::enter_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#ac1020eae02ca8fbd2a3a1c315994591b">ParameterAcceptor::leave_subsection()</a>, <a class="el" href="grid__refinement_8h_source.html#l00215">optional_estimators</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a9587d5229555daa5b1fa1ba2f8a40adb">e()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aa5bd2385b9c9dea5664813eb63e0b8fe">ParameterAcceptor::enter_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#ac1020eae02ca8fbd2a3a1c315994591b">ParameterAcceptor::leave_subsection()</a>, <a class="el" href="grid__refinement_8h_source.html#l00230">optional_estimators</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a771292988bbb1a9132ec933ae32eff86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a771292988bbb1a9132ec933ae32eff86">&#9670;&nbsp;</a></span>estimate_error() <span class="overload">[1/2]</span></h2>
+<a id="ad9ede1aabf6f867a9f7b69088c769bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9ede1aabf6f867a9f7b69088c769bef">&#9670;&nbsp;</a></span>mark_cells() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int dim, int spacedim, typename VectorType &gt; </div>
+template&lt;int dim, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void ParsedTools::GridRefinement::estimate_error </td>
+          <td class="memname">void ParsedTools::GridRefinement::mark_cells </td>
           <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>dof_handler</em>, </td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>criteria</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const VectorType &amp;&#160;</td>
-          <td class="paramname"><em>solution</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt; &amp;&#160;</td>
-          <td class="paramname"><em>estimated_error_per_cell</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>, const <a class="el" href="class_parsed_tools_1_1_function.html">Function</a>&lt; spacedim, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">VectorType::value_type</a> &gt; * &gt; &amp;&#160;</td>
-          <td class="paramname"><em>neumann_bc</em> = <code>{}</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="class_parsed_tools_1_1_function.html">Function</a>&lt; spacedim &gt; *&#160;</td>
-          <td class="paramname"><em>coefficients</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classKellyErrorEstimator.html">KellyErrorEstimator</a>&lt; dim, spacedim &gt;::Strategy&#160;</td>
-          <td class="paramname"><em>strategy</em> = <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classKellyErrorEstimator.html">KellyErrorEstimator</a>&lt;&#160;dim,&#160;spacedim&#160;&gt;::cell_diameter_over_24</code>&#160;</td>
+          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tria</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -469,12 +445,47 @@ template&lt;int dim, int spacedim, typename VectorType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Call the error estimator specified in the parameter file with a default mapping. </p>
+<p>Mark cells a the triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria. </p>
+<p>Cells are only marked for refinement or coarsening. No refinement is actually performed. You need to call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#ac8b4fbb207303ec7f5ef758821ecd8cb">Triangulation::execute_coarsening_and_refinement()</a> yourself. </p>
+
+</div>
+</div>
+<a id="adb3e21f4a2a552da7bccab7e468fa786"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3e21f4a2a552da7bccab7e468fa786">&#9670;&nbsp;</a></span>mark_cells() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParsedTools::GridRefinement::mark_cells </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>criteria</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classparallel_1_1distributed_1_1Triangulation.html">parallel::distributed::Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tria</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mark cells of a distribtued triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria. </p>
+<p>If the criterion which is specified in the parameter file is not available, an exception is thrown.</p>
+<p>Cells are only marked for refinement or coarsening. No refinement is actually performed. You need to call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#ac8b4fbb207303ec7f5ef758821ecd8cb">Triangulation::execute_coarsening_and_refinement()</a> yourself. </p>
 
 </div>
 </div>
 <a id="a69e038ec381688db220de8d16b15969a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69e038ec381688db220de8d16b15969a">&#9670;&nbsp;</a></span>estimate_error() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a69e038ec381688db220de8d16b15969a">&#9670;&nbsp;</a></span>estimate_error() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -535,16 +546,16 @@ template&lt;int dim, int spacedim, typename VectorType &gt; </div>
 
 </div>
 </div>
-<a id="a0358d438b6483907e24b795e8f998584"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0358d438b6483907e24b795e8f998584">&#9670;&nbsp;</a></span>estimate_mark_refine() <span class="overload">[1/2]</span></h2>
+<a id="a771292988bbb1a9132ec933ae32eff86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a771292988bbb1a9132ec933ae32eff86">&#9670;&nbsp;</a></span>estimate_error() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int dim, int spacedim, typename VectorType , typename Tria &gt; </div>
+template&lt;int dim, int spacedim, typename VectorType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void ParsedTools::GridRefinement::estimate_mark_refine </td>
+          <td class="memname">void ParsedTools::GridRefinement::estimate_error </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
           <td class="paramname"><em>dof_handler</em>, </td>
@@ -558,8 +569,26 @@ template&lt;int dim, int spacedim, typename VectorType , typename Tria &gt; </di
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Tria &amp;&#160;</td>
-          <td class="paramname"><em>tria</em>&#160;</td>
+          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt; &amp;&#160;</td>
+          <td class="paramname"><em>estimated_error_per_cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::map&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#aed8813fee8c8a2edcc6005e6a48c321a">types::boundary_id</a>, const <a class="el" href="class_parsed_tools_1_1_function.html">Function</a>&lt; spacedim, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">VectorType::value_type</a> &gt; * &gt; &amp;&#160;</td>
+          <td class="paramname"><em>neumann_bc</em> = <code>{}</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_parsed_tools_1_1_function.html">Function</a>&lt; spacedim &gt; *&#160;</td>
+          <td class="paramname"><em>coefficients</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classKellyErrorEstimator.html">KellyErrorEstimator</a>&lt; dim, spacedim &gt;::Strategy&#160;</td>
+          <td class="paramname"><em>strategy</em> = <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classKellyErrorEstimator.html">KellyErrorEstimator</a>&lt;&#160;dim,&#160;spacedim&#160;&gt;::cell_diameter_over_24</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -569,12 +598,105 @@ template&lt;int dim, int spacedim, typename VectorType , typename Tria &gt; </di
       </table>
 </div><div class="memdoc">
 
-<p>Perform all the steps of the ESTIMATE-MARK-REFINE cycle. </p>
+<p>Call the error estimator specified in the parameter file with a default mapping. </p>
+
+</div>
+</div>
+<a id="aa233b2028f7340be3d3d224cba077638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa233b2028f7340be3d3d224cba077638">&#9670;&nbsp;</a></span>get_strategy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespace_parsed_tools.html#af40078a2ded4d5a850b8ebbaa4edfa9a">RefinementStrategy</a>&amp; ParsedTools::GridRefinement::get_strategy </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current strategy object. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00167">167</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+<p class="reference">References <a class="el" href="grid__refinement_8h_source.html#l00221">strategy</a>.</p>
+
+</div>
+</div>
+<a id="a66af6a2813c0d20f24ca6a7855503dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66af6a2813c0d20f24ca6a7855503dab">&#9670;&nbsp;</a></span>get_n_refinement_cycles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int&amp; ParsedTools::GridRefinement::get_n_refinement_cycles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the total number of refinemt cycles. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00176">176</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+<p class="reference">References <a class="el" href="grid__refinement_8h_source.html#l00220">n_refinement_cycles</a>.</p>
+
+</div>
+</div>
+<a id="a432ff5d013056842da6059661d5609ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a432ff5d013056842da6059661d5609ea">&#9670;&nbsp;</a></span>get_refinement_cycles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacestd__cxx20_1_1ranges.html#a109956a09689ca9e1379724719a2c4c4">std_cxx20::ranges::iota_view</a>&lt;unsigned int, unsigned int&gt; ParsedTools::GridRefinement::get_refinement_cycles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get Return an object that can be thought of as an array containing all indices from zero to <code>n_refinement_cycles</code>. </p>
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00186">186</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+<p class="reference">References <a class="el" href="grid__refinement_8h_source.html#l00220">n_refinement_cycles</a>.</p>
 
 </div>
 </div>
 <a id="a5d7e2717e1f9bdc441ff4760db8480e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d7e2717e1f9bdc441ff4760db8480e6">&#9670;&nbsp;</a></span>estimate_mark_refine() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d7e2717e1f9bdc441ff4760db8480e6">&#9670;&nbsp;</a></span>estimate_mark_refine() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -617,96 +739,41 @@ template&lt;int dim, int spacedim, typename VectorType , typename Tria &gt; </di
 
 </div>
 </div>
-<a id="a66af6a2813c0d20f24ca6a7855503dab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a66af6a2813c0d20f24ca6a7855503dab">&#9670;&nbsp;</a></span>get_n_refinement_cycles()</h2>
+<a id="a0358d438b6483907e24b795e8f998584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0358d438b6483907e24b795e8f998584">&#9670;&nbsp;</a></span>estimate_mark_refine() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
+<div class="memtemplate">
+template&lt;int dim, int spacedim, typename VectorType , typename Tria &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">const unsigned int&amp; ParsedTools::GridRefinement::get_n_refinement_cycles </td>
+          <td class="memname">void ParsedTools::GridRefinement::estimate_mark_refine </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dof_handler</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the total number of refinemt cycles. </p>
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00161">161</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-<p class="reference">References <a class="el" href="grid__refinement_8h_source.html#l00205">n_refinement_cycles</a>.</p>
-
-</div>
-</div>
-<a id="a432ff5d013056842da6059661d5609ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a432ff5d013056842da6059661d5609ea">&#9670;&nbsp;</a></span>get_refinement_cycles()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacestd__cxx20_1_1ranges.html#a109956a09689ca9e1379724719a2c4c4">std_cxx20::ranges::iota_view</a>&lt;unsigned int, unsigned int&gt; ParsedTools::GridRefinement::get_refinement_cycles </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VectorType &amp;&#160;</td>
+          <td class="paramname"><em>solution</em>, </td>
         </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get Return an object that can be thought of as an array containing all indices from zero to <code>n_refinement_cycles</code>. </p>
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00171">171</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-<p class="reference">References <a class="el" href="grid__refinement_8h_source.html#l00205">n_refinement_cycles</a>.</p>
-
-</div>
-</div>
-<a id="aa233b2028f7340be3d3d224cba077638"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa233b2028f7340be3d3d224cba077638">&#9670;&nbsp;</a></span>get_strategy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespace_parsed_tools.html#af40078a2ded4d5a850b8ebbaa4edfa9a">RefinementStrategy</a>&amp; ParsedTools::GridRefinement::get_strategy </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Tria &amp;&#160;</td>
+          <td class="paramname"><em>tria</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Get the current strategy object. </p>
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00152">152</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-<p class="reference">References <a class="el" href="grid__refinement_8h_source.html#l00206">strategy</a>.</p>
+<p>Perform all the steps of the ESTIMATE-MARK-REFINE cycle. </p>
 
 </div>
 </div>
@@ -740,244 +807,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 </div>
 </div>
-<a id="adb3e21f4a2a552da7bccab7e468fa786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb3e21f4a2a552da7bccab7e468fa786">&#9670;&nbsp;</a></span>mark_cells() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ParsedTools::GridRefinement::mark_cells </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt; &amp;&#160;</td>
-          <td class="paramname"><em>criteria</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classparallel_1_1distributed_1_1Triangulation.html">parallel::distributed::Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tria</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Mark cells of a distribtued triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria. </p>
-<p>If the criterion which is specified in the parameter file is not available, an exception is thrown.</p>
-<p>Cells are only marked for refinement or coarsening. No refinement is actually performed. You need to call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#ac8b4fbb207303ec7f5ef758821ecd8cb">Triangulation::execute_coarsening_and_refinement()</a> yourself. </p>
-
-</div>
-</div>
-<a id="ad9ede1aabf6f867a9f7b69088c769bef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9ede1aabf6f867a9f7b69088c769bef">&#9670;&nbsp;</a></span>mark_cells() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void ParsedTools::GridRefinement::mark_cells </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt; &amp;&#160;</td>
-          <td class="paramname"><em>criteria</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;&#160;</td>
-          <td class="paramname"><em>tria</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Mark cells a the triangulation for refinement or coarsening, according to the given strategy applied to the supplied vector representing local error criteria. </p>
-<p>Cells are only marked for refinement or coarsening. No refinement is actually performed. You need to call <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#ac8b4fbb207303ec7f5ef758821ecd8cb">Triangulation::execute_coarsening_and_refinement()</a> yourself. </p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aae7b9c647f31d5f4074c927514ad859a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae7b9c647f31d5f4074c927514ad859a">&#9670;&nbsp;</a></span>bottom_parameter</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double ParsedTools::GridRefinement::bottom_parameter</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00208">208</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
-<a id="a922cfa93c7488a855aa08cf0e240240b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a922cfa93c7488a855aa08cf0e240240b">&#9670;&nbsp;</a></span>component_mask</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> ParsedTools::GridRefinement::component_mask</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00216">216</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
-<a id="aa930fff3eaeba04a9f5fe73be52e46d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa930fff3eaeba04a9f5fe73be52e46d8">&#9670;&nbsp;</a></span>estimator_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::string ParsedTools::GridRefinement::estimator_type</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00213">213</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
-<a id="aa80e8fccc3c8e8d976ceb81be8cf2cca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa80e8fccc3c8e8d976ceb81be8cf2cca">&#9670;&nbsp;</a></span>material_id</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a> ParsedTools::GridRefinement::material_id</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a0057e26e840aa2b146bf44499754774d">numbers::invalid_material_id</a></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00219">219</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
-<a id="a98dea318711eece92fca182870ed52dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98dea318711eece92fca182870ed52dc">&#9670;&nbsp;</a></span>max_cells</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int ParsedTools::GridRefinement::max_cells</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00209">209</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
-<a id="a8adb285e42ef22d80642a7710eb03fb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8adb285e42ef22d80642a7710eb03fb0">&#9670;&nbsp;</a></span>max_level</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ParsedTools::GridRefinement::max_level</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00211">211</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
-<a id="aa13f33eb4a257edba1a4f91713f78264"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa13f33eb4a257edba1a4f91713f78264">&#9670;&nbsp;</a></span>min_level</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int ParsedTools::GridRefinement::min_level</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00210">210</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-</div>
-</div>
 <a id="a8d1e6ae46488cf9473224cea37b7d4cb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8d1e6ae46488cf9473224cea37b7d4cb">&#9670;&nbsp;</a></span>n_refinement_cycles</h2>
 
@@ -998,35 +828,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00205">205</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00220">220</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="grid__refinement_8h_source.html#l00161">get_n_refinement_cycles()</a>, and <a class="el" href="grid__refinement_8h_source.html#l00171">get_refinement_cycles()</a>.</p>
-
-</div>
-</div>
-<a id="ada5c70b8eddc8226337111384ba6ed63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada5c70b8eddc8226337111384ba6ed63">&#9670;&nbsp;</a></span>optional_estimators</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt;std::string, std::function&lt;void(<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;float&gt; &amp;)&gt; &gt; ParsedTools::GridRefinement::optional_estimators</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00215">215</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="grid__refinement_8cc_source.html#l00007">GridRefinement()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="grid__refinement_8h_source.html#l00176">get_n_refinement_cycles()</a>, and <a class="el" href="grid__refinement_8h_source.html#l00186">get_refinement_cycles()</a>.</p>
 
 </div>
 </div>
@@ -1050,9 +854,203 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00206">206</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00221">221</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="grid__refinement_8h_source.html#l00152">get_strategy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="grid__refinement_8h_source.html#l00167">get_strategy()</a>.</p>
+
+</div>
+</div>
+<a id="ab79ecc6135774d42945b1af9310c1749"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab79ecc6135774d42945b1af9310c1749">&#9670;&nbsp;</a></span>top_parameter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ParsedTools::GridRefinement::top_parameter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00222">222</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+</div>
+</div>
+<a id="aae7b9c647f31d5f4074c927514ad859a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae7b9c647f31d5f4074c927514ad859a">&#9670;&nbsp;</a></span>bottom_parameter</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double ParsedTools::GridRefinement::bottom_parameter</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00223">223</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+</div>
+</div>
+<a id="a98dea318711eece92fca182870ed52dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98dea318711eece92fca182870ed52dc">&#9670;&nbsp;</a></span>max_cells</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int ParsedTools::GridRefinement::max_cells</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00224">224</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+</div>
+</div>
+<a id="aa13f33eb4a257edba1a4f91713f78264"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa13f33eb4a257edba1a4f91713f78264">&#9670;&nbsp;</a></span>min_level</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ParsedTools::GridRefinement::min_level</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00225">225</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+</div>
+</div>
+<a id="a8adb285e42ef22d80642a7710eb03fb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8adb285e42ef22d80642a7710eb03fb0">&#9670;&nbsp;</a></span>max_level</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ParsedTools::GridRefinement::max_level</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00226">226</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+</div>
+</div>
+<a id="aa930fff3eaeba04a9f5fe73be52e46d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa930fff3eaeba04a9f5fe73be52e46d8">&#9670;&nbsp;</a></span>estimator_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ParsedTools::GridRefinement::estimator_type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00228">228</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+</div>
+</div>
+<a id="ada5c70b8eddc8226337111384ba6ed63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada5c70b8eddc8226337111384ba6ed63">&#9670;&nbsp;</a></span>optional_estimators</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::map&lt;std::string, std::function&lt;void(<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;float&gt; &amp;)&gt; &gt; ParsedTools::GridRefinement::optional_estimators</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00230">230</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="grid__refinement_8cc_source.html#l00022">GridRefinement()</a>.</p>
+
+</div>
+</div>
+<a id="a922cfa93c7488a855aa08cf0e240240b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a922cfa93c7488a855aa08cf0e240240b">&#9670;&nbsp;</a></span>component_mask</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> ParsedTools::GridRefinement::component_mask</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00231">231</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
 
 </div>
 </div>
@@ -1078,12 +1076,12 @@ template&lt;int dim, int spacedim&gt; </div>
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a0057e26e840aa2b146bf44499754774d">numbers::invalid_material_id</a></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00217">217</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00232">232</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
 
 </div>
 </div>
-<a id="ab79ecc6135774d42945b1af9310c1749"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab79ecc6135774d42945b1af9310c1749">&#9670;&nbsp;</a></span>top_parameter</h2>
+<a id="aa80e8fccc3c8e8d976ceb81be8cf2cca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa80e8fccc3c8e8d976ceb81be8cf2cca">&#9670;&nbsp;</a></span>material_id</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1092,7 +1090,7 @@ template&lt;int dim, int spacedim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">double ParsedTools::GridRefinement::top_parameter</td>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#ae22a1b4da339109d8dc9cc2a112b1a69">types::material_id</a> ParsedTools::GridRefinement::material_id</td>
         </tr>
       </table>
   </td>
@@ -1101,8 +1099,10 @@ template&lt;int dim, int spacedim&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00207">207</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a0057e26e840aa2b146bf44499754774d">numbers::invalid_material_id</a></div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="grid__refinement_8h_source.html#l00234">234</a> of file <a class="el" href="grid__refinement_8h_source.html">grid_refinement.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1117,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_grid_refinement.html">GridRefinement</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

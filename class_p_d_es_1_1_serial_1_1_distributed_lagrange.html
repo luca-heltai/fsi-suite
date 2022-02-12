@@ -357,7 +357,7 @@ Additional Inherited Members</h2></td></tr>
 class PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00037">37</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00052">52</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a46017ca219edabea3f42451ea55171b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a46017ca219edabea3f42451ea55171b7">&#9670;&nbsp;</a></span>DistributedLagrange()</h2>
@@ -373,13 +373,63 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">31</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">46</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html#a3c70358a19046262192515b0ed00bb37">ParsedConvergenceTable::add_parameters()</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00065">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::console_level</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00063">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::coupling_quadrature_order</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00064">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::delta_refinement</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00100">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::embedded_configuration_finite_element_degree</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00099">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::embedded_space_finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aceb1a78960d51e44d8187995307756b4">ParameterAcceptor::enter_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aa5bd2385b9c9dea5664813eb63e0b8fe">ParameterAcceptor::enter_subsection()</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00122">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::error_table</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00098">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a9d1dd13bdde04afcd1ec4b9a78776827">ParameterAcceptor::leave_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#ac1020eae02ca8fbd2a3a1c315994591b">ParameterAcceptor::leave_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>, and <a class="el" href="distributed__lagrange_8h_source.html#l00066">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::use_direct_solver</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html#a3c70358a19046262192515b0ed00bb37">ParsedConvergenceTable::add_parameters()</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00080">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::console_level</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00078">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::coupling_quadrature_order</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00079">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::delta_refinement</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00115">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::embedded_configuration_finite_element_degree</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00114">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::embedded_space_finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aceb1a78960d51e44d8187995307756b4">ParameterAcceptor::enter_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aa5bd2385b9c9dea5664813eb63e0b8fe">ParameterAcceptor::enter_subsection()</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00137">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::error_table</a>, <a class="el" href="distributed__lagrange_8h_source.html#l00113">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a9d1dd13bdde04afcd1ec4b9a78776827">ParameterAcceptor::leave_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#ac1020eae02ca8fbd2a3a1c315994591b">ParameterAcceptor::leave_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>, and <a class="el" href="distributed__lagrange_8h_source.html#l00081">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::use_direct_solver</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a42b4fdd36985e8f6f702a1e964393888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42b4fdd36985e8f6f702a1e964393888">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::run</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00401">401</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="apps_2serial_2distributed__lagrange_8cc_source.html#l00024">main()</a>.</p>
+
+</div>
+</div>
+<a id="a5612887e6db7e2a289444a74051fa3d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5612887e6db7e2a289444a74051fa3d5">&#9670;&nbsp;</a></span>generate_grids_and_fes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::generate_grids_and_fes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00095">95</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">ParsedTools::Components::get_lagrangian_finite_element()</a>.</p>
+
+</div>
+</div>
 <a id="a6b90d43e46da25dac1fdef91546f9eee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b90d43e46da25dac1fdef91546f9eee">&#9670;&nbsp;</a></span>adjust_embedded_grid()</h2>
 
@@ -406,9 +456,65 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00116">116</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00131">131</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/data__out__base_8cc.html#a8188ef4709fc9a4cc076d37447783ba1">center</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#acd5ccc543d561cfb086b571d1f7818cb">diameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#ae8409fa9cb46a0070abc4da7de0f47f2">GridTools::maximal_cell_diameter()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#a47c293eff2ec7ce4b90ba08b35d1f2e2">GridTools::minimal_cell_diameter()</a>.</p>
+
+</div>
+</div>
+<a id="a50139f07333d2ae746a4a9c658d35431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50139f07333d2ae746a4a9c658d35431">&#9670;&nbsp;</a></span>setup_dofs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::setup_dofs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00227">227</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>.</p>
+
+</div>
+</div>
+<a id="a9bb466a07c98c06c25a29b037b4b24a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bb466a07c98c06c25a29b037b4b24a8">&#9670;&nbsp;</a></span>setup_coupling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::setup_coupling</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00261">261</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#a8829bfa8e55c21b8eeaafd086c53680d">NonMatching::create_coupling_sparsity_pattern()</a>.</p>
 
 </div>
 </div>
@@ -434,14 +540,14 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00268">268</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00283">283</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#ac3821491559b8a76af0be66736fe4c6f">NonMatching::create_coupling_mass_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a6e325333a138893e181da47f29ac680a">VectorTools::create_right_hand_side()</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate()</a>.</p>
 
 </div>
 </div>
-<a id="a5612887e6db7e2a289444a74051fa3d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5612887e6db7e2a289444a74051fa3d5">&#9670;&nbsp;</a></span>generate_grids_and_fes()</h2>
+<a id="a777e39c857b9c73d4ec889de0322bdc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a777e39c857b9c73d4ec889de0322bdc9">&#9670;&nbsp;</a></span>solve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -452,7 +558,7 @@ template&lt;int dim, int spacedim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::generate_grids_and_fes</td>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::solve</td>
         </tr>
       </table>
   </td>
@@ -462,9 +568,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00080">80</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00329">329</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">ParsedTools::Components::get_lagrangian_finite_element()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga1a0a3fb15266869710e63e78658cfaed">identity_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseDirectUMFPACK.html#a25b1d3c7dbb88158a76165a4a56a16d6">SparseDirectUMFPACK::initialize()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator()</a>.</p>
 
 </div>
 </div>
@@ -494,145 +600,13 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00362">362</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00377">377</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits()</a>.</p>
 
 </div>
 </div>
-<a id="a42b4fdd36985e8f6f702a1e964393888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42b4fdd36985e8f6f702a1e964393888">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::run</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00386">386</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="apps_2serial_2distributed__lagrange_8cc_source.html#l00009">main()</a>.</p>
-
-</div>
-</div>
-<a id="a9bb466a07c98c06c25a29b037b4b24a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bb466a07c98c06c25a29b037b4b24a8">&#9670;&nbsp;</a></span>setup_coupling()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::setup_coupling</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00246">246</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#a8829bfa8e55c21b8eeaafd086c53680d">NonMatching::create_coupling_sparsity_pattern()</a>.</p>
-
-</div>
-</div>
-<a id="a50139f07333d2ae746a4a9c658d35431"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50139f07333d2ae746a4a9c658d35431">&#9670;&nbsp;</a></span>setup_dofs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::setup_dofs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00212">212</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>.</p>
-
-</div>
-</div>
-<a id="a777e39c857b9c73d4ec889de0322bdc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a777e39c857b9c73d4ec889de0322bdc9">&#9670;&nbsp;</a></span>solve()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::solve</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00314">314</a> of file <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga1a0a3fb15266869710e63e78658cfaed">identity_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseDirectUMFPACK.html#a25b1d3c7dbb88158a76165a4a56a16d6">SparseDirectUMFPACK::initialize()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator()</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="af66fae67fa46c8431dfd427f938e4017"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af66fae67fa46c8431dfd427f938e4017">&#9670;&nbsp;</a></span>boundary_conditions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::boundary_conditions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00113">113</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
 <a id="a8098a5f06e15426e3e0590ed2a9dad44"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8098a5f06e15426e3e0590ed2a9dad44">&#9670;&nbsp;</a></span>component_names</h2>
 
@@ -655,113 +629,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00061">61</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="aa44e007156d7b4b74e76221d669163a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa44e007156d7b4b74e76221d669163a4">&#9670;&nbsp;</a></span>console_level</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::console_level = 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00065">65</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
-
-</div>
-</div>
-<a id="a6ad04f95ba21e53f232d989aa4c816d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ad04f95ba21e53f232d989aa4c816d2">&#9670;&nbsp;</a></span>constants</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_constants.html">ParsedTools::Constants</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::constants</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00109">109</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="ae6cb33e79ce348dbe9a96f5340771fb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6cb33e79ce348dbe9a96f5340771fb2">&#9670;&nbsp;</a></span>constraints</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::constraints</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00087">87</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="adde21842947d2930ecaa27d386662dc3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adde21842947d2930ecaa27d386662dc3">&#9670;&nbsp;</a></span>coupling_matrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::coupling_matrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00086">86</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00076">76</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -787,61 +655,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00063">63</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00078">78</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
-
-</div>
-</div>
-<a id="ad665ff7495edb4548e782951027d98c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad665ff7495edb4548e782951027d98c0">&#9670;&nbsp;</a></span>coupling_sparsity</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::coupling_sparsity</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00084">84</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a4ea41a175e4eba2d948ceca15261f0ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ea41a175e4eba2d948ceca15261f0ff">&#9670;&nbsp;</a></span>data_out</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::data_out</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00120">120</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -867,14 +683,14 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00064">64</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00079">79</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
 
 </div>
 </div>
-<a id="a22348331c0487c6254ef4526bb3800e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22348331c0487c6254ef4526bb3800e3">&#9670;&nbsp;</a></span>embedded_configuration</h2>
+<a id="aa44e007156d7b4b74e76221d669163a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa44e007156d7b4b74e76221d669163a4">&#9670;&nbsp;</a></span>console_level</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -885,33 +701,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00081">81</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a3c9b6d91322cb5003e1751df4cc16048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c9b6d91322cb5003e1751df4cc16048">&#9670;&nbsp;</a></span>embedded_configuration_dh</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration_dh</td>
+          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::console_level = 1</td>
         </tr>
       </table>
   </td>
@@ -923,871 +713,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00080">80</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
 
-</div>
-</div>
-<a id="af7a20c4f6aebaa061ec35d306ad0284a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7a20c4f6aebaa061ec35d306ad0284a">&#9670;&nbsp;</a></span>embedded_configuration_fe</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration_fe</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00079">79</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a460536e771f69c90dffcaaa068111d96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a460536e771f69c90dffcaaa068111d96">&#9670;&nbsp;</a></span>embedded_configuration_finite_element_degree</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration_finite_element_degree = 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00100">100</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
-
-</div>
-</div>
-<a id="a56ab875c331dc86b2fe44b34a1853d08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56ab875c331dc86b2fe44b34a1853d08">&#9670;&nbsp;</a></span>embedded_constraints</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_constraints</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00088">88</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a6fba31eaf2ebb188b3f11a731e106226"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fba31eaf2ebb188b3f11a731e106226">&#9670;&nbsp;</a></span>embedded_data_out</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_data_out</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00121">121</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a9b7f47617745d7f499c293b10af27476"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b7f47617745d7f499c293b10af27476">&#9670;&nbsp;</a></span>embedded_dh</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_dh</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00077">77</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a860acc925ae6f48389cdac3101828b4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a860acc925ae6f48389cdac3101828b4b">&#9670;&nbsp;</a></span>embedded_fe</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_fe</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00076">76</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="aef93b39887c801e95380aa1bc759cfa2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef93b39887c801e95380aa1bc759cfa2">&#9670;&nbsp;</a></span>embedded_grid</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_grid</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00075">75</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a3d977493897c22b0b8f2e8386b94f054"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d977493897c22b0b8f2e8386b94f054">&#9670;&nbsp;</a></span>embedded_grid_generator</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_grid_generator</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00106">106</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="ae11fd18be5a9b79af05b71678a9b3188"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae11fd18be5a9b79af05b71678a9b3188">&#9670;&nbsp;</a></span>embedded_mapping</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_mapping</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00107">107</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a4d0bd8709a9def81bec3e0eaac49521a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d0bd8709a9def81bec3e0eaac49521a">&#9670;&nbsp;</a></span>embedded_rhs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_rhs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00092">92</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a9d9ac3f5f1fb2a6644b85d5fed8149ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d9ac3f5f1fb2a6644b85d5fed8149ee">&#9670;&nbsp;</a></span>embedded_space_finite_element_degree</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_space_finite_element_degree = 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00099">99</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
-
-</div>
-</div>
-<a id="a7fed6e8b0681e46bae64b523c4578506"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fed6e8b0681e46bae64b523c4578506">&#9670;&nbsp;</a></span>embedded_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_value</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00093">93</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a4f28509036fb89b28e71f36a76f85371"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f28509036fb89b28e71f36a76f85371">&#9670;&nbsp;</a></span>embedded_value_function</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_value_function</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00110">110</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a3217143ed0596bf98e05b1e3fc1f7843"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3217143ed0596bf98e05b1e3fc1f7843">&#9670;&nbsp;</a></span>error_table</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::error_table</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00122">122</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
-
-</div>
-</div>
-<a id="af76231f7dc356ee63a16a144a8a289c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af76231f7dc356ee63a16a144a8a289c1">&#9670;&nbsp;</a></span>exact_solution</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::exact_solution</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00112">112</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a26c50c4c0aeb76c75d84d860f7acacdd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26c50c4c0aeb76c75d84d860f7acacdd">&#9670;&nbsp;</a></span>finite_element_degree</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::finite_element_degree = 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00098">98</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
-
-</div>
-</div>
-<a id="a2735faf4aa0decd0ea29be3ee2c1fa00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2735faf4aa0decd0ea29be3ee2c1fa00">&#9670;&nbsp;</a></span>forcing_term</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::forcing_term</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00111">111</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a2da9a70913961506bbcdd41b07a36100"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2da9a70913961506bbcdd41b07a36100">&#9670;&nbsp;</a></span>grid_generator</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::grid_generator</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00103">103</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="aa284392ba51e1ec6d680f06b00d178f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa284392ba51e1ec6d680f06b00d178f3">&#9670;&nbsp;</a></span>grid_refinement</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_refinement.html">ParsedTools::GridRefinement</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::grid_refinement</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00104">104</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a51e0050139955d6a5c6c20e96b2b3f0f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51e0050139955d6a5c6c20e96b2b3f0f">&#9670;&nbsp;</a></span>lambda</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::lambda</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00091">91</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="abb71e9e2dc1df37fe9462c7dd276e6e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb71e9e2dc1df37fe9462c7dd276e6e1">&#9670;&nbsp;</a></span>monitor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTimerOutput.html">TimerOutput</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::monitor</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00095">95</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="af336dd5bdb1948f704f3da629b61228b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af336dd5bdb1948f704f3da629b61228b">&#9670;&nbsp;</a></span>rhs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::rhs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00090">90</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="ac51fc39d77b154a6b2e66a61f4da93c6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac51fc39d77b154a6b2e66a61f4da93c6">&#9670;&nbsp;</a></span>schur_inverse_operator</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::schur_inverse_operator</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00118">118</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="ac20416ec0d16d14e8515525c23530638"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac20416ec0d16d14e8515525c23530638">&#9670;&nbsp;</a></span>solution</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::solution</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00089">89</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a3052d773110f5a794d1acfc3eb731527"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3052d773110f5a794d1acfc3eb731527">&#9670;&nbsp;</a></span>space_dh</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_dh</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00073">73</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a91666b15ffe49a5993bf78ab9a231883"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91666b15ffe49a5993bf78ab9a231883">&#9670;&nbsp;</a></span>space_fe</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_fe</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00069">69</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="aa29dd561fe002b275ab92bb2b3e6472b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa29dd561fe002b275ab92bb2b3e6472b">&#9670;&nbsp;</a></span>space_grid</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_grid</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00068">68</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="aa1827bccac9957373a201853666e8380"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1827bccac9957373a201853666e8380">&#9670;&nbsp;</a></span>space_grid_tools_cache</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt;spacedim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_grid_tools_cache</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00072">72</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a127bc769c997d92520d556f224bc4cfd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a127bc769c997d92520d556f224bc4cfd">&#9670;&nbsp;</a></span>space_mapping</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFE.html">MappingFE</a>&lt;spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_mapping</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00070">70</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a21b2ea5f4a77f773d69484f525224825"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21b2ea5f4a77f773d69484f525224825">&#9670;&nbsp;</a></span>stiffness_inverse_operator</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_inverse_operator</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00115">115</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a2c05febf6320e1ed2a3162fa7ecc58b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c05febf6320e1ed2a3162fa7ecc58b5">&#9670;&nbsp;</a></span>stiffness_matrix</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_matrix</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00085">85</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a76b05b9c04dfd3ba43f0e0f80daa8cdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76b05b9c04dfd3ba43f0e0f80daa8cdb">&#9670;&nbsp;</a></span>stiffness_preconditioner</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_preconditioner</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00116">116</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a8166bba0c2a48fed11860bdaf3550314"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8166bba0c2a48fed11860bdaf3550314">&#9670;&nbsp;</a></span>stiffness_sparsity</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_sparsity</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00083">83</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -1813,9 +739,1083 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00066">66</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00081">81</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00031">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
+
+</div>
+</div>
+<a id="aa29dd561fe002b275ab92bb2b3e6472b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa29dd561fe002b275ab92bb2b3e6472b">&#9670;&nbsp;</a></span>space_grid</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_grid</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00083">83</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a91666b15ffe49a5993bf78ab9a231883"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91666b15ffe49a5993bf78ab9a231883">&#9670;&nbsp;</a></span>space_fe</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_fe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00084">84</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a127bc769c997d92520d556f224bc4cfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a127bc769c997d92520d556f224bc4cfd">&#9670;&nbsp;</a></span>space_mapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFE.html">MappingFE</a>&lt;spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_mapping</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00085">85</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="aa1827bccac9957373a201853666e8380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1827bccac9957373a201853666e8380">&#9670;&nbsp;</a></span>space_grid_tools_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt;spacedim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_grid_tools_cache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00087">87</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a3052d773110f5a794d1acfc3eb731527"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3052d773110f5a794d1acfc3eb731527">&#9670;&nbsp;</a></span>space_dh</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::space_dh</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00088">88</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="aef93b39887c801e95380aa1bc759cfa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef93b39887c801e95380aa1bc759cfa2">&#9670;&nbsp;</a></span>embedded_grid</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_grid</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00090">90</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a860acc925ae6f48389cdac3101828b4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a860acc925ae6f48389cdac3101828b4b">&#9670;&nbsp;</a></span>embedded_fe</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_fe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00091">91</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a9b7f47617745d7f499c293b10af27476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b7f47617745d7f499c293b10af27476">&#9670;&nbsp;</a></span>embedded_dh</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_dh</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00092">92</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="af7a20c4f6aebaa061ec35d306ad0284a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a20c4f6aebaa061ec35d306ad0284a">&#9670;&nbsp;</a></span>embedded_configuration_fe</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration_fe</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00094">94</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a3c9b6d91322cb5003e1751df4cc16048"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c9b6d91322cb5003e1751df4cc16048">&#9670;&nbsp;</a></span>embedded_configuration_dh</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration_dh</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00095">95</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a22348331c0487c6254ef4526bb3800e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22348331c0487c6254ef4526bb3800e3">&#9670;&nbsp;</a></span>embedded_configuration</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00096">96</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a8166bba0c2a48fed11860bdaf3550314"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8166bba0c2a48fed11860bdaf3550314">&#9670;&nbsp;</a></span>stiffness_sparsity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_sparsity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00098">98</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ad665ff7495edb4548e782951027d98c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad665ff7495edb4548e782951027d98c0">&#9670;&nbsp;</a></span>coupling_sparsity</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::coupling_sparsity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00099">99</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a2c05febf6320e1ed2a3162fa7ecc58b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c05febf6320e1ed2a3162fa7ecc58b5">&#9670;&nbsp;</a></span>stiffness_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00100">100</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="adde21842947d2930ecaa27d386662dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adde21842947d2930ecaa27d386662dc3">&#9670;&nbsp;</a></span>coupling_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::coupling_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00101">101</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ae6cb33e79ce348dbe9a96f5340771fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6cb33e79ce348dbe9a96f5340771fb2">&#9670;&nbsp;</a></span>constraints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::constraints</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00102">102</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a56ab875c331dc86b2fe44b34a1853d08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56ab875c331dc86b2fe44b34a1853d08">&#9670;&nbsp;</a></span>embedded_constraints</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_constraints</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00103">103</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ac20416ec0d16d14e8515525c23530638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20416ec0d16d14e8515525c23530638">&#9670;&nbsp;</a></span>solution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::solution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00104">104</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="af336dd5bdb1948f704f3da629b61228b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af336dd5bdb1948f704f3da629b61228b">&#9670;&nbsp;</a></span>rhs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::rhs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00105">105</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a51e0050139955d6a5c6c20e96b2b3f0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e0050139955d6a5c6c20e96b2b3f0f">&#9670;&nbsp;</a></span>lambda</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::lambda</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00106">106</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a4d0bd8709a9def81bec3e0eaac49521a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0bd8709a9def81bec3e0eaac49521a">&#9670;&nbsp;</a></span>embedded_rhs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_rhs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00107">107</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a7fed6e8b0681e46bae64b523c4578506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fed6e8b0681e46bae64b523c4578506">&#9670;&nbsp;</a></span>embedded_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00108">108</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="abb71e9e2dc1df37fe9462c7dd276e6e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb71e9e2dc1df37fe9462c7dd276e6e1">&#9670;&nbsp;</a></span>monitor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTimerOutput.html">TimerOutput</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::monitor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00110">110</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a26c50c4c0aeb76c75d84d860f7acacdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26c50c4c0aeb76c75d84d860f7acacdd">&#9670;&nbsp;</a></span>finite_element_degree</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::finite_element_degree = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00113">113</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
+
+</div>
+</div>
+<a id="a9d9ac3f5f1fb2a6644b85d5fed8149ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9ac3f5f1fb2a6644b85d5fed8149ee">&#9670;&nbsp;</a></span>embedded_space_finite_element_degree</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_space_finite_element_degree = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00114">114</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
+
+</div>
+</div>
+<a id="a460536e771f69c90dffcaaa068111d96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a460536e771f69c90dffcaaa068111d96">&#9670;&nbsp;</a></span>embedded_configuration_finite_element_degree</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_configuration_finite_element_degree = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00115">115</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
+
+</div>
+</div>
+<a id="a2da9a70913961506bbcdd41b07a36100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da9a70913961506bbcdd41b07a36100">&#9670;&nbsp;</a></span>grid_generator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::grid_generator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00118">118</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="aa284392ba51e1ec6d680f06b00d178f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa284392ba51e1ec6d680f06b00d178f3">&#9670;&nbsp;</a></span>grid_refinement</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_refinement.html">ParsedTools::GridRefinement</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::grid_refinement</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00119">119</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a3d977493897c22b0b8f2e8386b94f054"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d977493897c22b0b8f2e8386b94f054">&#9670;&nbsp;</a></span>embedded_grid_generator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_grid_generator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00121">121</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ae11fd18be5a9b79af05b71678a9b3188"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae11fd18be5a9b79af05b71678a9b3188">&#9670;&nbsp;</a></span>embedded_mapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_mapping</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00122">122</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a6ad04f95ba21e53f232d989aa4c816d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ad04f95ba21e53f232d989aa4c816d2">&#9670;&nbsp;</a></span>constants</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_constants.html">ParsedTools::Constants</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::constants</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00124">124</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a4f28509036fb89b28e71f36a76f85371"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f28509036fb89b28e71f36a76f85371">&#9670;&nbsp;</a></span>embedded_value_function</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_value_function</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00125">125</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a2735faf4aa0decd0ea29be3ee2c1fa00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2735faf4aa0decd0ea29be3ee2c1fa00">&#9670;&nbsp;</a></span>forcing_term</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::forcing_term</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00126">126</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="af76231f7dc356ee63a16a144a8a289c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af76231f7dc356ee63a16a144a8a289c1">&#9670;&nbsp;</a></span>exact_solution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::exact_solution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00127">127</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="af66fae67fa46c8431dfd427f938e4017"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af66fae67fa46c8431dfd427f938e4017">&#9670;&nbsp;</a></span>boundary_conditions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::boundary_conditions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00128">128</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a21b2ea5f4a77f773d69484f525224825"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21b2ea5f4a77f773d69484f525224825">&#9670;&nbsp;</a></span>stiffness_inverse_operator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_inverse_operator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00130">130</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a76b05b9c04dfd3ba43f0e0f80daa8cdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76b05b9c04dfd3ba43f0e0f80daa8cdb">&#9670;&nbsp;</a></span>stiffness_preconditioner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::stiffness_preconditioner</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00131">131</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ac51fc39d77b154a6b2e66a61f4da93c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac51fc39d77b154a6b2e66a61f4da93c6">&#9670;&nbsp;</a></span>schur_inverse_operator</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::schur_inverse_operator</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00133">133</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a4ea41a175e4eba2d948ceca15261f0ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ea41a175e4eba2d948ceca15261f0ff">&#9670;&nbsp;</a></span>data_out</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt;spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::data_out</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00135">135</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a6fba31eaf2ebb188b3f11a731e106226"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fba31eaf2ebb188b3f11a731e106226">&#9670;&nbsp;</a></span>embedded_data_out</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt;dim, spacedim&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::embedded_data_out</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00136">136</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a3217143ed0596bf98e05b1e3fc1f7843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3217143ed0596bf98e05b1e3fc1f7843">&#9670;&nbsp;</a></span>error_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange</a>&lt; dim, spacedim &gt;::error_table</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="distributed__lagrange_8h_source.html#l00137">137</a> of file <a class="el" href="distributed__lagrange_8h_source.html">distributed_lagrange.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html#l00046">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;::DistributedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -1829,7 +1829,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">DistributedLagrange</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:06 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:36 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

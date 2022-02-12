@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fluid_2dstructure_20interaction_20suite_23189',['Fluid-Structure Interaction suite',['../index.html',1,'']]]
+  ['glossary_23193',['Glossary',['http://www.dealii.org/developer/doxygen/deal.II/DEALGlossary.html',1,'']]]
 ];

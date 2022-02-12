@@ -103,242 +103,257 @@ $(document).ready(function(){initNavTree('data__out_8cc_source.html',''); initRe
 <div class="title">data_out.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="data__out_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="data__out_8h.html">parsed_tools/data_out.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html">deal.II/base/logstream.h</a>&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/quadrature__lib_8h.html">deal.II/base/quadrature_lib.h</a>&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2utilities_8h.html">deal.II/base/utilities.h</a>&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2fe_2fe_8h.html">deal.II/fe/fe.h</a>&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q_8h.html">deal.II/fe/mapping_q.h</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">deal.II/grid/grid_tools.h</a>&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/numerics_2data__out_8h.html">deal.II/numerics/data_out.h</a>&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/matrix__tools_8h.html">deal.II/numerics/matrix_tools.h</a>&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</span></div>
+<a href="data__out_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// Copyright (C) 2022 by Luca Heltai</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// This file is part of the FSI-suite platform, based on the deal.II library.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// The FSI-suite platform is free software; you can use it, redistribute it,</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// and/or modify it under the terms of the GNU Lesser General Public License as</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// published by the Free Software Foundation; either version 3.0 of the License,</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// or (at your option) any later version. The full text of the license can be</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// found in the file LICENSE at the top level of the FSI-suite platform</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// distribution.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="data__out_8h.html">parsed_tools/data_out.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html">deal.II/base/logstream.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/quadrature__lib_8h.html">deal.II/base/quadrature_lib.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2utilities_8h.html">deal.II/base/utilities.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2fe_2fe_8h.html">deal.II/fe/fe.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q_8h.html">deal.II/fe/mapping_q.h</a>&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="comment">// Return relative filename</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  std::string</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  relative(<span class="keyword">const</span> std::string &amp;filename)</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">auto</span> rel = filename;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">if</span> (rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>) != std::string::npos)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;      rel = rel.substr(rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> rel;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="comment">// Return directory name</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  std::string</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  dirname(<span class="keyword">const</span> std::string &amp;filename)</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">auto</span> rel = filename;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> (rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>) != std::string::npos)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      rel = rel.substr(0, rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>));</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      rel = <span class="stringliteral">&quot;./&quot;</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// Check if it exists, if not, create it</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(std::system(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                  (<span class="stringliteral">&quot;test -d &quot;</span> + rel + <span class="stringliteral">&quot; || mkdir -p &quot;</span> + rel).c_str()) == 0,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(<span class="stringliteral">&quot;Could not create directory &quot;</span> + rel));</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> rel;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} <span class="comment">// namespace</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#a86991b7f585b9c3147db4f3136d4fe6d">   57</a></span>&#160;  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html#a045bd55f737005924de7f0b116f6f961">DataOut&lt;dim, spacedim&gt;::DataOut</a>(<span class="keyword">const</span> std::string &amp; section_name,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                  <span class="keyword">const</span> std::string &amp; base_name,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                                  <span class="keyword">const</span> std::string &amp; output_format,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                                  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;subdivisions,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                  <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;        write_higher_order_cells,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                                  <span class="keyword">const</span> MPI_Comm &amp;    comm)</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    : <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>(section_name)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>)</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a>::MPI::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>))</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a>::MPI::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>))</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    , output_format(output_format)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    , subdivisions(subdivisions)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    , write_higher_order_cells(write_higher_order_cells)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    , base_name(base_name)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    add_parameter(<span class="stringliteral">&quot;Problem base name&quot;</span>, this-&gt;base_name);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output partitioning&quot;</span>, this-&gt;output_partitioning);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output material ids&quot;</span>, this-&gt;output_material_ids);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output format&quot;</span>,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                  this-&gt;output_format,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                  <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                  this-&gt;prm,</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPatterns_1_1Selection.html">Patterns::Selection</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDataOutBase.html#add43d8f47ccf7052f0178e710ad4ca02">DataOutBase::get_output_format_names</a>()));</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    add_parameter(<span class="stringliteral">&quot;Subdivisions&quot;</span>, this-&gt;subdivisions);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    add_parameter(<span class="stringliteral">&quot;Write high order cells&quot;</span>, this-&gt;write_higher_order_cells);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    add_parameter(<span class="stringliteral">&quot;Curved cells region&quot;</span>, this-&gt;curved_cells_region);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">deal.II/grid/grid_tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/numerics_2data__out_8h.html">deal.II/numerics/data_out.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/matrix__tools_8h.html">deal.II/numerics/matrix_tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;filesystem&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="comment">// Return relative filename</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::string</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  relative(<span class="keyword">const</span> std::string &amp;filename)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">auto</span> rel = filename;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>) != std::string::npos)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      rel = rel.substr(rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>) + 1);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> rel;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Return directory name</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  std::string</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  dirname(<span class="keyword">const</span> std::string &amp;filename)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">auto</span> rel = filename;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>) != std::string::npos)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      rel = rel.substr(0, rel.find_last_of(<span class="charliteral">&#39;/&#39;</span>));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      rel = <span class="stringliteral">&quot;./&quot;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// Check if it exists, if not, create it</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(std::system(</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                  (<span class="stringliteral">&quot;test -d &quot;</span> + rel + <span class="stringliteral">&quot; || mkdir -p &quot;</span> + rel).c_str()) == 0,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(<span class="stringliteral">&quot;Could not create directory &quot;</span> + rel));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> rel;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#a86991b7f585b9c3147db4f3136d4fe6d">   72</a></span>&#160;  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html#a045bd55f737005924de7f0b116f6f961">DataOut&lt;dim, spacedim&gt;::DataOut</a>(<span class="keyword">const</span> std::string &amp; section_name,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                  <span class="keyword">const</span> std::string &amp; base_name,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                  <span class="keyword">const</span> std::string &amp; output_format,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;subdivisions,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                                  <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;        write_higher_order_cells,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                                  <span class="keyword">const</span> MPI_Comm &amp;    comm)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    : <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>(section_name)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a>::MPI::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>))</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a>::MPI::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#a45abb8367696a1d632b1bf1c8f9750e3">comm</a>))</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    , output_format(output_format)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    , subdivisions(subdivisions)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    , write_higher_order_cells(write_higher_order_cells)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    , base_name(base_name)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    add_parameter(<span class="stringliteral">&quot;Problem base name&quot;</span>, this-&gt;base_name);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output partitioning&quot;</span>, this-&gt;output_partitioning);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output material ids&quot;</span>, this-&gt;output_material_ids);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#af7882b4b1d10ab0b06fe83757e49d842">   95</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;dim, spacedim&gt;::clear_pvd_record</a>()</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    pvd_record.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a2e4f8347ae5f913939ebf81a23277880">clear</a>();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output format&quot;</span>,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  this-&gt;output_format,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                  <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                  this-&gt;prm,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPatterns_1_1Selection.html">Patterns::Selection</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDataOutBase.html#add43d8f47ccf7052f0178e710ad4ca02">DataOutBase::get_output_format_names</a>()));</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    add_parameter(<span class="stringliteral">&quot;Subdivisions&quot;</span>, this-&gt;subdivisions);</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61">  104</a></span>&#160;  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut__DoFData.html#a6ed7c846331069f406b8c9933c37fda4">DataOut&lt;dim, spacedim&gt;::attach_dof_handler</a>(</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim, spacedim&gt;</a> &amp;dh,</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">const</span> std::string &amp;              suffix)</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    data_out = std::make_unique&lt;dealii::DataOut&lt;dim, spacedim&gt;&gt;();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    data_out-&gt;set_default_format(</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDataOutBase.html#abbf6308a89986d2081638ef3117699a9">DataOutBase::parse_output_format</a>(output_format));</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    master_name       = relative(base_name);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">auto</span> fname        = base_name + (suffix.empty() ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;_&quot;</span> + suffix);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    current_filename  = relative(fname);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    current_directory = dirname(fname);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (subdivisions == 0)</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      subdivisions = dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#ac1fedeb50b5f03b13d8b69f86e33f726">get_fe</a>().degree;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (write_higher_order_cells &amp;&amp; dim &gt; 1)</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataOutBase_1_1VtkFlags.html">DataOutBase::VtkFlags</a> flags;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        flags.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataOutBase_1_1VtkFlags.html#aa9dd1830c0ff35a2431704c4d45453eb">write_higher_order_cells</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        data_out-&gt;set_flags(flags);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    add_parameter(<span class="stringliteral">&quot;Write high order cells&quot;</span>, this-&gt;write_higher_order_cells);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    add_parameter(<span class="stringliteral">&quot;Curved cells region&quot;</span>, this-&gt;curved_cells_region);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#af7882b4b1d10ab0b06fe83757e49d842">  110</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;dim, spacedim&gt;::clear_pvd_record</a>()</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    pvd_record.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a2e4f8347ae5f913939ebf81a23277880">clear</a>();</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61">  119</a></span>&#160;  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut__DoFData.html#a6ed7c846331069f406b8c9933c37fda4">DataOut&lt;dim, spacedim&gt;::attach_dof_handler</a>(</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim, spacedim&gt;</a> &amp;dh,</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">const</span> std::string &amp;              suffix)</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    data_out = std::make_unique&lt;dealii::DataOut&lt;dim, spacedim&gt;&gt;();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    data_out-&gt;set_default_format(</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDataOutBase.html#abbf6308a89986d2081638ef3117699a9">DataOutBase::parse_output_format</a>(output_format));</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (data_out-&gt;default_suffix() != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="comment">// If the output is needed and we have many processes, just output</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// the one we need *in intermediate format*.</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a> &gt; 1)</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;          fname += (<span class="stringliteral">&quot;.&quot;</span> + <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>, 2) + <span class="stringliteral">&quot;.&quot;</span> +</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>, 2) +</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                    data_out-&gt;default_suffix());</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;          fname += data_out-&gt;default_suffix();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        output_file.open(fname);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(output_file, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        data_out-&gt;attach_dof_handler(dh);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    master_name       = relative(base_name);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">auto</span> fname        = base_name + (suffix.empty() ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;_&quot;</span> + suffix);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    current_filename  = relative(fname);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    current_directory = dirname(fname);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">if</span> (subdivisions == 0)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      subdivisions = dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#ac1fedeb50b5f03b13d8b69f86e33f726">get_fe</a>().degree;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">if</span> (write_higher_order_cells &amp;&amp; dim &gt; 1)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataOutBase_1_1VtkFlags.html">DataOutBase::VtkFlags</a> flags;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        flags.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataOutBase_1_1VtkFlags.html#aa9dd1830c0ff35a2431704c4d45453eb">write_higher_order_cells</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        data_out-&gt;set_flags(flags);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      }</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a> &gt; 1)</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;          {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="comment">// Output the partitioning</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (output_partitioning)</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;              {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt;float&gt;</a> partitioning(</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                  dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a7797f796c0be511fbc7f230ccc22532e">get_triangulation</a>().n_active_cells());</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; partitioning.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#a81dcfa5c77bdd426603386c0844149ae">size</a>(); ++i)</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                  partitioning(i) = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keyword">static</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt;float&gt;</a> static_partitioning;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                static_partitioning.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#a9818314bd7dc4e66849559f429e06151">swap</a>(partitioning);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                data_out-&gt;add_data_vector(</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                  static_partitioning,</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                  <span class="stringliteral">&quot;partitioning&quot;</span>,</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                  dealii::DataOut&lt;dim, spacedim&gt;::type_cell_data);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;              }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="comment">// Output the materialids</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">if</span> (output_material_ids)</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;          {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="keyword">static</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt;float&gt;</a> material_ids;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            material_ids.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#ac4a4dbef7dd65ef8ad35ae56b57d7c05">reinit</a>(dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a7797f796c0be511fbc7f230ccc22532e">get_triangulation</a>().n_active_cells());</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> cell : dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__CPP11.html#gacdb6d3adec96a13a7079f6c893e1d3ff">active_cell_iterators</a>())</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;              material_ids(cell-&gt;active_cell_index()) = cell-&gt;material_id();</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            data_out-&gt;add_data_vector(</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;              material_ids,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;              <span class="stringliteral">&quot;material_id&quot;</span>,</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;              dealii::DataOut&lt;dim, spacedim&gt;::type_cell_data);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;          }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#a631160a2bacdfe43ce4a228bb6d36f3b">  179</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;dim, spacedim&gt;::write_data_and_clear</a>(</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping&lt;dim, spacedim&gt;</a> &amp;mapping)</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  {</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="keywordflow">if</span> (output_format == <span class="stringliteral">&quot;none&quot;</span>)</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(output_file, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (data_out-&gt;default_suffix() != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      {</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        data_out-&gt;build_patches(mapping,</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                this-&gt;subdivisions,</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                this-&gt;curved_cells_region);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        data_out-&gt;write(output_file);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        std::string master_file = current_filename;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a> == 0 &amp;&amp; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a> &gt; 1 &amp;&amp;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            data_out-&gt;default_suffix() == <span class="stringliteral">&quot;.vtu&quot;</span>)</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;          {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            std::vector&lt;std::string&gt; filenames;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>; ++i)</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;              filenames.push_back(relative(current_filename) + <span class="stringliteral">&quot;.&quot;</span> +</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(i, 2) + <span class="stringliteral">&quot;.&quot;</span> +</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>, 2) +</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                                  data_out-&gt;default_suffix());</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            std::ofstream master_output(</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;              (relative(current_filename) + <span class="stringliteral">&quot;.pvtu&quot;</span>).c_str());</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            data_out-&gt;write_pvtu_record(master_output, filenames);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            master_file += <span class="stringliteral">&quot;.pvtu&quot;</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;          }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> (data_out-&gt;default_suffix() != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="comment">// If the output is needed and we have many processes, just output</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="comment">// the one we need *in intermediate format*.</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a> &gt; 1)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;          fname += (<span class="stringliteral">&quot;.&quot;</span> + <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>, 2) + <span class="stringliteral">&quot;.&quot;</span> +</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>, 2) +</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    data_out-&gt;default_suffix());</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          fname += data_out-&gt;default_suffix();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        output_file.open(fname);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(output_file, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        data_out-&gt;attach_dof_handler(dh);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a> &gt; 1)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;          {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="comment">// Output the partitioning</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">if</span> (output_partitioning)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;              {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt;float&gt;</a> partitioning(</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                  dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a7797f796c0be511fbc7f230ccc22532e">get_triangulation</a>().n_active_cells());</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; partitioning.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#a81dcfa5c77bdd426603386c0844149ae">size</a>(); ++i)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                  partitioning(i) = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <span class="keyword">static</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt;float&gt;</a> static_partitioning;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                static_partitioning.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#a9818314bd7dc4e66849559f429e06151">swap</a>(partitioning);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                data_out-&gt;add_data_vector(</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                  static_partitioning,</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                  <span class="stringliteral">&quot;partitioning&quot;</span>,</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                  dealii::DataOut&lt;dim, spacedim&gt;::type_cell_data);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;              }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;          }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// Output the materialids</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">if</span> (output_material_ids)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;          {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keyword">static</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt;float&gt;</a> material_ids;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            material_ids.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#ac4a4dbef7dd65ef8ad35ae56b57d7c05">reinit</a>(dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a7797f796c0be511fbc7f230ccc22532e">get_triangulation</a>().n_active_cells());</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> cell : dh.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__CPP11.html#gacdb6d3adec96a13a7079f6c893e1d3ff">active_cell_iterators</a>())</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;              material_ids(cell-&gt;active_cell_index()) = cell-&gt;material_id();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            data_out-&gt;add_data_vector(</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;              material_ids,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;              <span class="stringliteral">&quot;material_id&quot;</span>,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;              dealii::DataOut&lt;dim, spacedim&gt;::type_cell_data);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;          }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_data_out.html#a631160a2bacdfe43ce4a228bb6d36f3b">  194</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;dim, spacedim&gt;::write_data_and_clear</a>(</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping&lt;dim, spacedim&gt;</a> &amp;mapping)</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">if</span> (output_format == <span class="stringliteral">&quot;none&quot;</span>)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(output_file, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">if</span> (data_out-&gt;default_suffix() != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;      {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        data_out-&gt;build_patches(mapping,</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                this-&gt;subdivisions,</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                this-&gt;curved_cells_region);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        data_out-&gt;write(output_file);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        std::string master_file = current_filename;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a> == 0 &amp;&amp; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a> &gt; 1 &amp;&amp;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            data_out-&gt;default_suffix() == <span class="stringliteral">&quot;.vtu&quot;</span>)</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;          {</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            master_file += data_out-&gt;default_suffix();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;          }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        pvd_record.push_back(</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;          std::make_pair(pvd_record.size(), relative(master_file)));</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a> == 0)</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;          {</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            std::ofstream pvd_output(</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;              (current_directory + <span class="stringliteral">&quot;/&quot;</span> + master_name + <span class="stringliteral">&quot;.pvd&quot;</span>));</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDataOutBase.html#a6f1c052ba49fd44cd8e3f35ba871aebd">DataOutBase::write_pvd_record</a>(pvd_output, pvd_record);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;          }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    data_out = 0;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    output_file.close();</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  }</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;1, 1&gt;</a>;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;1, 2&gt;</a>;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;1, 3&gt;</a>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;2, 2&gt;</a>;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;2, 3&gt;</a>;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;3, 3&gt;</a>;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            std::vector&lt;std::string&gt; filenames;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>; ++i)</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;              filenames.push_back(relative(current_filename) + <span class="stringliteral">&quot;.&quot;</span> +</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(i, 2) + <span class="stringliteral">&quot;.&quot;</span> +</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes</a>, 2) +</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                                  data_out-&gt;default_suffix());</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            std::ofstream master_output(</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;              (relative(current_filename) + <span class="stringliteral">&quot;.pvtu&quot;</span>).c_str());</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            data_out-&gt;write_pvtu_record(master_output, filenames);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            master_file += <span class="stringliteral">&quot;.pvtu&quot;</span>;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;          }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;          {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            master_file += data_out-&gt;default_suffix();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;          }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        pvd_record.push_back(</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;          std::make_pair(pvd_record.size(), relative(master_file)));</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span> (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process</a> == 0)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            std::ofstream pvd_output(</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;              (current_directory + <span class="stringliteral">&quot;/&quot;</span> + master_name + <span class="stringliteral">&quot;.pvd&quot;</span>));</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDataOutBase.html#a6f1c052ba49fd44cd8e3f35ba871aebd">DataOutBase::write_pvd_record</a>(pvd_output, pvd_record);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;          }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    data_out = 0;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    output_file.close();</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;1, 1&gt;</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;1, 2&gt;</a>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;1, 3&gt;</a>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;2, 2&gt;</a>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;2, 3&gt;</a>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_data_out.html">DataOut&lt;3, 3&gt;</a>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassVector_html_a81dcfa5c77bdd426603386c0844149ae"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html#a81dcfa5c77bdd426603386c0844149ae">Vector::size</a></div><div class="ttdeci">size_type size() const</div></div>
@@ -348,7 +363,7 @@ $(document).ready(function(){initNavTree('data__out_8cc_source.html',''); initRe
 <div class="ttc" id="anamespaceUtilities_html_a6195c5f009ea8c7c536c6ffdf108c32f"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a></div><div class="ttdeci">std::string int_to_string(const unsigned int value, const unsigned int digits=numbers::invalid_unsigned_int)</div></div>
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="ainclude_2deal_8II_2base_2utilities_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2utilities_8h.html">utilities.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_data_out_html"><div class="ttname"><a href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a></div><div class="ttdef"><b>Definition:</b> <a href="data__out_8h_source.html#l00024">data_out.h:24</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_data_out_html"><div class="ttname"><a href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a></div><div class="ttdef"><b>Definition:</b> <a href="data__out_8h_source.html#l00039">data_out.h:39</a></div></div>
 <div class="ttc" id="aclassDataOut__DoFData_html_a6ed7c846331069f406b8c9933c37fda4"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut__DoFData.html#a6ed7c846331069f406b8c9933c37fda4">DataOut::attach_dof_handler</a></div><div class="ttdeci">void attach_dof_handler(const DoFHandler&lt; dim, spacedim &gt; &amp;)</div></div>
 <div class="ttc" id="aclassDoFHandler_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a></div></div>
 <div class="ttc" id="aquadrature__lib_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/quadrature__lib_8h.html">quadrature_lib.h</a></div></div>
@@ -379,13 +394,13 @@ $(document).ready(function(){initNavTree('data__out_8cc_source.html',''); initRe
 <div class="ttc" id="aclassVector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a></div></div>
 <div class="ttc" id="aclassDoFHandler_html_ac1fedeb50b5f03b13d8b69f86e33f726"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#ac1fedeb50b5f03b13d8b69f86e33f726">DoFHandler::get_fe</a></div><div class="ttdeci">const FiniteElement&lt; dim, spacedim &gt; &amp; get_fe(const unsigned int index=0) const</div></div>
 <div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
-<div class="ttc" id="anamespace_parsed_tools_html"><div class="ttname"><a href="namespace_parsed_tools.html">ParsedTools</a></div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8cc_source.html#l00012">boundary_conditions.cc:12</a></div></div>
+<div class="ttc" id="anamespace_parsed_tools_html"><div class="ttname"><a href="namespace_parsed_tools.html">ParsedTools</a></div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00037">boundary_conditions.h:37</a></div></div>
 <div class="ttc" id="anamespaceUtilities_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html">Utilities</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="data__out_8cc.html">data_out.cc</a></li>
-    <li class="footer">Generated on Mon Feb 7 2022 17:36:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
