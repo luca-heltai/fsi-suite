@@ -105,9 +105,12 @@ $(document).ready(function(){initNavTree('class_p_d_es_1_1_serial_1_1_poisson.ht
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_p_d_es_1_1_serial_1_1_poisson-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">PDEs::Serial::Poisson&lt; dim, spacedim &gt; Class Template Reference</div>  </div>
+<div class="title">PDEs::Serial::Poisson&lt; dim, spacedim &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__basics.html">Basic applications</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">Poisson</a> problem, serial version.  
+ <a href="class_p_d_es_1_1_serial_1_1_poisson.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="poisson_8h_source.html">poisson.h</a>&gt;</code></p>
 <div class="dynheader">
@@ -120,6 +123,7 @@ Inheritance diagram for PDEs::Serial::Poisson&lt; dim, spacedim &gt;:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aaa6146bcb26f17ee234ec7d8c72d97c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aaa6146bcb26f17ee234ec7d8c72d97c4">Poisson</a> ()</td></tr>
+<tr class="memdesc:aaa6146bcb26f17ee234ec7d8c72d97c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">At construction time, we need to initialize all member functions that are derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#aaa6146bcb26f17ee234ec7d8c72d97c4">More...</a><br /></td></tr>
 <tr class="separator:aaa6146bcb26f17ee234ec7d8c72d97c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab330044aa5cf2279ec7ab769f2d95648"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">run</a> ()</td></tr>
 <tr class="separator:ab330044aa5cf2279ec7ab769f2d95648"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -301,8 +305,63 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><h3>template&lt;int dim, int spacedim = dim&gt;<br />
 class PDEs::Serial::Poisson&lt; dim, spacedim &gt;</h3>
 
+<p><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">Poisson</a> problem, serial version. </p>
+<p>Solve the <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">Poisson</a> equation in arbitrary dimensions and space dimensions. When dim and spacedim are not the same, we solve the Laplace-Beltrami equation. This example is based on the deal.II tutorial <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_1.html">step-1</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_2.html">step-2</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_3.html">step-3</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_4.html">step-4</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_5.html">step-5</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_6.html">step-6</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_38.html">step-38</a>.</p>
+<p class="formulaDsp">
+\[ \begin{cases} - \Delta u = f &amp; \text{ in } \Omega \subset R^{\text{spacedim}}\\ u = u_D &amp; \text{ on } \partial \Omega_D \\ \frac{\partial u}{\partial n} = u_N &amp; \text{ on } \partial \Omega_N \\ \end{cases} \]
+</p>
+<p>We will solve this equation on any grid that can be generated using the <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">ParsedTools::GridGenerator</a> class. An example usage of that was class was given in the file <a class="el" href="mesh__handler_8cc.html" title="Mesh generator and reader.">mesh_handler.cc</a>.</p>
+<p>In this program, the right hand side \(f\), the Dirichlet boundary condition \(u_D\), and the Neumann boundary condition \(u_N\) will be read from a parameter file.</p>
+<p>From the basics of the finite element method, we know the steps we need to take to approximate the solution \(u\) by a finite dimensional approximation. Specifically, we first need to derive the weak form of the equation above, which we obtain by multiplying the equation by a test function \(\varphi\) and integrating over the domain \(\Omega\):</p>
+<p class="formulaDsp">
+\begin{align*} -\int_\Omega \varphi \Delta u = \int_\Omega \varphi f. \end{align*}
+</p>
+<p>This can be integrated by parts: </p><p class="formulaDsp">
+\begin{align*} \int_\Omega \nabla\varphi \cdot \nabla u -\int_{\partial\Omega} \varphi \mathbf{n}\cdot \nabla u = \int_\Omega \varphi f \end{align*}
+</p>
+<p>The test functions \(\varphi\) are chosen so that they are zero on the Dirichlet part of the boundary \(\gamma_D\), while the Neumann boundary condition is replaced naturally in the integration by parts, and shows up on the right hand side as a boundary supported data. The final weak form reads:</p>
+<p>Given \(f (H^1_{0,\Gamma_D} (\Omega))^*\), find \(u \in H^1_{u_D,\Gamma_D} (\Omega)\) such that</p>
+<p class="formulaDsp">
+\begin{align*} (\nabla\varphi, \nabla u) = (\varphi, f) + \int_{\Gamma_N} u_N \varphi \qquad \forall \varphi \in H^1_{0,\Gamma_D} (\Omega) \end{align*}
+</p>
+<p>In finite elements, we seek an approximation \(u_h(\mathbf x)= U^j \varphi_j(\mathbf x)\) (sum is implied on the repeated indices), where the \(U^j\) are the unknown expansion coefficients we need to determine (the "degrees of freedom" of this problem), and \(\varphi_i(\mathbf x)\) are the finite element shape functions we will use. To define these shape functions, we need the following:</p>
+<ul>
+<li>A mesh on which to define shape functions. We use the same technique described in the <a class="el" href="mesh__handler_8cc.html" title="Mesh generator and reader.">mesh_handler.cc</a> program, i.e., a <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">ParsedTools::GridGenerator</a> object, that allows you to specify any of the built in deal.II meshes, or an external mesh file, generated using some external mesher.</li>
+<li>A finite element that describes the shape functions we want to use on the reference cell. In <a class="el" href="dof__plotter_8cc.html" title="Degrees of freedom plotter.">dof_plotter.cc</a>, we had already used an object of type <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">ParsedTools::FiniteElement</a>, which allowed you to choose one of the finite element spaces supported by deal.II.</li>
+<li>A <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a> object that enumerates all the degrees of freedom on the mesh, taking the reference cell description the finite element object provides as the basis.</li>
+<li>A <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a> that tells how the shape functions on the real cell are obtained from the shape functions defined by the finite element class on the reference cell.</li>
+</ul>
+<p>Through these steps, we now have a set of functions \(\varphi_i\), and we can define the weak form of the discrete problem: Find a function \(u_h\), i.e., find the expansion coefficients \(U^j\) mentioned above, so that </p><p class="formulaDsp">
+\begin{align*} (\nabla\varphi_i, \nabla u_h) = (\varphi_i, f) + \int_{\Gamma_N} u_N \varphi_i, \qquad\qquad i=0\ldots N-1. \end{align*}
+</p>
+<p>This equation can be rewritten as a linear system if you insert the representation \(u_h(\mathbf x)= U^j \varphi_j(\mathbf x)\) and then observe that </p><p class="formulaDsp">
+\begin{align*} (\nabla\varphi_i, \nabla u_h) &amp;= \left(\nabla\varphi_i, \nabla \Bigl[\sum_j U^j \varphi_j\Bigr]\right) \\ &amp;= \sum_j \left(\nabla\varphi_i, \nabla \left[U^j \varphi_j\right]\right) \\ &amp;= \sum_j \left(\nabla\varphi_i, \nabla \varphi_j \right) U^j. \end{align*}
+</p>
+<p>With this, the problem reads: Find a vector \(U\) so that </p><p class="formulaDsp">
+\begin{align*} A_{ij} U^j = F_i, \end{align*}
+</p>
+<p> where the matrix \(A\) and the right hand side \(F\) are defined as </p><p class="formulaDsp">
+\begin{align*} A_{ij} &amp;= (\nabla\varphi_i, \nabla \varphi_j), \\ F_i &amp;= (\varphi_i, f) + \int_{\Gamma_N} u_N \varphi_i. \end{align*}
+</p>
+<h3><em>Assembling</em> the matrix and right hand side vector </h3>
+<p>Now we know what we need (namely: objects that hold the matrix and vectors, as well as ways to compute \(A_{ij},F_i\)), and we can look at what it takes to make that happen:</p>
+<ul>
+<li>The object for \(A\) is of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a> while those for \(U\) and \(F\) are of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>. We will see in the program below what classes are used to solve linear systems.</li>
+<li>We need a way to form the integrals. In the finite element method, this is most commonly done using quadrature, i.e. the integrals are replaced by a weighted sum over a set of <em>quadrature points</em> on each cell. That is, we first split the integral over \(\Omega\) into integrals over all cells, <p class="formulaDsp">
+\begin{align*} A_{ij} &amp;= (\nabla\varphi_i, \nabla \varphi_j) = \sum_{K \in {\mathbb T}} \int_K \nabla\varphi_i \cdot \nabla \varphi_j, \\ F_i &amp;= (\varphi_i, f) = \sum_{K \in {\mathbb T}} \int_K \varphi_i f, \end{align*}
+</p>
+ and then approximate each cell's contribution by quadrature: <p class="formulaDsp">
+\begin{align*} A^K_{ij} &amp;= \int_K \nabla\varphi_i \cdot \nabla \varphi_j \approx \sum_q \nabla\varphi_i(\mathbf x^K_q) \cdot \nabla \varphi_j(\mathbf x^K_q) w_q^K, \\ F^K_i &amp;= \int_K \varphi_i f + \int_{\Gamma_N} u_N \varphi_i \approx \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q + \sum_q \varphi_i(\mathbf x^\Gamma_q) f(\mathbf x^\Gamma_q)w^\Gamma_q, \end{align*}
+</p>
+ where \(\mathbb{T} \approx \Omega\) is a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> approximating the domain, \(\mathbf x^K_q\) is the \(q\)th quadrature point on cell \(K\), and \(w^K_q\) the \(q\)th quadrature weight. There are different parts to what is needed in doing this, and we will discuss them in turn next.</li>
+<li>First, we need a way to describe the location \(\mathbf x_q^K\) of quadrature points and their weights \(w^K_q\). They are usually mapped from the reference cell in the same way as shape functions, i.e., implicitly using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ1.html">MappingQ1</a> class or, if you explicitly say so, through one of the other classes derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>. The locations and weights on the reference cell are described by objects derived from the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> base class. Typically, one chooses a quadrature formula (i.e. a set of points and weights) so that the quadrature exactly equals the integral in the matrix; this can be achieved because all factors in the integral are polynomial, and is done by Gaussian quadrature formulas, implemented in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQGauss.html">QGauss</a> class.</li>
+<li>We then need something that can help us evaluate \(\varphi_i(\mathbf x^K_q)\) on cell \(K\). This is what the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class does: it takes a finite element objects to describe \(\varphi\) on the reference cell, a quadrature object to describe the quadrature points and weights, and a mapping object (or implicitly takes the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ1.html">MappingQ1</a> class) and provides values and derivatives of the shape functions on the real cell \(K\) as well as all sorts of other information needed for integration, at the quadrature points located on \(K\). The process of computing the matrix and right hand side as a sum over all cells (and then a sum over quadrature points) is usually called <em>assembling the linear system</em>, or <em>assembly</em> for short, using the meaning of the word related to <a href="https://en.wikipedia.org/wiki/Assembly_line">assembly line</a>, meaning <a href="https://en.wiktionary.org/wiki/assembly">"the act of putting together a set of pieces, fragments, or elements"</a>.</li>
+</ul>
+<p><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> really is the central class in the assembly process. One way you can view it is as follows: The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> and derived classes describe shape <em>functions</em>, i.e., infinite dimensional objects: functions have values at every point. We need this for theoretical reasons because we want to perform our analysis with integrals over functions. However, for a computer, this is a very difficult concept, since they can in general only deal with a finite amount of information, and so we replace integrals by sums over quadrature points that we obtain by mapping (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a> object) using points defined on a reference cell (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object) onto points on the real cell. In essence, we reduce the problem to one where we only need a finite amount of information, namely shape function values and derivatives, quadrature weights, normal vectors, etc, exclusively at a finite set of points. The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class is the one that brings the three components together and provides this finite set of information on a particular cell \(K\). You will see it in action when we assemble the linear system below.</p>
+<p>It is noteworthy that all of this could also be achieved if you simply created these three objects yourself in an application program, and juggled the information yourself. However, this would neither be simpler (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class provides exactly the kind of information you actually need) nor faster: the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class is highly optimized to only compute on each cell the particular information you need; if anything can be re-used from the previous cell, then it will do so, and there is a lot of code in that class to make sure things are cached wherever this is advantageous.</p>
+<p>The final piece of this introduction is to mention that after a linear system is obtained, it is solved using an iterative solver and then postprocessed: we create an output file using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> class that can then be visualized using one of the common visualization programs. </p>
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00087">87</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00268">268</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaa6146bcb26f17ee234ec7d8c72d97c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa6146bcb26f17ee234ec7d8c72d97c4">&#9670;&nbsp;</a></span>Poisson()</h2>
@@ -317,6 +376,8 @@ template&lt;int dim, int spacedim&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>At construction time, we need to initialize all member functions that are derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00029">29</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
@@ -488,7 +549,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>How we identify the component names. </p>
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00111">111</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00296">296</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -514,7 +575,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00114">114</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00299">299</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -540,7 +601,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00115">115</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00300">300</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -566,7 +627,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00116">116</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00301">301</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -592,7 +653,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00119">119</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00304">304</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +679,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00120">120</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00305">305</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -644,7 +705,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00121">121</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00306">306</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -670,7 +731,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00124">124</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00309">309</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -696,7 +757,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00125">125</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00310">310</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -722,7 +783,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00126">126</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00311">311</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -748,7 +809,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00127">127</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00312">312</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -774,7 +835,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00128">128</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00313">313</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -800,7 +861,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00129">129</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00314">314</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -826,7 +887,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00130">130</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00315">315</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -852,7 +913,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00133">133</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00318">318</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -878,7 +939,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00134">134</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00319">319</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -904,7 +965,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00135">135</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00320">320</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -930,7 +991,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00136">136</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00321">321</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -956,7 +1017,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00139">139</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00324">324</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -982,7 +1043,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00142">142</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00327">327</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1069,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00145">145</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00330">330</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -1022,7 +1083,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson</a></li>
-    <li class="footer">Generated on Sat Feb 12 2022 13:42:36 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 21:53:02 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

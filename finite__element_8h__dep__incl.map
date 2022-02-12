@@ -5,7 +5,7 @@
 <area shape="rect" id="node8" href="$poisson_8h.html" title=" " alt="" coords="820,95,964,136"/>
 <area shape="rect" id="node11" href="$stokes_8h.html" title=" " alt="" coords="988,95,1132,136"/>
 <area shape="rect" id="node14" href="$finite__element_8cc.html" title=" " alt="" coords="1157,102,1339,129"/>
-<area shape="rect" id="node15" href="$dof__plotter_8cc.html" title=" " alt="" coords="1364,102,1511,129"/>
+<area shape="rect" id="node15" href="$dof__plotter_8cc.html" title="Degrees of freedom plotter." alt="" coords="1364,102,1511,129"/>
 <area shape="rect" id="node3" href="$source_2pdes_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="5,184,184,225"/>
 <area shape="rect" id="node4" href="$apps_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="209,184,375,225"/>
 <area shape="rect" id="node6" href="$source_2pdes_2serial_2linear__elasticity_8cc.html" title=" " alt="" coords="400,184,547,225"/>

@@ -102,9 +102,12 @@ $(document).ready(function(){initNavTree('mesh__handler_8cc.html',''); initResiz
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">mesh_handler.cc File Reference</div>  </div>
+<div class="title">mesh_handler.cc File Reference<div class="ingroups"><a class="el" href="group__basics.html">Basic applications</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Mesh generator and reader.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html">deal.II/grid/reference_cell.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="grid__generator_8h_source.html">parsed_tools/grid_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="grid__info_8h_source.html">parsed_tools/grid_info.h</a>&quot;</code><br />
@@ -120,10 +123,14 @@ Include dependency graph for mesh_handler.cc:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
-<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mesh generator and reader.  <a href="mesh__handler_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br /></td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Mesh generator and reader. </p>
+<p>This program is useful to debug input grid files. It gathers information from the file specified in the input parameter and prints it on screen. It is based on <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_1.html">step-1</a> of the deal.II library, and offers a general overview of the class <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">ParsedTools::GridGenerator</a>. </p>
+
+<p class="definition">Definition in file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -150,10 +157,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Mesh generator and reader. </p>
-<p>This program is useful to debug input grid files. It gathers information from the file specified in the input parameter and prints it on screen. </p>
-
-<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00030">30</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mesh__handler_8cc_source.html#l00036">36</a> of file <a class="el" href="mesh__handler_8cc_source.html">mesh_handler.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="el" href="grid__generator_8cc_source.html#l00052">ParsedTools::GridGenerator&lt; dim, spacedim &gt;::generate()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize()</a>, <a class="el" href="grid__info_8h_source.html#l00252">ParsedTools::GridInfo::print_info()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, and <a class="el" href="grid__generator_8cc_source.html#l00181">ParsedTools::GridGenerator&lt; dim, spacedim &gt;::write()</a>.</p>
 
@@ -165,7 +169,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="mesh__handler_8cc.html">mesh_handler.cc</a></li>
-    <li class="footer">Generated on Sat Feb 12 2022 13:42:35 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 12 2022 21:53:01 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

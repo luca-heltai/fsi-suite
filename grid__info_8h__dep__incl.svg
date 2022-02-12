@@ -52,7 +52,7 @@
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node16"><a xlink:href="dof__plotter_8cc.html" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="dof__plotter_8cc.html" target="_top" xlink:title="Degrees of freedom plotter.">
 <polygon fill="none" stroke="black" points="912,-140 912,-159 1022,-159 1022,-140 912,-140"/>
 <text text-anchor="middle" x="967" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">apps/dof_plotter.cc</text>
 </a>
@@ -67,7 +67,7 @@
 <!-- Node17 -->
 <g id="node17" class="node">
 <title>Node17</title>
-<g id="a_node17"><a xlink:href="mesh__handler_8cc.html" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="mesh__handler_8cc.html" target="_top" xlink:title="Mesh generator and reader.">
 <polygon fill="none" stroke="black" points="1040.5,-140 1040.5,-159 1165.5,-159 1165.5,-140 1040.5,-140"/>
 <text text-anchor="middle" x="1103" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">apps/mesh_handler.cc</text>
 </a>

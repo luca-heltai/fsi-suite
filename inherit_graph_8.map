@@ -33,7 +33,7 @@
 <area shape="rect" id="node31" href="$class_parsed_tools_1_1_symbolic_function.html" title="A wrapper for the Functions::SymbolicFunction class." alt="" coords="865,260,1088,301"/>
 <area shape="rect" id="node32" href="$class_p_d_es_1_1_serial_1_1_distributed_lagrange.html" title=" " alt="" coords="873,325,1081,367"/>
 <area shape="rect" id="node33" href="$class_p_d_es_1_1_serial_1_1_linear_elasticity.html" title=" " alt="" coords="873,391,1081,432"/>
-<area shape="rect" id="node34" href="$class_p_d_es_1_1_serial_1_1_poisson.html" title=" " alt="" coords="897,456,1056,497"/>
+<area shape="rect" id="node34" href="$class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version." alt="" coords="897,456,1056,497"/>
 <area shape="rect" id="node35" href="$class_p_d_es_1_1_serial_1_1_stokes.html" title=" " alt="" coords="901,573,1052,615"/>
 <area shape="rect" id="node37" href="/__w/fsi-suite/fsi-suite/deal.tag$classTrilinosWrappers_1_1PreconditionAMG.html" title=" " alt="" coords="544,1601,795,1627"/>
 <area shape="rect" id="node38" href="/__w/fsi-suite/fsi-suite/deal.tag$classTrilinosWrappers_1_1PreconditionAMGMueLu.html" title=" " alt="" coords="559,1419,779,1460"/>

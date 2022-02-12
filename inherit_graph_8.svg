@@ -560,7 +560,7 @@
 <!-- Node29 -->
 <g id="node34" class="node">
 <title>Node29</title>
-<g id="a_node34"><a xlink:href="class_p_d_es_1_1_serial_1_1_poisson.html" target="_top" xlink:title=" ">
+<g id="a_node34"><a xlink:href="class_p_d_es_1_1_serial_1_1_poisson.html" target="_top" xlink:title="Poisson problem, serial version.">
 <polygon fill="none" stroke="black" points="669,-848 669,-878 788,-878 788,-848 669,-848"/>
 <text text-anchor="start" x="677" y="-866" font-family="Helvetica,sans-Serif" font-size="10.00">PDEs::Serial::Poisson</text>
 <text text-anchor="middle" x="728.5" y="-855" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; dim, spacedim &gt;</text>

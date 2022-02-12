@@ -1,5 +1,5 @@
 <map id="apps/dof_plotter.cc" name="apps/dof_plotter.cc">
-<area shape="rect" id="node1" title=" " alt="" coords="3325,5,3471,32"/>
+<area shape="rect" id="node1" title="Degrees of freedom plotter." alt="" coords="3325,5,3471,32"/>
 <area shape="rect" id="node2" href="/__w/fsi-suite/fsi-suite/deal.tag$dofs_2dof__handler_8h.html" title=" " alt="" coords="2293,177,2479,203"/>
 <area shape="rect" id="node24" href="/__w/fsi-suite/fsi-suite/deal.tag$dof__tools_8h.html" title=" " alt="" coords="2018,87,2189,114"/>
 <area shape="rect" id="node27" href="/__w/fsi-suite/fsi-suite/deal.tag$vector_8h.html" title=" " alt="" coords="3075,355,3217,382"/>

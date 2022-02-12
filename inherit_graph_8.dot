@@ -75,7 +75,7 @@ digraph "Graphical Class Hierarchy"
   Node7 -> Node28 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node28 [label="PDEs::Serial::LinearElasticity\l\< dim, spacedim \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_serial_1_1_linear_elasticity.html",tooltip=" "];
   Node7 -> Node29 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node29 [label="PDEs::Serial::Poisson\l\< dim, spacedim \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_serial_1_1_poisson.html",tooltip=" "];
+  Node29 [label="PDEs::Serial::Poisson\l\< dim, spacedim \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_serial_1_1_poisson.html",tooltip="Poisson problem, serial version."];
   Node7 -> Node30 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node30 [label="PDEs::Serial::Stokes\l\< dim \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_serial_1_1_stokes.html",tooltip=" "];
   Node0 -> Node31 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
