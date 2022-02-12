@@ -13,6 +13,18 @@
 //
 // ---------------------------------------------------------------------
 
+/**
+ * Mesh generator and reader.
+ *
+ * @ingroup basics
+ * @file mesh_handler.cc
+ *
+ * This program is useful to debug input grid files. It gathers information from
+ * the file specified in the input parameter and prints it on screen. It is
+ * based on step-1 of the deal.II library, and offers a general overview of the
+ * class ParsedTools::GridGenerator.
+ */
+
 #include <deal.II/grid/reference_cell.h>
 
 #include "parsed_tools/grid_generator.h"
@@ -20,12 +32,6 @@
 
 using namespace dealii;
 
-/**
- * Mesh generator and reader.
- *
- * This program is useful to debug input grid files. It gathers information from
- * the file specified in the input parameter and prints it on screen.
- */
 int
 main(int argc, char **argv)
 {

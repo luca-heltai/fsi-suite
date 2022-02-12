@@ -13,6 +13,17 @@
 //
 // ---------------------------------------------------------------------
 
+/**
+ * Degrees of freedom plotter.
+ *
+ * @file dof_plotter.cc
+ * @ingroup basics
+ *
+ * Illustrates the use of ParsedTools::GridGenerator,
+ * ParsedTools::FiniteElement, and ParsedTools::DataOut. It surrogates step-2 of
+ * the deal.II library, and it builds on mesh_handler.cc.
+ */
+
 #include <deal.II/dofs/dof_handler.h>
 #include <deal.II/dofs/dof_tools.h>
 
@@ -38,15 +49,6 @@
 
 using namespace dealii;
 
-/**
- * Mesh generator, and DoFHandler plotter.
- *
- * Plot both primal basis functions, and reciprocal basis functions.
- *
- * This program is useful to visualize degrees of freedom. It gathers
- * information from the file specified in the input parameter and prints it on
- * screen.
- */
 int
 main(int argc, char **argv)
 {
