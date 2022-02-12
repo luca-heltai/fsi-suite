@@ -1,0 +1,164 @@
+/**
+ * @page design Introduction to the FSI-suite
+ *
+ * This project collects a series of codes that I have written during the years
+ * for my own research. I found myself writing the same code over and over
+ * again, and tried several approaches to unify everything under a single master
+ * application that would do everything I ever needed.
+ *
+ * This never really worked out as expected. One of the most advanced tool that
+ * was developed in our group with this principle in mind was the pi-DoMUS
+ * library (https://github.com/mathLab/pi-DoMUS). After a couple of years of
+ * intense development, that project was abandoned as it became more and more
+ * difficult to maintain. That project relied eavily on a tool kit library,
+ * which we named deal2lkit (https://github.com/mathLab/deal2lkit) \cite
+ * SartoriGiulianiBardelloni-2018-a
+ *
+ * The deal2lkit library was a good starting point, but we quickly found out
+ * that the development of the deal.II library itself runs way faster than we
+ * could ever hope to keep up with, and we decided to slowly incorporate
+ * anything that could be savaged from deal2lkit into deal.II itself.
+ *
+ * SymbolicFunction, FunctionParser, Manifold, ParameterAcceptor,
+ * ParsedErrorTable, and the LinearOperator classes are some of the results of
+ * this effort, and are currently used widely by the deal.II community \cite
+ * HeltaiBangerthKronbichler-2021, \cite MaierBardelloniHeltai-2016-a.
+ *
+ * The task is not finished yet. It is painful to port code from user space into
+ * a large library. The documentation requirements are stringent, proper testing
+ * is mandatory, and time always runs out.
+ *
+ * When I started working on fluid structure interaction problems (2004), it was
+ * very difficult to find advanced codes that one could learn from. Deal.II
+ * itself only had 17 tutorial programs (step-17 was the most advanced one).
+ * Today there are exceptional examples that show how to do everything, often in
+ * different ways, and the number of example programs is growing at a speed
+ * which is very difficult to keep up with.
+ *
+ * This project is what I wish I had at my disposal when I started working on
+ * FSI using deal.II. I collect here all the codes that I have written that
+ * relate in one way or another to fluid structure interaction problems.
+ *
+ * Documentation is still largely missing. But I have tried to keep up with the
+ * main classes and functions. Since I have given up trying to build a
+ * "one-fits-all" code, this project goes in the opposite direction. I collected
+ * every common bit of code that I found mymeslf rewriting over and over again
+ * in the ParsedTools namespace, and rewrote some of the basic tutorial of
+ * deal.II that has to do with FSI using the ParsedTools namespace. This allows
+ * you to use the same base code for many different problems, and to keep the
+ * code as similar as possible, even when they solve very different problems.
+ * All repetitive tasks (like the creation of a mesh, the creation of a finite
+ * element space, the creation of a linear solver, writing output to files,
+ * etc.) are handled via objects that understand how to parse options from
+ * parameter files (i.e., they are derived from the ParameterAcceptor class)
+ *
+ * Individual programs are as small as possible, and as clean as possible. Each
+ * code solves a single problem. A lot of duplication is unavoidable, but this
+ * has the advantage that it is easy to make incremental steps, and understand
+ * the most difficult parts of the FSI suite by walking through examples that
+ * increase in complexity, pretty much like it is done in the deal.II tutorial
+ * programs.
+ *
+ * The structure of the FSI suite programs follows very closely deal.II tutorial
+ * programs. In each program, I try to point the reader to the steps that are
+ * required to understand what is going on.
+ *
+ * @section installation Installation
+ *
+ * This project is hosted on GitHub. You can clone the repository using the
+ * command `git clone https://github.com/luca-heltai/fsi-suite.git`. This will
+ * generate a local copy of the repository in the directory `fsi-suite`. In
+ * order for you to run the code, you need to have the deal.II library installed
+ * and available in your default include path (i.e., `/usr/local/` or `/usr/`),
+ * or you should define the variable DEAL_II_DIR that points to your deal.II
+ * installation path.
+ *
+ * The deal.II library should be installed with the following options:
+ *
+ * - `DEAL_II_WITH_MPI=ON`
+ * - `DEAL_II_WITH_PETSC=ON`
+ * - `DEAL_II_WITH_TRILINOS=ON`
+ * - `DEAL_II_WITH_MU_PARSER=ON`
+ * - `DEAL_II_WITH_SYMENGINE=ON`
+ * - `DEAL_II_WITH_UMFPACK=ON`
+ * - `DEAL_II_WITH_SUNDIALS=ON`
+ * - `DEAL_II_HAVE_CXX17=ON`
+ *
+ * Once you have downloaded the code, you can configure and compile it using the
+ * following:
+ *
+ * @code{.sh}
+ * mkdir build
+ * cd build
+ * cmake -DCMAKE_BUILD_TYPE=Release ..
+ * make -j4
+ * ./gtest
+ * @endcode
+ *
+ * The above will create a build directory, run cmake, compile the code, and run
+ * a test suite that checks that everything works fine. If everything succeeds,
+ * you should have a directory with a few executables in it (i.e., gtest,
+ * mesh_handler, dof_plotter, poisson, etc.).
+ *
+ * I provide a docker image that can be used to build and run the code within a
+ * container. The image can be downloaded by `docker pull heltai/dealii:vscode`.
+ * This is also provided in the `.devcontainer` directory. If you open the
+ * folder using VisualStudio code, and have the Remote-Container extension
+ * installed, then you can build and run the code within a container that
+ * contains a full deal.II installation, simply by re-opening the folder in the
+ * container, and you should be good to go.
+ *
+ * Notice that the container uses gcc, and this is quite memory intensive. If
+ * you don't have at least 16GB of RAM, you may encounter problems. In case
+ * compilation fails, you can try recompiling using fewer processors.
+ *
+ * @section general_structure General structure of the FSI-suite
+ *
+ * The main source directories of the FSI-suite are:
+ *
+ * - \ref include, containing the declaration for each of the classes and
+ *   functions of the FSI-suite
+ * - \ref source, containing the implementations and instantiations of most
+ *   objects
+ * - \ref tests, containing all the tests that are run on the FSI-suite with
+ *   continuous integration based on github (see
+ *   https://github.com/luca-heltai/fsi-suite/actions)
+ * - \ref apps, containing the main files, used to generate the actual
+ *   applications. If you want to create your own application, you can just copy
+ *   it here in this folder, and cmake will compile it to an application with
+ *   the same name of the source file (without extension).
+ *
+ * Other directories are accessible on the main repository page, and contain
+ * links to the video lectures, slides of each lecture, lecture notes, grids,
+ * and the input parameters used in the examples.
+ *
+ * @section start_here Where to start?
+ *
+ * The applications mesh_handler.cc and dof_plotter.cc are the equivalent of
+ * step-1 and step-2 of the deal.II library. They show how to create a mesh and
+ * how to plot degrees of freedom on a grid. They allow you to get familiar with
+ * the building blocks defined in the ParsedTools namespace. mesh_handler.cc
+ * shows how to use the ParsedTools::GridGenerator class to create a mesh, or
+ * read it from a file, and how to write it out again, in a different format
+ * (this is useful, for example, if you want to visualise the mesh using, for
+ * example, Paraview, or Gmsh).
+ *
+ * dof_plotter.cc shows how to use the ParsedTools::FiniteElement class, and how
+ * to use it in conjunction with the ParsedTools::DataOut class to generate
+ * FiniteElement objects from a parameter file, and to output simple functions
+ * to a graphical output file supported by deal.II (i.e., the de-facto standard
+ * output format `.vtu` or `.vtk`).
+ *
+ * The entry point for partial differential equations treated in the FSI-suite
+ * is the PDEs::Serial::Poisson problem. This problem gathers together step-3,
+ * step-4, step-5, and step-6 of the deal.II Library, and allows you to solve a
+ * PDEs::Serial::Poisson equation in an arbitrary domain (chosen via parameter
+ * files), using all available FiniteElement classes of the deal.II library,
+ * including Simplex elements. The FSI-suite is, at the moment, only supporting
+ * pure grids: either all-hex or all-tets meshes are supported.
+ *
+ * If you want to navigate through the available partial differential equations
+ * that are solved by the FSI-suite, you should take a look at
+ * the PDEs namespace, where you will find a list of the available PDEs,
+ * with their connections.
+ */

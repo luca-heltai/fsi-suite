@@ -598,7 +598,7 @@ INLINE_INFO            = YES
 # name. If set to NO, the members will appear in declaration order.
 # The default value is: YES.
 
-SORT_MEMBER_DOCS       = YES
+SORT_MEMBER_DOCS       = NO
 
 # If the SORT_BRIEF_DOCS tag is set to YES then doxygen will sort the brief
 # descriptions of file, namespace and class members alphabetically by member
@@ -821,8 +821,8 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ./source \
-                         ./include \
+INPUT                  = ./include \
+                         ./source \
                          ./apps \
                          ./doc \
                          README.md
@@ -1511,7 +1511,7 @@ ENUM_VALUES_PER_LINE   = 4
 # Minimum value: 0, maximum value: 1500, default value: 250.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-TREEVIEW_WIDTH         = 250
+TREEVIEW_WIDTH         = 300
 
 # If the EXT_LINKS_IN_WINDOW option is set to YES, doxygen will open links to
 # external symbols imported via tag files in a separate window.
@@ -2261,14 +2261,14 @@ ALLEXTERNALS           = NO
 # listed.
 # The default value is: YES.
 
-EXTERNAL_GROUPS        = YES
+EXTERNAL_GROUPS        = NO
 
 # If the EXTERNAL_PAGES tag is set to YES, all external pages will be listed in
 # the related pages index. If set to NO, only the current project's pages will
 # be listed.
 # The default value is: YES.
 
-EXTERNAL_PAGES         = YES
+EXTERNAL_PAGES         = NO
 
 #---------------------------------------------------------------------------
 # Configuration options related to the dot tool

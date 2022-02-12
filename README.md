@@ -1,4 +1,4 @@
-# Fluid-Structure Interaction suite
+# Continuum mechanics and fluid-structure interaction problems
 
 **Lecture materials for the course "Continuum mechanics and fluid-structure
 interaction problems: mathematical modeling and numerical approximation"**
@@ -52,18 +52,19 @@ Main topics covered by these lectures:
 - How to leverage GitHub actions, google tests, and docker images to test and deploy your application
 - How hybrid parallelisation (threads + MPI + GPU) works in real life FEM applications
 
-Continuous Integration Status:
+Continuous Integration Status
 -----------------------------
 
 Up to date online documentation for the codes used in the laboratories is here: 
 
 https://luca-heltai.github.io/fsi-suite/
 
-| System | Status                                                                                                                                                                                                                                           |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
+| System |  Status |
+| ------ | ------- | 
 | Continous Integration  | [![GitHub CI](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml)   |
 | Doxygen  | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml) |
 | Indent | [![Indent](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml) |
+
 
 ## Useful links
 
