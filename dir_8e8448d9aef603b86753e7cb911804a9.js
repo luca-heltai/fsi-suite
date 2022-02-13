@@ -5,6 +5,7 @@ var dir_8e8448d9aef603b86753e7cb911804a9 =
     [ "constants.h", "constants_8h.html", [
       [ "Constants", "class_parsed_tools_1_1_constants.html", "class_parsed_tools_1_1_constants" ]
     ] ],
+    [ "convergence_table.h", "convergence__table_8h.html", "convergence__table_8h" ],
     [ "data_out.h", "data__out_8h.html", [
       [ "DataOut", "class_parsed_tools_1_1_data_out.html", "class_parsed_tools_1_1_data_out" ]
     ] ],
@@ -29,6 +30,9 @@ var dir_8e8448d9aef603b86753e7cb911804a9 =
     ] ],
     [ "patterns_unsigned_int.h", "patterns__unsigned__int_8h.html", [
       [ "UnsignedInteger", "classdealii_1_1_patterns_1_1_unsigned_integer.html", "classdealii_1_1_patterns_1_1_unsigned_integer" ]
+    ] ],
+    [ "proxy.h", "proxy_8h.html", [
+      [ "Proxy", "class_parsed_tools_1_1_proxy.html", "class_parsed_tools_1_1_proxy" ]
     ] ],
     [ "symbolic_function.h", "symbolic__function_8h.html", [
       [ "Convert< Differentiation::SD::Expression >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4.html", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4" ],

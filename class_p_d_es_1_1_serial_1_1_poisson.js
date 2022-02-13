@@ -24,7 +24,7 @@ var class_p_d_es_1_1_serial_1_1_poisson =
     [ "forcing_term", "class_p_d_es_1_1_serial_1_1_poisson.html#aa5001db2bcce5589ab5b65c0c004e366", null ],
     [ "exact_solution", "class_p_d_es_1_1_serial_1_1_poisson.html#adf992c2203bf42faf84745dfc41f68cc", null ],
     [ "boundary_conditions", "class_p_d_es_1_1_serial_1_1_poisson.html#a7ae601606a24dccb01e073ddb64d9305", null ],
-    [ "error_table", "class_p_d_es_1_1_serial_1_1_poisson.html#ac7ad8975251dea2f67e6dcd08abe8843", null ],
+    [ "error_table", "class_p_d_es_1_1_serial_1_1_poisson.html#af94e5e4ef7a2908311fe6c06c13d0804", null ],
     [ "data_out", "class_p_d_es_1_1_serial_1_1_poisson.html#ae3c7ed656b11adcd4afeca1fd734f7a6", null ],
     [ "console_level", "class_p_d_es_1_1_serial_1_1_poisson.html#a84e3a82b1e6fd52059f3a85f4c21e617", null ]
 ];

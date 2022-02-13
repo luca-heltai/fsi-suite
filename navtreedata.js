@@ -41,6 +41,7 @@ var NAVTREE =
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
@@ -69,7 +70,7 @@ var NAVTREEINDEX =
 [
 "amg_8cc.html",
 "class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d",
-"grid__info_8h_source.html"
+"grid__generator_8cc.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

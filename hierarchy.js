@@ -28,6 +28,9 @@ var hierarchy =
       [ "dealii::Patterns::UnsignedInteger", "classdealii_1_1_patterns_1_1_unsigned_integer.html", null ]
     ] ],
     [ "dealii::Patterns::Tools::internal::RankInfo< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d.html", null ],
+    [ "SourceClass", "http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html", [
+      [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ]
+    ] ],
     [ "Subscriptor", "http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html", [
       [ "ParsedTools::FiniteElement< dim >", "class_parsed_tools_1_1_finite_element.html", null ],
       [ "ParsedTools::FiniteElement< dim, dim >", "class_parsed_tools_1_1_finite_element.html", null ],
@@ -54,6 +57,7 @@ var hierarchy =
         [ "ParsedTools::GridGenerator< dim, spacedim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::GridRefinement", "class_parsed_tools_1_1_grid_refinement.html", null ],
         [ "ParsedTools::MappingEulerian< dim, spacedim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
+        [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ],
         [ "ParsedTools::SymbolicFunction< dim >", "class_parsed_tools_1_1_symbolic_function.html", null ],
         [ "PDEs::Serial::DistributedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
         [ "PDEs::Serial::LinearElasticity< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_linear_elasticity.html", null ],

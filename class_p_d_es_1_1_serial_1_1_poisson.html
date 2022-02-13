@@ -126,6 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aaa6146bcb26f17ee234ec7d8c72d97c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">At construction time, we need to initialize all member functions that are derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#aaa6146bcb26f17ee234ec7d8c72d97c4">More...</a><br /></td></tr>
 <tr class="separator:aaa6146bcb26f17ee234ec7d8c72d97c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab330044aa5cf2279ec7ab769f2d95648"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">run</a> ()</td></tr>
+<tr class="memdesc:ab330044aa5cf2279ec7ab769f2d95648"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main entry point of the program.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">More...</a><br /></td></tr>
 <tr class="separator:ab330044aa5cf2279ec7ab769f2d95648"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a7bf9ccbc4d618a248324748a41f625cf">ParameterAcceptor</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;)</td></tr>
@@ -211,12 +212,16 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ab43b8ac99a39815e97dbbae31552b835"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">setup_system</a> ()</td></tr>
+<tr class="memdesc:ab43b8ac99a39815e97dbbae31552b835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup dofs, constraints, and matrices.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">More...</a><br /></td></tr>
 <tr class="separator:ab43b8ac99a39815e97dbbae31552b835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae970a1310438deca022184ddba05c5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">assemble_system</a> ()</td></tr>
+<tr class="memdesc:aae970a1310438deca022184ddba05c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assemble the matrix and right hand side vector.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">More...</a><br /></td></tr>
 <tr class="separator:aae970a1310438deca022184ddba05c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49b90808501aaa200e4a29aad02dacaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">solve</a> ()</td></tr>
+<tr class="memdesc:a49b90808501aaa200e4a29aad02dacaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the linear system generated in the <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a" title="Assemble the matrix and right hand side vector.">assemble_system()</a> function.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">More...</a><br /></td></tr>
 <tr class="separator:a49b90808501aaa200e4a29aad02dacaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb2797101eade145baa969d5bed723ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">output_results</a> (const unsigned cycle) const</td></tr>
+<tr class="memdesc:abb2797101eade145baa969d5bed723ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output the solution.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">More...</a><br /></td></tr>
 <tr class="separator:abb2797101eade145baa969d5bed723ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -224,18 +229,27 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a0e0e12142ba5bb0b9ed94b6687beb97b"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a0e0e12142ba5bb0b9ed94b6687beb97b">component_names</a> = &quot;u&quot;</td></tr>
 <tr class="memdesc:a0e0e12142ba5bb0b9ed94b6687beb97b"><td class="mdescLeft">&#160;</td><td class="mdescRight">How we identify the component names.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a0e0e12142ba5bb0b9ed94b6687beb97b">More...</a><br /></td></tr>
 <tr class="separator:a0e0e12142ba5bb0b9ed94b6687beb97b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Grid classes</div></td></tr>
 <tr class="memitem:abc7e80f00582fa4fc6145bea4a63f201"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">ParsedTools::GridGenerator</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#abc7e80f00582fa4fc6145bea4a63f201">grid_generator</a></td></tr>
+<tr class="memdesc:abc7e80f00582fa4fc6145bea4a63f201"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper around <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html">GridGenerator</a> namespace.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#abc7e80f00582fa4fc6145bea4a63f201">More...</a><br /></td></tr>
 <tr class="separator:abc7e80f00582fa4fc6145bea4a63f201"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a0c500ba41eb0bc4c99e89910cc885f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_grid_refinement.html">ParsedTools::GridRefinement</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a8a0c500ba41eb0bc4c99e89910cc885f">grid_refinement</a></td></tr>
+<tr class="memdesc:a8a0c500ba41eb0bc4c99e89910cc885f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Grid refinement and error estimation.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a8a0c500ba41eb0bc4c99e89910cc885f">More...</a><br /></td></tr>
 <tr class="separator:a8a0c500ba41eb0bc4c99e89910cc885f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35457201906c02b85c6049f5fa3ade92"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a35457201906c02b85c6049f5fa3ade92">triangulation</a></td></tr>
+<tr class="memdesc:a35457201906c02b85c6049f5fa3ade92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual triangulation.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a35457201906c02b85c6049f5fa3ade92">More...</a><br /></td></tr>
 <tr class="separator:a35457201906c02b85c6049f5fa3ade92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Finite element and dof classes</div></td></tr>
 <tr class="memitem:a00f2050ae62b26baca9f2eb6b66f4d45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_finite_element.html">ParsedTools::FiniteElement</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a00f2050ae62b26baca9f2eb6b66f4d45">finite_element</a></td></tr>
+<tr class="memdesc:a00f2050ae62b26baca9f2eb6b66f4d45"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper around deal.II <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> classes.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a00f2050ae62b26baca9f2eb6b66f4d45">More...</a><br /></td></tr>
 <tr class="separator:a00f2050ae62b26baca9f2eb6b66f4d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc507ace1cda6234e4d7797ed339d52d"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#adc507ace1cda6234e4d7797ed339d52d">dof_handler</a></td></tr>
+<tr class="memdesc:adc507ace1cda6234e4d7797ed339d52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a> class.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#adc507ace1cda6234e4d7797ed339d52d">More...</a><br /></td></tr>
 <tr class="separator:adc507ace1cda6234e4d7797ed339d52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a361b6d929230f51a08a96e8865f9f67b"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim, spacedim &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a361b6d929230f51a08a96e8865f9f67b">mapping</a></td></tr>
+<tr class="memdesc:a361b6d929230f51a08a96e8865f9f67b"><td class="mdescLeft">&#160;</td><td class="mdescRight">According to the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> type, we use a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFE.html">MappingFE</a> or a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ.html">MappingQ</a>, to make sure we can run the program both on a tria/tetra grid and on quad/hex grids.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a361b6d929230f51a08a96e8865f9f67b">More...</a><br /></td></tr>
 <tr class="separator:a361b6d929230f51a08a96e8865f9f67b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Linear algebra classes</div></td></tr>
 <tr class="memitem:ae6b8c43f2f964cc074215f587f0f1f78"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ae6b8c43f2f964cc074215f587f0f1f78">constraints</a></td></tr>
 <tr class="separator:ae6b8c43f2f964cc074215f587f0f1f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0669241beb2cba9e80990623d19a78b4"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparsityPattern.html">SparsityPattern</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a0669241beb2cba9e80990623d19a78b4">sparsity_pattern</a></td></tr>
@@ -250,19 +264,28 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a23da27bb50f6a1329ff7c8dffe4a7774"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cfb7de0995a93d4c06cd4781350e791"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html">ParsedLAC::AMGPreconditioner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a9cfb7de0995a93d4c06cd4781350e791">preconditioner</a></td></tr>
 <tr class="separator:a9cfb7de0995a93d4c06cd4781350e791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Forcing terms and boundary conditions</div></td></tr>
 <tr class="memitem:a00c07fba47e3d9d332947fa73b272fbf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_constants.html">ParsedTools::Constants</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a00c07fba47e3d9d332947fa73b272fbf">constants</a></td></tr>
+<tr class="memdesc:a00c07fba47e3d9d332947fa73b272fbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constants of the problem.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a00c07fba47e3d9d332947fa73b272fbf">More...</a><br /></td></tr>
 <tr class="separator:a00c07fba47e3d9d332947fa73b272fbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5001db2bcce5589ab5b65c0c004e366"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt; spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aa5001db2bcce5589ab5b65c0c004e366">forcing_term</a></td></tr>
+<tr class="memdesc:aa5001db2bcce5589ab5b65c0c004e366"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual function to use as a forcing term.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#aa5001db2bcce5589ab5b65c0c004e366">More...</a><br /></td></tr>
 <tr class="separator:aa5001db2bcce5589ab5b65c0c004e366"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf992c2203bf42faf84745dfc41f68cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_function.html">ParsedTools::Function</a>&lt; spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#adf992c2203bf42faf84745dfc41f68cc">exact_solution</a></td></tr>
+<tr class="memdesc:adf992c2203bf42faf84745dfc41f68cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The actual function to use as a exact solution when computing the errors.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#adf992c2203bf42faf84745dfc41f68cc">More...</a><br /></td></tr>
 <tr class="separator:adf992c2203bf42faf84745dfc41f68cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ae601606a24dccb01e073ddb64d9305"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_boundary_conditions.html">ParsedTools::BoundaryConditions</a>&lt; spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a7ae601606a24dccb01e073ddb64d9305">boundary_conditions</a></td></tr>
+<tr class="memdesc:a7ae601606a24dccb01e073ddb64d9305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boundary conditions used in this class.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a7ae601606a24dccb01e073ddb64d9305">More...</a><br /></td></tr>
 <tr class="separator:a7ae601606a24dccb01e073ddb64d9305"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7ad8975251dea2f67e6dcd08abe8843"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ac7ad8975251dea2f67e6dcd08abe8843">error_table</a></td></tr>
-<tr class="separator:ac7ad8975251dea2f67e6dcd08abe8843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr><td colspan="2"><div class="groupHeader">Output and postprocessing</div></td></tr>
+<tr class="memitem:af94e5e4ef7a2908311fe6c06c13d0804"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_parsed_tools.html#aaaa64d00dfc97c0345ca0ad075babc75">ParsedTools::ConvergenceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#af94e5e4ef7a2908311fe6c06c13d0804">error_table</a></td></tr>
+<tr class="memdesc:af94e5e4ef7a2908311fe6c06c13d0804"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a wrapper around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> class, that allows you to specify what error to computes, and how to compute them.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#af94e5e4ef7a2908311fe6c06c13d0804">More...</a><br /></td></tr>
+<tr class="separator:af94e5e4ef7a2908311fe6c06c13d0804"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3c7ed656b11adcd4afeca1fd734f7a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ae3c7ed656b11adcd4afeca1fd734f7a6">data_out</a></td></tr>
+<tr class="memdesc:ae3c7ed656b11adcd4afeca1fd734f7a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> class.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#ae3c7ed656b11adcd4afeca1fd734f7a6">More...</a><br /></td></tr>
 <tr class="separator:ae3c7ed656b11adcd4afeca1fd734f7a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84e3a82b1e6fd52059f3a85f4c21e617"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a84e3a82b1e6fd52059f3a85f4c21e617">console_level</a> = 1</td></tr>
+<tr class="memdesc:a84e3a82b1e6fd52059f3a85f4c21e617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Level of log verbosity.  <a href="class_p_d_es_1_1_serial_1_1_poisson.html#a84e3a82b1e6fd52059f3a85f4c21e617">More...</a><br /></td></tr>
 <tr class="separator:a84e3a82b1e6fd52059f3a85f4c21e617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a52134c59ec98830230c23e080c841705 inherit pro_attribs_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a></td></tr>
@@ -307,7 +330,8 @@ class PDEs::Serial::Poisson&lt; dim, spacedim &gt;</h3>
 
 <p><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">Poisson</a> problem, serial version. </p>
 <p>Solve the <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">Poisson</a> equation in arbitrary dimensions and space dimensions. When dim and spacedim are not the same, we solve the Laplace-Beltrami equation. This example is based on the deal.II tutorial <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_1.html">step-1</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_2.html">step-2</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_3.html">step-3</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_4.html">step-4</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_5.html">step-5</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_6.html">step-6</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_38.html">step-38</a>.</p>
-<p class="formulaDsp">
+<p>The documentation is only a slight rewording of the deal.II tutorials <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_3.html">step-3</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_4.html">step-4</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_5.html">step-5</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_6.html">step-6</a>, where the main differences are related to the classes in the <a class="el" href="namespace_parsed_tools.html">ParsedTools</a> namespace. Basic deal.II classes, like the functions in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html">GridGenerator</a> namespace, or the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> class, are replaced with their <a class="el" href="namespace_parsed_tools.html">ParsedTools</a> counterparts, i.e., <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">ParsedTools::GridGenerator</a>, <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">ParsedTools::FiniteElement</a>, <a class="el" href="class_parsed_tools_1_1_function.html" title="A wrapper for the FunctionParser class.">ParsedTools::Function</a>, and <a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>.</p>
+<p>In this tutorial program, we solve the <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">Poisson</a> equation: </p><p class="formulaDsp">
 \[ \begin{cases} - \Delta u = f &amp; \text{ in } \Omega \subset R^{\text{spacedim}}\\ u = u_D &amp; \text{ on } \partial \Omega_D \\ \frac{\partial u}{\partial n} = u_N &amp; \text{ on } \partial \Omega_N \\ \end{cases} \]
 </p>
 <p>We will solve this equation on any grid that can be generated using the <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">ParsedTools::GridGenerator</a> class. An example usage of that was class was given in the file <a class="el" href="mesh__handler_8cc.html" title="Mesh generator and reader.">mesh_handler.cc</a>.</p>
@@ -343,25 +367,9 @@ class PDEs::Serial::Poisson&lt; dim, spacedim &gt;</h3>
 <p> where the matrix \(A\) and the right hand side \(F\) are defined as </p><p class="formulaDsp">
 \begin{align*} A_{ij} &amp;= (\nabla\varphi_i, \nabla \varphi_j), \\ F_i &amp;= (\varphi_i, f) + \int_{\Gamma_N} u_N \varphi_i. \end{align*}
 </p>
-<h3><em>Assembling</em> the matrix and right hand side vector </h3>
-<p>Now we know what we need (namely: objects that hold the matrix and vectors, as well as ways to compute \(A_{ij},F_i\)), and we can look at what it takes to make that happen:</p>
-<ul>
-<li>The object for \(A\) is of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a> while those for \(U\) and \(F\) are of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>. We will see in the program below what classes are used to solve linear systems.</li>
-<li>We need a way to form the integrals. In the finite element method, this is most commonly done using quadrature, i.e. the integrals are replaced by a weighted sum over a set of <em>quadrature points</em> on each cell. That is, we first split the integral over \(\Omega\) into integrals over all cells, <p class="formulaDsp">
-\begin{align*} A_{ij} &amp;= (\nabla\varphi_i, \nabla \varphi_j) = \sum_{K \in {\mathbb T}} \int_K \nabla\varphi_i \cdot \nabla \varphi_j, \\ F_i &amp;= (\varphi_i, f) = \sum_{K \in {\mathbb T}} \int_K \varphi_i f, \end{align*}
-</p>
- and then approximate each cell's contribution by quadrature: <p class="formulaDsp">
-\begin{align*} A^K_{ij} &amp;= \int_K \nabla\varphi_i \cdot \nabla \varphi_j \approx \sum_q \nabla\varphi_i(\mathbf x^K_q) \cdot \nabla \varphi_j(\mathbf x^K_q) w_q^K, \\ F^K_i &amp;= \int_K \varphi_i f + \int_{\Gamma_N} u_N \varphi_i \approx \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q + \sum_q \varphi_i(\mathbf x^\Gamma_q) f(\mathbf x^\Gamma_q)w^\Gamma_q, \end{align*}
-</p>
- where \(\mathbb{T} \approx \Omega\) is a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> approximating the domain, \(\mathbf x^K_q\) is the \(q\)th quadrature point on cell \(K\), and \(w^K_q\) the \(q\)th quadrature weight. There are different parts to what is needed in doing this, and we will discuss them in turn next.</li>
-<li>First, we need a way to describe the location \(\mathbf x_q^K\) of quadrature points and their weights \(w^K_q\). They are usually mapped from the reference cell in the same way as shape functions, i.e., implicitly using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ1.html">MappingQ1</a> class or, if you explicitly say so, through one of the other classes derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>. The locations and weights on the reference cell are described by objects derived from the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> base class. Typically, one chooses a quadrature formula (i.e. a set of points and weights) so that the quadrature exactly equals the integral in the matrix; this can be achieved because all factors in the integral are polynomial, and is done by Gaussian quadrature formulas, implemented in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQGauss.html">QGauss</a> class.</li>
-<li>We then need something that can help us evaluate \(\varphi_i(\mathbf x^K_q)\) on cell \(K\). This is what the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class does: it takes a finite element objects to describe \(\varphi\) on the reference cell, a quadrature object to describe the quadrature points and weights, and a mapping object (or implicitly takes the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ1.html">MappingQ1</a> class) and provides values and derivatives of the shape functions on the real cell \(K\) as well as all sorts of other information needed for integration, at the quadrature points located on \(K\). The process of computing the matrix and right hand side as a sum over all cells (and then a sum over quadrature points) is usually called <em>assembling the linear system</em>, or <em>assembly</em> for short, using the meaning of the word related to <a href="https://en.wikipedia.org/wiki/Assembly_line">assembly line</a>, meaning <a href="https://en.wiktionary.org/wiki/assembly">"the act of putting together a set of pieces, fragments, or elements"</a>.</li>
-</ul>
-<p><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> really is the central class in the assembly process. One way you can view it is as follows: The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> and derived classes describe shape <em>functions</em>, i.e., infinite dimensional objects: functions have values at every point. We need this for theoretical reasons because we want to perform our analysis with integrals over functions. However, for a computer, this is a very difficult concept, since they can in general only deal with a finite amount of information, and so we replace integrals by sums over quadrature points that we obtain by mapping (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a> object) using points defined on a reference cell (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object) onto points on the real cell. In essence, we reduce the problem to one where we only need a finite amount of information, namely shape function values and derivatives, quadrature weights, normal vectors, etc, exclusively at a finite set of points. The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class is the one that brings the three components together and provides this finite set of information on a particular cell \(K\). You will see it in action when we assemble the linear system below.</p>
-<p>It is noteworthy that all of this could also be achieved if you simply created these three objects yourself in an application program, and juggled the information yourself. However, this would neither be simpler (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class provides exactly the kind of information you actually need) nor faster: the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class is highly optimized to only compute on each cell the particular information you need; if anything can be re-used from the previous cell, then it will do so, and there is a lot of code in that class to make sure things are cached wherever this is advantageous.</p>
 <p>The final piece of this introduction is to mention that after a linear system is obtained, it is solved using an iterative solver and then postprocessed: we create an output file using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> class that can then be visualized using one of the common visualization programs. </p>
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00268">268</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00192">192</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aaa6146bcb26f17ee234ec7d8c72d97c4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaa6146bcb26f17ee234ec7d8c72d97c4">&#9670;&nbsp;</a></span>Poisson()</h2>
@@ -378,6 +386,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </div><div class="memdoc">
 
 <p>At construction time, we need to initialize all member functions that are derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>. </p>
+<p>The general design principle of each of these classes is to take as first argument the name of section where you want store the parameters for the given class, and then the default values that you want to store in the parameter file when you create it the first time. </p>
 
 <p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00029">29</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
@@ -400,7 +409,11 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00196">196</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
+<p>Main entry point of the program. </p>
+<p>Just as in all deal.II tutorial programs, the <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648" title="Main entry point of the program.">run()</a> function is called from the place where a <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version.">PDEs::Serial::Poisson</a> object is created, and it is the one that calls all the other functions in their proper order. Encapsulating this operation into the <code><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648" title="Main entry point of the program.">run()</a></code> function, rather than calling all the other functions from <code><a class="el" href="dof__plotter_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a></code> of the application makes sure that you can change how the <em>separation of concerns</em> within this class is implemented. For example, if one of the functions becomes too big, you can split it up into two, and the only places you have to be concerned about changing as a consequence are within this very same class, and not anywhere else.</p>
+<p>As mentioned above, you will see this general structure &ndash; sometimes with variants in spelling of the functions' names, but in essentially this order of separation of functionality &ndash; again in all of the following tutorial programs. </p>
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00250">250</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
@@ -430,7 +443,10 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00062">62</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
+<p>Setup dofs, constraints, and matrices. </p>
+<p>This function enumerate all the degrees of freedom and set up matrix and vector objects to hold the system data. Enumerating is done by using <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a553ca864aaf70330d9be86bc78f36d1e">DoFHandler::distribute_dofs()</a>, as we have seen in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_2.html">step-2</a> example, with the difference that now we pass a <a class="el" href="class_parsed_tools_1_1_finite_element.html" title="Parsed FiniteElement.">ParsedTools::FiniteElement</a> object instead of directly a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> object. </p>
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00058">58</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
@@ -458,7 +474,24 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00109">109</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
+<p>Assemble the matrix and right hand side vector. </p>
+<p>This function translates the problem in the finite dimensional space to an equivalent linear algebra problmem . These are the main steps that need to be taken into account for this translation:</p>
+<ul>
+<li>The object for \(A\) is of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a> while those for \(U\) and \(F\) are of type <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>. We will see in the program below what classes are used to solve linear systems.</li>
+<li>We need a way to form the integrals. In the finite element method, this is most commonly done using quadrature, i.e. the integrals are replaced by a weighted sum over a set of <em>quadrature points</em> on each cell. That is, we first split the integral over \(\Omega\) into integrals over all cells, <p class="formulaDsp">
+\begin{align*} A_{ij} &amp;= (\nabla\varphi_i, \nabla \varphi_j) = \sum_{K \in {\mathbb T}} \int_K \nabla\varphi_i \cdot \nabla \varphi_j, \\ F_i &amp;= (\varphi_i, f) = \sum_{K \in {\mathbb T}} \int_K \varphi_i f, \end{align*}
+</p>
+ and then approximate each cell's contribution by quadrature: <p class="formulaDsp">
+\begin{align*} A^K_{ij} &amp;= \int_K \nabla\varphi_i \cdot \nabla \varphi_j \approx \sum_q \nabla\varphi_i(\mathbf x^K_q) \cdot \nabla \varphi_j(\mathbf x^K_q) w_q^K, \\ F^K_i &amp;= \int_K \varphi_i f + \int_{\Gamma_N} u_N \varphi_i \approx \sum_q \varphi_i(\mathbf x^K_q) f(\mathbf x^K_q) w^K_q + \sum_q \varphi_i(\mathbf x^\Gamma_q) f(\mathbf x^\Gamma_q)w^\Gamma_q, \end{align*}
+</p>
+ where \(\mathbb{T} \approx \Omega\) is a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> approximating the domain, \(\mathbf x^K_q\) is the \(q\)th quadrature point on cell \(K\), and \(w^K_q\) the \(q\)th quadrature weight. There are different parts to what is needed in doing this, and we will discuss them in turn next.</li>
+<li>First, we need a way to describe the location \(\mathbf x_q^K\) of quadrature points and their weights \(w^K_q\). They are usually mapped from the reference cell in the same way as shape functions, i.e., implicitly using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ1.html">MappingQ1</a> class or, if you explicitly say so, through one of the other classes derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>. The locations and weights on the reference cell are described by objects derived from the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> base class. Typically, one chooses a quadrature formula (i.e. a set of points and weights) so that the quadrature exactly equals the integral in the matrix; this can be achieved because all factors in the integral are polynomial, and is done by Gaussian quadrature formulas, implemented in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQGauss.html">QGauss</a> class.</li>
+<li>We then need something that can help us evaluate \(\varphi_i(\mathbf x^K_q)\) on cell \(K\). This is what the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class does: it takes a finite element objects to describe \(\varphi\) on the reference cell, a quadrature object to describe the quadrature points and weights, and a mapping object (or implicitly takes the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ1.html">MappingQ1</a> class) and provides values and derivatives of the shape functions on the real cell \(K\) as well as all sorts of other information needed for integration, at the quadrature points located on \(K\). The process of computing the matrix and right hand side as a sum over all cells (and then a sum over quadrature points) is usually called <em>assembling the linear system</em>, or <em>assembly</em> for short, using the meaning of the word related to <a href="https://en.wikipedia.org/wiki/Assembly_line">assembly line</a>, meaning <a href="https://en.wiktionary.org/wiki/assembly">"the act of putting together a set of pieces, fragments, or elements"</a>.</li>
+</ul>
+<p><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> really is the central class in the assembly process. One way you can view it is as follows: The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> and derived classes describe shape <em>functions</em>, i.e., infinite dimensional objects: functions have values at every point. We need this for theoretical reasons because we want to perform our analysis with integrals over functions. However, for a computer, this is a very difficult concept, since they can in general only deal with a finite amount of information, and so we replace integrals by sums over quadrature points that we obtain by mapping (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a> object) using points defined on a reference cell (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object) onto points on the real cell. In essence, we reduce the problem to one where we only need a finite amount of information, namely shape function values and derivatives, quadrature weights, normal vectors, etc, exclusively at a finite set of points. The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class is the one that brings the three components together and provides this finite set of information on a particular cell \(K\). You will see it in action when we assemble the linear system below.</p>
+<p>It is noteworthy that all of this could also be achieved if you simply created these three objects yourself in an application program, and juggled the information yourself. However, this would neither be simpler (the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class provides exactly the kind of information you actually need) nor faster: the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> class is highly optimized to only compute on each cell the particular information you need; if anything can be re-used from the previous cell, then it will do so, and there is a lot of code in that class to make sure things are cached wherever this is advantageous. </p>
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00135">135</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a>.</p>
 
@@ -486,7 +519,33 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00165">165</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
+<p>Solve the linear system generated in the <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a" title="Assemble the matrix and right hand side vector.">assemble_system()</a> function. </p>
+<p>After a linear system is obtained, it is solved using an iterative solver. Differently from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_3.html">step-3</a>, we would like to tweak the solver parameters a bit. In order to do so, we use the <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html" title="A factory that can generate inverse operators according to parameter files.">ParsedLAC::InverseOperator</a> class and the <a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html" title="A parsed AMG preconditioner which uses parameter files to choose between different options.">ParsedLAC::AMGPreconditioner</a>, which are wrappers around the deal.II classes that are derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverBase.html">SolverBase</a>, around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> class introduced in <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_3.html">step-3</a> (the <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html" title="A factory that can generate inverse operators according to parameter files.">ParsedLAC::InverseOperator</a>) and around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionAMG.html">TrilinosWrappers::PreconditionAMG</a> class, which is compatible also with the deal.II native matrices that we are using here.</p>
+<p>The behaviour of the solve function is controlled by the <code>Solver</code> section of the parameter file, i.e., </p><div class="fragment"><div class="line">subsection Solver</div>
+<div class="line">    set Absolute tolerance     = 1e-12</div>
+<div class="line">    set Consecutive iterations = 2</div>
+<div class="line">    set Log history            = false</div>
+<div class="line">    set Log result             = false</div>
+<div class="line">    set Maximum iterations     = 1000</div>
+<div class="line">    set Relative tolerance     = 1e-12</div>
+<div class="line">    set Solver control type    = tolerance</div>
+<div class="line">    set Solver name            = cg</div>
+<div class="line">    subsection AMG Preconditioner</div>
+<div class="line">      set Aggregation threshold = 0.0001</div>
+<div class="line">      set Coarse type           = Amesos-KLU</div>
+<div class="line">      set Elliptic              = true</div>
+<div class="line">      set High Order Elements   = false</div>
+<div class="line">      set Number of cycles      = 1</div>
+<div class="line">      set Output details        = false</div>
+<div class="line">      set Smoother overlap      = 0</div>
+<div class="line">      set Smoother sweeps       = 2</div>
+<div class="line">      set Smoother type         = Chebyshev</div>
+<div class="line">      set w-cycle               = false</div>
+<div class="line">    end</div>
+<div class="line">  end</div>
+<div class="line">end</div>
+</div><!-- fragment --> 
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00201">201</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>.</p>
 
@@ -518,7 +577,20 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00179">179</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
+<p>Output the solution. </p>
+<p>When you have computed a solution, you probably want to do something with it. For example, you may want to output it in a format that can be visualized, or you may want to compute quantities you are interested in: say, heat fluxes in a heat exchanger, air friction coefficients of a wing, maximum bridge loads, or simply the value of the numerical solution at a point. This function is therefore the place for postprocessing your solution.</p>
+<p>We use the <a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a> class to postprocess our solution. The behaviour of this function is controlled by the section <code>Output</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Output</div>
+<div class="line">  set Curved cells region    = curved_inner_cells</div>
+<div class="line">  set Output format          = vtu</div>
+<div class="line">  set Output material ids    = true</div>
+<div class="line">  set Output partitioning    = true</div>
+<div class="line">  set Problem base name      = solution</div>
+<div class="line">  set Subdivisions           = 0</div>
+<div class="line">  set Write high order cells = true</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>This wrapper class is a bit more complicated than the one in <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_3.html">step-3</a>. Although its usage is very similar, it is important to note that the main difference between <a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a> and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> is given by the fact that <a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a> is driven by the parameters above, and simply calls the relevant functions of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> with specific arguments, whereas <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> is usually driven directly by the source code, and requires you to recompile the code if you want, for example, to change the output format, or to disable the writing of high order cells, or to plot also the material ids or the partitioning of the problem. </p>
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html#l00228">228</a> of file <a class="el" href="source_2pdes_2serial_2poisson_8cc_source.html">poisson.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits()</a>.</p>
 
@@ -548,8 +620,10 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </div><div class="memdoc">
 
 <p>How we identify the component names. </p>
+<p>Many of the classes in the <a class="el" href="namespace_parsed_tools.html">ParsedTools</a> namespace use a string to define their behaviour in terms of the components of a problem. For example, for a scalar problem, one usually needs only to specify the name of the solution with a single component. This is what happens in this program: we use "u" as an identification for the name of the solution, and pass this string around to any class that needs information about components. In general our codes in the FSI-suite will use the functions defined in the <a class="el" href="namespace_parsed_tools_1_1_components.html" title="Utilities for extracting components and boundary condition types from strings.">ParsedTools::Components</a> namespace to process information about components.</p>
+<p>In the scalar case of this program, we have only one component, so this string is not very informative, however, in a more complex case like the <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html">PDEs::Serial::Stokes</a> case, we would have spacedim+1 components, spacedim components for the velocity and one component for the pressure. In that case, this string would be "u,u,p" in the two dimensional case, and "u,u,u,p" in the three dimensional case. This string gives information about how we want to group variables, and how we want to treat them in the output as well as how many components our finite element spaces must have. </p>
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00296">296</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00445">445</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -575,7 +649,17 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00299">299</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>A wrapper around <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html">GridGenerator</a> namespace. </p>
+<p>The action of this class is driven by the section <code>Grid</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Grid</div>
+<div class="line">  set Input name                = hyper_cube</div>
+<div class="line">  set Arguments                 = 0: 1: false</div>
+<div class="line">  set Initial grid refinement   = 0</div>
+<div class="line">  set Output name               =</div>
+<div class="line">  set Transform to simplex grid = false</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>Where you can specify what grid to generate, how to generate it, or what file to read the grid from, and to what file to write the grid to, in addition to the initial refinement of the grid. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00471">471</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +685,28 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00300">300</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>Grid refinement and error estimation. </p>
+<p>This class is a wrapper around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridRefinement.html">GridRefinement</a> namespace, and around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classKellyErrorEstimator.html">KellyErrorEstimator</a> class. The action of this class is governed by the section <code>Grid/Refinement</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Grid</div>
+<div class="line">  subsection Refinement</div>
+<div class="line">    set Number of refinement cycles = 1</div>
+<div class="line">    subsection Error estimator</div>
+<div class="line">      set Component mask =</div>
+<div class="line">      set Estimator type = kelly</div>
+<div class="line">    end</div>
+<div class="line">    subsection Marking strategy</div>
+<div class="line">      set Coarsening parameter                   = 0.1</div>
+<div class="line">      set Maximum level                          = 0</div>
+<div class="line">      set Maximum number of cells (if available) = 0</div>
+<div class="line">      set Minimum level                          = 0</div>
+<div class="line">      set Refinement parameter                   = 0.3</div>
+<div class="line">      set Refinement strategy                    = global</div>
+<div class="line">    end</div>
+<div class="line">  end</div>
+<div class="line">end</div>
+</div><!-- fragment --><p> where you can specify the number of refinement cycles, the type of error estimator, what marking strategy to use, etc.</p>
+<p>At the moment, local refinement is only supported on quad/hex grids. If you try to run the code with a local refinement strategy with a tria/tetra grid, an exception will be thrown at run time. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00505">505</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -627,7 +732,10 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00301">301</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>The actual triangulation. </p>
+<p>We allow also for the possibility to use a triangulation that is of co-dimension one or two w.r.t. the space dimension. This is useful when you want to solve Laplace-Beltrami problems, on surfaces, and by the definition of the weak form that we use (which is using the tangent gradient by default), this is what you would get if you use a co-dimension one grid. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00517">517</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -653,7 +761,14 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00304">304</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>A wrapper around deal.II <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a> classes. </p>
+<p>The action of this class is driven by the parameter <code>Finite element space (u)</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Poisson</div>
+<div class="line">  set Finite element space (u) = FE_Q(1)</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>You should make sure that the type of finite element you specify matches the type of triangulation you are using, i.e., <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__Q.html">FE_Q</a> is supported only on quad/hex grids, while <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__SimplexP.html">FE_SimplexP</a> is supported only on tri/tetra grids.</p>
+<p>The syntax used to specify the finite element type is the same used by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFETools.html#ad677362df1413e1ccc8a2cf7aff19d07">FETools::get_fe_by_name()</a> function. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00544">544</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -679,7 +794,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00305">305</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>The actual <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00549">549</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -705,7 +822,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00306">306</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>According to the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> type, we use a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFE.html">MappingFE</a> or a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingQ.html">MappingQ</a>, to make sure we can run the program both on a tria/tetra grid and on quad/hex grids. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00556">556</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -731,7 +850,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00309">309</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00563">563</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -757,7 +876,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00310">310</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00564">564</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -783,7 +902,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00311">311</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00565">565</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -809,7 +928,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00312">312</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00566">566</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -835,7 +954,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00313">313</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00567">567</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -861,7 +980,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00314">314</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00568">568</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -887,7 +1006,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00315">315</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00569">569</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -913,7 +1032,15 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00318">318</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>Constants of the problem. </p>
+<p>Most of the problems we will work with, define constants of different types (physical constants, material properties, numerical constants, etc.). The <a class="el" href="class_parsed_tools_1_1_constants.html" title="A wrapper for physical constants to be shared among functions and classes.">ParsedTools::Constants</a> class allows you to define these in a centralized way, and allows you to share these constants with all the function definitions you may use in your code later on (e.g., the forcing term, or the boundary conditions).</p>
+<p>The action of this class is driven by the section <code>Constants</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Constants</div>
+<div class="line">  set Diffusion coefficient (kappa) = 1</div>
+<div class="line">end</div>
+</div><!-- fragment --><p> where you can specify the diffusion coefficient of the problem.</p>
+<p>Which constants are defined is built into the <a class="el" href="class_parsed_tools_1_1_constants.html" title="A wrapper for physical constants to be shared among functions and classes.">ParsedTools::Constants</a> class at construction time (see the source for the constructor <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aaa6146bcb26f17ee234ec7d8c72d97c4" title="At construction time, we need to initialize all member functions that are derived from ParameterAccep...">Poisson()</a>) </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00600">600</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -939,7 +1066,14 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00319">319</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>The actual function to use as a forcing term. </p>
+<p>This is a wrapper around the ParsedFunction class, which allows you to define a function through a symbolic expression (a string) in a parameter file.</p>
+<p>The action of this class is driven by the section <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFunctions.html">Functions</a></code>, with the parameter <code>Forcing term</code>: </p><div class="fragment"><div class="line">subsection Functions</div>
+<div class="line"> set Forcing term = kappa*8*PI^2*sin(2*PI*x)*sin(2*PI*y)</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>You can use any of the numerical constants that are defined in the numbers namespace, such as PI, E, etc, as well as the constants defined at construction time in the <a class="el" href="class_parsed_tools_1_1_constants.html" title="A wrapper for physical constants to be shared among functions and classes.">ParsedTools::Constants</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00619">619</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -965,7 +1099,14 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00320">320</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>The actual function to use as a exact solution when computing the errors. </p>
+<p>This is a wrapper around the ParsedFunction class, which allows you to define a function through a symbolic expression (a string) in a parameter file.</p>
+<p>The action of this class is driven by the section <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFunctions.html">Functions</a></code>, with the parameter <code>Exact solution</code>: </p><div class="fragment"><div class="line">subsection Functions</div>
+<div class="line"> set Exact solution = sin(2*PI*x)*sin(2*PI*y)</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>You can use any of the numerical constants that are defined in the numbers namespace, such as PI, E, etc, as well as the constants defined at construction time in the <a class="el" href="class_parsed_tools_1_1_constants.html" title="A wrapper for physical constants to be shared among functions and classes.">ParsedTools::Constants</a> class. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00639">639</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -991,12 +1132,35 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00321">321</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>Boundary conditions used in this class. </p>
+<p>The action of this class is driven by the section <code>Boundary conditions</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Boundary conditions</div>
+<div class="line">  set Boundary condition types (u) = dirichlet</div>
+<div class="line">  set Boundary id sets (u)         = -1</div>
+<div class="line">  set Expressions (u)              = 0</div>
+<div class="line">  set Selected components (u)      = u</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>The way <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html" title="A wrapper for boundary conditions.">ParsedTools::BoundaryConditions</a> works in the FSI-suite is the following: for every set of boundary ids of the triangulation, you need to specify what boundary conditions are assumed to be imposed on that set. If you only want to specify one type of boundary condition (<code>dirichlet</code> or <code>neumann</code>) on all of the boundary, you can do so by specifying <code>-1</code> as the boundary id set.</p>
+<p>Multiple boundary conditions can be specified, but the same id should should appear only once in the parameter file (i.e., you cannot apply different types of boundary conditions on the same boundary id).</p>
+<p>Keep in mind the following caveats:</p><ul>
+<li>Boundary conditions are specified as comma separated strings, so you can specify "set Boundary condition types (u) = neumann, dirichlet" for two different sets of boundary ids.</li>
+<li>Following the previous example, different boundary id sets are separated by a semicolumn, and in each set, different boundary ids are separated by a column, so, for example, if you specify as <code>set Boundary id sets (u) = 0, 1; 2, 3</code>, then boundary ids 0 and 1 will get Neumann boundary conditions, while boundary ids 2 and 3 will get Dirichlet boundary conditions.</li>
+<li>Since an expression can contain a <code>,</code> character, then expression for each component are separated by a semicolumn, and for each boundary id set, are separated by the <code>%</code> character. For example, if you want to specify homogeneous Neumann boundary conditions, and constant Dirichlet boundary conditions you can set the following parameter: <code>set Expressions (u) = 0 % 1</code>.</li>
+<li>The selected components, again can be <code>all</code>, a component name, or <code>u.n</code>, or <code>u.t</code> to select normal component, or tangential component in a vector valued problem. For scalar problems, only the name of the component makes sense. This field allows you to control which components the given boundary condition refers to.</li>
+</ul>
+<p>To summarize, the following is a valid section for the example above: </p><div class="fragment"><div class="line">subsection Boundary conditions</div>
+<div class="line">  set Boundary condition types (u) = dirichlet, neumann</div>
+<div class="line">  set Boundary id sets (u)         = 0, 1 ; 2, 3</div>
+<div class="line">  set Expressions (u)              = 0 % 1</div>
+<div class="line">  set Selected components (u)      = u; u</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>This would apply Dirichlet boundary conditions on the boundary ids 2 and 3, and homogeneous Neumann boundary conditions on the boundary ids 0 and 1. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00702">702</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
-<a id="ac7ad8975251dea2f67e6dcd08abe8843"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7ad8975251dea2f67e6dcd08abe8843">&#9670;&nbsp;</a></span>error_table</h2>
+<a id="af94e5e4ef7a2908311fe6c06c13d0804"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94e5e4ef7a2908311fe6c06c13d0804">&#9670;&nbsp;</a></span>error_table</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1007,7 +1171,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html">PDEs::Serial::Poisson</a>&lt; dim, spacedim &gt;::error_table</td>
+          <td class="memname"><a class="el" href="namespace_parsed_tools.html#aaaa64d00dfc97c0345ca0ad075babc75">ParsedTools::ConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html">PDEs::Serial::Poisson</a>&lt; dim, spacedim &gt;::error_table</td>
         </tr>
       </table>
   </td>
@@ -1017,7 +1181,30 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00324">324</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>This is a wrapper around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> class, that allows you to specify what error to computes, and how to compute them. </p>
+<p>The action of this class is driven by the section <code>Error table</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Error table</div>
+<div class="line">  set Enable computation of the errors = true</div>
+<div class="line">  set Error file name                  =</div>
+<div class="line">  set Error precision                  = 3</div>
+<div class="line">  set Exponent for p-norms             = 2</div>
+<div class="line">  set Extra columns                    = cells, dofs</div>
+<div class="line">  set List of error norms to compute   = L2_norm, Linfty_norm, H1_norm</div>
+<div class="line">  set Rate key                         = dofs</div>
+<div class="line">  set Rate mode                        = reduction_rate_log2</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>The above code, for example, would produce a convergence table that looks like </p><div class="fragment"><div class="line">cells dofs    u_L2_norm    u_Linfty_norm    u_H1_norm</div>
+<div class="line">   16    25 1.190e-01    - 2.034e-01    - 1.997e+00    -</div>
+<div class="line">   64    81 3.018e-02 2.33 7.507e-02 1.70 1.003e+00 1.17</div>
+<div class="line">  256   289 7.587e-03 2.17 2.060e-02 2.03 5.031e-01 1.09</div>
+<div class="line"> 1024  1089 1.900e-03 2.09 5.271e-03 2.06 2.518e-01 1.04</div>
+<div class="line"> 4096  4225 4.751e-04 2.04 1.325e-03 2.04 1.259e-01 1.02</div>
+<div class="line">16384 16641 1.188e-04 2.02 3.318e-04 2.02 6.296e-02 1.01</div>
+</div><!-- fragment --><p>The table above can be used <em>as-is</em> to produce high quality pdf outputs of your error convergence rates using the file in the FSI-suite repository <code>latex/quick_convergence_graphs/graph.tex</code>. For example, the above table would result in the following plot:</p>
+<div class="image">
+<img src="poisson_convergence_graph.png" alt=""/>
+</div>
+ 
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00748">748</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -1043,7 +1230,23 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00327">327</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>Wrapper around the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDataOut.html">DataOut</a> class. </p>
+<p>The action of this class is driven by the section <code>Output</code> of the parameter file : </p><div class="fragment"><div class="line">subsection Output</div>
+<div class="line">  set Curved cells region    = curved_inner_cells</div>
+<div class="line">  set Output format          = vtu</div>
+<div class="line">  set Output material ids    = true</div>
+<div class="line">  set Output partitioning    = true</div>
+<div class="line">  set Problem base name      = solution</div>
+<div class="line">  set Subdivisions           = 0</div>
+<div class="line">  set Write high order cells = true</div>
+<div class="line">end</div>
+</div><!-- fragment --><p>A similar structure was used in the program <a class="el" href="dof__plotter_8cc.html" title="Degrees of freedom plotter.">dof_plotter.cc</a>.</p>
+<p>For example, using the configuration specified above, a plot of the solution using the <code>vtu</code> format would look like:</p>
+<div class="image">
+<img src="poisson_solution.png" alt=""/>
+</div>
+ 
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00774">774</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -1069,7 +1272,11 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00330">330</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
+<p>Level of log verbosity. </p>
+<p>This is the only "native" parameter of this class. All other parameters are set through the constructors of the classes that inherit from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>.</p>
+<p>The console_level is used to setup the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html">LogStream</a> class, and allows dealii clases to print messages to the console at different level of detail and verbosity. </p>
+
+<p class="definition">Definition at line <a class="el" href="poisson_8h_source.html#l00787">787</a> of file <a class="el" href="poisson_8h_source.html">poisson.h</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1290,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson</a></li>
-    <li class="footer">Generated on Sat Feb 12 2022 21:53:02 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Feb 13 2022 13:59:27 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

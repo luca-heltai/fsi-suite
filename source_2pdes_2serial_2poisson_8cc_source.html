@@ -150,187 +150,251 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2poisson_8cc_sour
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                       <span class="stringliteral">&quot;sin(2*PI*x)*sin(2*PI*y)&quot;</span>,</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                       <span class="stringliteral">&quot;Exact solution&quot;</span>)</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      , boundary_conditions(<span class="stringliteral">&quot;/Poisson/Boundary conditions&quot;</span>)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      , data_out(<span class="stringliteral">&quot;/Poisson/Output&quot;</span>)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      enter_subsection(<span class="stringliteral">&quot;Error table&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      enter_my_subsection(this-&gt;prm);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      error_table.add_parameters(this-&gt;prm);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      leave_my_subsection(this-&gt;prm);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      leave_subsection();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      add_parameter(<span class="stringliteral">&quot;Console level&quot;</span>, this-&gt;console_level);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">   62</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">Poisson&lt;dim, spacedim&gt;::setup_system</a>()</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;System setup&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="comment">// No mixed grids</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.get_reference_cells();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        ref_cells.size() == 1,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;          <span class="stringliteral">&quot;This program does nots support mixed simplx/hex grid types.&quot;</span>));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="comment">// Compatible FE space and grid.</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(finite_element().<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell</a>() == ref_cells[0],</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(<span class="stringliteral">&quot;The finite element must be defined on the same &quot;</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                             <span class="stringliteral">&quot;cell type as the grid.&quot;</span>));</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      boundary_conditions.update_user_substitution_map(constants);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      exact_solution.update_constants(constants);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      forcing_term.update_constants(constants);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      , error_table(<span class="stringliteral">&quot;/Poisson/Error table&quot;</span>)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      , data_out(<span class="stringliteral">&quot;/Poisson/Output&quot;</span>)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      add_parameter(<span class="stringliteral">&quot;Console level&quot;</span>, this-&gt;console_level);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">   58</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">Poisson&lt;dim, spacedim&gt;::setup_system</a>()</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;System setup&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="comment">// No mixed grids</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.get_reference_cells();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        ref_cells.size() == 1,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;          <span class="stringliteral">&quot;This program does nots support mixed simplx/hex grid types.&quot;</span>));</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="comment">// Compatible FE space and grid.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(finite_element().<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell</a>() == ref_cells[0],</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(<span class="stringliteral">&quot;The finite element must be defined on the same &quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                             <span class="stringliteral">&quot;cell type as the grid.&quot;</span>));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="comment">// We propagate the information about the constants to all functions of</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="comment">// the problem, so that constants can be used within the functions</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      boundary_conditions.update_user_substitution_map(constants);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      exact_solution.update_constants(constants);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      forcing_term.update_constants(constants);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      dof_handler.distribute_dofs(finite_element);</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      dof_handler.distribute_dofs(finite_element);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      mapping = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>).clone();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Number of dofs &quot;</span> &lt;&lt; dof_handler.n_dofs() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      constraints.clear();</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints</a>(dof_handler, constraints);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      boundary_conditions.check_consistency(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      boundary_conditions.apply_essential_boundary_conditions(*mapping,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                                              dof_handler,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                              constraints);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      constraints.close();</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDynamicSparsityPattern.html">DynamicSparsityPattern</a> dsp(dof_handler.n_dofs());</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern</a>(dof_handler, dsp, constraints, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      sparsity_pattern.copy_from(dsp);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      system_matrix.reinit(sparsity_pattern);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      solution.reinit(dof_handler.n_dofs());</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      system_rhs.reinit(dof_handler.n_dofs());</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      boundary_conditions.apply_natural_boundary_conditions(</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        *mapping, dof_handler, constraints, system_matrix, system_rhs);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">  109</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">Poisson&lt;dim, spacedim&gt;::assemble_system</a>()</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Assemble system&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a> cell_type = finite_element().reference_cell();</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature&lt;dim&gt;</a> quadrature_formula =</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        cell_type.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">get_gauss_type_quadrature</a>&lt;dim&gt;(</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;          finite_element().tensor_degree() + 1);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues&lt;dim, spacedim&gt;</a> fe_values(*mapping,</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                        finite_element,</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                                        quadrature_formula,</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a> | <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a> |</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a> |</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                                          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dofs_per_cell = finite_element().n_dofs_per_cell();</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html">FullMatrix&lt;double&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(dofs_per_cell, dofs_per_cell);</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt;double&gt;</a>     cell_rhs(dofs_per_cell);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;      std::vector&lt;types::global_dof_index&gt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>(dofs_per_cell);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : dof_handler.active_cell_iterators())</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;          fe_values.reinit(cell);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a> = 0;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;          cell_rhs    = 0;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> q_index :</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;               fe_values.quadrature_point_indices())</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_values.dof_indices())</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j : fe_values.dof_indices())</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(i, j) +=</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                    (constants[<span class="stringliteral">&quot;kappa&quot;</span>] *</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                     fe_values.shape_grad(i, q_index) * <span class="comment">// grad phi_i(x_q)</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                     fe_values.shape_grad(j, q_index) * <span class="comment">// grad phi_j(x_q)</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                     fe_values.JxW(q_index));           <span class="comment">// dx</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_values.dof_indices())</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                cell_rhs(i) +=</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                  (fe_values.shape_value(i, q_index) * <span class="comment">// phi_i(x_q)</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                   forcing_term.value(</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                     fe_values.quadrature_point(q_index)) * <span class="comment">// f(x_q)</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                   fe_values.JxW(q_index));                 <span class="comment">// dx</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;          cell-&gt;get_dof_indices(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;          constraints.distribute_local_to_global(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>,</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                                 cell_rhs,</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>,</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                                 system_matrix,</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                 system_rhs);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">  165</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">Poisson&lt;dim, spacedim&gt;::solve</a>()</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    {</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Solve system&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      preconditioner.initialize(system_matrix);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> A    = linear_operator&lt;Vector&lt;double&gt;&gt;(system_matrix);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> Ainv = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>(A, preconditioner);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      solution        = Ainv * system_rhs;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      constraints.distribute(solution);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    }</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">  179</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">Poisson&lt;dim, spacedim&gt;::output_results</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> cycle)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Output results&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      <span class="comment">// Save each cycle in its own file</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> suffix =</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(cycle,</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits</a>(</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                                   grid_refinement.get_n_refinement_cycles()));</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      data_out.attach_dof_handler(dof_handler, suffix);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      data_out.add_data_vector(solution, component_names);</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      data_out.write_data_and_clear(*mapping);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="comment">// Since our code runs both for simplex grids and for hyper-cube grids, we</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="comment">// need to make sure that we build the correct mapping for the grid. In</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="comment">// this code we actually use a linear mapping, independently on the order</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="comment">// of the finite element space.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      mapping = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>).clone();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Number of dofs &quot;</span> &lt;&lt; dof_handler.n_dofs() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      constraints.clear();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints</a>(dof_handler, constraints);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="comment">// We now check that the boundary conditions are consistent with the</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="comment">// triangulation object, that is, we check that the boundary indicators</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      <span class="comment">// specified in the parameter file are actually present in the</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="comment">// triangulation, that no boundary indicator is specified twice, and that</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="comment">// all boundary ids of the triangulation are actually covered by the</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="comment">// parameter file configuration.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      boundary_conditions.check_consistency(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="comment">// This is where we apply essential boundary conditions. The</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="comment">// ParsedTools::BoundaryConditions class takes care of collecting boundary</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="comment">// ids, and calling the appropriate function to apply the boundary</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="comment">// condition on the selected boundary ids. Essential boundary conditions</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="comment">// need to be incorporated in the constraints of the linear system, since</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <span class="comment">// they are part of the definition of the solution space.</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="comment">//</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="comment">// Natural bondary conditions, on the other hand, need access to the rhs</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="comment">// of the problem and are not treated via constraints. We will deal with</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <span class="comment">// them later on.</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      boundary_conditions.apply_essential_boundary_conditions(*mapping,</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                                              dof_handler,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                              constraints);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      constraints.close();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="comment">// Everything here is identical to step-3 in the deal.II tutorials.</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDynamicSparsityPattern.html">DynamicSparsityPattern</a> dsp(dof_handler.n_dofs());</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern</a>(dof_handler, dsp, constraints, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      sparsity_pattern.copy_from(dsp);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      system_matrix.reinit(sparsity_pattern);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      solution.reinit(dof_handler.n_dofs());</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      system_rhs.reinit(dof_handler.n_dofs());</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <span class="comment">// And here ParsedTools::BoundaryConditions kicks in again, and allows you</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <span class="comment">// to assemble those boundary condition types that require access to the</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      <span class="comment">// matrix and to the rhs, after the essential boundary conditions are</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      <span class="comment">// taken care of.</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      boundary_conditions.apply_natural_boundary_conditions(</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        *mapping, dof_handler, constraints, system_matrix, system_rhs);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">  135</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">Poisson&lt;dim, spacedim&gt;::assemble_system</a>()</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Assemble system&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html">ReferenceCell</a> cell_type = finite_element().reference_cell();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <span class="comment">// Differently from step-3, here we need to change quadrature formula</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;      <span class="comment">// according to the type of cell that the triangulation stores. If it is</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="comment">// quads or hexes, then this would be QGauss, otherwise, it will be</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="comment">// QGaussSimplex.</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature&lt;dim&gt;</a> quadrature_formula =</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        cell_type.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">get_gauss_type_quadrature</a>&lt;dim&gt;(</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;          finite_element().tensor_degree() + 1);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      <span class="comment">// Again, since we support also tria and tets, we need to make sure we</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="comment">// pass a compatible mapping to the FEValues object, otherwise things may</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;      <span class="comment">// not work.</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues&lt;dim, spacedim&gt;</a> fe_values(*mapping,</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                        finite_element,</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                                        quadrature_formula,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                                        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a> | <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a> |</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                                          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a> |</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                                          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dofs_per_cell = finite_element().n_dofs_per_cell();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html">FullMatrix&lt;double&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(dofs_per_cell, dofs_per_cell);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt;double&gt;</a>     cell_rhs(dofs_per_cell);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      std::vector&lt;types::global_dof_index&gt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>(dofs_per_cell);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : dof_handler.active_cell_iterators())</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;          fe_values.reinit(cell);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a> = 0;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;          cell_rhs    = 0;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> q_index :</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;               fe_values.quadrature_point_indices())</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_values.dof_indices())</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j : fe_values.dof_indices())</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(i, j) +=</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    (constants[<span class="stringliteral">&quot;kappa&quot;</span>] *</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                     fe_values.shape_grad(i, q_index) * <span class="comment">// grad phi_i(x_q)</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                     fe_values.shape_grad(j, q_index) * <span class="comment">// grad phi_j(x_q)</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                     fe_values.JxW(q_index));           <span class="comment">// dx</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;              <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_values.dof_indices())</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                cell_rhs(i) +=</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                  (fe_values.shape_value(i, q_index) * <span class="comment">// phi_i(x_q)</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                   forcing_term.value(</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                     fe_values.quadrature_point(q_index)) * <span class="comment">// f(x_q)</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                   fe_values.JxW(q_index));                 <span class="comment">// dx</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;          cell-&gt;get_dof_indices(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;          constraints.distribute_local_to_global(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                                                 cell_rhs,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                                                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a>,</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                                                 system_matrix,</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                                 system_rhs);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    }</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">  196</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">Poisson&lt;dim, spacedim&gt;::run</a>()</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    {</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">depth_console</a>(console_level);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;      grid_generator.generate(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cycle = 0;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;           cycle &lt; grid_refinement.get_n_refinement_cycles();</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;           ++cycle)</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">push</a>(<span class="stringliteral">&quot;Cycle &quot;</span> + <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(cycle));</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;          setup_system();</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;          assemble_system();</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;          solve();</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;          error_table.error_from_exact(dof_handler, solution, exact_solution);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;          output_results(cycle);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;          <span class="keywordflow">if</span> (cycle &lt; grid_refinement.get_n_refinement_cycles() - 1)</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            grid_refinement.estimate_mark_refine(*mapping,</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                                 dof_handler,</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                 solution,</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                                                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        }</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;      error_table.output_table(std::cout);</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    }</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;1, 1&gt;</a>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;1, 2&gt;</a>;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;1, 3&gt;</a>;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;2, 2&gt;</a>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;2, 3&gt;</a>;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;3, 3&gt;</a>;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  } <span class="comment">// namespace Serial</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;} <span class="comment">// namespace PDEs</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="comment">// We use a different approach for the solution of the linear system here</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// w.r.t. what is done in step-3. The ParsedLAC::InverseOperator object is</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="comment">// used to infer the solver type and the solver parameters from the</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">// parameter file, and the same is done for an AMG preconditioner.</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">  201</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">Poisson&lt;dim, spacedim&gt;::solve</a>()</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Solve system&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;      preconditioner.initialize(system_matrix);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> A    = linear_operator&lt;Vector&lt;double&gt;&gt;(system_matrix);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> Ainv = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>(A, preconditioner);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;      solution        = Ainv * system_rhs;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;      constraints.distribute(solution);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    }</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">// Finally, we output the solution to a file in a format that can be</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">// speficied in the parameter file. The structure of this function is</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="comment">// identical to step-3, however, here we use the ParsedTools::DataOut class,</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">// which specifies the output format, the filename, and many other options</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="comment">// from the parameter file, and just add the solution vector using the</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="comment">// ParsedTools::DataOut::add_data_vector() function, which works similarly</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="comment">// to dealii::DataOut::add_data_vector(), with the exception of the second</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="comment">// argument. Here the type of data to produce (i.e., vector, scalar, etc.)</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="comment">// is inferred by the repetitions in the component_names arguement, rather</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">// than specifying them by hand.</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">// This makes the structure of this function almost identical in all</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="comment">// programs of the FSI-suite.</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">  228</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">Poisson&lt;dim, spacedim&gt;::output_results</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> cycle)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Output results&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="comment">// Save each cycle in its own file</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> suffix =</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(cycle,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits</a>(</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                                   grid_refinement.get_n_refinement_cycles()));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      data_out.attach_dof_handler(dof_handler, suffix);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      data_out.add_data_vector(solution, component_names);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      data_out.write_data_and_clear(*mapping);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// And finally, the run() method. This is the main function of the program.</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="comment">// Differently from what is done in step-3, we don&#39;t have a separate</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="comment">// function for the grid generation, since we let the grid_generator object</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">// do the heavy lifting. And differently from what happens in step-3, here</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">// we also do several cycles of refinement, in order to compute the</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// convergence rates of the error.</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">  250</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">Poisson&lt;dim, spacedim&gt;::run</a>()</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">depth_console</a>(console_level);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      grid_generator.generate(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cycle : grid_refinement.get_refinement_cycles())</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">push</a>(<span class="stringliteral">&quot;Cycle &quot;</span> + <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string</a>(cycle));</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;          setup_system();</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;          assemble_system();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;          solve();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;          <span class="comment">// This is is leveraging the ParsedTools::ConvergenceTable class, to</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;          <span class="comment">// compute errors according to what is specified in the parameter file</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;          error_table.error_from_exact(dof_handler, solution, exact_solution);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;          output_results(cycle);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;          <span class="comment">// Differently from step-3, we also support local refinement. The</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;          <span class="comment">// following function call is only executed if we are not in the last</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;          <span class="comment">// cycle, and implements the actual estimate, mark, refine steps of</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;          <span class="comment">// classical AFEM algorithms, using the parameter file to drive the</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;          <span class="comment">// execution.</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;          <span class="keywordflow">if</span> (cycle &lt; grid_refinement.get_n_refinement_cycles() - 1)</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            grid_refinement.estimate_mark_refine(*mapping,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                                                 dof_handler,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                                                 solution,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <span class="comment">// Make sure we output the error table after the last cycle</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      error_table.output_table(std::cout);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="comment">// We explicitly instantiate all of the different combinations of dim and</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="comment">// spacedim, so that users can run this in different dimension in the tests</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;1, 1&gt;</a>;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;1, 2&gt;</a>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;1, 3&gt;</a>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;2, 2&gt;</a>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;2, 3&gt;</a>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_serial_1_1_poisson.html">Poisson&lt;3, 3&gt;</a>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  } <span class="comment">// namespace Serial</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;} <span class="comment">// namespace PDEs</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData_html_aba8967e97543db4c71abd0de98bca692"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#aba8967e97543db4c71abd0de98bca692">local_dof_indices</a></div><div class="ttdeci">std::vector&lt; types::global_dof_index &gt; local_dof_indices</div></div>
@@ -339,29 +403,29 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2poisson_8cc_sour
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="agroup__feaccess_html_ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a></div><div class="ttdeci">update_gradients</div></div>
 <div class="ttc" id="agroup__feaccess_html_ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a></div><div class="ttdeci">update_values</div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_aae970a1310438deca022184ddba05c5a"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">PDEs::Serial::Poisson::assemble_system</a></div><div class="ttdeci">void assemble_system()</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00109">poisson.cc:109</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_aae970a1310438deca022184ddba05c5a"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">PDEs::Serial::Poisson::assemble_system</a></div><div class="ttdeci">void assemble_system()</div><div class="ttdoc">Assemble the matrix and right hand side vector.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00135">poisson.cc:135</a></div></div>
 <div class="ttc" id="aclassReferenceCell_html_a56bb8396fda394d712fc4f19de4b02c4"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classReferenceCell.html#a56bb8396fda394d712fc4f19de4b02c4">ReferenceCell::get_gauss_type_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim &gt; get_gauss_type_quadrature(const unsigned n_points_1D) const</div></div>
 <div class="ttc" id="anamespaceLocalIntegrators_1_1Advection_html_a8bc7b8136646134f73a4193adefe15f8"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a></div><div class="ttdeci">void cell_matrix(FullMatrix&lt; double &gt; &amp;M, const FEValuesBase&lt; dim &gt; &amp;fe, const FEValuesBase&lt; dim &gt; &amp;fetest, const ArrayView&lt; const std::vector&lt; double &gt;&gt; &amp;velocity, const double factor=1.)</div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html">PDEs::Serial::Poisson</a></div><div class="ttdoc">Poisson problem, serial version.</div><div class="ttdef"><b>Definition:</b> <a href="poisson_8h_source.html#l00268">poisson.h:268</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html">PDEs::Serial::Poisson</a></div><div class="ttdoc">Poisson problem, serial version.</div><div class="ttdef"><b>Definition:</b> <a href="poisson_8h_source.html#l00192">poisson.h:192</a></div></div>
 <div class="ttc" id="agroup__LAOperators_html_ga87e38fbde431397c069a88692bd24ae7"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a></div><div class="ttdeci">LinearOperator&lt; Domain, Range, Payload &gt; inverse_operator(const LinearOperator&lt; Range, Domain, Payload &gt; &amp;op, Solver &amp;solver, const Preconditioner &amp;preconditioner)</div></div>
 <div class="ttc" id="amapping_8h_html_a37bc014c9df991ae1a0fd959ede60039"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a></div><div class="ttdeci">const Mapping&lt; dim, spacedim &gt; &amp; get_default_linear_mapping(const Triangulation&lt; dim, spacedim &gt; &amp;triangulation)</div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_abb2797101eade145baa969d5bed723ae"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">PDEs::Serial::Poisson::output_results</a></div><div class="ttdeci">void output_results(const unsigned cycle) const</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00179">poisson.cc:179</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_abb2797101eade145baa969d5bed723ae"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">PDEs::Serial::Poisson::output_results</a></div><div class="ttdeci">void output_results(const unsigned cycle) const</div><div class="ttdoc">Output the solution.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00228">poisson.cc:228</a></div></div>
 <div class="ttc" id="alogstream_8h_html_ac643e79bd992f1a9bd0dca5b9f2859fb"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a></div><div class="ttdeci">LogStream deallog</div></div>
 <div class="ttc" id="agroup__constraints_html_ga3b4ea7dfd313e388d868c4e4aa685799"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints</a></div><div class="ttdeci">void make_hanging_node_constraints(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, AffineConstraints&lt; number &gt; &amp;constraints)</div></div>
 <div class="ttc" id="aclassFEValues_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a></div></div>
 <div class="ttc" id="agroup__feaccess_html_ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a></div><div class="ttdeci">update_quadrature_points</div></div>
 <div class="ttc" id="agroup__constraints_html_gaf78e864edbfba7e0a7477457bfb96b26"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern</a></div><div class="ttdeci">void make_sparsity_pattern(const DoFHandler&lt; dim, spacedim &gt; &amp;dof_handler, SparsityPatternType &amp;sparsity_pattern, const AffineConstraints&lt; number &gt; &amp;constraints=AffineConstraints&lt; number &gt;(), const bool keep_constrained_dofs=true, const types::subdomain_id subdomain_id=numbers::invalid_subdomain_id)</div></div>
 <div class="ttc" id="agroup__Exceptions_html_gae9a45f517af1401c50811a11083f9114"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_a49b90808501aaa200e4a29aad02dacaa"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">PDEs::Serial::Poisson::solve</a></div><div class="ttdeci">void solve()</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00165">poisson.cc:165</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_a49b90808501aaa200e4a29aad02dacaa"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#a49b90808501aaa200e4a29aad02dacaa">PDEs::Serial::Poisson::solve</a></div><div class="ttdeci">void solve()</div><div class="ttdoc">Solve the linear system generated in the assemble_system() function.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00201">poisson.cc:201</a></div></div>
 <div class="ttc" id="aerror__estimator_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/error__estimator_8h.html">error_estimator.h</a></div></div>
 <div class="ttc" id="aclassDynamicSparsityPattern_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDynamicSparsityPattern.html">DynamicSparsityPattern</a></div></div>
 <div class="ttc" id="anamespace_p_d_es_html"><div class="ttname"><a href="namespace_p_d_es.html">PDEs</a></div><div class="ttdoc">We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.</div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00047">distributed_lagrange.h:47</a></div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_ab330044aa5cf2279ec7ab769f2d95648"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">PDEs::Serial::Poisson::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00196">poisson.cc:196</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_ab330044aa5cf2279ec7ab769f2d95648"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648">PDEs::Serial::Poisson::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Main entry point of the program.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00250">poisson.cc:250</a></div></div>
 <div class="ttc" id="anamespaceUtilities_html_a9c75f3b2b9de645e7432eba26e59499b"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits</a></div><div class="ttdeci">unsigned int needed_digits(const unsigned int max_number)</div></div>
 <div class="ttc" id="aclassLogStream_html_a8028e970ad8388596d625ed463894e98"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console</a></div><div class="ttdeci">unsigned int depth_console(const unsigned int n)</div></div>
 <div class="ttc" id="alinear__operator__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/linear__operator__tools_8h.html">linear_operator_tools.h</a></div></div>
 <div class="ttc" id="apoisson_8h_html"><div class="ttname"><a href="poisson_8h.html">poisson.h</a></div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_ab43b8ac99a39815e97dbbae31552b835"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">PDEs::Serial::Poisson::setup_system</a></div><div class="ttdeci">void setup_system()</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00062">poisson.cc:62</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_poisson_html_ab43b8ac99a39815e97dbbae31552b835"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_poisson.html#ab43b8ac99a39815e97dbbae31552b835">PDEs::Serial::Poisson::setup_system</a></div><div class="ttdeci">void setup_system()</div><div class="ttdoc">Setup dofs, constraints, and matrices.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2poisson_8cc_source.html#l00058">poisson.cc:58</a></div></div>
 <div class="ttc" id="aclassLogStream_html_af78c5e0f0f0d929ce997543f4579f5c5"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop</a></div><div class="ttdeci">void pop()</div></div>
 <div class="ttc" id="anamespaceGridGenerator_html_aeb9a83e353f8d69ce49ebdd191a3a51f"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#aeb9a83e353f8d69ce49ebdd191a3a51f">reference_cell</a></div><div class="ttdeci">void reference_cell(Triangulation&lt; dim, spacedim &gt; &amp;tria, const ReferenceCell &amp;reference_cell)</div></div>
 <div class="ttc" id="aclassFullMatrix_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html">FullMatrix&lt; double &gt;</a></div></div>
@@ -376,7 +440,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2poisson_8cc_sour
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="dir_50f223c273824013943d646bc691d39f.html">serial</a></li><li class="navelem"><a class="el" href="source_2pdes_2serial_2poisson_8cc.html">poisson.cc</a></li>
-    <li class="footer">Generated on Sat Feb 12 2022 21:53:01 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Feb 13 2022 13:59:27 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
