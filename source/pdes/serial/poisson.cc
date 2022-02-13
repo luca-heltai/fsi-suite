@@ -45,13 +45,9 @@ namespace PDEs
                        "sin(2*PI*x)*sin(2*PI*y)",
                        "Exact solution")
       , boundary_conditions("/Poisson/Boundary conditions")
+      , error_table("/Poisson/Error table")
       , data_out("/Poisson/Output")
     {
-      enter_subsection("Error table");
-      enter_my_subsection(this->prm);
-      error_table.add_parameters(this->prm);
-      leave_my_subsection(this->prm);
-      leave_subsection();
       add_parameter("Console level", this->console_level);
     }
 
