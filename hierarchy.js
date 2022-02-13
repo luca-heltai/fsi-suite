@@ -62,6 +62,7 @@ var hierarchy =
         [ "PDEs::Serial::DistributedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
         [ "PDEs::Serial::LinearElasticity< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_linear_elasticity.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
+        [ "PDEs::Serial::ReducedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", null ],
         [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ]
       ] ],
       [ "TrilinosWrappers::PreconditionBase", "http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionBase.html", [

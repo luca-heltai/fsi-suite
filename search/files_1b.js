@@ -1,17 +1,19 @@
 var searchData=
 [
-  ['read_5fwrite_5fvector_2ecc_14188',['read_write_vector.cc',['http://www.dealii.org/developer/doxygen/deal.II/read__write__vector_8cc.html',1,'']]],
-  ['read_5fwrite_5fvector_2eh_14189',['read_write_vector.h',['http://www.dealii.org/developer/doxygen/deal.II/read__write__vector_8h.html',1,'']]],
-  ['readme_2emd_14190',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
-  ['reference_5fcell_2ecc_14191',['reference_cell.cc',['http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8cc.html',1,'']]],
-  ['reference_5fcell_2eh_14192',['reference_cell.h',['http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html',1,'']]],
-  ['refinement_2ecc_14193',['refinement.cc',['http://www.dealii.org/developer/doxygen/deal.II/refinement_8cc.html',1,'']]],
-  ['refinement_2eh_14194',['refinement.h',['http://www.dealii.org/developer/doxygen/deal.II/refinement_8h.html',1,'']]],
-  ['relaxation_5fblock_2ecc_14195',['relaxation_block.cc',['http://www.dealii.org/developer/doxygen/deal.II/relaxation__block_8cc.html',1,'']]],
-  ['relaxation_5fblock_2eh_14196',['relaxation_block.h',['http://www.dealii.org/developer/doxygen/deal.II/relaxation__block_8h.html',1,'']]],
-  ['reordering_2eh_14197',['reordering.h',['http://www.dealii.org/developer/doxygen/deal.II/reordering_8h.html',1,'']]],
-  ['repartitioning_5fpolicy_5ftools_2ecc_14198',['repartitioning_policy_tools.cc',['http://www.dealii.org/developer/doxygen/deal.II/repartitioning__policy__tools_8cc.html',1,'']]],
-  ['repartitioning_5fpolicy_5ftools_2eh_14199',['repartitioning_policy_tools.h',['http://www.dealii.org/developer/doxygen/deal.II/repartitioning__policy__tools_8h.html',1,'']]],
-  ['revision_2eh_14200',['revision.h',['http://www.dealii.org/developer/doxygen/deal.II/revision_8h.html',1,'']]],
-  ['rtree_2eh_14201',['rtree.h',['http://www.dealii.org/developer/doxygen/deal.II/rtree_8h.html',1,'']]]
+  ['read_5fwrite_5fvector_2ecc_14195',['read_write_vector.cc',['http://www.dealii.org/developer/doxygen/deal.II/read__write__vector_8cc.html',1,'']]],
+  ['read_5fwrite_5fvector_2eh_14196',['read_write_vector.h',['http://www.dealii.org/developer/doxygen/deal.II/read__write__vector_8h.html',1,'']]],
+  ['readme_2emd_14197',['README.md',['../_r_e_a_d_m_e_8md.html',1,'']]],
+  ['reduced_5flagrange_2ecc_14198',['reduced_lagrange.cc',['../reduced__lagrange_8cc.html',1,'']]],
+  ['reduced_5flagrange_2eh_14199',['reduced_lagrange.h',['../reduced__lagrange_8h.html',1,'']]],
+  ['reference_5fcell_2ecc_14200',['reference_cell.cc',['http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8cc.html',1,'']]],
+  ['reference_5fcell_2eh_14201',['reference_cell.h',['http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html',1,'']]],
+  ['refinement_2ecc_14202',['refinement.cc',['http://www.dealii.org/developer/doxygen/deal.II/refinement_8cc.html',1,'']]],
+  ['refinement_2eh_14203',['refinement.h',['http://www.dealii.org/developer/doxygen/deal.II/refinement_8h.html',1,'']]],
+  ['relaxation_5fblock_2ecc_14204',['relaxation_block.cc',['http://www.dealii.org/developer/doxygen/deal.II/relaxation__block_8cc.html',1,'']]],
+  ['relaxation_5fblock_2eh_14205',['relaxation_block.h',['http://www.dealii.org/developer/doxygen/deal.II/relaxation__block_8h.html',1,'']]],
+  ['reordering_2eh_14206',['reordering.h',['http://www.dealii.org/developer/doxygen/deal.II/reordering_8h.html',1,'']]],
+  ['repartitioning_5fpolicy_5ftools_2ecc_14207',['repartitioning_policy_tools.cc',['http://www.dealii.org/developer/doxygen/deal.II/repartitioning__policy__tools_8cc.html',1,'']]],
+  ['repartitioning_5fpolicy_5ftools_2eh_14208',['repartitioning_policy_tools.h',['http://www.dealii.org/developer/doxygen/deal.II/repartitioning__policy__tools_8h.html',1,'']]],
+  ['revision_2eh_14209',['revision.h',['http://www.dealii.org/developer/doxygen/deal.II/revision_8h.html',1,'']]],
+  ['rtree_2eh_14210',['rtree.h',['http://www.dealii.org/developer/doxygen/deal.II/rtree_8h.html',1,'']]]
 ];

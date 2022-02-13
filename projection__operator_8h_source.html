@@ -149,43 +149,60 @@ $(document).ready(function(){initNavTree('projection__operator_8h_source.html','
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        dst[j] = local_basis[i++].get() * src;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    };</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.Tvmult = [range_exemplar, local_basis](Domain &amp;     dst,</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                                                           <span class="keyword">const</span> Range &amp;src) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span> = range_exemplar.locally_owned_elements();</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>(local_basis.size(), <span class="keywordtype">id</span>.n_elements());</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      dst            = 0;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> j : <span class="keywordtype">id</span>)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        dst.sadd(1.0, src[j], local_basis[i++]);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      dst.compress(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structVectorOperation.html#a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708">VectorOperation::add</a>);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    };</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.reinit_range_vector = [range_exemplar](Range &amp;dst,</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                                           <span class="keywordtype">bool</span>   fast) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      dst.reinit(range_exemplar, fast);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    };</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">if</span> (domain_exemplar != <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.reinit_domain_vector = [domain_exemplar](Domain &amp;dst,</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                               <span class="keywordtype">bool</span>    fast) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        dst.reinit(*domain_exemplar, fast);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      };</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>(local_basis.size() &gt; 0,</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;               <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(<span class="stringliteral">&quot;If domain_exemplar is not provided, &quot;</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                          <span class="stringliteral">&quot;local_basis must contain at least one element.&quot;</span>));</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.reinit_domain_vector = [local_basis](Domain &amp;dst,</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                                                             <span class="keywordtype">bool</span>    fast) {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;          dst.reinit(local_basis[0].get(), fast);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        };</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.vmult_add = [range_exemplar,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                                 local_basis](Range &amp;dst, <span class="keyword">const</span> Domain &amp;src) {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span> = range_exemplar.locally_owned_elements();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>(local_basis.size(), <span class="keywordtype">id</span>.n_elements());</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> j : <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        dst[j] += local_basis[i++].get() * src;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    };</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.Tvmult = [range_exemplar, local_basis](Domain &amp;     dst,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                                           <span class="keyword">const</span> Range &amp;src) {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span> = range_exemplar.locally_owned_elements();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>(local_basis.size(), <span class="keywordtype">id</span>.n_elements());</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      dst            = 0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> j : <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        dst.sadd(1.0, src[j], local_basis[i++]);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      dst.compress(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structVectorOperation.html#a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708">VectorOperation::add</a>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    };</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.Tvmult_add = [range_exemplar,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                  local_basis](Domain &amp;dst, <span class="keyword">const</span> Range &amp;src) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">auto</span> <span class="keywordtype">id</span> = range_exemplar.locally_owned_elements();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>(local_basis.size(), <span class="keywordtype">id</span>.n_elements());</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> j : <span class="keywordtype">id</span>)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        dst.sadd(1.0, src[j], local_basis[i++]);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      dst.compress(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structVectorOperation.html#a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708">VectorOperation::add</a>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    };</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.reinit_range_vector = [range_exemplar](Range &amp;dst,</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                                           <span class="keywordtype">bool</span>   fast) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      dst.reinit(range_exemplar, fast);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    };</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <span class="comment">// namespace dealii</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (domain_exemplar != <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.reinit_domain_vector = [domain_exemplar](Domain &amp;dst,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                                                               <span class="keywordtype">bool</span>    fast) {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        dst.reinit(*domain_exemplar, fast);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      };</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>(local_basis.size() &gt; 0,</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;               <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a>(<span class="stringliteral">&quot;If domain_exemplar is not provided, &quot;</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                          <span class="stringliteral">&quot;local_basis must contain at least one element.&quot;</span>));</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.reinit_domain_vector = [local_basis](Domain &amp;dst,</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                                                             <span class="keywordtype">bool</span>    fast) {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;          dst.reinit(local_basis[0].get(), fast);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        };</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">return</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;} <span class="comment">// namespace dealii</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="asparse__matrix_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">sparse_matrix.h</a></div></div>
@@ -205,7 +222,7 @@ $(document).ready(function(){initNavTree('projection__operator_8h_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="projection__operator_8h.html">projection_operator.h</a></li>
-    <li class="footer">Generated on Sun Feb 13 2022 15:38:53 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Feb 13 2022 18:03:52 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
