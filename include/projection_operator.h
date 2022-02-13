@@ -90,12 +90,30 @@ namespace dealii
         dst[j] = local_basis[i++].get() * src;
     };
 
+    linear_operator.vmult_add = [range_exemplar,
+                                 local_basis](Range &dst, const Domain &src) {
+      static const auto id = range_exemplar.locally_owned_elements();
+      AssertDimension(local_basis.size(), id.n_elements());
+      unsigned int i = 0;
+      for (const auto j : id)
+        dst[j] += local_basis[i++].get() * src;
+    };
 
     linear_operator.Tvmult = [range_exemplar, local_basis](Domain &     dst,
                                                            const Range &src) {
       static const auto id = range_exemplar.locally_owned_elements();
       AssertDimension(local_basis.size(), id.n_elements());
       dst            = 0;
+      unsigned int i = 0;
+      for (const auto j : id)
+        dst.sadd(1.0, src[j], local_basis[i++]);
+      dst.compress(VectorOperation::add);
+    };
+
+    linear_operator.Tvmult_add = [range_exemplar,
+                                  local_basis](Domain &dst, const Range &src) {
+      static const auto id = range_exemplar.locally_owned_elements();
+      AssertDimension(local_basis.size(), id.n_elements());
       unsigned int i = 0;
       for (const auto j : id)
         dst.sadd(1.0, src[j], local_basis[i++]);
@@ -124,6 +142,5 @@ namespace dealii
       }
     return linear_operator;
   }
-
 } // namespace dealii
 #endif
