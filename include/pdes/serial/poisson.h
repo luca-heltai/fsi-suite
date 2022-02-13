@@ -206,7 +206,21 @@ namespace PDEs
       /**
        * Main entry point of the program.
        *
-       * Just as in all deal.II tutorial programs, the run() function is
+       * Just as in all deal.II tutorial programs, the run() function is called
+       * from the place where a PDEs::Serial::Poisson  object is created, and it
+       * is the one that calls all the other functions in their proper order.
+       * Encapsulating this operation into the `run()` function, rather than
+       * calling all the other functions from `main()` of the application makes
+       * sure that you can change how the *separation of concerns* within this
+       * class is implemented. For example, if one of the functions becomes too
+       * big, you can split it up into two, and the only places you have to be
+       * concerned about changing as a consequence are within this very same
+       * class, and not anywhere else.
+       *
+       * As mentioned above, you will see this general structure -- sometimes
+       * with variants in spelling of the functions' names, but in essentially
+       * this order of separation of functionality -- again in all of the
+       * following tutorial programs.
        */
       void
       run();
@@ -559,9 +573,132 @@ namespace PDEs
        * \name Forcing terms and boundary conditions
        * @{
        */
-      ParsedTools::Constants                    constants;
-      ParsedTools::Function<spacedim>           forcing_term;
-      ParsedTools::Function<spacedim>           exact_solution;
+
+      /**
+       * Constants of the problem.
+       *
+       * Most of the problems we will work with, define constants of different
+       * types (physical constants, material properties, numerical constants,
+       * etc.). The  ParsedTools::Constants class allows you to define these in
+       * a centralized way, and allows you to share these constants with all the
+       * function definitions you may use in your code later on (e.g., the
+       * forcing term, or the boundary conditions).
+       *
+       * The action of this class is driven by the section `Constants` of the
+       * parameter file:
+       * @code{.sh}
+       * subsection Constants
+       *   set Diffusion coefficient (kappa) = 1
+       * end
+       * @endcode
+       * where you can specify the diffusion coefficient of the problem.
+       *
+       * Which constants are defined is built into the ParsedTools::Constants
+       * class at construction time (see the source for the constructor
+       * Poisson())
+       */
+      ParsedTools::Constants constants;
+
+      /**
+       * The actual function to use as a forcing term. This is a wrapper around
+       * the dealii::ParsedFunction class, which allows you to define a function
+       * through a symbolic expression (a string) in a parameter file.
+       *
+       * The action of this class is driven by the section `Functions`, with the
+       * parameter `Forcing term`:
+       * @code{.sh}
+       * subsection Functions
+       *  set Forcing term = kappa*8*PI^2*sin(2*PI*x)*sin(2*PI*y)
+       * end
+       * @endcode
+       *
+       * You can use any of the numerical constants that are defined in the
+       * dealii::numbers namespace, such as PI, E, etc, as well as the constants
+       * defined at construction time in the ParsedTools::Constants class.
+       */
+      ParsedTools::Function<spacedim> forcing_term;
+
+      /**
+       * The actual function to use as a exact solution when computing the
+       * errors. This is a wrapper around the dealii::ParsedFunction class,
+       * which allows you to define a function through a symbolic expression (a
+       * string) in a parameter file.
+       *
+       * The action of this class is driven by the section `Functions`, with the
+       * parameter `Exact solution`:
+       * @code{.sh}
+       * subsection Functions
+       *  set Exact solution = sin(2*PI*x)*sin(2*PI*y)
+       * end
+       * @endcode
+       *
+       * You can use any of the numerical constants that are defined in the
+       * dealii::numbers namespace, such as PI, E, etc, as well as the constants
+       * defined at construction time in the ParsedTools::Constants class.
+       */
+      ParsedTools::Function<spacedim> exact_solution;
+
+      /**
+       * Boundary conditions used in this class.
+       *
+       * The action of this class is driven by the section `Boundary conditions`
+       * of the parameter file:
+       * @code{.sh}
+       * subsection Boundary conditions
+       *   set Boundary condition types (u) = dirichlet
+       *   set Boundary id sets (u)         = -1
+       *   set Expressions (u)              = 0
+       *   set Selected components (u)      = u
+       * end
+       * @endcode
+       *
+       * The way ParsedTools::BoundaryConditions works in the FSI-suite is the
+       * following: for every set of boundary ids of the triangulation, you need
+       * to specify what boundary conditions are assumed to be imposed on that
+       * set. If you only want to specify one type of boundary condition
+       * (`dirichlet` or `neumann`) on all of the boundary, you can do so by
+       * specifying `-1` as the boundary id set.
+       *
+       * Multiple boundary conditions can be specified, but the same id should
+       * should appear only once in the parameter file (i.e., you cannot apply
+       * different types of boundary conditions on the same boundary id).
+       *
+       * Keep in mind the following caveats:
+       * - Boundary conditions are specified as comma separated strings, so you
+       *   can specify "set Boundary condition types (u) = neumann, dirichlet"
+       *   for two different sets of boundary ids.
+       * - Following the previous example, different boundary id sets are
+       *   separated by a semicolumn, and in each set, different boundary ids
+       *   are separated by a column, so, for example, if you specify as
+       *   `set Boundary id sets (u) = 0, 1; 2, 3`, then boundary ids 0 and 1
+       *   will get Neumann boundary conditions, while boundary ids 2 and 3 will
+       *   get Dirichlet boundary conditions.
+       * - Since an expression can contain a `,` character, then expression for
+       *   each component are separated by a semicolumn, and for each boundary
+       *   id set, are separated by the `%` character. For example, if you want
+       *   to specify homogeneous Neumann boundary conditions, and constant
+       *   Dirichlet boundary conditions you can set the following parameter:
+       *   `set Expressions (u) = 0 % 1`.
+       * - The selected components, again can be `all`, a component name, or
+       *   `u.n`, or `u.t` to select normal component, or tangential component
+       *   in a vector valued problem. For scalar problems, only the name of the
+       *   component makes sense. This field allows you to control which
+       *   components the given boundary condition refers to.
+       *
+       * To summarize, the following is a valid section for the example above:
+       * @code{.sh}
+       * subsection Boundary conditions
+       *   set Boundary condition types (u) = dirichlet, neumann
+       *   set Boundary id sets (u)         = 0, 1 ; 2, 3
+       *   set Expressions (u)              = 0 % 1
+       *   set Selected components (u)      = u; u
+       * end
+       * @endcode
+       *
+       * This would apply Dirichlet boundary conditions on the boundary ids 2
+       * and 3, and homogeneous Neumann boundary conditions on the boundary ids
+       * 0 and 1.
+       */
       ParsedTools::BoundaryConditions<spacedim> boundary_conditions;
       /** @} */
 
@@ -569,9 +706,85 @@ namespace PDEs
        * \name Output and postprocessing
        * @{
        */
-      ParsedTools::ConvergenceTable               error_table;
+
+      /**
+       * This is a wrapper around the dealii::ParsedConvergenceTable class, that
+       * allows you to specify what error to computes, and how to compute them.
+       *
+       * The action of this class is driven by the section `Error table` of the
+       * parameter file:
+       * @code{.sh}
+       * subsection Error table
+       *   set Enable computation of the errors = true
+       *   set Error file name                  =
+       *   set Error precision                  = 3
+       *   set Exponent for p-norms             = 2
+       *   set Extra columns                    = cells, dofs
+       *   set List of error norms to compute   = L2_norm, Linfty_norm, H1_norm
+       *   set Rate key                         = dofs
+       *   set Rate mode                        = reduction_rate_log2
+       * end
+       * @endcode
+       *
+       * The above code, for example, would produce a convergence table that
+       * looks like
+       * @code{.sh}
+       * cells dofs    u_L2_norm    u_Linfty_norm    u_H1_norm
+       *    16    25 1.190e-01    - 2.034e-01    - 1.997e+00    -
+       *    64    81 3.018e-02 2.33 7.507e-02 1.70 1.003e+00 1.17
+       *   256   289 7.587e-03 2.17 2.060e-02 2.03 5.031e-01 1.09
+       *  1024  1089 1.900e-03 2.09 5.271e-03 2.06 2.518e-01 1.04
+       *  4096  4225 4.751e-04 2.04 1.325e-03 2.04 1.259e-01 1.02
+       * 16384 16641 1.188e-04 2.02 3.318e-04 2.02 6.296e-02 1.01
+       * @endcode
+       *
+       * The table above can be used *as-is* to produce high quality pdf outputs
+       * of your error convergence rates using the file in the FSI-suite
+       * repository `latex/quick_convergence_graphs/graph.tex`. For example, the
+       * above table would result in the following plot:
+       *
+       * @image html poisson_convergence_graph.png
+       */
+      ParsedTools::ConvergenceTable error_table;
+
+      /**
+       * Wrapper around the dealii::DataOut class.
+       *
+       * The action of this class is driven by the section `Output` of the
+       * parameter file:
+       * @code{.sh}
+       * subsection Output
+       *   set Curved cells region    = curved_inner_cells
+       *   set Output format          = vtu
+       *   set Output material ids    = true
+       *   set Output partitioning    = true
+       *   set Problem base name      = solution
+       *   set Subdivisions           = 0
+       *   set Write high order cells = true
+       * end
+       * @endcode
+       *
+       * A similar structure was used in the program dof_plotter.cc.
+       *
+       * For example, using the configuration specified above, a plot of the
+       * solution using the `vtu` format would look like:
+       *
+       * @image html poisson_solution.png
+       */
       mutable ParsedTools::DataOut<dim, spacedim> data_out;
-      unsigned int                                console_level = 1;
+
+      /**
+       * Level of log verbosity.
+       *
+       * This is the only "native" parameter of this class. All other parameters
+       * are set through the constructors of the classes that inherit from
+       * ParameterAcceptor.
+       *
+       * The console_level is used to setup the dealii::LogStream class, and
+       * allows dealii clases to print messages to the console at different
+       * level of detail and verbosity.
+       */
+      unsigned int console_level = 1;
       /** @} */
     };
   } // namespace Serial

@@ -1,0 +1,44 @@
+\documentclass[border=10pt]{standalone}
+\usepackage{verbatim}
+\usepackage{filecontents}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{triangles}
+
+\begin{document}
+
+%\pgfplotstableread[comment chars={d}]{../build/error.txt}\mytable
+\pgfplotstableread[comment chars={c}]{
+  cells dofs    u_L2_norm    u_Linfty_norm    u_H1_norm
+   16    25 1.190e-01  2.034e-01  1.997e+00 
+   64    81 3.018e-02  7.507e-02  1.003e+00 
+  256   289 7.587e-03  2.060e-02  5.031e-01 
+ 1024  1089 1.900e-03  5.271e-03  2.518e-01 
+ 4096  4225 4.751e-04  1.325e-03  1.259e-01 
+16384 16641 1.188e-04  3.318e-04  6.296e-02 
+}\mytable
+
+\pgfplotsset{width=11cm,compat=1.8}
+
+\begin{tikzpicture}
+\begin{loglogaxis}[
+    xlabel={\#DoFs},
+    ylabel={Error},
+    grid=both,
+    legend entries={$L^2$ error, $L^\infty$ error, $H^1$ error},
+    legend pos=outer north east
+]
+\addplot table[x=1, y=2] {\mytable};
+\addplot table[x=1, y=3] {\mytable};
+\addplot table[x=1, y=4] {\mytable};
+
+\logLogSlopeTriangle{.9}{0.6}{0.9}{0.5}{black}{.5}
+
+
+\logLogSlopeTriangleReversed{.8}{0.7}{0.05}{1}{black}{1}
+
+\end{loglogaxis}
+\end{tikzpicture}
+
+\end{document}
+

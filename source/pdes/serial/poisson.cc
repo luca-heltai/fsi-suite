@@ -70,30 +70,60 @@ namespace PDEs
                   ExcMessage("The finite element must be defined on the same "
                              "cell type as the grid."));
 
+      // We propagate the information about the constants to all functions of
+      // the problem, so that constants can be used within the functions
       boundary_conditions.update_user_substitution_map(constants);
       exact_solution.update_constants(constants);
       forcing_term.update_constants(constants);
 
       dof_handler.distribute_dofs(finite_element);
+
+      // Since our code runs both for simplex grids and for hyper-cube grids, we
+      // need to make sure that we build the correct mapping for the grid. In
+      // this code we actually use a linear mapping, independently on the order
+      // of the finite element space.
       mapping = get_default_linear_mapping(triangulation).clone();
 
       deallog << "Number of dofs " << dof_handler.n_dofs() << std::endl;
 
       constraints.clear();
       DoFTools::make_hanging_node_constraints(dof_handler, constraints);
+
+      // We now check that the boundary conditions are consistent with the
+      // triangulation object, that is, we check that the boundary indicators
+      // specified in the parameter file are actually present in the
+      // triangulation, that no boundary indicator is specified twice, and that
+      // all boundary ids of the triangulation are actually covered by the
+      // parameter file configuration.
       boundary_conditions.check_consistency(triangulation);
+
+      // This is where we apply essential boundary conditions. The
+      // ParsedTools::BoundaryConditions class takes care of collecting boundary
+      // ids, and calling the appropriate function to apply the boundary
+      // condition on the selected boundary ids. Essential boundary conditions
+      // need to be incorporated in the constraints of the linear system, since
+      // they are part of the definition of the solution space.
+      //
+      // Natural bondary conditions, on the other hand, need access to the rhs
+      // of the problem and are not treated via constraints. We will deal with
+      // them later on.
       boundary_conditions.apply_essential_boundary_conditions(*mapping,
                                                               dof_handler,
                                                               constraints);
       constraints.close();
 
-
+      // Everything here is identical to step-3 in the deal.II tutorials.
       DynamicSparsityPattern dsp(dof_handler.n_dofs());
       DoFTools::make_sparsity_pattern(dof_handler, dsp, constraints, false);
       sparsity_pattern.copy_from(dsp);
       system_matrix.reinit(sparsity_pattern);
       solution.reinit(dof_handler.n_dofs());
       system_rhs.reinit(dof_handler.n_dofs());
+
+      // And here ParsedTools::BoundaryConditions kicks in again, and allows you
+      // to assemble those boundary condition types that require access to the
+      // matrix and to the rhs, after the essential boundary conditions are
+      // taken care of.
       boundary_conditions.apply_natural_boundary_conditions(
         *mapping, dof_handler, constraints, system_matrix, system_rhs);
     }
@@ -107,10 +137,17 @@ namespace PDEs
       deallog << "Assemble system" << std::endl;
       const ReferenceCell cell_type = finite_element().reference_cell();
 
+      // Differently from step-3, here we need to change quadrature formula
+      // according to the type of cell that the triangulation stores. If it is
+      // quads or hexes, then this would be QGauss, otherwise, it will be
+      // QGaussSimplex.
       const Quadrature<dim> quadrature_formula =
         cell_type.get_gauss_type_quadrature<dim>(
           finite_element().tensor_degree() + 1);
 
+      // Again, since we support also tria and tets, we need to make sure we
+      // pass a compatible mapping to the FEValues object, otherwise things may
+      // not work.
       FEValues<dim, spacedim> fe_values(*mapping,
                                         finite_element,
                                         quadrature_formula,
@@ -155,7 +192,10 @@ namespace PDEs
     }
 
 
-
+    // We use a different approach for the solution of the linear system here
+    // w.r.t. what is done in step-3. The ParsedLAC::InverseOperator object is
+    // used to infer the solver type and the solver parameters from the
+    // parameter file, and the same is done for an AMG preconditioner.
     template <int dim, int spacedim>
     void
     Poisson<dim, spacedim>::solve()
@@ -170,6 +210,19 @@ namespace PDEs
 
 
 
+    // Finally, we output the solution to a file in a format that can be
+    // speficied in the parameter file. The structure of this function is
+    // identical to step-3, however, here we use the ParsedTools::DataOut class,
+    // which specifies the output format, the filename, and many other options
+    // from the parameter file, and just add the solution vector using the
+    // ParsedTools::DataOut::add_data_vector() function, which works similarly
+    // to dealii::DataOut::add_data_vector(), with the exception of the second
+    // argument. Here the type of data to produce (i.e., vector, scalar, etc.)
+    // is inferred by the repetitions in the component_names arguement, rather
+    // than specifying them by hand.
+    //
+    // This makes the structure of this function almost identical in all
+    // programs of the FSI-suite.
     template <int dim, int spacedim>
     void
     Poisson<dim, spacedim>::output_results(const unsigned cycle) const
@@ -186,7 +239,12 @@ namespace PDEs
     }
 
 
-
+    // And finally, the run() method. This is the main function of the program.
+    // Differently from what is done in step-3, we don't have a separate
+    // function for the grid generation, since we let the grid_generator object
+    // do the heavy lifting. And differently from what happens in step-3, here
+    // we also do several cycles of refinement, in order to compute the
+    // convergence rates of the error.
     template <int dim, int spacedim>
     void
     Poisson<dim, spacedim>::run()
@@ -194,16 +252,23 @@ namespace PDEs
       deallog.pop();
       deallog.depth_console(console_level);
       grid_generator.generate(triangulation);
-      for (unsigned int cycle = 0;
-           cycle < grid_refinement.get_n_refinement_cycles();
-           ++cycle)
+      for (const auto &cycle : grid_refinement.get_refinement_cycles())
         {
           deallog.push("Cycle " + Utilities::int_to_string(cycle));
           setup_system();
           assemble_system();
           solve();
+
+          // This is is leveraging the ParsedTools::ConvergenceTable class, to
+          // compute errors according to what is specified in the parameter file
           error_table.error_from_exact(dof_handler, solution, exact_solution);
           output_results(cycle);
+
+          // Differently from step-3, we also support local refinement. The
+          // following function call is only executed if we are not in the last
+          // cycle, and implements the actual estimate, mark, refine steps of
+          // classical AFEM algorithms, using the parameter file to drive the
+          // execution.
           if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
             grid_refinement.estimate_mark_refine(*mapping,
                                                  dof_handler,
@@ -211,9 +276,12 @@ namespace PDEs
                                                  triangulation);
           deallog.pop();
         }
+      // Make sure we output the error table after the last cycle
       error_table.output_table(std::cout);
     }
 
+    // We explicitly instantiate all of the different combinations of dim and
+    // spacedim, so that users can run this in different dimension in the tests
     template class Poisson<1, 1>;
     template class Poisson<1, 2>;
     template class Poisson<1, 3>;
