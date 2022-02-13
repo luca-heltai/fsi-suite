@@ -3,9 +3,12 @@
 **Lecture materials for the course "Continuum mechanics and fluid-structure
 interaction problems: mathematical modeling and numerical approximation"**
 
-- *Author:* Luca Heltai <luca.heltai@sissa.it>
-- *GitHub Repository:* https://github.com/luca-heltai/fsi-suite
-- *Licence:* see the file [LICENCE.md](./LICENCE.md)
+|  <!-- --> | <!-- --> |
+| -- | -- |
+| **Author** | Luca Heltai <luca.heltai@sissa.it> |
+| **GitHub Repository:** | https://github.com/luca-heltai/fsi-suite |
+| **GitHub Pages:** | https://luca-heltai.github.io/fsi-suite/ |
+| **Licence:** | see the file [LICENCE.md](./LICENCE.md) |
 
 ## Course Introduction
 
