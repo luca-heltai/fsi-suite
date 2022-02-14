@@ -98,18 +98,30 @@ namespace PDEs
       DoFHandler<dim, spacedim>                     embedded_configuration_dh;
       Vector<double>                                embedded_configuration;
 
-      SparsityPattern             stiffness_sparsity;
-      SparsityPattern             coupling_sparsity;
-      SparseMatrix<double>        stiffness_matrix;
-      SparseMatrix<double>        coupling_matrix;
-      AffineConstraints<double>   constraints;
-      AffineConstraints<double>   embedded_constraints;
-      Vector<double>              solution;
-      Vector<double>              rhs;
-      Vector<double>              lambda;
-      Vector<double>              embedded_rhs;
-      Vector<double>              embedded_value;
+      SparsityPattern      stiffness_sparsity;
+      SparseMatrix<double> stiffness_matrix;
+
+      SparsityPattern      coupling_sparsity;
+      SparseMatrix<double> coupling_matrix;
+
+      SparsityPattern      embedded_sparsity;
+      SparseMatrix<double> embedded_mass_matrix;
+
+      AffineConstraints<double> constraints;
+      AffineConstraints<double> embedded_constraints;
+
+      Vector<double> solution;
+      Vector<double> rhs;
+
+      Vector<double> lambda;
+      Vector<double> embedded_rhs;
+      Vector<double> embedded_value;
+
       std::vector<Vector<double>> basis_functions;
+      std::vector<Vector<double>> reciprocal_basis_functions;
+      Vector<double>              reduced_rhs;
+      Vector<double>              reduced_value;
+      Vector<double>              reduced_lambda;
 
       TimerOutput monitor;
 

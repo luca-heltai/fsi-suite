@@ -27,7 +27,7 @@ namespace dealii
    * Construct a LinearOperator object that projects a vector onto a basis.
    *
    * This function can be used to perform model order reduction, i.e. to project
-   * a large dimensional vector onto a smaller dimensional subspace. Typical
+   * a large dimensional vector onto a smaller dimensional subspace. A typical
    * usage of this class is the following:
    *
    * @code{.cpp}
@@ -61,7 +61,7 @@ namespace dealii
    * few copies of this vector to allow the operator to be used with
    * intermediate storage.
    * @param local_basis A vector of references to the locally owned basis
-   * vectors. These vectors must be ordered according to the
+   * vectors. These vectors must be ordered according to the IndexSet
    * Range::locally_owned_elements() of the range space.
    * @param domain_exemplar If used in parallel, it may happen that some
    * processes do not own any index of the Range space. In this case, you need

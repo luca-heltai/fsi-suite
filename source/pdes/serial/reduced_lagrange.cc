@@ -66,8 +66,8 @@ namespace PDEs
       , stiffness_inverse_operator("/Solver/Stiffness")
       , stiffness_preconditioner("/Solver/Stiffness AMG")
       , schur_inverse_operator("/Solver/Schur")
-      , data_out("/Data out/Space", "output/embedded")
-      , embedded_data_out("/Data out/Embedded", "output/solution")
+      , data_out("/Data out/Space", "output/space")
+      , embedded_data_out("/Data out/Embedded", "output/embedded")
     {
       add_parameter("Coupling quadrature order", coupling_quadrature_order);
       add_parameter("Console level", console_level);
@@ -231,9 +231,14 @@ namespace PDEs
     void
     ReducedLagrange<dim, spacedim>::update_basis_functions()
     {
+      SparseDirectUMFPACK M_inv;
+      M_inv.initialize(embedded_mass_matrix);
       basis_functions.resize(n_basis, Vector<double>(embedded_dh.n_dofs()));
+      reciprocal_basis_functions.resize(n_basis,
+                                        Vector<double>(embedded_dh.n_dofs()));
 
       basis_functions[0] = 1.0;
+      M_inv.vmult(reciprocal_basis_functions[0], basis_functions[0]);
 
       for (unsigned int c = 1; c < n_basis; ++c)
         {
@@ -265,6 +270,10 @@ namespace PDEs
             }
           deallog << "Basis function " << c
                   << " norm: " << basis_functions[c].l2_norm() << std::endl;
+          M_inv.vmult(reciprocal_basis_functions[c], basis_functions[c]);
+          deallog << "Reciprocal basis function " << c
+                  << " norm: " << reciprocal_basis_functions[c].l2_norm()
+                  << std::endl;
         }
     }
 
@@ -282,20 +291,39 @@ namespace PDEs
                                                               space_dh,
                                                               constraints);
       constraints.close();
+      {
+        DynamicSparsityPattern dsp(space_dh.n_dofs(), space_dh.n_dofs());
+        DoFTools::make_sparsity_pattern(space_dh, dsp, constraints);
+        stiffness_sparsity.copy_from(dsp);
+        stiffness_matrix.reinit(stiffness_sparsity);
+      }
 
-      DynamicSparsityPattern dsp(space_dh.n_dofs(), space_dh.n_dofs());
-      DoFTools::make_sparsity_pattern(space_dh, dsp, constraints);
-      stiffness_sparsity.copy_from(dsp);
-      stiffness_matrix.reinit(stiffness_sparsity);
       solution.reinit(space_dh.n_dofs());
       rhs.reinit(space_dh.n_dofs());
       deallog << "Embedding dofs: " << space_dh.n_dofs() << std::endl;
 
+
       embedded_dh.distribute_dofs(*embedded_fe);
+      embedded_constraints.clear();
+      DoFTools::make_hanging_node_constraints(embedded_dh,
+                                              embedded_constraints);
+      embedded_constraints.close();
+      {
+        DynamicSparsityPattern dsp(embedded_dh.n_dofs(), embedded_dh.n_dofs());
+        DoFTools::make_sparsity_pattern(embedded_dh, dsp, embedded_constraints);
+        embedded_sparsity.copy_from(dsp);
+        embedded_mass_matrix.reinit(embedded_sparsity);
+      }
+
       lambda.reinit(embedded_dh.n_dofs());
       embedded_rhs.reinit(embedded_dh.n_dofs());
       embedded_value.reinit(embedded_dh.n_dofs());
       deallog << "Embedded dofs: " << embedded_dh.n_dofs() << std::endl;
+      deallog << "Reduced dofs: " << n_basis << std::endl;
+
+      reduced_rhs.reinit(n_basis);
+      reduced_value.reinit(n_basis);
+      reduced_lambda.reinit(n_basis);
 
       boundary_conditions.apply_natural_boundary_conditions(
         *space_mapping, space_dh, constraints, stiffness_matrix, rhs);
@@ -346,6 +374,15 @@ namespace PDEs
           rhs,
           static_cast<const Function<spacedim> *>(nullptr),
           constraints);
+
+        // Mass matrix
+        MatrixCreator::create_mass_matrix(
+          embedded_mapping(),
+          embedded_dh,
+          embedded_quad,
+          embedded_mass_matrix,
+          static_cast<const Function<spacedim> *>(nullptr),
+          embedded_constraints);
       }
       {
         TimerOutput::Scope timer_section(monitor, "Assemble coupling system");
@@ -372,6 +409,7 @@ namespace PDEs
                                             embedded_value_function,
                                             embedded_rhs);
       }
+      update_basis_functions();
     }
     template <int dim, int spacedim>
     void
@@ -385,22 +423,10 @@ namespace PDEs
       auto                A_inv = A;
       SparseDirectUMFPACK A_inv_direct;
 
-      // auto control = stiffness_inverse_operator.setup_new_solver_control();
-      // TrilinosWrappers::SolverDirect solver_direct(
-      //   *control,
-      //   TrilinosWrappers::SolverDirect::AdditionalData(true,
-      //   "Amesos_Pardiso"));
-
       if (use_direct_solver)
         {
           A_inv_direct.initialize(stiffness_matrix);
           A_inv = linear_operator(A, A_inv_direct);
-
-          // solver_direct.initialize(stiffness_matrix);
-          // A_inv       = A;
-          // A_inv.vmult = [&](Vector<double> &dst, const Vector<double> &src) {
-          //   solver_direct.solve(dst, src);
-          // };
         }
       else
         {
@@ -408,12 +434,12 @@ namespace PDEs
           A_inv = stiffness_inverse_operator(A, stiffness_preconditioner);
         }
 
+      auto S      = B * A_inv * Bt;
+      auto S_prec = identity_operator(S);
+      auto S_inv  = schur_inverse_operator(S, S_prec);
+
       if (n_basis == 0)
         {
-          auto S      = B * A_inv * Bt;
-          auto S_prec = identity_operator(S);
-          auto S_inv  = schur_inverse_operator(S, S_prec);
-
           lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
           solution = A_inv * (rhs - Bt * lambda);
         }
@@ -423,17 +449,36 @@ namespace PDEs
           std::vector<std::reference_wrapper<const Vector<double>>> basis(
             basis_functions.begin(), basis_functions.end());
 
-          auto           R      = projection_operator(reduced, basis);
-          auto           Rt     = transpose_operator(R);
-          auto           Ct     = Bt * Rt;
-          auto           C      = R * B;
-          auto           S      = C * A_inv * Ct;
-          auto           S_prec = identity_operator(S);
-          auto           S_inv  = schur_inverse_operator(S, S_prec);
-          Vector<double> Lambda = S_inv * (C * A_inv * rhs - R * embedded_rhs);
-          solution              = A_inv * (rhs - Ct * Lambda);
+          auto M = linear_operator(embedded_mass_matrix);
 
-          deallog << "Lambda: " << Lambda << std::endl;
+          FullMatrix<double> G(n_basis, n_basis);
+          for (unsigned int i = 0; i < n_basis; ++i)
+            {
+              embedded_value = M * basis_functions[i];
+              for (unsigned int j = 0; j < n_basis; ++j)
+                G(i, j) = basis_functions[j] * embedded_value;
+            }
+          FullMatrix<double> Ginv(n_basis, n_basis);
+          Ginv.invert(G);
+
+          auto R  = projection_operator(reduced, basis);
+          auto Rt = transpose_operator(R);
+
+          auto Ct      = Bt * Rt;
+          auto C       = R * B;
+          auto RS      = C * A_inv * Ct;
+          auto RS_prec = identity_operator(RS);
+          auto RS_inv  = schur_inverse_operator(RS, RS_prec);
+          reduced_rhs  = R * embedded_rhs;
+          Ginv.vmult(reduced_value, reduced_rhs);
+          reduced_lambda = RS_inv * (C * A_inv * rhs - reduced_rhs);
+          solution       = A_inv * (rhs - Ct * reduced_lambda);
+          embedded_value = Rt * reduced_value;
+          lambda         = Rt * reduced_lambda;
+
+          deallog << "Reduced lambda: " << reduced_lambda << std::endl;
+          deallog << "Reduced value: " << reduced_value << std::endl;
+          deallog << "Reduced rhs: " << reduced_rhs << std::endl;
         }
       constraints.distribute(solution);
     }
@@ -484,7 +529,6 @@ namespace PDEs
           deallog.push("Cycle " + Utilities::int_to_string(cycle));
           setup_dofs();
           setup_coupling();
-          update_basis_functions();
           assemble_system();
           solve();
           error_table.error_from_exact(space_dh, solution, exact_solution);
@@ -502,9 +546,8 @@ namespace PDEs
     }
 
     template class ReducedLagrange<1, 2>;
-    // template class ReducedLagrange<2, 2>;
-    // template class ReducedLagrange<2, 3>;
-    // template class ReducedLagrange<3, 3>;
+    template class ReducedLagrange<2, 2>;
+    template class ReducedLagrange<2, 3>;
+    template class ReducedLagrange<3, 3>;
   } // namespace Serial
-
 } // namespace PDEs
