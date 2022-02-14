@@ -50,18 +50,18 @@
 <path fill="none" stroke="midnightblue" d="M356,-124.11C356,-115.15 356,-105.32 356,-97.58"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="352.5,-124.4 356,-134.4 359.5,-124.4 352.5,-124.4"/>
 </g>
-<!-- Node7 -->
-<g id="node7" class="node">
-<title>Node7</title>
-<g id="a_node7"><a xlink:href="mapping__eulerian_8cc.html" target="_top" xlink:title=" ">
+<!-- Node8 -->
+<g id="node8" class="node">
+<title>Node8</title>
+<g id="a_node8"><a xlink:href="mapping__eulerian_8cc.html" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="432.5,-73 432.5,-92 585.5,-92 585.5,-73 432.5,-73"/>
 <text text-anchor="middle" x="509" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">source/mapping_eulerian.cc</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node7 -->
-<g id="edge6" class="edge">
-<title>Node1&#45;&gt;Node7</title>
+<!-- Node1&#45;&gt;Node8 -->
+<g id="edge7" class="edge">
+<title>Node1&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M398.47,-130.46C428.03,-117.9 466.1,-101.72 488.98,-92.01"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="397.03,-127.26 389.2,-134.4 399.77,-133.71 397.03,-127.26"/>
 </g>
@@ -100,7 +100,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="reduced__lagrange_8cc.html" target="_top" xlink:title=" ">
+<g id="a_node6"><a xlink:href="source_2pdes_2serial_2reduced__lagrange_8cc.html" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="296,-0.5 296,-30.5 416,-30.5 416,-0.5 296,-0.5"/>
 <text text-anchor="start" x="304" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">source/pdes/serial</text>
 <text text-anchor="middle" x="356" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">/reduced_lagrange.cc</text>
@@ -112,6 +112,22 @@
 <title>Node5&#45;&gt;Node6</title>
 <path fill="none" stroke="midnightblue" d="M356,-57.11C356,-48.15 356,-38.32 356,-30.58"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="352.5,-57.4 356,-67.4 359.5,-57.4 352.5,-57.4"/>
+</g>
+<!-- Node7 -->
+<g id="node7" class="node">
+<title>Node7</title>
+<g id="a_node7"><a xlink:href="apps_2serial_2reduced__lagrange_8cc.html" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="434,-0.5 434,-30.5 546,-30.5 546,-0.5 434,-0.5"/>
+<text text-anchor="start" x="442" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">apps/serial/reduced</text>
+<text text-anchor="middle" x="490" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_lagrange.cc</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node7 -->
+<g id="edge6" class="edge">
+<title>Node5&#45;&gt;Node7</title>
+<path fill="none" stroke="midnightblue" d="M394.15,-62.99C415.39,-52.69 441.41,-40.07 460.98,-30.58"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="392.55,-59.88 385.08,-67.4 395.6,-66.18 392.55,-59.88"/>
 </g>
 </g>
 </svg>

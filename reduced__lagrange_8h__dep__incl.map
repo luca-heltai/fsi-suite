@@ -1,4 +1,5 @@
 <map id="include/pdes/serial/reduced_lagrange.h" name="include/pdes/serial/reduced_lagrange.h">
-<area shape="rect" id="node1" title=" " alt="" coords="8,5,163,47"/>
-<area shape="rect" id="node2" href="$reduced__lagrange_8cc.html" title=" " alt="" coords="5,95,165,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="97,5,252,47"/>
+<area shape="rect" id="node2" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="5,95,165,136"/>
+<area shape="rect" id="node3" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="189,95,339,136"/>
 </map>

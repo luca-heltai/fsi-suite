@@ -2,8 +2,9 @@
 <area shape="rect" id="node1" title=" " alt="" coords="402,5,558,47"/>
 <area shape="rect" id="node2" href="$distributed__lagrange_8h.html" title=" " alt="" coords="206,95,378,136"/>
 <area shape="rect" id="node5" href="$reduced__lagrange_8h.html" title=" " alt="" coords="403,95,557,136"/>
-<area shape="rect" id="node7" href="$mapping__eulerian_8cc.html" title=" " alt="" coords="582,102,786,129"/>
+<area shape="rect" id="node8" href="$mapping__eulerian_8cc.html" title=" " alt="" coords="582,102,786,129"/>
 <area shape="rect" id="node3" href="$source_2pdes_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="5,184,184,225"/>
 <area shape="rect" id="node4" href="$apps_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="209,184,375,225"/>
-<area shape="rect" id="node6" href="$reduced__lagrange_8cc.html" title=" " alt="" coords="400,184,560,225"/>
+<area shape="rect" id="node6" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="400,184,560,225"/>
+<area shape="rect" id="node7" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="584,184,733,225"/>
 </map>

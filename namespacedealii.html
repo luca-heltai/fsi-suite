@@ -161,7 +161,7 @@ template&lt;typename Range , typename Domain , typename Payload  = internal::Lin
 </div><div class="memdoc">
 
 <p>Construct a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a> object that projects a vector onto a basis. </p>
-<p>This function can be used to perform model order reduction, i.e. to project a large dimensional vector onto a smaller dimensional subspace. Typical usage of this class is the following:</p>
+<p>This function can be used to perform model order reduction, i.e. to project a large dimensional vector onto a smaller dimensional subspace. A typical usage of this class is the following:</p>
 <div class="fragment"><div class="line"><span class="comment">// Build a reduced vector space, i.e., a VectorType (either serial or</span></div>
 <div class="line"><span class="comment">// parallel) that is an element of the Range space of the LinearOperator</span></div>
 <div class="line">VectorType exemplar_range(...);</div>
@@ -189,7 +189,7 @@ template&lt;typename Range , typename Domain , typename Payload  = internal::Lin
 </div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">range_exemplar</td><td>An exmeplar vector of the range space. We'll make a few copies of this vector to allow the operator to be used with intermediate storage. </td></tr>
-    <tr><td class="paramname">local_basis</td><td>A vector of references to the locally owned basis vectors. These vectors must be ordered according to the Range::locally_owned_elements() of the range space. </td></tr>
+    <tr><td class="paramname">local_basis</td><td>A vector of references to the locally owned basis vectors. These vectors must be ordered according to the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classIndexSet.html">IndexSet</a> Range::locally_owned_elements() of the range space. </td></tr>
     <tr><td class="paramname">domain_exemplar</td><td>If used in parallel, it may happen that some processes do not own any index of the Range space. In this case, you need to provide a pointer to a Domain vector to be used as an exemplar vector.</td></tr>
   </table>
   </dd>
@@ -200,7 +200,7 @@ template&lt;typename Range , typename Domain , typename Payload  = internal::Lin
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structVectorOperation.html#a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708">VectorOperation::add</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="reduced__lagrange_8cc_source.html#l00378">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::solve()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00416">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::solve()</a>.</p>
 
 </div>
 </div>
@@ -212,7 +212,7 @@ template&lt;typename Range , typename Domain , typename Payload  = internal::Lin
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacedealii.html">dealii</a></li>
-    <li class="footer">Generated on Sun Feb 13 2022 18:03:53 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Feb 14 2022 14:06:10 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
