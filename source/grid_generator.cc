@@ -58,7 +58,8 @@ namespace ParsedTools
         grid_generator_function.find_last_of('.') + 1));
 
     // No extension was found: use grid generator functions
-    if (ext == grid_generator_function || ext == "")
+    if (ext == boost::algorithm::to_lower_copy(grid_generator_function) ||
+        ext == "")
       {
         dealii::GridGenerator::generate_from_name_and_arguments(
           tria, grid_generator_function, grid_generator_arguments);
