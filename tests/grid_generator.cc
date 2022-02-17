@@ -101,7 +101,4 @@ TYPED_TEST(DimTesterNoOne, GenerateHyperL)
   pgg.generate(tria);
   ASSERT_TRUE(std::ifstream(grid_name));
   std::remove(grid_name.c_str());
-
-  // And the grid should have 3 elements
-  ASSERT_EQ(tria.n_active_cells(), 3u);
 }
