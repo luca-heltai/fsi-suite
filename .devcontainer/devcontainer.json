@@ -32,10 +32,15 @@
 		"--security-opt",
 		"seccomp=unconfined"
 	],
+	"build": {
+		"args": {
+			"REMOTE_USER": "${localEnv:USER}",
+		}
+	},
 	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
 	// "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "dealii",
+	"remoteUser": "${localEnv:USER}",
 	// Make sure we add a BUILD_POSTFIX environment variable that can be used as in
 	// ${workspaceFolder}/build${env:BUILD_POSTFIX}
 	"containerEnv": {
@@ -43,9 +48,10 @@
 	},
 	"mounts": [
 		// These are two docker volumes to allow persistent storage for the container.
-		"source=vscode-extensions,target=/root/.vscode-server/extensions,type=volume",
+		"source=vscode-extensions,target=/home/${localEnv:USER}/.vscode-server/extensions,type=volume",
 		// And/or for VS Code Insiders
-		"source=vscode-extensions-insiders,target=/root/.vscode-server-insiders/extensions,type=volume",
+		"source=vscode-extensions-insiders,target=/home/${localEnv:USER}/.vscode-server-insiders/extensions,type=volume",
+		"source=~/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached",
 	],
 	// Uncomment the following if you want to work on docker on a remote machine
 	// In this case, you also need  "docker.host": "ssh://name-of-machine" in your
