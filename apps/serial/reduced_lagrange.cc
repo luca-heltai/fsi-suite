@@ -15,88 +15,13 @@
 
 #include "pdes/serial/reduced_lagrange.h"
 
-using namespace dealii;
+#include "runner.h"
 
 int
 main(int argc, char **argv)
 {
-  try
-    {
-      Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv);
-      std::string                      par_name = "reduced_lagrange_1d_2d.prm";
-      if (argc > 1)
-        par_name = argv[1];
-
-      if (par_name.find("1d_2d") != std::string::npos)
-        {
-          PDEs::Serial::ReducedLagrange<1, 2> reduced_lagrange;
-          ParameterAcceptor::initialize(
-            par_name,
-            "used_" + par_name,
-            ParameterHandler::Short | ParameterHandler::KeepDeclarationOrder);
-          reduced_lagrange.run();
-        }
-      else if (par_name.find("2d_3d") != std::string::npos)
-        {
-          PDEs::Serial::ReducedLagrange<2, 3> reduced_lagrange;
-          ParameterAcceptor::initialize(
-            par_name,
-            "used_" + par_name,
-            ParameterHandler::Short | ParameterHandler::KeepDeclarationOrder);
-          reduced_lagrange.run();
-        }
-      else if (par_name.find("2d") != std::string::npos)
-        {
-          PDEs::Serial::ReducedLagrange<2, 2> reduced_lagrange;
-          ParameterAcceptor::initialize(
-            par_name,
-            "used_" + par_name,
-            ParameterHandler::Short | ParameterHandler::KeepDeclarationOrder);
-          reduced_lagrange.run();
-        }
-      else if (par_name.find("3d") != std::string::npos)
-        {
-          PDEs::Serial::ReducedLagrange<3, 3> reduced_lagrange;
-          ParameterAcceptor::initialize(
-            par_name,
-            "used_" + par_name,
-            ParameterHandler::Short | ParameterHandler::KeepDeclarationOrder);
-          reduced_lagrange.run();
-        }
-      else
-        {
-          AssertThrow(false,
-                      ExcMessage(
-                        "The parameter file name should contain either "
-                        "1d_2d, 2d_3d, 2d, or 3d"));
-        }
-    }
-  catch (std::exception &exc)
-    {
-      std::cerr << std::endl
-                << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-      std::cerr << "Exception on processing: " << std::endl
-                << exc.what() << std::endl
-                << "Aborting!" << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-
-      return 1;
-    }
-  catch (...)
-    {
-      std::cerr << std::endl
-                << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-      std::cerr << "Unknown exception!" << std::endl
-                << "Aborting!" << std::endl
-                << "----------------------------------------------------"
-                << std::endl;
-      return 1;
-    }
-
-  return 0;
+  RUNNER_DIM_SPACEDIM_NO_ONE(PDEs::Serial::ReducedLagrange,
+                             "reduced_lagrange",
+                             argc,
+                             argv);
 }

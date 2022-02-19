@@ -260,15 +260,16 @@ namespace PDEs
     void
     DistributedLagrange<dim, spacedim>::setup_coupling()
     {
-      TimerOutput::Scope     timer_section(monitor, "Setup coupling");
-      QGauss<dim>            quad(coupling_quadrature_order);
+      TimerOutput::Scope timer_section(monitor, "Setup coupling");
+      const auto embedded_quad = ParsedTools::Components::get_cell_quadrature(
+        embedded_grid, embedded_fe->tensor_degree() + 1);
       DynamicSparsityPattern dsp(space_dh.n_dofs(), embedded_dh.n_dofs());
       NonMatching::create_coupling_sparsity_pattern(*space_grid_tools_cache,
                                                     space_dh,
                                                     embedded_dh,
-                                                    quad,
+                                                    embedded_quad,
                                                     dsp,
-                                                    constraints,
+                                                    AffineConstraints<double>(),
                                                     ComponentMask(),
                                                     ComponentMask(),
                                                     embedded_mapping());
@@ -424,9 +425,9 @@ namespace PDEs
     }
 
     template class DistributedLagrange<1, 2>;
-    // template class DistributedLagrange<2, 2>;
-    // template class DistributedLagrange<2, 3>;
-    // template class DistributedLagrange<3, 3>;
+    template class DistributedLagrange<2, 2>;
+    template class DistributedLagrange<2, 3>;
+    template class DistributedLagrange<3, 3>;
   } // namespace Serial
 
 } // namespace PDEs
