@@ -120,67 +120,28 @@ $(document).ready(function(){initNavTree('apps_2serial_2linear__elasticity_8cc_s
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="linear__elasticity_8h.html">pdes/serial/linear_elasticity.h</a>&quot;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="grid__generator_8h.html">parsed_tools/grid_generator.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="runner_8h.html">runner.h</a>&quot;</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keywordtype">int</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="apps_2serial_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">   26</a></span>&#160;<a class="code" href="apps_2serial_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classUtilities_1_1MPI_1_1MPI__InitFinalize.html">Utilities::MPI::MPI_InitFinalize</a> mpi_initialization(argc, argv);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      std::string                      par_name = <span class="stringliteral">&quot;linear_elasticity_2d.prm&quot;</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;      <span class="keywordflow">if</span> (argc &gt; 1)</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        par_name = argv[1];</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;      <a class="code" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity&lt;2&gt;</a> poisson;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a>(par_name, <span class="stringliteral">&quot;used_&quot;</span> + par_name);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      poisson.<a class="code" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#accb71b0a21907b578f3f70d4a8e5f7a9">run</a>();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">catch</span> (std::exception &amp;exc)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      std::cerr &lt;&lt; std::endl</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                &lt;&lt; std::endl</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception on processing: &quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                &lt;&lt; exc.what() &lt;&lt; std::endl</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Aborting!&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">catch</span> (...)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      std::cerr &lt;&lt; std::endl</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                &lt;&lt; std::endl</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      std::cerr &lt;&lt; <span class="stringliteral">&quot;Unknown exception!&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;Aborting!&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keywordtype">int</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="apps_2serial_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">   24</a></span>&#160;<a class="code" href="apps_2serial_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <a class="code" href="runner_8h.html#a4939bdbf29e0527953093714a3240d2b">RUNNER_DIM_NO_ONE</a>(<a class="code" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                    <span class="stringliteral">&quot;linear_elasticity&quot;</span>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    argc,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    argv);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
+<div class="ttc" id="arunner_8h_html_a4939bdbf29e0527953093714a3240d2b"><div class="ttname"><a href="runner_8h.html#a4939bdbf29e0527953093714a3240d2b">RUNNER_DIM_NO_ONE</a></div><div class="ttdeci">#define RUNNER_DIM_NO_ONE(ClassName, ParameterName, argc, argv)</div><div class="ttdoc">Body of the main function for a program that runs a simulation in dimensions two or three using the P...</div><div class="ttdef"><b>Definition:</b> <a href="runner_8h_source.html#l00136">runner.h:136</a></div></div>
 <div class="ttc" id="alinear__elasticity_8h_html"><div class="ttname"><a href="linear__elasticity_8h.html">linear_elasticity.h</a></div></div>
-<div class="ttc" id="aapps_2serial_2linear__elasticity_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="apps_2serial_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdoc">Serial Poisson solver.</div><div class="ttdef"><b>Definition:</b> <a href="apps_2serial_2linear__elasticity_8cc_source.html#l00026">linear_elasticity.cc:26</a></div></div>
-<div class="ttc" id="aclassParameterAcceptor_html_a8c735525d2865112e5d67f9ba697224e"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a></div><div class="ttdeci">static void initialize(const std::string &amp;filename=&quot;&quot;, const std::string &amp;output_filename=&quot;&quot;, const ParameterHandler::OutputStyle output_style_for_output_filename=ParameterHandler::Short, ParameterHandler &amp;prm=ParameterAcceptor::prm, const ParameterHandler::OutputStyle output_style_for_filename=ParameterHandler::DefaultStyle)</div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_linear_elasticity_html_accb71b0a21907b578f3f70d4a8e5f7a9"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#accb71b0a21907b578f3f70d4a8e5f7a9">PDEs::Serial::LinearElasticity::run</a></div><div class="ttdeci">void run()</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2linear__elasticity_8cc_source.html#l00237">linear_elasticity.cc:237</a></div></div>
-<div class="ttc" id="agrid__generator_8h_html"><div class="ttname"><a href="grid__generator_8h.html">grid_generator.h</a></div></div>
+<div class="ttc" id="aapps_2serial_2linear__elasticity_8cc_html_a3c04138a5bfe5d72780bb7e82a18e627"><div class="ttname"><a href="apps_2serial_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a></div><div class="ttdeci">int main(int argc, char **argv)</div><div class="ttdoc">Serial Poisson solver.</div><div class="ttdef"><b>Definition:</b> <a href="apps_2serial_2linear__elasticity_8cc_source.html#l00024">linear_elasticity.cc:24</a></div></div>
+<div class="ttc" id="arunner_8h_html"><div class="ttname"><a href="runner_8h.html">runner.h</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_linear_elasticity_html"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html">PDEs::Serial::LinearElasticity</a></div><div class="ttdef"><b>Definition:</b> <a href="linear__elasticity_8h_source.html#l00086">linear_elasticity.h:86</a></div></div>
-<div class="ttc" id="aclassUtilities_1_1MPI_1_1MPI__InitFinalize_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classUtilities_1_1MPI_1_1MPI__InitFinalize.html">Utilities::MPI::MPI_InitFinalize</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_e7245891811a18a2b76d3fc59ab1e2d7.html">serial</a></li><li class="navelem"><a class="el" href="apps_2serial_2linear__elasticity_8cc.html">linear_elasticity.cc</a></li>
-    <li class="footer">Generated on Thu Feb 17 2022 09:07:14 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Feb 19 2022 20:49:41 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

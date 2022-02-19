@@ -125,10 +125,6 @@ digraph "apps/serial/reduced_lagrange.cc"
   Node107 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node107 -> Node45 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node107 -> Node94 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node107 -> Node114 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node114 [label="deal.II/fe/mapping_q1.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$mapping__q1_8h.html",tooltip=" "];
-  Node114 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node114 -> Node101 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node107 -> Node58 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node107 -> Node104 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node33 -> Node58 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -168,7 +164,6 @@ digraph "apps/serial/reduced_lagrange.cc"
   Node137 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node137 -> Node30 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node137 -> Node26 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node137 -> Node114 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node137 -> Node58 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node137 -> Node104 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 -> Node58 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
@@ -238,4 +233,7 @@ digraph "apps/serial/reduced_lagrange.cc"
   Node239 -> Node39 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node239 -> Node23 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node239 -> Node45 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 -> Node242 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node242 [label="runner.h",height=0.2,width=0.4,color="black",URL="$runner_8h.html",tooltip=" "];
+  Node242 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }
