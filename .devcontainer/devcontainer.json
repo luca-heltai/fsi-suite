@@ -51,7 +51,7 @@
 		"source=vscode-extensions,target=/home/${localEnv:USER}/.vscode-server/extensions,type=volume",
 		// And/or for VS Code Insiders
 		"source=vscode-extensions-insiders,target=/home/${localEnv:USER}/.vscode-server-insiders/extensions,type=volume",
-		"source=~/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached",
 	],
 	// Uncomment the following if you want to work on docker on a remote machine
 	// In this case, you also need  "docker.host": "ssh://name-of-machine" in your
