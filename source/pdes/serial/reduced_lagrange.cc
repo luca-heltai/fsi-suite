@@ -65,6 +65,7 @@ namespace PDEs
       , boundary_conditions("/Boundary conditions")
       , stiffness_inverse_operator("/Solver/Stiffness")
       , stiffness_preconditioner("/Solver/Stiffness AMG")
+      , mass_preconditioner("/Solver/Mass AMG")
       , schur_inverse_operator("/Solver/Schur")
       , data_out("/Data out/Space", "output/space")
       , embedded_data_out("/Data out/Embedded", "output/embedded")
@@ -231,14 +232,10 @@ namespace PDEs
     void
     ReducedLagrange<dim, spacedim>::update_basis_functions()
     {
-      SparseDirectUMFPACK M_inv;
-      M_inv.initialize(embedded_mass_matrix);
       basis_functions.resize(n_basis, Vector<double>(embedded_dh.n_dofs()));
-      reciprocal_basis_functions.resize(n_basis,
-                                        Vector<double>(embedded_dh.n_dofs()));
 
-      basis_functions[0] = 1.0;
-      M_inv.vmult(reciprocal_basis_functions[0], basis_functions[0]);
+      if (n_basis > 0)
+        basis_functions[0] = 1.0;
 
       for (unsigned int c = 1; c < n_basis; ++c)
         {
@@ -270,10 +267,6 @@ namespace PDEs
             }
           deallog << "Basis function " << c
                   << " norm: " << basis_functions[c].l2_norm() << std::endl;
-          M_inv.vmult(reciprocal_basis_functions[c], basis_functions[c]);
-          deallog << "Reciprocal basis function " << c
-                  << " norm: " << reciprocal_basis_functions[c].l2_norm()
-                  << std::endl;
         }
     }
 
@@ -345,7 +338,7 @@ namespace PDEs
                                                     embedded_dh,
                                                     embedded_quad,
                                                     dsp,
-                                                    AffineConstraints<double>(),
+                                                    constraints,
                                                     ComponentMask(),
                                                     ComponentMask(),
                                                     embedded_mapping());
@@ -391,7 +384,7 @@ namespace PDEs
                                                  embedded_dh,
                                                  embedded_quad,
                                                  coupling_matrix,
-                                                 AffineConstraints<double>(),
+                                                 constraints,
                                                  ComponentMask(),
                                                  ComponentMask(),
                                                  embedded_mapping());
@@ -434,9 +427,14 @@ namespace PDEs
           A_inv = stiffness_inverse_operator(A, stiffness_preconditioner);
         }
 
+      auto M = linear_operator(embedded_mass_matrix);
+      mass_preconditioner.initialize(embedded_mass_matrix);
+      auto Minv = linear_operator(M, mass_preconditioner);
+
       auto S      = B * A_inv * Bt;
       auto S_prec = identity_operator(S);
-      auto S_inv  = schur_inverse_operator(S, S_prec);
+      // S_prec      = B * Minv * A * Minv * Bt;
+      auto S_inv = schur_inverse_operator(S, S_prec);
 
       if (n_basis == 0)
         {
@@ -448,8 +446,6 @@ namespace PDEs
           Vector<double> reduced(n_basis);
           std::vector<std::reference_wrapper<const Vector<double>>> basis(
             basis_functions.begin(), basis_functions.end());
-
-          auto M = linear_operator(embedded_mass_matrix);
 
           FullMatrix<double> G(n_basis, n_basis);
           for (unsigned int i = 0; i < n_basis; ++i)
@@ -468,6 +464,7 @@ namespace PDEs
           auto C       = R * B;
           auto RS      = C * A_inv * Ct;
           auto RS_prec = identity_operator(RS);
+          RS_prec      = C * A * Ct;
           auto RS_inv  = schur_inverse_operator(RS, RS_prec);
           reduced_rhs  = R * embedded_rhs;
           Ginv.vmult(reduced_value, reduced_rhs);

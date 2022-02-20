@@ -145,6 +145,7 @@ namespace PDEs
 
       ParsedLAC::InverseOperator   stiffness_inverse_operator;
       ParsedLAC::AMGPreconditioner stiffness_preconditioner;
+      ParsedLAC::AMGPreconditioner mass_preconditioner;
 
       ParsedLAC::InverseOperator schur_inverse_operator;
 

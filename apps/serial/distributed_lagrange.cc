@@ -23,8 +23,8 @@
 int
 main(int argc, char **argv)
 {
-  RUNNER_DIM_NO_ONE(PDEs::Serial::DistributedLagrange,
-                    "linear_elasticity",
-                    argc,
-                    argv);
+  RUNNER_DIM_SPACEDIM_NO_ONE(PDEs::Serial::DistributedLagrange,
+                             "distributed_lagrange",
+                             argc,
+                             argv);
 }
