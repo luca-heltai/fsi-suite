@@ -60,6 +60,7 @@ var class_p_d_es_1_1_serial_1_1_reduced_lagrange =
     [ "boundary_conditions", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acaf58d6fb67dc9a26f615705221066bb", null ],
     [ "stiffness_inverse_operator", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ab3887c1f07f5d0132fa56fbc5feeecc9", null ],
     [ "stiffness_preconditioner", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a2b98d45c9863e08cc361fe7f8595953a", null ],
+    [ "mass_preconditioner", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ad195456ee0e031b56b74d51489fdc4f5", null ],
     [ "schur_inverse_operator", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a892f3982e5bb521917797751e7d516b7", null ],
     [ "data_out", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a9d146a87fd8358cdc4c38eb8751b909a", null ],
     [ "embedded_data_out", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#af5718fdd8a74504276a5fe3bc774dea3", null ],
