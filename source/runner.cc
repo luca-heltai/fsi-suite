@@ -149,7 +149,7 @@ namespace Runner
     if (cli[{"h", "help"}])
       {
         auto format = [](const auto &a, const auto &b) {
-          return TextFlow::Column(a).width(30) + TextFlow::Column(b).width(50);
+          return TextFlow::Column(a).width(34) + TextFlow::Column(b).width(46);
         };
 
         std::cout
