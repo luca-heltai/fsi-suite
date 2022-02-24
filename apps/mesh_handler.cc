@@ -48,9 +48,9 @@ run(char **            argv,
   ParameterAcceptor::prm.add_parameter("Verbosity", verbosity);
   ParsedTools::GridGenerator<dim, spacedim> pgg("/");
   // Exit if we were asked to print the help message
-  if (setup_parameters_from_cli(argv,
-                                input_parameter_file,
-                                output_parameter_file) == -1)
+  if (Runner::setup_parameters_from_cli(argv,
+                                        input_parameter_file,
+                                        output_parameter_file) == -1)
     return;
   Triangulation<dim, spacedim> tria;
   pgg.generate(tria);
@@ -77,7 +77,7 @@ main(int argc, char **argv)
       deallog.depth_console(1);
 
       const auto [dim, spacedim, input_parameter_file, output_parameter_file] =
-        get_dimensions_and_parameter_files(argv);
+        Runner::get_dimensions_and_parameter_files(argv);
 
 
       if (dim == 1 && spacedim == 1)

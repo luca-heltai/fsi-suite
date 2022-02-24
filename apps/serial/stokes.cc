@@ -22,5 +22,5 @@
 int
 main(int argc, char **argv)
 {
-  RUNNER_DIM_NO_ONE(PDEs::Serial::Stokes, "stokes", argc, argv);
+  RUNNER_DIM_NO_ONE(PDEs::Serial::Stokes, argc, argv);
 }

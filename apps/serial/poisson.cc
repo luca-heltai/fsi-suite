@@ -23,5 +23,5 @@
 int
 main(int argc, char **argv)
 {
-  RUNNER_DIM_SPACEDIM(PDEs::Serial::Poisson, "poisson", argc, argv);
+  RUNNER(PDEs::Serial::Poisson, argc, argv);
 }

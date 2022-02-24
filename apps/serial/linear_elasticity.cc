@@ -23,8 +23,5 @@
 int
 main(int argc, char **argv)
 {
-  RUNNER_DIM_NO_ONE(PDEs::Serial::LinearElasticity,
-                    "linear_elasticity",
-                    argc,
-                    argv);
+  RUNNER_NO_ONE(PDEs::Serial::LinearElasticity, argc, argv);
 }
