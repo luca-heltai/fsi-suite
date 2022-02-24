@@ -147,16 +147,162 @@
  * links to the video lectures, slides of each lecture, lecture notes, grids,
  * and the input parameters used in the examples.
  *
+ * @section program_structure Structure of programs in the FSI-suite
+ *
+ * The FSI-suite programs are organized in a hierarchy of PDEs, with increasing
+ * difficulty both at the mathematical/physical/modelling level, and at the
+ * programming level.
+ *
+ * Each program is split in three parts: a header file, containing the main
+ * class declaration (in the directory @ref include), a source file (in the
+ * directory @ref include) containing the implementation of the main
+ * class, and a main application file (in the directory @ref apps), containing
+ * only the main function.
+ *
+ * Each class is derived from ParameterAcceptor, and has a public constructor
+ * that takes no arguments (or only arguments for which a default is specified).
+ * The user entry point for each class is the method `run()`.
+ *
+ * The main functions in the @ref apps folder take care of parsing the command
+ * line, deducing from the command line (or from the name of the paramter file)
+ * in what dimension and space dimension you want to run the code, and then they
+ * instantiate the specific class for the specific dimension and spacedimension
+ * combination, read parameters from the parameter file, and execute the `run()`
+ * method of the class.
+ *
+ * The interface to all programs is uniform. Running any of the programs with an
+ * `-h` or `--help` argument will return something like the following:
+ * @code {.sh}
+ * ./your_code_here --help
+ * Usage: ./your_code_here [OPTIONS] [PRM FILE]
+ * Options:
+ * -h, --help                        Print this help message
+ * -p, --prm_file <filename>         Input parameter file. Defaults to the
+ *                                   empty string (meaning: use the default
+ *                                   values, or the values specified on the
+ *                                   command line). Notice that you can
+ *                                   specify the input paramter file also as
+ *                                   the first positional arguement to the
+ *                                   program.
+ * -o, --output_prm_file <filename>  Where to write the file containing the
+ *                                   actual parameters used in this run of
+ *                                   the program. It defaults to the string
+ *                                   `used_./mesh_handler' followed by a
+ *                                   string of the type '1d_2d' containing
+ *                                   the dimension and the spacedimension at
+ *                                   which the program was run if the input
+ *                                   parameter file is not specified,
+ *                                   otherwise it defaults to the string
+ *                                   `used_' followed by the name of the
+ *                                   input parameter file.
+ * -d, --dim <value>                 Dimension at which this program should
+ *                                   be run. Defaults to 2.
+ * -s, --spacedim <value>            Space dimension at which this program
+ *                                   should run. Defaults to 2.
+ * -"Section/option name"=<value>    Any of the options that you can specify
+ *                                   in the parameter file. The format here
+ *                                   is the following: -"Section/Subsection/
+ *                                   option"="value,another value", where the
+ *                                   quotes are required only if an otpion
+ *                                   contains spaces, or if a value contains
+ *                                   separators, like commas, columns, etc.
+ * @endcode
+ * followed by a (possibly very long) list of parameters that you can change
+ * from the command line, or from within a parameter file. The shorstest example
+ * is the MeshHandler class, for which the output of the `-h` would print in
+ * addition to the above message, also the following:
+ * @code {.sh}
+ * ...
+ * Listing of Parameters:
+ *
+ * set Arguments                  = Any string
+ * set Initial grid refinement    = An integer
+ * set Input name                 = Any string
+ * set Output name                = Any string
+ * set Transform to simplex grid  = A boolean value (true or false)
+ * set Verbosity                  = An integer n such that -1 <= n <= 2147483647
+ * @endcode
+ *
+ * @section running Running a program of the FSI-suite
+ *
+ * Every program in the FSI-suite can be executed by calling it with
+ * arguments specifying the dimension and space dimension, or can deduce these
+ * numbers from the naming scheme of your parameter file. For example:
+ * @code{.sh}
+ * ./poisson -d=2 -s=3 -i=input.prm -o=output.prm
+ * @endcode
+ * will run the poisson problem in dimension 2 with spacedimension 3, reading
+ * options from the `input.prm` file in the current directory, and writing all
+ * used options in the `output.prm` file in the current directory.
+ *
+ * The same effect can be obtained by naming your parameter file in such a way
+ * that the filename contains the combination of dimension and spacedimension,
+ * or just one if they are the same. For example, the above example could have
+ * been achieved similarly by executing as:
+ * @code{.sh}
+ * ./poisson input_2d_3d.prm
+ * @endcode
+ * and an equivalent example running in two dimensions
+ * @code{.sh}
+ * ./poisson input_2d.prm
+ * @endcode
+ *
+ * @warning If you specify the dimension (and/or the spacdimension) from the
+ * command line, and provide a parameter file as input that is named with a
+ * different combination, you will get an error message. Either do not name your
+ * file with `1d_2d`, and use `-d 2` and `-s 2`, or make sure that they are
+ * consistent:
+ * @code{.sh}
+ * ./poisson -d=2 input_2d.prm
+ * @endcode
+ *
+ * Notice that `input.prm` does not need to exist prior to executing the
+ * program. If it does not exist, the program will create it for you, print an
+ * error message, and exit.
+ *
+ * The file `input.prm` may be empty, or may specify just the parameters that
+ * you want to change from their default value. If you specify a parameter in
+ * the command line, it will override the value specified in the parameter file.
+ *
+ * The output file `output.prm` will contain all the parameters that were used
+ * during the execution of the program, so that you can reproduce the results of
+ * the last simulation by simply re-running the program with the file that was
+ * just generated.
+ *
+ * Any parameter that you can change from the parameter files, can be changed
+ * also from the command line. The opposite is also true, with the exception of
+ * the dimension (`-d` or `-dim`), space dimension ('-s' or `-spacedim`), and
+ * the input and output parameter files (`-i` and `-o`), which do not have, in
+ * general, a correspondending entry in the parameter file itself.
+ *
+ * For parameters with spaces in their names and sections, you can surround the
+ * option by quotes, as wella as the value by quotes. For example, to change the
+ * parameter corresponding to the initial time of a simulation, in a parameter
+ * file that looks like this:
+ * @code {.sh}
+ * subsection General parameters
+ *   set Initial time = 0.0
+ * end
+ * @endcode
+ * you can either change the value of the parameter in the parameter file, or
+ * use the following syntax on the command line:
+ * @code {.sh}
+ * ./program -"General parameters/Initial time"=1.0
+ * @endcode
+ *
+ * @warning The command line parser ignores the number of dashes you use. So
+ * `-d` is the same as `--d` and the same of `-------d`.
+ *
  * @section start_here Where to start?
  *
- * The applications mesh_handler.cc and dof_plotter.cc are the equivalent of
+ * The applications MeshHandler and dof_plotter.cc are the equivalent of
  * step-1 and step-2 of the deal.II library. They show how to create a mesh and
  * how to plot degrees of freedom on a grid. They allow you to get familiar with
  * the building blocks defined in the ParsedTools namespace. mesh_handler.cc
  * shows how to use the ParsedTools::GridGenerator class to create a mesh, or
  * read it from a file, and how to write it out again, in a different format
- * (this is useful, for example, if you want to visualise the mesh using, for
- * example, Paraview, or Gmsh).
+ * (this is useful, for example, if you want to visualise the mesh using
+ * Paraview or Gmsh).
  *
  * dof_plotter.cc shows how to use the ParsedTools::FiniteElement class, and how
  * to use it in conjunction with the ParsedTools::DataOut class to generate
@@ -167,10 +313,10 @@
  * The entry point for partial differential equations treated in the FSI-suite
  * is the PDEs::Serial::Poisson problem. This problem gathers together step-3,
  * step-4, step-5, and step-6 of the deal.II Library, and allows you to solve a
- * PDEs::Serial::Poisson equation in an arbitrary domain (chosen via parameter
- * files), using all available FiniteElement classes of the deal.II library,
- * including Simplex elements. The FSI-suite is, at the moment, only supporting
- * pure grids: either all-hex or all-tets meshes are supported.
+ * PDEs::Serial::Poisson equation in an arbitrary domain, using all available
+ * FiniteElement classes of the deal.II library, including Simplex elements. The
+ * FSI-suite is, at the moment, only supporting pure grids: either all-hex or
+ * all-tets meshes are supported.
  *
  * If you want to navigate through the available partial differential equations
  * that are solved by the FSI-suite, you should take a look at

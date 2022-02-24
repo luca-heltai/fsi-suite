@@ -84,28 +84,26 @@ namespace Runner
         file_contains_dim_spacedim = true;
       }
 
-    if (file_contains_dim_spacedim == false)
+    if (file_contains_dim_spacedim == true)
       {
         int newdim;
         int newspacedim;
         cli({"d", "dim"}, dim) >> newdim;
-        cli({"s", "spacedim"}, spacedim) >> newspacedim;
+        cli({"s", "spacedim"}, dim) >> newspacedim;
         AssertThrow(
           dim == newdim && spacedim == newspacedim,
           dealii::ExcMessage(
-            TextFlow::Column(
-              "You have specified a parameter filename that contains a "
-              "specification of the dimension and of the space dimension, "
-              "e.g., 1d_2d but you also indicated a -d or -s argument on the "
-              "command line that do not match the file name. Use only one of "
-              "the two ways to select the dimension and the space dimension, "
-              "or make sure that what you specify on the filename matches "
-              "what you specify on the command line.")
-              .width(80)
-              .toString()));
+            "You have specified a parameter filename that contains a "
+            "specification of the dimension and of the space dimension, "
+            "e.g., 1d_2d but you also indicated a -d or -s argument on the "
+            "command line that do not match the file name. Use only one of "
+            "the two ways to select the dimension and the space dimension, "
+            "or make sure that what you specify on the filename matches "
+            "what you specify on the command line."));
       }
+    // By default spacedim is equal to dim
     cli({"d", "dim"}, dim) >> dim;
-    cli({"s", "spacedim"}, spacedim) >> spacedim;
+    cli({"s", "spacedim"}, dim) >> spacedim;
 
     if (input_parameter_file != "")
       {

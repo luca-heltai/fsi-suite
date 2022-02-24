@@ -180,13 +180,12 @@ namespace Runner
    * ...
    * Listing of Parameters:
    *
-   * set Arguments                  =   Any string
-   * set Initial grid refinement    =   An integer
-   * set Input name                 =   Any string
-   * set Output name                =   Any string
-   * set Transform to simplex grid  =   A boolean value (true or false)
-   * set Verbosity                  =   An integer n such that -1 <= n <=
-   * 2147483647
+   * set Arguments                 = Any string
+   * set Initial grid refinement   = An integer
+   * set Input name                = Any string
+   * set Output name               = Any string
+   * set Transform to simplex grid = A boolean value (true or false)
+   * set Verbosity                 = An integer n such that -1<= n <=2147483647
    * @endcode
    *
    * @warning This function is usually called after classes are constructed and
