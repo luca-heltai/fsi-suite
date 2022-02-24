@@ -80,7 +80,12 @@ namespace ParsedTools
      *
      * @param prm_section_path Name of the section to use in the parameter file.
      */
-    GridGenerator(const std::string &prm_section_path = "");
+    GridGenerator(const std::string &prm_section_path          = "",
+                  const std::string &grid_generator_function   = "hyper_cube",
+                  const std::string &grid_generator_arguments  = "0: 1: false",
+                  const std::string &output_file_name          = "",
+                  const bool         transform_to_simplex_grid = false,
+                  const unsigned int initial_grid_refinement   = 0);
 
     /**
      * Fill a triangulation according to the parsed parameters. If the
@@ -126,23 +131,23 @@ namespace ParsedTools
      * If the name does not coincide with a function in the GridGenerator
      * namespace, the name is assumed to be a file name.
      */
-    std::string grid_generator_function = "hyper_cube";
+    std::string grid_generator_function;
 
     /**
      * Arguments to the grid generator function. See the documentation of
      * GridGenerator::generate_from_name_and_arguments() for a description of
      * how to format the input string.
      */
-    std::string grid_generator_arguments = "0: 1: false";
+    std::string grid_generator_arguments;
 
     /** Name of the output file. */
-    std::string output_file_name = "";
+    std::string output_file_name;
 
     /** Transform quad and hex grids to simplex grids. */
-    bool transform_to_simplex_grid = false;
+    bool transform_to_simplex_grid;
 
     /** Initial global refinement of the grid. */
-    unsigned int initial_grid_refinement = 0;
+    unsigned int initial_grid_refinement;
   };
 } // namespace ParsedTools
 

@@ -13,26 +13,3 @@
 //
 // ---------------------------------------------------------------------
 
-/**
- * We collect in this namespace all PDEs that are relevant to Fluid Structure
- * Interaction Problems.
- *
- * @section pdes_relation Relationship between PDEs
- *
- * @dotfile serial.dot "Relationship between PDEs"
- */
-namespace PDEs
-{
-  /**
-   * @defgroup basics Basic applications
-   */
-
-  /**
-   * @defgroup csd Computational solid dynamic applications
-   */
-
-  /**
-   * @defgroup cfd Computational fluid dynamic applications
-   */
-} // namespace PDEs
-#endif

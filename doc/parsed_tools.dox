@@ -1,0 +1,96 @@
+// ---------------------------------------------------------------------
+//
+// Copyright (C) 2022 by Luca Heltai
+//
+// This file is part of the FSI-suite platform, based on the deal.II library.
+//
+// The FSI-suite platform is free software; you can use it, redistribute it,
+// and/or modify it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3.0 of the License,
+// or (at your option) any later version. The full text of the license can be
+// found in the file LICENSE at the top level of the FSI-suite platform
+// distribution.
+//
+// ---------------------------------------------------------------------
+
+/**
+ * We collect in this namespace some wrappers around commonly used deal.II
+ * classes, derived from the ParameterAcceptor class.
+ *
+ * When building non-trivial applications, it is desirable to drive the
+ * execution of the final program from a configuration file, rather than
+ * changing the source code and recompile (with the exceptions of some very
+ * performance critical parameters, such as degrees and number of quadrature
+ * points in the MatrixFree framework).
+ *
+ * While there is nothing conceptually difficult to do, the task of parsing a
+ * configuration file, together with the definition of how the parameters are
+ * written to file, their default values, their types, and their documentation
+ * is tedious and error prone, and often left as a last step in every user
+ * program. The deal.II library offers a nice parameter handling framework,
+ * which is based on the ParameterHandler class. Such class allows you to define
+ * entries in a parameter file, split by subsections, and provides a basic type
+ * checking mechanism which relies on Patterns matching.
+ *
+ * The use of ParameterHandler is demonstrated in several deal.II examples
+ * (e.g., step-19, step-29, step-33, etc.), and it is usually a four step task:
+ * 1. we define an entry in the ParameterHandler class, using the
+ *    ParameterHandler::declare_entry() function;
+ * 2. we create a file, containing default values;
+ * 3. we parse the file, using the ParameterHandler::parse_*() functions;
+ * 4. we get the values from the ParameterHandler class into the actual
+ *    variables, using the ParameterHandler::get_*() functions.
+ *
+ * Even thought this is very convenient and not difficult, it has a few draw
+ * backs:
+ * 1. the ParameterHandler::declare_entry() and ParameterHandler::get_*() need
+ *    to be split in two functions, one for the declaration, and one for the
+ *    parsing of the string to an actual value;
+ * 2. there is no check that what you declare in first step above is actually
+ *    used in the user code, nor that it is consistent with what you try to
+ *    extract later on;
+ * 3. you always need to keep the two functions syncronized.
+ *
+ * Nothing difficult, but for large programs, with hundreds of paramters, this
+ * may become difficult. Building on top of \cite
+ * SartoriGiulianiBardelloni-2018-a, deal.II offers an alternative framework for
+ * the handling of parameter files and classes, based on the ParameterAcceptor
+ * class.
+ *
+ * ParameterAcceptor provides a global subscription mechanism. Whenever an
+ * object of a class derived from ParameterAcceptor is constructed, a pointer to
+ * that object-of-derived-type is registered, together with a section entry in
+ * the parameter file. Such registry is traversed upon invocation of the single
+ * function ParameterAcceptor::initialize("file.prm"), usually in the source
+ * file containing the `main()` function of your application, which in turn
+ * makes sure that all classes stored in the global registry declare the
+ * parameters they will be using, and after having declared them, it reads the
+ * content of `file.prm` to parse the actual parameters. This part condenses two
+ * of the steps above (2 and 3) into a single function call to the static
+ * ParameterAcceptor::initialize() function, right after you have built all the
+ * objects you will use, and right before you start using them.
+ *
+ * In user codes, the other two steps (1 and 4) are condensed (usually in the
+ * constructor) to a single call to the ParameterAcceptor::add_parameter()
+ * function, for each of the parameters you want to be syncronized with a file.
+ * The function above is templated on the type of the object, say `T`, it
+ * interprets the object according to the Patterns::Tools::Convert<T> struct,
+ * which is a converter to and from strings to the type `T`, and then creates an
+ * entry for the parameter, and a callback that will update the parameter when
+ * the file is read and parsed, without any other intervention from the user
+ * side, effectively removing all syncronization issues of steps 1 and 4 above.
+ *
+ * If you call the method ParameterAcceptor::add_parameter() for each of the
+ * parameters you want to use in your code, there is nothing else you need to
+ * do: the declaration of the parameters is done automatically, and the parsing
+ * step is done as soon a new file is parsed. The only requirement is that you
+ * specify in the constructor of the ParameterAcceptor class a name for the
+ * section in the parameter file used to store all parameters of a given class.
+ *
+ * Every class in this namespace is derived from ParameterAcceptor, and takes as
+ * a first argument the name of the section in the parameter file where the
+ * class will store and parse its parameters from.
+ */
+namespace ParsedTools
+{} // namespace ParsedTools
+#endif

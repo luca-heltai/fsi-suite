@@ -36,14 +36,24 @@ namespace ParsedTools
 {
   template <int dim, int spacedim>
   GridGenerator<dim, spacedim>::GridGenerator(
-    const std::string &prm_section_path)
+    const std::string &prm_section_path,
+    const std::string &grid_generator_function,
+    const std::string &grid_generator_arguments,
+    const std::string &output_file_name,
+    const bool         transform_to_simplex_grid,
+    const unsigned int initial_grid_refinement)
     : ParameterAcceptor(prm_section_path)
+    , grid_generator_function(grid_generator_function)
+    , grid_generator_arguments(grid_generator_arguments)
+    , output_file_name(output_file_name)
+    , transform_to_simplex_grid(transform_to_simplex_grid)
+    , initial_grid_refinement(initial_grid_refinement)
   {
-    add_parameter("Input name", grid_generator_function);
-    add_parameter("Arguments", grid_generator_arguments);
-    add_parameter("Output name", output_file_name);
-    add_parameter("Transform to simplex grid", transform_to_simplex_grid);
-    add_parameter("Initial grid refinement", initial_grid_refinement);
+    add_parameter("Input name", this->grid_generator_function);
+    add_parameter("Arguments", this->grid_generator_arguments);
+    add_parameter("Output name", this->output_file_name);
+    add_parameter("Transform to simplex grid", this->transform_to_simplex_grid);
+    add_parameter("Initial grid refinement", this->initial_grid_refinement);
   }
 
 

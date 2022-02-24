@@ -17,6 +17,7 @@ file(GLOB LIB_HEADERS include/*.h include/*/*.h include/*/*/*.h)
 ADD_LIBRARY(fsi-lib SHARED ${LIB_SOURCES} ${LIB_HEADERS})
 DEAL_II_SETUP_TARGET(fsi-lib)
 
+
 # Variuous executables
 file(GLOB APP_SOURCES apps/*.cc apps/*/*.cc)
 foreach(sourcefile ${APP_SOURCES} )
@@ -25,7 +26,7 @@ foreach(sourcefile ${APP_SOURCES} )
     message("Preparing executable ${name}")
     add_executable( ${name} ${sourcefile} )
     # Make sure YourLib is linked to each app
-    target_link_libraries( ${name} fsi-lib )
+    target_link_libraries( ${name} fsi-lib)
     DEAL_II_SETUP_TARGET(${name})
 endforeach( sourcefile ${APP_SOURCES} )
 

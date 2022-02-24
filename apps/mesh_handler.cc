@@ -19,18 +19,54 @@
  * @ingroup basics
  * @file mesh_handler.cc
  *
- * This program is useful to debug input grid files. It gathers information from
- * the file specified in the input parameter and prints it on screen. It is
- * based on step-1 of the deal.II library, and offers a general overview of the
- * class ParsedTools::GridGenerator.
+ * This program is useful to debug input grid files, to convert from one format
+ * to another, or simply to generate and view one of the internal deal.II grids.
+ *
+ * The mesh_handler executable can be driven by a configuration file, or by
+ * command line arguments.
  */
+
+#include <deal.II/base/utilities.h>
 
 #include <deal.II/grid/reference_cell.h>
 
+#include "argh.hpp"
 #include "parsed_tools/grid_generator.h"
 #include "parsed_tools/grid_info.h"
+#include "runner.h"
 
 using namespace dealii;
+
+template <int dim, int spacedim>
+void
+run(char **            argv,
+    const std::string &input_parameter_file,
+    const std::string &output_parameter_file)
+{
+  unsigned int verbosity = 2;
+  deallog.depth_console(verbosity);
+  ParameterAcceptor::prm.add_parameter("Verbosity", verbosity);
+  ParsedTools::GridGenerator<dim, spacedim> pgg("/");
+  // Exit if we were asked to print the help message
+  if (setup_parameters_from_cli(argv,
+                                input_parameter_file,
+                                output_parameter_file) == -1)
+    return;
+  Triangulation<dim, spacedim> tria;
+  pgg.generate(tria);
+  pgg.write(tria);
+  ParsedTools::GridInfo info(tria, verbosity);
+  deallog << "=================" << std::endl;
+  deallog << "Used parameters: " << std::endl;
+  deallog << "=================" << std::endl;
+  ParameterAcceptor::prm.log_parameters(deallog);
+  deallog << "=================" << std::endl;
+  deallog << "Grid information: " << std::endl;
+  deallog << "=================" << std::endl;
+  info.print_info(deallog);
+}
+
+
 
 int
 main(int argc, char **argv)
@@ -38,26 +74,26 @@ main(int argc, char **argv)
   try
     {
       Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv, 1);
-      std::string                      par_name   = "";
-      unsigned int                     info_level = 0;
-      if (argc > 1)
-        par_name = argv[1];
-      if (argc > 2)
-        info_level = std::atoi(argv[2]);
+      deallog.depth_console(1);
+
+      const auto [dim, spacedim, input_parameter_file, output_parameter_file] =
+        get_dimensions_and_parameter_files(argv);
 
 
-      if (Utilities::MPI::this_mpi_process(MPI_COMM_WORLD) == 0)
-        deallog.depth_console(2);
+      if (dim == 1 && spacedim == 1)
+        run<1, 1>(argv, input_parameter_file, output_parameter_file);
+      else if (dim == 1 && spacedim == 2)
+        run<1, 2>(argv, input_parameter_file, output_parameter_file);
+      else if (dim == 2 && spacedim == 2)
+        run<2, 2>(argv, input_parameter_file, output_parameter_file);
+      else if (dim == 2 && spacedim == 3)
+        run<2, 3>(argv, input_parameter_file, output_parameter_file);
+      else if (dim == 3 && spacedim == 3)
+        run<3, 3>(argv, input_parameter_file, output_parameter_file);
       else
-        deallog.depth_console(0);
-
-      ParsedTools::GridGenerator<2> pgg;
-      ParameterAcceptor::initialize(par_name);
-      Triangulation<2> tria;
-      pgg.generate(tria);
-      pgg.write(tria);
-      ParsedTools::GridInfo info(tria, info_level);
-      info.print_info(deallog);
+        {
+          AssertThrow(false, ExcImpossibleInDimSpacedim(dim, spacedim));
+        }
     }
   catch (std::exception &exc)
     {
