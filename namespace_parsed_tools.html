@@ -109,6 +109,9 @@ $(document).ready(function(){initNavTree('namespace_parsed_tools.html',''); init
 <div class="title">ParsedTools Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>We collect in this namespace some wrappers around commonly used deal.II classes, derived from the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class.  
+<a href="namespace_parsed_tools.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -176,7 +179,27 @@ Functions</h2></td></tr>
 <tr class="memitem:a16cfdfef359e0358bf45f2eb4f78c0e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools.html#a16cfdfef359e0358bf45f2eb4f78c0e8">Constants::operator const std::map&lt; std::string, double &gt; &amp;</a> () const</td></tr>
 <tr class="separator:a16cfdfef359e0358bf45f2eb4f78c0e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>We collect in this namespace some wrappers around commonly used deal.II classes, derived from the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class. </p>
+<p>When building non-trivial applications, it is desirable to drive the execution of the final program from a configuration file, rather than changing the source code and recompile (with the exceptions of some very performance critical parameters, such as degrees and number of quadrature points in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMatrixFree.html">MatrixFree</a> framework).</p>
+<p>While there is nothing conceptually difficult to do, the task of parsing a configuration file, together with the definition of how the parameters are written to file, their default values, their types, and their documentation is tedious and error prone, and often left as a last step in every user program. The deal.II library offers a nice parameter handling framework, which is based on the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html">ParameterHandler</a> class. Such class allows you to define entries in a parameter file, split by subsections, and provides a basic type checking mechanism which relies on <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePatterns.html">Patterns</a> matching.</p>
+<p>The use of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html">ParameterHandler</a> is demonstrated in several deal.II examples (e.g., <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_19.html">step-19</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_29.html">step-29</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/step_33.html">step-33</a>, etc.), and it is usually a four step task:</p><ol type="1">
+<li>we define an entry in the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html">ParameterHandler</a> class, using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html#a6d65f458be69e23a348221cb67fc411d">ParameterHandler::declare_entry()</a> function;</li>
+<li>we create a file, containing default values;</li>
+<li>we parse the file, using the ParameterHandler::parse_*() functions;</li>
+<li>we get the values from the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html">ParameterHandler</a> class into the actual variables, using the ParameterHandler::get_*() functions.</li>
+</ol>
+<p>Even thought this is very convenient and not difficult, it has a few draw backs:</p><ol type="1">
+<li>the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html#a6d65f458be69e23a348221cb67fc411d">ParameterHandler::declare_entry()</a> and ParameterHandler::get_*() need to be split in two functions, one for the declaration, and one for the parsing of the string to an actual value;</li>
+<li>there is no check that what you declare in first step above is actually used in the user code, nor that it is consistent with what you try to extract later on;</li>
+<li>you always need to keep the two functions syncronized.</li>
+</ol>
+<p>Nothing difficult, but for large programs, with hundreds of paramters, this may become difficult. Building on top of <b>[SartoriGiulianiBardelloni-2018-a]</b>, deal.II offers an alternative framework for the handling of parameter files and classes, based on the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class.</p>
+<p><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> provides a global subscription mechanism. Whenever an object of a class derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> is constructed, a pointer to that object-of-derived-type is registered, together with a section entry in the parameter file. Such registry is traversed upon invocation of the single function <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a>("file.prm"), usually in the source file containing the <code><a class="el" href="dof__plotter_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a></code> function of your application, which in turn makes sure that all classes stored in the global registry declare the parameters they will be using, and after having declared them, it reads the content of <code>file.prm</code> to parse the actual parameters. This part condenses two of the steps above (2 and 3) into a single function call to the static <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize()</a> function, right after you have built all the objects you will use, and right before you start using them.</p>
+<p>In user codes, the other two steps (1 and 4) are condensed (usually in the constructor) to a single call to the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a> function, for each of the parameters you want to be syncronized with a file. The function above is templated on the type of the object, say <code>T</code>, it interprets the object according to the Patterns::Tools::Convert&lt;T&gt; struct, which is a converter to and from strings to the type <code>T</code>, and then creates an entry for the parameter, and a callback that will update the parameter when the file is read and parsed, without any other intervention from the user side, effectively removing all syncronization issues of steps 1 and 4 above.</p>
+<p>If you call the method <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a> for each of the parameters you want to use in your code, there is nothing else you need to do: the declaration of the parameters is done automatically, and the parsing step is done as soon a new file is parsed. The only requirement is that you specify in the constructor of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class a name for the section in the parameter file used to store all parameters of a given class.</p>
+<p>Every class in this namespace is derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>, and takes as a first argument the name of the section in the parameter file where the class will store and parse its parameters from. </p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aaaa64d00dfc97c0345ca0ad075babc75"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaaa64d00dfc97c0345ca0ad075babc75">&#9670;&nbsp;</a></span>ConvergenceTable</h2>
 
@@ -283,7 +306,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li>
-    <li class="footer">Generated on Mon Feb 21 2022 18:04:52 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Feb 24 2022 17:25:10 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
