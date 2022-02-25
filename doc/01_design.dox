@@ -58,8 +58,8 @@
  * main classes and functions. Since I have given up trying to build a
  * "one-fits-all" code, this project goes in the opposite direction. I collected
  * every common bit of code that I found mymeslf rewriting over and over again
- * in the ParsedTools namespace, and rewrote some of the basic tutorial of
- * deal.II that has to do with FSI using the ParsedTools namespace. This allows
+ * in the ParsedTools namespace, and rewrote some of the basic tutorials of
+ * deal.II that have to do with FSI using the ParsedTools namespace. This allows
  * you to use the same base code for many different problems, and to keep the
  * code as similar as possible, even when they solve very different problems.
  * All repetitive tasks (like the creation of a mesh, the creation of a finite
@@ -177,7 +177,7 @@
  * Usage: ./your_code_here [OPTIONS] [PRM FILE]
  * Options:
  * -h, --help                        Print this help message
- * -p, --prm_file <filename>         Input parameter file. Defaults to the
+ * -i, --input_prm_file <filename>   Input parameter file. Defaults to the
  *                                   empty string (meaning: use the default
  *                                   values, or the values specified on the
  *                                   command line). Notice that you can
@@ -276,9 +276,9 @@
  * general, a correspondending entry in the parameter file itself.
  *
  * For parameters with spaces in their names and sections, you can surround the
- * option by quotes, as wella as the value by quotes. For example, to change the
- * parameter corresponding to the initial time of a simulation, in a parameter
- * file that looks like this:
+ * option and/or the value by quotes. For example, to change the parameter
+ * corresponding to the initial time of a simulation, in a parameter file that
+ * looks like this:
  * @code {.sh}
  * subsection General parameters
  *   set Initial time = 0.0
@@ -298,11 +298,11 @@
  * The applications MeshHandler and dof_plotter.cc are the equivalent of
  * step-1 and step-2 of the deal.II library. They show how to create a mesh and
  * how to plot degrees of freedom on a grid. They allow you to get familiar with
- * the building blocks defined in the ParsedTools namespace. mesh_handler.cc
+ * the building blocks defined in the ParsedTools namespace. MeshHandler
  * shows how to use the ParsedTools::GridGenerator class to create a mesh, or
- * read it from a file, and how to write it out again, in a different format
- * (this is useful, for example, if you want to visualise the mesh using
- * Paraview or Gmsh).
+ * read it from a file, and how to write it out again (possibly in a different
+ * format). This is useful, for example, if you want to visualise the mesh using
+ * Paraview or Gmsh.
  *
  * dof_plotter.cc shows how to use the ParsedTools::FiniteElement class, and how
  * to use it in conjunction with the ParsedTools::DataOut class to generate

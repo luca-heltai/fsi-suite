@@ -144,7 +144,7 @@ namespace Runner
    * Usage: ./your_code_here [OPTIONS] [PRM FILE]
    * Options:
    * -h, --help                        Print this help message
-   * -p, --prm_file <filename>         Input parameter file. Defaults to the
+   * -i, --input_prm_file <filename>   Input parameter file. Defaults to the
    *                                   empty string (meaning: use the default
    *                                   values, or the values specified on the
    *                                   command line). Notice that you can

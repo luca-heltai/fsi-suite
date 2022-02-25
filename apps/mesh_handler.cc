@@ -24,54 +24,19 @@
  *
  * The mesh_handler executable can be driven by a configuration file, or by
  * command line arguments.
+ *
+ * See MeshHandler for the description of the class.
  */
+
+#include "mesh_handler.h"
 
 #include <deal.II/base/utilities.h>
 
 #include <deal.II/grid/reference_cell.h>
 
-#include "argh.hpp"
-#include "parsed_tools/grid_generator.h"
-#include "parsed_tools/grid_info.h"
 #include "runner.h"
 
 using namespace dealii;
-
-template <int dim, int spacedim = dim>
-class MeshHandler : public ParameterAcceptor
-{
-public:
-  MeshHandler()
-    : ParameterAcceptor("/")
-    , pgg("/")
-  {
-    add_parameter("Verbosity", verbosity);
-  }
-
-  void
-  run()
-  {
-    deallog.depth_console(verbosity);
-    Triangulation<dim, spacedim> tria;
-    pgg.generate(tria);
-    pgg.write(tria);
-    ParsedTools::GridInfo info(tria, verbosity);
-    deallog << "=================" << std::endl;
-    deallog << "Used parameters: " << std::endl;
-    deallog << "=================" << std::endl;
-    ParameterAcceptor::prm.log_parameters(deallog);
-    deallog << "=================" << std::endl;
-    deallog << "Grid information: " << std::endl;
-    deallog << "=================" << std::endl;
-    info.print_info(deallog);
-  }
-
-private:
-  unsigned int                              verbosity = 2;
-  ParsedTools::GridGenerator<dim, spacedim> pgg;
-};
-
-
 
 int
 main(int argc, char **argv)

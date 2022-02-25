@@ -29,20 +29,18 @@ namespace Runner
   std::tuple<int, int, std::string, std::string>
   get_dimensions_and_parameter_files(char **argv)
   {
-    argh::parser cli(
-      {"p", "prm_file", "d", "dim", "s", "spacedim", "o", "output_prm_file"});
-    cli.parse(argv);
-    int         dim                   = 2;
-    int         spacedim              = 2;
-    std::string input_parameter_file  = "";
-    std::string output_parameter_file = "";
+    argh::parser cli(argv, argh::parser::PREFER_PARAM_FOR_UNREG_OPTION);
+    int          dim                   = 2;
+    int          spacedim              = 2;
+    std::string  input_parameter_file  = "";
+    std::string  output_parameter_file = "";
 
-    std::string exename =
+    const std::string exename =
       cli(0).str().substr(cli(0).str().find_last_of("/") + 1);
 
 
-    // Either as -p prm_file or as first positional argument after all options
-    cli({"p", "prm_file"}, input_parameter_file) >> input_parameter_file;
+    // Either as -i prm_file or as first positional argument after all options
+    cli({"i", "input_prm_file"}, input_parameter_file) >> input_parameter_file;
     cli(1, input_parameter_file) >> input_parameter_file;
 
     // Now the logic to deduce dim and spacedim from the parameter file name
@@ -84,27 +82,35 @@ namespace Runner
         file_contains_dim_spacedim = true;
       }
 
+    // Make sure filename and command line arguments agree
     if (file_contains_dim_spacedim == true)
       {
-        int newdim;
-        int newspacedim;
-        cli({"d", "dim"}, dim) >> newdim;
-        cli({"s", "spacedim"}, dim) >> newspacedim;
-        AssertThrow(
-          dim == newdim && spacedim == newspacedim,
-          dealii::ExcMessage(
-            "You have specified a parameter filename that contains a "
-            "specification of the dimension and of the space dimension, "
-            "e.g., 1d_2d but you also indicated a -d or -s argument on the "
-            "command line that do not match the file name. Use only one of "
-            "the two ways to select the dimension and the space dimension, "
-            "or make sure that what you specify on the filename matches "
-            "what you specify on the command line."));
+        int cli_dim      = dim;
+        int cli_spacedim = spacedim;
+        if ((cli({"d", "dim"}) >> cli_dim) ||
+            (cli({"s", "spacedim"}) >> cli_spacedim))
+          {
+            AssertThrow(
+              (dim == cli_dim) && (spacedim == cli_spacedim),
+              dealii::ExcMessage(
+                "You have specified a parameter filename that contains a "
+                "specification of the dimension and of the space dimension, "
+                "e.g., 1d_2d but you also indicated a -d or -s argument on the "
+                "command line that do not match the file name. Use only one of "
+                "the two ways to select the dimension and the space dimension, "
+                "or make sure that what you specify on the filename matches "
+                "what you specify on the command line."));
+          }
       }
-    // By default spacedim is equal to dim
-    cli({"d", "dim"}, dim) >> dim;
-    cli({"s", "spacedim"}, dim) >> spacedim;
+    else
+      {
+        // get dim and spacedim from command line
+        cli({"d", "dim"}, dim) >> dim;
+        // By default spacedim is equal to dim
+        cli({"s", "spacedim"}, dim) >> spacedim;
+      }
 
+    // Now the logic to deduce the output parameter file name
     if (input_parameter_file != "")
       {
         output_parameter_file = "used_" + input_parameter_file;
@@ -150,12 +156,16 @@ namespace Runner
           return TextFlow::Column(a).width(34) + TextFlow::Column(b).width(46);
         };
 
+
+        const std::string exename =
+          cli(0).str().substr(cli(0).str().find_last_of("/") + 1);
+
         std::cout
           << "Usage: " << cli(0).str() << " [OPTIONS] [PRM FILE]" << std::endl
           << "Options:" << std::endl
           << format("-h, --help", "Print this help message") << std::endl
           << format(
-               "-p, --prm_file <filename>",
+               "-i, --input_prm_file <filename>",
                "Input parameter file. Defaults"
                " to the empty string (meaning: use the default values, or the "
                "values specified on the command line). Notice that you can "
@@ -165,7 +175,7 @@ namespace Runner
                "-o, --output_prm_file <filename>",
                "Where to write the file containing the actual parameters "
                "used in this run of the program. It defaults to the string `used_" +
-                 cli(0).str() +
+                 exename +
                  "' followed by a string of the type '1d_2d' "
                  "containing the dimension and the spacedimension at which the "
                  "program was run if the input parameter file is not specified, "
@@ -196,8 +206,8 @@ namespace Runner
 
     std::set<std::string> non_prm{"h",
                                   "help",
-                                  "p",
-                                  "prm_file",
+                                  "i",
+                                  "input_prm_file",
                                   "o",
                                   "output_prm_file",
                                   "d",

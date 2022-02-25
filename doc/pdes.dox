@@ -25,14 +25,28 @@ namespace PDEs
 {
   /**
    * @defgroup basics Basic applications
+   *
+   * This collection of programs is intended to be used as a starting point for
+   * the FSI-suite environment. You should navigate your way through the
+   * MeshHandler class, the dof_plotter.cc program, and the
+   * PDEs::Serial::Poisson the get acquainted with how the FSI-suite works.
+   *
+   * See alse @ref program_structure for a detailed description of how to run
+   * the programs of the FSI-suite.
    */
 
   /**
    * @defgroup csd Computational solid dynamic applications
+   *
+   * A collection of programs related to computational solid dynamics, starting
+   * from LinearElasticity.
    */
 
   /**
    * @defgroup cfd Computational fluid dynamic applications
+   *
+   * A collection of programs related to computational fluid dynamics, starting
+   * from Stokes problem.
    */
 } // namespace PDEs
 #endif
