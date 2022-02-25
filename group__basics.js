@@ -2,6 +2,12 @@ var group__basics =
 [
     [ "dof_plotter.cc", "dof__plotter_8cc.html", null ],
     [ "mesh_handler.cc", "mesh__handler_8cc.html", null ],
+    [ "MeshHandler", "class_mesh_handler.html", [
+      [ "MeshHandler", "class_mesh_handler.html#a4fc7cdce3b2320ae794b783a7991adc1", null ],
+      [ "run", "class_mesh_handler.html#ad4a94af4db8e73a133f26b0468548adc", null ],
+      [ "verbosity", "class_mesh_handler.html#a74640edfd74acd5974f09f56a12fd49b", null ],
+      [ "pgg", "class_mesh_handler.html#a0e575107d7596dcc854343b02cc541e1", null ]
+    ] ],
     [ "Poisson", "class_p_d_es_1_1_serial_1_1_poisson.html", [
       [ "Poisson", "class_p_d_es_1_1_serial_1_1_poisson.html#aaa6146bcb26f17ee234ec7d8c72d97c4", null ],
       [ "run", "class_p_d_es_1_1_serial_1_1_poisson.html#ab330044aa5cf2279ec7ab769f2d95648", null ],

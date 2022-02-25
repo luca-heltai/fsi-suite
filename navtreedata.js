@@ -32,6 +32,8 @@ var NAVTREE =
     [ "Introduction to the FSI-suite", "design.html", [
       [ "Installation", "design.html#installation", null ],
       [ "General structure of the FSI-suite", "design.html#general_structure", null ],
+      [ "Structure of programs in the FSI-suite", "design.html#program_structure", null ],
+      [ "Running a program of the FSI-suite", "design.html#running", null ],
       [ "Where to start?", "design.html#start_here", null ]
     ] ],
     [ "Bibliography", "citelist.html", null ],
@@ -70,8 +72,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "amg_8cc.html",
-"class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html#a94ca16cde893704d8b6466383b62a1dc",
-"dir_9654b8d08f4bba4e84b362c5fd320bee.html"
+"class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html",
+"dir_0d1c0d82d2331d1d942d7c7f0084aeb2.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

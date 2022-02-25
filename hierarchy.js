@@ -44,6 +44,7 @@ var hierarchy =
         [ "ParsedTools::GridGenerator< dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::GridGenerator< dim, dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::MappingEulerian< dim, dim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
+        [ "MeshHandler< dim, spacedim >", "class_mesh_handler.html", null ],
         [ "ParsedLAC::AMGMueLuPreconditioner", "class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html", null ],
         [ "ParsedLAC::AMGPreconditioner", "class_parsed_l_a_c_1_1_a_m_g_preconditioner.html", null ],
         [ "ParsedLAC::ILUPreconditioner", "class_parsed_l_a_c_1_1_i_l_u_preconditioner.html", null ],
