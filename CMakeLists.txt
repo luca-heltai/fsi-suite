@@ -23,6 +23,9 @@ file(GLOB APP_SOURCES apps/*.cc apps/*/*.cc)
 foreach(sourcefile ${APP_SOURCES} )
     # I used a simple string replace, to cut off .cpp.
     get_filename_component(name ${sourcefile} NAME_WE)
+    IF(${sourcefile} MATCHES "mpi")
+        set(name mpi_${name})
+    endif()
     message("Preparing executable ${name}")
     add_executable( ${name} ${sourcefile} )
     # Make sure YourLib is linked to each app

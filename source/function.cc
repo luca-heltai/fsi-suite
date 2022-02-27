@@ -41,9 +41,9 @@ namespace ParsedTools
         variable_names,
         h)
     , expression(expression)
-    , constants(constants)
     , variable_names(variable_names)
   {
+    update_constants(constants);
     std::string doc =
       function_description + ", with input variables (" + variable_names +
       ")." +
@@ -83,7 +83,17 @@ namespace ParsedTools
   Function<dim>::update_constants(
     const std::map<std::string, double> &constants)
   {
-    this->constants = constants;
+    this->constants            = constants;
+    this->constants["E"]       = numbers::E;
+    this->constants["LOG2E"]   = numbers::LOG2E;
+    this->constants["LOG10E"]  = numbers::LOG10E;
+    this->constants["LN2"]     = numbers::LN2;
+    this->constants["LN10"]    = numbers::LN10;
+    this->constants["PI"]      = numbers::PI;
+    this->constants["PI_2"]    = numbers::PI_2;
+    this->constants["PI_4"]    = numbers::PI_4;
+    this->constants["SQRT2"]   = numbers::SQRT2;
+    this->constants["SQRT1_2"] = numbers::SQRT1_2;
     reinit();
   }
 
