@@ -6,7 +6,7 @@ digraph "apps/serial/poisson.cc"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="apps/serial/poisson.cc",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
   Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="pdes/serial/poisson.h",height=0.2,width=0.4,color="black",URL="$poisson_8h.html",tooltip=" "];
+  Node2 [label="pdes/serial/poisson.h",height=0.2,width=0.4,color="black",URL="$serial_2poisson_8h.html",tooltip=" "];
   Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="deal.II/base/function.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$function_8h.html",tooltip=" "];
   Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

@@ -24,10 +24,10 @@ var NAVTREE =
 [
   [ "Fluid structure interaction suite", "index.html", [
     [ "Continuum mechanics and fluid-structure interaction problems", "index.html", [
-      [ "Course Introduction", "index.html#autotoc_md1", null ],
-      [ "Continuous Integration Status", "index.html#autotoc_md2", null ],
-      [ "Useful links", "index.html#autotoc_md3", null ],
-      [ "Course program", "index.html#autotoc_md4", null ]
+      [ "Course Introduction", "index.html#autotoc_md7", null ],
+      [ "Continuous Integration Status", "index.html#autotoc_md8", null ],
+      [ "Useful links", "index.html#autotoc_md9", null ],
+      [ "Course program", "index.html#autotoc_md10", null ]
     ] ],
     [ "Introduction to the FSI-suite", "design.html", [
       [ "Installation", "design.html#installation", null ],
@@ -72,8 +72,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "amg_8cc.html",
-"class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html",
-"dir_0d1c0d82d2331d1d942d7c7f0084aeb2.html"
+"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#aa8cd6503dcb62fc3fcf4410cb902f03d",
+"classdealii_1_1_patterns_1_1_unsigned_integer.html#a878b19557ad87924baa1c8a4dc0099c9",
+"runner_8h.html#aaed149dffa73f0cdbfccc2ea84373909"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

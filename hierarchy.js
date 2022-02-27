@@ -18,10 +18,12 @@ var hierarchy =
       [ "Function< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", [
         [ "AutoDerivativeFunction< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classAutoDerivativeFunction.html", [
           [ "FunctionParser< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html", [
+            [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
             [ "ParsedTools::Function< dim >", "class_parsed_tools_1_1_function.html", null ]
           ] ]
         ] ]
-      ] ]
+      ] ],
+      [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ]
     ] ],
     [ "ParsedTools::GridInfo", "struct_parsed_tools_1_1_grid_info.html", null ],
     [ "PatternBase", null, [
@@ -35,14 +37,19 @@ var hierarchy =
       [ "ParsedTools::FiniteElement< dim >", "class_parsed_tools_1_1_finite_element.html", null ],
       [ "ParsedTools::FiniteElement< dim, dim >", "class_parsed_tools_1_1_finite_element.html", null ],
       [ "Function< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", null ],
+      [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
       [ "ParameterAcceptor", "http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html", [
         [ "ParsedTools::BoundaryConditions< dim >", "class_parsed_tools_1_1_boundary_conditions.html", null ],
         [ "ParsedTools::DataOut< dim >", "class_parsed_tools_1_1_data_out.html", null ],
         [ "ParsedTools::DataOut< dim, dim >", "class_parsed_tools_1_1_data_out.html", null ],
         [ "ParsedTools::FiniteElement< dim >", "class_parsed_tools_1_1_finite_element.html", null ],
         [ "ParsedTools::FiniteElement< dim, dim >", "class_parsed_tools_1_1_finite_element.html", null ],
+        [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
         [ "ParsedTools::GridGenerator< dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::GridGenerator< dim, dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
+        [ "PDEs::MPI::LinearProblem< dim, dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", [
+          [ "PDEs::MPI::Poisson< dim, spacedim >", "class_p_d_es_1_1_m_p_i_1_1_poisson.html", null ]
+        ] ],
         [ "ParsedTools::MappingEulerian< dim, dim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "MeshHandler< dim, spacedim >", "class_mesh_handler.html", null ],
         [ "ParsedLAC::AMGMueLuPreconditioner", "class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html", null ],
@@ -60,6 +67,7 @@ var hierarchy =
         [ "ParsedTools::MappingEulerian< dim, spacedim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ],
         [ "ParsedTools::SymbolicFunction< dim >", "class_parsed_tools_1_1_symbolic_function.html", null ],
+        [ "PDEs::MPI::LinearProblem< dim, spacedim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", null ],
         [ "PDEs::Serial::DistributedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
         [ "PDEs::Serial::LinearElasticity< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_linear_elasticity.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],

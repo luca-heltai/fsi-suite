@@ -1,6 +1,6 @@
 <map id="source/pdes/serial/poisson.cc" name="source/pdes/serial/poisson.cc">
 <area shape="rect" id="node1" title=" " alt="" coords="3574,5,3714,47"/>
-<area shape="rect" id="node2" href="$poisson_8h.html" title=" " alt="" coords="2119,95,2278,121"/>
+<area shape="rect" id="node2" href="$serial_2poisson_8h.html" title=" " alt="" coords="2119,95,2278,121"/>
 <area shape="rect" id="node37" href="/__w/fsi-suite/fsi-suite/deal.tag$linear__operator__tools_8h.html" title=" " alt="" coords="3974,259,4109,300"/>
 <area shape="rect" id="node50" href="/__w/fsi-suite/fsi-suite/deal.tag$error__estimator_8h.html" title=" " alt="" coords="2839,348,3001,389"/>
 <area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$function_8h.html" title=" " alt="" coords="1761,445,1927,471"/>

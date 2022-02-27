@@ -1,0 +1,12 @@
+digraph "source/pdes/mpi" {
+  bgcolor=transparent;
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_863924b7d266e6f7561da03323982265 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="pdes" fontname="Helvetica", fontsize="10", URL="dir_863924b7d266e6f7561da03323982265.html"]
+  dir_d30ee247edb6922479131ed25252b151 [shape=box, label="mpi", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_d30ee247edb6922479131ed25252b151.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" color="red" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_d30ee247edb6922479131ed25252b151->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="2", labeldistance=1.5 headhref="dir_000011_000002.html"];
+}

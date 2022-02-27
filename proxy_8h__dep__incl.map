@@ -1,7 +1,11 @@
 <map id="include/parsed_tools/proxy.h" name="include/parsed_tools/proxy.h">
-<area shape="rect" id="node1" title=" " alt="" coords="85,5,241,47"/>
-<area shape="rect" id="node2" href="$convergence__table_8h.html" title=" " alt="" coords="83,95,244,136"/>
-<area shape="rect" id="node3" href="$poisson_8h.html" title=" " alt="" coords="91,184,235,225"/>
-<area shape="rect" id="node4" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="5,273,145,315"/>
-<area shape="rect" id="node5" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="170,281,335,307"/>
+<area shape="rect" id="node1" title=" " alt="" coords="328,5,484,47"/>
+<area shape="rect" id="node2" href="$convergence__table_8h.html" title=" " alt="" coords="325,95,487,136"/>
+<area shape="rect" id="node3" href="$linear__problem_8h.html" title=" " alt="" coords="227,184,401,225"/>
+<area shape="rect" id="node7" href="$serial_2poisson_8h.html" title=" " alt="" coords="426,184,570,225"/>
+<area shape="rect" id="node4" href="$mpi_2poisson_8h.html" title=" " alt="" coords="7,281,205,307"/>
+<area shape="rect" id="node6" href="$linear__problem_8cc.html" title=" " alt="" coords="230,273,401,315"/>
+<area shape="rect" id="node5" href="$source_2pdes_2mpi_2poisson_8cc.html" title=" " alt="" coords="5,363,207,389"/>
+<area shape="rect" id="node8" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="427,273,567,315"/>
+<area shape="rect" id="node9" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="591,281,757,307"/>
 </map>

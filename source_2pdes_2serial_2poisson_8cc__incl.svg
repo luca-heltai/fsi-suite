@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="poisson_8h.html" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="serial_2poisson_8h.html" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="1585.5,-514.5 1585.5,-533.5 1704.5,-533.5 1704.5,-514.5 1585.5,-514.5"/>
 <text text-anchor="middle" x="1645" y="-521.5" font-family="Helvetica,sans-Serif" font-size="10.00">pdes/serial/poisson.h</text>
 </a>

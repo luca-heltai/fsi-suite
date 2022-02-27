@@ -270,7 +270,7 @@ Additional Inherited Members</h2></td></tr>
 class ParsedTools::GridGenerator&lt; dim, spacedim &gt;</h3>
 
 <p><a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">GridGenerator</a> class. </p>
-<p>This is an interface, derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>, for the deal.II function <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a>, and for the classes <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn</a> and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a>.</p>
+<p>This is an interface, derived from <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>, for the deal.II function <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a>, for the classes <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn</a> and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a>, and for the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html">OpenCASCADE</a> ArclengthProjectionLineManifold, NormalToMeshProjectionManifold, and NURBSPatchManifold classes.</p>
 <p>Example usage: </p><div class="fragment"><div class="line">GridGenerator&lt;dim, spacedim&gt; pgg(<span class="stringliteral">&quot;/Grid&quot;</span>);</div>
 <div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;dim,spacedim&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>;</div>
 <div class="line"> </div>
@@ -278,18 +278,59 @@ class ParsedTools::GridGenerator&lt; dim, spacedim &gt;</h3>
 <div class="line"> </div>
 <div class="line">pgg.generate(tria);</div>
 <div class="line">pgg.write(tria);</div>
-</div><!-- fragment --><p>See the documentation of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class for more information on how parameter files and section names are handled.</p>
-<p>A parameter file that would work with the example above is: </p><div class="fragment"><div class="line">subsection Grid</div>
-<div class="line">  set Input name                = hyper_cube</div>
-<div class="line">  set Arguments                 = 0: 1: false</div>
-<div class="line">  set Initial grid refinement   = 1</div>
-<div class="line">  set Output name               = grid_out.msh</div>
-<div class="line">  set Transform to simplex grid = false</div>
-<div class="line">end</div>
+</div><!-- fragment --><p>This class follows the design of the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class to handle parameter files and section names.</p>
+<p>The default set of parameters usad to drive this class is given by: </p><div class="fragment"><div class="line">set Input name                = hyper_cube</div>
+<div class="line">set Arguments                 = 0: 1: false</div>
+<div class="line">set Initial grid refinement   = 1</div>
+<div class="line">set Output name               = grid_out.msh</div>
+<div class="line">set Transform to simplex grid = false</div>
 </div><!-- fragment --><p>The above example allows you to <a class="el" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597" title="Fill a triangulation according to the parsed parameters.">generate()</a> a hypercube with side 1, lower left corner at the origin, and with all boundary ids set to zero by default. See <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#acea0cbcd68e52ce8113d1134b87de403">GridGenerator::hyper_cube()</a> for an explanation of all the arguments.</p>
-<p>The coarse grid is written to the file <code>grid_out.msh</code>, and the grid is refined once after beeing generated and written to <code>grid_out.msh</code>. </p>
+<h2><a class="anchor" id="autotoc_md0"></a>
+Input name</h2>
+<p>This class understands two types of <code>Input name</code> arguments:</p><ol type="1">
+<li>the name of one of the functions in the <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">GridGenerator</a> namespace of the deal.II library, as understood by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a> function;</li>
+<li>A file name, which is understood by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn</a> class of the deal.II library. In this case, the format of the name is deduced by the file extension. If everything else fails, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#a4346650869f7bdf91ef5a301f1980d22">GridIn::read_assimp()</a> is used as a last resort.</li>
+</ol>
+<dl class="section warning"><dt>Warning</dt><dd>If you have defined DEAL_II_WITH_MSH, and DEAL_II_GMSH_WITH_API, the preferred way to read <code>.msh</code> files will be through the api version, which supports the writing of both boundary ids, material ids and manifold ids.</dd></dl>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Arguments</h2>
+<p>When the <code>Input name</code> argument is a function in the deal.II library, the <code>Arguments</code> parameter is interpreted as a list of arguments to be passed to the function itself, and it will be passed, together with the <code>Input name</code> parameter to the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a> function.</p>
+<p>If the argument is a filename, then the <code>Arguments</code> parameter is interpreted as a map from manifold ids to CAD file names (<code>IGES</code>, <code>STEP</code>, and <code>STL</code> formats are supported) that you can use to specify the Geometrical description of your domain (see <b>[HeltaiBangerthKronbichler-2021]</b> for more details of how this works in the deal.II library).</p>
+<dl class="section warning"><dt>Warning</dt><dd>When writing your CAD files, make sure that each CAD file contains a single shape or compound for each of the topological entities you want to describe. This class uses the following interpretation:<ol type="1">
+<li>wires/edges and lines are fed to an ArclengthProjectionLineManifold, and can be used as manifolds for edges, both in two and three dimensions;</li>
+<li>surfaces and faces when <code>spacedim</code> is equal to two are fed to a NURBSPatchManifold, and can be used as a manifold for cell in two dimensions;</li>
+<li>surfaces and faces when <code>spacedim</code> is equal to three are fed to a NormalToMeshProjectionManifold, and can be used as a manifold for faces or edges in three dimensions;</li>
+</ol>
+</dd></dl>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Output name</h2>
+<p>The <code>Output name</code> argument is interpreted as a file name. If the extension is understood by <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a>, then the <b>coarse</b> triangulation is written to this file as soon as it is generated, before any refinement occurs.</p>
+<dl class="section warning"><dt>Warning</dt><dd>The newly generated grid is written within the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597" title="Fill a triangulation according to the parsed parameters.">generate()</a> function, before any refinement occurs. This allows you to write a grid to file, and then use the same file to read it back in as a coarse mesh, <em>irrespective</em> of the <code>Initial grid refinement</code> parameter. If you want to output explicitly the refined version of the grid, you should call the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method with the grid you want to output.</dd></dl>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Transform to simplex grid</h2>
+<p>If this is set to true, the class assumes you have read or generated a hex grid, and want to transform it to a simplex grid, i.e. the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#ac7515d2b17c025dddc0e37286fb8d216">GridGenerator::convert_hypercube_to_simplex_mesh()</a> is called with the grid that has been generated using <code>Input name</code> and <code>Arguments</code>.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Examples</h2>
+<p>In the following examples we assume that the class was instantiated with section name equal to "/". We report the example input parameter file, and show a plot of the resulting grid <b>after</b> refinement, i.e., we call the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method ourselves. In order to regenerate the following examples, just place this somwhere in your code:</p>
+<div class="fragment"><div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;dim, spacedim&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>;</div>
+<div class="line">GridGenerator&lt;dim, spacedim&gt; pgg(<span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a>(<span class="stringliteral">&quot;parameters.prm&quot;</span>);</div>
+<div class="line">pgg.generate(tria);</div>
+<div class="line">pgg.write(tria);</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
+Hyper shell</h3>
+<p>Parameter file : </p><div class="fragment"><div class="line">set Arguments                 = 0,0: .5: 1: 5: true</div>
+<div class="line">set Initial grid refinement   = 4</div>
+<div class="line">set Input name                = hyper_shell</div>
+<div class="line">set Output name               = hyper_shell.vtk</div>
+<div class="line">set Transform to simplex grid = false</div>
+</div><!-- fragment --><p>This will generate a hyper shell with center in the point <code>0,0</code>, inner radius <code>.5</code>, outer radius <code>1</code>, and with <code>5</code> cells the angular direction, colorizing the boundary ids to 0 and 1. The output grid will look like the following: </p><div class="image">
+<img src="hyper_shell.png" alt=""/>
+</div>
+<p> and the <b>coarse</b> grid (before any refinement takes place) will also be written to <code>hyper_shell.vtk</code> as soon as the grid is generated.</p>
+<p>If you later call again the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method with another <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> as input parameter, then the argument of the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method will overwrite the <code>hyper_shell.vtk</code> file (or the file you specified in the parameters) with the content of the grid. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00074">74</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00174">174</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac46f58152f42ff88c3e493793ff9fca2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac46f58152f42ff88c3e493793ff9fca2">&#9670;&nbsp;</a></span>GridGenerator()</h2>
@@ -417,7 +458,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Write the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to the output file specified in <code>Output file name</code>, or in the optional file name. </p>
 <p>If no <code>Output file name</code> is given and filename is the empty string, this function does nothing. If an output file name is provided (either in the input file, or as an argument to this function), then this function will call the appropriate <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a> method according to the extension of the file name. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8cc_source.html#l00192">192</a> of file <a class="el" href="grid__generator_8cc_source.html">grid_generator.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8cc_source.html#l00196">196</a> of file <a class="el" href="grid__generator_8cc_source.html">grid_generator.cc</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="dof__plotter_8cc_source.html#l00053">main()</a>.</p>
 
@@ -450,7 +491,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a> for a description of how to format the input string.</p>
 <p>If the name does not coincide with a function in the <a class="el" href="class_parsed_tools_1_1_grid_generator.html" title="GridGenerator class.">GridGenerator</a> namespace, the name is assumed to be a file name. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00134">134</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00234">234</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
 
 </div>
 </div>
@@ -479,7 +520,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <p>Arguments to the grid generator function. </p>
 <p>See the documentation of <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a1e6c4dcc63863449f08a78a22ec73747">GridGenerator::generate_from_name_and_arguments()</a> for a description of how to format the input string. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00141">141</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00241">241</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +548,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Name of the output file. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00144">144</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00244">244</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
 
 </div>
 </div>
@@ -535,7 +576,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Transform quad and hex grids to simplex grids. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00147">147</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00247">247</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
 
 </div>
 </div>
@@ -563,7 +604,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Initial global refinement of the grid. </p>
 
-<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00150">150</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="grid__generator_8h_source.html#l00250">250</a> of file <a class="el" href="grid__generator_8h_source.html">grid_generator.h</a>.</p>
 
 </div>
 </div>
@@ -580,7 +621,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator</a></li>
-    <li class="footer">Generated on Fri Feb 25 2022 21:32:44 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Feb 27 2022 14:46:47 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
