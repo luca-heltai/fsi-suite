@@ -118,8 +118,60 @@ namespace ParsedTools
                 gi.read_assimp(grid_generator_function);
               }
           }
+
+#ifdef DEAL_II_WITH_OPENCASCADE
+        // Only if we read a file, we check if arguments can be interpreted as
+        // manifold CAD files.
+        using map_type  = std::map<types::manifold_id, std::string>;
+        using Converter = Patterns::Tools::Convert<map_type>;
+        for (const auto &[manifold_id, cad_file_name] :
+             Converter::to_value(grid_generator_arguments))
+          {
+            const auto extension = boost::algorithm::to_lower_copy(
+              cad_file_name.substr(cad_file_name.find_last_of('.') + 1));
+            TopoDS_Shape shape;
+            if (extension == "iges" || extension == "igs")
+              shape = OpenCASCADE::read_IGES(cad_file_name);
+            else if (extension == "step" || extension == "stp")
+              shape = OpenCASCADE::read_STEP(cad_file_name);
+            else if (extension == "stl")
+              shape = OpenCASCADE::read_STL(cad_file_name);
+            else
+              AssertThrow(false,
+                          ExcNotImplemented("We found an extension that we "
+                                            "do not recognize as a CAD file "
+                                            "extension. Bailing out."));
+            if constexpr (spacedim > 1)
+              {
+                const auto n_elements = OpenCASCADE::count_elements(shape);
+                if ((std::get<0>(n_elements) == 0))
+                  tria.set_manifold(
+                    manifold_id,
+                    OpenCASCADE::ArclengthProjectionLineManifold<dim, spacedim>(
+                      shape));
+                else if constexpr (spacedim == 3)
+                  {
+                    tria.set_manifold(
+                      manifold_id,
+                      OpenCASCADE::NormalToMeshProjectionManifold<dim,
+                                                                  spacedim>(
+                        shape));
+                  }
+                else
+                  tria.set_manifold(
+                    manifold_id,
+                    OpenCASCADE::NURBSPatchManifold<dim, spacedim>(
+                      TopoDS::Face(shape)));
+              }
+          }
+#else
+        AssertThrow(grid_generator_arguments == "",
+                    ExcNotImplemented("Generation of manifolds failed. We need "
+                                      "OPENCASCADE to do this."));
+#endif
       }
 
+    // If the user wants to transform the grid to a simplex grid, do so
     if (transform_to_simplex_grid == true &&
         tria.all_reference_cells_are_hyper_cube() == true)
       {
@@ -128,61 +180,12 @@ namespace ParsedTools
         tria.clear();
         dealii::GridGenerator::convert_hypercube_to_simplex_mesh(tmp, tria);
 
+        // Also copy all manifold ids
         for (const auto i : tmp.get_manifold_ids())
           if (i != numbers::flat_manifold_id)
             tria.set_manifold(i, tmp.get_manifold(i));
       }
 
-
-// now take care of additional manifolds using
-//     grid_generator_arguments
-#ifdef DEAL_II_WITH_OPENCASCADE
-    using map_type  = std::map<types::manifold_id, std::string>;
-    using Converter = Patterns::Tools::Convert<map_type>;
-    for (const auto &[manifold_id, cad_file_name] :
-         Converter::to_value(grid_generator_arguments))
-      {
-        const auto extension = boost::algorithm::to_lower_copy(
-          cad_file_name.substr(cad_file_name.find_last_of('.') + 1));
-        TopoDS_Shape shape;
-        if (extension == "iges" || extension == "igs")
-          shape = OpenCASCADE::read_IGES(cad_file_name);
-        else if (extension == "step" || extension == "stp")
-          shape = OpenCASCADE::read_STEP(cad_file_name);
-        else if (extension == "stl")
-          shape = OpenCASCADE::read_STL(cad_file_name);
-        else
-          AssertThrow(false,
-                      ExcNotImplemented("We found an extension that we "
-                                        "do not recognize as a CAD file "
-                                        "extension. Bailing out."));
-        if constexpr (spacedim > 1)
-          {
-            const auto n_elements = OpenCASCADE::count_elements(shape);
-            if ((std::get<0>(n_elements) == 0))
-              tria.set_manifold(
-                manifold_id,
-                OpenCASCADE::ArclengthProjectionLineManifold<dim, spacedim>(
-                  shape));
-            else if constexpr (spacedim == 3)
-              {
-                tria.set_manifold(
-                  manifold_id,
-                  OpenCASCADE::NormalToMeshProjectionManifold<dim, spacedim>(
-                    shape));
-              }
-            else
-              tria.set_manifold(manifold_id,
-                                OpenCASCADE::NURBSPatchManifold<dim, spacedim>(
-                                  TopoDS::Face(shape)));
-          }
-      }
-#else
-    (void)grid_generator_arguments;
-    AssertThrow(false,
-                ExcNotImplemented("Generation of the grid failed. We need "
-                                  "OPENCASCADE to do this."));
-#endif
 
     // Write the grid before refining it.
     write(tria);

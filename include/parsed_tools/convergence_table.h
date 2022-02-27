@@ -27,8 +27,10 @@ namespace ParsedTools
 {
   /**
    * A class that provides a wrapper around deal.II's
-   * ParsedConvergenceTable class, and makes it a ParameterAcceptor class as
-   * well.
+   * dealii::ParsedConvergenceTable class, and makes it a
+   * dealii::ParameterAcceptor class as well.
+   *
+   * @copydetails dealii::ParsedConvergenceTable
    */
   using ConvergenceTable = Proxy<dealii::ParsedConvergenceTable>;
 } // namespace ParsedTools
