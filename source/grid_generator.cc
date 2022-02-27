@@ -21,6 +21,8 @@
 #include <deal.II/opencascade/manifold_lib.h>
 #include <deal.II/opencascade/utilities.h>
 #ifdef DEAL_II_WITH_OPENCASCADE
+#  include <BRepBndLib.hxx>
+#  include <Bnd_Box.hxx>
 #  include <TopoDS.hxx>
 #endif
 
@@ -131,9 +133,9 @@ namespace ParsedTools
               cad_file_name.substr(cad_file_name.find_last_of('.') + 1));
             TopoDS_Shape shape;
             if (extension == "iges" || extension == "igs")
-              shape = OpenCASCADE::read_IGES(cad_file_name);
+              shape = OpenCASCADE::read_IGES(cad_file_name, 1.0);
             else if (extension == "step" || extension == "stp")
-              shape = OpenCASCADE::read_STEP(cad_file_name);
+              shape = OpenCASCADE::read_STEP(cad_file_name, 1.0);
             else if (extension == "stl")
               shape = OpenCASCADE::read_STL(cad_file_name);
             else
@@ -143,8 +145,30 @@ namespace ParsedTools
                                             "extension. Bailing out."));
             if constexpr (spacedim > 1)
               {
-                const auto n_elements = OpenCASCADE::count_elements(shape);
-                if ((std::get<0>(n_elements) == 0))
+                const auto [n_faces, n_edges, n_vertices] =
+                  OpenCASCADE::count_elements(shape);
+                deallog << "Manifold id: " << manifold_id << std::endl
+                        << ", attached to CAD File " << cad_file_name
+                        << std::endl;
+                deallog.push(cad_file_name);
+                deallog << "Number of faces: " << n_faces << std::endl
+                        << "Number of edges: " << n_edges << std::endl
+                        << "Number of vertices: " << n_vertices << std::endl;
+                deallog.push("Bounding box");
+
+                double Xmin, Ymin, Zmin, Xmax, Ymax, Zmax;
+
+                // Compute the parameters
+                Bnd_Box box;
+                BRepBndLib::Add(shape, box);
+                box.Get(Xmin, Ymin, Zmin, Xmax, Ymax, Zmax);
+                deallog << "Lower left corner: " << Xmin << ", " << Ymin << ", "
+                        << Zmin << std::endl
+                        << "Upper right corner: " << Xmax << ", " << Ymax
+                        << ", " << Zmax << std::endl;
+                deallog.pop();
+                deallog.pop();
+                if (n_faces == 0 && n_edges > 0)
                   tria.set_manifold(
                     manifold_id,
                     OpenCASCADE::ArclengthProjectionLineManifold<dim, spacedim>(
