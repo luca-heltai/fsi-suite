@@ -32,8 +32,10 @@ namespace ParsedTools
    * GridGenerator class.
    *
    * This is an interface, derived from ParameterAcceptor, for the deal.II
-   * function GridGenerator::generate_from_name_and_arguments(), and for the
-   * classes GridIn and GridOut.
+   * function GridGenerator::generate_from_name_and_arguments(), for the
+   * classes GridIn and GridOut, and for the OpenCASCADE
+   * ArclengthProjectionLineManifold, NormalToMeshProjectionManifold, and
+   * NURBSPatchManifold classes.
    *
    * Example usage:
    * @code
@@ -46,18 +48,16 @@ namespace ParsedTools
    * pgg.write(tria);
    * @endcode
    *
-   * See the documentation of the ParameterAcceptor class for more information
-   * on how parameter files and section names are handled.
+   * This class follows the design of the ParameterAcceptor class to handle
+   * parameter files and section names.
    *
-   * A parameter file that would work with the example above is:
+   * The default set of parameters usad to drive this class is given by:
    * @code{.sh}
-   * subsection Grid
-   *   set Input name                = hyper_cube
-   *   set Arguments                 = 0: 1: false
-   *   set Initial grid refinement   = 1
-   *   set Output name               = grid_out.msh
-   *   set Transform to simplex grid = false
-   * end
+   * set Input name                = hyper_cube
+   * set Arguments                 = 0: 1: false
+   * set Initial grid refinement   = 1
+   * set Output name               = grid_out.msh
+   * set Transform to simplex grid = false
    * @endcode
    *
    * The above example allows you to generate() a hypercube with side 1,
@@ -65,8 +65,108 @@ namespace ParsedTools
    * default. See GridGenerator::hyper_cube() for an explanation of all the
    * arguments.
    *
-   * The coarse grid is written to the file `grid_out.msh`, and the grid is
-   * refined once after beeing generated and written to `grid_out.msh`.
+   * ## Input name
+   *
+   * This class understands two types of `Input name` arguments:
+   * 1. the name of one of the functions in the dealii::GridGenerator namespace
+   *    of the deal.II library, as understood by the
+   *    GridGenerator::generate_from_name_and_arguments() function;
+   * 2. A file name, which is understood by the GridIn class of the deal.II
+   *    library. In this case, the format of the name is deduced by the file
+   *    extension. If everything else fails, GridIn::read_assimp() is used as a
+   *    last resort.
+   *
+   * @warning If you have defined DEAL_II_WITH_MSH, and DEAL_II_GMSH_WITH_API,
+   * the preferred way to read `.msh` files will be through the api version,
+   * which supports the writing of both boundary ids, material ids and manifold
+   * ids.
+   *
+   * ## Arguments
+   *
+   * When the `Input name` argument is a function in the deal.II library, the
+   * `Arguments` parameter is interpreted as a list of arguments to be passed to
+   * the function itself, and it will be passed, together with the `Input name`
+   * parameter to the GridGenerator::generate_from_name_and_arguments()
+   * function.
+   *
+   * If the argument is a filename, then the `Arguments` parameter is
+   * interpreted as a map from manifold ids to CAD file names (`IGES`, `STEP`,
+   * and `STL` formats are supported) that you can use to specify the
+   * Geometrical description of your domain (see @cite
+   * HeltaiBangerthKronbichler-2021 for more details of how this works in the
+   * deal.II library).
+   *
+   * @warning When writing your CAD files, make sure that each CAD file contains
+   * a single shape or compound for each of the topological entities you want to
+   * describe. This class uses the following interpretation:
+   * 1. wires/edges and lines are fed to an ArclengthProjectionLineManifold, and
+   *    can be used as manifolds for edges, both in two and three dimensions;
+   * 2. surfaces and faces when `spacedim` is equal to two are fed to a
+   *    NURBSPatchManifold, and can be used as a manifold for cell in two
+   *    dimensions;
+   * 3. surfaces and faces when `spacedim` is equal to three are fed to a
+   *    NormalToMeshProjectionManifold, and can be used as a manifold for faces
+   *    or edges in three dimensions;
+   *
+   * ## Output name
+   *
+   * The `Output name` argument is interpreted as a file name. If the extension
+   * is understood by GridOut, then the **coarse** triangulation is written to
+   * this file as soon as it is generated, before any refinement occurs.
+   *
+   * @warning The newly generated grid is written within the generate()
+   * function, before any refinement occurs. This allows you to write a grid to
+   * file, and then use the same file to read it back in as a coarse mesh,
+   * *irrespective* of the `Initial grid refinement` parameter. If you want to
+   * output explicitly the refined version of the grid, you should call the
+   * write() method with the grid you want to output.
+   *
+   * ## Transform to simplex grid
+   *
+   * If this is set to true, the class assumes you have read or generated a hex
+   * grid, and want to transform it to a simplex grid, i.e. the
+   * GridGenerator::convert_hypercube_to_simplex_mesh() is called with the grid
+   * that has been generated using `Input name` and `Arguments`.
+   *
+   * ## Examples
+   *
+   * In the following examples we assume that the class was instantiated with
+   * section name equal to "/". We report the example input parameter file, and
+   * show a plot of the resulting grid **after** refinement, i.e., we call the
+   * write() method ourselves. In order to regenerate the following examples,
+   * just place this somwhere in your code:
+   *
+   * @code{.cpp}
+   * Triangulation<dim, spacedim> tria;
+   * GridGenerator<dim, spacedim> pgg("/");
+   * ParameterAcceptor::initialize("parameters.prm");
+   * pgg.generate(tria);
+   * pgg.write(tria);
+   * @endcode
+   *
+   * ### Hyper shell
+   *
+   * Parameter file:
+   * @code{.sh}
+   * set Arguments                 = 0,0: .5: 1: 5: true
+   * set Initial grid refinement   = 4
+   * set Input name                = hyper_shell
+   * set Output name               = hyper_shell.vtk
+   * set Transform to simplex grid = false
+   * @endcode
+   *
+   * This will generate a hyper shell with center in the point `0,0`, inner
+   * radius `.5`, outer radius `1`, and with `5` cells the angular direction,
+   * colorizing the boundary ids to 0 and 1. The output grid will look like the
+   * following:
+   * @image html hyper_shell.png
+   * and the **coarse** grid (before any refinement takes place) will also be
+   * written to `hyper_shell.vtk` as soon as the grid is generated.
+   *
+   * If you later call again the write() method with another Triangulation as
+   * input parameter, then the argument of the write() method will overwrite the
+   * `hyper_shell.vtk` file (or the file you specified in the parameters) with
+   * the content of the grid.
    *
    * @ingroup grid
    */

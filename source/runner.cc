@@ -110,10 +110,14 @@ namespace Runner
         cli({"s", "spacedim"}, dim) >> spacedim;
       }
 
-    // Now the logic to deduce the output parameter file name
+    // Now the logic to deduce the output parameter file name. Make sure we
+    // output in the current directory, even if the file is specified with a
+    // full path
     if (input_parameter_file != "")
       {
-        output_parameter_file = "used_" + input_parameter_file;
+        auto rel_name = input_parameter_file.substr(
+          input_parameter_file.find_last_of("/") + 1);
+        output_parameter_file = "used_" + rel_name;
       }
     else if (dim == spacedim)
       {

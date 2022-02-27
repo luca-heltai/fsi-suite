@@ -93,8 +93,8 @@ namespace PDEs
      * \f]
      *
      * We will solve this equation on any grid that can be generated using the
-     * ParsedTools::GridGenerator class. An example usage of that was class was
-     * given in the file mesh_handler.cc.
+     * ParsedTools::GridGenerator class. An example usage of that class was
+     * given in the file MeshHandler.
      *
      * In this program, the right hand side $f$, the Dirichlet boundary
      * condition $u_D$, and the Neumann boundary condition $u_N$ will be read

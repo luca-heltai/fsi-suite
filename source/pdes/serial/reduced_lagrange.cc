@@ -341,7 +341,8 @@ namespace PDEs
                                                     constraints,
                                                     ComponentMask(),
                                                     ComponentMask(),
-                                                    embedded_mapping());
+                                                    embedded_mapping(),
+                                                    embedded_constraints);
       coupling_sparsity.copy_from(dsp);
       coupling_matrix.reinit(coupling_sparsity);
     }
@@ -387,7 +388,8 @@ namespace PDEs
                                                  constraints,
                                                  ComponentMask(),
                                                  ComponentMask(),
-                                                 embedded_mapping());
+                                                 embedded_mapping(),
+                                                 embedded_constraints);
 
         // The rhs of the Lagrange multiplier as a function to plot
         VectorTools::interpolate(embedded_mapping(),
