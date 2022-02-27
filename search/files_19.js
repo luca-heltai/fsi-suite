@@ -66,7 +66,7 @@ var searchData=
   ['point_2eh_14196',['point.h',['http://www.dealii.org/developer/doxygen/deal.II/base_2point_8h.html',1,'(Global Namespace)'],['http://www.dealii.org/developer/doxygen/deal.II/boost__adaptors_2point_8h.html',1,'(Global Namespace)']]],
   ['point_5fvalue_5fhistory_2ecc_14197',['point_value_history.cc',['http://www.dealii.org/developer/doxygen/deal.II/point__value__history_8cc.html',1,'']]],
   ['point_5fvalue_5fhistory_2eh_14198',['point_value_history.h',['http://www.dealii.org/developer/doxygen/deal.II/point__value__history_8h.html',1,'']]],
-  ['poisson_2ecc_14199',['poisson.cc',['../source_2pdes_2mpi_2poisson_8cc.html',1,'(Global Namespace)'],['../source_2pdes_2serial_2poisson_8cc.html',1,'(Global Namespace)'],['../apps_2serial_2poisson_8cc.html',1,'(Global Namespace)']]],
+  ['poisson_2ecc_14199',['poisson.cc',['../source_2pdes_2mpi_2poisson_8cc.html',1,'(Global Namespace)'],['../source_2pdes_2serial_2poisson_8cc.html',1,'(Global Namespace)'],['../apps_2mpi_2poisson_8cc.html',1,'(Global Namespace)'],['../apps_2serial_2poisson_8cc.html',1,'(Global Namespace)']]],
   ['poisson_2eh_14200',['poisson.h',['../mpi_2poisson_8h.html',1,'(Global Namespace)'],['../serial_2poisson_8h.html',1,'(Global Namespace)']]],
   ['polynomial_2ecc_14201',['polynomial.cc',['http://www.dealii.org/developer/doxygen/deal.II/polynomial_8cc.html',1,'']]],
   ['polynomial_2eh_14202',['polynomial.h',['http://www.dealii.org/developer/doxygen/deal.II/polynomial_8h.html',1,'']]],

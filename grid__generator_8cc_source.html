@@ -126,237 +126,261 @@ $(document).ready(function(){initNavTree('grid__generator_8cc_source.html',''); 
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/opencascade_2manifold__lib_8h.html">deal.II/opencascade/manifold_lib.h</a>&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2opencascade_2utilities_8h.html">deal.II/opencascade/utilities.h</a>&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifdef DEAL_II_WITH_OPENCASCADE</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#  include &lt;TopoDS.hxx&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;boost/algorithm/string/case_conv.hpp&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;boost/archive/binary_iarchive.hpp&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/archive/binary_oarchive.hpp&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;boost/archive/text_iarchive.hpp&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;boost/archive/text_oarchive.hpp&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#  include &lt;BRepBndLib.hxx&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#  include &lt;Bnd_Box.hxx&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#  include &lt;TopoDS.hxx&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;boost/algorithm/string/case_conv.hpp&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;boost/archive/binary_iarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;boost/archive/binary_oarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;boost/archive/text_iarchive.hpp&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;boost/archive/text_oarchive.hpp&gt;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_grid_generator.html#ac46f58152f42ff88c3e493793ff9fca2">   38</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;dim, spacedim&gt;::GridGenerator</a>(</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">const</span> std::string &amp;prm_section_path,</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> std::string &amp;grid_generator_function,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> std::string &amp;grid_generator_arguments,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> std::string &amp;output_file_name,</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">bool</span>         transform_to_simplex_grid,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> initial_grid_refinement)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    : <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>(prm_section_path)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    , grid_generator_function(grid_generator_function)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    , grid_generator_arguments(grid_generator_arguments)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    , output_file_name(output_file_name)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    , transform_to_simplex_grid(transform_to_simplex_grid)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    , initial_grid_refinement(initial_grid_refinement)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    add_parameter(<span class="stringliteral">&quot;Input name&quot;</span>, this-&gt;grid_generator_function);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    add_parameter(<span class="stringliteral">&quot;Arguments&quot;</span>, this-&gt;grid_generator_arguments);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output name&quot;</span>, this-&gt;output_file_name);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    add_parameter(<span class="stringliteral">&quot;Transform to simplex grid&quot;</span>, this-&gt;transform_to_simplex_grid);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    add_parameter(<span class="stringliteral">&quot;Initial grid refinement&quot;</span>, this-&gt;initial_grid_refinement);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597">   62</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;dim, spacedim&gt;::generate</a>(</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    dealii::Triangulation&lt;dim, spacedim&gt; &amp;tria)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// TimerOutput::Scope timer_section(timer, &quot;GridGenerator::generate&quot;);</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> ext =</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      boost::algorithm::to_lower_copy(grid_generator_function.substr(</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        grid_generator_function.find_last_of(<span class="charliteral">&#39;.&#39;</span>) + 1));</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// No extension was found: use grid generator functions</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (ext == boost::algorithm::to_lower_copy(grid_generator_function) ||</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        ext == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        dealii::GridGenerator::generate_from_name_and_arguments(</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, grid_generator_function, grid_generator_arguments);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">// grid_generator_function is a filename. Use GridIn</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn&lt;dim, spacedim&gt;</a> gi(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;          {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="comment">// Use gmsh api by default</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;msh&quot;</span>)</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;              gi.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__simplex.html#ga83872db02e04f52ac52d578912f6da5e">read_msh</a>(grid_generator_function);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="comment">// Otherwise try deal.II stdandard way of reading grids</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;              gi.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#ad30d9d6f2ff9920c4285e795c4495826">read</a>(grid_generator_function); <span class="comment">// Try default ways</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">catch</span> (std::exception &amp;exc)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            std::cerr &lt;&lt; std::endl</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                      &lt;&lt; std::endl</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                      &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                      &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception on processing: &quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                      &lt;&lt; exc.what() &lt;&lt; std::endl</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                      &lt;&lt; <span class="stringliteral">&quot;Trying other strategies.&quot;</span> &lt;&lt; std::endl</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                      &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                      &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="comment">// Attempt some of the other things manually</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            std::ifstream in(grid_generator_function);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(in, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;ar&quot;</span>)</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;              {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                boost::archive::text_iarchive ia(in);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.load(ia, 0);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;              }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;bin&quot;</span>)</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;              {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                boost::archive::binary_iarchive ia(in);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.load(ia, 0);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;              }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;              {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                in.close();</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <span class="comment">// try assimp reader as a last resort</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                gi.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#a4346650869f7bdf91ef5a301f1980d22">read_assimp</a>(grid_generator_function);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;              }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;          }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#ifdef DEAL_II_WITH_OPENCASCADE</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">// Only if we read a file, we check if arguments can be interpreted as</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="comment">// manifold CAD files.</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keyword">using</span> map_type  = std::map&lt;types::manifold_id, std::string&gt;;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keyword">using</span> Converter = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structPatterns_1_1Tools_1_1Convert.html">Patterns::Tools::Convert&lt;map_type&gt;</a>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>, cad_file_name] :</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;             Converter::to_value(grid_generator_arguments))</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;          {</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> extension = boost::algorithm::to_lower_copy(</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;              cad_file_name.substr(cad_file_name.find_last_of(<span class="charliteral">&#39;.&#39;</span>) + 1));</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            TopoDS_Shape shape;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordflow">if</span> (extension == <span class="stringliteral">&quot;iges&quot;</span> || extension == <span class="stringliteral">&quot;igs&quot;</span>)</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;              shape = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#affe07b496f4edf844d5f4e8d7a540295">OpenCASCADE::read_IGES</a>(cad_file_name);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (extension == <span class="stringliteral">&quot;step&quot;</span> || extension == <span class="stringliteral">&quot;stp&quot;</span>)</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;              shape = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#a614ec9f581086ad423513dd407e9e520">OpenCASCADE::read_STEP</a>(cad_file_name);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (extension == <span class="stringliteral">&quot;stl&quot;</span>)</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;              shape = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#ad4e15bf85bc1c9565ab2418bc70ca826">OpenCASCADE::read_STL</a>(cad_file_name);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;              <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(<span class="keyword">false</span>,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>(<span class="stringliteral">&quot;We found an extension that we &quot;</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                            <span class="stringliteral">&quot;do not recognize as a CAD file &quot;</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                            <span class="stringliteral">&quot;extension. Bailing out.&quot;</span>));</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">if</span> constexpr (spacedim &gt; 1)</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;              {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> n_elements = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#a3e3e0df474c0e4f9abb627753c8754e9">OpenCASCADE::count_elements</a>(shape);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keywordflow">if</span> ((std::get&lt;0&gt;(n_elements) == 0))</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>,</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1ArclengthProjectionLineManifold.html">OpenCASCADE::ArclengthProjectionLineManifold&lt;dim, spacedim&gt;</a>(</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                      shape));</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (spacedim == 3)</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                  {</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>,</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1NormalToMeshProjectionManifold.html">OpenCASCADE::NormalToMeshProjectionManifold</a>&lt;dim,</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                                                                  spacedim&gt;(</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                        shape));</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                  }</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>,</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1NURBSPatchManifold.html">OpenCASCADE::NURBSPatchManifold&lt;dim, spacedim&gt;</a>(</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                      TopoDS::Face(shape)));</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;              }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;          }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(grid_generator_arguments == <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>(<span class="stringliteral">&quot;Generation of manifolds failed. We need &quot;</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                      <span class="stringliteral">&quot;OPENCASCADE to do this.&quot;</span>));</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      }</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// If the user wants to transform the grid to a simplex grid, do so</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">if</span> (transform_to_simplex_grid == <span class="keyword">true</span> &amp;&amp;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.all_reference_cells_are_hyper_cube() == <span class="keyword">true</span>)</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      {</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;dim, spacedim&gt;</a> tmp;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        tmp.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#a1f2bf1d34aacdba358add7fd59b32822">copy_triangulation</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.clear();</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        dealii::GridGenerator::convert_hypercube_to_simplex_mesh(tmp, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment">// Also copy all manifold ids</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> i : tmp.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga41320ae1978763a1b83608e10408d68f">get_manifold_ids</a>())</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;          <span class="keywordflow">if</span> (i != <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a9c39a5de95e4d11173378431dc2131fe">numbers::flat_manifold_id</a>)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(i, tmp.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga2131fc63fb23e2e7eabb570b1e852e4a">get_manifold</a>(i));</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// Write the grid before refining it.</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    write(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.refine_global(initial_grid_refinement);</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  }</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2">  199</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;dim, spacedim&gt;::write</a>(</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keyword">const</span> dealii::Triangulation&lt;dim, spacedim&gt; &amp;tria,</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">const</span> std::string &amp;                         filename)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keyword">const</span> std::string outname = filename != <span class="stringliteral">&quot;&quot;</span> ? filename : output_file_name;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">if</span> (outname != <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;      {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> ext = boost::algorithm::to_lower_copy(</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;          outname.substr(outname.find_last_of(<span class="charliteral">&#39;.&#39;</span>) + 1));</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a> go;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;msh&quot;</span>)</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;          go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a7491903aeb666c909a7251fc17bf3831">write_msh</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, outname); <span class="comment">// prefer msh api</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;          {</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            std::ofstream out(outname);</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(out, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">set_flags</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Msh.html">GridOutFlags::Msh</a>(<span class="keyword">true</span>, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">set_flags</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Ucd.html">GridOutFlags::Ucd</a>(<span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">true</span>));</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">set_flags</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Vtu.html">GridOutFlags::Vtu</a>(<span class="keyword">true</span>));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_grid_generator.html#ac46f58152f42ff88c3e493793ff9fca2">   40</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;dim, spacedim&gt;::GridGenerator</a>(</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> std::string &amp;prm_section_path,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> std::string &amp;grid_generator_function,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> std::string &amp;grid_generator_arguments,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> std::string &amp;output_file_name,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">bool</span>         transform_to_simplex_grid,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> initial_grid_refinement)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>(prm_section_path)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    , grid_generator_function(grid_generator_function)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    , grid_generator_arguments(grid_generator_arguments)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    , output_file_name(output_file_name)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    , transform_to_simplex_grid(transform_to_simplex_grid)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    , initial_grid_refinement(initial_grid_refinement)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    add_parameter(<span class="stringliteral">&quot;Input name&quot;</span>, this-&gt;grid_generator_function);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    add_parameter(<span class="stringliteral">&quot;Arguments&quot;</span>, this-&gt;grid_generator_arguments);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    add_parameter(<span class="stringliteral">&quot;Output name&quot;</span>, this-&gt;output_file_name);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    add_parameter(<span class="stringliteral">&quot;Transform to simplex grid&quot;</span>, this-&gt;transform_to_simplex_grid);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    add_parameter(<span class="stringliteral">&quot;Initial grid refinement&quot;</span>, this-&gt;initial_grid_refinement);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597">   64</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;dim, spacedim&gt;::generate</a>(</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    dealii::Triangulation&lt;dim, spacedim&gt; &amp;tria)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// TimerOutput::Scope timer_section(timer, &quot;GridGenerator::generate&quot;);</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> ext =</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      boost::algorithm::to_lower_copy(grid_generator_function.substr(</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        grid_generator_function.find_last_of(<span class="charliteral">&#39;.&#39;</span>) + 1));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// No extension was found: use grid generator functions</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> (ext == boost::algorithm::to_lower_copy(grid_generator_function) ||</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        ext == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        dealii::GridGenerator::generate_from_name_and_arguments(</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, grid_generator_function, grid_generator_arguments);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="comment">// grid_generator_function is a filename. Use GridIn</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn&lt;dim, spacedim&gt;</a> gi(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;          {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="comment">// Use gmsh api by default</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;msh&quot;</span>)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;              gi.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__simplex.html#ga83872db02e04f52ac52d578912f6da5e">read_msh</a>(grid_generator_function);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="comment">// Otherwise try deal.II stdandard way of reading grids</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;              gi.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#ad30d9d6f2ff9920c4285e795c4495826">read</a>(grid_generator_function); <span class="comment">// Try default ways</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">catch</span> (std::exception &amp;exc)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;          {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            std::cerr &lt;&lt; std::endl</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                      &lt;&lt; std::endl</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                      &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                      &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Exception on processing: &quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                      &lt;&lt; exc.what() &lt;&lt; std::endl</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                      &lt;&lt; <span class="stringliteral">&quot;Trying other strategies.&quot;</span> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                      &lt;&lt; <span class="stringliteral">&quot;----------------------------------------------------&quot;</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                      &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="comment">// Attempt some of the other things manually</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            std::ifstream in(grid_generator_function);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(in, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;ar&quot;</span>)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;              {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                boost::archive::text_iarchive ia(in);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.load(ia, 0);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;              }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;bin&quot;</span>)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;              {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                boost::archive::binary_iarchive ia(in);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.load(ia, 0);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;              }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;              {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                in.close();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="comment">// try assimp reader as a last resort</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                gi.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#a4346650869f7bdf91ef5a301f1980d22">read_assimp</a>(grid_generator_function);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;              }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;          }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#ifdef DEAL_II_WITH_OPENCASCADE</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="comment">// Only if we read a file, we check if arguments can be interpreted as</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="comment">// manifold CAD files.</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keyword">using</span> map_type  = std::map&lt;types::manifold_id, std::string&gt;;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keyword">using</span> Converter = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structPatterns_1_1Tools_1_1Convert.html">Patterns::Tools::Convert&lt;map_type&gt;</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>, cad_file_name] :</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;             Converter::to_value(grid_generator_arguments))</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;          {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> extension = boost::algorithm::to_lower_copy(</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;              cad_file_name.substr(cad_file_name.find_last_of(<span class="charliteral">&#39;.&#39;</span>) + 1));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            TopoDS_Shape shape;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">if</span> (extension == <span class="stringliteral">&quot;iges&quot;</span> || extension == <span class="stringliteral">&quot;igs&quot;</span>)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;              shape = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#affe07b496f4edf844d5f4e8d7a540295">OpenCASCADE::read_IGES</a>(cad_file_name, 1.0);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (extension == <span class="stringliteral">&quot;step&quot;</span> || extension == <span class="stringliteral">&quot;stp&quot;</span>)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;              shape = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#a614ec9f581086ad423513dd407e9e520">OpenCASCADE::read_STEP</a>(cad_file_name, 1.0);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (extension == <span class="stringliteral">&quot;stl&quot;</span>)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;              shape = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#ad4e15bf85bc1c9565ab2418bc70ca826">OpenCASCADE::read_STL</a>(cad_file_name);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;              <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(<span class="keyword">false</span>,</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>(<span class="stringliteral">&quot;We found an extension that we &quot;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                                            <span class="stringliteral">&quot;do not recognize as a CAD file &quot;</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                            <span class="stringliteral">&quot;extension. Bailing out.&quot;</span>));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> constexpr (spacedim &gt; 1)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;              {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> [n_faces, n_edges, n_vertices] =</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#a3e3e0df474c0e4f9abb627753c8754e9">OpenCASCADE::count_elements</a>(shape);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Manifold id: &quot;</span> &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a> &lt;&lt; std::endl</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                        &lt;&lt; <span class="stringliteral">&quot;, attached to CAD File &quot;</span> &lt;&lt; cad_file_name</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                        &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">push</a>(cad_file_name);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Number of faces: &quot;</span> &lt;&lt; n_faces &lt;&lt; std::endl</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                        &lt;&lt; <span class="stringliteral">&quot;Number of edges: &quot;</span> &lt;&lt; n_edges &lt;&lt; std::endl</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                        &lt;&lt; <span class="stringliteral">&quot;Number of vertices: &quot;</span> &lt;&lt; n_vertices &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">push</a>(<span class="stringliteral">&quot;Bounding box&quot;</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordtype">double</span> Xmin, Ymin, Zmin, Xmax, Ymax, Zmax;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="comment">// Compute the parameters</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                Bnd_Box box;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                BRepBndLib::Add(shape, box);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                box.Get(Xmin, Ymin, Zmin, Xmax, Ymax, Zmax);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Lower left corner: &quot;</span> &lt;&lt; Xmin &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; Ymin &lt;&lt; <span class="stringliteral">&quot;, &quot;</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        &lt;&lt; Zmin &lt;&lt; std::endl</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                        &lt;&lt; <span class="stringliteral">&quot;Upper right corner: &quot;</span> &lt;&lt; Xmax &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; Ymax</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                        &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; Zmax &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">if</span> (n_faces == 0 &amp;&amp; n_edges &gt; 0)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>,</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1ArclengthProjectionLineManifold.html">OpenCASCADE::ArclengthProjectionLineManifold&lt;dim, spacedim&gt;</a>(</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                      shape));</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> constexpr (spacedim == 3)</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                  {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1NormalToMeshProjectionManifold.html">OpenCASCADE::NormalToMeshProjectionManifold</a>&lt;dim,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                                                                  spacedim&gt;(</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                        shape));</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                  }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html#a24c02646474836ad4f37ca167e191276">manifold_id</a>,</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1NURBSPatchManifold.html">OpenCASCADE::NURBSPatchManifold&lt;dim, spacedim&gt;</a>(</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                      TopoDS::Face(shape)));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;              }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;          }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(grid_generator_arguments == <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>(<span class="stringliteral">&quot;Generation of manifolds failed. We need &quot;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                                      <span class="stringliteral">&quot;OPENCASCADE to do this.&quot;</span>));</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">// If the user wants to transform the grid to a simplex grid, do so</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">if</span> (transform_to_simplex_grid == <span class="keyword">true</span> &amp;&amp;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.all_reference_cells_are_hyper_cube() == <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt;dim, spacedim&gt;</a> tmp;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        tmp.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#a1f2bf1d34aacdba358add7fd59b32822">copy_triangulation</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.clear();</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        dealii::GridGenerator::convert_hypercube_to_simplex_mesh(tmp, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="comment">// Also copy all manifold ids</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> i : tmp.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga41320ae1978763a1b83608e10408d68f">get_manifold_ids</a>())</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;          <span class="keywordflow">if</span> (i != <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a9c39a5de95e4d11173378431dc2131fe">numbers::flat_manifold_id</a>)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.set_manifold(i, tmp.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga2131fc63fb23e2e7eabb570b1e852e4a">get_manifold</a>(i));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;      }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">// Write the grid before refining it.</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    write(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.refine_global(initial_grid_refinement);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;vtk&quot;</span>)</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a6b72484c35abc1f84abb8bf1bc1048dc">write_vtk</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;vtu&quot;</span>)</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a8bd3a74b86d7c0eb792d2efca7f945f1">write_vtu</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;ucd&quot;</span> || ext == <span class="stringliteral">&quot;inp&quot;</span>)</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#ac2644adf53415185e3886a1248911bd4">write_ucd</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;vtu&quot;</span>)</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a8bd3a74b86d7c0eb792d2efca7f945f1">write_vtu</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;ar&quot;</span>)</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;              {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                boost::archive::text_oarchive oa(out);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.save(oa, 0);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;              }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;bin&quot;</span>)</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;              {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                boost::archive::binary_oarchive oa(out);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.save(oa, 0);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;              }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;              <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>(<span class="keyword">false</span>, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>());</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            out.close();</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;1, 1&gt;</a>;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;1, 2&gt;</a>;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;1, 3&gt;</a>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;2, 2&gt;</a>;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;2, 3&gt;</a>;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;3, 3&gt;</a>;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2">  223</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;dim, spacedim&gt;::write</a>(</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keyword">const</span> dealii::Triangulation&lt;dim, spacedim&gt; &amp;tria,</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keyword">const</span> std::string &amp;                         filename)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keyword">const</span> std::string outname = filename != <span class="stringliteral">&quot;&quot;</span> ? filename : output_file_name;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">if</span> (outname != <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> ext = boost::algorithm::to_lower_copy(</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;          outname.substr(outname.find_last_of(<span class="charliteral">&#39;.&#39;</span>) + 1));</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html">GridOut</a> go;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;msh&quot;</span>)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;          go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a7491903aeb666c909a7251fc17bf3831">write_msh</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, outname); <span class="comment">// prefer msh api</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;          {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            std::ofstream out(outname);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(out, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac29b5f3efd2b164642b8e0c49ad3ad27">ExcIO</a>());</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">set_flags</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Msh.html">GridOutFlags::Msh</a>(<span class="keyword">true</span>, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">set_flags</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Ucd.html">GridOutFlags::Ucd</a>(<span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">true</span>));</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a239955214cc9b881e9eb66053564d5d5">set_flags</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Vtu.html">GridOutFlags::Vtu</a>(<span class="keyword">true</span>));</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;vtk&quot;</span>)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a6b72484c35abc1f84abb8bf1bc1048dc">write_vtk</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;vtu&quot;</span>)</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a8bd3a74b86d7c0eb792d2efca7f945f1">write_vtu</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;ucd&quot;</span> || ext == <span class="stringliteral">&quot;inp&quot;</span>)</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#ac2644adf53415185e3886a1248911bd4">write_ucd</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;vtu&quot;</span>)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;              go.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridOut.html#a8bd3a74b86d7c0eb792d2efca7f945f1">write_vtu</a>(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, out);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;ar&quot;</span>)</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;              {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                boost::archive::text_oarchive oa(out);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.save(oa, 0);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;              }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (ext == <span class="stringliteral">&quot;bin&quot;</span>)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;              {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                boost::archive::binary_oarchive oa(out);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.save(oa, 0);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;              }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;              <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>(<span class="keyword">false</span>, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>());</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            out.close();</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;          }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;1, 1&gt;</a>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;1, 2&gt;</a>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;1, 3&gt;</a>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;2, 2&gt;</a>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;2, 3&gt;</a>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator&lt;3, 3&gt;</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespaceGridGenerator_html_ac7515d2b17c025dddc0e37286fb8d216"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#ac7515d2b17c025dddc0e37286fb8d216">GridGenerator::convert_hypercube_to_simplex_mesh</a></div><div class="ttdeci">void convert_hypercube_to_simplex_mesh(const Triangulation&lt; dim, spacedim &gt; &amp;in_tria, Triangulation&lt; dim, spacedim &gt; &amp;out_tria)</div></div>
@@ -371,6 +395,7 @@ $(document).ready(function(){initNavTree('grid__generator_8cc_source.html',''); 
 <div class="ttc" id="anamespacenumbers_html_a9c39a5de95e4d11173378431dc2131fe"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a9c39a5de95e4d11173378431dc2131fe">numbers::flat_manifold_id</a></div><div class="ttdeci">const types::manifold_id flat_manifold_id</div></div>
 <div class="ttc" id="astructGridOutFlags_1_1Ucd_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structGridOutFlags_1_1Ucd.html">GridOutFlags::Ucd</a></div></div>
 <div class="ttc" id="agrid__in_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__in_8h.html">grid_in.h</a></div></div>
+<div class="ttc" id="alogstream_8h_html_ac643e79bd992f1a9bd0dca5b9f2859fb"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a></div><div class="ttdeci">LogStream deallog</div></div>
 <div class="ttc" id="aclassOpenCASCADE_1_1NormalToMeshProjectionManifold_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1NormalToMeshProjectionManifold.html">OpenCASCADE::NormalToMeshProjectionManifold</a></div></div>
 <div class="ttc" id="atria__description_8cc_html_ab695339a227bd369fcea767631247cff"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a></div><div class="ttdeci">const ::Triangulation&lt; dim, spacedim &gt; &amp; tria</div></div>
 <div class="ttc" id="aclassOpenCASCADE_1_1NURBSPatchManifold_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1NURBSPatchManifold.html">OpenCASCADE::NURBSPatchManifold</a></div></div>
@@ -388,6 +413,7 @@ $(document).ready(function(){initNavTree('grid__generator_8cc_source.html',''); 
 <div class="ttc" id="aclassGridIn_html_a4346650869f7bdf91ef5a301f1980d22"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html#a4346650869f7bdf91ef5a301f1980d22">GridIn::read_assimp</a></div><div class="ttdeci">void read_assimp(const std::string &amp;filename, const unsigned int mesh_index=numbers::invalid_unsigned_int, const bool remove_duplicates=true, const double tol=1e-12, const bool ignore_unsupported_element_types=true)</div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga70a0bb353656e704acf927945277bbc6"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a></div><div class="ttdeci">#define Assert(cond, exc)</div></div>
 <div class="ttc" id="aclassGridIn_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classGridIn.html">GridIn</a></div></div>
+<div class="ttc" id="aclassLogStream_html_af78c5e0f0f0d929ce997543f4579f5c5"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop</a></div><div class="ttdeci">void pop()</div></div>
 <div class="ttc" id="agrid__generator_8h_html"><div class="ttname"><a href="grid__generator_8h.html">grid_generator.h</a></div></div>
 <div class="ttc" id="aclassOpenCASCADE_1_1ArclengthProjectionLineManifold_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classOpenCASCADE_1_1ArclengthProjectionLineManifold.html">OpenCASCADE::ArclengthProjectionLineManifold</a></div></div>
 <div class="ttc" id="anamespaceOpenCASCADE_html_a3e3e0df474c0e4f9abb627753c8754e9"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceOpenCASCADE.html#a3e3e0df474c0e4f9abb627753c8754e9">OpenCASCADE::count_elements</a></div><div class="ttdeci">std::tuple&lt; unsigned int, unsigned int, unsigned int &gt; count_elements(const TopoDS_Shape &amp;shape)</div></div>
@@ -402,11 +428,12 @@ $(document).ready(function(){initNavTree('grid__generator_8cc_source.html',''); 
 <div class="ttc" id="agroup__manifold_html_ga2131fc63fb23e2e7eabb570b1e852e4a"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga2131fc63fb23e2e7eabb570b1e852e4a">Triangulation::get_manifold</a></div><div class="ttdeci">const Manifold&lt; dim, spacedim &gt; &amp; get_manifold(const types::manifold_id number) const</div></div>
 <div class="ttc" id="agroup__manifold_html_ga41320ae1978763a1b83608e10408d68f"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__manifold.html#ga41320ae1978763a1b83608e10408d68f">Triangulation::get_manifold_ids</a></div><div class="ttdeci">virtual std::vector&lt; types::manifold_id &gt; get_manifold_ids() const</div></div>
 <div class="ttc" id="ainclude_2deal_8II_2opencascade_2utilities_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2opencascade_2utilities_8h.html">utilities.h</a></div></div>
+<div class="ttc" id="aclassLogStream_html_a2c96e3aac9651858a66bae33a544ac18"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push</a></div><div class="ttdeci">void push(const std::string &amp;text)</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="grid__generator_8cc.html">grid_generator.cc</a></li>
-    <li class="footer">Generated on Sun Feb 27 2022 15:13:59 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Feb 27 2022 17:33:18 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
