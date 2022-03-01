@@ -133,7 +133,8 @@ namespace PDEs
       constraints.close();
 
       const auto blocks =
-        ParsedTools::Components::block_indices(component_names, "all");
+        ParsedTools::Components::block_indices(component_names,
+                                               component_names);
       // renumber dofs in a blockwise manner.
       DoFRenumbering::component_wise(dof_handler, blocks);
       dofs_per_block = DoFTools::count_dofs_per_fe_block(dof_handler, blocks);
@@ -372,6 +373,7 @@ namespace PDEs
     void
     LinearProblem<dim, spacedim>::run()
     {
+      print_system_info();
       grid_generator.generate(triangulation);
       for (const auto &cycle : grid_refinement.get_refinement_cycles())
         {

@@ -121,14 +121,14 @@ namespace PDEs
       embedded_configuration.reinit(embedded_configuration_dh.n_dofs());
       embedded_mapping.initialize(embedded_configuration);
 
-      adjust_embedded_grid();
+      adjust_grid_refinements();
     }
 
 
 
     template <int dim, int spacedim>
     void
-    DistributedLagrange<dim, spacedim>::adjust_embedded_grid(
+    DistributedLagrange<dim, spacedim>::adjust_grid_refinements(
       const bool apply_delta_refinement)
     {
       namespace bgi = boost::geometry::index;
@@ -419,7 +419,7 @@ namespace PDEs
               grid_refinement.estimate_mark_refine(space_dh,
                                                    solution,
                                                    space_grid);
-              adjust_embedded_grid(false);
+              adjust_grid_refinements(false);
             }
           deallog.pop();
         }

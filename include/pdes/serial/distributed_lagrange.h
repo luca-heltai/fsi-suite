@@ -60,7 +60,7 @@ namespace PDEs
       void
       generate_grids_and_fes();
       void
-      adjust_embedded_grid(const bool apply_delta_refinement = true);
+      adjust_grid_refinements(const bool apply_delta_refinement = true);
       void
       setup_dofs();
       void

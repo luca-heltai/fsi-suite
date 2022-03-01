@@ -29,7 +29,7 @@ namespace ParsedTools
    * use the ParameterHandler::add_parameter() method to add parameters.
    */
   template <class SourceClass>
-  class Proxy : public SourceClass, public dealii::ParameterAcceptor
+  class Proxy : public dealii::ParameterAcceptor, public SourceClass
   {
   public:
     /**
@@ -44,8 +44,8 @@ namespace ParsedTools
   template <class SourceClass>
   template <typename... Args>
   Proxy<SourceClass>::Proxy(const std::string &section_name, Args... args)
-    : SourceClass(args...)
-    , dealii::ParameterAcceptor(section_name)
+    : dealii::ParameterAcceptor(section_name)
+    , SourceClass(args...)
   {
     enter_my_subsection(this->prm);
     SourceClass::add_parameters(this->prm);

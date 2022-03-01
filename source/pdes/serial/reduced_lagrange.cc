@@ -19,6 +19,8 @@
 #include <deal.II/base/logstream.h>
 #include <deal.II/base/parameter_acceptor.h>
 
+#include <deal.II/boost_adaptors/bounding_box.h>
+
 #include <deal.II/dofs/dof_tools.h>
 
 #include <deal.II/grid/grid_generator.h>
@@ -34,9 +36,12 @@
 #include <deal.II/numerics/matrix_tools.h>
 #include <deal.II/numerics/vector_tools.h>
 
+#include <boost/geometry.hpp>
+
 #include <fstream>
 #include <iostream>
 
+#include "parsed_tools/enum.h"
 #include "projection_operator.h"
 
 using namespace dealii;
@@ -69,6 +74,8 @@ namespace PDEs
       , schur_inverse_operator("/Solver/Schur")
       , data_out("/Data out/Space", "output/space")
       , embedded_data_out("/Data out/Embedded", "output/embedded")
+      , error_table_space("/Error table/Space")
+      , error_table_embedded("/Error table/Embedded")
     {
       add_parameter("Coupling quadrature order", coupling_quadrature_order);
       add_parameter("Console level", console_level);
@@ -85,11 +92,10 @@ namespace PDEs
       add_parameter("Use direct solver", use_direct_solver);
       leave_subsection();
       leave_subsection();
-
-      enter_subsection("Error table");
-      enter_my_subsection(this->prm);
-      error_table.add_parameters(this->prm);
-      leave_my_subsection(this->prm);
+      enter_subsection("Solver");
+      enter_subsection("Schur");
+      add_parameter("Preconditioner type", schur_preconditioner);
+      leave_subsection();
       leave_subsection();
     }
 
@@ -126,88 +132,97 @@ namespace PDEs
       embedded_configuration.reinit(embedded_configuration_dh.n_dofs());
       embedded_mapping.initialize(embedded_configuration);
 
-      adjust_embedded_grid();
+      embedded_grid_tools_cache =
+        std::make_unique<GridTools::Cache<dim, spacedim>>(embedded_grid,
+                                                          embedded_mapping());
+      adjust_grid_refinements();
     }
 
 
 
     template <int dim, int spacedim>
     void
-    ReducedLagrange<dim, spacedim>::adjust_embedded_grid(
+    ReducedLagrange<dim, spacedim>::adjust_grid_refinements(
       const bool apply_delta_refinement)
     {
+      TimerOutput::Scope timer_section(monitor, "adjust_grid_refinements");
       namespace bgi = boost::geometry::index;
-      // Now get a vector of all cell centers of the embedded grid and refine
+      // Now get a vector of all bounding boxes of the embedded grid and refine
       // them  untill every cell is of diameter smaller than the space
       // surrounding cells
-      std::vector<
-        std::tuple<Point<spacedim>, decltype(embedded_grid.begin_active())>>
-        centers;
 
-      for (const auto &cell : embedded_grid.active_cell_iterators())
-        centers.emplace_back(
-          std::make_tuple(embedded_mapping().get_center(cell), cell));
+      auto refine_embedded = [&]() {
+        bool done = false;
+        while (done == false)
+          {
+            // Bounding boxes of the space grid
+            const auto &tree =
+              space_grid_tools_cache
+                ->get_locally_owned_cell_bounding_boxes_rtree();
 
-      // Refine the space grid according to the delta refinement
+            // Bounding boxes of the embedded grid
+            const auto &embedded_tree =
+              embedded_grid_tools_cache
+                ->get_locally_owned_cell_bounding_boxes_rtree();
+
+            // Let's check all cells whose bounding box contains an embedded
+            // bounding box
+            done = true;
+            for (const auto &[embedded_box, embedded_cell] : embedded_tree)
+              {
+                const auto &[p1, p2] = embedded_box.get_boundary_points();
+                const auto diameter  = p1.distance(p2);
+
+                for (const auto &[space_box, space_cell] :
+                     tree |
+                       bgi::adaptors::queried(bgi::intersects(embedded_box)))
+                  if (space_cell->diameter() < diameter)
+                    {
+                      embedded_cell->set_refine_flag();
+                      done = false;
+                    }
+              }
+            if (done == false)
+              {
+                // Compute again the embedded displacement grid
+                embedded_grid.execute_coarsening_and_refinement();
+                embedded_configuration_dh.distribute_dofs(
+                  *embedded_configuration_fe);
+                embedded_configuration.reinit(
+                  embedded_configuration_dh.n_dofs());
+                embedded_mapping.initialize(embedded_configuration);
+                embedded_grid_tools_cache =
+                  std::make_unique<GridTools::Cache<dim, spacedim>>(
+                    embedded_grid, embedded_mapping());
+              }
+          }
+      };
+
+      // first refine the embededd grid
+      refine_embedded();
+
+      // Then refine the space grid according to the delta refinement
       if (apply_delta_refinement && delta_refinement != 0)
         for (unsigned int i = 0; i < delta_refinement; ++i)
           {
             const auto &tree =
               space_grid_tools_cache
                 ->get_locally_owned_cell_bounding_boxes_rtree();
-            for (const auto &[center, cell] : centers)
+
+            const auto &embedded_tree =
+              embedded_grid_tools_cache
+                ->get_locally_owned_cell_bounding_boxes_rtree();
+
+            for (const auto &[embedded_box, embedded_cell] : embedded_tree)
               for (const auto &[space_box, space_cell] :
-                   tree | bgi::adaptors::queried(bgi::contains(center)))
-                {
-                  space_cell->set_refine_flag();
-                  for (const auto face_no : space_cell->face_indices())
-                    if (!space_cell->at_boundary(face_no))
-                      space_cell->neighbor(face_no)->set_refine_flag();
-                }
+                   tree | bgi::adaptors::queried(bgi::intersects(embedded_box)))
+                space_cell->set_refine_flag();
             space_grid.execute_coarsening_and_refinement();
+
+            // Correct the embedded grid once again
+            refine_embedded();
           }
 
-      bool done = false;
-      while (done == false)
-        {
-          // Now refine the embedded grid if required
-          const auto &tree = space_grid_tools_cache
-                               ->get_locally_owned_cell_bounding_boxes_rtree();
-          // Let's check all cells whose bounding box contains an embedded
-          // center
-          done          = true;
-          namespace bgi = boost::geometry::index;
-          for (const auto &[center, cell] : centers)
-            {
-              const auto &[p1, p2] =
-                embedded_mapping().get_bounding_box(cell).get_boundary_points();
-              const auto diameter = p1.distance(p2);
-
-              for (const auto &[space_box, space_cell] :
-                   tree | bgi::adaptors::queried(bgi::contains(center)))
-                if (space_cell->diameter() < diameter)
-                  {
-                    cell->set_refine_flag();
-                    done = false;
-                  }
-            }
-          if (done == false)
-            {
-              // Compute again the embedded displacement grid
-              embedded_grid.execute_coarsening_and_refinement();
-              embedded_configuration_dh.distribute_dofs(
-                *embedded_configuration_fe);
-              embedded_configuration.reinit(embedded_configuration_dh.n_dofs());
-              embedded_mapping.initialize(embedded_configuration);
-
-              // Rebuild the centers vector
-              centers.clear();
-
-              for (const auto &cell : embedded_grid.active_cell_iterators())
-                centers.emplace_back(
-                  std::make_tuple(embedded_mapping().get_center(cell), cell));
-            }
-        }
 
       const double embedded_space_maximal_diameter =
         GridTools::maximal_cell_diameter(embedded_grid, embedded_mapping());
@@ -240,7 +255,6 @@ namespace PDEs
       for (unsigned int c = 1; c < n_basis; ++c)
         {
           unsigned int k = (c + 1) / 2;
-          deallog << "About to build functions." << std::endl;
 
           FunctionParser<spacedim> b1(
             "sqrt(pi^k*(2*k + 2))*(x^2 + y^2)^(k/2)*cos(k*atan2(y, x))",
@@ -248,8 +262,6 @@ namespace PDEs
           FunctionParser<spacedim> b2(
             "sqrt(pi^k*(2*k + 2))*(x^2 + y^2)^(k/2)*sin(k*atan2(y, x))",
             "k=" + std::to_string(k) + ", pi=" + std::to_string(M_PI));
-
-          deallog << "Built functions." << std::endl;
 
           if ((c + 1) % 2 == 0)
             {
@@ -292,9 +304,10 @@ namespace PDEs
       }
 
       solution.reinit(space_dh.n_dofs());
+      reduced_solution.reinit(space_dh.n_dofs());
       rhs.reinit(space_dh.n_dofs());
-      deallog << "Embedding dofs: " << space_dh.n_dofs() << std::endl;
 
+      deallog << "Space dofs: " << space_dh.n_dofs() << std::endl;
 
       embedded_dh.distribute_dofs(*embedded_fe);
       embedded_constraints.clear();
@@ -306,17 +319,22 @@ namespace PDEs
         DoFTools::make_sparsity_pattern(embedded_dh, dsp, embedded_constraints);
         embedded_sparsity.copy_from(dsp);
         embedded_mass_matrix.reinit(embedded_sparsity);
+        embedded_stiffness_matrix.reinit(embedded_sparsity);
       }
 
       lambda.reinit(embedded_dh.n_dofs());
+      reduced_lambda.reinit(embedded_dh.n_dofs());
+
       embedded_rhs.reinit(embedded_dh.n_dofs());
       embedded_value.reinit(embedded_dh.n_dofs());
+      reduced_embedded_value.reinit(embedded_dh.n_dofs());
+
+      small_rhs.reinit(n_basis);
+      small_lambda.reinit(n_basis);
+      small_value.reinit(n_basis);
+
       deallog << "Embedded dofs: " << embedded_dh.n_dofs() << std::endl;
       deallog << "Reduced dofs: " << n_basis << std::endl;
-
-      reduced_rhs.reinit(n_basis);
-      reduced_value.reinit(n_basis);
-      reduced_lambda.reinit(n_basis);
 
       boundary_conditions.apply_natural_boundary_conditions(
         *space_mapping, space_dh, constraints, stiffness_matrix, rhs);
@@ -369,7 +387,7 @@ namespace PDEs
           static_cast<const Function<spacedim> *>(nullptr),
           constraints);
 
-        // Mass matrix
+        // Embedded mass matrix
         MatrixCreator::create_mass_matrix(
           embedded_mapping(),
           embedded_dh,
@@ -377,6 +395,20 @@ namespace PDEs
           embedded_mass_matrix,
           static_cast<const Function<spacedim> *>(nullptr),
           embedded_constraints);
+
+        // Embedded stiffness matrix. Only for preconditioner.
+        AffineConstraints<double> tmp;
+        tmp.merge(embedded_constraints);
+        tmp.add_line(0);
+        tmp.set_inhomogeneity(0, 0.0);
+        tmp.close();
+        MatrixTools::create_laplace_matrix(
+          embedded_mapping(),
+          embedded_dh,
+          embedded_quad,
+          embedded_stiffness_matrix,
+          static_cast<const Function<spacedim> *>(nullptr),
+          tmp);
       }
       {
         TimerOutput::Scope timer_section(monitor, "Assemble coupling system");
@@ -430,21 +462,45 @@ namespace PDEs
         }
 
       auto M = linear_operator(embedded_mass_matrix);
+      auto K = linear_operator(embedded_stiffness_matrix);
+
       mass_preconditioner.initialize(embedded_mass_matrix);
       auto Minv = linear_operator(M, mass_preconditioner);
 
       auto S      = B * A_inv * Bt;
       auto S_prec = identity_operator(S);
-      // S_prec      = B * Minv * A * Minv * Bt;
+      switch (schur_preconditioner)
+        {
+          case SchurPreconditioner::identity:
+            break;
+          case SchurPreconditioner::M:
+            S_prec = M;
+            break;
+          case SchurPreconditioner::Minv:
+            S_prec = Minv;
+            break;
+          case SchurPreconditioner::K:
+            S_prec = K;
+            break;
+          case SchurPreconditioner::Minv_K_Minv:
+            S_prec = Minv * K * Minv;
+            break;
+          default:
+            Assert(false, ExcInternalError());
+        }
       auto S_inv = schur_inverse_operator(S, S_prec);
 
-      if (n_basis == 0)
+      deallog << "Solving full order system" << std::endl;
+
+      lambda = S_inv * (B * A_inv * rhs - embedded_rhs);
+      embedded_constraints.distribute(lambda);
+
+      solution = A_inv * (rhs - Bt * lambda);
+      constraints.distribute(solution);
+
+      if (n_basis > 0)
         {
-          lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
-          solution = A_inv * (rhs - Bt * lambda);
-        }
-      else
-        {
+          deallog << "Solving Reduced order system" << std::endl;
           Vector<double> reduced(n_basis);
           std::vector<std::reference_wrapper<const Vector<double>>> basis(
             basis_functions.begin(), basis_functions.end());
@@ -466,20 +522,23 @@ namespace PDEs
           auto C       = R * B;
           auto RS      = C * A_inv * Ct;
           auto RS_prec = identity_operator(RS);
-          RS_prec      = C * A * Ct;
           auto RS_inv  = schur_inverse_operator(RS, RS_prec);
-          reduced_rhs  = R * embedded_rhs;
-          Ginv.vmult(reduced_value, reduced_rhs);
-          reduced_lambda = RS_inv * (C * A_inv * rhs - reduced_rhs);
-          solution       = A_inv * (rhs - Ct * reduced_lambda);
-          embedded_value = Rt * reduced_value;
-          lambda         = Rt * reduced_lambda;
+          small_rhs    = R * embedded_rhs;
+          Ginv.vmult(small_value, small_rhs);
+          small_lambda     = RS_inv * (C * A_inv * rhs - small_rhs);
+          reduced_solution = A_inv * (rhs - Ct * small_lambda);
+          constraints.distribute(reduced_solution);
 
-          deallog << "Reduced lambda: " << reduced_lambda << std::endl;
-          deallog << "Reduced value: " << reduced_value << std::endl;
-          deallog << "Reduced rhs: " << reduced_rhs << std::endl;
+          reduced_lambda = Rt * small_lambda;
+          embedded_constraints.distribute(reduced_lambda);
+
+          reduced_embedded_value = Rt * small_value;
+          embedded_constraints.distribute(reduced_embedded_value);
+
+          deallog << "Small lambda: " << small_lambda << std::endl;
+          deallog << "Small value: " << small_value << std::endl;
+          deallog << "Small rhs: " << small_rhs << std::endl;
         }
-      constraints.distribute(solution);
     }
 
 
@@ -496,6 +555,7 @@ namespace PDEs
 
       data_out.attach_dof_handler(space_dh, suffix);
       data_out.add_data_vector(solution, component_names);
+      data_out.add_data_vector(reduced_solution, component_names + "_reduced");
       data_out.write_data_and_clear(*space_mapping);
 
       embedded_data_out.attach_dof_handler(embedded_dh, suffix);
@@ -503,6 +563,14 @@ namespace PDEs
         lambda, "lambda", dealii::DataOut<dim, spacedim>::type_dof_data);
       embedded_data_out.add_data_vector(
         embedded_value, "g", dealii::DataOut<dim, spacedim>::type_dof_data);
+      embedded_data_out.add_data_vector(
+        reduced_lambda,
+        "lambda_reduced",
+        dealii::DataOut<dim, spacedim>::type_dof_data);
+      embedded_data_out.add_data_vector(
+        reduced_embedded_value,
+        "g_reduced",
+        dealii::DataOut<dim, spacedim>::type_dof_data);
 
       unsigned int c = 0;
       for (const auto &basis : basis_functions)
@@ -530,18 +598,38 @@ namespace PDEs
           setup_coupling();
           assemble_system();
           solve();
-          error_table.error_from_exact(space_dh, solution, exact_solution);
+          if (n_basis == 0)
+            {
+              error_table_space.error_from_exact(*space_mapping,
+                                                 space_dh,
+                                                 solution,
+                                                 exact_solution);
+            }
+          else
+            {
+              error_table_space.difference(*space_mapping,
+                                           space_dh,
+                                           solution,
+                                           reduced_solution);
+              error_table_embedded.difference(embedded_mapping(),
+                                              embedded_dh,
+                                              lambda,
+                                              reduced_lambda);
+            }
+
           output_results(cycle);
           if (cycle < grid_refinement.get_n_refinement_cycles() - 1)
             {
               grid_refinement.estimate_mark_refine(space_dh,
                                                    solution,
                                                    space_grid);
-              adjust_embedded_grid(false);
+              adjust_grid_refinements(false);
             }
           deallog.pop();
         }
-      error_table.output_table(std::cout);
+      error_table_space.output_table(std::cout);
+      if (n_basis > 0)
+        error_table_embedded.output_table(std::cout);
     }
 
     template class ReducedLagrange<1, 2>;

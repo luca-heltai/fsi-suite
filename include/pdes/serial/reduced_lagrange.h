@@ -37,6 +37,7 @@
 #include "parsed_lac/inverse_operator.h"
 #include "parsed_tools/boundary_conditions.h"
 #include "parsed_tools/constants.h"
+#include "parsed_tools/convergence_table.h"
 #include "parsed_tools/data_out.h"
 #include "parsed_tools/finite_element.h"
 #include "parsed_tools/function.h"
@@ -60,7 +61,7 @@ namespace PDEs
       void
       generate_grids_and_fes();
       void
-      adjust_embedded_grid(const bool apply_delta_refinement = true);
+      adjust_grid_refinements(const bool apply_delta_refinement = true);
       void
       update_basis_functions();
       void
@@ -93,6 +94,9 @@ namespace PDEs
       Triangulation<dim, spacedim>                  embedded_grid;
       std::unique_ptr<FiniteElement<dim, spacedim>> embedded_fe;
       DoFHandler<dim, spacedim>                     embedded_dh;
+      std::unique_ptr<GridTools::Cache<dim, spacedim>>
+        embedded_grid_tools_cache;
+
 
       std::unique_ptr<FiniteElement<dim, spacedim>> embedded_configuration_fe;
       DoFHandler<dim, spacedim>                     embedded_configuration_dh;
@@ -106,22 +110,37 @@ namespace PDEs
 
       SparsityPattern      embedded_sparsity;
       SparseMatrix<double> embedded_mass_matrix;
+      SparseMatrix<double> embedded_stiffness_matrix;
+
+      enum class SchurPreconditioner
+      {
+        identity,
+        M,
+        Minv,
+        K,
+        Minv_K_Minv
+      };
+      SchurPreconditioner schur_preconditioner = SchurPreconditioner::identity;
 
       AffineConstraints<double> constraints;
       AffineConstraints<double> embedded_constraints;
 
       Vector<double> solution;
+      Vector<double> lambda;
       Vector<double> rhs;
 
-      Vector<double> lambda;
+      Vector<double> reduced_solution;
+      Vector<double> reduced_lambda;
+      Vector<double> reduced_embedded_value;
+
       Vector<double> embedded_rhs;
       Vector<double> embedded_value;
 
+      Vector<double> small_rhs;
+      Vector<double> small_lambda;
+      Vector<double> small_value;
+
       std::vector<Vector<double>> basis_functions;
-      std::vector<Vector<double>> reciprocal_basis_functions;
-      Vector<double>              reduced_rhs;
-      Vector<double>              reduced_value;
-      Vector<double>              reduced_lambda;
 
       TimerOutput monitor;
 
@@ -151,7 +170,8 @@ namespace PDEs
 
       mutable ParsedTools::DataOut<spacedim>      data_out;
       mutable ParsedTools::DataOut<dim, spacedim> embedded_data_out;
-      ParsedConvergenceTable                      error_table;
+      ParsedTools::ConvergenceTable               error_table_space;
+      ParsedTools::ConvergenceTable               error_table_embedded;
     };
   } // namespace Serial
 
