@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['basic_20applications_23224',['Basic applications',['../group__basics.html',1,'']]],
-  ['base_20classes_23225',['Base classes',['http://www.dealii.org/developer/doxygen/deal.II/group__febase.html',1,'']]],
-  ['basic_20matrices_23226',['Basic matrices',['http://www.dealii.org/developer/doxygen/deal.II/group__Matrix1.html',1,'']]]
+  ['basic_20applications_23257',['Basic applications',['../group__basics.html',1,'']]],
+  ['base_20classes_23258',['Base classes',['http://www.dealii.org/developer/doxygen/deal.II/group__febase.html',1,'']]],
+  ['basic_20matrices_23259',['Basic matrices',['http://www.dealii.org/developer/doxygen/deal.II/group__Matrix1.html',1,'']]]
 ];

@@ -12,56 +12,56 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="A proxy ParameterAcceptor wrapper for classes that have a member function add_parameters,...">
-<polygon fill="#bfbfbf" stroke="black" points="39,-0.5 39,-30.5 147,-30.5 147,-0.5 39,-0.5"/>
-<text text-anchor="start" x="47" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParsedTools::Proxy</text>
-<text text-anchor="middle" x="93" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; SourceClass &gt;</text>
+<polygon fill="#bfbfbf" stroke="black" points="56,-0.5 56,-30.5 164,-30.5 164,-0.5 56,-0.5"/>
+<text text-anchor="start" x="64" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParsedTools::Proxy</text>
+<text text-anchor="middle" x="110" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; SourceClass &gt;</text>
 </a>
 </g>
 </g>
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="0,-67.5 0,-86.5 76,-86.5 76,-67.5 0,-67.5"/>
-<text text-anchor="middle" x="38" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">SourceClass</text>
+<g id="a_node2"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="0,-67.5 0,-86.5 110,-86.5 110,-67.5 0,-67.5"/>
+<text text-anchor="middle" x="55" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterAcceptor</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node1 -->
 <g id="edge1" class="edge">
 <title>Node2&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M52.71,-60.09C61.22,-50.88 71.84,-39.39 80.04,-30.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="50.1,-57.76 45.88,-67.48 55.24,-62.51 50.1,-57.76"/>
+<path fill="none" stroke="midnightblue" d="M69.71,-60.09C78.22,-50.88 88.84,-39.39 97.04,-30.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="67.1,-57.76 62.88,-67.48 72.24,-62.51 67.1,-57.76"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="94,-67.5 94,-86.5 204,-86.5 204,-67.5 94,-67.5"/>
-<text text-anchor="middle" x="149" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterAcceptor</text>
+<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="19.5,-123.5 19.5,-142.5 90.5,-142.5 90.5,-123.5 19.5,-123.5"/>
+<text text-anchor="middle" x="55" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">Subscriptor</text>
 </a>
 </g>
 </g>
-<!-- Node3&#45;&gt;Node1 -->
+<!-- Node3&#45;&gt;Node2 -->
 <g id="edge2" class="edge">
-<title>Node3&#45;&gt;Node1</title>
-<path fill="none" stroke="midnightblue" d="M134.03,-60.09C125.36,-50.88 114.55,-39.39 106.2,-30.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="131.57,-62.59 140.98,-67.48 136.67,-57.79 131.57,-62.59"/>
+<title>Node3&#45;&gt;Node2</title>
+<path fill="none" stroke="midnightblue" d="M55,-112.8C55,-103.91 55,-93.78 55,-86.75"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="51.5,-113.08 55,-123.08 58.5,-113.08 51.5,-113.08"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="113.5,-123.5 113.5,-142.5 184.5,-142.5 184.5,-123.5 113.5,-123.5"/>
-<text text-anchor="middle" x="149" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">Subscriptor</text>
+<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="128,-67.5 128,-86.5 204,-86.5 204,-67.5 128,-67.5"/>
+<text text-anchor="middle" x="166" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">SourceClass</text>
 </a>
 </g>
 </g>
-<!-- Node4&#45;&gt;Node3 -->
+<!-- Node4&#45;&gt;Node1 -->
 <g id="edge3" class="edge">
-<title>Node4&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M149,-112.8C149,-103.91 149,-93.78 149,-86.75"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="145.5,-113.08 149,-123.08 152.5,-113.08 145.5,-113.08"/>
+<title>Node4&#45;&gt;Node1</title>
+<path fill="none" stroke="midnightblue" d="M151.03,-60.09C142.36,-50.88 131.55,-39.39 123.2,-30.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="148.57,-62.59 157.98,-67.48 153.67,-57.79 148.57,-62.59"/>
 </g>
 </g>
 </svg>

@@ -1,6 +1,6 @@
 <map id="source/pdes/serial/linear_elasticity.cc" name="source/pdes/serial/linear_elasticity.cc">
 <area shape="rect" id="node1" title=" " alt="" coords="2331,5,2478,47"/>
-<area shape="rect" id="node2" href="$linear__elasticity_8h.html" title=" " alt="" coords="2337,95,2472,136"/>
+<area shape="rect" id="node2" href="$serial_2linear__elasticity_8h.html" title=" " alt="" coords="2337,95,2472,136"/>
 <area shape="rect" id="node37" href="/__w/fsi-suite/fsi-suite/deal.tag$linear__operator__tools_8h.html" title=" " alt="" coords="3791,273,3925,315"/>
 <area shape="rect" id="node50" href="/__w/fsi-suite/fsi-suite/deal.tag$error__estimator_8h.html" title=" " alt="" coords="395,273,556,315"/>
 <area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$function_8h.html" title=" " alt="" coords="784,370,951,397"/>

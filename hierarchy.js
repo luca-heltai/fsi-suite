@@ -47,6 +47,9 @@ var hierarchy =
         [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
         [ "ParsedTools::GridGenerator< dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::GridGenerator< dim, dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
+        [ "PDEs::MPI::LinearProblem< dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", [
+          [ "PDEs::MPI::LinearElasticity< dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html", null ]
+        ] ],
         [ "PDEs::MPI::LinearProblem< dim, dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", [
           [ "PDEs::MPI::Poisson< dim, spacedim >", "class_p_d_es_1_1_m_p_i_1_1_poisson.html", null ]
         ] ],

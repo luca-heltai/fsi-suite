@@ -101,6 +101,7 @@ $(document).ready(function(){initNavTree('class_p_d_es_1_1_serial_1_1_reduced_la
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_p_d_es_1_1_serial_1_1_reduced_lagrange-members.html">List of all members</a>  </div>
@@ -204,12 +205,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a32b1dacf5ccfa29f7f093864a95e02b0 inherit pub_methods_classSubscriptor"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html#a32b1dacf5ccfa29f7f093864a95e02b0">list_subscribers</a> () const</td></tr>
 <tr class="separator:a32b1dacf5ccfa29f7f093864a95e02b0 inherit pub_methods_classSubscriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a8a768ecf20fa31bcf6229acde05a725d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725d">SchurPreconditioner</a> { <br />
+&#160;&#160;<a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725daff483d1ff591898a9942916050d2ca3f">SchurPreconditioner::identity</a>, 
+<a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725da69691c7bdcc3ce6d5d8a1361f22d04ac">SchurPreconditioner::M</a>, 
+<a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725dac450d976506a0f1c4412b816a73d1217">SchurPreconditioner::Minv</a>, 
+<a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725daa5f3c6a11b03839d46af9fb43c97c188">SchurPreconditioner::K</a>, 
+<br />
+&#160;&#160;<a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725da160308f9e557fbe7ac173ec84667c4d1">SchurPreconditioner::Minv_K_Minv</a>
+<br />
+ }</td></tr>
+<tr class="separator:a8a768ecf20fa31bcf6229acde05a725d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a5c44797bf764729233e48502028b8126"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a5c44797bf764729233e48502028b8126">generate_grids_and_fes</a> ()</td></tr>
 <tr class="separator:a5c44797bf764729233e48502028b8126"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e5aa6e13989c53554a1b08334aaff3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a4e5aa6e13989c53554a1b08334aaff3f">adjust_embedded_grid</a> (const bool apply_delta_refinement=true)</td></tr>
-<tr class="separator:a4e5aa6e13989c53554a1b08334aaff3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb78147854c7f61fedaaa4ea76cbbc01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#afb78147854c7f61fedaaa4ea76cbbc01">adjust_grid_refinements</a> (const bool apply_delta_refinement=true)</td></tr>
+<tr class="separator:afb78147854c7f61fedaaa4ea76cbbc01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a308bbafcf85187b836d3ff19f2cc40a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a308bbafcf85187b836d3ff19f2cc40a7">update_basis_functions</a> ()</td></tr>
 <tr class="separator:a308bbafcf85187b836d3ff19f2cc40a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee058f5d5e2340a4c49dc11f740f57fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#aee058f5d5e2340a4c49dc11f740f57fb">setup_dofs</a> ()</td></tr>
@@ -253,6 +267,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a7d188a99d9c64d24d67e3ff50f997570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d47694ed8b4b90870e159ae5e9709f7"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a4d47694ed8b4b90870e159ae5e9709f7">embedded_dh</a></td></tr>
 <tr class="separator:a4d47694ed8b4b90870e159ae5e9709f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f0a363697fc14f740bf459425e1e4d3"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim, spacedim &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8f0a363697fc14f740bf459425e1e4d3">embedded_grid_tools_cache</a></td></tr>
+<tr class="separator:a8f0a363697fc14f740bf459425e1e4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1220f8f86073499ee2b5335e75e8ceb5"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement</a>&lt; dim, spacedim &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a1220f8f86073499ee2b5335e75e8ceb5">embedded_configuration_fe</a></td></tr>
 <tr class="separator:a1220f8f86073499ee2b5335e75e8ceb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8174a426535e658c276e9950fb4bc1e"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ab8174a426535e658c276e9950fb4bc1e">embedded_configuration_dh</a></td></tr>
@@ -271,30 +287,38 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3c61b53dbe968a3956e87c2070a468df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ce7e92b8e6fab4649ff3a464355cace"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a0ce7e92b8e6fab4649ff3a464355cace">embedded_mass_matrix</a></td></tr>
 <tr class="separator:a0ce7e92b8e6fab4649ff3a464355cace"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76130b6a0615f54a62ca0a145b3e7453"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a76130b6a0615f54a62ca0a145b3e7453">embedded_stiffness_matrix</a></td></tr>
+<tr class="separator:a76130b6a0615f54a62ca0a145b3e7453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98020e72c255b7de65ab6ff2205c691"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725d">SchurPreconditioner</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ae98020e72c255b7de65ab6ff2205c691">schur_preconditioner</a> = <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725daff483d1ff591898a9942916050d2ca3f">SchurPreconditioner::identity</a></td></tr>
+<tr class="separator:ae98020e72c255b7de65ab6ff2205c691"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33532632eb5211c711da57fe14e730fc"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a33532632eb5211c711da57fe14e730fc">constraints</a></td></tr>
 <tr class="separator:a33532632eb5211c711da57fe14e730fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a564ef662f6fd8efb83becc5027d3f335"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a564ef662f6fd8efb83becc5027d3f335">embedded_constraints</a></td></tr>
 <tr class="separator:a564ef662f6fd8efb83becc5027d3f335"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42271d152f9adfe21f0ca8fc60525b2e"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a42271d152f9adfe21f0ca8fc60525b2e">solution</a></td></tr>
 <tr class="separator:a42271d152f9adfe21f0ca8fc60525b2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9753d820eac5cb9a166e61ab87d35cb"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ab9753d820eac5cb9a166e61ab87d35cb">rhs</a></td></tr>
-<tr class="separator:ab9753d820eac5cb9a166e61ab87d35cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2af7f57c220fa8631724d67836f68b62"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a2af7f57c220fa8631724d67836f68b62">lambda</a></td></tr>
 <tr class="separator:a2af7f57c220fa8631724d67836f68b62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9753d820eac5cb9a166e61ab87d35cb"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ab9753d820eac5cb9a166e61ab87d35cb">rhs</a></td></tr>
+<tr class="separator:ab9753d820eac5cb9a166e61ab87d35cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22f91fec883fe8533c597e636f9d4f29"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a22f91fec883fe8533c597e636f9d4f29">reduced_solution</a></td></tr>
+<tr class="separator:a22f91fec883fe8533c597e636f9d4f29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d59e2b899d08f07b9ee736ab480b5c9"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a1d59e2b899d08f07b9ee736ab480b5c9">reduced_lambda</a></td></tr>
+<tr class="separator:a1d59e2b899d08f07b9ee736ab480b5c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb17326f8b7a2a42d7bb2fe1c829dddb"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acb17326f8b7a2a42d7bb2fe1c829dddb">reduced_embedded_value</a></td></tr>
+<tr class="separator:acb17326f8b7a2a42d7bb2fe1c829dddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92718d8345a7226266eb77ce4ffd297b"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a92718d8345a7226266eb77ce4ffd297b">embedded_rhs</a></td></tr>
 <tr class="separator:a92718d8345a7226266eb77ce4ffd297b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7bfa8117cd5421b03af6a8cca528223"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#af7bfa8117cd5421b03af6a8cca528223">embedded_value</a></td></tr>
 <tr class="separator:af7bfa8117cd5421b03af6a8cca528223"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f456407589e07cdddec43e7d14195cd"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a7f456407589e07cdddec43e7d14195cd">small_rhs</a></td></tr>
+<tr class="separator:a7f456407589e07cdddec43e7d14195cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace3b220cba23e186fdb068edad248471"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ace3b220cba23e186fdb068edad248471">small_lambda</a></td></tr>
+<tr class="separator:ace3b220cba23e186fdb068edad248471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88c93808d2b974f2e5668362e892b2f8"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a88c93808d2b974f2e5668362e892b2f8">small_value</a></td></tr>
+<tr class="separator:a88c93808d2b974f2e5668362e892b2f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55dca114a83208fd9b87b2b34e5b85a0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a55dca114a83208fd9b87b2b34e5b85a0">basis_functions</a></td></tr>
 <tr class="separator:a55dca114a83208fd9b87b2b34e5b85a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a54f6c088b7797cba7e6844eb47307288"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a54f6c088b7797cba7e6844eb47307288">reciprocal_basis_functions</a></td></tr>
-<tr class="separator:a54f6c088b7797cba7e6844eb47307288"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1f478da86650d867a8e3e0b4455e2c2"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ab1f478da86650d867a8e3e0b4455e2c2">reduced_rhs</a></td></tr>
-<tr class="separator:ab1f478da86650d867a8e3e0b4455e2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acccd7012f1a395bf57fdef72b79c4139"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acccd7012f1a395bf57fdef72b79c4139">reduced_value</a></td></tr>
-<tr class="separator:acccd7012f1a395bf57fdef72b79c4139"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d59e2b899d08f07b9ee736ab480b5c9"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a1d59e2b899d08f07b9ee736ab480b5c9">reduced_lambda</a></td></tr>
-<tr class="separator:a1d59e2b899d08f07b9ee736ab480b5c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc2236fb02ccf18663f2bd7b37dc58c5"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTimerOutput.html">TimerOutput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#adc2236fb02ccf18663f2bd7b37dc58c5">monitor</a></td></tr>
 <tr class="separator:adc2236fb02ccf18663f2bd7b37dc58c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab722452828df54ff4d2e670898cc3e92"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ab722452828df54ff4d2e670898cc3e92">finite_element_degree</a> = 1</td></tr>
@@ -333,8 +357,10 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a9d146a87fd8358cdc4c38eb8751b909a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5718fdd8a74504276a5fe3bc774dea3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt; dim, spacedim &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#af5718fdd8a74504276a5fe3bc774dea3">embedded_data_out</a></td></tr>
 <tr class="separator:af5718fdd8a74504276a5fe3bc774dea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c03e4c0eb114b26b7c04da2ccd2285a"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a0c03e4c0eb114b26b7c04da2ccd2285a">error_table</a></td></tr>
-<tr class="separator:a0c03e4c0eb114b26b7c04da2ccd2285a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90804637acdec210a1ea61659e6cfeae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_parsed_tools.html#aaaa64d00dfc97c0345ca0ad075babc75">ParsedTools::ConvergenceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a90804637acdec210a1ea61659e6cfeae">error_table_space</a></td></tr>
+<tr class="separator:a90804637acdec210a1ea61659e6cfeae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a803602ebedbadf87dfa1a796524a999b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespace_parsed_tools.html#aaaa64d00dfc97c0345ca0ad075babc75">ParsedTools::ConvergenceTable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a803602ebedbadf87dfa1a796524a999b">error_table_embedded</a></td></tr>
+<tr class="separator:a803602ebedbadf87dfa1a796524a999b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -377,8 +403,42 @@ Additional Inherited Members</h2></td></tr>
 class PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00052">52</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00053">53</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a8a768ecf20fa31bcf6229acde05a725d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a768ecf20fa31bcf6229acde05a725d">&#9670;&nbsp;</a></span>SchurPreconditioner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725d">PDEs::Serial::ReducedLagrange::SchurPreconditioner</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8a768ecf20fa31bcf6229acde05a725daff483d1ff591898a9942916050d2ca3f"></a>identity&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8a768ecf20fa31bcf6229acde05a725da69691c7bdcc3ce6d5d8a1361f22d04ac"></a>M&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8a768ecf20fa31bcf6229acde05a725dac450d976506a0f1c4412b816a73d1217"></a>Minv&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8a768ecf20fa31bcf6229acde05a725daa5f3c6a11b03839d46af9fb43c97c188"></a>K&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8a768ecf20fa31bcf6229acde05a725da160308f9e557fbe7ac173ec84667c4d1"></a>Minv_K_Minv&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00115">115</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae2b987cd0d27fc5796b8d22d95429e9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2b987cd0d27fc5796b8d22d95429e9e">&#9670;&nbsp;</a></span>ReducedLagrange()</h2>
 
@@ -393,9 +453,9 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">49</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">54</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html#a3c70358a19046262192515b0ed00bb37">ParsedConvergenceTable::add_parameters()</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00082">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::console_level</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00080">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::coupling_quadrature_order</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00081">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::delta_refinement</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00131">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::embedded_configuration_finite_element_degree</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00130">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::embedded_space_finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aceb1a78960d51e44d8187995307756b4">ParameterAcceptor::enter_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aa5bd2385b9c9dea5664813eb63e0b8fe">ParameterAcceptor::enter_subsection()</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00154">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::error_table</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00129">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a9d1dd13bdde04afcd1ec4b9a78776827">ParameterAcceptor::leave_my_subsection()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#ac1020eae02ca8fbd2a3a1c315994591b">ParameterAcceptor::leave_subsection()</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00084">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::n_basis</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>, and <a class="el" href="reduced__lagrange_8h_source.html#l00083">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::use_direct_solver</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#af2a534c7f1ea5bfa165fa8a469744a5d">ParameterAcceptor::add_parameter()</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00083">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::console_level</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00081">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::coupling_quadrature_order</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00082">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::delta_refinement</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00150">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::embedded_configuration_finite_element_degree</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00149">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::embedded_space_finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aa5bd2385b9c9dea5664813eb63e0b8fe">ParameterAcceptor::enter_subsection()</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00148">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::finite_element_degree</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#ac1020eae02ca8fbd2a3a1c315994591b">ParameterAcceptor::leave_subsection()</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00085">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::n_basis</a>, <a class="el" href="reduced__lagrange_8h_source.html#l00123">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::schur_preconditioner</a>, and <a class="el" href="reduced__lagrange_8h_source.html#l00084">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::use_direct_solver</a>.</p>
 
 </div>
 </div>
@@ -414,9 +474,9 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00522">522</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00590">590</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a8028e970ad8388596d625ed463894e98">LogStream::depth_console()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">LogStream::pop()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push()</a>.</p>
 
 </div>
 </div>
@@ -442,14 +502,14 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00100">100</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00106">106</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="el" href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">ParsedTools::Components::get_lagrangian_finite_element()</a>.</p>
 
 </div>
 </div>
-<a id="a4e5aa6e13989c53554a1b08334aaff3f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e5aa6e13989c53554a1b08334aaff3f">&#9670;&nbsp;</a></span>adjust_embedded_grid()</h2>
+<a id="afb78147854c7f61fedaaa4ea76cbbc01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb78147854c7f61fedaaa4ea76cbbc01">&#9670;&nbsp;</a></span>adjust_grid_refinements()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -460,7 +520,7 @@ template&lt;int dim, int spacedim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::adjust_embedded_grid </td>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::adjust_grid_refinements </td>
           <td>(</td>
           <td class="paramtype">const bool&#160;</td>
           <td class="paramname"><em>apply_delta_refinement</em> = <code>true</code></td><td>)</td>
@@ -474,9 +534,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00136">136</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00145">145</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/data__out__base_8cc.html#a8188ef4709fc9a4cc076d37447783ba1">center</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#acd5ccc543d561cfb086b571d1f7818cb">diameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#ae8409fa9cb46a0070abc4da7de0f47f2">GridTools::maximal_cell_diameter()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#a47c293eff2ec7ce4b90ba08b35d1f2e2">GridTools::minimal_cell_diameter()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#acd5ccc543d561cfb086b571d1f7818cb">diameter()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#ae8409fa9cb46a0070abc4da7de0f47f2">GridTools::maximal_cell_diameter()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridTools.html#a47c293eff2ec7ce4b90ba08b35d1f2e2">GridTools::minimal_cell_diameter()</a>.</p>
 
 </div>
 </div>
@@ -502,7 +562,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00233">233</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00248">248</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate()</a>.</p>
 
@@ -530,7 +590,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00276">276</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00288">288</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#ga3b4ea7dfd313e388d868c4e4aa685799">DoFTools::make_hanging_node_constraints()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__constraints.html#gaf78e864edbfba7e0a7477457bfb96b26">DoFTools::make_sparsity_pattern()</a>.</p>
 
@@ -558,7 +618,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00329">329</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00347">347</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#a55ba8b542eb5e9a9432dcef7c0fb1098">NonMatching::create_coupling_sparsity_pattern()</a>, and <a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature()</a>.</p>
 
@@ -586,9 +646,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00354">354</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00372">372</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#abe338fc879922cc67627b5ca039fc663">NonMatching::create_coupling_mass_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceMatrixCreator.html#ac5d7d5e3dcdcc1f599bd86471bae7c23">MatrixCreator::create_mass_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a6e325333a138893e181da47f29ac680a">VectorTools::create_right_hand_side()</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html#a11139b28db021be1d2b762c3c5275ee4">AffineConstraints&lt; double &gt;::add_line()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html#a1611aa37f754086388ca76bcd421cce5">AffineConstraints&lt; double &gt;::close()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#abe338fc879922cc67627b5ca039fc663">NonMatching::create_coupling_mass_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceMatrixCreator.html#ac5d7d5e3dcdcc1f599bd86471bae7c23">MatrixCreator::create_mass_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a6e325333a138893e181da47f29ac680a">VectorTools::create_right_hand_side()</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html#a09d267ebb328a639eb9f3d68b1fa7ffb">AffineConstraints&lt; double &gt;::merge()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html#a4f7cb22b3c971599a839fddc988ef92a">AffineConstraints&lt; double &gt;::set_inhomogeneity()</a>.</p>
 
 </div>
 </div>
@@ -614,9 +674,9 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00411">411</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00443">443</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a09916360abaee5f1fb31994dbc96787b">C()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga1a0a3fb15266869710e63e78658cfaed">identity_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseDirectUMFPACK.html#a25b1d3c7dbb88158a76165a4a56a16d6">SparseDirectUMFPACK::initialize()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html#a940ea10266174ad366d10bd806177ace">FullMatrix&lt; double &gt;::invert()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>, <a class="el" href="projection__operator_8h_source.html#l00077">dealii::projection_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html#a65a409eeef6388d99ac15e2bbe8045f6">FullMatrix&lt; double &gt;::vmult()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a09916360abaee5f1fb31994dbc96787b">C()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga31978c026b8b6b5116df30b8e748f6b7">ExcInternalError()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga1a0a3fb15266869710e63e78658cfaed">identity_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseDirectUMFPACK.html#a25b1d3c7dbb88158a76165a4a56a16d6">SparseDirectUMFPACK::initialize()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html#a940ea10266174ad366d10bd806177ace">FullMatrix&lt; double &gt;::invert()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator()</a>, <a class="el" href="projection__operator_8h_source.html#l00077">dealii::projection_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga6bdc65fb2db56230e6bc7d545e81295d">transpose_operator()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFullMatrix.html#a65a409eeef6388d99ac15e2bbe8045f6">FullMatrix&lt; double &gt;::vmult()</a>.</p>
 
 </div>
 </div>
@@ -646,7 +706,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00489">489</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00548">548</a> of file <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html">reduced_lagrange.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a9c75f3b2b9de645e7432eba26e59499b">Utilities::needed_digits()</a>.</p>
 
@@ -675,7 +735,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00078">78</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00079">79</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -701,9 +761,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00080">80</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00081">81</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -729,9 +789,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00081">81</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00082">82</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -757,9 +817,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00082">82</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00083">83</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -785,9 +845,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00083">83</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00084">84</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -813,9 +873,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00084">84</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00085">85</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -841,7 +901,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00086">86</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00087">87</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -867,7 +927,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00087">87</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00088">88</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -893,7 +953,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00088">88</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00089">89</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -919,7 +979,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00090">90</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00091">91</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -945,7 +1005,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00091">91</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00092">92</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -971,7 +1031,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00093">93</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00094">94</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -997,7 +1057,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00094">94</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00095">95</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1083,33 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00095">95</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00096">96</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a8f0a363697fc14f740bf459425e1e4d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f0a363697fc14f740bf459425e1e4d3">&#9670;&nbsp;</a></span>embedded_grid_tools_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt;dim, spacedim&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::embedded_grid_tools_cache</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00098">98</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1135,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00097">97</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00101">101</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1075,7 +1161,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00098">98</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00102">102</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1101,7 +1187,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00099">99</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00103">103</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1127,7 +1213,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00101">101</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00105">105</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1153,7 +1239,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00102">102</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00106">106</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1179,7 +1265,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00104">104</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00108">108</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1205,7 +1291,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00105">105</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00109">109</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1317,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00107">107</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00111">111</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1343,61 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00108">108</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00112">112</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a76130b6a0615f54a62ca0a145b3e7453"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76130b6a0615f54a62ca0a145b3e7453">&#9670;&nbsp;</a></span>embedded_stiffness_matrix</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html">SparseMatrix</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::embedded_stiffness_matrix</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00113">113</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ae98020e72c255b7de65ab6ff2205c691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98020e72c255b7de65ab6ff2205c691">&#9670;&nbsp;</a></span>schur_preconditioner</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725d">SchurPreconditioner</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::schur_preconditioner = <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725daff483d1ff591898a9942916050d2ca3f">SchurPreconditioner::identity</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00123">123</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -1283,7 +1423,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00110">110</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00125">125</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1309,7 +1449,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00111">111</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00126">126</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1335,33 +1475,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00113">113</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="ab9753d820eac5cb9a166e61ab87d35cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9753d820eac5cb9a166e61ab87d35cb">&#9670;&nbsp;</a></span>rhs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::rhs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00114">114</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00128">128</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1387,12 +1501,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00116">116</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00129">129</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
-<a id="a92718d8345a7226266eb77ce4ffd297b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92718d8345a7226266eb77ce4ffd297b">&#9670;&nbsp;</a></span>embedded_rhs</h2>
+<a id="ab9753d820eac5cb9a166e61ab87d35cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9753d820eac5cb9a166e61ab87d35cb">&#9670;&nbsp;</a></span>rhs</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1403,7 +1517,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::embedded_rhs</td>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::rhs</td>
         </tr>
       </table>
   </td>
@@ -1413,12 +1527,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00117">117</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00130">130</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
-<a id="af7bfa8117cd5421b03af6a8cca528223"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7bfa8117cd5421b03af6a8cca528223">&#9670;&nbsp;</a></span>embedded_value</h2>
+<a id="a22f91fec883fe8533c597e636f9d4f29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22f91fec883fe8533c597e636f9d4f29">&#9670;&nbsp;</a></span>reduced_solution</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1429,7 +1543,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::embedded_value</td>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::reduced_solution</td>
         </tr>
       </table>
   </td>
@@ -1439,111 +1553,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00118">118</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a55dca114a83208fd9b87b2b34e5b85a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55dca114a83208fd9b87b2b34e5b85a0">&#9670;&nbsp;</a></span>basis_functions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::basis_functions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00120">120</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="a54f6c088b7797cba7e6844eb47307288"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a54f6c088b7797cba7e6844eb47307288">&#9670;&nbsp;</a></span>reciprocal_basis_functions</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::reciprocal_basis_functions</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00121">121</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="ab1f478da86650d867a8e3e0b4455e2c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1f478da86650d867a8e3e0b4455e2c2">&#9670;&nbsp;</a></span>reduced_rhs</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::reduced_rhs</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00122">122</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
-
-</div>
-</div>
-<a id="acccd7012f1a395bf57fdef72b79c4139"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acccd7012f1a395bf57fdef72b79c4139">&#9670;&nbsp;</a></span>reduced_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;int dim, int spacedim = dim&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::reduced_value</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00123">123</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00132">132</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1569,7 +1579,189 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00124">124</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00133">133</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="acb17326f8b7a2a42d7bb2fe1c829dddb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb17326f8b7a2a42d7bb2fe1c829dddb">&#9670;&nbsp;</a></span>reduced_embedded_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::reduced_embedded_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00134">134</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a92718d8345a7226266eb77ce4ffd297b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92718d8345a7226266eb77ce4ffd297b">&#9670;&nbsp;</a></span>embedded_rhs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::embedded_rhs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00136">136</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="af7bfa8117cd5421b03af6a8cca528223"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7bfa8117cd5421b03af6a8cca528223">&#9670;&nbsp;</a></span>embedded_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::embedded_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00137">137</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a7f456407589e07cdddec43e7d14195cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f456407589e07cdddec43e7d14195cd">&#9670;&nbsp;</a></span>small_rhs</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::small_rhs</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00139">139</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="ace3b220cba23e186fdb068edad248471"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace3b220cba23e186fdb068edad248471">&#9670;&nbsp;</a></span>small_lambda</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::small_lambda</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00140">140</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a88c93808d2b974f2e5668362e892b2f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88c93808d2b974f2e5668362e892b2f8">&#9670;&nbsp;</a></span>small_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::small_value</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00141">141</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+
+</div>
+</div>
+<a id="a55dca114a83208fd9b87b2b34e5b85a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55dca114a83208fd9b87b2b34e5b85a0">&#9670;&nbsp;</a></span>basis_functions</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt;double&gt; &gt; <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::basis_functions</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00143">143</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1595,7 +1787,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00126">126</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00145">145</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1621,9 +1813,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00129">129</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00148">148</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -1649,9 +1841,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00130">130</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00149">149</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -1677,9 +1869,9 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00131">131</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00150">150</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00054">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
 
 </div>
 </div>
@@ -1705,7 +1897,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00134">134</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00153">153</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1731,7 +1923,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00135">135</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00154">154</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1757,7 +1949,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00137">137</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00156">156</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1783,7 +1975,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00138">138</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00157">157</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1809,7 +2001,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00140">140</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00159">159</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1835,7 +2027,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00141">141</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00160">160</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1861,7 +2053,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00142">142</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00161">161</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1887,7 +2079,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00143">143</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00162">162</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1913,7 +2105,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00144">144</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00163">163</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1939,7 +2131,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00146">146</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00165">165</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1965,7 +2157,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00147">147</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00166">166</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -1991,7 +2183,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00148">148</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00167">167</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -2017,7 +2209,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00150">150</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00169">169</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -2043,7 +2235,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00152">152</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00171">171</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -2069,12 +2261,12 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00153">153</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00172">172</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
-<a id="a0c03e4c0eb114b26b7c04da2ccd2285a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c03e4c0eb114b26b7c04da2ccd2285a">&#9670;&nbsp;</a></span>error_table</h2>
+<a id="a90804637acdec210a1ea61659e6cfeae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90804637acdec210a1ea61659e6cfeae">&#9670;&nbsp;</a></span>error_table_space</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2085,7 +2277,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParsedConvergenceTable.html">ParsedConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::error_table</td>
+          <td class="memname"><a class="el" href="namespace_parsed_tools.html#aaaa64d00dfc97c0345ca0ad075babc75">ParsedTools::ConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::error_table_space</td>
         </tr>
       </table>
   </td>
@@ -2095,9 +2287,33 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00154">154</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00173">173</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00049">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::ReducedLagrange()</a>.</p>
+</div>
+</div>
+<a id="a803602ebedbadf87dfa1a796524a999b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a803602ebedbadf87dfa1a796524a999b">&#9670;&nbsp;</a></span>error_table_embedded</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespace_parsed_tools.html#aaaa64d00dfc97c0345ca0ad075babc75">ParsedTools::ConvergenceTable</a> <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a>&lt; dim, spacedim &gt;::error_table_embedded</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="reduced__lagrange_8h_source.html#l00174">174</a> of file <a class="el" href="reduced__lagrange_8h_source.html">reduced_lagrange.h</a>.</p>
 
 </div>
 </div>
@@ -2111,7 +2327,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="namespace_p_d_es_1_1_serial.html">Serial</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">ReducedLagrange</a></li>
-    <li class="footer">Generated on Mon Feb 28 2022 17:47:52 for Fluid structure interaction suite by
+    <li class="footer">Generated on Tue Mar 1 2022 16:18:24 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

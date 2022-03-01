@@ -129,7 +129,7 @@ $(document).ready(function(){initNavTree('proxy_8h_source.html',''); initResizab
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_parsed_tools.html">ParsedTools</a></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> SourceClass&gt;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_proxy.html">   32</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_proxy.html">Proxy</a> : <span class="keyword">public</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html">SourceClass</a>, <span class="keyword">public</span> dealii::ParameterAcceptor</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_proxy.html">   32</a></span>&#160;  <span class="keyword">class </span><a class="code" href="class_parsed_tools_1_1_proxy.html">Proxy</a> : <span class="keyword">public</span> dealii::ParameterAcceptor, <span class="keyword">public</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html">SourceClass</a></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  {</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
@@ -139,8 +139,8 @@ $(document).ready(function(){initNavTree('proxy_8h_source.html',''); initResizab
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">class</span> SourceClass&gt;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Args&gt;</div>
 <div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_parsed_tools_1_1_proxy.html#a4cbc91729fec646f9412665fdf5b9ff1">   46</a></span>&#160;  <a class="code" href="class_parsed_tools_1_1_proxy.html#a4cbc91729fec646f9412665fdf5b9ff1">Proxy&lt;SourceClass&gt;::Proxy</a>(<span class="keyword">const</span> std::string &amp;section_name, Args... args)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html">SourceClass</a>(args...)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    , <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>(section_name)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a>(section_name)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    , <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html">SourceClass</a>(args...)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  {</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#aceb1a78960d51e44d8187995307756b4">enter_my_subsection</a>(this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">prm</a>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    SourceClass::add_parameters(this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">prm</a>);</div>
@@ -167,7 +167,7 @@ $(document).ready(function(){initNavTree('proxy_8h_source.html',''); initResizab
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_8e8448d9aef603b86753e7cb911804a9.html">parsed_tools</a></li><li class="navelem"><a class="el" href="proxy_8h.html">proxy.h</a></li>
-    <li class="footer">Generated on Mon Feb 28 2022 17:47:51 for Fluid structure interaction suite by
+    <li class="footer">Generated on Tue Mar 1 2022 16:18:23 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

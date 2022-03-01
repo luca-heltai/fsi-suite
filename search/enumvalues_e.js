@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['positive_23069',['positive',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1QuadratureGeneratorImplementation.html#a80d21d0fdbd053da761b80b53b01923ea82082716189f80fd070b89ac716570ba',1,'NonMatching::internal::QuadratureGeneratorImplementation']]]
+  ['open_23096',['open',['http://www.dealii.org/developer/doxygen/deal.II/classHDF5_1_1File.html#ac3dc680d4e4ca3dd7139085c5056ff5fa7cef8a734855777c2a9d0caf42666e69',1,'HDF5::File::open()'],['http://www.dealii.org/developer/doxygen/deal.II/classHDF5_1_1Group.html#ab373a6f243a36925b2b75f83184bfee0a7cef8a734855777c2a9d0caf42666e69',1,'HDF5::File::open()'],['http://www.dealii.org/developer/doxygen/deal.II/classHDF5_1_1Group.html#ab373a6f243a36925b2b75f83184bfee0a7cef8a734855777c2a9d0caf42666e69',1,'HDF5::Group::open()']]],
+  ['optimize_5faggressive_23097',['optimize_aggressive',['http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#af920b6488de218dea94f25b94ad08842af08a168a64482d29e6ce023ab222a083',1,'Differentiation::SD']]],
+  ['optimize_5fall_23098',['optimize_all',['http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#af920b6488de218dea94f25b94ad08842a1ad0cce13bc606ad6742e9841ccdfe15',1,'Differentiation::SD']]],
+  ['optimize_5fcse_23099',['optimize_cse',['http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#af920b6488de218dea94f25b94ad08842a3df84265620315a025367510c90d0474',1,'Differentiation::SD']]],
+  ['optimize_5fdefault_23100',['optimize_default',['http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#af920b6488de218dea94f25b94ad08842abea01b791a14888764e22d110f6ea97f',1,'Differentiation::SD']]],
+  ['outside_23101',['outside',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#a1bfa77fdc53dc7bf833ff01c4f7967daac30163615770c8b2b8873288e828de41',1,'NonMatching']]]
 ];

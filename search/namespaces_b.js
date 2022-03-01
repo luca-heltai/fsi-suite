@@ -1,11 +1,11 @@
 var searchData=
 [
-  ['fevaluesimplementation_13322',['FEValuesImplementation',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1FEValuesImplementation.html',1,'NonMatching::internal']]],
-  ['internal_13323',['internal',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal.html',1,'NonMatching::internal'],['http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers_1_1internal.html',1,'numbers::internal']]],
-  ['meshclassifierimplementation_13324',['MeshClassifierImplementation',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1MeshClassifierImplementation.html',1,'NonMatching::internal']]],
-  ['nonmatching_13325',['NonMatching',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html',1,'']]],
-  ['numbers_13326',['numbers',['http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html',1,'']]],
-  ['quadraturegeneratorimplementation_13327',['QuadratureGeneratorImplementation',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1QuadratureGeneratorImplementation.html',1,'NonMatching::internal']]],
-  ['rootfinder_13328',['RootFinder',['http://www.dealii.org/developer/doxygen/deal.II/structNonMatching_1_1internal_1_1QuadratureGeneratorImplementation_1_1RootFinder_1_1AdditionalData.html',1,'NonMatching::internal::QuadratureGeneratorImplementation']]],
-  ['signalingnan_13329',['SignalingNaN',['http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers_1_1internal_1_1SignalingNaN.html',1,'numbers::internal']]]
+  ['fevaluesimplementation_13339',['FEValuesImplementation',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1FEValuesImplementation.html',1,'NonMatching::internal']]],
+  ['internal_13340',['internal',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal.html',1,'NonMatching::internal'],['http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers_1_1internal.html',1,'numbers::internal']]],
+  ['meshclassifierimplementation_13341',['MeshClassifierImplementation',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1MeshClassifierImplementation.html',1,'NonMatching::internal']]],
+  ['nonmatching_13342',['NonMatching',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html',1,'']]],
+  ['numbers_13343',['numbers',['http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html',1,'']]],
+  ['quadraturegeneratorimplementation_13344',['QuadratureGeneratorImplementation',['http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching_1_1internal_1_1QuadratureGeneratorImplementation.html',1,'NonMatching::internal']]],
+  ['rootfinder_13345',['RootFinder',['http://www.dealii.org/developer/doxygen/deal.II/structNonMatching_1_1internal_1_1QuadratureGeneratorImplementation_1_1RootFinder_1_1AdditionalData.html',1,'NonMatching::internal::QuadratureGeneratorImplementation']]],
+  ['signalingnan_13346',['SignalingNaN',['http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers_1_1internal_1_1SignalingNaN.html',1,'numbers::internal']]]
 ];

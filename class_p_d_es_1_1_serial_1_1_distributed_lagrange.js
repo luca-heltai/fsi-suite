@@ -3,7 +3,7 @@ var class_p_d_es_1_1_serial_1_1_distributed_lagrange =
     [ "DistributedLagrange", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a46017ca219edabea3f42451ea55171b7", null ],
     [ "run", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a42b4fdd36985e8f6f702a1e964393888", null ],
     [ "generate_grids_and_fes", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a5612887e6db7e2a289444a74051fa3d5", null ],
-    [ "adjust_embedded_grid", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a6b90d43e46da25dac1fdef91546f9eee", null ],
+    [ "adjust_grid_refinements", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a74fb7e9b8bcb1604d81882febe31d2d0", null ],
     [ "setup_dofs", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a50139f07333d2ae746a4a9c658d35431", null ],
     [ "setup_coupling", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a9bb466a07c98c06c25a29b037b4b24a8", null ],
     [ "assemble_system", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a64d376e1cfcdf62c4b543ae559349e9b", null ],
