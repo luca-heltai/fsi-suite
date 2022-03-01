@@ -109,12 +109,6 @@ namespace PDEs
       virtual ~LinearProblem() = default;
 
       /**
-       * Output trivial info, like number of dofs, cells, threads, etc.
-       */
-      void
-      print_system_info();
-
-      /**
        * Main entry point of the problem.
        */
       virtual void
