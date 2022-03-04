@@ -66,7 +66,13 @@ namespace PDEs
                          ";"),
                        "Exact solution")
       , boundary_conditions(section_name + "/Boundary conditions",
-                            component_names)
+                            component_names,
+                            {{numbers::internal_face_boundary_id}},
+                            {"all"},
+                            {ParsedTools::BoundaryConditionType::dirichlet},
+                            {ParsedTools::Components::join(
+                              std::vector<std::string>(n_components, "0"),
+                              ";")})
       , error_table(section_name + "/Error",
                     Utilities::split_string_list(component_names),
                     std::vector<std::set<VectorTools::NormType>>(
