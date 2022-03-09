@@ -1,0 +1,117 @@
+set Coupling quadrature order              = 3
+set Console level                          = 4
+set Delta refinement                       = 0
+set Finite element degree (ambient space)  = 1
+set Finite element degree (embedded space) = 1
+set Finite element degree (configuration)  = 1
+subsection Grid
+  subsection Ambient
+    set Input name                = hyper_cube
+    set Arguments                 = 0: 1: false
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 5
+  end
+  subsection Refinement
+    set Number of refinement cycles = 6
+    subsection Marking strategy
+      set Refinement strategy                    = global
+      set Refinement parameter                   = 0.3
+      set Coarsening parameter                   = 0.1
+      set Maximum number of cells (if available) = 0
+      set Minimum level                          = 0
+      set Maximum level                          = 0
+    end
+    subsection Error estimator
+      set Estimator type = kelly
+      set Component mask = 
+    end
+  end
+  subsection Embedded
+    set Input name                = hyper_sphere
+    set Arguments                 = 0.3, 0.3: 0.2
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 4
+    subsection Mapping
+      set Initial configuration or displacement = 
+      set Use displacement                      = false
+    end
+  end
+end
+subsection Functions
+  set Embedded value = -ln(0.2)
+  set Forcing term   = 0
+  set Exact solution = -ln(max((x-.3)^2+(y-.3)^2, 0.2^2))/2
+end
+subsection Boundary conditions
+  set Boundary id sets (u)         = -1
+  set Selected components (u)      = u
+  set Boundary condition types (u) = dirichlet
+  set Expressions (u)              = -ln(max((x-.3)^2+(y-.3)^2, 0.2^2))/2
+end
+subsection Solver
+  subsection Stiffness
+    set Solver name            = cg
+    set Solver control type    = tolerance
+    set Maximum iterations     = 1000
+    set Consecutive iterations = 2
+    set Absolute tolerance     = 1e-12
+    set Relative tolerance     = 1e-06
+    set Log history            = false
+    set Log result             = false
+    set Use direct solver      = true
+  end
+  subsection Stiffness AMG
+    set Elliptic              = true
+    set High Order Elements   = false
+    set Number of cycles      = 1
+    set w-cycle               = false
+    set Aggregation threshold = 0.0001
+    set Smoother sweeps       = 2
+    set Smoother overlap      = 0
+    set Output details        = false
+    set Smoother type         = Chebyshev
+    set Coarse type           = Amesos-KLU
+  end
+  subsection Schur
+    set Solver name            = gmres
+    set Solver control type    = iteration_number
+    set Maximum iterations     = 1000
+    set Consecutive iterations = 2
+    set Absolute tolerance     = 1e-12
+    set Relative tolerance     = 1e-06
+    set Log history            = false
+    set Log result             = true
+  end
+end
+subsection Data out
+  subsection Space
+    set Problem base name      = output/space
+    set Output partitioning    = true
+    set Output material ids    = true
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+  subsection Embedded
+    set Problem base name      = output/embedded
+    set Output partitioning    = true
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+end
+subsection Error table
+  set Enable computation of the errors = true
+  set Error precision                  = 3
+  set Error file name                  = 
+  set List of error norms to compute   = L2_norm, Linfty_norm, H1_norm
+  set Exponent for p-norms             = 2
+  set Extra columns                    = cells, dofs
+  set Rate key                         = dofs
+  set Rate mode                        = reduction_rate_log2
+end
