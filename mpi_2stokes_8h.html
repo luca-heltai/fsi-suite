@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fluid structure interaction suite: include/pdes/serial/stokes.h File Reference</title>
+<title>Fluid structure interaction suite: include/pdes/mpi/stokes.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('stokes_8h.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('mpi_2stokes_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -106,57 +106,29 @@ $(document).ready(function(){initNavTree('stokes_8h.html',''); initResizable(); 
 <div class="title">stokes.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">deal.II/base/config.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/function_8h.html">deal.II/base/function.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html">deal.II/base/parameter_acceptor.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/parsed__convergence__table_8h.html">deal.II/base/parsed_convergence_table.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/quadrature__lib_8h.html">deal.II/base/quadrature_lib.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">deal.II/dofs/dof_handler.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/dof__tools_8h.html">deal.II/dofs/dof_tools.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/fe__q_8h.html">deal.II/fe/fe_q.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/fe_2fe__values_8h.html">deal.II/fe/fe_values.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__generator_8h.html">deal.II/grid/grid_generator.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">deal.II/grid/tria.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/affine__constraints_8h.html">deal.II/lac/affine_constraints.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/block__sparse__matrix_8h.html">deal.II/lac/block_sparse_matrix.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/block__sparsity__pattern_8h.html">deal.II/lac/block_sparsity_pattern.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/block__vector_8h.html">deal.II/lac/block_vector.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/full__matrix_8h.html">deal.II/lac/full_matrix.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/precondition_8h.html">deal.II/lac/precondition.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/solver__cg_8h.html">deal.II/lac/solver_cg.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/numerics_2data__out_8h.html">deal.II/numerics/data_out.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/matrix__tools_8h.html">deal.II/numerics/matrix_tools.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
-<code>#include &quot;<a class="el" href="amg_8h_source.html">parsed_lac/amg.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="amg_8h_source.html">parsed_lac/amg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="ilu_8h_source.html">parsed_lac/ilu.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="inverse__operator_8h_source.html">parsed_lac/inverse_operator.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="boundary__conditions_8h_source.html">parsed_tools/boundary_conditions.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="constants_8h_source.html">parsed_tools/constants.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="data__out_8h_source.html">parsed_tools/data_out.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="finite__element_8h_source.html">parsed_tools/finite_element.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="function_8h_source.html">parsed_tools/function.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="grid__generator_8h_source.html">parsed_tools/grid_generator.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="grid__refinement_8h_source.html">parsed_tools/grid_refinement.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="linear__problem_8h_source.html">pdes/mpi/linear_problem.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for stokes.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="stokes_8h__incl.svg" width="4566" height="1036"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="mpi_2stokes_8h__incl.svg" width="4742" height="783"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="stokes_8h__dep__incl.svg" width="334" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="mpi_2stokes_8h__dep__incl.svg" width="376" height="112"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
-<p><a href="stokes_8h_source.html">Go to the source code of this file.</a></p>
+<p><a href="mpi_2stokes_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html">PDEs::Serial::Stokes&lt; dim &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_m_p_i_1_1_stokes.html">PDEs::MPI::Stokes&lt; dim &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_stokes.html" title="Solve the Stokes problem, in parallel.">Stokes</a> problem, in parallel.  <a href="class_p_d_es_1_1_m_p_i_1_1_stokes.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -164,7 +136,7 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespace_p_d_es"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es.html">PDEs</a></td></tr>
 <tr class="memdesc:namespace_p_d_es"><td class="mdescLeft">&#160;</td><td class="mdescRight">We collect in this namespace all <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> that are relevant to Fluid Structure Interaction Problems. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_p_d_es_1_1_serial"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_serial.html">PDEs::Serial</a></td></tr>
+<tr class="memitem:namespace_p_d_es_1_1_m_p_i"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_m_p_i.html">PDEs::MPI</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
@@ -172,8 +144,8 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="dir_0d1c0d82d2331d1d942d7c7f0084aeb2.html">serial</a></li><li class="navelem"><a class="el" href="stokes_8h.html">stokes.h</a></li>
-    <li class="footer">Generated on Wed Mar 9 2022 23:08:09 for Fluid structure interaction suite by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="dir_7ac85db751091b31b06a51e40fc82221.html">mpi</a></li><li class="navelem"><a class="el" href="mpi_2stokes_8h.html">stokes.h</a></li>
+    <li class="footer">Generated on Wed Mar 9 2022 23:13:22 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

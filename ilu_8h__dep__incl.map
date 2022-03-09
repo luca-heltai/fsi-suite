@@ -1,7 +1,10 @@
 <map id="include/parsed_lac/ilu.h" name="include/parsed_lac/ilu.h">
-<area shape="rect" id="node1" title=" " alt="" coords="183,5,325,47"/>
-<area shape="rect" id="node2" href="$stokes_8h.html" title=" " alt="" coords="90,95,234,136"/>
-<area shape="rect" id="node5" href="$ilu_8cc.html" title=" " alt="" coords="259,102,436,129"/>
-<area shape="rect" id="node3" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="5,184,145,225"/>
-<area shape="rect" id="node4" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="170,191,327,218"/>
+<area shape="rect" id="node1" title=" " alt="" coords="411,5,553,47"/>
+<area shape="rect" id="node2" href="$mpi_2stokes_8h.html" title=" " alt="" coords="195,102,385,129"/>
+<area shape="rect" id="node5" href="$serial_2stokes_8h.html" title=" " alt="" coords="410,95,554,136"/>
+<area shape="rect" id="node8" href="$ilu_8cc.html" title=" " alt="" coords="579,102,756,129"/>
+<area shape="rect" id="node3" href="$source_2pdes_2mpi_2stokes_8cc.html" title=" " alt="" coords="5,191,199,218"/>
+<area shape="rect" id="node4" href="$apps_2mpi_2stokes_8cc.html" title=" " alt="" coords="223,191,370,218"/>
+<area shape="rect" id="node6" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="407,184,547,225"/>
+<area shape="rect" id="node7" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="571,191,729,218"/>
 </map>

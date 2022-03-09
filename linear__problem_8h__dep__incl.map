@@ -1,10 +1,13 @@
 <map id="include/pdes/mpi/linear_problem.h" name="include/pdes/mpi/linear_problem.h">
-<area shape="rect" id="node1" title=" " alt="" coords="445,5,619,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="737,5,911,47"/>
 <area shape="rect" id="node2" href="$mpi_2linear__elasticity_8h.html" title=" " alt="" coords="217,95,391,136"/>
-<area shape="rect" id="node5" href="$mpi_2poisson_8h.html" title=" " alt="" coords="433,102,631,129"/>
-<area shape="rect" id="node8" href="$linear__problem_8cc.html" title=" " alt="" coords="656,95,827,136"/>
+<area shape="rect" id="node5" href="$mpi_2poisson_8h.html" title=" " alt="" coords="615,102,814,129"/>
+<area shape="rect" id="node8" href="$mpi_2stokes_8h.html" title=" " alt="" coords="838,102,1029,129"/>
+<area shape="rect" id="node11" href="$linear__problem_8cc.html" title=" " alt="" coords="1053,95,1224,136"/>
 <area shape="rect" id="node3" href="$source_2pdes_2mpi_2linear__elasticity_8cc.html" title=" " alt="" coords="5,184,176,225"/>
 <area shape="rect" id="node4" href="$apps_2mpi_2linear__elasticity_8cc.html" title=" " alt="" coords="201,191,407,218"/>
 <area shape="rect" id="node6" href="$source_2pdes_2mpi_2poisson_8cc.html" title=" " alt="" coords="431,191,633,218"/>
 <area shape="rect" id="node7" href="$apps_2mpi_2poisson_8cc.html" title=" " alt="" coords="657,191,812,218"/>
+<area shape="rect" id="node9" href="$source_2pdes_2mpi_2stokes_8cc.html" title=" " alt="" coords="837,191,1030,218"/>
+<area shape="rect" id="node10" href="$apps_2mpi_2stokes_8cc.html" title=" " alt="" coords="1055,191,1201,218"/>
 </map>

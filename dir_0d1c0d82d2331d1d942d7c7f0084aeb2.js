@@ -10,7 +10,7 @@ var dir_0d1c0d82d2331d1d942d7c7f0084aeb2 =
     [ "reduced_lagrange.h", "reduced__lagrange_8h.html", [
       [ "ReducedLagrange", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", "class_p_d_es_1_1_serial_1_1_reduced_lagrange" ]
     ] ],
-    [ "stokes.h", "stokes_8h.html", [
+    [ "stokes.h", "serial_2stokes_8h.html", [
       [ "Stokes", "class_p_d_es_1_1_serial_1_1_stokes.html", "class_p_d_es_1_1_serial_1_1_stokes" ]
     ] ]
 ];

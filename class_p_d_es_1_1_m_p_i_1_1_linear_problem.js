@@ -15,6 +15,7 @@ var class_p_d_es_1_1_m_p_i_1_1_linear_problem =
     [ "assemble_system", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#af385421ff753393601144f10550bcd1e", null ],
     [ "output_results", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a34ad48d87928884cfc4798ac1d279f41", null ],
     [ "print_system_info", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#ad8d1823c88f3504981652760396778f8", null ],
+    [ "add_constraints_call_back", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a92d56aec54a8388dd18d3944e7351ae3", null ],
     [ "setup_system_call_back", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a3171ce8e44f4003fe2babc0326baed38", null ],
     [ "assemble_system_call_back", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a56fcb96424cfb8cf4a531c974931b0cf", null ],
     [ "add_data_vector", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#ae4c061036aa1c95dda8f41e66ebc1cff", null ],
