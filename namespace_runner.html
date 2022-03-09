@@ -130,9 +130,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ac51aec1466e5b74ac80fbd07c3b36ce1"><td class="memTemplParams" colspan="2">template&lt;template&lt; int &gt; class Class&gt; </td></tr>
 <tr class="memitem:ac51aec1466e5b74ac80fbd07c3b36ce1"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_runner.html#ac51aec1466e5b74ac80fbd07c3b36ce1">run_dim</a> (char **argv)</td></tr>
 <tr class="separator:ac51aec1466e5b74ac80fbd07c3b36ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a274c0ea5f42938eb0e41bd55474a812c"><td class="memTemplParams" colspan="2">template&lt;template&lt; int, int &gt; class Class&gt; </td></tr>
-<tr class="memitem:a274c0ea5f42938eb0e41bd55474a812c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_runner.html#a274c0ea5f42938eb0e41bd55474a812c">run_all</a> (char **argv)</td></tr>
-<tr class="separator:a274c0ea5f42938eb0e41bd55474a812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Gather some functions and classes typically used in the <code><a class="el" href="dof__plotter_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main()</a></code> of the FSI-suite applications. </p>
@@ -218,7 +215,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="runner_8h_source.html#l00282">run_all()</a>, <a class="el" href="runner_8h_source.html#l00233">run_codim()</a>, <a class="el" href="runner_8h_source.html#l00266">run_dim()</a>, and <a class="el" href="runner_8h_source.html#l00250">run_dim_noone()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="runner_8h_source.html#l00233">run_codim()</a>, <a class="el" href="runner_8h_source.html#l00266">run_dim()</a>, and <a class="el" href="runner_8h_source.html#l00250">run_dim_noone()</a>.</p>
 
 </div>
 </div>
@@ -457,30 +454,6 @@ template&lt;template&lt; int &gt; class Class&gt; </div>
 
 </div>
 </div>
-<a id="a274c0ea5f42938eb0e41bd55474a812c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a274c0ea5f42938eb0e41bd55474a812c">&#9670;&nbsp;</a></span>run_all()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;template&lt; int, int &gt; class Class&gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">void Runner::run_all </td>
-          <td>(</td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00282">282</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim()</a>, and <a class="el" href="runner_8cc_source.html#l00030">get_dimensions_and_parameter_files()</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_runner_html_a14cbfc0b1df16b1f06fea0129a1c2ed8"><div class="ttname"><a href="namespace_runner.html#a14cbfc0b1df16b1f06fea0129a1c2ed8">Runner::setup_parameters_from_cli</a></div><div class="ttdeci">int setup_parameters_from_cli(char **argv, const std::string &amp;input_parameter_file, const std::string &amp;output_parameter_file)</div><div class="ttdoc">Setup the ParameterAcceptor::prm according to the parameters specified in the parameter file,...</div><div class="ttdef"><b>Definition:</b> <a href="runner_8cc_source.html#l00150">runner.cc:150</a></div></div>
@@ -491,7 +464,7 @@ template&lt;template&lt; int, int &gt; class Class&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_runner.html">Runner</a></li>
-    <li class="footer">Generated on Tue Mar 1 2022 16:18:24 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 9 2022 23:08:09 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -178,7 +178,7 @@ $(document).ready(function(){initNavTree('enum_8h_source.html',''); initResizabl
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;          std::vector&lt;std::string&gt; value_names;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          value_names =</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structPatterns_1_1Tools_1_1Convert.html">Patterns::Tools::Convert</a>&lt;decltype(value_names)&gt;::to_value(s, p);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> name : value_names)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;name : value_names)</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;              <span class="keyword">auto</span> v = magic_enum::enum_cast&lt;T&gt;(name);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;              <span class="keywordflow">if</span> (v.has_value())</div>
@@ -216,7 +216,7 @@ $(document).ready(function(){initNavTree('enum_8h_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_8e8448d9aef603b86753e7cb911804a9.html">parsed_tools</a></li><li class="navelem"><a class="el" href="enum_8h.html">enum.h</a></li>
-    <li class="footer">Generated on Tue Mar 1 2022 16:18:23 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 9 2022 23:08:08 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -83,6 +83,7 @@ digraph "include/parsed_tools/symbolic_function.h"
   Node21 [label="deal.II/base/mpi_tags.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$mpi__tags_8h.html",tooltip=" "];
   Node21 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node2 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node22 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

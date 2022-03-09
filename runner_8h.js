@@ -9,6 +9,5 @@ var runner_8h =
     [ "run", "runner_8h.html#aaed149dffa73f0cdbfccc2ea84373909", null ],
     [ "run_codim", "runner_8h.html#a16d79552ecf265da67dd88a75d52e504", null ],
     [ "run_dim_noone", "runner_8h.html#a79f2dbcf2d8e4c5b723ae6c5766ddbe4", null ],
-    [ "run_dim", "runner_8h.html#ac51aec1466e5b74ac80fbd07c3b36ce1", null ],
-    [ "run_all", "runner_8h.html#a274c0ea5f42938eb0e41bd55474a812c", null ]
+    [ "run_dim", "runner_8h.html#ac51aec1466e5b74ac80fbd07c3b36ce1", null ]
 ];

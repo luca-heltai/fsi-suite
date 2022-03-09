@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('runner_8h.html',''); initResizable(); 
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for runner.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="runner_8h__incl.svg" width="1755" height="887"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="runner_8h__incl.svg" width="1806" height="887"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -165,9 +165,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ac51aec1466e5b74ac80fbd07c3b36ce1"><td class="memTemplParams" colspan="2">template&lt;template&lt; int &gt; class Class&gt; </td></tr>
 <tr class="memitem:ac51aec1466e5b74ac80fbd07c3b36ce1"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_runner.html#ac51aec1466e5b74ac80fbd07c3b36ce1">Runner::run_dim</a> (char **argv)</td></tr>
 <tr class="separator:ac51aec1466e5b74ac80fbd07c3b36ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a274c0ea5f42938eb0e41bd55474a812c"><td class="memTemplParams" colspan="2">template&lt;template&lt; int, int &gt; class Class&gt; </td></tr>
-<tr class="memitem:a274c0ea5f42938eb0e41bd55474a812c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_runner.html#a274c0ea5f42938eb0e41bd55474a812c">Runner::run_all</a> (char **argv)</td></tr>
-<tr class="separator:a274c0ea5f42938eb0e41bd55474a812c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aefdbbdebbd4ccd3661fd17b00bca633d"></a>
@@ -206,16 +203,15 @@ Functions</h2></td></tr>
 <div class="line">      Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv);         \</div>
 <div class="line">      const <span class="keyword">auto</span> [dim, spacedim, in_file, out_file] =                          <a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">\</a></div>
 <div class="line"><a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">        Runner::get_dimensions_and_parameter_files</a>(argv);                      \</div>
-<div class="line">      if (Runner::run_dim&lt;Class&gt;(argv))                                        \</div>
-<div class="line">        {}                                                                     \</div>
-<div class="line">      else                                                                     \</div>
-<div class="line">        AssertThrow(<span class="keyword">false</span>, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(dim, spacedim)); \</div>
+<div class="line">      RUN_DIM(Class, dim, spacedim, in_file, out_file)                         \</div>
+<div class="line">      else <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(<span class="keyword">false</span>,                                                  \</div>
+<div class="line">                       <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(dim, spacedim));             \</div>
 <div class="line">    }                                                                          \</div>
 <div class="line">  STANDARD_CATCH()</div>
 </div><!-- fragment -->
 <p>Body of the main function for a program that runs a simulation in dimension dim only using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class, dimensions 1, 2, and 3. </p>
 
-<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00336">336</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00337">337</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
 
 </div>
 </div>
@@ -255,10 +251,9 @@ Functions</h2></td></tr>
 <div class="line">      Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv);         \</div>
 <div class="line">      const <span class="keyword">auto</span> [dim, spacedim, in_file, out_file] =                          <a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">\</a></div>
 <div class="line"><a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">        Runner::get_dimensions_and_parameter_files</a>(argv);                      \</div>
-<div class="line">      if (Runner::run_dim_noone&lt;Class&gt;(argv))                                  \</div>
-<div class="line">        {}                                                                     \</div>
-<div class="line">      else                                                                     \</div>
-<div class="line">        AssertThrow(<span class="keyword">false</span>, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(dim, spacedim)); \</div>
+<div class="line">      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \</div>
+<div class="line">      else <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(<span class="keyword">false</span>,                                                  \</div>
+<div class="line">                       <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(dim, spacedim));             \</div>
 <div class="line">    }                                                                          \</div>
 <div class="line">  STANDARD_CATCH()</div>
 </div><!-- fragment -->
@@ -304,13 +299,21 @@ Functions</h2></td></tr>
 <div class="line">      Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv);         \</div>
 <div class="line">      const <span class="keyword">auto</span> [dim, spacedim, in_file, out_file] =                          <a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">\</a></div>
 <div class="line"><a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">        Runner::get_dimensions_and_parameter_files</a>(argv);                      \</div>
-<div class="line">      Runner::run_all&lt;Class&gt;(argv);                                            \</div>
+<div class="line">      RUN_DIM(Class, dim, spacedim, in_file, out_file)                         \</div>
+<div class="line">      else RUN_CODIM(                                                          \</div>
+<div class="line">        Class,                                                                 \</div>
+<div class="line">        dim,                                                                   \</div>
+<div class="line">        spacedim,                                                              \</div>
+<div class="line">        in_file,                                                               \</div>
+<div class="line">        out_file) <span class="keywordflow">else</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(<span class="keyword">false</span>,                                      \</div>
+<div class="line">                                   <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(                 \</div>
+<div class="line">                                     dim, spacedim));                          \</div>
 <div class="line">    }                                                                          \</div>
 <div class="line">  STANDARD_CATCH()</div>
 </div><!-- fragment -->
 <p>Body of the main function for a program that runs a simulation in dimension dim only using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class, dimensions 1, 2, and 3. </p>
 
-<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00371">371</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00370">370</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
 
 </div>
 </div>
@@ -350,19 +353,22 @@ Functions</h2></td></tr>
 <div class="line">      Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv);         \</div>
 <div class="line">      const <span class="keyword">auto</span> [dim, spacedim, in_file, out_file] =                          <a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">\</a></div>
 <div class="line"><a class="code" href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">        Runner::get_dimensions_and_parameter_files</a>(argv);                      \</div>
-<div class="line">      if (Runner::run_dim_noone&lt;Class&gt;(argv))                                  \</div>
-<div class="line">        {}                                                                     \</div>
-<div class="line">      else <span class="keywordflow">if</span> (Runner::run_codim&lt;Class&gt;(argv))                                 \</div>
-<div class="line">        {}                                                                     \</div>
-<div class="line">      else                                                                     \</div>
-<div class="line">        AssertThrow(<span class="keyword">false</span>, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(dim, spacedim)); \</div>
+<div class="line">      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \</div>
+<div class="line">      else RUN_CODIM(                                                          \</div>
+<div class="line">        Class,                                                                 \</div>
+<div class="line">        dim,                                                                   \</div>
+<div class="line">        spacedim,                                                              \</div>
+<div class="line">        in_file,                                                               \</div>
+<div class="line">        out_file) <span class="keywordflow">else</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(<span class="keyword">false</span>,                                      \</div>
+<div class="line">                                   <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a>(                 \</div>
+<div class="line">                                     dim, spacedim));                          \</div>
 <div class="line">    }                                                                          \</div>
 <div class="line">  STANDARD_CATCH()</div>
 </div><!-- fragment -->
 <p>Body of the main function for a program that runs a simulation in dimensions two or three using the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a> class. </p>
 <p>Not instantiated for dimension one. </p>
 
-<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00387">387</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="runner_8h_source.html#l00394">394</a> of file <a class="el" href="runner_8h_source.html">runner.h</a>.</p>
 
 </div>
 </div>
@@ -370,11 +376,12 @@ Functions</h2></td></tr>
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_runner_html_ac1be6b3fad507262c1852b0990f1d086"><div class="ttname"><a href="namespace_runner.html#ac1be6b3fad507262c1852b0990f1d086">Runner::get_dimensions_and_parameter_files</a></div><div class="ttdeci">std::tuple&lt; int, int, std::string, std::string &gt; get_dimensions_and_parameter_files(char **argv)</div><div class="ttdoc">Parse from the command line the parameter file names (both input and output) and the running dimensio...</div><div class="ttdef"><b>Definition:</b> <a href="runner_8cc_source.html#l00030">runner.cc:30</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga0afe68b498005146071a9aaada9d8dcd"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga0afe68b498005146071a9aaada9d8dcd">ExcImpossibleInDimSpacedim</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcImpossibleInDimSpacedim(int arg1, int arg2)</div></div>
+<div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="runner_8h.html">runner.h</a></li>
-    <li class="footer">Generated on Tue Mar 1 2022 16:18:23 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 9 2022 23:08:09 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
