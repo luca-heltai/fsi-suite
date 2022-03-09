@@ -28,7 +28,7 @@ using namespace dealii;
 
 TYPED_TEST(DimSpacedimTesterNoOne, GridRefinementGlobal)
 {
-  Triangulation<this->dim, this->spacedim> tria;
+  Triangulation<TestFixture::dim, TestFixture::spacedim> tria;
   GridGenerator::hyper_cube(tria);
   tria.refine_global(1);
   ParsedTools::GridRefinement pgr("/");
@@ -39,5 +39,5 @@ TYPED_TEST(DimSpacedimTesterNoOne, GridRefinementGlobal)
   pgr.mark_cells(criteria, tria);
   tria.execute_coarsening_and_refinement();
 
-  ASSERT_EQ(tria.n_active_cells(), std::pow(2, (this->dim * 2)));
+  ASSERT_EQ(tria.n_active_cells(), std::pow(2, (TestFixture::dim * 2)));
 }

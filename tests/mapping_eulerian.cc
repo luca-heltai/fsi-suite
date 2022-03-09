@@ -37,18 +37,18 @@ using namespace dealii;
 
 TYPED_TEST(DimSpacedimTester, MappingEulerian)
 {
-  Triangulation<this->dim, this->spacedim> tria;
+  Triangulation<TestFixture::dim, TestFixture::spacedim> tria;
   GridGenerator::hyper_cube(tria);
-  FESystem<this->dim, this->spacedim> fe(FE_Q<this->dim, this->spacedim>(1),
-                                         this->spacedim);
+  FESystem<TestFixture::dim, TestFixture::spacedim> fe(
+    FE_Q<TestFixture::dim, TestFixture::spacedim>(1), TestFixture::spacedim);
 
-  DoFHandler<this->dim, this->spacedim> dh(tria);
+  DoFHandler<TestFixture::dim, TestFixture::spacedim> dh(tria);
   dh.distribute_dofs(fe);
 
   Vector<double> displacement(dh.n_dofs());
 
-  ParsedTools::MappingEulerian<this->dim, this->spacedim> mff(dh,
-                                                              this->id("mff"));
+  ParsedTools::MappingEulerian<TestFixture::dim, TestFixture::spacedim> mff(
+    dh, this->id("mff"));
 
   ASSERT_NO_THROW({
     parse(R"(
@@ -62,15 +62,15 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
   ASSERT_DOUBLE_EQ(displacement.linfty_norm(), 1.);
 
   // Now the mapping should be the same as the displacement
-  Point<this->dim> p;
-  for (unsigned int i = 0; i < this->dim; ++i)
+  Point<TestFixture::dim> p;
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     p[i] = 0.5;
 
   // Try transforming the point to real space
   auto real_p = mff().transform_unit_to_real_cell(tria.begin_active(), p);
 
   // In this case, the points should coincide
-  for (unsigned int i = 0; i < this->dim; ++i)
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     ASSERT_DOUBLE_EQ(real_p[i], p[i]);
 
   // Try the same, but using the displacement.
@@ -90,7 +90,7 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
   real_p = mff().transform_unit_to_real_cell(tria.begin_active(), p);
 
   // In this case, the points should coincide
-  for (unsigned int i = 0; i < this->dim; ++i)
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     ASSERT_DOUBLE_EQ(real_p[i], p[i]);
 
   std::string id_expression;
@@ -98,7 +98,7 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
     // The id expression
     const std::string id[3] = {"x", "y", "z"};
     std::string       sep   = "";
-    for (unsigned int i = 0; i < this->spacedim; ++i)
+    for (unsigned int i = 0; i < TestFixture::spacedim; ++i)
       {
         id_expression += sep + id[i];
         sep = "; ";
@@ -119,7 +119,7 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
   real_p = mff().transform_unit_to_real_cell(tria.begin_active(), p);
 
   // In this case, the points should coincide
-  for (unsigned int i = 0; i < this->dim; ++i)
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     ASSERT_DOUBLE_EQ(real_p[i], p[i]);
 
   // Now try the same with a displacement field, i.e., the configuration is
@@ -137,7 +137,7 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
   real_p = mff().transform_unit_to_real_cell(tria.begin_active(), p);
 
   // In this case, the points should *not* coincide
-  for (unsigned int i = 0; i < this->dim; ++i)
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     ASSERT_DOUBLE_EQ(real_p[i], 2 * p[i]);
 }
 
@@ -145,18 +145,19 @@ TYPED_TEST(DimSpacedimTester, MappingEulerian)
 
 TYPED_TEST(DimTesterNoOne, MappingEulerianSimplices)
 {
-  Triangulation<this->dim, this->spacedim> tria;
+  Triangulation<TestFixture::dim, TestFixture::spacedim> tria;
   GridGenerator::subdivided_hyper_cube_with_simplices(tria, 1);
-  FESystem<this->dim, this->spacedim> fe(
-    FE_SimplexP<this->dim, this->spacedim>(1), this->spacedim);
+  FESystem<TestFixture::dim, TestFixture::spacedim> fe(
+    FE_SimplexP<TestFixture::dim, TestFixture::spacedim>(1),
+    TestFixture::spacedim);
 
-  DoFHandler<this->dim, this->spacedim> dh(tria);
+  DoFHandler<TestFixture::dim, TestFixture::spacedim> dh(tria);
   dh.distribute_dofs(fe);
 
   Vector<double> displacement(dh.n_dofs());
 
-  ParsedTools::MappingEulerian<this->dim, this->spacedim> mff(dh,
-                                                              this->id("mff"));
+  ParsedTools::MappingEulerian<TestFixture::dim, TestFixture::spacedim> mff(
+    dh, this->id("mff"));
 
   ASSERT_NO_THROW({
     parse(R"(
@@ -170,8 +171,8 @@ TYPED_TEST(DimTesterNoOne, MappingEulerianSimplices)
   ASSERT_DOUBLE_EQ(displacement.linfty_norm(), 1.);
 
   // Now the mapping should be the same as the displacement
-  Point<this->dim> p;
-  for (unsigned int i = 0; i < this->dim; ++i)
+  Point<TestFixture::dim> p;
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     p[i] = 0.5;
 
   // Try transforming the point to real space
@@ -179,7 +180,7 @@ TYPED_TEST(DimTesterNoOne, MappingEulerianSimplices)
 
   // In this case, the points should coincide, since the reference simplex is
   // the same as the first active cell
-  for (unsigned int i = 0; i < this->dim; ++i)
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     ASSERT_DOUBLE_EQ(real_p[i], p[i]);
 
   // Try the same, but using the displacement.
@@ -200,7 +201,7 @@ TYPED_TEST(DimTesterNoOne, MappingEulerianSimplices)
     // The id expression
     const std::string id[3] = {"x", "y", "z"};
     std::string       sep   = "";
-    for (unsigned int i = 0; i < this->spacedim; ++i)
+    for (unsigned int i = 0; i < TestFixture::spacedim; ++i)
       {
         id_expression += sep + id[i];
         sep = "; ";
@@ -221,7 +222,7 @@ TYPED_TEST(DimTesterNoOne, MappingEulerianSimplices)
   real_p = mff().transform_unit_to_real_cell(tria.begin_active(), p);
 
   // In this case, the points should coincide
-  for (unsigned int i = 0; i < this->dim; ++i)
+  for (unsigned int i = 0; i < TestFixture::dim; ++i)
     ASSERT_DOUBLE_EQ(real_p[i], p[i]);
 
   // Now try the same with a displacement field, i.e., the configuration is

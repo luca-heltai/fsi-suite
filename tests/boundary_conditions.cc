@@ -29,7 +29,7 @@ using namespace dealii;
 
 TYPED_TEST(DimTester, BoundaryConditions)
 {
-  ParsedTools::BoundaryConditions<this->dim> pbc(this->id("pbc"));
+  ParsedTools::BoundaryConditions<TestFixture::dim> pbc(this->id("pbc"));
 
   // Same as standard construction
   parse(R"(
@@ -99,7 +99,7 @@ TYPED_TEST(DimTester, BoundaryConditions)
 
 TEST_F(TwoTester, BoundaryConditionsVector)
 {
-  ParsedTools::BoundaryConditions<this->dim> pbc(
+  ParsedTools::BoundaryConditions<dim> pbc(
     "/",
     "u, u, p",
     {{dealii::numbers::internal_face_boundary_id}},

@@ -60,7 +60,7 @@ namespace ParsedTools
       auto last       = std::unique(blocks.begin(), blocks.end());
       blocks.erase(last, blocks.end());
       std::vector<unsigned int> multiplicities;
-      for (const auto c : blocks)
+      for (const auto &c : blocks)
         multiplicities.push_back(
           std::count(components.begin(), components.end(), c));
 

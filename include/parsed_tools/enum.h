@@ -76,7 +76,7 @@ namespace dealii
           std::vector<std::string> value_names;
           value_names =
             Patterns::Tools::Convert<decltype(value_names)>::to_value(s, p);
-          for (const auto name : value_names)
+          for (const auto &name : value_names)
             {
               auto v = magic_enum::enum_cast<T>(name);
               if (v.has_value())

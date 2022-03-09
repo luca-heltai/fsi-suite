@@ -29,9 +29,10 @@ using namespace dealii;
 
 TYPED_TEST(DimTester, SymbolicFunctionConstruction)
 {
-  ParsedTools::SymbolicFunction<this->dim> function("/sf" + this->id(), "x");
+  ParsedTools::SymbolicFunction<TestFixture::dim> function("/sf" + this->id(),
+                                                           "x");
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
 
   ASSERT_EQ(function().value(p), 1.0);
@@ -40,11 +41,12 @@ TYPED_TEST(DimTester, SymbolicFunctionConstruction)
 
 TYPED_TEST(DimTester, SymbolicFunctionParsing)
 {
-  ParsedTools::SymbolicFunction<this->dim> function("/sf2" + this->id(), "x");
+  ParsedTools::SymbolicFunction<TestFixture::dim> function("/sf2" + this->id(),
+                                                           "x");
 
   this->parse("set Function expression = 2*x", function);
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
 
   ASSERT_EQ(function().value(p), 2.0);
@@ -56,9 +58,10 @@ TYPED_TEST(DimTester, SymbolicFunctionAndConstants)
 {
   ParsedTools::Constants constants("/sc3" + this->id(), {"a"}, {2.0});
 
-  ParsedTools::SymbolicFunction<this->dim> function("/sc3" + this->id(), "a*x");
+  ParsedTools::SymbolicFunction<TestFixture::dim> function("/sc3" + this->id(),
+                                                           "a*x");
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
   function().update_user_substitution_map(constants);
 
@@ -73,10 +76,10 @@ TYPED_TEST(DimTester, SymbolicFunctionAndConstants)
 
 TYPED_TEST(DimTester, SymbolicFunctionParsingVectorValued)
 {
-  ParsedTools::SymbolicFunction<this->dim> function("/sf1" + this->id(),
-                                                    "x; 2*x");
+  ParsedTools::SymbolicFunction<TestFixture::dim> function("/sf1" + this->id(),
+                                                           "x; 2*x");
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
 
   ASSERT_EQ(function().value(p, 0), 1.0);

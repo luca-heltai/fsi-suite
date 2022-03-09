@@ -30,10 +30,12 @@ using namespace dealii;
 
 TEST(Preconditioners, Instantiate)
 {
-  ParsedLAC::AMGPreconditioner      amg("AMG");
+  ParsedLAC::AMGPreconditioner amg("AMG");
+#ifdef DEAL_II_TRILINOS_WITH_MUELU
   ParsedLAC::AMGMueLuPreconditioner amg_muelu("AMG Muelu");
-  ParsedLAC::ILUPreconditioner      ilu("ILU");
-  ParsedLAC::JacobiPreconditioner   jacobi("Jacobi");
+#endif
+  ParsedLAC::ILUPreconditioner    ilu("ILU");
+  ParsedLAC::JacobiPreconditioner jacobi("Jacobi");
 
   ParameterAcceptor::initialize();
 }

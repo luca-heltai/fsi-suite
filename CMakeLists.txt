@@ -36,7 +36,7 @@ endforeach( sourcefile ${APP_SOURCES} )
 FIND_PACKAGE(GTest)
 FILE(GLOB test_files tests/*cc)
 ADD_EXECUTABLE(gtest ${test_files})
-TARGET_LINK_LIBRARIES(gtest ${GTEST_LIBRARY} fsi-lib)   
+TARGET_LINK_LIBRARIES(gtest ${GTEST_LIBRARIES} fsi-lib)
 DEAL_II_SETUP_TARGET(gtest)
 
 INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS} ./include/)

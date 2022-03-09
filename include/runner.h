@@ -237,9 +237,9 @@ namespace Runner
       get_dimensions_and_parameter_files(argv);
 
     if (dim == 1 && spacedim == 2)
-      run<Class<1, 2>>(argv, in_file, out_file);
+      Runner::run<Class<1, 2>>(argv, in_file, out_file);
     else if (dim == 2 && spacedim == 3)
-      run<Class<2, 3>>(argv, in_file, out_file);
+      Runner::run<Class<2, 3>>(argv, in_file, out_file);
     else
       return false;
     return true;
@@ -253,9 +253,9 @@ namespace Runner
     const auto [dim, spacedim, in_file, out_file] =
       get_dimensions_and_parameter_files(argv);
     if (dim == 2 && spacedim == 2)
-      run<Class<2>>(argv, in_file, out_file);
+      Runner::run<Class<2>>(argv, in_file, out_file);
     else if (dim == 3 && spacedim == 3)
-      run<Class<3>>(argv, in_file, out_file);
+      Runner::run<Class<3>>(argv, in_file, out_file);
     else
       return false;
     return true;
@@ -269,34 +269,35 @@ namespace Runner
     const auto [dim, spacedim, in_file, out_file] =
       get_dimensions_and_parameter_files(argv);
     if (dim == 1 && spacedim == 2)
-      run<Class<1>>(argv, in_file, out_file);
+      Runner::run<Class<1>>(argv, in_file, out_file);
     else if (run_dim_noone<Class>(argv))
       {}
     else
       return false;
     return true;
   }
-
-  template <template <int, int> class Class>
-  void
-  run_all(char **argv)
-  {
-    // Get the dimension and spacedimension from the command line
-    const auto [dim, spacedim, in_file, out_file] =
-      get_dimensions_and_parameter_files(argv);
-
-    if (dim == 1 && spacedim == 1)
-      run<Class<1, 1>>(argv, in_file, out_file);
-    else if (run_codim<Class>(argv))
-      {}
-    else if (run_dim_noone<Class>(argv))
-      {}
-    else
-      AssertThrow(false, dealii::ExcImpossibleInDimSpacedim(dim, spacedim));
-  }
 } // namespace Runner
 
 #ifndef DOXYGEN
+
+#  define RUN_CODIM(Class, dim, spacedim, in_file, out_file) \
+    if (dim == 1 && spacedim == 2)                           \
+      Runner::run<Class<1, 2>>(argv, in_file, out_file);     \
+    else if (dim == 2 && spacedim == 3)                      \
+      Runner::run<Class<2, 3>>(argv, in_file, out_file);
+
+#  define RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file) \
+    if (dim == 2 && spacedim == 2)                                \
+      Runner::run<Class<2>>(argv, in_file, out_file);             \
+    else if (dim == 3 && spacedim == 3)                           \
+      Runner::run<Class<3>>(argv, in_file, out_file);
+
+
+#  define RUN_DIM(Class, dim, spacedim, in_file, out_file) \
+    if (dim == 1 && spacedim == 1)                         \
+      Runner::run<Class<1>>(argv, in_file, out_file);      \
+    else                                                   \
+      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)
 
 // Standard catch block for all snippets
 #  define STANDARD_CATCH()                                                \
@@ -339,10 +340,9 @@ namespace Runner
       dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
       const auto [dim, spacedim, in_file, out_file] =                          \
         Runner::get_dimensions_and_parameter_files(argv);                      \
-      if (Runner::run_dim<Class>(argv))                                        \
-        {}                                                                     \
-      else                                                                     \
-        AssertThrow(false, dealii::ExcImpossibleInDimSpacedim(dim, spacedim)); \
+      RUN_DIM(Class, dim, spacedim, in_file, out_file)                         \
+      else AssertThrow(false,                                                  \
+                       dealii::ExcImpossibleInDimSpacedim(dim, spacedim));     \
     }                                                                          \
   STANDARD_CATCH()
 
@@ -356,10 +356,9 @@ namespace Runner
       dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
       const auto [dim, spacedim, in_file, out_file] =                          \
         Runner::get_dimensions_and_parameter_files(argv);                      \
-      if (Runner::run_dim_noone<Class>(argv))                                  \
-        {}                                                                     \
-      else                                                                     \
-        AssertThrow(false, dealii::ExcImpossibleInDimSpacedim(dim, spacedim)); \
+      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \
+      else AssertThrow(false,                                                  \
+                       dealii::ExcImpossibleInDimSpacedim(dim, spacedim));     \
     }                                                                          \
   STANDARD_CATCH()
 
@@ -374,7 +373,15 @@ namespace Runner
       dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
       const auto [dim, spacedim, in_file, out_file] =                          \
         Runner::get_dimensions_and_parameter_files(argv);                      \
-      Runner::run_all<Class>(argv);                                            \
+      RUN_DIM(Class, dim, spacedim, in_file, out_file)                         \
+      else RUN_CODIM(                                                          \
+        Class,                                                                 \
+        dim,                                                                   \
+        spacedim,                                                              \
+        in_file,                                                               \
+        out_file) else AssertThrow(false,                                      \
+                                   dealii::ExcImpossibleInDimSpacedim(         \
+                                     dim, spacedim));                          \
     }                                                                          \
   STANDARD_CATCH()
 
@@ -390,12 +397,15 @@ namespace Runner
       dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
       const auto [dim, spacedim, in_file, out_file] =                          \
         Runner::get_dimensions_and_parameter_files(argv);                      \
-      if (Runner::run_dim_noone<Class>(argv))                                  \
-        {}                                                                     \
-      else if (Runner::run_codim<Class>(argv))                                 \
-        {}                                                                     \
-      else                                                                     \
-        AssertThrow(false, dealii::ExcImpossibleInDimSpacedim(dim, spacedim)); \
+      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \
+      else RUN_CODIM(                                                          \
+        Class,                                                                 \
+        dim,                                                                   \
+        spacedim,                                                              \
+        in_file,                                                               \
+        out_file) else AssertThrow(false,                                      \
+                                   dealii::ExcImpossibleInDimSpacedim(         \
+                                     dim, spacedim));                          \
     }                                                                          \
   STANDARD_CATCH()
 #endif

@@ -36,13 +36,13 @@ using namespace dealii;
 
 TYPED_TEST(DimSpacedimTester, DataOut)
 {
-  Triangulation<this->dim, this->spacedim> tria;
+  Triangulation<TestFixture::dim, TestFixture::spacedim> tria;
   GridGenerator::hyper_cube(tria);
-  FE_Q<this->dim, this->spacedim>       fe(2);
-  DoFHandler<this->dim, this->spacedim> dof_handler(tria);
+  FE_Q<TestFixture::dim, TestFixture::spacedim>       fe(2);
+  DoFHandler<TestFixture::dim, TestFixture::spacedim> dof_handler(tria);
   dof_handler.distribute_dofs(fe);
   Vector<double> solution(dof_handler.n_dofs());
-  ParsedTools::DataOut<this->dim, this->spacedim> pdo(this->id());
+  ParsedTools::DataOut<TestFixture::dim, TestFixture::spacedim> pdo(this->id());
   ParameterAcceptor::initialize();
 
   auto check_and_remove = [](const std::string &str) {
@@ -61,7 +61,7 @@ TYPED_TEST(DimSpacedimTester, DataOut)
 
   {
     std::stringstream ss;
-    ss << "pdo_" << this->dim << "_" << this->spacedim;
+    ss << "pdo_" << TestFixture::dim << "_" << TestFixture::spacedim;
     auto fname = ss.str();
 
     this->parse("set Problem base name = " + fname, pdo);

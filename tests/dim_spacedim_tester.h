@@ -161,9 +161,9 @@ using TwoThreeTester = DimSpacedimTester<TwoThree>;
 using ThreeTester    = DimSpacedimTester<ThreeThree>;
 
 
-TYPED_TEST_CASE(DimSpacedimTester, DimSpacedimTypes);
-TYPED_TEST_CASE(DimTester, DimTypes);
-TYPED_TEST_CASE(DimSpacedimTesterNoOne, DimSpacedimTypesNoOne);
-TYPED_TEST_CASE(DimTesterNoOne, DimTypesNoOne);
+TYPED_TEST_SUITE(DimSpacedimTester, DimSpacedimTypes, );
+TYPED_TEST_SUITE(DimTester, DimTypes, );
+TYPED_TEST_SUITE(DimSpacedimTesterNoOne, DimSpacedimTypesNoOne, );
+TYPED_TEST_SUITE(DimTesterNoOne, DimTypesNoOne, );
 
 #endif // fsi_dim_spacedim_tester_h

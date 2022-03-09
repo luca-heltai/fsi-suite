@@ -26,9 +26,9 @@ using namespace dealii;
 
 TYPED_TEST(DimTester, FunctionConstruction)
 {
-  ParsedTools::Function<this->dim> function(this->id("fun"), "x");
+  ParsedTools::Function<TestFixture::dim> function(this->id("fun"), "x");
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
 
   ASSERT_EQ(function.value(p), 1.0);
@@ -37,14 +37,14 @@ TYPED_TEST(DimTester, FunctionConstruction)
 
 TYPED_TEST(DimTester, FunctionParsing)
 {
-  ParsedTools::Function<this->dim> function(this->id("fun"), "x");
+  ParsedTools::Function<TestFixture::dim> function(this->id("fun"), "x");
 
   this->parse(R"(
     set Function expression = 2*x
   )",
               function);
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
 
   ASSERT_EQ(function.value(p), 2.0);
@@ -54,9 +54,9 @@ TYPED_TEST(DimTester, FunctionParsing)
 
 TYPED_TEST(DimTester, FunctionParsingVectorValued)
 {
-  ParsedTools::Function<this->dim> function(this->id("fun"), "x; 2*x");
+  ParsedTools::Function<TestFixture::dim> function(this->id("fun"), "x; 2*x");
 
-  Point<this->dim> p;
+  Point<TestFixture::dim> p;
   p[0] = 1.0;
 
   ASSERT_EQ(function.value(p, 0), 1.0);

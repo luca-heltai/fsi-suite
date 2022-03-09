@@ -26,8 +26,8 @@ using namespace dealii;
 
 TYPED_TEST(DimSpacedimTester, GenerateHyperCube)
 {
-  ParsedTools::GridGenerator<this->dim, this->spacedim> pgg("/");
-  Triangulation<this->dim, this->spacedim>              tria;
+  ParsedTools::GridGenerator<TestFixture::dim, TestFixture::spacedim> pgg("/");
+  Triangulation<TestFixture::dim, TestFixture::spacedim>              tria;
 
   this->parse(R"(
     set Input name = hyper_cube
@@ -35,8 +35,8 @@ TYPED_TEST(DimSpacedimTester, GenerateHyperCube)
     set Transform to simplex grid = false
   )");
 
-  std::string grid_name = "grid_" + std::to_string(this->dim) +
-                          std::to_string(this->spacedim) + ".msh";
+  std::string grid_name = "grid_" + std::to_string(TestFixture::dim) +
+                          std::to_string(TestFixture::spacedim) + ".msh";
 
   this->parse("set Output name = " + grid_name);
 
@@ -54,8 +54,8 @@ TYPED_TEST(DimSpacedimTester, GenerateHyperCube)
 
 TYPED_TEST(DimSpacedimTester, GenerateHyperCubeSimplex)
 {
-  ParsedTools::GridGenerator<this->dim, this->spacedim> pgg("/");
-  Triangulation<this->dim, this->spacedim>              tria;
+  ParsedTools::GridGenerator<TestFixture::dim, TestFixture::spacedim> pgg("/");
+  Triangulation<TestFixture::dim, TestFixture::spacedim>              tria;
 
   this->parse(R"(
     set Input name = hyper_cube
@@ -63,8 +63,8 @@ TYPED_TEST(DimSpacedimTester, GenerateHyperCubeSimplex)
     set Transform to simplex grid = true
   )");
 
-  std::string grid_name = "grid_" + std::to_string(this->dim) +
-                          std::to_string(this->spacedim) + ".msh";
+  std::string grid_name = "grid_" + std::to_string(TestFixture::dim) +
+                          std::to_string(TestFixture::spacedim) + ".msh";
 
   this->parse("set Output name = " + grid_name);
 
@@ -75,15 +75,15 @@ TYPED_TEST(DimSpacedimTester, GenerateHyperCubeSimplex)
 
   // And the grid should have 8 elements in 2d, and 24 in 3d
   const unsigned int dims[] = {0, 1, 8, 24};
-  ASSERT_EQ(tria.n_active_cells(), dims[this->dim]);
+  ASSERT_EQ(tria.n_active_cells(), dims[TestFixture::dim]);
 }
 
 
 
 TYPED_TEST(DimTesterNoOne, GenerateHyperL)
 {
-  ParsedTools::GridGenerator<this->dim, this->spacedim> pgg("/");
-  Triangulation<this->dim, this->spacedim>              tria;
+  ParsedTools::GridGenerator<TestFixture::dim, TestFixture::spacedim> pgg("/");
+  Triangulation<TestFixture::dim, TestFixture::spacedim>              tria;
 
   this->parse(R"(
     set Input name = hyper_L
@@ -91,8 +91,8 @@ TYPED_TEST(DimTesterNoOne, GenerateHyperL)
     set Transform to simplex grid = false
   )");
 
-  std::string grid_name = "grid_" + std::to_string(this->dim) +
-                          std::to_string(this->spacedim) + ".msh";
+  std::string grid_name = "grid_" + std::to_string(TestFixture::dim) +
+                          std::to_string(TestFixture::spacedim) + ".msh";
 
   this->parse("set Output name = " + grid_name);
 

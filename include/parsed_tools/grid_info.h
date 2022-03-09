@@ -182,11 +182,10 @@ namespace ParsedTools
     void
     build_info(const dealii::Triangulation<dim, spacedim> &tria)
     {
-      this->info_level = info_level;
-      n_active_cells   = tria.n_active_cells();
-      n_vertices       = tria.n_vertices();
-      n_used_vertices  = tria.n_used_vertices();
-      n_levels         = tria.n_levels();
+      n_active_cells  = tria.n_active_cells();
+      n_vertices      = tria.n_vertices();
+      n_used_vertices = tria.n_used_vertices();
+      n_levels        = tria.n_levels();
       if (info_level > 0)
         {
           n_active_cells_at_level.resize(n_levels);
