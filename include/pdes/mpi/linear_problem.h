@@ -186,6 +186,11 @@ namespace PDEs
       /**
        * A signal that is called at the end of setup_system()
        */
+      boost::signals2::signal<void()> add_constraints_call_back;
+
+      /**
+       * A signal that is called at the end of setup_system()
+       */
       boost::signals2::signal<void()> setup_system_call_back;
 
       /**

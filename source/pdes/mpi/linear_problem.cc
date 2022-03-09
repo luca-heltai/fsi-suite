@@ -26,6 +26,8 @@
 
 using namespace dealii;
 
+using ParsedTools::Components::join;
+
 namespace PDEs
 {
   namespace MPI
@@ -56,23 +58,18 @@ namespace PDEs
       , inverse_operator(section_name + "/Solver")
       , preconditioner(section_name + "/Solver/AMG preconditioner")
       , forcing_term(section_name + "/Functions",
-                     ParsedTools::Components::join(
-                       std::vector<std::string>(n_components, "0"),
-                       ";"),
+                     join(std::vector<std::string>(n_components, "0"), ";"),
                      "Forcing term")
       , exact_solution(section_name + "/Functions",
-                       ParsedTools::Components::join(
-                         std::vector<std::string>(n_components, "0"),
-                         ";"),
+                       join(std::vector<std::string>(n_components, "0"), ";"),
                        "Exact solution")
       , boundary_conditions(section_name + "/Boundary conditions",
                             component_names,
                             {{numbers::internal_face_boundary_id}},
                             {"all"},
                             {ParsedTools::BoundaryConditionType::dirichlet},
-                            {ParsedTools::Components::join(
-                              std::vector<std::string>(n_components, "0"),
-                              ";")})
+                            {join(std::vector<std::string>(n_components, "0"),
+                                  ";")})
       , error_table(section_name + "/Error",
                     Utilities::split_string_list(component_names),
                     std::vector<std::set<VectorTools::NormType>>(
@@ -136,6 +133,9 @@ namespace PDEs
       // them later on.
       boundary_conditions.apply_essential_boundary_conditions(dof_handler,
                                                               constraints);
+
+      // If necessary, derived functions can add constraints to the system here.
+      add_constraints_call_back();
       constraints.close();
 
       const auto blocks =
