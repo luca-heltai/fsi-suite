@@ -102,11 +102,13 @@ namespace PDEs
         space_grid, finite_element_degree);
 
       embedded_fe = ParsedTools::Components::get_lagrangian_finite_element(
-        embedded_grid, embedded_space_finite_element_degree);
+        embedded_grid,
+        embedded_space_finite_element_degree,
+        embedded_space_finite_element_degree == 0 ? -1 : 0);
 
       const auto embedded_base_fe =
         ParsedTools::Components::get_lagrangian_finite_element(
-          embedded_grid, embedded_space_finite_element_degree);
+          embedded_grid, embedded_configuration_finite_element_degree);
 
       embedded_configuration_fe.reset(
         new FESystem<dim, spacedim>(*embedded_base_fe, spacedim));
