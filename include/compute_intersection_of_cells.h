@@ -79,17 +79,17 @@ compute_intersection_of_cells<2, 4>(
 
 /**
  * @brief Intersect `cell0` and `cell1` and construct a `Quadrature<spacedim>` of degree `degree``
- *        over the intersection. Mappings for both cells are in `mapping0` and
- * `mapping1`, respectively.
+ *        over the intersection, i.e. in the real space. Mappings for both cells are in `mapping0` and
+*         `mapping1`, respectively.
  *
  * @tparam dim0
  * @tparam dim1
  * @tparam spacedim
- * @param cell0
- * @param cell1
- * @param degree
- * @param mapping0
- * @param mapping1
+ * @param cell0 A `cell_iteratator` to the first cell
+ * @param cell1 A `cell_iteratator` to the first cell
+ * @param degree The degree of the `Quadrature` you want to build there
+ * @param mapping0 The `Mapping` object describing the first cell
+ * @param mapping1 The `Mapping` object describing the second cell
  * @return Quadrature<spacedim>
  */
 template <int dim0, int dim1, int spacedim>
