@@ -79,8 +79,8 @@ compute_intersection_of_cells<2, 4>(
 
 /**
  * @brief Intersect `cell0` and `cell1` and construct a `Quadrature<spacedim>` of degree `degree``
- *        over the intersection, i.e. in the real space. Mappings for both cells are in `mapping0` and
-*         `mapping1`, respectively.
+ *        over the intersection. Mappings for both cells are in `mapping0` and
+ *        `mapping1`, respectively.
  *
  * @tparam dim0
  * @tparam dim1
@@ -135,7 +135,11 @@ compute_intersection(
 
   if (n_vertices_cell0 == 4 && n_vertices_cell1 == 4)
     { // rectangle-rectangle
+<<<<<<< HEAD
       const auto inters =
+=======
+      auto inters =
+>>>>>>> 8ab2e06c (Compute intersections with CGAL and get Quadratures)
         compute_intersection_of_cells<4, 4>(vertices_cell0, vertices_cell1);
 
       if (inters)
@@ -164,7 +168,11 @@ compute_intersection(
 
   else if (n_vertices_cell0 == 2 && n_vertices_cell1 == 4)
     { // segment-rectangle
+<<<<<<< HEAD
       const auto inters =
+=======
+      auto inters =
+>>>>>>> 8ab2e06c (Compute intersections with CGAL and get Quadratures)
         compute_intersection_of_cells<2, 4>(vertices_cell0, vertices_cell1);
 
       if (inters)
