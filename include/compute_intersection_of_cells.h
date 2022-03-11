@@ -135,7 +135,7 @@ compute_intersection(
 
   if (n_vertices_cell0 == 4 && n_vertices_cell1 == 4)
     { // rectangle-rectangle
-      auto inters =
+      const auto inters =
         compute_intersection_of_cells<4, 4>(vertices_cell0, vertices_cell1);
 
       if (inters)
@@ -164,7 +164,7 @@ compute_intersection(
 
   else if (n_vertices_cell0 == 2 && n_vertices_cell1 == 4)
     { // segment-rectangle
-      auto inters =
+      const auto inters =
         compute_intersection_of_cells<2, 4>(vertices_cell0, vertices_cell1);
 
       if (inters)
