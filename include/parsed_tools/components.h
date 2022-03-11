@@ -71,7 +71,7 @@ namespace ParsedTools
       const int                                   continuity = 0);
 
     /**
-     * Return a Qadrature object that can be used on the given Triangulation
+     * Return a Quadrature object that can be used on the given Triangulation
      * cells.
      *
      * @param tria Triangulation to insepct
@@ -85,7 +85,7 @@ namespace ParsedTools
                         const unsigned int                          degree);
 
     /**
-     * Return a Qadrature object that can be used on the given Triangulation
+     * Return a Quadrature object that can be used on the given Triangulation
      * faces.
      *
      * @param tria Triangulation to insepct
@@ -125,7 +125,7 @@ namespace ParsedTools
      * Build component names from block names and multiplicities.
      */
     std::string
-    blocks_to_names(const std::vector<std::string> & components,
+    blocks_to_names(const std::vector<std::string>  &components,
                     const std::vector<unsigned int> &multiplicities);
 
     /**

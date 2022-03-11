@@ -102,3 +102,15 @@ add_custom_target(copyright
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
     COMMENT "Updating copyright information" VERBATIM)
 MESSAGE("-- Configured Copyright")
+
+
+
+
+# CGAL 
+set(CGAL_DO_NOT_WARN_ABOUT_CMAKE_BUILD_TYPE "TRUE")
+find_package(CGAL)
+if(CGAL_FOUND)
+    MESSAGE("-- Configured CGAL")
+else()
+    MESSAGE("Can't find CGAL Library")
+endif(CGAL_FOUND)
