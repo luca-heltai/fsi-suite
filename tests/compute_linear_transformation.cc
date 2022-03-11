@@ -35,6 +35,16 @@ struct Test_function
   }
 };
 
+template <int degree>
+struct Test_polynomial
+{
+  double
+  operator()(const Point<2> &p)
+  {
+    return std::pow(p[0], degree) + std::pow(p[1], degree);
+  }
+};
+
 TEST(DimTester, Integral_Over_Line)
 {
   constexpr int dim      = 1;
@@ -61,6 +71,47 @@ TEST(DimTester, Integral_Over_Line)
     {
       sum += fun(quad_points[q]) * JxW[q];
     }
+
+  EXPECT_NEAR(sum, correct_result, 1e-12);
+}
+
+TEST(DimTester, Integration_Test_Codimension0)
+{
+  constexpr unsigned int dim0   = 2;
+  constexpr unsigned int dim1   = 2;
+  constexpr unsigned int degree = 4;
+
+
+  // Here we integarte over the triangle given by the following vertices.
+  // In practice, we have x \in [0,4] and y \in [8-2x]
+  std::array<Point<dim0>, 3> vertices{Point<dim0>{0., 0.},
+                                      Point<dim0>{4., 0.},
+                                      Point<dim0>{0., 8.}};
+
+
+  // The correct value is computed using
+  // https://www.wolframalpha.com/widgets/view.jsp?id=f5f3cbf14f4f5d6d2085bf2d0fb76e8a
+  const double correct_result = 69632. / 15.;
+
+  const auto quad_rule_over_triangle =
+    compute_linear_transformation<dim0, dim1, 3>(QGaussSimplex<dim0>(degree),
+                                                 vertices);
+
+
+
+  // Actual integration test. The template parameter degree determines the
+  // exponent of the polynomial function to be integrated, and the exactness of
+  // the quadrature formula
+  Test_polynomial<degree> func;
+  const auto             &xq      = quad_rule_over_triangle.get_points();
+  const auto             &JxW     = quad_rule_over_triangle.get_weights();
+  const unsigned int      n_q_pts = JxW.size();
+  double                  sum     = 0.;
+  for (unsigned int q = 0; q < n_q_pts; ++q)
+    {
+      sum += func(xq[q]) * JxW[q];
+    }
+
 
   EXPECT_NEAR(sum, correct_result, 1e-12);
 }
