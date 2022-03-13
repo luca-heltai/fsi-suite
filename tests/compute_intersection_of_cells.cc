@@ -194,4 +194,3 @@ TEST(DimTester, Area_Test_Codimension0)
 
   EXPECT_NEAR(sum, correct_result, 1e-12);
 }
-

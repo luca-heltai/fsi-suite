@@ -76,7 +76,6 @@ TEST(DimTester, Integral_Over_Line)
 }
 
 
-
 TEST(DimTester, Integration_Test_Codimension0)
 {
   constexpr unsigned int dim0   = 2;
