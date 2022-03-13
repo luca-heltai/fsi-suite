@@ -5,6 +5,7 @@ RUN cd /usr/local/src \
     && cd fsi-suite && mkdir build && cd build \
     && cmake -GNinja \
     -DCMAKE_INSTALL_PREFIX="/usr/local" \
+    -DCMAKE_BUILD_TYPE=DebugRelease \
     .. \  
     && ninja install \
     && cd ../ && rm -rf .git build
