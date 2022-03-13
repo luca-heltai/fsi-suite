@@ -42,30 +42,32 @@
  */
 
 
-using namespace dealii;
 
 template <int dim, int spacedim, int N>
-Quadrature<spacedim>
-compute_linear_transformation(const Quadrature<dim>                &quadrature,
-                              const std::array<Point<spacedim>, N> &vertices)
+dealii::Quadrature<spacedim>
+compute_linear_transformation(
+  const dealii::Quadrature<dim>                &quadrature,
+  const std::array<dealii::Point<spacedim>, N> &vertices)
 {
-  const auto CellType = ReferenceCell::n_vertices_to_type(
+  const auto CellType = dealii::ReferenceCell::n_vertices_to_type(
     dim, N); // understand the kind of reference cell from vertices
 
-  Triangulation<dim, spacedim> tria;
-  GridGenerator::reference_cell(
+  dealii::Triangulation<dim, spacedim> tria;
+  dealii::GridGenerator::reference_cell(
     tria, CellType); // store reference cell stored in tria
-  FE_Nothing<dim, spacedim> dummy_fe(CellType);
-  DoFHandler<dim, spacedim> dh(tria);
+  dealii::FE_Nothing<dim, spacedim> dummy_fe(CellType);
+  dealii::DoFHandler<dim, spacedim> dh(tria);
   dh.distribute_dofs(dummy_fe);
-  FEValues<dim, spacedim> fe_values(
-    dummy_fe, quadrature, update_quadrature_points | update_JxW_values);
-  const auto &cell = dh.begin_active();
+  dealii::FEValues<dim, spacedim> fe_values(dummy_fe,
+                                            quadrature,
+                                            dealii::update_quadrature_points |
+                                              dealii::update_JxW_values);
+  const auto                     &cell = dh.begin_active();
   for (unsigned int i = 0; i < N; ++i)
     cell->vertex(i) = vertices[i]; // the vertices of this real cell
   fe_values.reinit(cell);
 
-  return Quadrature<spacedim>(
+  return dealii::Quadrature<spacedim>(
     fe_values.get_quadrature_points(),
     fe_values.get_JxW_values()); // points and weigths in the real space
 }

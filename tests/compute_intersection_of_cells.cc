@@ -13,7 +13,7 @@
 //
 // ---------------------------------------------------------------------
 
-#include "compute_intersection_of_cells.h"
+#include "../source/compute_intersection_of_cells.cc"
 
 #include "dim_spacedim_tester.h"
 
