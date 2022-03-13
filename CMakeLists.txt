@@ -11,38 +11,81 @@ DEAL_II_INITIALIZE_CACHED_VARIABLES()
 SET(CMAKE_MACOSX_RPATH 1)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
-# Common library files
+# Gather files, libraries, and apps
 file(GLOB LIB_SOURCES source/*.cc source/*/*.cc source/*/*/*.cc)
 file(GLOB LIB_HEADERS include/*.h include/*/*.h include/*/*/*.h)
-ADD_LIBRARY(fsi-lib SHARED ${LIB_SOURCES} ${LIB_HEADERS})
-DEAL_II_SETUP_TARGET(fsi-lib)
-
-
-# Variuous executables
 file(GLOB APP_SOURCES apps/*.cc apps/*/*.cc)
-foreach(sourcefile ${APP_SOURCES} )
-    # I used a simple string replace, to cut off .cpp.
-    get_filename_component(name ${sourcefile} NAME_WE)
-    IF(${sourcefile} MATCHES "mpi")
-        set(name mpi_${name})
+FILE(GLOB GTEST_FILES gtests/*cc)
+
+# Build both Release and Debug versions of library and executables
+SET(_d2_build_types "Release;Debug")
+SET(Release_postfix "")
+SET(Debug_postfix ".g")
+
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
+FOREACH(_build_type ${_d2_build_types})
+  # Postfix to use everywhere
+  SET(_p "${${_build_type}_postfix}")
+  # Only build this type, if deal.II was compiled with it.
+  IF(CMAKE_BUILD_TYPE MATCHES "${_build_type}" AND
+      DEAL_II_BUILD_TYPE MATCHES "${_build_type}")
+      MESSAGE("-- Found ${_build_type} version of deal.II.")
+
+      STRING(TOUPPER "${_build_type}" _BUILD_TYPE)
+  
+      # Setup library
+      SET(_lib "fsi-lib${_p}")
+      MESSAGE("-- Configuring library ${_lib}")
+
+      ADD_LIBRARY(${_lib} SHARED ${LIB_SOURCES} ${LIB_HEADERS})
+      DEAL_II_SETUP_TARGET(${_lib} ${_BUILD_TYPE})
+      INSTALL(TARGETS ${_lib})
+      SET(TEST_LIBRARIES_${_BUILD_TYPE} ${_lib})
+
+      # Now setup all the executables
+      foreach(sourcefile ${APP_SOURCES} )
+          # I used a simple string replace, to cut off .cpp.
+          get_filename_component(name ${sourcefile} NAME_WE)
+          IF(${sourcefile} MATCHES "mpi")
+              set(name mpi_${name})
+          endif()
+          # Add suffix
+          set(name ${name}${_p})
+          message("-- Configuring executable ${name}")
+          add_executable( ${name} ${sourcefile} )
+          # Make sure YourLib is linked to each app
+          target_link_libraries(${name} ${_lib})
+          DEAL_II_SETUP_TARGET(${name} ${_BUILD_TYPE})
+          INSTALL(TARGETS ${name})
+      endforeach( sourcefile ${APP_SOURCES} )
+
+      # Google tests testing
+      FIND_PACKAGE(GTest)
+      IF(GTest_FOUND)
+          include(GoogleTest)
+          set(fsi_test "fsi_test${_p}")
+          ADD_EXECUTABLE(${fsi_test} ${GTEST_FILES})
+          TARGET_LINK_LIBRARIES(${fsi_test} ${GTEST_LIBRARIES} ${_lib})
+          DEAL_II_SETUP_TARGET(${fsi_test} ${_BUILD_TYPE})
+          INSTALL(TARGETS ${fsi_test})
+
+          INCLUDE_DIRECTORIES(./include/ ${GTEST_INCLUDE_DIRS})
+
+          ENABLE_TESTING()
+          GTEST_DISCOVER_TESTS(${fsi_test})
+          MESSAGE("-- Configured Gtest executable ${fsi_test}")
+      ENDIF(GTest_FOUND)
     endif()
-    message("Preparing executable ${name}")
-    add_executable( ${name} ${sourcefile} )
-    # Make sure YourLib is linked to each app
-    target_link_libraries( ${name} fsi-lib)
-    DEAL_II_SETUP_TARGET(${name})
-endforeach( sourcefile ${APP_SOURCES} )
+endforeach()
 
-FIND_PACKAGE(GTest)
-FILE(GLOB test_files tests/*cc)
-ADD_EXECUTABLE(gtest ${test_files})
-TARGET_LINK_LIBRARIES(gtest ${GTEST_LIBRARIES} fsi-lib)
-DEAL_II_SETUP_TARGET(gtest)
+# Deal.II style testing
+IF(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/dealii_tests)
+  ADD_SUBDIRECTORY(dealii_tests)
+  ENABLE_TESTING()
+  MESSAGE("-- Configured deal.II testing framework")
+ENDIF()
 
-INCLUDE_DIRECTORIES(${GTEST_INCLUDE_DIRS} ./include/)
-
-ENABLE_TESTING()
-GTEST_DISCOVER_TESTS(gtest)
 
 # Doxygen
 find_package(Doxygen)

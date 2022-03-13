@@ -1,0 +1,10 @@
+FROM heltai/dealii:vscode
+
+RUN cd /usr/local/src \
+    && git clone https://github.com/luca-heltai/fsi-suite \
+    && cd fsi-suite && mkdir build && cd build \
+    && cmake -GNinja \
+    -DCMAKE_INSTALL_PREFIX="/usr/local" \
+    .. \  
+    && ninja install \
+    && cd ../ && rm -rf .git build
