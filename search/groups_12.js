@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['vector_20classes_23407',['Vector classes',['http://www.dealii.org/developer/doxygen/deal.II/group__Vectors.html',1,'']]],
-  ['vector_20memory_20management_23408',['Vector memory management',['http://www.dealii.org/developer/doxygen/deal.II/group__VMemory.html',1,'']]]
+  ['vector_20classes_23431',['Vector classes',['http://www.dealii.org/developer/doxygen/deal.II/group__Vectors.html',1,'']]],
+  ['vector_20memory_20management_23432',['Vector memory management',['http://www.dealii.org/developer/doxygen/deal.II/group__VMemory.html',1,'']]]
 ];
