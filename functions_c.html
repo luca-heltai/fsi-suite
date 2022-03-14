@@ -125,11 +125,11 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 , <a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html#a5a5f829a16f4930c8b6e08370aeea569">ParsedLAC::AMGPreconditioner</a>
 </li>
 <li>coefficient
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html#a6d69e02857350160afe9bd0d6c3ac5dc">PDEs::MPI::LinearElasticity&lt; dim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#ab146a1032ed5309ad7a7844118d9bb0b">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#ab146a1032ed5309ad7a7844118d9bb0b">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
 </li>
 <li>comm
 : <a class="el" href="class_parsed_tools_1_1_data_out.html#aab584e6ed10eb89a3e35cb109ca2fc0a">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_scoped_l_a_c_initializer.html#a6a58bff090c05e11ea6ffb734e193064">ScopedLACInitializer</a>
 </li>
 <li>component_blocks
 : <a class="el" href="class_parsed_tools_1_1_finite_element.html#a4f5dc1204618f5cdfc3da8c428fbbb48">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
@@ -141,9 +141,8 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 : <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#a5c9a43e40157ab2496466f0b7007541c">ParsedTools::BoundaryConditions&lt; spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_data_out.html#a97db6138ff6e1fdd91680b6b17068825">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_finite_element.html#a9cf844367fd0d621feaa6f2bc82a5003">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#ac728cb11b51e3d1e0c8ed8e20027835e">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#a61156c596f6ae94bbe08ce518f368222">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a8098a5f06e15426e3e0590ed2a9dad44">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a7c1db3c791a06572c75f44acd630f646">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a0e0e12142ba5bb0b9ed94b6687beb97b">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a48e27eae8d0c2aebaefeb277cdb0eddc">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a970dd5fe49c51e0f248bd3354f7c2a24">PDEs::Serial::Stokes&lt; dim &gt;</a>
@@ -153,7 +152,6 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 </li>
 <li>console_level
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#aa44e007156d7b4b74e76221d669163a4">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a19b4a615750a024b5c0be5392dc27d44">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a84e3a82b1e6fd52059f3a85f4c21e617">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#aeb27856d5c4e1657f02f92b8d39a0d25">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a14ab8e63e262c4996624eea6921489b1">PDEs::Serial::Stokes&lt; dim &gt;</a>
@@ -164,21 +162,17 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 <li>constant_substitution_map
 : <a class="el" href="class_parsed_tools_1_1_constants.html#a3fa995b82cd77e1f76a7287d254d494d">ParsedTools::Constants</a>
 </li>
-<li>constants
-: <a class="el" href="class_parsed_tools_1_1_constants.html#aee905125e86af3b2e7b3fef40392b282">ParsedTools::Constants</a>
-</li>
 <li>Constants()
 : <a class="el" href="class_parsed_tools_1_1_constants.html#a5c58e272e814cc2f43fffc04132c11fc">ParsedTools::Constants</a>
 </li>
 <li>constants
-: <a class="el" href="class_parsed_tools_1_1_function.html#a4e1ffce397aec2f94afd79c8d1edb967">ParsedTools::Function&lt; dim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html#a82d2f07fbda95f9fef127953cf25c11f">PDEs::MPI::LinearElasticity&lt; dim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_stokes.html#a5f407ded549b8619d29b6ec290a33c21">PDEs::MPI::Stokes&lt; dim &gt;</a>
+: <a class="el" href="class_parsed_tools_1_1_constants.html#aee905125e86af3b2e7b3fef40392b282">ParsedTools::Constants</a>
+, <a class="el" href="class_parsed_tools_1_1_function.html#a4e1ffce397aec2f94afd79c8d1edb967">ParsedTools::Function&lt; dim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a6ad04f95ba21e53f232d989aa4c816d2">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#ae314c1f86d765d51079a7c6467259fd6">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a00c07fba47e3d9d332947fa73b272fbf">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a03c87f75668a7ee93aa6e389135f764e">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#acc2cdd62ff573a25a9a5269903bc6984">PDEs::Serial::Stokes&lt; dim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_stokes.html#a29805d869000051e965e3996ef039570">PDEs::Stokes&lt; dim, LacType &gt;</a>
 </li>
 <li>constants_documentation
 : <a class="el" href="class_parsed_tools_1_1_constants.html#a5caed74e2ada66a657aac582460d9869">ParsedTools::Constants</a>
@@ -187,9 +181,8 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 : <a class="el" href="class_parsed_tools_1_1_constants.html#ad87c2f2e0e8df90728380c09e835f68a">ParsedTools::Constants</a>
 </li>
 <li>constraints
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a3d04b4f5e9a2f1ec9b1086e2016f0ffc">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#ac2474cd7b8ef2a8893446505787d55da">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#ae6cb33e79ce348dbe9a96f5340771fb2">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a9b8c0ddf6fd0f8ffd755e1ff8e1ea4ff">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ae6b8c43f2f964cc074215f587f0f1f78">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a33532632eb5211c711da57fe14e730fc">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#ae962d100a351f31920036f8aba9cf407">PDEs::Serial::Stokes&lt; dim &gt;</a>
@@ -201,13 +194,13 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 : <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a9c311ea47c3753ccab40ade8c0746115">ParsedLAC::InverseOperator</a>
 </li>
 <li>copy_one_cell()
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a0771990c4988d43f1a95647bdda6f100">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a9d78c959fa4edcec870a66e8cec387a8">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>CopyData
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html#aac279abb060c6ed4526d9c848235db7f">PDEs::MPI::LinearElasticity&lt; dim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a98c5e818326d39662395cfe72fd27b7b">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#ae88015096f1bf9a095a8412997b7fecf">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_stokes.html#a22e348a96dc6a15c5b26b56ef978644b">PDEs::MPI::Stokes&lt; dim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_elasticity.html#aa1734223f7764c064165379083c84d44">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#aa65f0738e2d8326db556a3988734a54c">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#acca5de2d440810aa7cb44c5fa6cd4666">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_stokes.html#a5e811b383394efa0f6137eb5992f7702">PDEs::Stokes&lt; dim, LacType &gt;</a>
 </li>
 <li>coupling_matrix
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#adde21842947d2930ecaa27d386662dc3">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
@@ -242,7 +235,7 @@ $(document).ready(function(){initNavTree('functions_c.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Mar 13 2022 13:23:57 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Mar 14 2022 17:23:29 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

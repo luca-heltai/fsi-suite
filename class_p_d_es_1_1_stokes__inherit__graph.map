@@ -1,0 +1,6 @@
+<map id="PDEs::Stokes&lt; dim, LacType &gt;" name="PDEs::Stokes&lt; dim, LacType &gt;">
+<area shape="rect" id="node1" title="Solve the Stokes problem, in parallel." alt="" coords="15,244,166,285"/>
+<area shape="rect" id="node2" href="$class_p_d_es_1_1_linear_problem.html" title=" " alt="" coords="5,155,176,196"/>
+<area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$classParameterAcceptor.html" title=" " alt="" coords="17,80,164,107"/>
+<area shape="rect" id="node4" href="/__w/fsi-suite/fsi-suite/deal.tag$classSubscriptor.html" title=" " alt="" coords="43,5,138,32"/>
+</map>

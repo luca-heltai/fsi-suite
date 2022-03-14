@@ -103,11 +103,11 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 <h3><a id="index_a"></a>- a -</h3><ul>
 <li>add_constraints_call_back
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a92d56aec54a8388dd18d3944e7351ae3">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a0f3b19c066941c5534cbf24d7fe61061">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>add_data_vector()
 : <a class="el" href="class_parsed_tools_1_1_data_out.html#aa1ca15467186508f98e94bd146308a43">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#ae4c061036aa1c95dda8f41e66ebc1cff">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#a56b579d2feab1c3dfdeb24918f6080f7">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>add_parameters()
 : <a class="el" href="class_parsed_l_a_c_1_1_a_m_g_mue_lu_preconditioner.html#aa0148e72e82c9f4fa140aa963ffbbb6c">ParsedLAC::AMGMueLuPreconditioner</a>
@@ -136,21 +136,20 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 : <a class="el" href="class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d">ParsedTools::BoundaryConditions&lt; spacedim &gt;</a>
 </li>
 <li>assemble_system()
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#af385421ff753393601144f10550bcd1e">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a6dddda912ddb5ad48a16285f168a8e6b">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a64d376e1cfcdf62c4b543ae559349e9b">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a90acff4f3fa076f154a8feca514e6f2a">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aae970a1310438deca022184ddba05c5a">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a2ad65f0e86742f0e6c73610bb0f71e77">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#aac4be0bd9e0391c8d11ad428ebd333a8">PDEs::Serial::Stokes&lt; dim &gt;</a>
 </li>
 <li>assemble_system_call_back
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a56fcb96424cfb8cf4a531c974931b0cf">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a50b94015420662d0882218bda5f7b038">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>assemble_system_one_cell()
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html#a9521fd986bad4601817f7682b0dd7f4c">PDEs::MPI::LinearElasticity&lt; dim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a3c30ff2cd63371b220d47496416c380f">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_elasticity.html#aafe6d8fa6264a1ffa1123fb73d43de92">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#ae591ecb42b46439de6a218d71d5bae12">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#ab69c265217db1be5762d1b4e571c9e88">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_stokes.html#a29b3588a3d929fa5831e618af17b3dbb">PDEs::MPI::Stokes&lt; dim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">PDEs::Stokes&lt; dim, LacType &gt;</a>
 </li>
 <li>attach_dof_handler()
 : <a class="el" href="class_parsed_tools_1_1_data_out.html#acc3a5b1731fe2feb146f868fc9d66b61">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
@@ -161,7 +160,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Mar 13 2022 13:23:57 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Mar 14 2022 17:23:29 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

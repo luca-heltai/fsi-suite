@@ -26,10 +26,14 @@ var hierarchy =
       [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ]
     ] ],
     [ "ParsedTools::GridInfo", "struct_parsed_tools_1_1_grid_info.html", null ],
+    [ "LAC::LAdealii", "struct_l_a_c_1_1_l_adealii.html", null ],
+    [ "LAC::LAPETSc", "struct_l_a_c_1_1_l_a_p_e_t_sc.html", null ],
+    [ "LAC::LATrilinos", "struct_l_a_c_1_1_l_a_trilinos.html", null ],
     [ "PatternBase", null, [
       [ "dealii::Patterns::UnsignedInteger", "classdealii_1_1_patterns_1_1_unsigned_integer.html", null ]
     ] ],
     [ "dealii::Patterns::Tools::internal::RankInfo< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d.html", null ],
+    [ "ScopedLACInitializer", "class_scoped_l_a_c_initializer.html", null ],
     [ "SourceClass", "http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html", [
       [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ]
     ] ],
@@ -47,12 +51,14 @@ var hierarchy =
         [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
         [ "ParsedTools::GridGenerator< dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
         [ "ParsedTools::GridGenerator< dim, dim >", "class_parsed_tools_1_1_grid_generator.html", null ],
-        [ "PDEs::MPI::LinearProblem< dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", [
-          [ "PDEs::MPI::LinearElasticity< dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html", null ],
-          [ "PDEs::MPI::Stokes< dim >", "class_p_d_es_1_1_m_p_i_1_1_stokes.html", null ]
+        [ "PDEs::LinearProblem< dim, dim, LAC::LAdealii >", "class_p_d_es_1_1_linear_problem.html", [
+          [ "PDEs::LinearElasticity< dim, spacedim, LacType >", "class_p_d_es_1_1_linear_elasticity.html", null ]
         ] ],
-        [ "PDEs::MPI::LinearProblem< dim, dim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", [
+        [ "PDEs::LinearProblem< dim, dim, LAC::LATrilinos >", "class_p_d_es_1_1_linear_problem.html", [
           [ "PDEs::MPI::Poisson< dim, spacedim >", "class_p_d_es_1_1_m_p_i_1_1_poisson.html", null ]
+        ] ],
+        [ "PDEs::LinearProblem< dim, dim, LacType >", "class_p_d_es_1_1_linear_problem.html", [
+          [ "PDEs::Stokes< dim, LacType >", "class_p_d_es_1_1_stokes.html", null ]
         ] ],
         [ "ParsedTools::MappingEulerian< dim, dim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "MeshHandler< dim, spacedim >", "class_mesh_handler.html", null ],
@@ -71,9 +77,8 @@ var hierarchy =
         [ "ParsedTools::MappingEulerian< dim, spacedim >", "class_parsed_tools_1_1_mapping_eulerian.html", null ],
         [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ],
         [ "ParsedTools::SymbolicFunction< dim >", "class_parsed_tools_1_1_symbolic_function.html", null ],
-        [ "PDEs::MPI::LinearProblem< dim, spacedim >", "class_p_d_es_1_1_m_p_i_1_1_linear_problem.html", null ],
+        [ "PDEs::LinearProblem< dim, spacedim, LacType >", "class_p_d_es_1_1_linear_problem.html", null ],
         [ "PDEs::Serial::DistributedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
-        [ "PDEs::Serial::LinearElasticity< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_linear_elasticity.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
         [ "PDEs::Serial::ReducedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", null ],
         [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ]

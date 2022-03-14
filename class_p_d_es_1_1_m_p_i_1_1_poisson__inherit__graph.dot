@@ -6,7 +6,7 @@ digraph "PDEs::MPI::Poisson&lt; dim, spacedim &gt;"
   node [fontname="Helvetica",fontsize="10",shape=record];
   Node1 [label="PDEs::MPI::Poisson\l\< dim, spacedim \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Solve the Poisson problem, in parallel."];
   Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node2 [label="PDEs::MPI::LinearProblem\l\< dim, dim \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_m_p_i_1_1_linear_problem.html",tooltip=" "];
+  Node2 [label="PDEs::LinearProblem\l\< dim, dim, LAC::LATrilinos \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_linear_problem.html",tooltip=" "];
   Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="ParameterAcceptor",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$classParameterAcceptor.html",tooltip=" "];
   Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

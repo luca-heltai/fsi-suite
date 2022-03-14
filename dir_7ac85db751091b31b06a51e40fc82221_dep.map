@@ -1,8 +1,4 @@
 <map id="include/pdes/mpi" name="include/pdes/mpi">
-<area shape="rect" id="node1" href="dir_7ac85db751091b31b06a51e40fc82221.html" title="mpi" alt="" coords="83,52,155,100"/>
-<area shape="rect" id="node2" href="dir_8e8448d9aef603b86753e7cb911804a9.html" title="parsed_tools" alt="" coords="5,148,111,196"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000006_000004.html" title="10" alt="" coords="81,130,99,145"/>
-<area shape="rect" id="node3" href="dir_65593bf93f1e4428cc81baf4bb94349f.html" title="parsed_lac" alt="" coords="135,148,227,196"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000006_000003.html" title="4" alt="" coords="158,121,167,135"/>
-<area shape="rect" id="clust1" href="dir_60faf9a10d52b04582224b9116454383.html" title="pdes" alt="" coords="73,16,166,111"/>
+<area shape="rect" id="node1" href="dir_7ac85db751091b31b06a51e40fc82221.html" title="mpi" alt="" coords="27,52,99,100"/>
+<area shape="rect" id="clust1" href="dir_60faf9a10d52b04582224b9116454383.html" title="pdes" alt="" coords="16,16,109,111"/>
 </map>

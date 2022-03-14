@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="ParsedTools::GridInfo",height=0.2,width=0.4,color="black",URL="$struct_parsed_tools_1_1_grid_info.html",tooltip="Gather information about a Triangulation."];
+  Node0 [label="LAC::LAdealii",height=0.2,width=0.4,color="black",URL="$struct_l_a_c_1_1_l_adealii.html",tooltip="Serial linear algebra, natively defined in deal.II."];
 }

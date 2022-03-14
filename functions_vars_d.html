@@ -104,9 +104,8 @@ $(document).ready(function(){initNavTree('functions_vars_d.html',''); initResiza
 <h3><a id="index_d"></a>- d -</h3><ul>
 <li>data_out
 : <a class="el" href="class_parsed_tools_1_1_data_out.html#ac43026ec5d3ad8a87af0027fee8c7998">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a8cc7f510ed042085fc9e531d0796984b">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#ab73f6940b462acb335b27f349a1e5a78">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a4ea41a175e4eba2d948ceca15261f0ff">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a938c61c91b49b71a2d1ab88d757d9870">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#ae3c7ed656b11adcd4afeca1fd734f7a6">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a9d146a87fd8358cdc4c38eb8751b909a">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#adb7ce6054e6a468adf27874a68263455">PDEs::Serial::Stokes&lt; dim &gt;</a>
@@ -119,19 +118,21 @@ $(document).ready(function(){initNavTree('functions_vars_d.html',''); initResiza
 : <a class="el" href="classdealii_1_1_patterns_1_1_unsigned_integer.html#af38e573a9c94d636bf0512d003abdc0c">dealii::Patterns::UnsignedInteger</a>
 </li>
 <li>displacement
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_elasticity.html#a862d8afb19d68922382828e61a4fa01d">PDEs::MPI::LinearElasticity&lt; dim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a04c7e5f9611f984e5eaac60ae6d7215e">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_elasticity.html#a74a5546ea280b7906e8c903249daaf5c">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>dof_handler
 : <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#af45af0382e570aad4a154dc7903ed7af">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#ae419dc276e74ce95b19fe70d2400a1d6">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#af5323a5f3e84b21b2d42b564739506ce">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#adc507ace1cda6234e4d7797ed339d52d">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#aa2af81a512cb00dd93ee0012f01bdba0">PDEs::Serial::Stokes&lt; dim &gt;</a>
 </li>
 <li>dofs_per_block
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a19e630c26fbb51fc45d4389badb46146">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#ae1da50a355267d64a943c0f18c7d1522">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a1eed6d2a835cd4de7871b03b2d75dd23">PDEs::Serial::Stokes&lt; dim &gt;</a>
+, <a class="el" href="class_scoped_l_a_c_initializer.html#ac0778645e7bf6c23eaadbfacd2954638">ScopedLACInitializer</a>
+</li>
+<li>dsp
+: <a class="el" href="class_scoped_l_a_c_initializer.html#a36779c33e460339c23299f868d1ed3a2">ScopedLACInitializer</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -139,7 +140,7 @@ $(document).ready(function(){initNavTree('functions_vars_d.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Mar 13 2022 13:23:57 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Mar 14 2022 17:23:29 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

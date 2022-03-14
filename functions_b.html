@@ -115,15 +115,35 @@ $(document).ready(function(){initNavTree('functions_b.html',''); initResizable()
 : <a class="el" href="class_parsed_tools_1_1_finite_element.html#a7792f19da71454299a7fa1ad5a112cf2">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
 </li>
 <li>block_solution
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a01accd463da3ca6e9cd954b9b4b0a915">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#ab217952947b45ba094f53fe52453fc3f">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
+<li>BlockMatrixType
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
+<li>BlockSparseMatrix
+: <a class="el" href="struct_l_a_c_1_1_l_adealii.html#a2110bf5154a14e3552f497ab2491ee44">LAC::LAdealii</a>
+, <a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#a8fd55828051148666e639c147932e097">LAC::LAPETSc</a>
+, <a class="el" href="struct_l_a_c_1_1_l_a_trilinos.html#a9a316c84c96a420512f7020ebdc738c1">LAC::LATrilinos</a>
+</li>
+<li>BlockSparsityPattern
+: <a class="el" href="struct_l_a_c_1_1_l_adealii.html#a15f0a1c3603fb1fa3eaf9584bc959e4d">LAC::LAdealii</a>
+, <a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#af1bcc6578f6939e0c6e29a1255ac187a">LAC::LAPETSc</a>
+, <a class="el" href="struct_l_a_c_1_1_l_a_trilinos.html#a818aea47c94d766d3cb86b86f83d3368">LAC::LATrilinos</a>
+</li>
+<li>BlockVector
+: <a class="el" href="struct_l_a_c_1_1_l_adealii.html#adc6526c59cb4c77722edb67ec20bc4b8">LAC::LAdealii</a>
+, <a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#a60b82ac93f5ad937677e7744f4678317">LAC::LAPETSc</a>
+, <a class="el" href="struct_l_a_c_1_1_l_a_trilinos.html#ae12e22884ba66d730213d82c1cc5bc41">LAC::LATrilinos</a>
+</li>
+<li>BlockVectorType
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#ab1e5921a82b93b76a6d39b6008d74cbf">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>bottom_parameter
 : <a class="el" href="class_parsed_tools_1_1_grid_refinement.html#aae7b9c647f31d5f4074c927514ad859a">ParsedTools::GridRefinement</a>
 </li>
 <li>boundary_conditions
-: <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_linear_problem.html#a420a9c7f963836b19226d9c2577f1a32">PDEs::MPI::LinearProblem&lt; dim, spacedim &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#aba056b60b103476903bc117e83cfc3ec">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#af66fae67fa46c8431dfd427f938e4017">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_linear_elasticity.html#a5d79498b1466a4b58af9c5c98efc38cf">PDEs::Serial::LinearElasticity&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#a7ae601606a24dccb01e073ddb64d9305">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acaf58d6fb67dc9a26f615705221066bb">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a2877b2f95832cbf5a355ac3bb7785c97">PDEs::Serial::Stokes&lt; dim &gt;</a>
@@ -143,7 +163,7 @@ $(document).ready(function(){initNavTree('functions_b.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Mar 13 2022 13:23:57 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Mar 14 2022 17:23:29 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

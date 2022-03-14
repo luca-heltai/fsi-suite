@@ -7,8 +7,4 @@ digraph "include/pdes/mpi" {
     graph [ bgcolor="#ddddee", pencolor="black", label="pdes" fontname="Helvetica", fontsize="10", URL="dir_60faf9a10d52b04582224b9116454383.html"]
   dir_7ac85db751091b31b06a51e40fc82221 [shape=box, label="mpi", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_7ac85db751091b31b06a51e40fc82221.html"];
   }
-  dir_8e8448d9aef603b86753e7cb911804a9 [shape=box label="parsed_tools" URL="dir_8e8448d9aef603b86753e7cb911804a9.html"];
-  dir_65593bf93f1e4428cc81baf4bb94349f [shape=box label="parsed_lac" URL="dir_65593bf93f1e4428cc81baf4bb94349f.html"];
-  dir_7ac85db751091b31b06a51e40fc82221->dir_8e8448d9aef603b86753e7cb911804a9 [headlabel="10", labeldistance=1.5 headhref="dir_000006_000004.html"];
-  dir_7ac85db751091b31b06a51e40fc82221->dir_65593bf93f1e4428cc81baf4bb94349f [headlabel="4", labeldistance=1.5 headhref="dir_000006_000003.html"];
 }

@@ -1,6 +1,0 @@
-<map id="PDEs::MPI::LinearElasticity&lt; dim &gt;" name="PDEs::MPI::LinearElasticity&lt; dim &gt;">
-<area shape="rect" id="node1" title="Solve the LinearElasticity problem, in parallel." alt="" coords="5,244,200,285"/>
-<area shape="rect" id="node2" href="$class_p_d_es_1_1_m_p_i_1_1_linear_problem.html" title=" " alt="" coords="8,155,197,196"/>
-<area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$classParameterAcceptor.html" title=" " alt="" coords="29,80,176,107"/>
-<area shape="rect" id="node4" href="/__w/fsi-suite/fsi-suite/deal.tag$classSubscriptor.html" title=" " alt="" coords="55,5,150,32"/>
-</map>
