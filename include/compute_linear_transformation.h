@@ -16,8 +16,6 @@
 #ifndef compute_linear_transformation_h
 #define compute_linear_transformation_h
 
-
-
 #include <deal.II/base/quadrature_lib.h>
 
 #include <deal.II/dofs/dof_tools.h>
@@ -40,13 +38,20 @@
  * @param vertices The `std::array` with `N` vertices you wish to integrate on.
  * @return `Quadrature<spacedim>`object in the real space
  */
-
-
-
 template <int dim, int spacedim, int N>
 dealii::Quadrature<spacedim>
 compute_linear_transformation(
-  const dealii::Quadrature<dim>                &quadrature,
+  const dealii::Quadrature<dim> &               quadrature,
+  const std::array<dealii::Point<spacedim>, N> &vertices);
+
+
+
+// Template implementation
+#ifndef DOXYGEN
+template <int dim, int spacedim, int N>
+dealii::Quadrature<spacedim>
+compute_linear_transformation(
+  const dealii::Quadrature<dim> &               quadrature,
   const std::array<dealii::Point<spacedim>, N> &vertices)
 {
   const auto CellType = dealii::ReferenceCell::n_vertices_to_type(
@@ -62,7 +67,7 @@ compute_linear_transformation(
                                             quadrature,
                                             dealii::update_quadrature_points |
                                               dealii::update_JxW_values);
-  const auto                     &cell = dh.begin_active();
+  const auto &                    cell = dh.begin_active();
   for (unsigned int i = 0; i < N; ++i)
     cell->vertex(i) = vertices[i]; // the vertices of this real cell
   fe_values.reinit(cell);
@@ -71,6 +76,6 @@ compute_linear_transformation(
     fe_values.get_quadrature_points(),
     fe_values.get_JxW_values()); // points and weigths in the real space
 }
-
+#endif
 
 #endif
