@@ -41,7 +41,7 @@
 template <int dim, int spacedim, int N>
 dealii::Quadrature<spacedim>
 compute_linear_transformation(
-  const dealii::Quadrature<dim> &               quadrature,
+  const dealii::Quadrature<dim>                &quadrature,
   const std::array<dealii::Point<spacedim>, N> &vertices);
 
 
@@ -51,9 +51,10 @@ compute_linear_transformation(
 template <int dim, int spacedim, int N>
 dealii::Quadrature<spacedim>
 compute_linear_transformation(
-  const dealii::Quadrature<dim> &               quadrature,
+  const dealii::Quadrature<dim>                &quadrature,
   const std::array<dealii::Point<spacedim>, N> &vertices)
 {
+  Assert(N > 1, dealii::ExcInternalError());
   const auto CellType = dealii::ReferenceCell::n_vertices_to_type(
     dim, N); // understand the kind of reference cell from vertices
 
@@ -67,7 +68,7 @@ compute_linear_transformation(
                                             quadrature,
                                             dealii::update_quadrature_points |
                                               dealii::update_JxW_values);
-  const auto &                    cell = dh.begin_active();
+  const auto                     &cell = dh.begin_active();
   for (unsigned int i = 0; i < N; ++i)
     cell->vertex(i) = vertices[i]; // the vertices of this real cell
   fe_values.reinit(cell);

@@ -101,7 +101,7 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
     compute_intersection<dim0, dim1, spacedim>(cell0, cell1, degree);
 
 
-  const auto &       JxW       = test_quadrature.get_weights();
+  const auto        &JxW       = test_quadrature.get_weights();
   const unsigned int quad_size = test_quadrature.get_weights().size();
   double             sum       = 0.;
   for (unsigned int q = 0; q < quad_size; ++q)
@@ -173,31 +173,11 @@ TEST(DimTester, Area_Test_Codimension0)
 
   const CGAL_Polygon intersect = poly_list[0].outer_boundary();
 
-  CDT           cdt; // empty Constrained Dealanuay Triangulation object
-  Vertex_handle first_vertex =
-    cdt.insert(CDT::Point(CGAL::to_double(intersect.vertices_begin()->x()),
-                          CGAL::to_double(intersect.vertices_begin()->y())));
+  CDT cdt; // empty Constrained Dealanuay Triangulation object
+  cdt.insert_constraint(intersect.vertices_begin(),
+                        intersect.vertices_end(),
+                        true);
 
-
-  // Store vertices for each triangle
-  std::vector<Vertex_handle> vec_vertices;
-  for (auto it = intersect.vertices_begin(); it != intersect.vertices_end();
-       ++it)
-    {
-      Vertex_handle va = cdt.insert(
-        CDT::Point(CGAL::to_double(it->x()), CGAL::to_double(it->y())));
-      vec_vertices.push_back(va);
-    }
-
-
-  // Now that I have coords for each vertex, I can start building the
-  // triangulation, i.e. inserting the constraints
-  for (unsigned int i = 0; i < vec_vertices.size() - 1; ++i)
-    {
-      cdt.insert_constraint(vec_vertices[i], vec_vertices[i + 1]);
-    }
-  cdt.insert_constraint(vec_vertices.back(),
-                        first_vertex); // close the boundary of the polygon
 
 
   // Next, I compute via CGAL the area of the first element of the triangulation
@@ -225,7 +205,7 @@ TEST(DimTester, Area_Test_Codimension0)
 
 
   // actual integration test
-  const auto &       JxW     = quad_rule_over_triangle.get_weights();
+  const auto        &JxW     = quad_rule_over_triangle.get_weights();
   const unsigned int n_q_pts = JxW.size();
   double             sum     = 0.;
   for (unsigned int q = 0; q < n_q_pts; ++q)
