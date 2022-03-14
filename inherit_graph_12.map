@@ -43,7 +43,7 @@
 <area shape="rect" id="node44" href="$class_p_d_es_1_1_serial_1_1_poisson.html" title="Poisson problem, serial version." alt="" coords="897,645,1056,687"/>
 <area shape="rect" id="node45" href="$class_p_d_es_1_1_serial_1_1_reduced_lagrange.html" title=" " alt="" coords="865,711,1089,752"/>
 <area shape="rect" id="node46" href="$class_p_d_es_1_1_serial_1_1_stokes.html" title=" " alt="" coords="901,776,1052,817"/>
-<area shape="rect" id="node22" href="$class_p_d_es_1_1_linear_elasticity.html" title="Solve the LinearElasticity problem." alt="" coords="1159,201,1367,243"/>
+<area shape="rect" id="node22" href="$class_p_d_es_1_1_linear_elasticity.html" title=" " alt="" coords="1159,201,1367,243"/>
 <area shape="rect" id="node24" href="$class_p_d_es_1_1_m_p_i_1_1_poisson.html" title="Solve the Poisson problem, in parallel." alt="" coords="1189,841,1337,883"/>
 <area shape="rect" id="node26" href="$class_p_d_es_1_1_stokes.html" title="Solve the Stokes problem, in parallel." alt="" coords="1187,907,1338,948"/>
 <area shape="rect" id="node48" href="/__w/fsi-suite/fsi-suite/deal.tag$classTrilinosWrappers_1_1PreconditionAMG.html" title=" " alt="" coords="544,1862,795,1889"/>

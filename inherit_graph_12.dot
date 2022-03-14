@@ -52,7 +52,7 @@ digraph "Graphical Class Hierarchy"
   Node8 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node14 [label="PDEs::LinearProblem\l\< dim, dim, LAC::LAdealii \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_linear_problem.html",tooltip=" "];
   Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node15 [label="PDEs::LinearElasticity\l\< dim, spacedim, LacType \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_linear_elasticity.html",tooltip="Solve the LinearElasticity problem."];
+  Node15 [label="PDEs::LinearElasticity\l\< dim, spacedim, LacType \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_linear_elasticity.html",tooltip=" "];
   Node8 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node16 [label="PDEs::LinearProblem\l\< dim, dim, LAC::LATrilinos \>",height=0.2,width=0.4,color="black",URL="$class_p_d_es_1_1_linear_problem.html",tooltip=" "];
   Node16 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
