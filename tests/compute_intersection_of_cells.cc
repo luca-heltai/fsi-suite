@@ -59,7 +59,7 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
     compute_intersection<dim0, dim1, spacedim>(cell0, cell1, degree);
 
 
-  const auto        &JxW       = test_quadrature.get_weights();
+  const auto &       JxW       = test_quadrature.get_weights();
   const unsigned int quad_size = test_quadrature.get_weights().size();
   double             sum       = 0.;
   for (unsigned int q = 0; q < quad_size; ++q)
@@ -183,7 +183,7 @@ TEST(DimTester, Area_Test_Codimension0)
 
 
   // actual integration test
-  const auto        &JxW     = quad_rule_over_triangle.get_weights();
+  const auto &       JxW     = quad_rule_over_triangle.get_weights();
   const unsigned int n_q_pts = JxW.size();
   double             sum     = 0.;
   for (unsigned int q = 0; q < n_q_pts; ++q)
