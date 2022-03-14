@@ -227,55 +227,6 @@ namespace Runner
       return;
     class_name.run();
   }
-
-  template <template <int, int> class Class>
-  bool
-  run_codim(char **argv)
-  {
-    // Get the dimension and spacedimension from the command line
-    const auto [dim, spacedim, in_file, out_file] =
-      get_dimensions_and_parameter_files(argv);
-
-    if (dim == 1 && spacedim == 2)
-      Runner::run<Class<1, 2>>(argv, in_file, out_file);
-    else if (dim == 2 && spacedim == 3)
-      Runner::run<Class<2, 3>>(argv, in_file, out_file);
-    else
-      return false;
-    return true;
-  }
-
-  template <template <int> class Class>
-  bool
-  run_dim_noone(char **argv)
-  {
-    // Get the dimension and spacedimension from the command line
-    const auto [dim, spacedim, in_file, out_file] =
-      get_dimensions_and_parameter_files(argv);
-    if (dim == 2 && spacedim == 2)
-      Runner::run<Class<2>>(argv, in_file, out_file);
-    else if (dim == 3 && spacedim == 3)
-      Runner::run<Class<3>>(argv, in_file, out_file);
-    else
-      return false;
-    return true;
-  }
-
-  template <template <int> class Class>
-  bool
-  run_dim(char **argv)
-  {
-    // Get the dimension and spacedimension from the command line
-    const auto [dim, spacedim, in_file, out_file] =
-      get_dimensions_and_parameter_files(argv);
-    if (dim == 1 && spacedim == 2)
-      Runner::run<Class<1>>(argv, in_file, out_file);
-    else if (run_dim_noone<Class>(argv))
-      {}
-    else
-      return false;
-    return true;
-  }
 } // namespace Runner
 
 #ifndef DOXYGEN

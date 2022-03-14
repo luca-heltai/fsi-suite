@@ -9,7 +9,6 @@ interaction problems: mathematical modeling and numerical approximation"**
 | **GitHub Repository:** | https://github.com/luca-heltai/fsi-suite |
 | **GitHub Pages:** | https://luca-heltai.github.io/fsi-suite/ |
 | **Licence:** | see the file [LICENCE.md](./LICENCE.md) |
-
 ## Course Introduction
 
 Fluid-structure interaction (FSI) refers to the multiphysics coupling between
@@ -64,9 +63,10 @@ https://luca-heltai.github.io/fsi-suite/
 
 | System |  Status |
 | ------ | ------- | 
-| Continous Integration  | [![GitHub CI](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml)   |
-| Doxygen  | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml) |
-| Indent | [![Indent](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml) |
+| **Continous Integration**  | [![GitHub CI](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml)   |
+| **Docker** |  [![github-docker](https://github.com/luca-heltai/fsi-suite/actions/workflows/docker.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/docker.yml) |
+| **Doxygen**  | [![Doxygen](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml) |
+| **Indent** | [![Indent](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg)](https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml) |
 
 
 ## Useful links
@@ -79,6 +79,97 @@ things you will ever need for finite element programming.
 
 - https://www.math.colostate.edu/~bangerth/videos.html
 
+## Quick start
+
+If you have Docker installed, you can run any of the programs available within
+this repository by executing the following commands:
+
+    wget https://raw.githubusercontent.com/luca-heltai/fsi-suite/main/fsi-suite.sh
+    chmod +x ./fsi-suite.sh
+    ./fsi-suite.sh
+
+you should see the following output:
+
+    Usage: ./fsi-suite.sh [-np N] program-name program-options
+
+    Will run program-name with program-options, possibly via mpirun, passing -np N to mpirun.
+    Here is a list of programs you can run:
+    linear_elasticity.g	 mpi_stokes.g
+    distributed_lagrange	mesh_handler		 poisson
+    distributed_lagrange.g	mesh_handler.g		 poisson.g
+    dof_plotter		mpi_linear_elasticity	 reduced_lagrange
+    dof_plotter.g		mpi_linear_elasticity.g  reduced_lagrange.g
+    fsi_test		mpi_poisson		 stokes
+    fsi_test.g		mpi_poisson.g		 stokes.g
+    linear_elasticity	mpi_stokes
+
+    Programs ending with .g are compiled with debug symbols. To see help on how to run
+    any of the programs, add a -h flag at the end.
+
+The above command will download the latest docker image from the `main` branch
+of this repository (which is built and uploaded to
+https://hub.docker.com/r/heltai/fsi-suite at every commit to master), mount the
+current directory, in a directory with the same path inside the container, and
+the program you selected. For example, 
+
+    ./fsi-suite.sh -np 4 mpi_poisson.g
+
+will run the (debug version of the) executable based on the PDEs::MPI::Poisson
+problem in parallel, using 4 processors. You can change grid, boundary
+conditions, forcing terms, finite element spaces, etc. by editing the
+configuration file which is created the first time you run the program, and then
+passing it as an argument to the program itself, i.e., in the example above, the
+parameter file that would be generated is `used_mpi_poisson.g_2d.prm`, which you
+can edit and then pass as input to the program itself:
+
+    ./fsi-suite.sh -np 4 mpi_poisson.g used_mpi_poisson.g_2d.prm
+
+If you want to read some documentation of what each parameter does and how it
+works, you can call the program passing a non-existing parameter file:
+
+    ./fsi-suite.sh -np 4 mpi_poisson.g my_test.prm
+
+    ----------------------------------------------------
+    Exception on processing: 
+
+    --------------------------------------------------------
+    An error occurred in line <77> of file <../source/base/parameter_acceptor.cc> in function
+        static void dealii::ParameterAcceptor::initialize(const string&, const string&, dealii::ParameterHandler::OutputStyle, dealii::ParameterHandler&, dealii::ParameterHandler::OutputStyle)
+    The violated condition was: 
+        false
+    Additional information: 
+        You specified <my_test.prm> as input parameter file, but it does not
+        exist. We created it for you.
+
+The created parameter file will also contain documentation for each parameter.
+Running again the same command will now use the parameter file that was just
+created: 
+
+    ./fsi-suite.sh -np 4 mpi_poisson.g my_test.prm
+
+    Number of cores         : 8
+    Number of threads       : 2
+    Number of MPI processes : 4
+    MPI rank of this process: 0
+    Cycle 0
+    System setup
+    Number of dofs 4
+    Number of degrees of freedom: 4 (4)
+    cells dofs  u_L2_norm   u_H1_norm  
+        1    4 0.000e+00 - 0.000e+00 - 
+
+
+    +---------------------------------------------+------------+------------+
+    | Total CPU time elapsed since start          |      0.07s |            |
+    |                                             |            |            |
+    | Section                         | no. calls |  CPU time  | % of total |
+    +---------------------------------+-----------+------------+------------+
+    | assemble_system                 |         1 |  0.000425s |      0.61% |
+    | estimate                        |         1 |  0.000434s |      0.62% |
+    | output_results                  |         1 |   0.00591s |       8.4% |
+    | setup_system                    |         1 |    0.0124s |        18% |
+    | solve                           |         1 |   0.00547s |       7.8% |
+    +---------------------------------+-----------+------------+------------+
 ## Course program
 
 A tentative detailed program is shown below 
@@ -128,4 +219,3 @@ A tentative detailed program is shown below
 12. Distributed Lagrange multiplier formulation
 
 13. Students' projects.
-

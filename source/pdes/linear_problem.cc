@@ -361,7 +361,8 @@ namespace PDEs
       MultithreadInfo::set_thread_limit(
         static_cast<unsigned int>(number_of_threads));
 
-    pcout << "Number of cores         : " << MultithreadInfo::n_cores()
+    pcout << "Running " << problem_name << std::endl
+          << "Number of cores         : " << MultithreadInfo::n_cores()
           << std::endl
           << "Number of threads       : " << MultithreadInfo::n_threads()
           << std::endl
