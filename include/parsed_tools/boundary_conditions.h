@@ -291,7 +291,7 @@ namespace ParsedTools
           std::vector<dealii::types::global_dof_index> local_dof_indices(
             dofs_per_cell);
           for (const auto &cell : dof_handler.active_cell_iterators())
-            if (cell->at_boundary())
+            if (cell->at_boundary() && cell->is_locally_owned())
               {
                 cell_rhs = 0;
                 //  for(const auto face: cell->face_indices())
@@ -321,6 +321,7 @@ namespace ParsedTools
                                                        rhs);
               }
         }
+    rhs.compress(dealii::VectorOperation::add);
     (void)matrix;
   }
 

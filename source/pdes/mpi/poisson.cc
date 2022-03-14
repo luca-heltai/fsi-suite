@@ -23,7 +23,7 @@ namespace PDEs
   {
     template <int dim, int spacedim>
     Poisson<dim, spacedim>::Poisson()
-      : LinearProblem<dim, spacedim>("u", "Poisson")
+      : LinearProblem<dim, spacedim, LAC::LATrilinos>("u", "Poisson")
       , coefficient("/Poisson/Functions", "1", "Diffusion coefficient")
     {}
 
@@ -71,7 +71,7 @@ namespace PDEs
     {
       TimerOutput::Scope timer_section(this->timer, "solve");
       const auto         A =
-        linear_operator<LA::MPI::Vector>(this->system_block_matrix.block(0, 0));
+        linear_operator<VectorType>(this->system_block_matrix.block(0, 0));
       this->preconditioner.initialize(this->system_block_matrix.block(0, 0));
       const auto Ainv = this->inverse_operator(A, this->preconditioner);
       this->block_solution.block(0) = Ainv * this->system_block_rhs.block(0);

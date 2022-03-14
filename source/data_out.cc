@@ -217,8 +217,7 @@ namespace ParsedTools
                                   Utilities::int_to_string(n_mpi_processes, 2) +
                                   data_out->default_suffix());
 
-            std::ofstream master_output(
-              (relative(current_filename) + ".pvtu").c_str());
+            std::ofstream master_output((current_filename + ".pvtu").c_str());
             data_out->write_pvtu_record(master_output, filenames);
 
             master_file += ".pvtu";

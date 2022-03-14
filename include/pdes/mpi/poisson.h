@@ -15,7 +15,7 @@
 #ifndef pdes_mpi_poisson_h
 #define pdes_mpi_poisson_h
 
-#include "pdes/mpi/linear_problem.h"
+#include "pdes/linear_problem.h"
 
 namespace PDEs
 {
@@ -27,7 +27,7 @@ namespace PDEs
      * Solve the Poisson problem, in parallel.
      */
     template <int dim, int spacedim = dim>
-    class Poisson : public LinearProblem<dim, spacedim>
+    class Poisson : public LinearProblem<dim, spacedim, LAC::LATrilinos>
     {
     public:
       /**
@@ -41,8 +41,14 @@ namespace PDEs
        */
       virtual ~Poisson() = default;
 
-      using ScratchData = typename LinearProblem<dim, spacedim>::ScratchData;
-      using CopyData    = typename LinearProblem<dim, spacedim>::CopyData;
+      using ScratchData =
+        typename LinearProblem<dim, spacedim, LAC::LATrilinos>::ScratchData;
+
+      using CopyData =
+        typename LinearProblem<dim, spacedim, LAC::LATrilinos>::CopyData;
+
+      using VectorType =
+        typename LinearProblem<dim, spacedim, LAC::LATrilinos>::VectorType;
 
     protected:
       /**

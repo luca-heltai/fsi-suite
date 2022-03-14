@@ -13,7 +13,7 @@
 //
 // ---------------------------------------------------------------------
 
-#include "pdes/mpi/stokes.h"
+#include "pdes/stokes.h"
 
 #include "runner.h"
 

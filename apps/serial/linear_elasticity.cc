@@ -13,7 +13,7 @@
 //
 // ---------------------------------------------------------------------
 
-#include "pdes/serial/linear_elasticity.h"
+#include "pdes/linear_elasticity.h"
 
 #include "runner.h"
 

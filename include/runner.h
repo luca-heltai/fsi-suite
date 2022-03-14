@@ -280,18 +280,21 @@ namespace Runner
 
 #ifndef DOXYGEN
 
+#  define RUN_CODIM_NO_ONE(Class, dim, spacedim, in_file, out_file) \
+    if (dim == 2 && spacedim == 3)                                  \
+      Runner::run<Class<2, 3>>(argv, in_file, out_file);
+
 #  define RUN_CODIM(Class, dim, spacedim, in_file, out_file) \
     if (dim == 1 && spacedim == 2)                           \
       Runner::run<Class<1, 2>>(argv, in_file, out_file);     \
-    else if (dim == 2 && spacedim == 3)                      \
-      Runner::run<Class<2, 3>>(argv, in_file, out_file);
+    else                                                     \
+      RUN_CODIM_NO_ONE(Class, dim, spacedim, in_file, out_file)
 
 #  define RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file) \
     if (dim == 2 && spacedim == 2)                                \
       Runner::run<Class<2>>(argv, in_file, out_file);             \
     else if (dim == 3 && spacedim == 3)                           \
       Runner::run<Class<3>>(argv, in_file, out_file);
-
 
 #  define RUN_DIM(Class, dim, spacedim, in_file, out_file) \
     if (dim == 1 && spacedim == 1)                         \
@@ -398,7 +401,7 @@ namespace Runner
       const auto [dim, spacedim, in_file, out_file] =                          \
         Runner::get_dimensions_and_parameter_files(argv);                      \
       RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \
-      else RUN_CODIM(                                                          \
+      else RUN_CODIM_NO_ONE(                                                   \
         Class,                                                                 \
         dim,                                                                   \
         spacedim,                                                              \
