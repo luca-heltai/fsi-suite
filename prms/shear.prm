@@ -1,0 +1,82 @@
+subsection LinearElasticity
+  set Finite element space (u,u) = FESystem[FE_Q(1)^2]
+  set n_threads                  = -1
+  set verbosity                  = 4
+  subsection Grid
+    set Input name                = hyper_cube
+    set Arguments                 = 0: 1: true
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 4
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    set Solver name            = cg
+    set Solver control type    = tolerance
+    set Maximum iterations     = 1000
+    set Consecutive iterations = 2
+    set Absolute tolerance     = 1e-12
+    set Relative tolerance     = 1e-06
+    set Log history            = false
+    set Log result             = true
+    subsection AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+  end
+  subsection Functions
+    set Forcing term   = 0;0
+    set Exact solution = 0;0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u,u)         = 0,1; 2; 3
+    set Selected components (u,u)      = u;u;u
+    set Boundary condition types (u,u) = neumann, dirichlet, neumann
+    set Expressions (u,u)              = 0;0 % 0;0 % 1;0
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 3
+    set Error file name                  = 
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = elasticity/shear
+    set Output partitioning    = false
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = curved_inner_cells
+  end
+  subsection Lame coefficients
+    set lambda = 100000
+    set mu     = 1
+  end
+end

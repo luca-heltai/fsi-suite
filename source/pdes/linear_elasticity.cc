@@ -65,7 +65,7 @@ namespace PDEs
                   fe_values[displacement].symmetric_gradient(j, q_index);
                 const auto &div_u =
                   fe_values[displacement].divergence(j, q_index);
-                cell_matrix(i, j) += (mu.value(x) * eps_v * eps_u +
+                cell_matrix(i, j) += (2 * mu.value(x) * eps_v * eps_u +
                                       lambda.value(x) * div_v * div_u) *
                                      fe_values.JxW(q_index); // dx
               }

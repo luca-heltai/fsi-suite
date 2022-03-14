@@ -264,6 +264,11 @@ namespace PDEs
     int number_of_threads = -1;
 
     /**
+     * Verbosity level of deallog.
+     */
+    unsigned int verbosity_level = 1;
+
+    /**
      * Output only on processor zero.
      */
     ConditionalOStream pcout;

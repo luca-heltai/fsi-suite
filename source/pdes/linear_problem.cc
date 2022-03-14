@@ -81,6 +81,9 @@ namespace PDEs
     add_parameter("n_threads",
                   number_of_threads,
                   "Fix number of threads during the execution");
+    add_parameter("verbosity",
+                  verbosity_level,
+                  "Verbosity level used with deallog");
   }
 
 
@@ -349,6 +352,11 @@ namespace PDEs
   void
   LinearProblem<dim, spacedim, LacType>::print_system_info() const
   {
+    if (Utilities::MPI::this_mpi_process(mpi_communicator) == 0)
+      deallog.depth_console(verbosity_level);
+    else
+      deallog.depth_console(0);
+
     if (number_of_threads != -1 && number_of_threads > 0)
       MultithreadInfo::set_thread_limit(
         static_cast<unsigned int>(number_of_threads));
