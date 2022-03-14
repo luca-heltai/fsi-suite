@@ -170,7 +170,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2linear__elasticity_8cc_s
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                  fe_values[displacement].symmetric_gradient(j, q_index);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;div_u =</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                  fe_values[displacement].divergence(j, q_index);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(i, j) += (<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacemu.html">mu</a>.value(x) * eps_v * eps_u +</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(i, j) += (2 * <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacemu.html">mu</a>.value(x) * eps_v * eps_u +</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>.value(x) * div_v * div_u) *</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                     fe_values.JxW(q_index); <span class="comment">// dx</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;              }</div>
@@ -239,7 +239,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2linear__elasticity_8cc_s
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="source_2pdes_2linear__elasticity_8cc.html">linear_elasticity.cc</a></li>
-    <li class="footer">Generated on Mon Mar 14 2022 17:23:28 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Mar 14 2022 17:56:42 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

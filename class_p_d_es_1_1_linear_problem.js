@@ -28,6 +28,7 @@ var class_p_d_es_1_1_linear_problem =
     [ "section_name", "class_p_d_es_1_1_linear_problem.html#af5b70badf61ce3577302fadd56117804", null ],
     [ "mpi_communicator", "class_p_d_es_1_1_linear_problem.html#ae222ff5ffc6005f8de68fb81430a3812", null ],
     [ "number_of_threads", "class_p_d_es_1_1_linear_problem.html#a64036862492abfd3ef9c5846bcf36cbd", null ],
+    [ "verbosity_level", "class_p_d_es_1_1_linear_problem.html#a5cbc8490de1a1d33ae359f7eb128fc2a", null ],
     [ "pcout", "class_p_d_es_1_1_linear_problem.html#a86748c8f024d16719b8dcf71b72a51fc", null ],
     [ "timer", "class_p_d_es_1_1_linear_problem.html#a62969a4eafd982f1953a037dfcee5c35", null ],
     [ "grid_generator", "class_p_d_es_1_1_linear_problem.html#a707e5b8c7e5619ce7148151c4c7b5bfb", null ],
