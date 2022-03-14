@@ -13,9 +13,51 @@
 //
 // ---------------------------------------------------------------------
 
-#include "../source/compute_intersection_of_cells.cc"
+#include "compute_intersection_of_cells.h"
 
+#include <deal.II/dofs/dof_handler.h>
+
+#include <deal.II/fe/fe_nothing.h>
+
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/tria.h>
+
+#include <CGAL/Boolean_set_operations_2.h>
+#include <CGAL/Constrained_Delaunay_triangulation_2.h>
+#include <CGAL/Delaunay_mesh_face_base_2.h>
+#include <CGAL/Delaunay_mesh_size_criteria_2.h>
+#include <CGAL/Delaunay_mesher_2.h>
+#include <CGAL/Exact_predicates_exact_constructions_kernel.h>
+#include <CGAL/Exact_predicates_exact_constructions_kernel_with_sqrt.h>
+#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+#include <CGAL/Polygon_2.h>
+#include <CGAL/Polygon_with_holes_2.h>
+#include <CGAL/Triangle_2.h>
+#include <CGAL/Triangulation_2.h>
+#include <gtest/gtest.h>
+
+#include "compute_intersection_of_cells.h"
+#include "compute_linear_transformation.h"
 #include "dim_spacedim_tester.h"
+
+// CGAL typedefs
+
+typedef CGAL::Exact_predicates_exact_constructions_kernel_with_sqrt Kernel;
+typedef CGAL::Polygon_2<Kernel>            CGAL_Polygon;
+typedef CGAL::Polygon_with_holes_2<Kernel> Polygon_with_holes_2;
+typedef CGAL_Polygon::Point_2              CGAL_Point;
+typedef CGAL_Polygon::Segment_2            CGAL_Segment;
+typedef CGAL::Iso_rectangle_2<Kernel>      CGAL_Rectangle;
+typedef CGAL::Triangle_2<Kernel>           CGAL_Triangle;
+
+// typedef CGAL::Exact_predicates_exact_constructions_kernel K;
+typedef CGAL::Exact_predicates_exact_constructions_kernel_with_sqrt K;
+typedef CGAL::Triangulation_vertex_base_2<K>                        Vb;
+typedef CGAL::Delaunay_mesh_face_base_2<K>                          Fb;
+typedef CGAL::Triangulation_data_structure_2<Vb, Fb>                Tds;
+typedef CGAL::Constrained_Delaunay_triangulation_2<K, Tds>          CDT;
+typedef CGAL::Delaunay_mesh_size_criteria_2<CDT>                    Criteria;
+typedef CDT::Vertex_handle Vertex_handle;
 
 using namespace dealii;
 

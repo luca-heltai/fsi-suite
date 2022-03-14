@@ -86,7 +86,7 @@ compute_intersection(
   const dealii::Mapping<dim0, spacedim> &                              mapping0,
   const dealii::Mapping<dim1, spacedim> &                              mapping1)
 {
-  Assert((dim0 != 3 | dim1 != 3 | spacedim != 3),
+  Assert((dim0 != 3 || dim1 != 3 || spacedim != 3),
          dealii::ExcNotImplemented(
            "Three dimensional objects are not implemented"));
 
@@ -127,16 +127,16 @@ compute_intersection(
           std::cout << *r << '\n'; // TODO
           assert(!r->is_degenerate());
           std::array<dealii::Point<spacedim>, 4> vertices_array{
-            dealii::Point<spacedim>(CGAL::to_double(r->vertex(0).x()),
-                                    CGAL::to_double(r->vertex(0).y())),
-            dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
-                                    CGAL::to_double(r->vertex(1).y())),
-            dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
-                                    CGAL::to_double(r->vertex(2).y())),
-            dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
-                                    CGAL::to_double(r->vertex(3).y()))};
+            {dealii::Point<spacedim>(CGAL::to_double(r->vertex(0).x()),
+                                     CGAL::to_double(r->vertex(0).y())),
+             dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
+                                     CGAL::to_double(r->vertex(1).y())),
+             dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
+                                     CGAL::to_double(r->vertex(2).y())),
+             dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
+                                     CGAL::to_double(r->vertex(3).y()))}};
 
-          return compute_linear_transformation<dim0, dim1, 4>(
+          return compute_linear_transformation<dim0, spacedim, 4>(
             dealii::QGauss<dim0>(degree), vertices_array); // 4 points
         }
     }
@@ -157,10 +157,10 @@ compute_intersection(
           if (const auto *s = boost::get<CGAL_Segment>(&*inters))
             {
               std::array<dealii::Point<spacedim>, 2> vertices_array{
-                dealii::Point<spacedim>(CGAL::to_double(s->vertex(0).x()),
-                                        CGAL::to_double(s->vertex(0).y())),
-                dealii::Point<spacedim>(CGAL::to_double(s->vertex(1).x()),
-                                        CGAL::to_double(s->vertex(1).y()))};
+                {dealii::Point<spacedim>(CGAL::to_double(s->vertex(0).x()),
+                                         CGAL::to_double(s->vertex(0).y())),
+                 dealii::Point<spacedim>(CGAL::to_double(s->vertex(1).x()),
+                                         CGAL::to_double(s->vertex(1).y()))}};
 
               return (s->is_degenerate()) ?
                        dealii::Quadrature<spacedim>() :
@@ -182,24 +182,21 @@ compute_intersection(
 
 // Explicitly instantiate for all valid combinations of dimensions
 
-template <>
-dealii::Quadrature<1>
+template dealii::Quadrature<1>
 compute_intersection(const dealii::Triangulation<1, 1>::cell_iterator &,
                      const dealii::Triangulation<1, 1>::cell_iterator &,
                      const unsigned int,
                      const dealii::Mapping<1, 1> &,
                      const dealii::Mapping<1, 1> &);
 
-template <>
-dealii::Quadrature<2>
+template dealii::Quadrature<2>
 compute_intersection(const dealii::Triangulation<1, 2>::cell_iterator &,
                      const dealii::Triangulation<1, 2>::cell_iterator &,
                      const unsigned int,
                      const dealii::Mapping<1, 2> &,
                      const dealii::Mapping<1, 2> &);
 
-template <>
-dealii::Quadrature<2>
+template dealii::Quadrature<2>
 compute_intersection(const dealii::Triangulation<1, 2>::cell_iterator &,
                      const dealii::Triangulation<2, 2>::cell_iterator &,
                      const unsigned int,
@@ -207,8 +204,7 @@ compute_intersection(const dealii::Triangulation<1, 2>::cell_iterator &,
                      const dealii::Mapping<2, 2> &);
 
 
-template <>
-dealii::Quadrature<2>
+template dealii::Quadrature<2>
 compute_intersection(const dealii::Triangulation<2, 2>::cell_iterator &,
                      const dealii::Triangulation<2, 2>::cell_iterator &,
                      const unsigned int,

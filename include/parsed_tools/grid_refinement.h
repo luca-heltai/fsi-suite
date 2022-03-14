@@ -248,23 +248,38 @@ namespace ParsedTools
     const dealii::Vector<float> &                                criteria,
     dealii::parallel::distributed::Triangulation<dim, spacedim> &tria) const
   {
-    if constexpr (dim > 1)
+    if (strategy == RefinementStrategy::fixed_number)
       {
-        if (strategy == RefinementStrategy::fixed_number)
-          dealii::parallel::distributed::GridRefinement::
-            refine_and_coarsen_fixed_number(
-              tria,
-              criteria,
-              top_parameter,
-              bottom_parameter,
-              max_cells > 0 ? max_cells :
-                              std::numeric_limits<unsigned int>::max());
-        else if (strategy == RefinementStrategy::fixed_fraction)
-          dealii::parallel::distributed::GridRefinement::
-            refine_and_coarsen_fixed_fraction(tria,
-                                              criteria,
-                                              top_parameter,
-                                              bottom_parameter);
+        if constexpr (dim > 1)
+          {
+            dealii::parallel::distributed::GridRefinement::
+              refine_and_coarsen_fixed_number(
+                tria,
+                criteria,
+                top_parameter,
+                bottom_parameter,
+                max_cells > 0 ? max_cells :
+                                std::numeric_limits<unsigned int>::max());
+          }
+        else
+          {
+            AssertThrow(false, dealii::ExcMessage("Not implemented for dim=1"));
+          }
+      }
+    else if (strategy == RefinementStrategy::fixed_fraction)
+      {
+        if constexpr (dim > 1)
+          {
+            dealii::parallel::distributed::GridRefinement::
+              refine_and_coarsen_fixed_fraction(tria,
+                                                criteria,
+                                                top_parameter,
+                                                bottom_parameter);
+          }
+        else
+          {
+            AssertThrow(false, dealii::ExcMessage("Not implemented for dim=1"));
+          }
       }
     else if (strategy == RefinementStrategy::global)
       for (const auto cell : tria.active_cell_iterators())
@@ -408,8 +423,8 @@ namespace ParsedTools
   }
 
   /**
-   * Call the error estimator specified in the parameter file with a default
-   * mapping.
+   * Call the error estimator specified in the parameter file with a
+   * default mapping.
    */
   template <int dim, int spacedim, typename VectorType>
   void
