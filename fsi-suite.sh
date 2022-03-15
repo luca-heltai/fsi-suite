@@ -1,5 +1,7 @@
 #!/bin/sh
-alias run="docker run -ti -v `pwd`:`pwd` -u $(id -u):$(id -g) heltai/fsi-suite /bin/sh -c"
+function run() {
+    docker run -ti -v `pwd`:`pwd` -u $(id -u):$(id -g) heltai/fsi-suite /bin/sh -c "$1"
+}
 
 if [ -z "$1" ]; then 
 	echo Usage: $0 \[-np N\] program-name program-options
