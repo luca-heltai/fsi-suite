@@ -259,6 +259,16 @@ namespace PDEs
     MPI_Comm mpi_communicator;
 
     /**
+     * The mpi rank of this process.
+     */
+    const unsigned int mpi_rank;
+
+    /**
+     * The number of mpi processes.
+     */
+    const unsigned int mpi_size;
+
+    /**
      * Number of threads to use for multi-threaded assembly.
      */
     int number_of_threads = -1;
