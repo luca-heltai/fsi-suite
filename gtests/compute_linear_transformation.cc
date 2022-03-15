@@ -1,19 +1,17 @@
-// // ---------------------------------------------------------------------
-// //
-// // Copyright (C) 2022 by Luca Heltai
-// //
-// // This file is part of the FSI-suite platform, based on the deal.II library.
-// //
-// // The FSI-suite platform is free software; you can use it, redistribute it,
-// // and/or modify it under the terms of the GNU Lesser General Public License
-// as
-// // published by the Free Software Foundation; either version 3.0 of the
-// License,
-// // or (at your option) any later version. The full text of the license can be
-// // found in the file LICENSE at the top level of the FSI-suite platform
-// // distribution.
-// //
-// // ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+//
+// Copyright (C) 2022 by Luca Heltai
+//
+// This file is part of the FSI-suite platform, based on the deal.II library.
+//
+// The FSI-suite platform is free software; you can use it, redistribute it,
+// and/or modify it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3.0 of theLicense,
+// or (at your option) any later version. The full text of the license can be
+// found in the file LICENSE at the top level of the FSI-suite platform
+// distribution.
+//
+// ---------------------------------------------------------------------
 
 #include "compute_linear_transformation.h"
 
@@ -45,7 +43,7 @@ struct Test_polynomial
   }
 };
 
-TEST(DimTester, Integral_Over_Line)
+TEST(DimTester, IntegralOverLine)
 {
   constexpr int dim      = 1;
   constexpr int spacedim = 2;
@@ -76,7 +74,7 @@ TEST(DimTester, Integral_Over_Line)
 }
 
 
-TEST(DimTester, Integration_Test_Codimension0)
+TEST(DimTester, IntegrationTestCodimension0)
 {
   constexpr unsigned int dim0   = 2;
   constexpr unsigned int dim1   = 2;
