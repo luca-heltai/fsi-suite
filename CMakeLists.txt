@@ -7,6 +7,11 @@ HINTS ${deal.II_DIR} ${DEAL_II_DIR} ../ ../../ $ENV{DEAL_II_DIR})
 
 DEAL_II_INITIALIZE_CACHED_VARIABLES()
 
+
+# CGAL 
+set(CGAL_DO_NOT_WARN_ABOUT_CMAKE_BUILD_TYPE "TRUE")
+find_package(CGAL REQUIRED)
+
 # Fix warning on mac
 SET(CMAKE_MACOSX_RPATH 1)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
@@ -37,8 +42,9 @@ FOREACH(_build_type ${_d2_build_types})
       # Setup library
       SET(_lib "fsi-lib${_p}")
       MESSAGE("-- Configuring library ${_lib}")
-
+      
       ADD_LIBRARY(${_lib} SHARED ${LIB_SOURCES} ${LIB_HEADERS})
+      target_link_libraries(${_lib} CGAL::CGAL)
       DEAL_II_SETUP_TARGET(${_lib} ${_BUILD_TYPE})
       INSTALL(TARGETS ${_lib})
       SET(TEST_LIBRARIES_${_BUILD_TYPE} ${_lib})

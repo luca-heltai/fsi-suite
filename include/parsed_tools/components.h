@@ -71,7 +71,7 @@ namespace ParsedTools
       const int                                   continuity = 0);
 
     /**
-     * Return a Qadrature object that can be used on the given Triangulation
+     * Return a Quadrature object that can be used on the given Triangulation
      * cells.
      *
      * @param tria Triangulation to insepct
@@ -85,7 +85,7 @@ namespace ParsedTools
                         const unsigned int                          degree);
 
     /**
-     * Return a Qadrature object that can be used on the given Triangulation
+     * Return a Quadrature object that can be used on the given Triangulation
      * faces.
      *
      * @param tria Triangulation to insepct
