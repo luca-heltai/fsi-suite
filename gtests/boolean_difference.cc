@@ -70,7 +70,7 @@ typedef CDT::Face_handle              Face_handle;
 
 
 void
-mark_domains(CDT                  &ct,
+mark_domains(CDT &                 ct,
              Face_handle           start,
              int                   index,
              std::list<CDT::Edge> &border)
@@ -229,7 +229,7 @@ TEST(DimTester, BooleanOperationsPolygons)
 
 
           // actual integration test
-          const auto        &JxW     = quad_rule_over_triangle.get_weights();
+          const auto &       JxW     = quad_rule_over_triangle.get_weights();
           const unsigned int n_q_pts = JxW.size();
           for (unsigned int q = 0; q < n_q_pts; ++q)
             {
