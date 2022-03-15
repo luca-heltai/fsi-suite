@@ -1,5 +1,5 @@
-#!/bin/sh
-function run() {
+#!/bin/bash
+function run {
     docker run -ti -v `pwd`:`pwd` -u $(id -u):$(id -g) heltai/fsi-suite /bin/sh -c "$1"
 }
 
