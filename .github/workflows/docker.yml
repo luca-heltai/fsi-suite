@@ -28,5 +28,5 @@ jobs:
           cache-from: type=registry,ref=heltai/dealii:vscode
           cache-to: type=inline
           push: true
-          tags: heltai/fsi-suite:master
+          tags: heltai/fsi-suite:latest
 
