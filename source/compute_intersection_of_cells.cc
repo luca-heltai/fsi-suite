@@ -58,7 +58,6 @@ namespace internal
   compute_intersection_of_cells(const std::vector<CGAL_Point> &vertices_cell0,
                                 const std::vector<CGAL_Point> &vertices_cell1)
   {
-    std::cout << "Function called" << '\n';
     const auto first  = CGAL_Rectangle(vertices_cell0[0], vertices_cell0[3]);
     const auto second = CGAL_Rectangle(vertices_cell1[0], vertices_cell1[3]);
     return CGAL::intersection(first, second);
@@ -132,10 +131,10 @@ compute_intersection(
                                      CGAL::to_double(r->vertex(0).y())),
              dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
                                      CGAL::to_double(r->vertex(1).y())),
-             dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
-                                     CGAL::to_double(r->vertex(2).y())),
              dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
-                                     CGAL::to_double(r->vertex(3).y()))}};
+                                     CGAL::to_double(r->vertex(3).y())),
+             dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
+                                     CGAL::to_double(r->vertex(2).y()))}};
 
           return compute_linear_transformation<dim0, spacedim, 4>(
             dealii::QGauss<dim0>(degree), vertices_array); // 4 points
@@ -226,3 +225,18 @@ compute_intersection(const dealii::Triangulation<2, 2>::cell_iterator &,
                      const unsigned int,
                      const dealii::Mapping<2, 2> &,
                      const dealii::Mapping<2, 2> &);
+
+
+template dealii::Quadrature<3>
+compute_intersection(const dealii::Triangulation<2, 3>::cell_iterator &,
+                     const dealii::Triangulation<3, 3>::cell_iterator &,
+                     const unsigned int,
+                     const dealii::Mapping<2, 3> &,
+                     const dealii::Mapping<3, 3> &);
+
+                     template dealii::Quadrature<3>
+compute_intersection(const dealii::Triangulation<3, 3>::cell_iterator &,
+                     const dealii::Triangulation<3, 3>::cell_iterator &,
+                     const unsigned int,
+                     const dealii::Mapping<3, 3> &,
+                     const dealii::Mapping<3, 3> &);
