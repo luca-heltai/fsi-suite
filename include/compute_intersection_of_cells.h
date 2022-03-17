@@ -39,18 +39,20 @@
  * @return Quadrature<spacedim>
  */
 
-namespace dealii::NonMatching{template <int dim0, int dim1, int spacedim>
-dealii::Quadrature<spacedim>
-compute_intersection(
-  const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &cell0,
-  const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &cell1,
-  const unsigned int                                                   degree,
-  const dealii::Mapping<dim0, spacedim> &mapping0 =
-    (dealii::ReferenceCells::get_hypercube<dim0>()
-       .template get_default_linear_mapping<dim0, spacedim>()),
-  const dealii::Mapping<dim1, spacedim> &mapping1 =
-    (dealii::ReferenceCells::get_hypercube<dim1>()
-       .template get_default_linear_mapping<dim1, spacedim>()));
-}//namespace NonMatching
+namespace dealii::NonMatching
+{
+  template <int dim0, int dim1, int spacedim>
+  dealii::Quadrature<spacedim>
+  compute_intersection(
+    const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &cell0,
+    const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &cell1,
+    const unsigned int                                                   degree,
+    const dealii::Mapping<dim0, spacedim> &mapping0 =
+      (dealii::ReferenceCells::get_hypercube<dim0>()
+         .template get_default_linear_mapping<dim0, spacedim>()),
+    const dealii::Mapping<dim1, spacedim> &mapping1 =
+      (dealii::ReferenceCells::get_hypercube<dim1>()
+         .template get_default_linear_mapping<dim1, spacedim>()));
+} // namespace dealii::NonMatching
 
 #endif
