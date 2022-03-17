@@ -77,15 +77,9 @@ namespace internal
 
 
 
-template <int dim0, int dim1, int spacedim>
-dealii::Quadrature<spacedim>
-compute_intersection(
-  const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &cell0,
-  const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &cell1,
-  const unsigned int                                                   degree,
-  const dealii::Mapping<dim0, spacedim> &                              mapping0,
-  const dealii::Mapping<dim1, spacedim> &                              mapping1)
+namespace dealii::NonMatching
 {
+
   Assert((dim0 != 3 || dim1 != 3 || spacedim != 3),
          dealii::ExcNotImplemented(
            "Three dimensional objects are not implemented"));
@@ -195,48 +189,55 @@ compute_intersection(
 }
 #endif
 
+
 // Explicitly instantiate for all valid combinations of dimensions
 
 template dealii::Quadrature<1>
-compute_intersection(const dealii::Triangulation<1, 1>::cell_iterator &,
-                     const dealii::Triangulation<1, 1>::cell_iterator &,
-                     const unsigned int,
-                     const dealii::Mapping<1, 1> &,
-                     const dealii::Mapping<1, 1> &);
+dealii::NonMatching::compute_intersection(
+  const dealii::Triangulation<1, 1>::cell_iterator &,
+  const dealii::Triangulation<1, 1>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<1, 1> &,
+  const dealii::Mapping<1, 1> &);
 
 template dealii::Quadrature<2>
-compute_intersection(const dealii::Triangulation<1, 2>::cell_iterator &,
-                     const dealii::Triangulation<1, 2>::cell_iterator &,
-                     const unsigned int,
-                     const dealii::Mapping<1, 2> &,
-                     const dealii::Mapping<1, 2> &);
+dealii::NonMatching::compute_intersection(
+  const dealii::Triangulation<1, 2>::cell_iterator &,
+  const dealii::Triangulation<1, 2>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<1, 2> &,
+  const dealii::Mapping<1, 2> &);
 
 template dealii::Quadrature<2>
-compute_intersection(const dealii::Triangulation<1, 2>::cell_iterator &,
-                     const dealii::Triangulation<2, 2>::cell_iterator &,
-                     const unsigned int,
-                     const dealii::Mapping<1, 2> &,
-                     const dealii::Mapping<2, 2> &);
+dealii::NonMatching::compute_intersection(
+  const dealii::Triangulation<1, 2>::cell_iterator &,
+  const dealii::Triangulation<2, 2>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<1, 2> &,
+  const dealii::Mapping<2, 2> &);
 
 
 template dealii::Quadrature<2>
-compute_intersection(const dealii::Triangulation<2, 2>::cell_iterator &,
-                     const dealii::Triangulation<2, 2>::cell_iterator &,
-                     const unsigned int,
-                     const dealii::Mapping<2, 2> &,
-                     const dealii::Mapping<2, 2> &);
+dealii::NonMatching::compute_intersection(
+  const dealii::Triangulation<2, 2>::cell_iterator &,
+  const dealii::Triangulation<2, 2>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<2, 2> &,
+  const dealii::Mapping<2, 2> &);
 
 
 template dealii::Quadrature<3>
-compute_intersection(const dealii::Triangulation<2, 3>::cell_iterator &,
-                     const dealii::Triangulation<3, 3>::cell_iterator &,
-                     const unsigned int,
-                     const dealii::Mapping<2, 3> &,
-                     const dealii::Mapping<3, 3> &);
+dealii::NonMatching::compute_intersection(
+  const dealii::Triangulation<2, 3>::cell_iterator &,
+  const dealii::Triangulation<3, 3>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<2, 3> &,
+  const dealii::Mapping<3, 3> &);
 
-                     template dealii::Quadrature<3>
-compute_intersection(const dealii::Triangulation<3, 3>::cell_iterator &,
-                     const dealii::Triangulation<3, 3>::cell_iterator &,
-                     const unsigned int,
-                     const dealii::Mapping<3, 3> &,
-                     const dealii::Mapping<3, 3> &);
+template dealii::Quadrature<3>
+dealii::NonMatching::compute_intersection(
+  const dealii::Triangulation<3, 3>::cell_iterator &,
+  const dealii::Triangulation<3, 3>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<3, 3> &,
+  const dealii::Mapping<3, 3> &);

@@ -99,7 +99,9 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
 
   const unsigned int degree = 4;
   auto               test_quadrature =
-    compute_intersection<dim0, dim1, spacedim>(cell0, cell1, degree);
+    NonMatching::compute_intersection<dim0, dim1, spacedim>(cell0,
+                                                            cell1,
+                                                            degree);
 
 
   const auto &       JxW       = test_quadrature.get_weights();
