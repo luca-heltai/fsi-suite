@@ -77,12 +77,7 @@ namespace dealii::NonMatching
 
             space_cell_dh->get_dof_indices(space_dofs);
             immersed_cell_dh->get_dof_indices(immersed_dofs);
-            std::cout << "Dofs for space: " << '\n';
-            for (auto &x : space_dofs)
-              std::cout << x << '\n';
-            std::cout << "Dofs for immersed: " << '\n';
-            for (auto &x : immersed_dofs)
-              std::cout << x << '\n';
+
 
             constraints.add_entries_local_to_global(
               space_dofs,
