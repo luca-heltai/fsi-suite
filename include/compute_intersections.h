@@ -14,41 +14,54 @@
 // ---------------------------------------------------------------------
 
 
-#ifndef compute_intersections_and_quads_h
-#define compute_intersections_and_quads_h
+
+#ifndef compute_intersections_h
+#define compute_intersections_h
 
 #include <deal.II/base/config.h>
 
 #include <deal.II/base/function_lib.h>
 #include <deal.II/base/quadrature.h>
 
+#include <deal.II/fe/mapping.h>
 #include <deal.II/fe/mapping_q1.h>
 
 #include <deal.II/grid/grid_tools.h>
 #include <deal.II/grid/grid_tools_cache.h>
+#include <deal.II/grid/tria.h>
 
 #include <set>
 #include <tuple>
 #include <vector>
 
-#include "compute_intersection_of_cells.h"
-
-
 
 namespace dealii::NonMatching
 {
+  template <int dim0, int dim1, int spacedim>
+  dealii::Quadrature<spacedim>
+  compute_intersection(
+    const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &cell0,
+    const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &cell1,
+    const unsigned int                                                   degree,
+    const dealii::Mapping<dim0, spacedim> &mapping0 =
+      (dealii::ReferenceCells::get_hypercube<dim0>()
+         .template get_default_linear_mapping<dim0, spacedim>()),
+    const dealii::Mapping<dim1, spacedim> &mapping1 =
+      (dealii::ReferenceCells::get_hypercube<dim1>()
+         .template get_default_linear_mapping<dim1, spacedim>()));
+
+
   template <int dim0, int dim1, int spacedim>
   std::vector<std::tuple<
     typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
     typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
     dealii::Quadrature<spacedim>>>
-  intersect_and_get_quads(
-    const GridTools::Cache<dim0, spacedim> &space_cache,
-    const GridTools::Cache<dim1, spacedim> &immersed_cache,
-    const unsigned int                      degree);
-
-}
+  compute_intersection(const GridTools::Cache<dim0, spacedim> &space_cache,
+                       const GridTools::Cache<dim1, spacedim> &immersed_cache,
+                       const unsigned int                      degree);
 
 
+
+} // namespace dealii::NonMatching
 
 #endif
