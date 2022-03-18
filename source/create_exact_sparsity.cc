@@ -66,7 +66,6 @@ namespace dealii::NonMatching
     // DoFs have to be recorded
     for (const auto &[immersed_box, immersed_cell] : immersed_tree)
       {
-
         for (const auto &[space_box, space_cell] :
              space_tree | bgi::adaptors::queried(bgi::intersects(immersed_box)))
           {
