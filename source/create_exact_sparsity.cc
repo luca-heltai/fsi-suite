@@ -37,7 +37,6 @@ namespace dealii::NonMatching
     const AffineConstraints<number> &       constraints,
     const ComponentMask &                   space_comps,
     const ComponentMask &                   immersed_comps,
-    const Mapping<dim1, spacedim> &         immersed_mapping,
     const AffineConstraints<number> &       immersed_constraint)
   {
     AssertDimension(sparsity.n_rows(), space_dh.n_dofs());
@@ -67,7 +66,7 @@ namespace dealii::NonMatching
     // DoFs have to be recorded
     for (const auto &[immersed_box, immersed_cell] : immersed_tree)
       {
-        const auto &[p1, p2] = immersed_box.get_boundary_points();
+
         for (const auto &[space_box, space_cell] :
              space_tree | bgi::adaptors::queried(bgi::intersects(immersed_box)))
           {
@@ -108,7 +107,6 @@ dealii::NonMatching::create_exact_sparsity_pattern(
   const AffineConstraints<double> &constraints,
   const ComponentMask &            space_comps,
   const ComponentMask &            immersed_comps,
-  const Mapping<1, 2> &            immersed_mapping,
   const AffineConstraints<double> &immersed_constraint);
 
 template void
@@ -121,7 +119,6 @@ dealii::NonMatching::create_exact_sparsity_pattern(
   const AffineConstraints<double> &constraints,
   const ComponentMask &            space_comps,
   const ComponentMask &            immersed_comps,
-  const Mapping<2, 2> &            immersed_mapping,
   const AffineConstraints<double> &immersed_constraint);
 
 template void
@@ -134,7 +131,6 @@ dealii::NonMatching::create_exact_sparsity_pattern(
   const AffineConstraints<double> &constraints,
   const ComponentMask &            space_comps,
   const ComponentMask &            immersed_comps,
-  const Mapping<2, 3> &            immersed_mapping,
   const AffineConstraints<double> &immersed_constraint);
 
 template void
@@ -147,5 +143,4 @@ dealii::NonMatching::create_exact_sparsity_pattern(
   const AffineConstraints<double> &constraints,
   const ComponentMask &            space_comps,
   const ComponentMask &            immersed_comps,
-  const Mapping<3, 3> &            immersed_mapping,
   const AffineConstraints<double> &immersed_constraint);
