@@ -228,7 +228,7 @@ namespace dealii::NonMatching
    *
    * @tparam dim0 Intrinsic dimension of the immersed grid
    * @tparam dim1 Intrinsic dimension of the ambient grid
-   * @tparam spacedim 
+   * @tparam spacedim
    * @param space_cache
    * @param immersed_cache
    * @param degree Degree of the desired quadrature formula
