@@ -132,11 +132,11 @@ Functions</h2></td></tr>
 <tr class="separator:a28994869c8ecfdd8ff43806bdc25fbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abfd995fb831c2525c681af93c22c3574"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim&gt; </td></tr>
 <tr class="memitem:abfd995fb831c2525c681af93c22c3574"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; dim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">get_cell_quadrature</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, const unsigned int degree)</td></tr>
-<tr class="memdesc:abfd995fb831c2525c681af93c22c3574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> cells.  <a href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">More...</a><br /></td></tr>
+<tr class="memdesc:abfd995fb831c2525c681af93c22c3574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> cells.  <a href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">More...</a><br /></td></tr>
 <tr class="separator:abfd995fb831c2525c681af93c22c3574"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a324f3c93e74a8b9d225bda8342521ba7"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim&gt; </td></tr>
 <tr class="memitem:a324f3c93e74a8b9d225bda8342521ba7"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; dim - 1 &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">get_face_quadrature</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim, spacedim &gt; &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>, const unsigned int degree)</td></tr>
-<tr class="memdesc:a324f3c93e74a8b9d225bda8342521ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> faces.  <a href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">More...</a><br /></td></tr>
+<tr class="memdesc:a324f3c93e74a8b9d225bda8342521ba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> faces.  <a href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">More...</a><br /></td></tr>
 <tr class="separator:a324f3c93e74a8b9d225bda8342521ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac45952841c084c7f403d6b054d5d1c13"><td class="memTemplParams" colspan="2">template&lt;typename Container &gt; </td></tr>
 <tr class="memitem:ac45952841c084c7f403d6b054d5d1c13"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_parsed_tools_1_1_components.html#ac45952841c084c7f403d6b054d5d1c13">join</a> (const Container &amp;strings, const std::string &amp;separator)</td></tr>
@@ -293,7 +293,7 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> cells. </p>
+<p>Return a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> cells. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tria</td><td><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to insepct </td></tr>
@@ -335,7 +335,7 @@ template&lt;int dim, int spacedim&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Return a Qadrature object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> faces. </p>
+<p>Return a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> object that can be used on the given <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> faces. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tria</td><td><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> to insepct </td></tr>
@@ -795,7 +795,7 @@ template&lt;typename Container &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="namespace_parsed_tools_1_1_components.html">Components</a></li>
-    <li class="footer">Generated on Mon Mar 14 2022 18:12:07 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Mar 19 2022 17:04:54 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

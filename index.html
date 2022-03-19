@@ -147,11 +147,13 @@ Continuous Integration Status</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">System </th><th class="markdownTableHeadNone">Status  </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Continous Integration </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg" style="pointer-events: none;">GitHub CI</object></a>  </td></tr>
+<td class="markdownTableBodyNone"><b>Continous Integration</b> </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/tests.yml/badge.svg" style="pointer-events: none;">GitHub CI</object></a>  </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">Doxygen </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg" style="pointer-events: none;">Doxygen</object></a>  </td></tr>
+<td class="markdownTableBodyNone"><b>Docker</b> </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/docker.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/docker.yml/badge.svg" style="pointer-events: none;">github-docker</object></a>  </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Indent </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg" style="pointer-events: none;">Indent</object></a>  </td></tr>
+<td class="markdownTableBodyNone"><b>Doxygen</b> </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/doxygen.yml/badge.svg" style="pointer-events: none;">Doxygen</object></a>  </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Indent</b> </td><td class="markdownTableBodyNone"><a href="https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml"><object type="image/svg+xml" data="https://github.com/luca-heltai/fsi-suite/actions/workflows/indentation.yml/badge.svg" style="pointer-events: none;">Indent</object></a>  </td></tr>
 </table>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Useful links</h1>
@@ -163,6 +165,66 @@ Useful links</h1>
 <li><a href="https://www.math.colostate.edu/~bangerth/videos.html">https://www.math.colostate.edu/~bangerth/videos.html</a></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md10"></a>
+Quick start</h1>
+<p>If you have Docker installed, you can run any of the programs available within this repository by executing the following commands: </p><pre class="fragment">wget https://raw.githubusercontent.com/luca-heltai/fsi-suite/main/fsi-suite.sh
+chmod +x ./fsi-suite.sh
+./fsi-suite.sh
+</pre><p>you should see the following output: </p><pre class="fragment">Usage: ./fsi-suite.sh [-np N] program-name program-options
+
+Will run program-name with program-options, possibly via mpirun, passing -np N to mpirun.
+Here is a list of programs you can run:
+linear_elasticity.g  mpi_stokes.g
+distributed_lagrange    mesh_handler         poisson
+distributed_lagrange.g  mesh_handler.g       poisson.g
+dof_plotter     mpi_linear_elasticity    reduced_lagrange
+dof_plotter.g       mpi_linear_elasticity.g  reduced_lagrange.g
+fsi_test        mpi_poisson      stokes
+fsi_test.g      mpi_poisson.g        stokes.g
+linear_elasticity   mpi_stokes
+
+Programs ending with .g are compiled with debug symbols. To see help on how to run
+any of the programs, add a -h flag at the end.
+</pre><p>The above command will download the latest docker image from the <code>main</code> branch of this repository (which is built and uploaded to <a href="https://hub.docker.com/r/heltai/fsi-suite">https://hub.docker.com/r/heltai/fsi-suite</a> at every commit to master), mount the current directory, in a directory with the same path inside the container, and the program you selected. For example, </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g
+</pre><p>will run the (debug version of the) executable based on the <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html" title="Solve the Poisson problem, in parallel.">PDEs::MPI::Poisson</a> problem in parallel, using 4 processors. You can change grid, boundary conditions, forcing terms, finite element spaces, etc. by editing the configuration file which is created the first time you run the program, and then passing it as an argument to the program itself, i.e., in the example above, the parameter file that would be generated is <code>used_mpi_poisson.g_2d.prm</code>, which you can edit and then pass as input to the program itself: </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g used_mpi_poisson.g_2d.prm
+</pre><p>If you want to read some documentation of what each parameter does and how it works, you can call the program passing a non-existing parameter file : </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g my_test.prm
+
+----------------------------------------------------
+Exception on processing: 
+
+--------------------------------------------------------
+An error occurred in line &lt;77&gt; of file &lt;../source/base/parameter_acceptor.cc&gt; in function
+    static void ParameterAcceptor::initialize(const string&amp;, const string&amp;, ParameterHandler::OutputStyle, ParameterHandler&amp;, ParameterHandler::OutputStyle)
+The violated condition was: 
+    false
+Additional information: 
+    You specified &lt;my_test.prm&gt; as input parameter file, but it does not
+    exist. We created it for you.
+</pre><p>The created parameter file will also contain documentation for each parameter. Running again the same command will now use the parameter file that was just created: </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g my_test.prm
+
+Number of cores         : 8
+Number of threads       : 2
+Number of MPI processes : 4
+MPI rank of this process: 0
+Cycle 0
+System setup
+Number of dofs 4
+Number of degrees of freedom: 4 (4)
+cells dofs  u_L2_norm   u_H1_norm  
+    1    4 0.000e+00 - 0.000e+00 - 
+
+
++---------------------------------------------+------------+------------+
+| Total CPU time elapsed since start          |      0.07s |            |
+|                                             |            |            |
+| Section                         | no. calls |  CPU time  | % of total |
++---------------------------------+-----------+------------+------------+
+| assemble_system                 |         1 |  0.000425s |      0.61% |
+| estimate                        |         1 |  0.000434s |      0.62% |
+| output_results                  |         1 |   0.00591s |       8.4% |
+| setup_system                    |         1 |    0.0124s |        18% |
+| solve                           |         1 |   0.00547s |       7.8% |
++---------------------------------+-----------+------------+------------+
+</pre> <h1><a class="anchor" id="autotoc_md11"></a>
 Course program</h1>
 <p>A tentative detailed program is shown below (this will be updated during the course to reflect the actual course content)</p>
 <ol type="1">
@@ -224,7 +286,7 @@ Course program</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Mar 14 2022 18:12:07 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Mar 19 2022 17:04:55 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

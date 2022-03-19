@@ -466,60 +466,61 @@ $(document).ready(function(){initNavTree('linear__problem_8cc_source.html',''); 
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ae253b8ff679c4119f9c5bff4439fe606">MultithreadInfo::set_thread_limit</a>(</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">int</span><span class="keyword">&gt;</span>(number_of_threads));</div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    pcout &lt;&lt; <span class="stringliteral">&quot;Number of cores         : &quot;</span> &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ac9a6cd76978579168ab42256db8e4bec">MultithreadInfo::n_cores</a>()</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;          &lt;&lt; std::endl</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;Number of threads       : &quot;</span> &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ad0b84ae105b385b88bdd4bfc0c530995">MultithreadInfo::n_threads</a>()</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;          &lt;&lt; std::endl</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;Number of MPI processes : &quot;</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;          &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">Utilities::MPI::n_mpi_processes</a>(mpi_communicator) &lt;&lt; std::endl</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;MPI rank of this process: &quot;</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;          &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process</a>(mpi_communicator) &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  }</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    pcout &lt;&lt; <span class="stringliteral">&quot;Running &quot;</span> &lt;&lt; problem_name &lt;&lt; std::endl</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;Number of cores         : &quot;</span> &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ac9a6cd76978579168ab42256db8e4bec">MultithreadInfo::n_cores</a>()</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;          &lt;&lt; std::endl</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;Number of threads       : &quot;</span> &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ad0b84ae105b385b88bdd4bfc0c530995">MultithreadInfo::n_threads</a>()</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;          &lt;&lt; std::endl</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;Number of MPI processes : &quot;</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;          &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">Utilities::MPI::n_mpi_processes</a>(mpi_communicator) &lt;&lt; std::endl</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;          &lt;&lt; <span class="stringliteral">&quot;MPI rank of this process: &quot;</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;          &lt;&lt; <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">Utilities::MPI::this_mpi_process</a>(mpi_communicator) &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  }</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim, <span class="keyword">class</span> LacType&gt;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_linear_problem.html#a05b00162c3190276bd2b40953a71593a">  378</a></span>&#160;  <a class="code" href="namespace_runner.html#aaed149dffa73f0cdbfccc2ea84373909">LinearProblem&lt;dim, spacedim, LacType&gt;::run</a>()</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    print_system_info();</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    grid_generator.generate(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cycle : grid_refinement.get_refinement_cycles())</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;      {</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        pcout &lt;&lt; <span class="stringliteral">&quot;Cycle &quot;</span> &lt;&lt; cycle &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        setup_system();</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        assemble_system();</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        solve();</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        estimate(error_per_cell);</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        output_results(cycle);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">if</span> (cycle &lt; grid_refinement.get_n_refinement_cycles() - 1)</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;          {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            mark(error_per_cell);</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridRefinement.html#a1cf30058b31ce7f9b389e8310bb9fc54">refine</a>();</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;          }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      }</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">if</span> (pcout.is_active())</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;      error_table.output_table(std::cout);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;1, 1, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;1, 2, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 2, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 3, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;3, 3, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <span class="comment">// // Explicit instantiation: no one dimensional parallel</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="comment">// // triangulation</span></div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="comment">// template class LinearProblem&lt;2, 2, LAPETSc&gt;;</span></div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="comment">// template class LinearProblem&lt;2, 3, LAPETSc&gt;;</span></div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="comment">// template class LinearProblem&lt;3, 3, LAPETSc&gt;;</span></div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="comment">// Explicit instantiation: no one dimensional parallel</span></div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  <span class="comment">// triangulation</span></div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 2, LAC::LATrilinos&gt;</a>;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 3, LAC::LATrilinos&gt;</a>;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;3, 3, LAC::LATrilinos&gt;</a>;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;} <span class="comment">// namespace PDEs</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim, <span class="keyword">class</span> LacType&gt;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_linear_problem.html#a05b00162c3190276bd2b40953a71593a">  379</a></span>&#160;  <a class="code" href="namespace_runner.html#aaed149dffa73f0cdbfccc2ea84373909">LinearProblem&lt;dim, spacedim, LacType&gt;::run</a>()</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    print_system_info();</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    grid_generator.generate(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cycle : grid_refinement.get_refinement_cycles())</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;      {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        pcout &lt;&lt; <span class="stringliteral">&quot;Cycle &quot;</span> &lt;&lt; cycle &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        setup_system();</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        assemble_system();</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        solve();</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        estimate(error_per_cell);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        output_results(cycle);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        <span class="keywordflow">if</span> (cycle &lt; grid_refinement.get_n_refinement_cycles() - 1)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;          {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            mark(error_per_cell);</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridRefinement.html#a1cf30058b31ce7f9b389e8310bb9fc54">refine</a>();</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;          }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">if</span> (pcout.is_active())</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      error_table.output_table(std::cout);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;  }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;1, 1, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;1, 2, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 2, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 3, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;3, 3, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="comment">// // Explicit instantiation: no one dimensional parallel</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="comment">// // triangulation</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="comment">// template class LinearProblem&lt;2, 2, LAPETSc&gt;;</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="comment">// template class LinearProblem&lt;2, 3, LAPETSc&gt;;</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  <span class="comment">// template class LinearProblem&lt;3, 3, LAPETSc&gt;;</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160; </div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  <span class="comment">// Explicit instantiation: no one dimensional parallel</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <span class="comment">// triangulation</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 2, LAC::LATrilinos&gt;</a>;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;2, 3, LAC::LATrilinos&gt;</a>;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_linear_problem.html">LinearProblem&lt;3, 3, LAC::LATrilinos&gt;</a>;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;} <span class="comment">// namespace PDEs</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespaceUtilities_html_a56cb23f1982e4aa0bec09b60903303ce"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a56cb23f1982e4aa0bec09b60903303ce">to_string</a></div><div class="ttdeci">std::string to_string(const number value, const unsigned int digits=numbers::invalid_unsigned_int)</div></div>
@@ -551,7 +552,7 @@ $(document).ready(function(){initNavTree('linear__problem_8cc_source.html',''); 
 <div class="ttc" id="awork__stream_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/work__stream_8h.html">work_stream.h</a></div></div>
 <div class="ttc" id="astructTriangulation_1_1CellWeightSum_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structTriangulation_1_1CellWeightSum.html">Triangulation</a></div></div>
 <div class="ttc" id="agroup__feaccess_html_ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a></div><div class="ttdeci">update_quadrature_points</div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_abfd995fb831c2525c681af93c22c3574"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim &gt; get_cell_quadrature(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const unsigned int degree)</div><div class="ttdoc">Return a Qadrature object that can be used on the given Triangulation cells.</div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_abfd995fb831c2525c681af93c22c3574"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim &gt; get_cell_quadrature(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const unsigned int degree)</div><div class="ttdoc">Return a Quadrature object that can be used on the given Triangulation cells.</div></div>
 <div class="ttc" id="aclassMeshWorker_1_1ScratchData_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMeshWorker_1_1ScratchData.html">MeshWorker::ScratchData</a></div></div>
 <div class="ttc" id="aclassFilteredIterator_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFilteredIterator.html">FilteredIterator</a></div></div>
 <div class="ttc" id="adof__renumbering_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dof__renumbering_8h.html">dof_renumbering.h</a></div></div>
@@ -583,7 +584,7 @@ $(document).ready(function(){initNavTree('linear__problem_8cc_source.html',''); 
 <div class="ttc" id="aclassQuadrature_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a></div></div>
 <div class="ttc" id="aclassParameterAcceptor_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></div></div>
 <div class="ttc" id="aclassIndexSet_html_a4e65ac88f057604a7777f2fe12bf3c8c"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classIndexSet.html#a4e65ac88f057604a7777f2fe12bf3c8c">IndexSet::split_by_block</a></div><div class="ttdeci">std::vector&lt; IndexSet &gt; split_by_block(const std::vector&lt; types::global_dof_index &gt; &amp;n_indices_per_block) const</div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a324f3c93e74a8b9d225bda8342521ba7"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">ParsedTools::Components::get_face_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim - 1 &gt; get_face_quadrature(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const unsigned int degree)</div><div class="ttdoc">Return a Qadrature object that can be used on the given Triangulation faces.</div></div>
+<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a324f3c93e74a8b9d225bda8342521ba7"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">ParsedTools::Components::get_face_quadrature</a></div><div class="ttdeci">Quadrature&lt; dim - 1 &gt; get_face_quadrature(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const unsigned int degree)</div><div class="ttdoc">Return a Quadrature object that can be used on the given Triangulation faces.</div></div>
 <div class="ttc" id="aclassVector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector&lt; float &gt;</a></div></div>
 <div class="ttc" id="anamespaceGridRefinement_html_a1cf30058b31ce7f9b389e8310bb9fc54"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridRefinement.html#a1cf30058b31ce7f9b389e8310bb9fc54">refine</a></div><div class="ttdeci">void refine(Triangulation&lt; dim, spacedim &gt; &amp;tria, const Vector&lt; Number &gt; &amp;criteria, const double threshold, const unsigned int max_to_mark=numbers::invalid_unsigned_int)</div></div>
 <div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
@@ -596,7 +597,7 @@ $(document).ready(function(){initNavTree('linear__problem_8cc_source.html',''); 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="linear__problem_8cc.html">linear_problem.cc</a></li>
-    <li class="footer">Generated on Mon Mar 14 2022 18:12:06 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sat Mar 19 2022 17:04:54 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

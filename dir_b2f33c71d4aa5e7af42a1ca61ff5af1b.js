@@ -4,6 +4,7 @@ var dir_b2f33c71d4aa5e7af42a1ca61ff5af1b =
     [ "pdes", "dir_863924b7d266e6f7561da03323982265.html", "dir_863924b7d266e6f7561da03323982265" ],
     [ "boundary_conditions.cc", "boundary__conditions_8cc.html", null ],
     [ "components.cc", "components_8cc.html", "components_8cc" ],
+    [ "compute_intersection_of_cells.cc", "compute__intersection__of__cells_8cc.html", "compute__intersection__of__cells_8cc" ],
     [ "constants.cc", "constants_8cc.html", "constants_8cc" ],
     [ "data_out.cc", "data__out_8cc.html", null ],
     [ "finite_element.cc", "finite__element_8cc.html", null ],

@@ -27,7 +27,8 @@ var NAVTREE =
       [ "Course Introduction", "index.html#autotoc_md7", null ],
       [ "Continuous Integration Status", "index.html#autotoc_md8", null ],
       [ "Useful links", "index.html#autotoc_md9", null ],
-      [ "Course program", "index.html#autotoc_md10", null ]
+      [ "Quick start", "index.html#autotoc_md10", null ],
+      [ "Course program", "index.html#autotoc_md11", null ]
     ] ],
     [ "Introduction to the FSI-suite", "design.html", [
       [ "Installation", "design.html#installation", null ],
@@ -75,7 +76,7 @@ var NAVTREEINDEX =
 "amg_8cc.html",
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8f0a363697fc14f740bf459425e1e4d3",
 "class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527",
-"namespace_p_d_es_1_1_m_p_i.html"
+"mapping__eulerian_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
