@@ -13,32 +13,32 @@
 //
 // ---------------------------------------------------------------------
 
+#ifdef DEAL_II_WITH_CGAL
 
+#  include <deal.II/dofs/dof_handler.h>
 
-#include <deal.II/dofs/dof_handler.h>
+#  include <deal.II/fe/fe_nothing.h>
 
-#include <deal.II/fe/fe_nothing.h>
-
-#include <deal.II/grid/grid_generator.h>
-#include <deal.II/grid/tria.h>
+#  include <deal.II/grid/grid_generator.h>
+#  include <deal.II/grid/tria.h>
 
 
 // CGAL headers and typedefs
-#include <CGAL/Boolean_set_operations_2.h>
-#include <CGAL/Constrained_Delaunay_triangulation_2.h>
-#include <CGAL/Delaunay_mesh_face_base_2.h>
-#include <CGAL/Delaunay_mesh_size_criteria_2.h>
-#include <CGAL/Delaunay_mesher_2.h>
-#include <CGAL/Exact_predicates_exact_constructions_kernel.h>
-#include <CGAL/Polygon_2.h>
-#include <CGAL/Polygon_with_holes_2.h>
-#include <CGAL/Triangulation_2.h>
-#include <CGAL/Triangulation_face_base_with_id_2.h>
-#include <CGAL/Triangulation_face_base_with_info_2.h>
+#  include <CGAL/Boolean_set_operations_2.h>
+#  include <CGAL/Constrained_Delaunay_triangulation_2.h>
+#  include <CGAL/Delaunay_mesh_face_base_2.h>
+#  include <CGAL/Delaunay_mesh_size_criteria_2.h>
+#  include <CGAL/Delaunay_mesher_2.h>
+#  include <CGAL/Exact_predicates_exact_constructions_kernel.h>
+#  include <CGAL/Polygon_2.h>
+#  include <CGAL/Polygon_with_holes_2.h>
+#  include <CGAL/Triangulation_2.h>
+#  include <CGAL/Triangulation_face_base_with_id_2.h>
+#  include <CGAL/Triangulation_face_base_with_info_2.h>
 
-#include "compute_intersection_of_cells.h"
-#include "compute_linear_transformation.h"
-#include "dim_spacedim_tester.h"
+#  include "compute_intersection_of_cells.h"
+#  include "compute_linear_transformation.h"
+#  include "dim_spacedim_tester.h"
 
 struct FaceInfo2
 {
@@ -240,3 +240,4 @@ TEST(DimTester, BooleanOperationsPolygons)
 
   EXPECT_NEAR(sum, correct_result, 1e-12);
 }
+#endif

@@ -15,21 +15,22 @@
 
 #include "compute_intersection_of_cells.h"
 
-#include <CGAL/Boolean_set_operations_2.h>
-#include <CGAL/Constrained_Delaunay_triangulation_2.h>
-#include <CGAL/Delaunay_mesh_face_base_2.h>
-#include <CGAL/Delaunay_mesh_size_criteria_2.h>
-#include <CGAL/Delaunay_mesher_2.h>
-#include <CGAL/Exact_predicates_exact_constructions_kernel.h>
-#include <CGAL/Exact_predicates_exact_constructions_kernel_with_sqrt.h>
-#include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
-#include <CGAL/Polygon_2.h>
-#include <CGAL/Polygon_with_holes_2.h>
-#include <CGAL/Triangle_2.h>
-#include <CGAL/Triangulation_2.h>
+#ifdef DEAL_II_WITH_CGAL
 
-#include "compute_intersection_of_cells.h"
-#include "compute_linear_transformation.h"
+#  include <CGAL/Boolean_set_operations_2.h>
+#  include <CGAL/Constrained_Delaunay_triangulation_2.h>
+#  include <CGAL/Delaunay_mesh_face_base_2.h>
+#  include <CGAL/Delaunay_mesh_size_criteria_2.h>
+#  include <CGAL/Delaunay_mesher_2.h>
+#  include <CGAL/Exact_predicates_exact_constructions_kernel.h>
+#  include <CGAL/Exact_predicates_exact_constructions_kernel_with_sqrt.h>
+#  include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
+#  include <CGAL/Polygon_2.h>
+#  include <CGAL/Polygon_with_holes_2.h>
+#  include <CGAL/Triangle_2.h>
+#  include <CGAL/Triangulation_2.h>
+
+#  include "compute_linear_transformation.h"
 
 // CGAL typedefs
 
@@ -179,6 +180,21 @@ compute_intersection(
 
   return dealii::Quadrature<spacedim>();
 }
+#else
+template <int dim0, int dim1, int spacedim>
+dealii::Quadrature<spacedim>
+compute_intersection(
+  const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &,
+  const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<dim0, spacedim> &,
+  const dealii::Mapping<dim1, spacedim> &)
+{
+  Assert(false,
+         dealii::ExcMessage("This function needs CGAL to be installed, "
+                            "but cmake could not find it."));
+}
+#endif
 
 // Explicitly instantiate for all valid combinations of dimensions
 
