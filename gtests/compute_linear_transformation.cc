@@ -85,9 +85,8 @@ TEST(DimTester, Integration_Test_Codimension0)
 
   // Here we integarte over the triangle given by the following vertices.
   // In practice, we have x \in [0,4] and y \in [8-2x]
-  std::array<Point<dim0>, 3> vertices{Point<dim0>{0., 0.},
-                                      Point<dim0>{4., 0.},
-                                      Point<dim0>{0., 8.}};
+  std::array<Point<dim0>, 3> vertices{
+    {Point<dim0>{0., 0.}, Point<dim0>{4., 0.}, Point<dim0>{0., 8.}}};
 
 
   // The correct value is computed using

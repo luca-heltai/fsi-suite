@@ -7,14 +7,21 @@ HINTS ${deal.II_DIR} ${DEAL_II_DIR} ../ ../../ $ENV{DEAL_II_DIR})
 
 DEAL_II_INITIALIZE_CACHED_VARIABLES()
 
+# Fix warning on mac
+SET(CMAKE_MACOSX_RPATH 1)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # CGAL 
 set(CGAL_DO_NOT_WARN_ABOUT_CMAKE_BUILD_TYPE "TRUE")
-find_package(CGAL REQUIRED)
+find_package(CGAL)
+if(CGAL_FOUND)
+ADD_COMPILE_DEFINITIONS(DEAL_II_WITH_CGAL)
+MESSAGE("-- DEAL_II_WITH_CGAL = ON")
+else()
+MESSAGE("-- DEAL_II_WITH_CGAL = OFF")
+ENDIF(CGAL_FOUND)
 
-# Fix warning on mac
-SET(CMAKE_MACOSX_RPATH 1)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 
 # Gather files, libraries, and apps
 file(GLOB LIB_SOURCES source/*.cc source/*/*.cc source/*/*/*.cc)
@@ -44,7 +51,9 @@ FOREACH(_build_type ${_d2_build_types})
       MESSAGE("-- Configuring library ${_lib}")
       
       ADD_LIBRARY(${_lib} SHARED ${LIB_SOURCES} ${LIB_HEADERS})
+      if(CGAL_FOUND)
       target_link_libraries(${_lib} CGAL::CGAL)
+      endif()
       DEAL_II_SETUP_TARGET(${_lib} ${_BUILD_TYPE})
       INSTALL(TARGETS ${_lib})
       SET(TEST_LIBRARIES_${_BUILD_TYPE} ${_lib})
