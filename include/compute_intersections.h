@@ -37,6 +37,21 @@
 
 namespace dealii::NonMatching
 {
+  /**
+   * @brief Intersect `cell0` and `cell1` and construct a `Quadrature<spacedim>` of degree `degree``
+   *        over the intersection, i.e. in the real space. Mappings for both
+   * cells are in `mapping0` and `mapping1`, respectively.
+   *
+   * @tparam dim0
+   * @tparam dim1
+   * @tparam spacedim
+   * @param cell0 A `cell_iteratator` to the first cell
+   * @param cell1 A `cell_iteratator` to the first cell
+   * @param degree The degree of the `Quadrature` you want to build there
+   * @param mapping0 The `Mapping` object describing the first cell
+   * @param mapping1 The `Mapping` object describing the second cell
+   * @return Quadrature<spacedim>
+   */
   template <int dim0, int dim1, int spacedim>
   dealii::Quadrature<spacedim>
   compute_intersection(
@@ -51,6 +66,24 @@ namespace dealii::NonMatching
          .template get_default_linear_mapping<dim1, spacedim>()));
 
 
+
+  /**
+   * @brief Given two triangulations cached inside `GridTools::Cache` objects, compute all intersections between the two
+   * and return a vector where each entry is a tuple containing iterators to the
+   * respective cells and a `Quadrature<spacedim>` formula to integrate over the
+   * intersection.
+   *
+   * @tparam dim0 Intrinsic dimension of the immersed grid
+   * @tparam dim1 Intrinsic dimension of the ambient grid
+   * @tparam spacedim
+   * @param space_cache
+   * @param immersed_cache
+   * @param degree Degree of the desired quadrature formula
+   * @return std::vector<std::tuple<
+   * typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
+   * typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
+   * dealii::Quadrature<spacedim>>>
+   */
   template <int dim0, int dim1, int spacedim>
   std::vector<std::tuple<
     typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,

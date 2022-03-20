@@ -14,7 +14,6 @@
 // ---------------------------------------------------------------------
 #ifdef DEAL_II_WITH_CGAL
 
-#  include "compute_intersection_of_cells.h"
 
 
 #  include <deal.II/dofs/dof_handler.h>
@@ -38,12 +37,10 @@
 #  include <CGAL/Triangulation_2.h>
 #  include <gtest/gtest.h>
 
-
-#  include "compute_intersection_of_cells.h"
+#  include "compute_intersections.h"
+#  include "compute_intersections.h"
 #  include "compute_linear_transformation.h"
 #  include "dim_spacedim_tester.h"
-#include "compute_intersections.h"
-
 
 
 

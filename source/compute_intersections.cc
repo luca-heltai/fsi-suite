@@ -16,7 +16,6 @@
 
 #include <deal.II/base/config.h>
 
-
 #include <deal.II/base/function_lib.h>
 #include <deal.II/base/quadrature.h>
 
@@ -41,14 +40,12 @@
 #  include <CGAL/Triangle_2.h>
 #  include <CGAL/Triangulation_2.h>
 
+#  include <set>
+#  include <tuple>
+#  include <vector>
+
+#  include "compute_intersections.h"
 #  include "compute_linear_transformation.h"
-
-#include <set>
-#include <tuple>
-#include <vector>
-
-#include "compute_linear_transformation.h"
-#include "compute_intersections.h"
 
 // CGAL typedefs
 
@@ -98,24 +95,6 @@ using namespace dealii;
 
 namespace dealii::NonMatching
 {
-
-  /**
-   * @brief Intersect `cell0` and `cell1` and construct a `Quadrature<spacedim>` of degree `degree``
-   *        over the intersection, i.e. in the real space. Mappings for both
-   * cells are in `mapping0` and `mapping1`, respectively.
-   *
-   * @tparam dim0
-   * @tparam dim1
-   * @tparam spacedim
-   * @param cell0 A `cell_iteratator` to the first cell
-   * @param cell1 A `cell_iteratator` to the first cell
-   * @param degree The degree of the `Quadrature` you want to build there
-   * @param mapping0 The `Mapping` object describing the first cell
-   * @param mapping1 The `Mapping` object describing the second cell
-   * @return Quadrature<spacedim>
-   */
-
-
   template <int dim0, int dim1, int spacedim>
   dealii::Quadrature<spacedim>
   compute_intersection(
@@ -132,6 +111,7 @@ namespace dealii::NonMatching
     const unsigned int      n_vertices_cell0 = cell0->n_vertices();
     std::vector<CGAL_Point> vertices_cell0(n_vertices_cell0);
 
+
     const auto &deformed_vertices_cell0 =
       mapping0.get_vertices(cell0); // get deformed vertices of the current cell
 
@@ -146,7 +126,9 @@ namespace dealii::NonMatching
 
     const unsigned int      n_vertices_cell1 = cell1->n_vertices();
     std::vector<CGAL_Point> vertices_cell1(n_vertices_cell1);
+
     const auto &deformed_vertices_cell1 = mapping1.get_vertices(cell1);
+
     for (unsigned int i = 0; i < n_vertices_cell1; ++i)
       {
         vertices_cell1[i] = CGAL_Point(deformed_vertices_cell1[i][0],
@@ -162,21 +144,31 @@ namespace dealii::NonMatching
 
         if (inters)
           {
-            const auto *r = boost::get<CGAL_Rectangle>(&*inters);
-            std::cout << *r << '\n'; // TODO
-            assert(!r->is_degenerate());
-            std::array<dealii::Point<spacedim>, 4> vertices_array{
-              {dealii::Point<spacedim>(CGAL::to_double(r->vertex(0).x()),
-                                       CGAL::to_double(r->vertex(0).y())),
-               dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
-                                       CGAL::to_double(r->vertex(1).y())),
-               dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
-                                       CGAL::to_double(r->vertex(3).y())),
-               dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
-                                       CGAL::to_double(r->vertex(2).y()))}};
+            if (const auto *r = boost::get<CGAL_Rectangle>(&*inters))
+              {
+                // std::cout << *r << '\n'; // TODO
+                // assert(!r->is_degenerate());
+                std::array<dealii::Point<spacedim>, 4> vertices_array{
+                  {dealii::Point<spacedim>(CGAL::to_double(r->vertex(0).x()),
+                                           CGAL::to_double(r->vertex(0).y())),
+                   dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
+                                           CGAL::to_double(r->vertex(1).y())),
+                   dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
+                                           CGAL::to_double(r->vertex(3).y())),
+                   dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
+                                           CGAL::to_double(r->vertex(2).y()))}};
 
-            return compute_linear_transformation<dim0, spacedim, 4>(
-              dealii::QGauss<dim0>(degree), vertices_array); // 4 points
+
+                return (r->is_degenerate()) ?
+                         dealii::Quadrature<spacedim>() :
+                         compute_linear_transformation<dim0, spacedim, 4>(
+                           dealii::QGauss<dim0>(degree),
+                           vertices_array); // 4 points
+              }
+            else
+              {
+                return dealii::Quadrature<spacedim>();
+              }
           }
       }
     else if (n_vertices_cell0 == 4 && n_vertices_cell1 == 3)
@@ -219,35 +211,21 @@ namespace dealii::NonMatching
     return dealii::Quadrature<spacedim>();
   }
 
-
-  /**
-   * @brief Given two triangulations cached inside `GridTools::Cache` objects, compute all intersections between the two
-   * and return a vector where each entry is a tuple containing iterators to the
-   * respective cells and a `Quadrature<spacedim>` formula to integrate over the
-   * intersection.
-   *
-   * @tparam dim0 Intrinsic dimension of the immersed grid
-   * @tparam dim1 Intrinsic dimension of the ambient grid
-   * @tparam spacedim
-   * @param space_cache
-   * @param immersed_cache
-   * @param degree Degree of the desired quadrature formula
-   * @return std::vector<std::tuple<
-   * typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
-   * typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
-   * dealii::Quadrature<spacedim>>>
-   */
-
   template <int dim0, int dim1, int spacedim>
-  std::vector<
-    std::tuple<typename Triangulation<dim0, spacedim>::active_cell_iterator,
-               typename Triangulation<dim1, spacedim>::active_cell_iterator,
-               Quadrature<spacedim>>>
-  compute_intersection(const GridTools::Cache<dim0, spacedim> &immersed_cache,
-                       const GridTools::Cache<dim1, spacedim> &space_cache,
+  std::vector<std::tuple<
+    typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
+    typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
+    dealii::Quadrature<spacedim>>>
+  compute_intersection(const GridTools::Cache<dim0, spacedim> &space_cache,
+                       const GridTools::Cache<dim1, spacedim> &immersed_cache,
                        const unsigned int                      degree)
   {
+    Assert(DEAL_II_WITH_CGAL,
+           ExcMessage("This function needs CGAL to be installed, "
+                      "but cmake could not find it."));
+
     Assert(degree >= 1, ExcMessage("degree cannot be 0"));
+
     std::set<typename Triangulation<dim1, spacedim>::active_cell_iterator>
                 intersected_cells; // avoid duplicates
     const auto &space_tree =
@@ -269,119 +247,9 @@ namespace dealii::NonMatching
       } // found intersected cells
 
 
-  Assert((dim0 != 3 || dim1 != 3 || spacedim != 3),
-         dealii::ExcNotImplemented(
-           "Three dimensional objects are not implemented"));
-
-  const unsigned int      n_vertices_cell0 = cell0->n_vertices();
-  std::vector<CGAL_Point> vertices_cell0(n_vertices_cell0);
-
-  const auto &deformed_vertices_cell0 =
-    mapping0.get_vertices(cell0); // get deformed vertices of the current cell
-
-  // collect vertices of cell0 as CGAL_Point(s)
-  for (unsigned int i = 0; i < n_vertices_cell0; ++i)
-    {
-      vertices_cell0[i] =
-        CGAL_Point(deformed_vertices_cell0[i][0],
-                   deformed_vertices_cell0[i][1]); // get x,y coords of the
-                                                   // deformed vertices
-    }
-
-  const unsigned int      n_vertices_cell1 = cell1->n_vertices();
-  std::vector<CGAL_Point> vertices_cell1(n_vertices_cell1);
-  const auto &deformed_vertices_cell1 = mapping1.get_vertices(cell1);
-  for (unsigned int i = 0; i < n_vertices_cell1; ++i)
-    {
-      vertices_cell1[i] = CGAL_Point(deformed_vertices_cell1[i][0],
-                                     deformed_vertices_cell1[i][1]);
-    }
-
-
-  if (n_vertices_cell0 == 4 && n_vertices_cell1 == 4)
-    { // rectangle-rectangle
-      const auto inters =
-        internal::compute_intersection_of_cells<4, 4>(vertices_cell0,
-                                                      vertices_cell1);
-
-      if (inters)
-        {
-          const auto *r = boost::get<CGAL_Rectangle>(&*inters);
-          std::cout << *r << '\n'; // TODO
-          assert(!r->is_degenerate());
-          std::array<dealii::Point<spacedim>, 4> vertices_array{
-            {dealii::Point<spacedim>(CGAL::to_double(r->vertex(0).x()),
-                                     CGAL::to_double(r->vertex(0).y())),
-             dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
-                                     CGAL::to_double(r->vertex(1).y())),
-             dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
-                                     CGAL::to_double(r->vertex(3).y())),
-             dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
-                                     CGAL::to_double(r->vertex(2).y()))}};
-
-          return compute_linear_transformation<dim0, spacedim, 4>(
-            dealii::QGauss<dim0>(degree), vertices_array); // 4 points
-        }
-    }
-  else if (n_vertices_cell0 == 4 && n_vertices_cell1 == 3)
-    { // rectangle-triangle
-      dealii::ExcNotImplemented(
-        "Rectangle-Triangle intersection not yet implemented");
-    }
-
-  else if (n_vertices_cell0 == 2 && n_vertices_cell1 == 4)
-    { // segment-rectangle
-      const auto inters =
-        internal::compute_intersection_of_cells<2, 4>(vertices_cell0,
-                                                      vertices_cell1);
-
-      if (inters)
-        {
-          if (const auto *s = boost::get<CGAL_Segment>(&*inters))
-            {
-              std::array<dealii::Point<spacedim>, 2> vertices_array{
-                {dealii::Point<spacedim>(CGAL::to_double(s->vertex(0).x()),
-                                         CGAL::to_double(s->vertex(0).y())),
-                 dealii::Point<spacedim>(CGAL::to_double(s->vertex(1).x()),
-                                         CGAL::to_double(s->vertex(1).y()))}};
-
-              return (s->is_degenerate()) ?
-                       dealii::Quadrature<spacedim>() :
-                       compute_linear_transformation<dim0, spacedim, 2>(
-                         dealii::QGauss<dim0>(degree),
-                         vertices_array); // 2 points
-            }
-          else
-            {
-              return dealii::Quadrature<spacedim>(); // got a simple Point,
-                                                     // return an empty
-                                                     // Quadrature
-            }
-        }
-    }
-
-  return dealii::Quadrature<spacedim>();
-}
-#else
-template <int dim0, int dim1, int spacedim>
-dealii::Quadrature<spacedim>
-compute_intersection(
-  const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &,
-  const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &,
-  const unsigned int,
-  const dealii::Mapping<dim0, spacedim> &,
-  const dealii::Mapping<dim1, spacedim> &)
-{
-  Assert(false,
-         dealii::ExcMessage("This function needs CGAL to be installed, "
-                            "but cmake could not find it."));
-}
-#endif
-
     // references to triangulations' info (cp cstrs marked as delete)
-    const auto &immersed_grid = immersed_cache.get_triangulation();
-    const auto &mapping0      = immersed_cache.get_mapping();
-    const auto &mapping1      = space_cache.get_mapping();
+    const auto &mapping0 = space_cache.get_mapping();
+    const auto &mapping1 = immersed_cache.get_mapping();
 
     std::vector<
       std::tuple<typename Triangulation<dim0, spacedim>::active_cell_iterator,
@@ -391,19 +259,22 @@ compute_intersection(
 
     for (const auto &space_cell : intersected_cells)
       { // loop over interseced space_cells
-        for (const auto &immersed_cell : immersed_grid)
+        for (const auto &[immersed_box, immersed_cell] : immersed_tree)
           {
-            typename Triangulation<dim0, spacedim>::cell_iterator
+            typename Triangulation<dim0, spacedim>::active_cell_iterator
+              space_cell_t(space_cell);
+
+            typename Triangulation<dim1, spacedim>::active_cell_iterator
               immersed_cell_t(immersed_cell);
-            typename Triangulation<dim1, spacedim>::cell_iterator space_cell_t(
-              space_cell);
+
             const auto test_intersection =
               compute_intersection<dim0, dim1, spacedim>(
-                immersed_cell_t, space_cell_t, degree, mapping0, mapping1);
+                space_cell_t, immersed_cell_t, degree, mapping0, mapping1);
+
             if (test_intersection.get_points().size() != 0)
               {
-                cells_with_quads.push_back(std::make_tuple(immersed_cell_t,
-                                                           space_cell_t,
+                cells_with_quads.push_back(std::make_tuple(space_cell_t,
+                                                           immersed_cell_t,
                                                            test_intersection));
               }
           }
@@ -469,27 +340,27 @@ dealii::NonMatching::compute_intersection(
 
 
 template std::vector<
-  std::tuple<typename dealii::Triangulation<1, 2>::active_cell_iterator,
-             typename dealii::Triangulation<2, 2>::active_cell_iterator,
+  std::tuple<typename dealii::Triangulation<2, 2>::active_cell_iterator,
+             typename dealii::Triangulation<1, 2>::active_cell_iterator,
              Quadrature<2>>>
-NonMatching::compute_intersection(const GridTools::Cache<1, 2> &immersed_cache,
-                                  const GridTools::Cache<2, 2> &space_cache,
+NonMatching::compute_intersection(const GridTools::Cache<2, 2> &space_cache,
+                                  const GridTools::Cache<1, 2> &immersed_cache,
                                   const unsigned int            degree);
 
 template std::vector<
   std::tuple<typename dealii::Triangulation<2, 2>::active_cell_iterator,
              typename dealii::Triangulation<2, 2>::active_cell_iterator,
              Quadrature<2>>>
-NonMatching::compute_intersection(const GridTools::Cache<2, 2> &immersed_cache,
-                                  const GridTools::Cache<2, 2> &space_cache,
+NonMatching::compute_intersection(const GridTools::Cache<2, 2> &space_cache,
+                                  const GridTools::Cache<2, 2> &immersed_cache,
                                   const unsigned int            degree);
 
 template std::vector<
-  std::tuple<typename dealii::Triangulation<2, 3>::active_cell_iterator,
-             typename dealii::Triangulation<3, 3>::active_cell_iterator,
+  std::tuple<typename dealii::Triangulation<3, 3>::active_cell_iterator,
+             typename dealii::Triangulation<2, 3>::active_cell_iterator,
              Quadrature<3>>>
-NonMatching::compute_intersection(const GridTools::Cache<2, 3> &immersed_cache,
-                                  const GridTools::Cache<3, 3> &space_cache,
+NonMatching::compute_intersection(const GridTools::Cache<3, 3> &space_cache,
+                                  const GridTools::Cache<2, 3> &immersed_cache,
                                   const unsigned int            degree);
 
 
@@ -497,6 +368,8 @@ template std::vector<
   std::tuple<typename dealii::Triangulation<3, 3>::active_cell_iterator,
              typename dealii::Triangulation<3, 3>::active_cell_iterator,
              Quadrature<3>>>
-NonMatching::compute_intersection(const GridTools::Cache<3, 3> &immersed_cache,
-                                  const GridTools::Cache<3, 3> &space_cache,
+NonMatching::compute_intersection(const GridTools::Cache<3, 3> &space_cache,
+                                  const GridTools::Cache<3, 3> &immersed_cache,
                                   const unsigned int            degree);
+
+#endif
