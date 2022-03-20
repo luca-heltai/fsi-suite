@@ -38,7 +38,6 @@
 #  include <gtest/gtest.h>
 
 #  include "compute_intersections.h"
-#  include "compute_intersections.h"
 #  include "compute_linear_transformation.h"
 #  include "dim_spacedim_tester.h"
 
