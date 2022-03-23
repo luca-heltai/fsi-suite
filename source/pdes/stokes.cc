@@ -85,12 +85,12 @@ namespace PDEs
                 const auto &eps_u =
                   fe_values[velocity].symmetric_gradient(j, q_index);
                 const auto &div_u = fe_values[velocity].divergence(j, q_index);
-                const auto &p     = fe_values[pressure].value(i, q_index);
+                const auto &p     = fe_values[pressure].value(j, q_index);
                 // We assemble also the mass matrix for the pressure, to be
                 // used as a preconditioner
                 cell_matrix(i, j) +=
-                  (constants["eta"] * eps_v * eps_u + div_v * p + div_u * q +
-                   1 / constants["eta"] * p * q) *
+                  (constants["eta"] * scalar_product(eps_v, eps_u) - div_v * p -
+                   div_u * q - p * q / constants["eta"]) *
                   fe_values.JxW(q_index); // dx
               }
 
@@ -126,10 +126,7 @@ namespace PDEs
     const auto Mp   = linear_operator<Vec>(m.block(1, 1));
     const auto Zero = Mp * 0.0;
 
-    const std::array<std::array<LinOp, 2>, 2> system_ops(
-      {{{{A, Bt}}, {{B, Zero}}}});
-
-    auto AA = block_operator<2, 2, BVec>(system_ops);
+    auto AA = block_operator<2, 2, BVec>({{{{A, Bt}}, {{B, Zero}}}});
 
     // auto AA = block_operator<BVec>(m);
     // AA.block(1, 1) *= 0;
@@ -139,7 +136,7 @@ namespace PDEs
     schur_preconditioner.initialize(m.block(1, 1));
 
     auto precA = linear_operator<Vec>(A, this->preconditioner);
-    auto precS = -1.0 * linear_operator<Vec>(Mp, schur_preconditioner);
+    auto precS = linear_operator<Vec>(Mp, schur_preconditioner);
 
     std::array<LinOp, 2> diag_ops = {{precA, precS}};
     auto diagprecAA               = block_diagonal_operator<2, BVec>(diag_ops);
