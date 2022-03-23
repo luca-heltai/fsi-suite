@@ -42,7 +42,7 @@ public:
    * Initialize a non ghosted TrilinosWrappers::MPI::BlockVector.
    */
   void
-  operator()(dealii::TrilinosWrappers::MPI::BlockVector &v, bool fast = false)
+  operator()(LAC::LATrilinos::BlockVector &v, bool fast = false)
   {
     v.reinit(owned, comm, fast);
   };
@@ -52,16 +52,37 @@ public:
    * Initialize a ghosted TrilinosWrappers::MPI::BlockVector.
    */
   void
-  ghosted(dealii::TrilinosWrappers::MPI::BlockVector &v, bool fast = false)
+  ghosted(LAC::LATrilinos::BlockVector &v, bool fast = false)
   {
     v.reinit(owned, relevant, comm, fast);
+  };
+
+  /**
+   * Initialize a non ghosted TrilinosWrappers::MPI::BlockVector.
+   */
+  void
+  operator()(LAC::LAPETSc::BlockVector &v, bool fast = false)
+  {
+    (void)fast;
+    v.reinit(owned, comm);
+  };
+
+
+  /**
+   * Initialize a ghosted TrilinosWrappers::MPI::BlockVector.
+   */
+  void
+  ghosted(LAC::LAPETSc::BlockVector &v, bool fast = false)
+  {
+    (void)fast;
+    v.reinit(owned, relevant, comm);
   };
 
   /**
    * Initialize a serial BlockVector<double>.
    */
   void
-  operator()(dealii::BlockVector<double> &v, bool fast = false)
+  operator()(LAC::LAdealii::BlockVector &v, bool fast = false)
   {
     v.reinit(dofs_per_block, fast);
   };
@@ -71,7 +92,7 @@ public:
    * Initiale a ghosted BlockVector<double>. Same as above.
    */
   void
-  ghosted(dealii::BlockVector<double> &v, bool fast = false)
+  ghosted(LAC::LAdealii::BlockVector &v, bool fast = false)
   {
     v.reinit(dofs_per_block, fast);
   };

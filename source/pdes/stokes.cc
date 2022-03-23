@@ -15,6 +15,8 @@
 
 #include "pdes/stokes.h"
 
+#include <deal.II/dofs/dof_tools.h>
+
 #include <deal.II/lac/linear_operator_tools.h>
 
 #include "parsed_tools/components.h"
@@ -31,6 +33,10 @@ namespace PDEs
         "Stokes")
     , constants("/Stokes/Constants", {"eta"}, {1.0}, {"Viscosity"})
     , schur_preconditioner("/Stokes/Solver/Schur preconditioner")
+    , schur_solver("/Stokes/Solver/Schur solver",
+                   "cg",
+                   ParsedLAC::SolverControlType::iteration_number,
+                   5)
     , velocity(0)
     , pressure(dim)
   {
@@ -100,7 +106,7 @@ namespace PDEs
                 // used as a preconditioner
                 cell_matrix(i, j) +=
                   (constants["eta"] * scalar_product(eps_v, eps_u) - div_v * p -
-                   div_u * q - p * q / constants["eta"]) *
+                   div_u * q + p * q / constants["eta"]) *
                   fe_values.JxW(q_index); // dx
               }
 
@@ -136,8 +142,23 @@ namespace PDEs
     const auto Mp   = linear_operator<Vec>(m.block(1, 1));
     const auto Zero = Mp * 0.0;
 
+
     auto AA = block_operator<2, 2, BVec>({{{{A, Bt}}, {{B, Zero}}}});
 
+    if constexpr (std::is_same<LacType, LAC::LATrilinos>::value)
+      {
+        std::vector<std::vector<bool>> constant_modes;
+        DoFTools::extract_constant_modes(this->dof_handler,
+                                         this->finite_element().component_mask(
+                                           velocity),
+                                         constant_modes);
+        this->preconditioner.set_constant_modes(constant_modes);
+        const auto n_modes = std::count_if(constant_modes[0].begin(),
+                                           constant_modes[0].end(),
+                                           [](const bool &b) { return b; });
+        this->pcout << "Constant modes: " << n_modes << "/"
+                    << constant_modes[0].size() << std::endl;
+      }
     // auto AA = block_operator<BVec>(m);
     // AA.block(1, 1) *= 0;
 
@@ -146,7 +167,11 @@ namespace PDEs
     schur_preconditioner.initialize(m.block(1, 1));
 
     auto precA = linear_operator<Vec>(A, this->preconditioner);
-    auto precS = linear_operator<Vec>(Mp, schur_preconditioner);
+
+    const auto S     = -1.0 * B * precA * Bt;
+    auto       precM = linear_operator<Vec>(Mp, schur_preconditioner);
+    // auto       precS = schur_solver(S, precM);
+    auto precS = schur_solver(Mp, precM);
 
     std::array<LinOp, 2> diag_ops = {{precA, precS}};
     auto diagprecAA               = block_diagonal_operator<2, BVec>(diag_ops);
@@ -155,9 +180,9 @@ namespace PDEs
 
     // If we use gmres or another non symmetric solver, use a non-symmetric
     // preconditioner
-    if (this->inverse_operator.get_solver_name() != "cg")
+    if (this->inverse_operator.get_solver_name() != "minres")
       {
-        const auto precAA    = block_back_substitution(AA, diagprecAA);
+        const auto precAA    = block_forward_substitution(AA, diagprecAA);
         const auto inv       = this->inverse_operator(AA, precAA);
         this->block_solution = inv * this->system_block_rhs;
       }
@@ -176,4 +201,7 @@ namespace PDEs
 
   template class Stokes<2, LAC::LATrilinos>;
   template class Stokes<3, LAC::LATrilinos>;
+
+  template class Stokes<2, LAC::LAPETSc>;
+  template class Stokes<3, LAC::LAPETSc>;
 } // namespace PDEs

@@ -451,7 +451,7 @@ namespace PDEs
     /**
      * Preconditioner.
      */
-    ParsedLAC::AMGPreconditioner preconditioner;
+    typename LacType::AMG preconditioner;
 
     /**
      * The actual function to use as a forcing term. This is a wrapper

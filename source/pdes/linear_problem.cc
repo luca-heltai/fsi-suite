@@ -405,11 +405,11 @@ namespace PDEs
   template class LinearProblem<2, 3, LAC::LAdealii>;
   template class LinearProblem<3, 3, LAC::LAdealii>;
 
-  // // Explicit instantiation: no one dimensional parallel
-  // // triangulation
-  // template class LinearProblem<2, 2, LAPETSc>;
-  // template class LinearProblem<2, 3, LAPETSc>;
-  // template class LinearProblem<3, 3, LAPETSc>;
+  // Explicit instantiation: no one dimensional parallel
+  // triangulation
+  template class LinearProblem<2, 2, LAC::LAPETSc>;
+  template class LinearProblem<2, 3, LAC::LAPETSc>;
+  template class LinearProblem<3, 3, LAC::LAPETSc>;
 
   // Explicit instantiation: no one dimensional parallel
   // triangulation

@@ -1,0 +1,107 @@
+subsection Stokes
+  set Finite element space (u,u,p) = FESystem[FE_Q(2)^2-FE_DGP(1)]
+  set n_threads                    = -1
+  set verbosity                    = 4
+  subsection Grid
+    set Input name                = hyper_cube
+    set Arguments                 = 0: 1: true
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 9
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    set Solver name            = gmres
+    set Solver control type    = reduction
+    set Maximum iterations     = 1000
+    set Consecutive iterations = 2
+    set Absolute tolerance     = 1e-12
+    set Relative tolerance     = 1e-10
+    set Log history            = true
+    set Log result             = true
+    subsection AMG preconditioner
+      set Symmetric operator               = true
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = true
+      set Relaxation type up               = Jacobi
+      set Relaxation type down             = Jacobi
+      set Relaxation type coarse           = GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
+    end
+    subsection Schur preconditioner
+      set Symmetric operator               = true
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = false
+      set Relaxation type up               = Jacobi
+      set Relaxation type down             = Jacobi
+      set Relaxation type coarse           = GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
+    end
+    subsection Schur solver
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 100
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-8
+      set Log history            = false
+      set Log result             = false
+    end
+  end
+  subsection Functions
+    set Forcing term   = 0;0;0
+    set Exact solution = 0;0;0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u,u,p)         = 0,1,2; 3
+    set Selected components (u,u,p)      = u; u
+    set Boundary condition types (u,u,p) = dirichlet, dirichlet
+    set Expressions (u,u,p)              = 0;0;0 % 1;0;0
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 3
+    set Error file name                  = 
+    set List of error norms to compute   = L2_norm, H1_norm; L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = stokes_solution/lid_driven
+    set Output partitioning    = false
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+  subsection Constants
+    set Viscosity (eta) = 1
+  end
+end

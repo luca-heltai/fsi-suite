@@ -17,6 +17,7 @@
 
 #include "parsed_lac/amg.h"
 #include "parsed_lac/ilu.h"
+#include "parsed_lac/inverse_operator.h"
 #include "parsed_tools/constants.h"
 #include "pdes/linear_problem.h"
 
@@ -64,8 +65,10 @@ namespace PDEs
     virtual void
     solve() override;
 
-    ParsedTools::Constants       constants;
-    ParsedLAC::AMGPreconditioner schur_preconditioner;
+    ParsedTools::Constants     constants;
+    typename LacType::AMG      schur_preconditioner;
+    ParsedLAC::InverseOperator schur_solver;
+
 
     const FEValuesExtractors::Vector velocity;
     const FEValuesExtractors::Scalar pressure;
@@ -74,7 +77,7 @@ namespace PDEs
   namespace MPI
   {
     template <int dim>
-    using Stokes = PDEs::Stokes<dim, LAC::LATrilinos>;
+    using Stokes = PDEs::Stokes<dim, LAC::LAPETSc>;
   }
 
   namespace Serial

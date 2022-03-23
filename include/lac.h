@@ -21,6 +21,13 @@
 #include <deal.II/lac/block_sparse_matrix.h>
 #include <deal.II/lac/block_sparsity_pattern.h>
 #include <deal.II/lac/block_vector.h>
+#include <deal.II/lac/petsc_solver.h>
+#include <deal.II/lac/sparse_direct.h>
+#include <deal.II/lac/trilinos_solver.h>
+
+#include "parsed_lac/amg.h"
+#include "parsed_lac/amg_petsc.h"
+#include "parsed_lac/ilu.h"
 
 /**
  * Wrappers for linear algebra classes. This collection of structs allows us to
@@ -45,6 +52,10 @@ namespace LAC
     using BlockVector          = dealii::BlockVector<double>;
     using BlockSparseMatrix    = dealii::BlockSparseMatrix<double>;
     using BlockSparsityPattern = dealii::BlockSparsityPattern;
+#ifdef DEAL_II_WITH_TRILINOS
+    using AMG          = ParsedLAC::AMGPreconditioner;
+    using DirectSolver = dealii::SparseDirectUMFPACK;
+#endif
   };
 
 
@@ -64,6 +75,8 @@ namespace LAC
     using BlockVector          = dealii::PETScWrappers::MPI::BlockVector;
     using BlockSparseMatrix    = dealii::PETScWrappers::MPI::BlockSparseMatrix;
     using BlockSparsityPattern = dealii::BlockSparsityPattern;
+    using AMG                  = ParsedLAC::PETScAMGPreconditioner;
+    using DirectSolver         = dealii::PETScWrappers::SparseDirectMUMPS;
   };
 
 #endif // DEAL_II_WITH_PETSC
@@ -85,6 +98,8 @@ namespace LAC
     using BlockVector          = dealii::TrilinosWrappers::MPI::BlockVector;
     using BlockSparseMatrix    = dealii::TrilinosWrappers::BlockSparseMatrix;
     using BlockSparsityPattern = dealii::TrilinosWrappers::BlockSparsityPattern;
+    using AMG                  = ParsedLAC::AMGPreconditioner;
+    using DirectSolver         = dealii::TrilinosWrappers::SolverDirect;
   };
 
 #endif // DEAL_II_WITH_TRILINOS
