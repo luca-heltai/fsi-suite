@@ -10,6 +10,8 @@ var class_parsed_tools_1_1_boundary_conditions =
     [ "apply_essential_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#add8379a82cf7c3ef2df50958ab760958", null ],
     [ "apply_natural_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#abf8c0acca58ef71d3c5f458f192efd2d", null ],
     [ "apply_natural_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#a5696c80b0854e1bb3e7ee81426a644d8", null ],
+    [ "get_essential_boundary_ids", "class_parsed_tools_1_1_boundary_conditions.html#acda371071305eae6b37cbdf7743888c9", null ],
+    [ "get_natural_boundary_ids", "class_parsed_tools_1_1_boundary_conditions.html#af52f5a353deb46fcc1d1d38b832e2818", null ],
     [ "component_names", "class_parsed_tools_1_1_boundary_conditions.html#a5c9a43e40157ab2496466f0b7007541c", null ],
     [ "n_components", "class_parsed_tools_1_1_boundary_conditions.html#a423cb015d2bac2fc890f0e23728baf34", null ],
     [ "n_boundary_conditions", "class_parsed_tools_1_1_boundary_conditions.html#ad62257caa7e5a8a33a66f6987c3aa6b3", null ],

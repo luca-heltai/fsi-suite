@@ -272,6 +272,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a880c63e99e9bdaf3ef07f04328c01a0c"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a880c63e99e9bdaf3ef07f04328c01a0c">setup_system_call_back</a></td></tr>
 <tr class="memdesc:a880c63e99e9bdaf3ef07f04328c01a0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a3f3c7385541c6124fa34e8db481e11d0" title="Initial setup: distribute degrees of freedom, make all vectors and matrices of the right size,...">setup_system()</a>  <a href="class_p_d_es_1_1_linear_problem.html#a880c63e99e9bdaf3ef07f04328c01a0c">More...</a><br /></td></tr>
 <tr class="separator:a880c63e99e9bdaf3ef07f04328c01a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a903cae23780af335941b29eb85dff56f"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a903cae23780af335941b29eb85dff56f">output_results_call_back</a></td></tr>
+<tr class="memdesc:a903cae23780af335941b29eb85dff56f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a652eba3d0ff72ef1155466d447b13f92" title="Output the solution and the grid in a format that can be read by Paraview or Visit.">output_results()</a>  <a href="class_p_d_es_1_1_linear_problem.html#a903cae23780af335941b29eb85dff56f">More...</a><br /></td></tr>
+<tr class="separator:a903cae23780af335941b29eb85dff56f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50b94015420662d0882218bda5f7b038"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a50b94015420662d0882218bda5f7b038">assemble_system_call_back</a></td></tr>
 <tr class="memdesc:a50b94015420662d0882218bda5f7b038"><td class="mdescLeft">&#160;</td><td class="mdescRight">A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a6dddda912ddb5ad48a16285f168a8e6b" title="Actually loop over cells, and assemble the global system.">assemble_system()</a>  <a href="class_p_d_es_1_1_linear_problem.html#a50b94015420662d0882218bda5f7b038">More...</a><br /></td></tr>
 <tr class="separator:a50b94015420662d0882218bda5f7b038"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -293,6 +296,12 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ae222ff5ffc6005f8de68fb81430a3812"><td class="memItemLeft" align="right" valign="top">MPI_Comm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ae222ff5ffc6005f8de68fb81430a3812">mpi_communicator</a></td></tr>
 <tr class="memdesc:ae222ff5ffc6005f8de68fb81430a3812"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global mpi communicator.  <a href="class_p_d_es_1_1_linear_problem.html#ae222ff5ffc6005f8de68fb81430a3812">More...</a><br /></td></tr>
 <tr class="separator:ae222ff5ffc6005f8de68fb81430a3812"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca8dd7ec5fa97ab60d7ff9d921b938f"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#aaca8dd7ec5fa97ab60d7ff9d921b938f">mpi_rank</a></td></tr>
+<tr class="memdesc:aaca8dd7ec5fa97ab60d7ff9d921b938f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mpi rank of this process.  <a href="class_p_d_es_1_1_linear_problem.html#aaca8dd7ec5fa97ab60d7ff9d921b938f">More...</a><br /></td></tr>
+<tr class="separator:aaca8dd7ec5fa97ab60d7ff9d921b938f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9bb0cf4beaab31ae8cec3072b079ba"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ada9bb0cf4beaab31ae8cec3072b079ba">mpi_size</a></td></tr>
+<tr class="memdesc:ada9bb0cf4beaab31ae8cec3072b079ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of mpi processes.  <a href="class_p_d_es_1_1_linear_problem.html#ada9bb0cf4beaab31ae8cec3072b079ba">More...</a><br /></td></tr>
+<tr class="separator:ada9bb0cf4beaab31ae8cec3072b079ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64036862492abfd3ef9c5846bcf36cbd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a64036862492abfd3ef9c5846bcf36cbd">number_of_threads</a> = -1</td></tr>
 <tr class="memdesc:a64036862492abfd3ef9c5846bcf36cbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of threads to use for multi-threaded assembly.  <a href="class_p_d_es_1_1_linear_problem.html#a64036862492abfd3ef9c5846bcf36cbd">More...</a><br /></td></tr>
 <tr class="separator:a64036862492abfd3ef9c5846bcf36cbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -609,7 +618,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Main entry point of the problem. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00379">379</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00380">380</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -666,7 +675,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00207">207</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00208">208</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -704,7 +713,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00219">219</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00220">220</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -734,7 +743,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Reimplemented in <a class="el" href="class_p_d_es_1_1_linear_elasticity.html#a3b1f6baf955cd878fc7ecfa3dc5c8abe">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;</a>, <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#a67f1ec4143fb59b04495e87ac6c8b8fb">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>, and <a class="el" href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">PDEs::Stokes&lt; dim, LacType &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00282">282</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00283">283</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -766,7 +775,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Perform a posteriori error estimation, and store the results in the <code>error_per_cell</code> vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00291">291</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00292">292</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -798,7 +807,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>According to the chosen strategy, mark some cells for refinement, possibily using the <code>error_per_cell</code> vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00310">310</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00311">311</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -826,7 +835,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Refine the grid. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00321">321</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00322">322</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -854,7 +863,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Initial setup: distribute degrees of freedom, make all vectors and matrices of the right size, initialize functions and pointers. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00093">93</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00094">94</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -882,7 +891,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Actually loop over cells, and assemble the global system. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00232">232</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00233">233</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -920,7 +929,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00332">332</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00333">333</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -948,7 +957,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>print some information about the current processes/mpi/ranks/etc. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00353">353</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00356">356</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
 </div>
 </div>
@@ -1009,6 +1018,34 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 </div>
 </div>
+<a id="a903cae23780af335941b29eb85dff56f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a903cae23780af335941b29eb85dff56f">&#9670;&nbsp;</a></span>output_results_call_back</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::signals2::signal&lt;void()&gt; <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::output_results_call_back</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a652eba3d0ff72ef1155466d447b13f92" title="Output the solution and the grid in a format that can be read by Paraview or Visit.">output_results()</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00206">206</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+
+</div>
+</div>
 <a id="a50b94015420662d0882218bda5f7b038"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a50b94015420662d0882218bda5f7b038">&#9670;&nbsp;</a></span>assemble_system_call_back</h2>
 
@@ -1033,7 +1070,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a6dddda912ddb5ad48a16285f168a8e6b" title="Actually loop over cells, and assemble the global system.">assemble_system()</a> </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00212">212</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00217">217</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1098,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Connect to this signal to add data additional vectors to the output system. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00234">234</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00239">239</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1126,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Comma seperated names of components. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00239">239</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00244">244</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1154,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Number of components. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00244">244</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00249">249</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1145,7 +1182,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Name of the problem to solve. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00249">249</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00254">254</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1210,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Name of the section to use within the parameter file. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00254">254</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00259">259</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1201,7 +1238,63 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Global mpi communicator. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00259">259</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00264">264</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+
+</div>
+</div>
+<a id="aaca8dd7ec5fa97ab60d7ff9d921b938f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaca8dd7ec5fa97ab60d7ff9d921b938f">&#9670;&nbsp;</a></span>mpi_rank</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::mpi_rank</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The mpi rank of this process. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00269">269</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+
+</div>
+</div>
+<a id="ada9bb0cf4beaab31ae8cec3072b079ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada9bb0cf4beaab31ae8cec3072b079ba">&#9670;&nbsp;</a></span>mpi_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned int <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::mpi_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The number of mpi processes. </p>
+
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00274">274</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1229,7 +1322,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Number of threads to use for multi-threaded assembly. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00264">264</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00279">279</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1257,7 +1350,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Verbosity level of deallog. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00269">269</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00284">284</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1285,7 +1378,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Output only on processor zero. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00274">274</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00289">289</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1313,7 +1406,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Timing information. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00279">279</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00294">294</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1349,7 +1442,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div class="line">end</div>
 </div><!-- fragment --><p>Where you can specify what grid to generate, how to generate it, or what file to read the grid from, and to what file to write the grid to, in addition to the initial refinement of the grid. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00301">301</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00316">316</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1396,7 +1489,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 </div><!-- fragment --><p> where you can specify the number of refinement cycles, the type of error estimator, what marking strategy to use, etc.</p>
 <p>At the moment, local refinement is only supported on quad/hex grids. If you try to run the code with a local refinement strategy with a tria/tetra grid, an exception will be thrown at run time. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00335">335</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00350">350</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1424,7 +1517,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>The problem triangulation. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00340">340</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00355">355</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1457,7 +1550,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 </div><!-- fragment --><p>You should make sure that the type of finite element you specify matches the type of triangulation you are using, i.e., <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__Q.html">FE_Q</a> is supported only on quad/hex grids, while <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__SimplexP.html">FE_SimplexP</a> is supported only on tri/tetra grids.</p>
 <p>The syntax used to specify the finite element type is the same used by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFETools.html#ad677362df1413e1ccc8a2cf7aff19d07">FETools::get_fe_by_name()</a> function. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00362">362</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00377">377</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1486,7 +1579,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <p>The <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a> between reference and real elements. </p>
 <p>This is a unique pointer to allow creation via parameter files. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00369">369</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00384">384</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1514,7 +1607,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Handler of degrees of freedom. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00374">374</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00389">389</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1542,7 +1635,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Hanging nodes and essential boundary conditions. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00379">379</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00394">394</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1570,7 +1663,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Dofs per block. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00384">384</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00399">399</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1598,7 +1691,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>All degrees of freedom owned by this <a class="el" href="namespace_p_d_es_1_1_m_p_i.html">MPI</a> process. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00389">389</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00404">404</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1626,7 +1719,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>All degrees of freedom needed for output and error estimation. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00394">394</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00409">409</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1654,7 +1747,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>System sparsity pattern. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00399">399</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00414">414</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1682,7 +1775,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>System matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00404">404</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00419">419</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1710,7 +1803,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>A read only copy of the solution vector used for output and error estimation. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00410">410</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00425">425</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1738,7 +1831,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Solution vector. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00415">415</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00430">430</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1767,7 +1860,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <p>The system right hand side. </p>
 <p>Read-write vector, containing only locally owned dofs. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00421">421</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00436">436</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1796,7 +1889,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <p>Storage for local error estimator. </p>
 <p>This vector contains also values associated to artificial cells (i.e., it is of length <code>triangulation.n_active_cells()</code>), but it is non-zero only on locally owned cells. The <a class="el" href="class_p_d_es_1_1_linear_problem.html#ae7eff641a3c999a0234ff70178154d21" title="Perform a posteriori error estimation, and store the results in the error_per_cell vector.">estimate()</a> method only fills locally owned cells. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00429">429</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00444">444</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1824,7 +1917,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Inverse operator. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00434">434</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00449">449</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1852,7 +1945,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 <p>Preconditioner. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00439">439</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00454">454</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1885,7 +1978,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div class="line">end</div>
 </div><!-- fragment --><p>You can use any of the numerical constants that are defined in the numbers namespace, such as PI, E, etc, as well as the constants defined at construction time in the <a class="el" href="class_parsed_tools_1_1_constants.html" title="A wrapper for physical constants to be shared among functions and classes.">ParsedTools::Constants</a> class. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00460">460</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00475">475</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1918,7 +2011,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div class="line">end</div>
 </div><!-- fragment --><p>You can use any of the numerical constants that are defined in the numbers namespace, such as PI, E, etc, as well as the constants defined at construction time in the <a class="el" href="class_parsed_tools_1_1_constants.html" title="A wrapper for physical constants to be shared among functions and classes.">ParsedTools::Constants</a> class. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00481">481</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00496">496</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -1968,7 +2061,7 @@ dirichlet" for two different sets of boundary ids.</li>
 <div class="line">end</div>
 </div><!-- fragment --><p>This would apply Dirichlet boundary conditions on the boundary ids 2 and 3, and homogeneous Neumann boundary conditions on the boundary ids 0 and 1. </p>
 
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00544">544</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00559">559</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -2016,7 +2109,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <img src="poisson_convergence_graph.png" alt=""/>
 </div>
  
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00585">585</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00600">600</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -2058,7 +2151,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <img src="poisson_solution.png" alt=""/>
 </div>
  
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00611">611</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00626">626</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
 </div>
 </div>
@@ -2072,7 +2165,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_linear_problem.html">LinearProblem</a></li>
-    <li class="footer">Generated on Sat Mar 19 2022 17:04:55 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 23 2022 11:06:49 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

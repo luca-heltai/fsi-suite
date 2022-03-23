@@ -74,9 +74,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "amg_8cc.html",
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8f0a363697fc14f740bf459425e1e4d3",
-"class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527",
-"mapping__eulerian_8h_source.html"
+"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725da160308f9e557fbe7ac173ec84667c4d1",
+"class_parsed_tools_1_1_grid_refinement.html#ad9ede1aabf6f867a9f7b69088c769bef",
+"linear__problem_8cc_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

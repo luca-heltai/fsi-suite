@@ -151,6 +151,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a595dc41551c7793d673c6faf3896d1ce"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_elasticity.html#a595dc41551c7793d673c6faf3896d1ce">~LinearElasticity</a> ()=default</td></tr>
 <tr class="memdesc:a595dc41551c7793d673c6faf3896d1ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroy the <a class="el" href="class_p_d_es_1_1_linear_elasticity.html">LinearElasticity</a> object.  <a href="class_p_d_es_1_1_linear_elasticity.html#a595dc41551c7793d673c6faf3896d1ce">More...</a><br /></td></tr>
 <tr class="separator:a595dc41551c7793d673c6faf3896d1ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2c97d35d65def612fe26487bcb4dada"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_elasticity.html#ae2c97d35d65def612fe26487bcb4dada">postprocess</a> ()</td></tr>
+<tr class="memdesc:ae2c97d35d65def612fe26487bcb4dada"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute integrals normal stress on Dirichlet faces, and average displacement on Neumann faces.  <a href="class_p_d_es_1_1_linear_elasticity.html#ae2c97d35d65def612fe26487bcb4dada">More...</a><br /></td></tr>
+<tr class="separator:ae2c97d35d65def612fe26487bcb4dada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_p_d_es_1_1_linear_problem"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_p_d_es_1_1_linear_problem')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem&lt; dim, dim, LAC::LAdealii &gt;</a></td></tr>
 <tr class="memitem:a7fee120dfea33488c7e4cd639ff5f460 inherit pub_methods_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a7fee120dfea33488c7e4cd639ff5f460">LinearProblem</a> (const std::string &amp;<a class="el" href="class_p_d_es_1_1_linear_problem.html#a61156c596f6ae94bbe08ce518f368222">component_names</a>=&quot;u&quot;, const std::string &amp;<a class="el" href="class_p_d_es_1_1_linear_problem.html#a78f68e21a1d3af1af3bd861f73853f0d">problem_name</a>=&quot;&quot;)</td></tr>
 <tr class="memdesc:a7fee120dfea33488c7e4cd639ff5f460 inherit pub_methods_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_p_d_es_1_1_linear_problem.html#a7fee120dfea33488c7e4cd639ff5f460">More...</a><br /></td></tr>
@@ -294,6 +297,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a880c63e99e9bdaf3ef07f04328c01a0c inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a880c63e99e9bdaf3ef07f04328c01a0c">setup_system_call_back</a></td></tr>
 <tr class="memdesc:a880c63e99e9bdaf3ef07f04328c01a0c inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a3f3c7385541c6124fa34e8db481e11d0" title="Initial setup: distribute degrees of freedom, make all vectors and matrices of the right size,...">setup_system()</a>  <a href="class_p_d_es_1_1_linear_problem.html#a880c63e99e9bdaf3ef07f04328c01a0c">More...</a><br /></td></tr>
 <tr class="separator:a880c63e99e9bdaf3ef07f04328c01a0c inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a903cae23780af335941b29eb85dff56f inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a903cae23780af335941b29eb85dff56f">output_results_call_back</a></td></tr>
+<tr class="memdesc:a903cae23780af335941b29eb85dff56f inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a652eba3d0ff72ef1155466d447b13f92" title="Output the solution and the grid in a format that can be read by Paraview or Visit.">output_results()</a>  <a href="class_p_d_es_1_1_linear_problem.html#a903cae23780af335941b29eb85dff56f">More...</a><br /></td></tr>
+<tr class="separator:a903cae23780af335941b29eb85dff56f inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50b94015420662d0882218bda5f7b038 inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void()&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a50b94015420662d0882218bda5f7b038">assemble_system_call_back</a></td></tr>
 <tr class="memdesc:a50b94015420662d0882218bda5f7b038 inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">A signal that is called at the end of <a class="el" href="class_p_d_es_1_1_linear_problem.html#a6dddda912ddb5ad48a16285f168a8e6b" title="Actually loop over cells, and assemble the global system.">assemble_system()</a>  <a href="class_p_d_es_1_1_linear_problem.html#a50b94015420662d0882218bda5f7b038">More...</a><br /></td></tr>
 <tr class="separator:a50b94015420662d0882218bda5f7b038 inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -315,6 +321,12 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ae222ff5ffc6005f8de68fb81430a3812 inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">MPI_Comm&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ae222ff5ffc6005f8de68fb81430a3812">mpi_communicator</a></td></tr>
 <tr class="memdesc:ae222ff5ffc6005f8de68fb81430a3812 inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Global mpi communicator.  <a href="class_p_d_es_1_1_linear_problem.html#ae222ff5ffc6005f8de68fb81430a3812">More...</a><br /></td></tr>
 <tr class="separator:ae222ff5ffc6005f8de68fb81430a3812 inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaca8dd7ec5fa97ab60d7ff9d921b938f inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#aaca8dd7ec5fa97ab60d7ff9d921b938f">mpi_rank</a></td></tr>
+<tr class="memdesc:aaca8dd7ec5fa97ab60d7ff9d921b938f inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mpi rank of this process.  <a href="class_p_d_es_1_1_linear_problem.html#aaca8dd7ec5fa97ab60d7ff9d921b938f">More...</a><br /></td></tr>
+<tr class="separator:aaca8dd7ec5fa97ab60d7ff9d921b938f inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada9bb0cf4beaab31ae8cec3072b079ba inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">const unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ada9bb0cf4beaab31ae8cec3072b079ba">mpi_size</a></td></tr>
+<tr class="memdesc:ada9bb0cf4beaab31ae8cec3072b079ba inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of mpi processes.  <a href="class_p_d_es_1_1_linear_problem.html#ada9bb0cf4beaab31ae8cec3072b079ba">More...</a><br /></td></tr>
+<tr class="separator:ada9bb0cf4beaab31ae8cec3072b079ba inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64036862492abfd3ef9c5846bcf36cbd inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a64036862492abfd3ef9c5846bcf36cbd">number_of_threads</a></td></tr>
 <tr class="memdesc:a64036862492abfd3ef9c5846bcf36cbd inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of threads to use for multi-threaded assembly.  <a href="class_p_d_es_1_1_linear_problem.html#a64036862492abfd3ef9c5846bcf36cbd">More...</a><br /></td></tr>
 <tr class="separator:a64036862492abfd3ef9c5846bcf36cbd inherit pro_attribs_class_p_d_es_1_1_linear_problem"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -512,9 +524,9 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 <p>Constructor. </p>
 <p>Initialize all parameters, including the base class, and make sure the class is ready to run. </p>
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00025">25</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00027">27</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="el" href="linear__problem_8h_source.html#l00206">PDEs::LinearProblem&lt; dim, dim, LAC::LAdealii &gt;::output_results_call_back</a>, and <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00108">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;::postprocess()</a>.</p>
 
 </div>
 </div>
@@ -548,6 +560,30 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae2c97d35d65def612fe26487bcb4dada"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2c97d35d65def612fe26487bcb4dada">&#9670;&nbsp;</a></span>postprocess()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim, class LacType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_p_d_es_1_1_linear_elasticity.html">PDEs::LinearElasticity</a>&lt; dim, spacedim, LacType &gt;::postprocess</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compute integrals normal stress on Dirichlet faces, and average displacement on Neumann faces. </p>
+
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00108">108</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceMeshWorker.html#ac7a9db8b34d398d7d398d1e8809874aaa35f26e2d96f28fb49e5b0865adc3ba9d">MeshWorker::assemble_boundary_faces</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">ParsedTools::Components::get_cell_quadrature()</a>, <a class="el" href="namespace_parsed_tools_1_1_components.html#a324f3c93e74a8b9d225bda8342521ba7">ParsedTools::Components::get_face_quadrature()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__MeshWorker.html#ga76ec61fbd188fb320fe8ca166a79b322">MeshWorker::mesh_loop()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fadc51960811471ad2de77ac4c2568ab0d">update_default</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52facbcc430975fa6af05f75ca786dc6fe20">update_gradients</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa714204722e9eeb43aadbd0d5ddc48c85">update_JxW_values</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa5e7366a91c84a50ca4e7dbd43ca6369f">update_normal_vectors</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fad5c9ff886b9615349a5d04a6c782df4a">update_quadrature_points</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__feaccess.html#ggaa94b67d2fdcc390690c523f28019e52fa4057ca2f127aa619c65886a9d3ad4aea">update_values</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00027">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;::LinearElasticity()</a>.</p>
+
+</div>
+</div>
 <a id="aafe6d8fa6264a1ffa1123fb73d43de92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aafe6d8fa6264a1ffa1123fb73d43de92">&#9670;&nbsp;</a></span>assemble_system_one_cell()</h2>
 
@@ -592,7 +628,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Explicitly assemble the <a class="el" href="class_p_d_es_1_1_linear_elasticity.html">LinearElasticity</a> problem on a single cell. </p>
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00039">39</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00043">43</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__out_8cc.html#a827a345f29da7caeb588b11013869a01">first</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceDifferentiation_1_1SD.html#a841a7b84dc17bf2ba675522093a97e8ba945f3fc449518a73b9f5f32868db466c">lambda</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a84b803d7c74ab87a3eb2e1367611246b">DoFHandler&lt; dim, spacedim &gt;::reinit()</a>.</p>
 
@@ -624,7 +660,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p>Reimplemented from <a class="el" href="class_p_d_es_1_1_linear_problem.html#ab9c8359e791b72a935fde5910c2665df">PDEs::LinearProblem&lt; dim, dim, LAC::LAdealii &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00088">88</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html#l00092">92</a> of file <a class="el" href="source_2pdes_2linear__elasticity_8cc_source.html">linear_elasticity.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>.</p>
 
@@ -653,7 +689,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00187">187</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00194">194</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
@@ -679,7 +715,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00188">188</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00195">195</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
@@ -705,7 +741,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00189">189</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="linear__elasticity_8h_source.html#l00196">196</a> of file <a class="el" href="linear__elasticity_8h_source.html">linear_elasticity.h</a>.</p>
 
 </div>
 </div>
@@ -719,7 +755,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_linear_elasticity.html">LinearElasticity</a></li>
-    <li class="footer">Generated on Sat Mar 19 2022 17:04:55 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 23 2022 11:06:49 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
