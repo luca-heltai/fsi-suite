@@ -141,21 +141,24 @@ namespace ParsedTools
                     ExcMessage("Only one BoundaryCondition can be specified "
                                "with the special boundary id -1"));
       }
-    else
-      {
-        AssertThrow(all_ids.size() == n_ids,
-                    ExcMessage("You specified the same "
-                               " boundary id more than once "
-                               "in two different boundary conditions"));
-        // We check consistency with the triangulation
-        if (grid_info.n_active_cells > 0)
-          {
-            AssertThrow(all_ids.size() == grid_info.boundary_ids.size(),
-                        ExcMessage("The number of boundary ids specified in "
-                                   "the input file does not match the number "
-                                   "of boundary ids in the triangulation"));
-          }
-      }
+    // This is no longer the case for complex types: we could have a boundary id
+    // specified for one component, and another one specified for a different
+    // component.
+    // else
+    // {
+    //   AssertThrow(all_ids.size() == n_ids,
+    //               ExcMessage("You specified the same "
+    //                          " boundary id more than once "
+    //                          "in two different boundary conditions"));
+    //   // We check consistency with the triangulation
+    //   if (grid_info.n_active_cells > 0)
+    //     {
+    //       AssertThrow(all_ids.size() == grid_info.boundary_ids.size(),
+    //                   ExcMessage("The number of boundary ids specified in "
+    //                              "the input file does not match the number "
+    //                              "of boundary ids in the triangulation"));
+    //     }
+    // }
 
     // Now check that the types are valid in this dimension
     AssertDimension(n_boundary_conditions, types.size());
@@ -221,6 +224,37 @@ namespace ParsedTools
   {
     for (auto &f : functions)
       f->set_time(time);
+  }
+
+
+
+  template <int spacedim>
+  std::set<dealii::types::boundary_id>
+  BoundaryConditions<spacedim>::get_essential_boundary_ids() const
+  {
+    std::set<dealii::types::boundary_id> essential_boundary_ids;
+    for (unsigned int i = 0; i < ids.size(); ++i)
+      {
+        if (bc_type[i] == BoundaryConditionType::dirichlet ||
+            bc_type[i] == BoundaryConditionType::first_dof)
+          essential_boundary_ids.insert(ids[i].begin(), ids[i].end());
+      }
+    return essential_boundary_ids;
+  }
+
+
+
+  template <int spacedim>
+  std::set<dealii::types::boundary_id>
+  BoundaryConditions<spacedim>::get_natural_boundary_ids() const
+  {
+    std::set<dealii::types::boundary_id> natural_boundary_ids;
+    for (unsigned int i = 0; i < ids.size(); ++i)
+      {
+        if (bc_type[i] == BoundaryConditionType::neumann)
+          natural_boundary_ids.insert(ids[i].begin(), ids[i].end());
+      }
+    return natural_boundary_ids;
   }
 
 

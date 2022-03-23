@@ -41,8 +41,10 @@ namespace ParsedTools
    */
   enum class BoundaryConditionType
   {
-    dirichlet = 0,
-    neumann   = 1,
+    dirichlet = 0, //< Dirichlet boundary condition
+    neumann   = 1, //< Neumann boundary condition
+    first_dof = 2, //< First dof of first active cell on first processor is
+                   // fixed to a given value
     // robin             = 2,
     // dirichlet_nitsche = 3,
     // neumann_nitsche   = 4,
@@ -182,6 +184,22 @@ namespace ParsedTools
       const dealii::AffineConstraints<double> &constraints,
       MatrixType &                             matrix,
       VectorType &                             rhs) const;
+
+    /**
+     * Get all ids where we impose essential boundary conditions.
+     *
+     * @return std::set<dealii::types::boundary_id>
+     */
+    std::set<dealii::types::boundary_id>
+    get_essential_boundary_ids() const;
+
+    /**
+     * Get all ids where we impose natural boundary conditions.
+     *
+     * @return std::set<dealii::types::boundary_id>
+     */
+    std::set<dealii::types::boundary_id>
+    get_natural_boundary_ids() const;
 
   private:
     /**
