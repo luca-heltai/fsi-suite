@@ -37,19 +37,29 @@ namespace PDEs
     // Fix first pressure dof to zero
     this->add_constraints_call_back.connect([&]() {
       // search for first pressure dof
-      unsigned int first_pressure_dof = 0;
-      for (unsigned int i = 0; i < this->finite_element().dofs_per_cell; ++i)
+      if (this->mpi_rank == 0)
         {
-          if (this->finite_element().system_to_component_index(i).first == dim)
+          unsigned int first_pressure_dof = 0;
+          for (unsigned int i = 0; i < this->finite_element().dofs_per_cell;
+               ++i)
             {
-              first_pressure_dof = i;
-              break;
+              if (this->finite_element().system_to_component_index(i).first ==
+                  dim)
+                {
+                  first_pressure_dof = i;
+                  break;
+                }
             }
+          std::vector<types::global_dof_index> dof_indices(
+            this->finite_element().dofs_per_cell);
+          for (const auto &cell : this->dof_handler.active_cell_iterators())
+            if (cell->is_locally_owned())
+              {
+                cell->get_dof_indices(dof_indices);
+                this->constraints.add_line(dof_indices[first_pressure_dof]);
+                break;
+              }
         }
-      std::vector<types::global_dof_index> dof_indices(
-        this->finite_element().dofs_per_cell);
-      this->dof_handler.begin_active()->get_dof_indices(dof_indices);
-      this->constraints.add_line(dof_indices[first_pressure_dof]);
     });
   }
 
