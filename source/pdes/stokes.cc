@@ -37,19 +37,29 @@ namespace PDEs
     // Fix first pressure dof to zero
     this->add_constraints_call_back.connect([&]() {
       // search for first pressure dof
-      unsigned int first_pressure_dof = 0;
-      for (unsigned int i = 0; i < this->finite_element().dofs_per_cell; ++i)
+      if (this->mpi_rank == 0)
         {
-          if (this->finite_element().system_to_component_index(i).first == dim)
+          unsigned int first_pressure_dof = 0;
+          for (unsigned int i = 0; i < this->finite_element().dofs_per_cell;
+               ++i)
             {
-              first_pressure_dof = i;
-              break;
+              if (this->finite_element().system_to_component_index(i).first ==
+                  dim)
+                {
+                  first_pressure_dof = i;
+                  break;
+                }
             }
+          std::vector<types::global_dof_index> dof_indices(
+            this->finite_element().dofs_per_cell);
+          for (const auto &cell : this->dof_handler.active_cell_iterators())
+            if (cell->is_locally_owned())
+              {
+                cell->get_dof_indices(dof_indices);
+                this->constraints.add_line(dof_indices[first_pressure_dof]);
+                break;
+              }
         }
-      std::vector<types::global_dof_index> dof_indices(
-        this->finite_element().dofs_per_cell);
-      this->dof_handler.begin_active()->get_dof_indices(dof_indices);
-      this->constraints.add_line(dof_indices[first_pressure_dof]);
     });
   }
 
@@ -89,7 +99,7 @@ namespace PDEs
                 // We assemble also the mass matrix for the pressure, to be
                 // used as a preconditioner
                 cell_matrix(i, j) +=
-                  (constants["eta"] * eps_v * eps_u + div_v * p + div_u * q +
+                  (constants["eta"] * eps_v * eps_u - div_v * p - div_u * q -
                    1 / constants["eta"] * p * q) *
                   fe_values.JxW(q_index); // dx
               }
@@ -139,7 +149,7 @@ namespace PDEs
     schur_preconditioner.initialize(m.block(1, 1));
 
     auto precA = linear_operator<Vec>(A, this->preconditioner);
-    auto precS = -1.0 * linear_operator<Vec>(Mp, schur_preconditioner);
+    auto precS = linear_operator<Vec>(Mp, schur_preconditioner);
 
     std::array<LinOp, 2> diag_ops = {{precA, precS}};
     auto diagprecAA               = block_diagonal_operator<2, BVec>(diag_ops);

@@ -264,6 +264,16 @@ namespace PDEs
     int number_of_threads = -1;
 
     /**
+     * Rank of the current process.
+     */
+    const unsigned int mpi_rank;
+
+    /**
+     * Size of the mpi communicator.
+     */
+    const unsigned int mpi_size;
+
+    /**
      * Verbosity level of deallog.
      */
     unsigned int verbosity_level = 1;

@@ -43,8 +43,9 @@ namespace PDEs
     , problem_name(problem_name)
     , section_name(problem_name == "" ? "" : "/" + problem_name)
     , mpi_communicator(MPI_COMM_WORLD)
-    , pcout(std::cout,
-            (Utilities::MPI::this_mpi_process(mpi_communicator) == 0))
+    , mpi_rank(Utilities::MPI::this_mpi_process(mpi_communicator))
+    , mpi_size(Utilities::MPI::n_mpi_processes(mpi_communicator))
+    , pcout(std::cout, mpi_rank == 0)
     , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
     , grid_generator(section_name + "/Grid")
     , grid_refinement(section_name + "/Grid/Refinement")
@@ -352,7 +353,7 @@ namespace PDEs
   void
   LinearProblem<dim, spacedim, LacType>::print_system_info() const
   {
-    if (Utilities::MPI::this_mpi_process(mpi_communicator) == 0)
+    if (mpi_rank == 0)
       deallog.depth_console(verbosity_level);
     else
       deallog.depth_console(0);
@@ -366,10 +367,8 @@ namespace PDEs
           << std::endl
           << "Number of threads       : " << MultithreadInfo::n_threads()
           << std::endl
-          << "Number of MPI processes : "
-          << Utilities::MPI::n_mpi_processes(mpi_communicator) << std::endl
-          << "MPI rank of this process: "
-          << Utilities::MPI::this_mpi_process(mpi_communicator) << std::endl;
+          << "Number of MPI processes : " << mpi_size << std::endl
+          << "MPI rank of this process: " << mpi_rank << std::endl;
   }
 
 
