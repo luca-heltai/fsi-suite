@@ -142,136 +142,146 @@ $(document).ready(function(){initNavTree('source_2pdes_2stokes_8cc_source.html',
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Fix first pressure dof to zero</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    this-&gt;add_constraints_call_back.connect([&amp;]() {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <span class="comment">// search for first pressure dof</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> first_pressure_dof = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; this-&gt;finite_element().dofs_per_cell; ++i)</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;          <span class="keywordflow">if</span> (this-&gt;finite_element().system_to_component_index(i).first == dim)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;              first_pressure_dof = i;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;              <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      std::vector&lt;types::global_dof_index&gt; dof_indices(</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this-&gt;finite_element().dofs_per_cell);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      this-&gt;dof_handler.begin_active()-&gt;get_dof_indices(dof_indices);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      this-&gt;constraints.add_line(dof_indices[first_pressure_dof]);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    });</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">class</span> LacType&gt;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">   60</a></span>&#160;  <a class="code" href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">Stokes&lt;dim, LacType&gt;::assemble_system_one_cell</a>(</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim&gt;::active_cell_iterator</a> &amp;cell,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="class_p_d_es_1_1_stokes.html#a90bf17cf70677e1af1636564d1431ec3">ScratchData</a> &amp;                                         scratch,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_p_d_es_1_1_stokes.html#a5e811b383394efa0f6137eb5992f7702">CopyData</a> &amp;                                            copy)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">auto</span> &amp;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a> = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy</a>.matrices[0];</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">auto</span> &amp;cell_rhs    = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy</a>.vectors[0];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      <span class="keywordflow">if</span> (this-&gt;mpi_rank == 0)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;          <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> first_pressure_dof = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;          <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; this-&gt;finite_element().dofs_per_cell;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;               ++i)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;              <span class="keywordflow">if</span> (this-&gt;finite_element().system_to_component_index(i).first ==</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                  dim)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                  first_pressure_dof = i;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                  <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;          std::vector&lt;types::global_dof_index&gt; dof_indices(</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            this-&gt;finite_element().dofs_per_cell);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;cell : this-&gt;dof_handler.active_cell_iterators())</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">if</span> (cell-&gt;is_locally_owned())</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;              {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                cell-&gt;get_dof_indices(dof_indices);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                this-&gt;constraints.add_line(dof_indices[first_pressure_dof]);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;              }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    });</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    cell-&gt;get_dof_indices(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy</a>.local_dof_indices[0]);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;fe_values = scratch.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a84b803d7c74ab87a3eb2e1367611246b">reinit</a>(cell);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>           = 0;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    cell_rhs              = 0;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> q_index : fe_values.quadrature_point_indices())</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_values.dof_indices())</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;eps_v =</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;              fe_values[velocity].symmetric_gradient(i, q_index);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;div_v = fe_values[velocity].divergence(i, q_index);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;q     = fe_values[pressure].value(i, q_index);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j : fe_values.dof_indices())</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;              {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;eps_u =</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                  fe_values[velocity].symmetric_gradient(j, q_index);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;div_u = fe_values[velocity].divergence(j, q_index);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;p     = fe_values[pressure].value(j, q_index);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <span class="comment">// We assemble also the mass matrix for the pressure, to be</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="comment">// used as a preconditioner</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(i, j) +=</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                  (constants[<span class="stringliteral">&quot;eta&quot;</span>] * <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/symmetric__tensor_8h.html#ab14ac27fc9ab74d4de531698b492d8de">scalar_product</a>(eps_v, eps_u) - div_v * p -</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                   div_u * q - p * q / constants[<span class="stringliteral">&quot;eta&quot;</span>]) *</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  fe_values.JxW(q_index); <span class="comment">// dx</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;              }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            cell_rhs(i) +=</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;              (fe_values.shape_value(i, q_index) * <span class="comment">// phi_i(x_q)</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;               this-&gt;forcing_term.value(fe_values.quadrature_point(q_index),</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                        this-&gt;finite_element()</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                          .system_to_component_index(i)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                          .first) * <span class="comment">// f(x_q)</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;               fe_values.JxW(q_index));             <span class="comment">// dx</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;          }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">class</span> LacType&gt;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">  112</a></span>&#160;  <a class="code" href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">Stokes&lt;dim, LacType&gt;::solve</a>()</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTimerOutput_1_1Scope.html">TimerOutput::Scope</a> timer_section(this-&gt;timer, <span class="stringliteral">&quot;solve&quot;</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">using</span> BVec       = <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Vectors.html#gac7e6eda86837a55c4972c1b7d68b333f">LacType::BlockVector</a>;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">using</span> Vec        = <span class="keyword">typename</span> BVec::BlockType;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">using</span> LinOp      = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator&lt;Vec&gt;</a>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">using</span> BlockLinOp = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classBlockLinearOperator.html">BlockLinearOperator&lt;BVec&gt;</a>;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;m = this-&gt;system_block_matrix;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> A    = linear_operator&lt;Vec&gt;(m.block(0, 0));</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> Bt   = linear_operator&lt;Vec&gt;(m.block(0, 1));</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> B    = linear_operator&lt;Vec&gt;(m.block(1, 0));</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> Mp   = linear_operator&lt;Vec&gt;(m.block(1, 1));</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> Zero = Mp * 0.0;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">auto</span> AA = block_operator&lt;2, 2, BVec&gt;({{{{A, Bt}}, {{B, Zero}}}});</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">class</span> LacType&gt;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">   70</a></span>&#160;  <a class="code" href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">Stokes&lt;dim, LacType&gt;::assemble_system_one_cell</a>(</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim&gt;::active_cell_iterator</a> &amp;cell,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="class_p_d_es_1_1_stokes.html#a90bf17cf70677e1af1636564d1431ec3">ScratchData</a> &amp;                                         scratch,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_p_d_es_1_1_stokes.html#a5e811b383394efa0f6137eb5992f7702">CopyData</a> &amp;                                            copy)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">auto</span> &amp;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a> = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy</a>.matrices[0];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">auto</span> &amp;cell_rhs    = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy</a>.vectors[0];</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    cell-&gt;get_dof_indices(<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy</a>.local_dof_indices[0]);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;fe_values = scratch.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html#a84b803d7c74ab87a3eb2e1367611246b">reinit</a>(cell);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>           = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    cell_rhs              = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> q_index : fe_values.quadrature_point_indices())</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i : fe_values.dof_indices())</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;eps_v =</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;              fe_values[velocity].symmetric_gradient(i, q_index);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;div_v = fe_values[velocity].divergence(i, q_index);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keyword">const</span> <span class="keyword">auto</span> &amp;q     = fe_values[pressure].value(i, q_index);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j : fe_values.dof_indices())</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;              {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;eps_u =</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                  fe_values[velocity].symmetric_gradient(j, q_index);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;div_u = fe_values[velocity].divergence(j, q_index);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keyword">const</span> <span class="keyword">auto</span> &amp;p     = fe_values[pressure].value(j, q_index);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <span class="comment">// We assemble also the mass matrix for the pressure, to be</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="comment">// used as a preconditioner</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a>(i, j) +=</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                  (constants[<span class="stringliteral">&quot;eta&quot;</span>] * <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/symmetric__tensor_8h.html#ab14ac27fc9ab74d4de531698b492d8de">scalar_product</a>(eps_v, eps_u) - div_v * p -</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                   div_u * q - p * q / constants[<span class="stringliteral">&quot;eta&quot;</span>]) *</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                  fe_values.JxW(q_index); <span class="comment">// dx</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;              }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            cell_rhs(i) +=</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;              (fe_values.shape_value(i, q_index) * <span class="comment">// phi_i(x_q)</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;               this-&gt;forcing_term.value(fe_values.quadrature_point(q_index),</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                        this-&gt;finite_element()</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                          .system_to_component_index(i)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                          .first) * <span class="comment">// f(x_q)</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;               fe_values.JxW(q_index));             <span class="comment">// dx</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;          }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keyword">class</span> LacType&gt;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">  122</a></span>&#160;  <a class="code" href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">Stokes&lt;dim, LacType&gt;::solve</a>()</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTimerOutput_1_1Scope.html">TimerOutput::Scope</a> timer_section(this-&gt;timer, <span class="stringliteral">&quot;solve&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">using</span> BVec       = <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Vectors.html#gac7e6eda86837a55c4972c1b7d68b333f">LacType::BlockVector</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">using</span> Vec        = <span class="keyword">typename</span> BVec::BlockType;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">using</span> LinOp      = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator&lt;Vec&gt;</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">using</span> BlockLinOp = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classBlockLinearOperator.html">BlockLinearOperator&lt;BVec&gt;</a>;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">// auto AA = block_operator&lt;BVec&gt;(m);</span></div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// AA.block(1, 1) *= 0;</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    this-&gt;preconditioner.initialize(m.block(0, 0));</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    schur_preconditioner.initialize(m.block(1, 1));</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">auto</span> precA = linear_operator&lt;Vec&gt;(A, this-&gt;preconditioner);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">auto</span> precS = linear_operator&lt;Vec&gt;(Mp, schur_preconditioner);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> &amp;m = this-&gt;system_block_matrix;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> A    = linear_operator&lt;Vec&gt;(m.block(0, 0));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> Bt   = linear_operator&lt;Vec&gt;(m.block(0, 1));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> B    = linear_operator&lt;Vec&gt;(m.block(1, 0));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> Mp   = linear_operator&lt;Vec&gt;(m.block(1, 1));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> Zero = Mp * 0.0;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">auto</span> AA = block_operator&lt;2, 2, BVec&gt;({{{{A, Bt}}, {{B, Zero}}}});</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    std::array&lt;LinOp, 2&gt; diag_ops = {{precA, precS}};</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">auto</span> diagprecAA               = block_diagonal_operator&lt;2, BVec&gt;(diag_ops);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">// auto AA = block_operator&lt;BVec&gt;(m);</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// AA.block(1, 1) *= 0;</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Preconditioners initialized&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// If we use gmres or another non symmetric solver, use a non-symmetric</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">// preconditioner</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>.get_solver_name() != <span class="stringliteral">&quot;cg&quot;</span>)</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> precAA    = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga8b2bf4fd828e4ee7539bcc16c8b19777">block_back_substitution</a>(AA, diagprecAA);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> inv       = this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>(AA, precAA);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        this-&gt;block_solution = inv * this-&gt;system_block_rhs;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      {</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> inv       = this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>(AA, diagprecAA);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        this-&gt;block_solution = inv * this-&gt;system_block_rhs;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      }</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    this-&gt;constraints.distribute(this-&gt;block_solution);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    this-&gt;locally_relevant_block_solution = this-&gt;block_solution;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;2, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;3, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;2, LAC::LATrilinos&gt;</a>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;3, LAC::LATrilinos&gt;</a>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;} <span class="comment">// namespace PDEs</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    this-&gt;preconditioner.initialize(m.block(0, 0));</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    schur_preconditioner.initialize(m.block(1, 1));</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">auto</span> precA = linear_operator&lt;Vec&gt;(A, this-&gt;preconditioner);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="keyword">auto</span> precS = linear_operator&lt;Vec&gt;(Mp, schur_preconditioner);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    std::array&lt;LinOp, 2&gt; diag_ops = {{precA, precS}};</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keyword">auto</span> diagprecAA               = block_diagonal_operator&lt;2, BVec&gt;(diag_ops);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Preconditioners initialized&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// If we use gmres or another non symmetric solver, use a non-symmetric</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">// preconditioner</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>.get_solver_name() != <span class="stringliteral">&quot;cg&quot;</span>)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> precAA    = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga8b2bf4fd828e4ee7539bcc16c8b19777">block_back_substitution</a>(AA, diagprecAA);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> inv       = this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>(AA, precAA);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        this-&gt;block_solution = inv * this-&gt;system_block_rhs;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;      }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> inv       = this-&gt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a>(AA, diagprecAA);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        this-&gt;block_solution = inv * this-&gt;system_block_rhs;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    this-&gt;constraints.distribute(this-&gt;block_solution);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    this-&gt;locally_relevant_block_solution = this-&gt;block_solution;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;2, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;3, LAC::LAdealii&gt;</a>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;2, LAC::LATrilinos&gt;</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keyword">template</span> <span class="keyword">class </span><a class="code" href="class_p_d_es_1_1_stokes.html">Stokes&lt;3, LAC::LATrilinos&gt;</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;} <span class="comment">// namespace PDEs</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_p_d_es_1_1_stokes_html"><div class="ttname"><a href="class_p_d_es_1_1_stokes.html">PDEs::Stokes</a></div><div class="ttdoc">Solve the Stokes problem, in parallel.</div><div class="ttdef"><b>Definition:</b> <a href="stokes_8h_source.html#l00031">stokes.h:31</a></div></div>
@@ -284,7 +294,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2stokes_8cc_source.html',
 <div class="ttc" id="aclassBlockLinearOperator_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classBlockLinearOperator.html">BlockLinearOperator</a></div></div>
 <div class="ttc" id="anamespaceLocalIntegrators_1_1Advection_html_a8bc7b8136646134f73a4193adefe15f8"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1Advection.html#a8bc7b8136646134f73a4193adefe15f8">cell_matrix</a></div><div class="ttdeci">void cell_matrix(FullMatrix&lt; double &gt; &amp;M, const FEValuesBase&lt; dim &gt; &amp;fe, const FEValuesBase&lt; dim &gt; &amp;fetest, const ArrayView&lt; const std::vector&lt; double &gt;&gt; &amp;velocity, const double factor=1.)</div></div>
 <div class="ttc" id="agroup__LAOperators_html_ga87e38fbde431397c069a88692bd24ae7"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator</a></div><div class="ttdeci">LinearOperator&lt; Domain, Range, Payload &gt; inverse_operator(const LinearOperator&lt; Range, Domain, Payload &gt; &amp;op, Solver &amp;solver, const Preconditioner &amp;preconditioner)</div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_stokes_html_a745679cd24a50f3863fe1505406b483f"><div class="ttname"><a href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">PDEs::Stokes::assemble_system_one_cell</a></div><div class="ttdeci">virtual void assemble_system_one_cell(const typename DoFHandler&lt; dim &gt;::active_cell_iterator &amp;cell, ScratchData &amp;scratch, CopyData &amp;copy) override</div><div class="ttdoc">Explicitly assemble the Stokes problem on a single cell.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2stokes_8cc_source.html#l00060">stokes.cc:60</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_stokes_html_a745679cd24a50f3863fe1505406b483f"><div class="ttname"><a href="class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f">PDEs::Stokes::assemble_system_one_cell</a></div><div class="ttdeci">virtual void assemble_system_one_cell(const typename DoFHandler&lt; dim &gt;::active_cell_iterator &amp;cell, ScratchData &amp;scratch, CopyData &amp;copy) override</div><div class="ttdoc">Explicitly assemble the Stokes problem on a single cell.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2stokes_8cc_source.html#l00070">stokes.cc:70</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_stokes_html_a5e811b383394efa0f6137eb5992f7702"><div class="ttname"><a href="class_p_d_es_1_1_stokes.html#a5e811b383394efa0f6137eb5992f7702">PDEs::Stokes::CopyData</a></div><div class="ttdeci">typename LinearProblem&lt; dim, dim, LacType &gt;::CopyData CopyData</div><div class="ttdef"><b>Definition:</b> <a href="stokes_8h_source.html#l00047">stokes.h:47</a></div></div>
 <div class="ttc" id="aclassDoFHandler_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a></div></div>
 <div class="ttc" id="alogstream_8h_html_ac643e79bd992f1a9bd0dca5b9f2859fb"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a></div><div class="ttdeci">LogStream deallog</div></div>
@@ -294,7 +304,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2stokes_8cc_source.html',
 <div class="ttc" id="acomponents_8h_html"><div class="ttname"><a href="components_8h.html">components.h</a></div></div>
 <div class="ttc" id="alinear__operator__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/linear__operator__tools_8h.html">linear_operator_tools.h</a></div></div>
 <div class="ttc" id="astokes_8h_html"><div class="ttname"><a href="stokes_8h.html">stokes.h</a></div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_stokes_html_a009374dd79c7340761380abbc53f7017"><div class="ttname"><a href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">PDEs::Stokes::solve</a></div><div class="ttdeci">virtual void solve() override</div><div class="ttdoc">Make sure we initialize the right type of linear solver.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2stokes_8cc_source.html#l00112">stokes.cc:112</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_stokes_html_a009374dd79c7340761380abbc53f7017"><div class="ttname"><a href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">PDEs::Stokes::solve</a></div><div class="ttdeci">virtual void solve() override</div><div class="ttdoc">Make sure we initialize the right type of linear solver.</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2stokes_8cc_source.html#l00122">stokes.cc:122</a></div></div>
 <div class="ttc" id="anamespace_p_d_es_1_1_m_p_i_html_ab5ee1ec3ed1b5f12ba5f0906de8d4a1c"><div class="ttname"><a href="namespace_p_d_es_1_1_m_p_i.html#ab5ee1ec3ed1b5f12ba5f0906de8d4a1c">PDEs::MPI::Stokes</a></div><div class="ttdeci">PDEs::Stokes&lt; dim, LAC::LATrilinos &gt; Stokes</div><div class="ttdef"><b>Definition:</b> <a href="stokes_8h_source.html#l00077">stokes.h:77</a></div></div>
 <div class="ttc" id="asymmetric__tensor_8h_html_ab14ac27fc9ab74d4de531698b492d8de"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/symmetric__tensor_8h.html#ab14ac27fc9ab74d4de531698b492d8de">scalar_product</a></div><div class="ttdeci">constexpr ProductType&lt; Number, OtherNumber &gt;::type scalar_product(const SymmetricTensor&lt; 2, dim, Number &gt; &amp;t1, const SymmetricTensor&lt; 2, dim, OtherNumber &gt; &amp;t2)</div></div>
 <div class="ttc" id="aclassLinearOperator_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a></div></div>
@@ -304,7 +314,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2stokes_8cc_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="source_2pdes_2stokes_8cc.html">stokes.cc</a></li>
-    <li class="footer">Generated on Wed Mar 23 2022 11:06:48 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 23 2022 11:08:17 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
