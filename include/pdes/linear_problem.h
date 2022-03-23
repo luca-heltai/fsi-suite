@@ -201,6 +201,11 @@ namespace PDEs
     boost::signals2::signal<void()> setup_system_call_back;
 
     /**
+     * A signal that is called at the end of output_results()
+     */
+    boost::signals2::signal<void()> output_results_call_back;
+
+    /**
      * Actually loop over cells, and assemble the global system.
      */
     virtual void

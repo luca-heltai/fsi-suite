@@ -15,6 +15,8 @@
 
 #include "pdes/linear_elasticity.h"
 
+#include "deal.II/meshworker/mesh_loop.h"
+
 #include "parsed_tools/components.h"
 
 using namespace dealii;
@@ -30,7 +32,9 @@ namespace PDEs
     , lambda("/LinearElasticity/Lame coefficients", "1.0", "lambda")
     , mu("/LinearElasticity/Lame coefficients", "1.0", "mu")
     , displacement(0)
-  {}
+  {
+    this->output_results_call_back.connect([&]() { postprocess(); });
+  }
 
 
 
@@ -96,6 +100,89 @@ namespace PDEs
     this->constraints.distribute(this->block_solution);
     this->locally_relevant_block_solution = this->block_solution;
   }
+
+
+
+  template <int dim, int spacedim, class LacType>
+  void
+  LinearElasticity<dim, spacedim, LacType>::postprocess()
+  {
+    // Construct an object that will integrate on the faces only
+    std::map<types::boundary_id, Tensor<1, spacedim>> forces;
+
+    const auto face_integrator = [&](const auto &cell,
+                                     const auto &face,
+                                     auto &      scratch,
+                                     auto &      data) {
+      data[cell->face(face)->boundary_id()] = Tensor<1, spacedim>();
+
+      auto &f = data[cell->face(face)->boundary_id()];
+
+      const auto &fe_face_values = scratch.reinit(cell, face);
+      scratch.extract_local_dof_values("solution",
+                                       this->locally_relevant_block_solution);
+      const auto &eps_u =
+        scratch.get_symmetric_gradients("solution", displacement);
+
+      const auto &div_u = scratch.get_divergences("solution", displacement);
+
+      const auto &n   = scratch.get_normal_vectors();
+      const auto &JxW = scratch.get_JxW_values();
+
+      for (unsigned int q = 0; q < n.size(); ++q)
+        f +=
+          (2 * mu.value(fe_face_values.quadrature_point(q)) * eps_u[q] * n[q] +
+           lambda.value(fe_face_values.quadrature_point(q)) * div_u[q] * n[q]) *
+          JxW[q];
+    };
+
+    const auto copyer = [&](const auto &data) {
+      for (const auto &[id, f] : data)
+        {
+          if (forces.find(id) == forces.end())
+            forces[id] = f;
+          else
+            forces[id] += f;
+        };
+    };
+
+    Quadrature<dim> quadrature_formula =
+      ParsedTools::Components::get_cell_quadrature(
+        this->triangulation, this->finite_element().tensor_degree() + 1);
+
+    Quadrature<dim - 1> face_quadrature_formula =
+      ParsedTools::Components::get_face_quadrature(
+        this->triangulation, this->finite_element().tensor_degree() + 1);
+
+    ScratchData scratch(*this->mapping,
+                        this->finite_element(),
+                        quadrature_formula,
+                        update_default,
+                        face_quadrature_formula,
+                        update_values | update_gradients |
+                          update_normal_vectors | update_quadrature_points |
+                          update_JxW_values);
+
+
+    using CellFilter = FilteredIterator<
+      typename DoFHandler<dim, spacedim>::active_cell_iterator>;
+
+    MeshWorker::mesh_loop(CellFilter(IteratorFilters::LocallyOwnedCell(),
+                                     this->dof_handler.begin_active()),
+                          CellFilter(IteratorFilters::LocallyOwnedCell(),
+                                     this->dof_handler.end()),
+                          {},
+                          copyer,
+                          scratch,
+                          forces,
+                          MeshWorker::assemble_boundary_faces,
+                          face_integrator);
+
+    this->pcout << "Forces: " << std::endl;
+    for (const auto &[id, force] : forces)
+      this->pcout << "ID " << id << ": " << force << std::endl;
+  }
+
 
 
   template class LinearElasticity<2, 2, LAC::LAdealii>;

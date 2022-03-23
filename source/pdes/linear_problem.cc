@@ -345,6 +345,8 @@ namespace PDEs
     // call any additional call backs
     add_data_vector(data_out);
     data_out.write_data_and_clear(*mapping);
+
+    output_results_call_back();
   }
 
 

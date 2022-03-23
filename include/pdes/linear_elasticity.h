@@ -168,6 +168,13 @@ namespace PDEs
     using VectorType =
       typename LinearProblem<dim, spacedim, LacType>::VectorType;
 
+    /**
+     * Compute integrals normal stress on Dirichlet faces, and average
+     * displacement on Neumann faces.
+     */
+    void
+    postprocess();
+
   protected:
     /**
      * Explicitly assemble the LinearElasticity problem on a single cell.
