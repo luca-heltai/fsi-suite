@@ -120,12 +120,16 @@ Public Types</h2></td></tr>
 <tr class="separator:a8fd55828051148666e639c147932e097"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1bcc6578f6939e0c6e29a1255ac187a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#af1bcc6578f6939e0c6e29a1255ac187a">BlockSparsityPattern</a> = <a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#af1bcc6578f6939e0c6e29a1255ac187a">BlockSparsityPattern</a></td></tr>
 <tr class="separator:af1bcc6578f6939e0c6e29a1255ac187a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff124dc64c3f6d5b18f1bf47b6a08aa9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#aff124dc64c3f6d5b18f1bf47b6a08aa9">AMG</a> = <a class="el" href="class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html">ParsedLAC::PETScAMGPreconditioner</a></td></tr>
+<tr class="separator:aff124dc64c3f6d5b18f1bf47b6a08aa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1397a93d64f1ca532d67c8803b6f8225"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#a1397a93d64f1ca532d67c8803b6f8225">DirectSolver</a> = <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1SparseDirectMUMPS.html">PETScWrappers::SparseDirectMUMPS</a></td></tr>
+<tr class="separator:a1397a93d64f1ca532d67c8803b6f8225"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Parallel linear algebra, using PETSc. </p>
 <p>We use this class to specify block vectors, matrices, and sparsity patterns to use with parallel <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a> objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00062">62</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00073">73</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a60b82ac93f5ad937677e7744f4678317"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60b82ac93f5ad937677e7744f4678317">&#9670;&nbsp;</a></span>BlockVector</h2>
@@ -139,7 +143,7 @@ Public Types</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00064">64</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00075">75</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
 
 </div>
 </div>
@@ -155,7 +159,7 @@ Public Types</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00065">65</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00076">76</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
 
 </div>
 </div>
@@ -171,7 +175,39 @@ Public Types</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00066">66</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00077">77</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
+
+</div>
+</div>
+<a id="aff124dc64c3f6d5b18f1bf47b6a08aa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff124dc64c3f6d5b18f1bf47b6a08aa9">&#9670;&nbsp;</a></span>AMG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#aff124dc64c3f6d5b18f1bf47b6a08aa9">LAC::LAPETSc::AMG</a> =  <a class="el" href="class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html">ParsedLAC::PETScAMGPreconditioner</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00078">78</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
+
+</div>
+</div>
+<a id="a1397a93d64f1ca532d67c8803b6f8225"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1397a93d64f1ca532d67c8803b6f8225">&#9670;&nbsp;</a></span>DirectSolver</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html#a1397a93d64f1ca532d67c8803b6f8225">LAC::LAPETSc::DirectSolver</a> =  <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1SparseDirectMUMPS.html">PETScWrappers::SparseDirectMUMPS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="lac_8h_source.html#l00079">79</a> of file <a class="el" href="lac_8h_source.html">lac.h</a>.</p>
 
 </div>
 </div>
@@ -184,7 +220,7 @@ Public Types</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_l_a_c.html">LAC</a></li><li class="navelem"><a class="el" href="struct_l_a_c_1_1_l_a_p_e_t_sc.html">LAPETSc</a></li>
-    <li class="footer">Generated on Wed Mar 23 2022 11:09:44 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 23 2022 17:18:37 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -110,6 +110,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 , <a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html#a1028fcebfd973899aaf5331e3ef7107c">ParsedLAC::AMGPreconditioner</a>
 , <a class="el" href="class_parsed_l_a_c_1_1_i_l_u_preconditioner.html#ab3db4bda6b0e4f4966b4f17f7005d123">ParsedLAC::ILUPreconditioner</a>
 , <a class="el" href="class_parsed_l_a_c_1_1_jacobi_preconditioner.html#aebb5b6bd0ef48751608f2ca411a1ee45">ParsedLAC::JacobiPreconditioner</a>
+, <a class="el" href="class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html#ab982f1a903bf5c9f60b12541805ff190">ParsedLAC::PETScAMGPreconditioner</a>
 </li>
 <li>adjust_grid_refinements()
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a74fb7e9b8bcb1604d81882febe31d2d0">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a>
@@ -256,7 +257,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="class_parsed_tools_1_1_grid_refinement.html#aa233b2028f7340be3d3d224cba077638">ParsedTools::GridRefinement</a>
 </li>
 <li>ghosted()
-: <a class="el" href="class_scoped_l_a_c_initializer.html#a7d6847b680dbba593cdbf768356cfe44">ScopedLACInitializer</a>
+: <a class="el" href="class_scoped_l_a_c_initializer.html#aeeb263d1c854e7c5a6f02d42bc56db56">ScopedLACInitializer</a>
 </li>
 <li>GridGenerator()
 : <a class="el" href="class_parsed_tools_1_1_grid_generator.html#ac46f58152f42ff88c3e493793ff9fca2">ParsedTools::GridGenerator&lt; dim, spacedim &gt;</a>
@@ -276,6 +277,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>initialize()
 : <a class="el" href="class_parsed_l_a_c_1_1_a_m_g_preconditioner.html#abff4cbf55a16cffa48e31fff42aa874e">ParsedLAC::AMGPreconditioner</a>
+, <a class="el" href="class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html#a6176dd4a41a4ad28bf7ef23dcfc567d9">ParsedLAC::PETScAMGPreconditioner</a>
 , <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</a>
 </li>
 <li>initialize_preconditioner()
@@ -362,10 +364,10 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 </li>
 <li>operator()()
 : <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1afbf077c1c6b380ce5c5230dd2ef152">ParsedLAC::InverseOperator</a>
-, <a class="el" href="class_parsed_tools_1_1_finite_element.html#aa9f15bb312a730a66c76b9f99e4e1e3d">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
+, <a class="el" href="class_parsed_tools_1_1_finite_element.html#a4c5ba19a216725ac587bf0928bdbd15f">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_symbolic_function.html#adc35d9edf3ce1a885c89f15c95d0b905">ParsedTools::SymbolicFunction&lt; dim &gt;</a>
-, <a class="el" href="class_scoped_l_a_c_initializer.html#ae596caf045287a93efb44ca2b6251a9a">ScopedLACInitializer</a>
+, <a class="el" href="class_scoped_l_a_c_initializer.html#a2a692ee7ff3800946bcf973ed096fbdc">ScopedLACInitializer</a>
 </li>
 <li>operator[]()
 : <a class="el" href="class_parsed_tools_1_1_constants.html#aef9a7b93329c80943d7af8a1d1fd1fdd">ParsedTools::Constants</a>
@@ -381,6 +383,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
+<li>PETScAMGPreconditioner()
+: <a class="el" href="class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html#a5da3d55e513577bb9932662c484752ab">ParsedLAC::PETScAMGPreconditioner</a>
+</li>
 <li>Poisson()
 : <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#ad4028da4e9cef72cd2486002644b936d">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#aaa6146bcb26f17ee234ec7d8c72d97c4">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
@@ -543,7 +548,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Mar 23 2022 11:09:44 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Mar 23 2022 17:18:38 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

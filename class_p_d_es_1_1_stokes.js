@@ -8,7 +8,8 @@ var class_p_d_es_1_1_stokes =
     [ "assemble_system_one_cell", "class_p_d_es_1_1_stokes.html#a745679cd24a50f3863fe1505406b483f", null ],
     [ "solve", "class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017", null ],
     [ "constants", "class_p_d_es_1_1_stokes.html#a29805d869000051e965e3996ef039570", null ],
-    [ "schur_preconditioner", "class_p_d_es_1_1_stokes.html#aa1f5983707edea608fc03f805d93ef33", null ],
+    [ "schur_preconditioner", "class_p_d_es_1_1_stokes.html#a1ac24737705e55367bd70b0ab29ee484", null ],
+    [ "schur_solver", "class_p_d_es_1_1_stokes.html#a46c531a85ac7e533f92be0754c798c5d", null ],
     [ "velocity", "class_p_d_es_1_1_stokes.html#a746fe5873001649f1db742f55ad67ac7", null ],
     [ "pressure", "class_p_d_es_1_1_stokes.html#aa9b5be0390d8fa6a876268d3728e04a9", null ]
 ];

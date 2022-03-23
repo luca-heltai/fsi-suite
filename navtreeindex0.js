@@ -10,6 +10,10 @@ var NAVTREEINDEX0 =
 "amg__muelu_8cc_source.html":[6,0,3,0,1],
 "amg__muelu_8h.html":[6,0,2,0,1],
 "amg__muelu_8h_source.html":[6,0,2,0,1],
+"amg__petsc_8cc.html":[6,0,3,0,2],
+"amg__petsc_8cc_source.html":[6,0,3,0,2],
+"amg__petsc_8h.html":[6,0,2,0,2],
+"amg__petsc_8h_source.html":[6,0,2,0,2],
 "annotated.html":[5,0],
 "apps_2mpi_2linear__elasticity_8cc.html":[6,0,0,0,0],
 "apps_2mpi_2linear__elasticity_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627":[6,0,0,0,0,0],
@@ -94,7 +98,6 @@ var NAVTREEINDEX0 =
 "class_p_d_es_1_1_linear_problem.html#a9d78c959fa4edcec870a66e8cec387a8":[5,0,4,3,9],
 "class_p_d_es_1_1_linear_problem.html#aa10f86144089298aadb8059dfe2e681a":[5,0,4,3,24],
 "class_p_d_es_1_1_linear_problem.html#aa294d6860820ad7158b8e23c029afaa3":[5,0,4,3,46],
-"class_p_d_es_1_1_linear_problem.html#aa5069c4ee624b6c0db72230de3a79380":[5,0,4,3,51],
 "class_p_d_es_1_1_linear_problem.html#aa65f0738e2d8326db556a3988734a54c":[5,0,4,3,0],
 "class_p_d_es_1_1_linear_problem.html#aac030a9d0d85cdae11a0982fe9d0f628":[5,0,4,3,42],
 "class_p_d_es_1_1_linear_problem.html#aaca8dd7ec5fa97ab60d7ff9d921b938f":[5,0,4,3,28],
@@ -106,6 +109,7 @@ var NAVTREEINDEX0 =
 "class_p_d_es_1_1_linear_problem.html#aba056b60b103476903bc117e83cfc3ec":[5,0,4,3,54],
 "class_p_d_es_1_1_linear_problem.html#aba58b536272135f5e234c38c638e00f4":[5,0,4,3,6],
 "class_p_d_es_1_1_linear_problem.html#abadb5327f6b1f6535ef15d61bca54187":[5,0,4,3,43],
+"class_p_d_es_1_1_linear_problem.html#abf0b2deef16d6b7e12f83600f142429d":[5,0,4,3,51],
 "class_p_d_es_1_1_linear_problem.html#ac2474cd7b8ef2a8893446505787d55da":[5,0,4,3,40],
 "class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511":[5,0,4,3,4],
 "class_p_d_es_1_1_linear_problem.html#ada9bb0cf4beaab31ae8cec3072b079ba":[5,0,4,3,29],
@@ -245,9 +249,5 @@ var NAVTREEINDEX0 =
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a788760d53df064d6ad2f4e51b2cb7eed":[5,0,4,1,2,30],
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a7ac472e496b51995a8593cdb020b0b76":[5,0,4,1,2,19],
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a7d188a99d9c64d24d67e3ff50f997570":[5,0,4,1,2,23],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a7f456407589e07cdddec43e7d14195cd":[5,0,4,1,2,47],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a803602ebedbadf87dfa1a796524a999b":[5,0,4,1,2,71],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a88c93808d2b974f2e5668362e892b2f8":[5,0,4,1,2,49],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a892f3982e5bb521917797751e7d516b7":[5,0,4,1,2,67],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a8a768ecf20fa31bcf6229acde05a725d":[5,0,4,1,2,0]
+"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a7f456407589e07cdddec43e7d14195cd":[5,0,4,1,2,47]
 };

@@ -67,6 +67,7 @@ var hierarchy =
         [ "ParsedLAC::ILUPreconditioner", "class_parsed_l_a_c_1_1_i_l_u_preconditioner.html", null ],
         [ "ParsedLAC::InverseOperator", "class_parsed_l_a_c_1_1_inverse_operator.html", null ],
         [ "ParsedLAC::JacobiPreconditioner", "class_parsed_l_a_c_1_1_jacobi_preconditioner.html", null ],
+        [ "ParsedLAC::PETScAMGPreconditioner", "class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html", null ],
         [ "ParsedTools::BoundaryConditions< spacedim >", "class_parsed_tools_1_1_boundary_conditions.html", null ],
         [ "ParsedTools::Constants", "class_parsed_tools_1_1_constants.html", null ],
         [ "ParsedTools::DataOut< dim, spacedim >", "class_parsed_tools_1_1_data_out.html", null ],
@@ -82,6 +83,11 @@ var hierarchy =
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
         [ "PDEs::Serial::ReducedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", null ],
         [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ]
+      ] ],
+      [ "PETScWrappers::PreconditionBase", "http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1PreconditionBase.html", [
+        [ "PETScWrappers::PreconditionBoomerAMG", "http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1PreconditionBoomerAMG.html", [
+          [ "ParsedLAC::PETScAMGPreconditioner", "class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html", null ]
+        ] ]
       ] ],
       [ "TrilinosWrappers::PreconditionBase", "http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionBase.html", [
         [ "TrilinosWrappers::PreconditionAMG", "http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionAMG.html", [
