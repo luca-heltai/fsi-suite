@@ -73,19 +73,27 @@ namespace internal
 {
   template <unsigned int vertices0 = 4, unsigned int vertices1 = 4>
   decltype(auto)
-  compute_intersection_of_cells(const std::vector<CGAL_Point> &vertices_cell0,
-                                const std::vector<CGAL_Point> &vertices_cell1)
+  compute_intersection_of_cells(std::vector<CGAL_Point> &vertices_cell0,
+                                std::vector<CGAL_Point> &vertices_cell1)
   {
-    const auto first  = CGAL_Rectangle(vertices_cell0[0], vertices_cell0[3]);
-    const auto second = CGAL_Rectangle(vertices_cell1[0], vertices_cell1[3]);
-    return CGAL::intersection(first, second);
+    std::swap(vertices_cell0[2], vertices_cell0[3]);
+    std::swap(vertices_cell1[2],
+              vertices_cell1[3]); // to be consistent with dealii
+
+
+    const CGAL_Polygon first{vertices_cell0.begin(), vertices_cell0.end()};
+    const CGAL_Polygon second{vertices_cell1.begin(), vertices_cell1.end()};
+    std::vector<Polygon_with_holes_2> poly_list;
+    const auto                        oi =
+      CGAL::intersection(first, second, std::back_inserter(poly_list));
+    (void)oi;
+    return poly_list;
   }
 
   template <>
   decltype(auto)
-  compute_intersection_of_cells<2, 4>(
-    const std::vector<CGAL_Point> &vertices_cell0,
-    const std::vector<CGAL_Point> &vertices_cell1)
+  compute_intersection_of_cells<2, 4>(std::vector<CGAL_Point> &vertices_cell0,
+                                      std::vector<CGAL_Point> &vertices_cell1)
   {
     const auto first  = CGAL_Segment(vertices_cell0[0], vertices_cell0[1]);
     const auto second = CGAL_Rectangle(vertices_cell1[0], vertices_cell1[3]);
@@ -144,33 +152,27 @@ namespace dealii::NonMatching
           ::internal::compute_intersection_of_cells<4, 4>(vertices_cell0,
                                                           vertices_cell1);
 
-        if (inters)
+
+        if (!inters.empty() &&
+            CGAL::to_double(inters[0].outer_boundary().area()) > 1e-10)
           {
-            if (const auto *r = boost::get<CGAL_Rectangle>(&*inters))
-              {
-                // std::cout << *r << '\n'; // TODO
-                // assert(!r->is_degenerate());
-                std::array<dealii::Point<spacedim>, 4> vertices_array{
-                  {dealii::Point<spacedim>(CGAL::to_double(r->vertex(0).x()),
-                                           CGAL::to_double(r->vertex(0).y())),
-                   dealii::Point<spacedim>(CGAL::to_double(r->vertex(1).x()),
-                                           CGAL::to_double(r->vertex(1).y())),
-                   dealii::Point<spacedim>(CGAL::to_double(r->vertex(3).x()),
-                                           CGAL::to_double(r->vertex(3).y())),
-                   dealii::Point<spacedim>(CGAL::to_double(r->vertex(2).x()),
-                                           CGAL::to_double(r->vertex(2).y()))}};
+            const auto &poly = inters[0].outer_boundary();
+            std::array<dealii::Point<spacedim>, 4> vertices_array{
+              {dealii::Point<spacedim>(CGAL::to_double(poly.vertex(0).x()),
+                                       CGAL::to_double(poly.vertex(0).y())),
+               dealii::Point<spacedim>(CGAL::to_double(poly.vertex(1).x()),
+                                       CGAL::to_double(poly.vertex(1).y())),
+               dealii::Point<spacedim>(CGAL::to_double(poly.vertex(3).x()),
+                                       CGAL::to_double(poly.vertex(3).y())),
+               dealii::Point<spacedim>(CGAL::to_double(poly.vertex(2).x()),
+                                       CGAL::to_double(poly.vertex(2).y()))}};
 
-
-                return (r->is_degenerate()) ?
-                         dealii::Quadrature<spacedim>() :
-                         compute_linear_transformation<dim0, spacedim, 4>(
-                           dealii::QGauss<dim0>(degree),
-                           vertices_array); // 4 points
-              }
-            else
-              {
-                return dealii::Quadrature<spacedim>();
-              }
+            return compute_linear_transformation<dim0, spacedim, 4>(
+              dealii::QGauss<dim0>(degree), vertices_array); // 4 points
+          }
+        else
+          { // the polygon is degenerate
+            return dealii::Quadrature<spacedim>();
           }
       }
     else if (n_vertices_cell0 == 4 && n_vertices_cell1 == 3)
@@ -279,9 +281,37 @@ namespace dealii::NonMatching
 
 #else
 
-Assert(DEAL_II_WITH_CGAL,
-       ExcMessage("This function needs CGAL to be installed, "
-                  "but cmake could not find it."));
+template <int dim0, int dim1, int spacedim>
+std::vector<std::tuple<
+  typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
+  typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
+  dealii::Quadrature<spacedim>>>
+dealii::NonMatching::compute_intersection(
+  const GridTools::Cache<dim0, spacedim> &,
+  const GridTools::Cache<dim1, spacedim> &,
+  const unsigned int)
+{
+  Assert(false,
+         ExcMessage("This function needs CGAL to be installed, "
+                    "but cmake could not find it."));
+  return {};
+}
+
+template <int dim0, int dim1, int spacedim>
+dealii::Quadrature<spacedim>
+dealii::NonMatching::compute_intersection(
+  const typename dealii::Triangulation<dim0, spacedim>::cell_iterator &,
+  const typename dealii::Triangulation<dim1, spacedim>::cell_iterator &,
+  const unsigned int,
+  const dealii::Mapping<dim0, spacedim> &,
+  const dealii::Mapping<dim1, spacedim> &)
+{
+  Assert(false,
+         ExcMessage("This function needs CGAL to be installed, "
+                    "but cmake could not find it."));
+  return {};
+}
+
 #endif
 
 

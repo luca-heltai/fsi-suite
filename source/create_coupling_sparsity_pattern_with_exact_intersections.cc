@@ -83,11 +83,31 @@ namespace dealii::NonMatching
   }
 
 } // namespace dealii::NonMatching
+
+
 #else
 
-Assert(DEAL_II_WITH_CGAL,
-       ExcMessage("This function needs CGAL to be installed, "
-                  "but cmake could not find it."));
+template <int dim0, int dim1, int spacedim, typename Sparsity, typename number>
+void
+dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
+  const std::vector<std::tuple<
+    typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
+    typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
+    dealii::Quadrature<spacedim>>> &intersections_info,
+  const DoFHandler<dim0, spacedim> &space_dh,
+  const DoFHandler<dim1, spacedim> &immersed_dh,
+  Sparsity &                        sparsity,
+  const AffineConstraints<number> & constraints,
+  const ComponentMask &             space_comps,
+  const ComponentMask &             immersed_comps,
+  const AffineConstraints<number> & immersed_constraints)
+{
+  Assert(false,
+         ExcMessage("This function needs CGAL to be installed, "
+                    "but cmake could not find it."));
+  return {};
+}
+
 #endif
 
 
