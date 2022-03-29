@@ -68,7 +68,7 @@ namespace dealii::NonMatching
             typename number = double>
   void
   create_coupling_sparsity_pattern_with_exact_intersections(
-    std::vector<std::tuple<
+    const std::vector<std::tuple<
       typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
       typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
       dealii::Quadrature<spacedim>>> &intersections_info,

@@ -30,7 +30,7 @@ namespace dealii::NonMatching
             typename number>
   void
   create_coupling_sparsity_pattern_with_exact_intersections(
-    std::vector<std::tuple<
+    const std::vector<std::tuple<
       typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
       typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
       dealii::Quadrature<spacedim>>> &intersections_info,
@@ -94,7 +94,7 @@ Assert(DEAL_II_WITH_CGAL,
 
 template void
 dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
-  std::vector<
+  const std::vector<
     std::tuple<typename dealii::Triangulation<2, 2>::active_cell_iterator,
                typename dealii::Triangulation<1, 2>::active_cell_iterator,
                dealii::Quadrature<2>>> &intersections_info,
@@ -109,7 +109,7 @@ dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
 
 template void
 dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
-  std::vector<
+  const std::vector<
     std::tuple<typename dealii::Triangulation<2, 2>::active_cell_iterator,
                typename dealii::Triangulation<2, 2>::active_cell_iterator,
                dealii::Quadrature<2>>> &intersections_info,
@@ -123,7 +123,7 @@ dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
 
 template void
 dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
-  std::vector<
+  const std::vector<
     std::tuple<typename dealii::Triangulation<3, 3>::active_cell_iterator,
                typename dealii::Triangulation<2, 3>::active_cell_iterator,
                dealii::Quadrature<3>>> &intersections_info,
@@ -137,7 +137,7 @@ dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
 
 template void
 dealii::NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
-  std::vector<
+  const std::vector<
     std::tuple<typename dealii::Triangulation<3, 3>::active_cell_iterator,
                typename dealii::Triangulation<3, 3>::active_cell_iterator,
                dealii::Quadrature<3>>> &intersections_info,
