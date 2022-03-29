@@ -25,6 +25,13 @@
 #include <deal.II/grid/grid_tools_cache.h>
 
 
+
+using namespace dealii;
+
+#include <set>
+#include <tuple>
+#include <vector>
+
 #ifdef DEAL_II_WITH_CGAL
 
 #  include <CGAL/Boolean_set_operations_2.h>
@@ -39,10 +46,6 @@
 #  include <CGAL/Polygon_with_holes_2.h>
 #  include <CGAL/Triangle_2.h>
 #  include <CGAL/Triangulation_2.h>
-
-#  include <set>
-#  include <tuple>
-#  include <vector>
 
 #  include "compute_intersections.h"
 #  include "compute_linear_transformation.h"
@@ -91,7 +94,6 @@ namespace internal
 } // namespace internal
 
 
-using namespace dealii;
 
 namespace dealii::NonMatching
 {
@@ -220,36 +222,7 @@ namespace dealii::NonMatching
                        const GridTools::Cache<dim1, spacedim> &immersed_cache,
                        const unsigned int                      degree)
   {
-    Assert(DEAL_II_WITH_CGAL,
-           ExcMessage("This function needs CGAL to be installed, "
-                      "but cmake could not find it."));
-
     Assert(degree >= 1, ExcMessage("degree cannot be 0"));
-
-    std::set<typename Triangulation<dim1, spacedim>::active_cell_iterator>
-                intersected_cells; // avoid duplicates
-    const auto &space_tree =
-      space_cache.get_locally_owned_cell_bounding_boxes_rtree();
-    const auto &immersed_tree =
-      immersed_cache.get_locally_owned_cell_bounding_boxes_rtree();
-
-
-    namespace bgi = boost::geometry::index;
-    // Whenever the BB space_cell intersects the BB of an embedded cell, store
-    // the space_cell in the set of intersected_cells
-    for (const auto &[immersed_box, immersed_cell] : immersed_tree)
-      {
-        for (const auto &[space_box, space_cell] :
-             space_tree | bgi::adaptors::queried(bgi::intersects(immersed_box)))
-          {
-            intersected_cells.insert(space_cell);
-          }
-      } // found intersected cells
-
-
-    // references to triangulations' info (cp cstrs marked as delete)
-    const auto &mapping0 = space_cache.get_mapping();
-    const auto &mapping1 = immersed_cache.get_mapping();
 
     std::vector<
       std::tuple<typename Triangulation<dim0, spacedim>::active_cell_iterator,
@@ -257,9 +230,22 @@ namespace dealii::NonMatching
                  Quadrature<spacedim>>>
       cells_with_quads;
 
-    for (const auto &space_cell : intersected_cells)
-      { // loop over interseced space_cells
-        for (const auto &[immersed_box, immersed_cell] : immersed_tree)
+
+    const auto &space_tree =
+      space_cache.get_locally_owned_cell_bounding_boxes_rtree();
+    const auto &immersed_tree =
+      immersed_cache.get_locally_owned_cell_bounding_boxes_rtree();
+
+    // references to triangulations' info (cp cstrs marked as delete)
+    const auto &mapping0 = space_cache.get_mapping();
+    const auto &mapping1 = immersed_cache.get_mapping();
+    namespace bgi        = boost::geometry::index;
+    // Whenever the BB space_cell intersects the BB of an embedded cell, store
+    // the space_cell in the set of intersected_cells
+    for (const auto &[immersed_box, immersed_cell] : immersed_tree)
+      {
+        for (const auto &[space_box, space_cell] :
+             space_tree | bgi::adaptors::queried(bgi::intersects(immersed_box)))
           {
             typename Triangulation<dim0, spacedim>::active_cell_iterator
               space_cell_t(space_cell);
@@ -271,7 +257,10 @@ namespace dealii::NonMatching
               compute_intersection<dim0, dim1, spacedim>(
                 space_cell_t, immersed_cell_t, degree, mapping0, mapping1);
 
-            if (test_intersection.get_points().size() != 0)
+            if (test_intersection.get_points().size() !=
+                0) // this means the intersection is non-trivial. TODO: discard
+                   // if the intersection is too small( ca. 1e-12 ) and avoid
+                   // the current double for loop
               {
                 cells_with_quads.push_back(std::make_tuple(space_cell_t,
                                                            immersed_cell_t,
@@ -283,7 +272,17 @@ namespace dealii::NonMatching
     return cells_with_quads;
   }
 
+
 } // namespace dealii::NonMatching
+
+
+
+#else
+
+Assert(DEAL_II_WITH_CGAL,
+       ExcMessage("This function needs CGAL to be installed, "
+                  "but cmake could not find it."));
+#endif
 
 
 
@@ -371,5 +370,3 @@ template std::vector<
 NonMatching::compute_intersection(const GridTools::Cache<3, 3> &space_cache,
                                   const GridTools::Cache<3, 3> &immersed_cache,
                                   const unsigned int            degree);
-
-#endif
