@@ -73,14 +73,9 @@ namespace internal
 {
   template <unsigned int vertices0 = 4, unsigned int vertices1 = 4>
   decltype(auto)
-  compute_intersection_of_cells(std::vector<CGAL_Point> &vertices_cell0,
-                                std::vector<CGAL_Point> &vertices_cell1)
+  compute_intersection_of_cells(const std::vector<CGAL_Point> &vertices_cell0,
+                                const std::vector<CGAL_Point> &vertices_cell1)
   {
-    std::swap(vertices_cell0[2], vertices_cell0[3]);
-    std::swap(vertices_cell1[2],
-              vertices_cell1[3]); // to be consistent with dealii
-
-
     const CGAL_Polygon first{vertices_cell0.begin(), vertices_cell0.end()};
     const CGAL_Polygon second{vertices_cell1.begin(), vertices_cell1.end()};
     std::vector<Polygon_with_holes_2> poly_list;
@@ -92,8 +87,9 @@ namespace internal
 
   template <>
   decltype(auto)
-  compute_intersection_of_cells<2, 4>(std::vector<CGAL_Point> &vertices_cell0,
-                                      std::vector<CGAL_Point> &vertices_cell1)
+  compute_intersection_of_cells<2, 4>(
+    const std::vector<CGAL_Point> &vertices_cell0,
+    const std::vector<CGAL_Point> &vertices_cell1)
   {
     const auto first  = CGAL_Segment(vertices_cell0[0], vertices_cell0[1]);
     const auto second = CGAL_Rectangle(vertices_cell1[0], vertices_cell1[3]);
@@ -148,6 +144,10 @@ namespace dealii::NonMatching
 
     if (n_vertices_cell0 == 4 && n_vertices_cell1 == 4)
       { // rectangle-rectangle
+
+        std::swap(vertices_cell0[2], vertices_cell0[3]);
+        std::swap(vertices_cell1[2],
+                  vertices_cell1[3]); // to be consistent with dealii
         const auto inters =
           ::internal::compute_intersection_of_cells<4, 4>(vertices_cell0,
                                                           vertices_cell1);
