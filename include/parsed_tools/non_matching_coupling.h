@@ -32,24 +32,6 @@
 namespace ParsedTools
 {
   /**
-   * Types of coupling that can used in non-matching coupling.
-   */
-  enum class CouplingType
-  {
-    interpolation = 1 << 0, //<! Use interpolation for the coupling
-    approximate_L2 =
-      1 << 1, //< Approximate L2-projection, using quadrature formulas on the
-              // embedded domain to drive the projection.
-    approximate_H1 = 1 << 2, //< Approximate H1-projection, using quadrature
-                             // formulas on the embedded domain to drive the
-                             // projection.
-    exact_L2 = 1 << 3,       //< Exact L2-projection, using quadratures on the
-                             // intersection to drive the projection
-    exact_H1 = 1 << 4,       //< Exact H1-projection, using quadratures on the
-                             // intersection to drive the projection
-  };
-
-  /**
    * Wrapper around several functions in the dealii::NonMatching namespace.
    *
    * @tparam dim Dimension of the embedded space
@@ -61,6 +43,44 @@ namespace ParsedTools
   {
   public:
     /**
+     * Types of coupling that can used in non-matching coupling.
+     */
+    enum class CouplingType
+    {
+      // interpolation = 1 << 0, //<! Use interpolation for the coupling
+      approximate_L2 =
+        1 << 1, //< Approximate L2-projection, using quadrature formulas on the
+                // embedded domain to drive the projection.
+                //   approximate_H1 = 1 << 2, //< Approximate H1-projection,
+                //   using quadrature
+                //                            // formulas on the embedded domain
+                //                            to drive the
+                //                            // projection.
+                //   exact_L2 = 1 << 3,       //< Exact L2-projection, using
+                //   quadratures on the
+                //                            // intersection to drive the
+                //                            projection
+                //   exact_H1 = 1 << 4,       //< Exact H1-projection, using
+                //   quadratures on the
+                //                            // intersection to drive the
+                //                            projection
+                //
+    };
+
+    /**
+     * Refinement strategy.
+     */
+    enum class RefinementStrategy
+    {
+      //! No refinement
+      none = 1 << 1,
+      //! Force dealii::space grid to be locally smaller than embedded grid
+      refine_space = 1 << 2,
+      //! Force embedded grid to be locally smaller than embedded grid
+      refine_embedded = 1 << 3,
+    };
+
+    /**
      * Constructor.
      */
     NonMatchingCoupling(
@@ -68,9 +88,13 @@ namespace ParsedTools
       const dealii::ComponentMask &embedded_mask = dealii::ComponentMask(),
       const dealii::ComponentMask &space_mask    = dealii::ComponentMask(),
       const CouplingType           coupling_type = CouplingType::approximate_L2,
-      const std::string &          quadrature_type        = "gauss",
-      const unsigned int           quadrature_order       = 2,
-      const unsigned int           quadrature_repetitions = 1);
+      const RefinementStrategy     refinement_strategy =
+        RefinementStrategy::refine_embedded,
+      const unsigned int space_pre_refinement     = 0,
+      const unsigned int embedded_post_refinement = 0,
+      const std::string &quadrature_type          = "gauss",
+      const unsigned int quadrature_order         = 2,
+      const unsigned int quadrature_repetitions   = 1);
 
 
     /**
@@ -102,6 +126,33 @@ namespace ParsedTools
     void
     assemble_matrix(MatrixType &matrix) const;
 
+    /**
+     * @brief Get the coupling type object
+     *
+     * @return const CouplingType
+     */
+    CouplingType
+    get_coupling_type() const;
+
+    /**
+     * Adjust grid refinements according to the selected strategy.
+     */
+    void
+    adjust_grid_refinements(
+      dealii::Triangulation<spacedim, spacedim> &space_tria,
+      dealii::Triangulation<dim, spacedim> &     embedded_tria,
+      const bool apply_delta_refinements = true) const;
+
+    /**
+     * Signals that embedded grid has been just refined.
+     */
+    boost::signals2::signal<void()> embedded_post_refinemnt_signal;
+
+    /**
+     * Signals that the space grid has been just refined.
+     */
+    boost::signals2::signal<void()> space_post_refinemnt_signal;
+
   protected:
     /**
      * Build a dynamic sparsity pattern.
@@ -128,6 +179,21 @@ namespace ParsedTools
      * Coupling type.
      */
     CouplingType coupling_type;
+
+    /**
+     * Refinement strategy.
+     */
+    RefinementStrategy refinement_strategy;
+
+    /**
+     * Pre refinement to apply on the space mesh.
+     */
+    unsigned int space_pre_refinement;
+
+    /**
+     * Post refinement to apply on the embedded mesh.
+     */
+    unsigned int embedded_post_refinement;
 
     /**
      * Embedded quadrature type.
