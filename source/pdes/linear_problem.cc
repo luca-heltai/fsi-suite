@@ -49,10 +49,10 @@ namespace PDEs
     , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
     , grid_generator(section_name + "/Grid")
     , grid_refinement(section_name + "/Grid/Refinement")
-    , triangulation(mpi_communicator,
-                    typename Triangulation<dim, spacedim>::MeshSmoothing(
-                      Triangulation<dim, spacedim>::smoothing_on_refinement |
-                      Triangulation<dim, spacedim>::smoothing_on_coarsening))
+    , triangulation(mpi_communicator)
+    // typename Triangulation<dim, spacedim>::MeshSmoothing(
+    //   Triangulation<dim, spacedim>::smoothing_on_refinement |
+    //   Triangulation<dim, spacedim>::smoothing_on_coarsening))
     , finite_element(section_name,
                      component_names,
                      "FESystem[FE_Q(1)^" + std::to_string(n_components) + "]")
@@ -341,7 +341,9 @@ namespace PDEs
                                Utilities::needed_digits(
                                  grid_refinement.get_n_refinement_cycles()));
     data_out.attach_dof_handler(dof_handler, suffix);
-    data_out.add_data_vector(locally_relevant_block_solution, component_names);
+    data_out.add_data_vector(locally_relevant_block_solution,
+                             component_names,
+                             dealii::DataOut<dim, spacedim>::type_dof_data);
     // call any additional call backs
     add_data_vector(data_out);
     data_out.write_data_and_clear(*mapping);

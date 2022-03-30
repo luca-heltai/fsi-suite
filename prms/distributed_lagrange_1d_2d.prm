@@ -1,0 +1,168 @@
+subsection Space
+  set Finite element space (u) = FESystem[FE_Q(1)^1]
+  set n_threads                = -1
+  set verbosity                = 1
+  subsection Grid
+    set Input name                = hyper_cube
+    set Arguments                 = 0: 1: false
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 5
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    set Solver name            = cg
+    set Solver control type    = tolerance
+    set Maximum iterations     = 1000
+    set Consecutive iterations = 2
+    set Absolute tolerance     = 1e-12
+    set Relative tolerance     = 1e-06
+    set Log history            = false
+    set Log result             = false
+    subsection AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+  end
+  subsection Functions
+    set Forcing term   = 0
+    set Exact solution = 0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u)         = -1
+    set Selected components (u)      = all
+    set Boundary condition types (u) = dirichlet
+    set Expressions (u)              = 0
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 3
+    set Error file name                  = 
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = distributed_lagrange_output/space
+    set Output partitioning    = false
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+end
+subsection Embedded
+  set Finite element space (w) = FESystem[FE_Q(1)^1]
+  set n_threads                = -1
+  set verbosity                = 1
+  subsection Grid
+    set Input name                = hyper_sphere
+    set Arguments                 = 0.3,0.3: 0.2
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 4
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    set Solver name            = cg
+    set Solver control type    = tolerance
+    set Maximum iterations     = 1000
+    set Consecutive iterations = 2
+    set Absolute tolerance     = 1e-12
+    set Relative tolerance     = 1e-06
+    set Log history            = false
+    set Log result             = false
+    subsection AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+  end
+  subsection Functions
+    set Forcing term   = 0
+    set Exact solution = 0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (w)         = 
+    set Selected components (w)      = 
+    set Boundary condition types (w) = 
+    set Expressions (w)              = 
+  end
+  subsection Error
+    set Enable computation of the errors = false
+    set Error precision                  = 3
+    set Error file name                  = 
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = distributed_lagrange_output/embedded
+    set Output partitioning    = true
+    set Output material ids    = true
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+end
+subsection Coupling
+  set Coupling type                    = approximate_L2
+  set Refinement strategy              = refine_embedded
+  set Space pre-refinement             = 3
+  set Embedded post-refinement         = 0
+  set Embedded quadrature type         = gauss
+  set Embedded quadrature order        = 2
+  set Embedded quadrature retpetitions = 1
+end
+subsection Distributed Lagrange
+  set Use direct solver = false
+end

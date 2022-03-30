@@ -23,5 +23,5 @@
 int
 main(int argc, char **argv)
 {
-  RUNNER_NO_ONE(PDEs::Serial::DistributedLagrange, argc, argv);
+  RUNNER_CODIM(PDEs::Serial::DistributedLagrange, argc, argv);
 }

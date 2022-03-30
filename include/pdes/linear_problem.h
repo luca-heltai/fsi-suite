@@ -25,6 +25,7 @@
 #include <deal.II/base/timer.h>
 
 #include <deal.II/distributed/grid_refinement.h>
+#include <deal.II/distributed/shared_tria.h>
 #include <deal.II/distributed/tria.h>
 
 #include <deal.II/dofs/dof_handler.h>
@@ -107,6 +108,14 @@ namespace PDEs
     run();
 
     /**
+     * Make sure we can run also in 1d.
+     */
+    using Triangulation = typename std::conditional<
+      dim == 1,
+      dealii::parallel::shared::Triangulation<dim, spacedim>,
+      dealii::parallel::distributed::Triangulation<dim, spacedim>>::type;
+
+    /**
      * Default CopyData object, used in the WorkStream class.
      */
     using CopyData = MeshWorker::CopyData<1, 1, 1>;
@@ -131,7 +140,6 @@ namespace PDEs
      */
     using BlockMatrixType = typename LacType::BlockSparseMatrix;
 
-  protected:
     /**
      * Assemble the local system matrix on `cell`, using `scratch` for
      * FEValues and other expensive scratch objects, and store the result in
@@ -352,7 +360,7 @@ namespace PDEs
     /**
      * The problem triangulation.
      */
-    parallel::distributed::Triangulation<dim, spacedim> triangulation;
+    Triangulation triangulation;
 
 
     /**
