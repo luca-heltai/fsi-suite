@@ -135,46 +135,48 @@ $(document).ready(function(){initNavTree('create__coupling__sparsity__pattern__w
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/component__mask_8h.html">deal.II/fe/component_mask.h</a>&gt;</span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2fe_2fe_8h.html">deal.II/fe/fe.h</a>&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/fe_2fe__values_8h.html">deal.II/fe/fe_values.h</a>&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">deal.II/fe/mapping_q1.h</a>&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">deal.II/grid/grid_tools.h</a>&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">deal.II/grid/grid_tools_cache.h</a>&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/affine__constraints_8h.html">deal.II/lac/affine_constraints.h</a>&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">deal.II/lac/sparse_matrix.h</a>&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/sparsity__pattern_8h.html">deal.II/lac/sparsity_pattern.h</a>&gt;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;boost/geometry.hpp&gt;</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/fe__system_8h.html">deal.II/fe/fe_system.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/fe_2fe__values_8h.html">deal.II/fe/fe_values.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">deal.II/fe/mapping_q1.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">deal.II/grid/grid_tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">deal.II/grid/grid_tools_cache.h</a>&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/affine__constraints_8h.html">deal.II/lac/affine_constraints.h</a>&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">deal.II/lac/sparse_matrix.h</a>&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/sparsity__pattern_8h.html">deal.II/lac/sparsity_pattern.h</a>&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;boost/geometry.hpp&gt;</span></div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">namespace </span>dealii::NonMatching</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordtype">int</span> dim1,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordtype">int</span> spacedim,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keyword">typename</span> Sparsity,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">typename</span> number = <span class="keywordtype">double</span>&gt;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="namespace_non_matching.html#ac49c575ddc342e0ee00f8a6a31ab6cfb">create_coupling_sparsity_pattern_with_exact_intersections</a>(</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::tuple&lt;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">dealii::Triangulation&lt;dim0, spacedim&gt;::active_cell_iterator</a>,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">dealii::Triangulation&lt;dim1, spacedim&gt;::active_cell_iterator</a>,</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      dealii::Quadrature&lt;spacedim&gt;&gt;&gt; &amp;intersections_info,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim0, spacedim&gt;</a> &amp;space_dh,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim1, spacedim&gt;</a> &amp;immersed_dh,</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    Sparsity &amp;                        sparsity,</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt;number&gt;</a> &amp; constraints,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;             space_comps,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;             immersed_comps,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt;number&gt;</a> &amp; immersed_constraints);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacedealii.html">dealii</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">namespace </span>dealii::NonMatching</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordtype">int</span> dim1,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">int</span> spacedim,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keyword">typename</span> Sparsity,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keyword">typename</span> number = <span class="keywordtype">double</span>&gt;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <a class="code" href="namespace_non_matching.html#a3ab796ce1156b2bdd6d006a4212ff32f">create_coupling_sparsity_pattern_with_exact_intersections</a>(</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::tuple&lt;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">dealii::Triangulation&lt;dim0, spacedim&gt;::active_cell_iterator</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">dealii::Triangulation&lt;dim1, spacedim&gt;::active_cell_iterator</a>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      dealii::Quadrature&lt;spacedim&gt;&gt;&gt; &amp;intersections_info,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim0, spacedim&gt;</a> &amp;space_dh,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim1, spacedim&gt;</a> &amp;immersed_dh,</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    Sparsity &amp;                        sparsity,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt;number&gt;</a> &amp; constraints = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt;number&gt;</a>(),</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;             space_comps = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(),</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;             immersed_comps = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(),</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt;number&gt;</a> &amp; immersed_constraints =</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints&lt;number&gt;</a>());</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="afe_2fe__values_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/fe_2fe__values_8h.html">fe_values.h</a></div></div>
@@ -182,7 +184,6 @@ $(document).ready(function(){initNavTree('create__coupling__sparsity__pattern__w
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="amapping__q1_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">mapping_q1.h</a></div></div>
 <div class="ttc" id="aclassComponentMask_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a></div></div>
-<div class="ttc" id="anamespace_non_matching_html_ac49c575ddc342e0ee00f8a6a31ab6cfb"><div class="ttname"><a href="namespace_non_matching.html#ac49c575ddc342e0ee00f8a6a31ab6cfb">NonMatching::create_coupling_sparsity_pattern_with_exact_intersections</a></div><div class="ttdeci">void create_coupling_sparsity_pattern_with_exact_intersections(const std::vector&lt; std::tuple&lt; typename Triangulation&lt; dim0, spacedim &gt;::active_cell_iterator, typename Triangulation&lt; dim1, spacedim &gt;::active_cell_iterator, Quadrature&lt; spacedim &gt;&gt;&gt; &amp;intersections_info, const DoFHandler&lt; dim0, spacedim &gt; &amp;space_dh, const DoFHandler&lt; dim1, spacedim &gt; &amp;immersed_dh, Sparsity &amp;sparsity, const AffineConstraints&lt; number &gt; &amp;constraints, const ComponentMask &amp;space_comps, const ComponentMask &amp;immersed_comps, const AffineConstraints&lt; number &gt; &amp;immersed_constraints)</div><div class="ttdef"><b>Definition:</b> <a href="create__coupling__sparsity__pattern__with__exact__intersections_8cc_source.html#l00092">create_coupling_sparsity_pattern_with_exact_intersections.cc:92</a></div></div>
 <div class="ttc" id="aclassDoFHandler_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a></div></div>
 <div class="ttc" id="afunction__lib_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">function_lib.h</a></div></div>
 <div class="ttc" id="anamespace_non_matching_html"><div class="ttname"><a href="namespace_non_matching.html">NonMatching</a></div></div>
@@ -200,13 +201,15 @@ $(document).ready(function(){initNavTree('create__coupling__sparsity__pattern__w
 <div class="ttc" id="agrid__tools__cache_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">grid_tools_cache.h</a></div></div>
 <div class="ttc" id="ainclude_2deal_8II_2base_2quadrature_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">quadrature.h</a></div></div>
 <div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="anamespace_non_matching_html_a3ab796ce1156b2bdd6d006a4212ff32f"><div class="ttname"><a href="namespace_non_matching.html#a3ab796ce1156b2bdd6d006a4212ff32f">NonMatching::create_coupling_sparsity_pattern_with_exact_intersections</a></div><div class="ttdeci">void create_coupling_sparsity_pattern_with_exact_intersections(const std::vector&lt; std::tuple&lt; typename Triangulation&lt; dim0, spacedim &gt;::active_cell_iterator, typename Triangulation&lt; dim1, spacedim &gt;::active_cell_iterator, Quadrature&lt; spacedim &gt;&gt;&gt; &amp;intersections_info, const DoFHandler&lt; dim0, spacedim &gt; &amp;space_dh, const DoFHandler&lt; dim1, spacedim &gt; &amp;immersed_dh, Sparsity &amp;sparsity, const AffineConstraints&lt; number &gt; &amp;constraints=AffineConstraints&lt; number &gt;(), const ComponentMask &amp;space_comps=ComponentMask(), const ComponentMask &amp;immersed_comps=ComponentMask(), const AffineConstraints&lt; number &gt; &amp;immersed_constraints=AffineConstraints&lt; number &gt;())</div><div class="ttdef"><b>Definition:</b> <a href="create__coupling__sparsity__pattern__with__exact__intersections_8cc_source.html#l00142">create_coupling_sparsity_pattern_with_exact_intersections.cc:142</a></div></div>
 <div class="ttc" id="aclassQuadrature_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a></div></div>
+<div class="ttc" id="afe__system_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/fe__system_8h.html">fe_system.h</a></div></div>
 <div class="ttc" id="agroup__Iterators_html_gaa80b689a21d72f777095aa12bbe01afa"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a></div><div class="ttdeci">typename ::Triangulation&lt; dim, spacedim &gt;::active_cell_iterator active_cell_iterator</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="create__coupling__sparsity__pattern__with__exact__intersections_8h.html">create_coupling_sparsity_pattern_with_exact_intersections.h</a></li>
-    <li class="footer">Generated on Thu Mar 31 2022 21:17:05 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Mar 31 2022 21:30:59 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
