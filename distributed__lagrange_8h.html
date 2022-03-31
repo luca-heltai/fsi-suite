@@ -108,7 +108,6 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h.html',''); in
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">deal.II/base/config.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html">deal.II/base/parameter_acceptor.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/parsed__convergence__table_8h.html">deal.II/base/parsed_convergence_table.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/timer_8h.html">deal.II/base/timer.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2utilities_8h.html">deal.II/base/utilities.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__fe_8h.html">deal.II/fe/mapping_fe.h</a>&gt;</code><br />
@@ -118,6 +117,7 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h.html',''); in
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/sparse__direct_8h.html">deal.II/lac/sparse_direct.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">deal.II/lac/sparse_matrix.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector_8h.html">deal.II/lac/vector.h</a>&gt;</code><br />
+<code>#include &quot;lac.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="amg_8h_source.html">parsed_lac/amg.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="inverse__operator_8h_source.html">parsed_lac/inverse_operator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="boundary__conditions_8h_source.html">parsed_tools/boundary_conditions.h</a>&quot;</code><br />
@@ -128,10 +128,12 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h.html',''); in
 <code>#include &quot;<a class="el" href="grid__generator_8h_source.html">parsed_tools/grid_generator.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="grid__refinement_8h_source.html">parsed_tools/grid_refinement.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mapping__eulerian_8h_source.html">parsed_tools/mapping_eulerian.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="non__matching__coupling_8h_source.html">parsed_tools/non_matching_coupling.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="linear__problem_8h_source.html">pdes/linear_problem.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for distributed_lagrange.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="distributed__lagrange_8h__incl.svg" width="4435" height="1066"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="distributed__lagrange_8h__incl.svg" width="4134" height="1051"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -145,7 +147,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange&lt; dim, spacedim &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -162,7 +164,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="dir_0d1c0d82d2331d1d942d7c7f0084aeb2.html">serial</a></li><li class="navelem"><a class="el" href="distributed__lagrange_8h.html">distributed_lagrange.h</a></li>
-    <li class="footer">Generated on Wed Mar 30 2022 13:52:38 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Mar 31 2022 21:17:06 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

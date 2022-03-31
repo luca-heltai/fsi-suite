@@ -28,6 +28,9 @@ var dir_8e8448d9aef603b86753e7cb911804a9 =
     [ "mapping_eulerian.h", "mapping__eulerian_8h.html", [
       [ "MappingEulerian", "class_parsed_tools_1_1_mapping_eulerian.html", "class_parsed_tools_1_1_mapping_eulerian" ]
     ] ],
+    [ "non_matching_coupling.h", "non__matching__coupling_8h.html", [
+      [ "NonMatchingCoupling", "class_parsed_tools_1_1_non_matching_coupling.html", "class_parsed_tools_1_1_non_matching_coupling" ]
+    ] ],
     [ "patterns_unsigned_int.h", "patterns__unsigned__int_8h.html", [
       [ "UnsignedInteger", "classdealii_1_1_patterns_1_1_unsigned_integer.html", "classdealii_1_1_patterns_1_1_unsigned_integer" ]
     ] ],

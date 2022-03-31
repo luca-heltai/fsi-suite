@@ -264,7 +264,27 @@ $(document).ready(function(){initNavTree('runner_8h_source.html',''); initResiza
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">                                     dim, spacedim));                          \</span></div>
 <div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">  STANDARD_CATCH()</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="runner_8h.html#a219e7abb531fb2d0071038c62fbfe0bf">  373</a></span>&#160;<span class="preprocessor">#define RUNNER_CODIM(Class, argc, argv)                                        \</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">  try                                                                          \</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">    {                                                                          \</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">      const auto [dim, spacedim, in_file, out_file] =                          \</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">        Runner::get_dimensions_and_parameter_files(argv);                      \</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor">      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">      else RUN_CODIM(                                                          \</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">        Class,                                                                 \</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">        dim,                                                                   \</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">        spacedim,                                                              \</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">        in_file,                                                               \</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">        out_file) else AssertThrow(false,                                      \</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="preprocessor">                                   dealii::ExcImpossibleInDimSpacedim(         \</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">                                     dim, spacedim));                          \</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">    }                                                                          \</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">  STANDARD_CATCH()</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_runner_html"><div class="ttname"><a href="namespace_runner.html">Runner</a></div><div class="ttdoc">Gather some functions and classes typically used in the main() of the FSI-suite applications.</div><div class="ttdef"><b>Definition:</b> <a href="runner_8h_source.html#l00025">runner.h:25</a></div></div>
@@ -276,7 +296,7 @@ $(document).ready(function(){initNavTree('runner_8h_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="runner_8h.html">runner.h</a></li>
-    <li class="footer">Generated on Wed Mar 30 2022 13:52:37 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Mar 31 2022 21:17:05 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

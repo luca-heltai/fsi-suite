@@ -13,6 +13,7 @@ var dir_b2f33c71d4aa5e7af42a1ca61ff5af1b =
     [ "grid_generator.cc", "grid__generator_8cc.html", null ],
     [ "grid_refinement.cc", "grid__refinement_8cc.html", null ],
     [ "mapping_eulerian.cc", "mapping__eulerian_8cc.html", null ],
+    [ "non_matching_coupling.cc", "non__matching__coupling_8cc.html", null ],
     [ "patterns_unsigned_int.cc", "patterns__unsigned__int_8cc.html", null ],
     [ "runner.cc", "runner_8cc.html", "runner_8cc" ],
     [ "symbolic_function.cc", "symbolic__function_8cc.html", null ]
