@@ -14,8 +14,8 @@
 // ---------------------------------------------------------------------
 
 // Make sure we don't redefine things
-#ifndef base_serial_linear_problem_include_file
-#define base_serial_linear_problem_include_file
+#ifndef base_linear_problem_include_file
+#define base_linear_problem_include_file
 
 #include <deal.II/base/convergence_table.h>
 #include <deal.II/base/function.h>
@@ -108,7 +108,9 @@ namespace PDEs
     run();
 
     /**
-     * Make sure we can run also in 1d.
+     * Make sure we can run also in 1d, where parallel distributed
+     * triangulations are not available, and we can only use parallel shared
+     * ones.
      */
     using Triangulation = typename std::conditional<
       dim == 1,
