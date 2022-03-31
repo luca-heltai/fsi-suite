@@ -92,9 +92,9 @@ namespace PDEs
         MatrixTools::create_laplace_matrix(
           space.dof_handler,
           space_quad,
-          space.system_block_matrix.block(0, 0),
+          space.matrix.block(0, 0),
           space.forcing_term,
-          space.system_block_rhs.block(0),
+          space.rhs.block(0),
           static_cast<const Function<spacedim> *>(nullptr),
           space.constraints);
       }
@@ -106,13 +106,13 @@ namespace PDEs
         // The rhs of the Lagrange multiplier as a function to plot
         VectorTools::interpolate(embedded.dof_handler,
                                  embedded.exact_solution,
-                                 embedded.block_solution);
+                                 embedded.solution);
 
         // The rhs of the Lagrange multiplier
         VectorTools::create_right_hand_side(embedded.dof_handler,
                                             embedded_quad,
                                             embedded.exact_solution,
-                                            embedded.system_block_rhs);
+                                            embedded.rhs);
       }
     }
 
@@ -124,7 +124,7 @@ namespace PDEs
     {
       TimerOutput::Scope timer_section(space.timer, "Solve system");
 
-      auto A     = linear_operator(space.system_block_matrix.block(0, 0));
+      auto A     = linear_operator(space.matrix.block(0, 0));
       auto Bt    = linear_operator(coupling_matrix);
       auto B     = transpose_operator(Bt);
       auto A_inv = A;
@@ -132,13 +132,12 @@ namespace PDEs
 
       if (use_direct_solver)
         {
-          A_inv_direct.initialize(space.system_block_matrix.block(0, 0));
+          A_inv_direct.initialize(space.matrix.block(0, 0));
           A_inv = linear_operator(A, A_inv_direct);
         }
       else
         {
-          space.preconditioner.initialize(
-            space.system_block_matrix.block(0, 0));
+          space.preconditioner.initialize(space.matrix.block(0, 0));
           A_inv = space.inverse_operator(A, space.preconditioner);
         }
 
@@ -146,18 +145,18 @@ namespace PDEs
       auto S_prec = identity_operator(S);
       auto S_inv  = embedded.inverse_operator(S, S_prec);
 
-      auto &lambda       = embedded.block_solution.block(0);
-      auto &embedded_rhs = embedded.system_block_rhs.block(0);
-      auto &solution     = space.block_solution.block(0);
-      auto &rhs          = space.system_block_rhs.block(0);
+      auto &lambda       = embedded.solution.block(0);
+      auto &embedded_rhs = embedded.rhs.block(0);
+      auto &solution     = space.solution.block(0);
+      auto &rhs          = space.rhs.block(0);
 
       lambda = S_inv * (B * A_inv * rhs - embedded_rhs);
       embedded.constraints.distribute(lambda);
-      embedded.locally_relevant_block_solution = embedded.block_solution;
+      embedded.locally_relevant_solution = embedded.solution;
 
       solution = A_inv * (rhs - Bt * lambda);
       space.constraints.distribute(solution);
-      space.locally_relevant_block_solution = space.block_solution;
+      space.locally_relevant_solution = space.solution;
     }
 
 

@@ -419,29 +419,29 @@ namespace PDEs
     /**
      * System sparsity pattern.
      */
-    typename LacType::BlockSparsityPattern system_block_sparsity;
+    typename LacType::BlockSparsityPattern sparsity;
 
     /**
      * System matrix.
      */
-    typename LacType::BlockSparseMatrix system_block_matrix;
+    typename LacType::BlockSparseMatrix matrix;
 
     /**
      * A read only copy of the solution vector used for output and error
      * estimation.
      */
-    typename LacType::BlockVector locally_relevant_block_solution;
+    typename LacType::BlockVector locally_relevant_solution;
 
     /**
      * Solution vector.
      */
-    typename LacType::BlockVector block_solution;
+    typename LacType::BlockVector solution;
 
     /**
      * The system right hand side. Read-write vector, containing only
      * locally owned dofs.
      */
-    typename LacType::BlockVector system_block_rhs;
+    typename LacType::BlockVector rhs;
 
     /**
      * Storage for local error estimator. This vector contains also values

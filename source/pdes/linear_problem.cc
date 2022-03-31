@@ -179,20 +179,17 @@ namespace PDEs
     for (unsigned int i = 0; i < n_components; ++i)
       for (unsigned int j = 0; j < n_components; ++j)
         coupling[i][j] = DoFTools::always;
-    initializer(system_block_sparsity, dof_handler, constraints, coupling);
-    initializer(system_block_sparsity, system_block_matrix);
+    initializer(sparsity, dof_handler, constraints, coupling);
+    initializer(sparsity, matrix);
 
-    initializer(block_solution);
-    initializer(system_block_rhs);
-    initializer.ghosted(locally_relevant_block_solution);
+    initializer(solution);
+    initializer(rhs);
+    initializer.ghosted(locally_relevant_solution);
 
     error_per_cell.reinit(triangulation.n_active_cells());
 
-    boundary_conditions.apply_natural_boundary_conditions(*mapping,
-                                                          dof_handler,
-                                                          constraints,
-                                                          system_block_matrix,
-                                                          system_block_rhs);
+    boundary_conditions.apply_natural_boundary_conditions(
+      *mapping, dof_handler, constraints, matrix, rhs);
     // Update functions with standard constants
     exact_solution.update_constants({});
     forcing_term.update_constants({});
@@ -222,8 +219,8 @@ namespace PDEs
     constraints.distribute_local_to_global(copy.matrices[0],
                                            copy.vectors[0],
                                            copy.local_dof_indices[0],
-                                           system_block_matrix,
-                                           system_block_rhs);
+                                           matrix,
+                                           rhs);
   }
 
 
@@ -270,8 +267,8 @@ namespace PDEs
                     scratch,
                     copy);
 
-    system_block_matrix.compress(VectorOperation::add);
-    system_block_rhs.compress(VectorOperation::add);
+    matrix.compress(VectorOperation::add);
+    rhs.compress(VectorOperation::add);
 
     assemble_system_call_back();
   }
@@ -295,12 +292,12 @@ namespace PDEs
     TimerOutput::Scope timer_section(timer, "estimate");
     grid_refinement.estimate_error(*mapping,
                                    dof_handler,
-                                   locally_relevant_block_solution,
+                                   locally_relevant_solution,
                                    error_per_cell);
 
     error_table.error_from_exact(*mapping,
                                  dof_handler,
-                                 locally_relevant_block_solution,
+                                 locally_relevant_solution,
                                  exact_solution);
   }
 
@@ -341,7 +338,7 @@ namespace PDEs
                                Utilities::needed_digits(
                                  grid_refinement.get_n_refinement_cycles()));
     data_out.attach_dof_handler(dof_handler, suffix);
-    data_out.add_data_vector(locally_relevant_block_solution,
+    data_out.add_data_vector(locally_relevant_solution,
                              component_names,
                              dealii::DataOut<dim, spacedim>::type_dof_data);
     // call any additional call backs

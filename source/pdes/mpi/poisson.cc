@@ -70,13 +70,12 @@ namespace PDEs
     Poisson<dim, spacedim>::solve()
     {
       TimerOutput::Scope timer_section(this->timer, "solve");
-      const auto         A =
-        linear_operator<VectorType>(this->system_block_matrix.block(0, 0));
-      this->preconditioner.initialize(this->system_block_matrix.block(0, 0));
-      const auto Ainv = this->inverse_operator(A, this->preconditioner);
-      this->block_solution.block(0) = Ainv * this->system_block_rhs.block(0);
-      this->constraints.distribute(this->block_solution);
-      this->locally_relevant_block_solution = this->block_solution;
+      const auto A = linear_operator<VectorType>(this->matrix.block(0, 0));
+      this->preconditioner.initialize(this->matrix.block(0, 0));
+      const auto Ainv         = this->inverse_operator(A, this->preconditioner);
+      this->solution.block(0) = Ainv * this->rhs.block(0);
+      this->constraints.distribute(this->solution);
+      this->locally_relevant_solution = this->solution;
     }
 
 

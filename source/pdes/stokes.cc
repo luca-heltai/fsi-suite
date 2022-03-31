@@ -134,7 +134,7 @@ namespace PDEs
     using LinOp      = LinearOperator<Vec>;
     using BlockLinOp = BlockLinearOperator<BVec>;
 
-    const auto &m = this->system_block_matrix;
+    const auto &m = this->matrix;
 
     const auto A    = linear_operator<Vec>(m.block(0, 0));
     const auto Bt   = linear_operator<Vec>(m.block(0, 1));
@@ -182,18 +182,18 @@ namespace PDEs
     // preconditioner
     if (this->inverse_operator.get_solver_name() != "minres")
       {
-        const auto precAA    = block_forward_substitution(AA, diagprecAA);
-        const auto inv       = this->inverse_operator(AA, precAA);
-        this->block_solution = inv * this->system_block_rhs;
+        const auto precAA = block_forward_substitution(AA, diagprecAA);
+        const auto inv    = this->inverse_operator(AA, precAA);
+        this->solution    = inv * this->rhs;
       }
     else
       {
-        const auto inv       = this->inverse_operator(AA, diagprecAA);
-        this->block_solution = inv * this->system_block_rhs;
+        const auto inv = this->inverse_operator(AA, diagprecAA);
+        this->solution = inv * this->rhs;
       }
 
-    this->constraints.distribute(this->block_solution);
-    this->locally_relevant_block_solution = this->block_solution;
+    this->constraints.distribute(this->solution);
+    this->locally_relevant_solution = this->solution;
   }
 
   template class Stokes<2, LAC::LAdealii>;
