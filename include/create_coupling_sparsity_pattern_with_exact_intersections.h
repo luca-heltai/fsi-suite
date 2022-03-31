@@ -30,6 +30,7 @@
 
 #include <deal.II/fe/component_mask.h>
 #include <deal.II/fe/fe.h>
+#include <deal.II/fe/fe_system.h>
 #include <deal.II/fe/fe_values.h>
 #include <deal.II/fe/mapping_q1.h>
 
@@ -75,10 +76,11 @@ namespace dealii::NonMatching
     const DoFHandler<dim0, spacedim> &space_dh,
     const DoFHandler<dim1, spacedim> &immersed_dh,
     Sparsity &                        sparsity,
-    const AffineConstraints<number> & constraints,
-    const ComponentMask &             space_comps,
-    const ComponentMask &             immersed_comps,
-    const AffineConstraints<number> & immersed_constraints);
+    const AffineConstraints<number> & constraints = AffineConstraints<number>(),
+    const ComponentMask &             space_comps = ComponentMask(),
+    const ComponentMask &             immersed_comps = ComponentMask(),
+    const AffineConstraints<number> & immersed_constraints =
+      AffineConstraints<number>());
 
 }
 
