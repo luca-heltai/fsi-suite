@@ -112,8 +112,8 @@ namespace dealii::NonMatching
     // DoFs have to be recorded
     for (const auto &it : intersections_info)
       {
-        const auto space_cell    = std::get<0>(it);
-        const auto immersed_cell = std::get<1>(it);
+        const auto &space_cell    = std::get<0>(it);
+        const auto &immersed_cell = std::get<1>(it);
         typename DoFHandler<dim0, spacedim>::cell_iterator space_cell_dh(
           *space_cell, &space_dh);
         typename DoFHandler<dim1, spacedim>::cell_iterator immersed_cell_dh(
