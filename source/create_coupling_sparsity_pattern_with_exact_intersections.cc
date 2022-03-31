@@ -53,18 +53,67 @@ namespace dealii::NonMatching
 
 
 
-    const auto &                         space_fe    = space_dh.get_fe();
-    const auto &                         immersed_fe = immersed_dh.get_fe();
-    std::vector<types::global_dof_index> space_dofs(space_fe.n_dofs_per_cell());
-    std::vector<types::global_dof_index> immersed_dofs(
-      immersed_fe.n_dofs_per_cell());
+    const auto &       space_fe                 = space_dh.get_fe();
+    const auto &       immersed_fe              = immersed_dh.get_fe();
+    const unsigned int n_space_dofs             = space_fe.n_dofs_per_cell();
+    const unsigned int n_immersed_dofs          = immersed_fe.n_dofs_per_cell();
+    const unsigned int n_space_fe_components    = space_fe.n_components();
+    const unsigned int n_immersed_fe_components = immersed_fe.n_components();
+    std::vector<types::global_dof_index> space_dofs(n_space_dofs);
+    std::vector<types::global_dof_index> immersed_dofs(n_immersed_dofs);
+
+
+    const ComponentMask space_c =
+      (space_comps.size() == 0 ? ComponentMask(n_space_fe_components, true) :
+                                 space_comps);
+    const ComponentMask immersed_c =
+      (immersed_comps.size() == 0 ?
+         ComponentMask(n_immersed_fe_components, true) :
+         immersed_comps);
+    // Global 2 Local indices
+    std::vector<unsigned int> space_gtl(n_space_fe_components);
+    std::vector<unsigned int> immersed_gtl(n_immersed_fe_components);
+    for (unsigned int i = 0, j = 0; i < n_space_fe_components; i++)
+      {
+        if (space_c[i])
+          space_gtl[i] = j++;
+      }
+
+
+    for (unsigned int i = 0, j = 0; i < n_immersed_fe_components; i++)
+      {
+        if (immersed_c[i])
+          immersed_gtl[i] = j++;
+      }
+
+
+
+    Table<2, bool> dof_mask(n_space_dofs, n_immersed_dofs);
+    dof_mask.fill(false); // start off by assuming they don't couple
+
+    for (unsigned int i = 0; i < n_space_dofs; ++i)
+      {
+        const auto comp_i = space_fe.system_to_component_index(i).first;
+        if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
+          {
+            for (unsigned int j = 0; j < n_immersed_dofs; ++j)
+              {
+                const auto comp_j =
+                  immersed_fe.system_to_component_index(j).first;
+                if (immersed_gtl[comp_j] == space_gtl[comp_i])
+                  {
+                    dof_mask(i, j) = true;
+                  }
+              }
+          }
+      }
 
     // Whenever the BB space_cell intersects the BB of an embedded cell, those
     // DoFs have to be recorded
     for (const auto &it : intersections_info)
       {
-        const auto space_cell    = std::get<0>(it);
-        const auto immersed_cell = std::get<1>(it);
+        const auto &space_cell    = std::get<0>(it);
+        const auto &immersed_cell = std::get<1>(it);
         typename DoFHandler<dim0, spacedim>::cell_iterator space_cell_dh(
           *space_cell, &space_dh);
         typename DoFHandler<dim1, spacedim>::cell_iterator immersed_cell_dh(
@@ -77,8 +126,9 @@ namespace dealii::NonMatching
         constraints.add_entries_local_to_global(space_dofs,
                                                 immersed_constraints,
                                                 immersed_dofs,
-                                                sparsity); // true, dof_mask);
-                                                           // }
+                                                sparsity,
+                                                true,
+                                                dof_mask);
       }
   }
 
