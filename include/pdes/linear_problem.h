@@ -291,7 +291,7 @@ namespace PDEs
     /**
      * Verbosity level of deallog.
      */
-    unsigned int verbosity_level = 1;
+    unsigned int verbosity_level = 4;
 
     /**
      * Output only on processor zero.

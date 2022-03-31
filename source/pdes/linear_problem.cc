@@ -115,7 +115,26 @@ namespace PDEs
     mapping = get_default_linear_mapping(triangulation).clone();
     pcout << "Number of dofs " << dof_handler.n_dofs() << std::endl;
 
+    const auto blocks =
+      ParsedTools::Components::block_indices(component_names, component_names);
+    // renumber dofs in a blockwise manner.
+    DoFRenumbering::component_wise(dof_handler, blocks);
+    dofs_per_block = DoFTools::count_dofs_per_fe_block(dof_handler, blocks);
+
+    locally_owned_dofs =
+      dof_handler.locally_owned_dofs().split_by_block(dofs_per_block);
+
+    IndexSet non_blocked_locally_relevant_dofs;
+    DoFTools::extract_locally_relevant_dofs(dof_handler,
+                                            non_blocked_locally_relevant_dofs);
+    locally_relevant_dofs =
+      non_blocked_locally_relevant_dofs.split_by_block(dofs_per_block);
+
+    pcout << "Number of degrees of freedom: " << dof_handler.n_dofs() << " ("
+          << Patterns::Tools::to_string(dofs_per_block) << ")" << std::endl;
+
     constraints.clear();
+    constraints.reinit(non_blocked_locally_relevant_dofs);
     DoFTools::make_hanging_node_constraints(dof_handler, constraints);
 
     // We now check that the boundary conditions are consistent with the
@@ -141,33 +160,6 @@ namespace PDEs
 
     // If necessary, derived functions can add constraints to the system here.
     add_constraints_call_back();
-    constraints.close();
-
-    const auto blocks =
-      ParsedTools::Components::block_indices(component_names, component_names);
-    // renumber dofs in a blockwise manner.
-    DoFRenumbering::component_wise(dof_handler, blocks);
-    dofs_per_block = DoFTools::count_dofs_per_fe_block(dof_handler, blocks);
-
-    locally_owned_dofs =
-      dof_handler.locally_owned_dofs().split_by_block(dofs_per_block);
-
-    IndexSet non_blocked_locally_relevant_dofs;
-    DoFTools::extract_locally_relevant_dofs(dof_handler,
-                                            non_blocked_locally_relevant_dofs);
-    locally_relevant_dofs =
-      non_blocked_locally_relevant_dofs.split_by_block(dofs_per_block);
-
-    pcout << "Number of degrees of freedom: " << dof_handler.n_dofs() << " ("
-          << Patterns::Tools::to_string(dofs_per_block) << ")" << std::endl;
-
-    constraints.clear();
-    constraints.reinit(non_blocked_locally_relevant_dofs);
-    DoFTools::make_hanging_node_constraints(dof_handler, constraints);
-
-    boundary_conditions.apply_essential_boundary_conditions(*mapping,
-                                                            dof_handler,
-                                                            constraints);
     constraints.close();
 
     ScopedLACInitializer initializer(dofs_per_block,

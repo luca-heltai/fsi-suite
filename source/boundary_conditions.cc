@@ -102,6 +102,7 @@ namespace ParsedTools
 
       // Check that everything is consistent
       check_consistency();
+      update_user_substitution_map({});
     });
   }
 
@@ -201,8 +202,19 @@ namespace ParsedTools
     const dealii::Differentiation::SD::types::substitution_map
       &substitution_map)
   {
+    auto smap       = substitution_map;
+    smap["E"]       = numbers::E;
+    smap["LOG2E"]   = numbers::LOG2E;
+    smap["LOG10E"]  = numbers::LOG10E;
+    smap["LN2"]     = numbers::LN2;
+    smap["LN10"]    = numbers::LN10;
+    smap["PI"]      = numbers::PI;
+    smap["PI_2"]    = numbers::PI_2;
+    smap["PI_4"]    = numbers::PI_4;
+    smap["SQRT2"]   = numbers::SQRT2;
+    smap["SQRT1_2"] = numbers::SQRT1_2;
     for (auto &f : functions)
-      f->update_user_substitution_map(substitution_map);
+      f->update_user_substitution_map(smap);
   }
 
 
