@@ -21,9 +21,28 @@
 #include <deal.II/lac/block_sparse_matrix.h>
 #include <deal.II/lac/block_sparsity_pattern.h>
 #include <deal.II/lac/block_vector.h>
-#include <deal.II/lac/petsc_solver.h>
 #include <deal.II/lac/sparse_direct.h>
-#include <deal.II/lac/trilinos_solver.h>
+#include <deal.II/lac/sparse_matrix.h>
+#include <deal.II/lac/sparsity_pattern.h>
+#include <deal.II/lac/vector.h>
+
+
+#ifdef DEAL_II_WITH_PETSC
+#  include <deal.II/lac/petsc_block_sparse_matrix.h>
+#  include <deal.II/lac/petsc_block_vector.h>
+#  include <deal.II/lac/petsc_solver.h>
+#  include <deal.II/lac/petsc_sparse_matrix.h>
+#  include <deal.II/lac/petsc_vector.h>
+
+#endif
+
+#ifdef DEAL_II_WITH_TRILINOS
+#  include <deal.II/lac/block_sparsity_pattern.h>
+#  include <deal.II/lac/trilinos_block_sparse_matrix.h>
+#  include <deal.II/lac/trilinos_solver.h>
+#  include <deal.II/lac/trilinos_sparse_matrix.h>
+#  include <deal.II/lac/trilinos_vector.h>
+#endif
 
 #include "parsed_lac/amg.h"
 #include "parsed_lac/amg_petsc.h"
@@ -49,20 +68,23 @@ namespace LAC
    */
   struct LAdealii
   {
+    using Vector               = dealii::Vector<double>;
     using BlockVector          = dealii::BlockVector<double>;
+    using SparseMatrix         = dealii::SparseMatrix<double>;
     using BlockSparseMatrix    = dealii::BlockSparseMatrix<double>;
+    using SparsityPattern      = dealii::SparsityPattern;
     using BlockSparsityPattern = dealii::BlockSparsityPattern;
 #ifdef DEAL_II_WITH_TRILINOS
-    using AMG          = ParsedLAC::AMGPreconditioner;
-    using DirectSolver = dealii::SparseDirectUMFPACK;
+    using AMG = ParsedLAC::AMGPreconditioner;
+#else
+    // Just use UMFPACK if Trilinos is not available
+    using AMG = dealii::SparseDirectUMFPACK;
 #endif
+    using DirectSolver = dealii::SparseDirectUMFPACK;
   };
 
 
 #ifdef DEAL_II_WITH_PETSC
-
-#  include <deal.II/lac/petsc_block_sparse_matrix.h>
-#  include <deal.II/lac/petsc_solver.h>
 
   /**
    * Parallel linear algebra, using PETSc.
@@ -72,6 +94,9 @@ namespace LAC
    */
   struct LAPETSc
   {
+    using Vector               = dealii::PETScWrappers::MPI::Vector;
+    using SparseMatrix         = dealii::PETScWrappers::MPI::SparseMatrix;
+    using SparsityPattern      = dealii::SparsityPattern;
     using BlockVector          = dealii::PETScWrappers::MPI::BlockVector;
     using BlockSparseMatrix    = dealii::PETScWrappers::MPI::BlockSparseMatrix;
     using BlockSparsityPattern = dealii::BlockSparsityPattern;
@@ -82,11 +107,6 @@ namespace LAC
 #endif // DEAL_II_WITH_PETSC
 
 #ifdef DEAL_II_WITH_TRILINOS
-
-#  include <deal.II/lac/block_sparsity_pattern.h>
-#  include <deal.II/lac/trilinos_block_sparse_matrix.h>
-#  include <deal.II/lac/trilinos_vector.h>
-
   /**
    * Parallel linear algebra, using Trilinos.
    *
@@ -95,6 +115,9 @@ namespace LAC
    */
   struct LATrilinos
   {
+    using Vector               = dealii::TrilinosWrappers::MPI::Vector;
+    using SparseMatrix         = dealii::TrilinosWrappers::SparseMatrix;
+    using SparsityPattern      = dealii::TrilinosWrappers::SparsityPattern;
     using BlockVector          = dealii::TrilinosWrappers::MPI::BlockVector;
     using BlockSparseMatrix    = dealii::TrilinosWrappers::BlockSparseMatrix;
     using BlockSparsityPattern = dealii::TrilinosWrappers::BlockSparsityPattern;

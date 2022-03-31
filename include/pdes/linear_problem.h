@@ -14,8 +14,8 @@
 // ---------------------------------------------------------------------
 
 // Make sure we don't redefine things
-#ifndef base_serial_linear_problem_include_file
-#define base_serial_linear_problem_include_file
+#ifndef base_linear_problem_include_file
+#define base_linear_problem_include_file
 
 #include <deal.II/base/convergence_table.h>
 #include <deal.II/base/function.h>
@@ -25,6 +25,7 @@
 #include <deal.II/base/timer.h>
 
 #include <deal.II/distributed/grid_refinement.h>
+#include <deal.II/distributed/shared_tria.h>
 #include <deal.II/distributed/tria.h>
 
 #include <deal.II/dofs/dof_handler.h>
@@ -107,6 +108,16 @@ namespace PDEs
     run();
 
     /**
+     * Make sure we can run also in 1d, where parallel distributed
+     * triangulations are not available, and we can only use parallel shared
+     * ones.
+     */
+    using Triangulation = typename std::conditional<
+      dim == 1,
+      dealii::parallel::shared::Triangulation<dim, spacedim>,
+      dealii::parallel::distributed::Triangulation<dim, spacedim>>::type;
+
+    /**
      * Default CopyData object, used in the WorkStream class.
      */
     using CopyData = MeshWorker::CopyData<1, 1, 1>;
@@ -131,7 +142,6 @@ namespace PDEs
      */
     using BlockMatrixType = typename LacType::BlockSparseMatrix;
 
-  protected:
     /**
      * Assemble the local system matrix on `cell`, using `scratch` for
      * FEValues and other expensive scratch objects, and store the result in
@@ -352,7 +362,7 @@ namespace PDEs
     /**
      * The problem triangulation.
      */
-    parallel::distributed::Triangulation<dim, spacedim> triangulation;
+    Triangulation triangulation;
 
 
     /**
@@ -411,29 +421,29 @@ namespace PDEs
     /**
      * System sparsity pattern.
      */
-    typename LacType::BlockSparsityPattern system_block_sparsity;
+    typename LacType::BlockSparsityPattern sparsity;
 
     /**
      * System matrix.
      */
-    typename LacType::BlockSparseMatrix system_block_matrix;
+    typename LacType::BlockSparseMatrix matrix;
 
     /**
      * A read only copy of the solution vector used for output and error
      * estimation.
      */
-    typename LacType::BlockVector locally_relevant_block_solution;
+    typename LacType::BlockVector locally_relevant_solution;
 
     /**
      * Solution vector.
      */
-    typename LacType::BlockVector block_solution;
+    typename LacType::BlockVector solution;
 
     /**
      * The system right hand side. Read-write vector, containing only
      * locally owned dofs.
      */
-    typename LacType::BlockVector system_block_rhs;
+    typename LacType::BlockVector rhs;
 
     /**
      * Storage for local error estimator. This vector contains also values
