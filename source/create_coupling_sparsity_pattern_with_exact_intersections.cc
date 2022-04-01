@@ -66,21 +66,28 @@ namespace dealii::NonMatching
     const ComponentMask space_c =
       (space_comps.size() == 0 ? ComponentMask(n_space_fe_components, true) :
                                  space_comps);
+
+
     const ComponentMask immersed_c =
       (immersed_comps.size() == 0 ?
          ComponentMask(n_immersed_fe_components, true) :
          immersed_comps);
+
+    AssertDimension(space_c.size(), n_space_fe_components);
+    AssertDimension(immersed_c.size(), n_immersed_fe_components);
+
+
     // Global 2 Local indices
     std::vector<unsigned int> space_gtl(n_space_fe_components);
     std::vector<unsigned int> immersed_gtl(n_immersed_fe_components);
-    for (unsigned int i = 0, j = 0; i < n_space_fe_components; i++)
+    for (unsigned int i = 0, j = 0; i < n_space_fe_components; ++i)
       {
         if (space_c[i])
           space_gtl[i] = j++;
       }
 
 
-    for (unsigned int i = 0, j = 0; i < n_immersed_fe_components; i++)
+    for (unsigned int i = 0, j = 0; i < n_immersed_fe_components; ++i)
       {
         if (immersed_c[i])
           immersed_gtl[i] = j++;
@@ -108,8 +115,16 @@ namespace dealii::NonMatching
           }
       }
 
+    const bool dof_mask_is_active =
+      dof_mask.n_rows() == n_space_dofs && dof_mask.n_cols() == n_immersed_dofs;
+    Assert(
+      dof_mask_is_active && n_space_fe_components == 1 &&
+        n_immersed_fe_components == 1,
+      ExcNotImplemented(
+        "add_entries_local_to_global() is not implemented for nontrivial **active** dof_mask"));
     // Whenever the BB space_cell intersects the BB of an embedded cell, those
     // DoFs have to be recorded
+
     for (const auto &it : intersections_info)
       {
         const auto &space_cell    = std::get<0>(it);
@@ -123,12 +138,22 @@ namespace dealii::NonMatching
         immersed_cell_dh->get_dof_indices(immersed_dofs);
 
 
-        constraints.add_entries_local_to_global(space_dofs,
-                                                immersed_constraints,
-                                                immersed_dofs,
-                                                sparsity,
-                                                true,
-                                                dof_mask);
+        if (dof_mask_is_active)
+          {
+            constraints.add_entries_local_to_global(space_dofs,
+                                                    immersed_constraints,
+                                                    immersed_dofs,
+                                                    sparsity);
+          }
+        else
+          {
+            constraints.add_entries_local_to_global(space_dofs,
+                                                    immersed_constraints,
+                                                    immersed_dofs,
+                                                    sparsity,
+                                                    true,
+                                                    dof_mask);
+          }
       }
   }
 

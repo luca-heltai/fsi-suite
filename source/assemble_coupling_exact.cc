@@ -73,6 +73,9 @@ namespace dealii::NonMatching
     const unsigned int dofs_per_space_cell    = space_fe.n_dofs_per_cell();
     const unsigned int dofs_per_immersed_cell = immersed_fe.n_dofs_per_cell();
 
+    const unsigned int n_space_fe_components    = space_fe.n_components();
+    const unsigned int n_immersed_fe_components = immersed_fe.n_components();
+
     FullMatrix<double> local_cell_matrix(dofs_per_space_cell,
                                          dofs_per_immersed_cell);
     // DoF indices
@@ -80,6 +83,34 @@ namespace dealii::NonMatching
       dofs_per_space_cell);
     std::vector<types::global_dof_index> local_immersed_dof_indices(
       dofs_per_immersed_cell);
+
+    const ComponentMask space_c =
+      (space_comps.size() == 0 ? ComponentMask(n_space_fe_components, true) :
+                                 space_comps);
+    const ComponentMask immersed_c =
+      (immersed_comps.size() == 0 ?
+         ComponentMask(n_immersed_fe_components, true) :
+         immersed_comps);
+
+    AssertDimension(space_c.size(), n_space_fe_components);
+    AssertDimension(immersed_c.size(), n_immersed_fe_components);
+
+    std::vector<unsigned int> space_gtl(n_space_fe_components,
+                                        numbers::invalid_unsigned_int);
+    std::vector<unsigned int> immersed_gtl(n_immersed_fe_components,
+                                           numbers::invalid_unsigned_int);
+    for (unsigned int i = 0, j = 0; i < n_space_fe_components; ++i)
+      {
+        if (space_c[i])
+          space_gtl[i] = j++;
+      }
+
+
+    for (unsigned int i = 0, j = 0; i < n_immersed_fe_components; ++i)
+      {
+        if (immersed_c[i])
+          immersed_gtl[i] = j++;
+      }
 
 
 
@@ -109,11 +140,24 @@ namespace dealii::NonMatching
           {
             for (unsigned int i = 0; i < dofs_per_space_cell; ++i)
               {
-                for (unsigned int j = 0; j < dofs_per_immersed_cell; ++j)
+                const unsigned int comp_i =
+                  space_dh.get_fe().system_to_component_index(i).first;
+                if (comp_i != numbers::invalid_unsigned_int)
                   {
-                    local_cell_matrix(i, j) +=
-                      space_fe.shape_value(i, ref_pts_space[q]) *
-                      immersed_fe.shape_value(j, ref_pts_immersed[q]) * JxW[q];
+                    for (unsigned int j = 0; j < dofs_per_immersed_cell; ++j)
+                      {
+                        const unsigned int comp_j =
+                          immersed_dh.get_fe()
+                            .system_to_component_index(j)
+                            .first;
+                        if (space_gtl[comp_i] == immersed_gtl[comp_j])
+                          {
+                            local_cell_matrix(i, j) +=
+                              space_fe.shape_value(i, ref_pts_space[q]) *
+                              immersed_fe.shape_value(j, ref_pts_immersed[q]) *
+                              JxW[q];
+                          }
+                      }
                   }
               }
           }
