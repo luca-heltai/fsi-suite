@@ -55,12 +55,13 @@ namespace dealii::NonMatching
 
     const auto &       space_fe                 = space_dh.get_fe();
     const auto &       immersed_fe              = immersed_dh.get_fe();
-    const unsigned int n_space_dofs             = space_fe.n_dofs_per_cell();
-    const unsigned int n_immersed_dofs          = immersed_fe.n_dofs_per_cell();
+    const unsigned int n_dofs_per_space_cell    = space_fe.n_dofs_per_cell();
+    const unsigned int n_dofs_per_immersed_cell = immersed_fe.n_dofs_per_cell();
     const unsigned int n_space_fe_components    = space_fe.n_components();
     const unsigned int n_immersed_fe_components = immersed_fe.n_components();
-    std::vector<types::global_dof_index> space_dofs(n_space_dofs);
-    std::vector<types::global_dof_index> immersed_dofs(n_immersed_dofs);
+    std::vector<types::global_dof_index> space_dofs(n_dofs_per_space_cell);
+    std::vector<types::global_dof_index> immersed_dofs(
+      n_dofs_per_immersed_cell);
 
 
     const ComponentMask space_c =
@@ -95,15 +96,15 @@ namespace dealii::NonMatching
 
 
 
-    Table<2, bool> dof_mask(n_space_dofs, n_immersed_dofs);
+    Table<2, bool> dof_mask(n_dofs_per_space_cell, n_dofs_per_immersed_cell);
     dof_mask.fill(false); // start off by assuming they don't couple
 
-    for (unsigned int i = 0; i < n_space_dofs; ++i)
+    for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
       {
         const auto comp_i = space_fe.system_to_component_index(i).first;
         if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
           {
-            for (unsigned int j = 0; j < n_immersed_dofs; ++j)
+            for (unsigned int j = 0; j < n_dofs_per_immersed_cell; ++j)
               {
                 const auto comp_j =
                   immersed_fe.system_to_component_index(j).first;
@@ -116,12 +117,9 @@ namespace dealii::NonMatching
       }
 
     const bool dof_mask_is_active =
-      dof_mask.n_rows() == n_space_dofs && dof_mask.n_cols() == n_immersed_dofs;
-    Assert(
-      dof_mask_is_active && n_space_fe_components == 1 &&
-        n_immersed_fe_components == 1,
-      ExcNotImplemented(
-        "add_entries_local_to_global() is not implemented for nontrivial **active** dof_mask"));
+      dof_mask.n_rows() == n_dofs_per_space_cell &&
+      dof_mask.n_cols() == n_dofs_per_immersed_cell;
+
     // Whenever the BB space_cell intersects the BB of an embedded cell, those
     // DoFs have to be recorded
 
@@ -137,13 +135,28 @@ namespace dealii::NonMatching
         space_cell_dh->get_dof_indices(space_dofs);
         immersed_cell_dh->get_dof_indices(immersed_dofs);
 
-
         if (dof_mask_is_active)
           {
-            constraints.add_entries_local_to_global(space_dofs,
-                                                    immersed_constraints,
-                                                    immersed_dofs,
-                                                    sparsity);
+            for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
+              {
+                const unsigned int comp_i =
+                  space_dh.get_fe().system_to_component_index(i).first;
+                if (comp_i != numbers::invalid_unsigned_int)
+                  {
+                    for (unsigned int j = 0; j < n_dofs_per_immersed_cell; ++j)
+                      {
+                        const unsigned int comp_j =
+                          immersed_dh.get_fe()
+                            .system_to_component_index(j)
+                            .first;
+                        if (space_gtl[comp_i] == immersed_gtl[comp_j])
+                          {
+                            // local_cell_matrix(i, j) +=
+                            sparsity.add(space_dofs[i], immersed_dofs[j]);
+                          }
+                      }
+                  }
+              }
           }
         else
           {

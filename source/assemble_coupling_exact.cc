@@ -70,19 +70,19 @@ namespace dealii::NonMatching
     const auto &space_fe    = space_dh.get_fe();
     const auto &immersed_fe = immersed_dh.get_fe();
 
-    const unsigned int dofs_per_space_cell    = space_fe.n_dofs_per_cell();
-    const unsigned int dofs_per_immersed_cell = immersed_fe.n_dofs_per_cell();
+    const unsigned int n_dofs_per_space_cell    = space_fe.n_dofs_per_cell();
+    const unsigned int n_dofs_per_immersed_cell = immersed_fe.n_dofs_per_cell();
 
     const unsigned int n_space_fe_components    = space_fe.n_components();
     const unsigned int n_immersed_fe_components = immersed_fe.n_components();
 
-    FullMatrix<double> local_cell_matrix(dofs_per_space_cell,
-                                         dofs_per_immersed_cell);
+    FullMatrix<double> local_cell_matrix(n_dofs_per_space_cell,
+                                         n_dofs_per_immersed_cell);
     // DoF indices
     std::vector<types::global_dof_index> local_space_dof_indices(
-      dofs_per_space_cell);
+      n_dofs_per_space_cell);
     std::vector<types::global_dof_index> local_immersed_dof_indices(
-      dofs_per_immersed_cell);
+      n_dofs_per_immersed_cell);
 
     const ComponentMask space_c =
       (space_comps.size() == 0 ? ComponentMask(n_space_fe_components, true) :
@@ -122,7 +122,7 @@ namespace dealii::NonMatching
 
 
 
-        local_cell_matrix = 0.;
+        local_cell_matrix = typename Matrix::value_type();
 
         const unsigned int           n_quad_pts = quad_formula.size();
         const auto &                 real_qpts  = quad_formula.get_points();
@@ -138,13 +138,13 @@ namespace dealii::NonMatching
         const auto &JxW = quad_formula.get_weights();
         for (unsigned int q = 0; q < n_quad_pts; ++q)
           {
-            for (unsigned int i = 0; i < dofs_per_space_cell; ++i)
+            for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
               {
                 const unsigned int comp_i =
                   space_dh.get_fe().system_to_component_index(i).first;
                 if (comp_i != numbers::invalid_unsigned_int)
                   {
-                    for (unsigned int j = 0; j < dofs_per_immersed_cell; ++j)
+                    for (unsigned int j = 0; j < n_dofs_per_immersed_cell; ++j)
                       {
                         const unsigned int comp_j =
                           immersed_dh.get_fe()
