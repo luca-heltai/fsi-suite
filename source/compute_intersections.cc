@@ -290,7 +290,6 @@ namespace dealii::NonMatching
                             vertices[i] = dealii::Point<spacedim>{
                               CGAL::to_double(cdt.triangle(f).vertex(i).x()),
                               CGAL::to_double(cdt.triangle(f).vertex(i).y())};
-
                           }
 
 
