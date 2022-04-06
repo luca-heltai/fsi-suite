@@ -60,10 +60,10 @@ namespace dealii::NonMatching
   assemble_coupling_exact(
     const DoFHandler<dim0, spacedim> &,
     const DoFHandler<dim1, spacedim> &,
-    const std::vector<std::tuple<
-      typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
-      typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
-      dealii::Quadrature<spacedim>>> &,
+    const std::vector<
+      std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
+                 typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
+                 dealii::Quadrature<spacedim>>> &,
     Matrix &matrix,
     const AffineConstraints<typename Matrix::value_type> &,
     const ComponentMask &,

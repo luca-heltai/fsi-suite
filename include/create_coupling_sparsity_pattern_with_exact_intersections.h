@@ -69,17 +69,17 @@ namespace dealii::NonMatching
             typename number = double>
   void
   create_coupling_sparsity_pattern_with_exact_intersections(
-    const std::vector<std::tuple<
-      typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
-      typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
-      dealii::Quadrature<spacedim>>> &intersections_info,
-    const DoFHandler<dim0, spacedim> &space_dh,
-    const DoFHandler<dim1, spacedim> &immersed_dh,
-    Sparsity &                        sparsity,
-    const AffineConstraints<number> & constraints = AffineConstraints<number>(),
-    const ComponentMask &             space_comps = ComponentMask(),
-    const ComponentMask &             immersed_comps = ComponentMask(),
-    const AffineConstraints<number> & immersed_constraints =
+    const std::vector<
+      std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
+                 typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
+                 dealii::Quadrature<spacedim>>> &intersections_info,
+    const DoFHandler<dim0, spacedim> &           space_dh,
+    const DoFHandler<dim1, spacedim> &           immersed_dh,
+    Sparsity &                                   sparsity,
+    const AffineConstraints<number> &constraints = AffineConstraints<number>(),
+    const ComponentMask &            space_comps = ComponentMask(),
+    const ComponentMask &            immersed_comps = ComponentMask(),
+    const AffineConstraints<number> &immersed_constraints =
       AffineConstraints<number>());
 
 }

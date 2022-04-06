@@ -42,12 +42,12 @@ namespace dealii::NonMatching
   template <int dim0, int dim1, int spacedim, typename Matrix>
   void
   assemble_coupling_exact(
-    const DoFHandler<dim0, spacedim> &                    space_dh,
-    const DoFHandler<dim1, spacedim> &                    immersed_dh,
-    const std::vector<std::tuple<
-      typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
-      typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
-      dealii::Quadrature<spacedim>>> &                    cells_and_quads,
+    const DoFHandler<dim0, spacedim> &space_dh,
+    const DoFHandler<dim1, spacedim> &immersed_dh,
+    const std::vector<
+      std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
+                 typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
+                 dealii::Quadrature<spacedim>>> &         cells_and_quads,
     Matrix &                                              matrix,
     const AffineConstraints<typename Matrix::value_type> &space_constraints,
     const ComponentMask &                                 space_comps,
@@ -191,10 +191,10 @@ void
 dealii::NonMatching::assemble_coupling_exact(
   const DoFHandler<dim0, spacedim> &,
   const DoFHandler<dim1, spacedim> &,
-  const std::vector<std::tuple<
-    typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
-    typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
-    dealii::Quadrature<spacedim>>> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
+               typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
+               dealii::Quadrature<spacedim>>> &,
   Matrix &,
   const AffineConstraints<typename Matrix::value_type> &,
   const ComponentMask &,
@@ -219,8 +219,8 @@ dealii::NonMatching::assemble_coupling_exact(
   const DoFHandler<2, 2> &,
   const DoFHandler<1, 2> &,
   const std::vector<
-    std::tuple<typename dealii::Triangulation<2, 2>::active_cell_iterator,
-               typename dealii::Triangulation<1, 2>::active_cell_iterator,
+    std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+               typename dealii::Triangulation<1, 2>::cell_iterator,
                dealii::Quadrature<2>>> &,
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
@@ -235,8 +235,8 @@ dealii::NonMatching::assemble_coupling_exact(
   const DoFHandler<2, 2> &,
   const DoFHandler<2, 2> &,
   const std::vector<
-    std::tuple<typename dealii::Triangulation<2, 2>::active_cell_iterator,
-               typename dealii::Triangulation<2, 2>::active_cell_iterator,
+    std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+               typename dealii::Triangulation<2, 2>::cell_iterator,
                dealii::Quadrature<2>>> &,
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
@@ -253,8 +253,8 @@ dealii::NonMatching::assemble_coupling_exact(
   const DoFHandler<3, 3> &,
   const DoFHandler<2, 3> &,
   const std::vector<
-    std::tuple<typename dealii::Triangulation<3, 3>::active_cell_iterator,
-               typename dealii::Triangulation<2, 3>::active_cell_iterator,
+    std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+               typename dealii::Triangulation<2, 3>::cell_iterator,
                dealii::Quadrature<3>>> &,
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
@@ -270,8 +270,8 @@ dealii::NonMatching::assemble_coupling_exact(
   const DoFHandler<3, 3> &,
   const DoFHandler<3, 3> &,
   const std::vector<
-    std::tuple<typename dealii::Triangulation<3, 3>::active_cell_iterator,
-               typename dealii::Triangulation<3, 3>::active_cell_iterator,
+    std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+               typename dealii::Triangulation<3, 3>::cell_iterator,
                dealii::Quadrature<3>>> &,
   dealii::SparseMatrix<double> &,
   const AffineConstraints<typename dealii::SparseMatrix<double>::value_type> &,
