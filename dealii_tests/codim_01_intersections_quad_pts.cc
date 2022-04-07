@@ -35,7 +35,14 @@ test()
   Triangulation<dim, spacedim>      embedded_tria;
 
   GridGenerator::hyper_cube(space_tria, -1., 1.);
-  GridGenerator::hyper_cube(embedded_tria, -0.45, 0.25);
+  if constexpr (dim == 1)
+    {
+      GridGenerator::hyper_sphere(embedded_tria, {0.2, 0.2}, 0.5);
+    }
+  else if constexpr (dim == 2)
+    {
+      GridGenerator::hyper_cube(embedded_tria, -0.45, 0.25);
+    }
   space_tria.refine_global(2);
   embedded_tria.refine_global(2);
 
@@ -49,7 +56,12 @@ test()
   space_dh.distribute_dofs(fe_space);
   embedded_dh.distribute_dofs(fe_embedded);
 
-
+  std::string codim;
+  (spacedim - dim == 0) ? codim = "codim_0" : codim = "codim_1";
+  std::ofstream output_test_space("space_test_" + codim + ".vtk");
+  std::ofstream output_test_embedded("embedded_test_" + codim + ".vtk");
+  GridOut().write_vtk(space_tria, output_test_space);
+  GridOut().write_vtk(embedded_tria, output_test_embedded);
   auto space_cache =
     std::make_unique<GridTools::Cache<spacedim>>(space_tria); // Q1 mapping
   auto embedded_cache = std::make_unique<GridTools::Cache<dim, spacedim>>(
@@ -59,13 +71,7 @@ test()
   const auto vec_info =
     NonMatching::compute_intersection(*space_cache, *embedded_cache, degree);
 
-  assert(vec_info.size() == 25); // Exact number of intersections
 
-
-  std::ofstream output_test_space("space_test.vtk");
-  std::ofstream output_test_embedded("embedded_test.vtk");
-  GridOut().write_vtk(space_tria, output_test_space);
-  GridOut().write_vtk(embedded_tria, output_test_embedded);
   // Print cells ids and points are the printed
 
 
@@ -86,5 +92,6 @@ int
 main()
 {
   initlog();
+  test<1, 2>();
   test<2, 2>();
 }
