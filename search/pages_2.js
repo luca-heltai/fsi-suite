@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['glossary_23713',['Glossary',['http://www.dealii.org/developer/doxygen/deal.II/DEALGlossary.html',1,'']]]
+  ['glossary_23719',['Glossary',['http://www.dealii.org/developer/doxygen/deal.II/DEALGlossary.html',1,'']]]
 ];

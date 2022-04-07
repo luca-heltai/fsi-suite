@@ -2,6 +2,7 @@ var dir_b2f33c71d4aa5e7af42a1ca61ff5af1b =
 [
     [ "parsed_lac", "dir_391f36ef54c6909ec58be9eca8862451.html", "dir_391f36ef54c6909ec58be9eca8862451" ],
     [ "pdes", "dir_863924b7d266e6f7561da03323982265.html", "dir_863924b7d266e6f7561da03323982265" ],
+    [ "assemble_coupling_exact.cc", "assemble__coupling__exact_8cc.html", null ],
     [ "boundary_conditions.cc", "boundary__conditions_8cc.html", null ],
     [ "components.cc", "components_8cc.html", "components_8cc" ],
     [ "compute_intersections.cc", "compute__intersections_8cc.html", null ],

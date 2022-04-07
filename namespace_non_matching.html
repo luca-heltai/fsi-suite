@@ -156,19 +156,117 @@ Functions</h2></td></tr>
 <tr class="separator:a6e7f345fdc3634974cfeeea99d084d7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cdb0c9f16edb5531e3087e48ce7b862"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html#a8cdb0c9f16edb5531e3087e48ce7b862">create_coupling_mass_matrix</a> (<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1CutOffFunctionBase.html">Functions::CutOffFunctionBase</a>&lt; spacedim &gt; &amp;kernel, const double &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a338a944a393875e2dd499457d1055841">epsilon</a>, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim0, spacedim &gt; &amp;cache0, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim1, spacedim &gt; &amp;cache1, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim0, spacedim &gt; &amp;dh0, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim1, spacedim &gt; &amp;dh1, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; dim0 &gt; &amp;quadrature0, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; dim1 &gt; &amp;quadrature1, Matrix &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">Matrix::value_type</a> &gt; &amp;constraints0=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">Matrix::value_type</a> &gt;(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;comps0=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;comps1=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>())</td></tr>
 <tr class="separator:a8cdb0c9f16edb5531e3087e48ce7b862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4d267b9cbee1c5b9e43214252a2d6a"><td class="memTemplParams" colspan="2">template&lt;int dim0, int dim1, int spacedim, typename Matrix &gt; </td></tr>
+<tr class="memitem:a4a4d267b9cbee1c5b9e43214252a2d6a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_non_matching.html#a4a4d267b9cbee1c5b9e43214252a2d6a">assemble_coupling_exact</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim0, spacedim &gt; &amp;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim1, spacedim &gt; &amp;, const std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&gt;&gt; &amp;, Matrix &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">Matrix::value_type</a> &gt; &amp;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim0, spacedim &gt; &amp;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim1, spacedim &gt; &amp;, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">Matrix::value_type</a> &gt; &amp;)</td></tr>
+<tr class="memdesc:a4a4d267b9cbee1c5b9e43214252a2d6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the coupling mass matrix for non-matching, overlapping grids in an "exact" way, i.e.  <a href="namespace_non_matching.html#a4a4d267b9cbee1c5b9e43214252a2d6a">More...</a><br /></td></tr>
+<tr class="separator:a4a4d267b9cbee1c5b9e43214252a2d6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a252578abf458e6edb6cdcdfbd70e70dd"><td class="memTemplParams" colspan="2">template&lt;int dim0, int dim1, int spacedim&gt; </td></tr>
 <tr class="memitem:a252578abf458e6edb6cdcdfbd70e70dd"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_non_matching.html#a252578abf458e6edb6cdcdfbd70e70dd">compute_intersection</a> (const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a> &amp;cell0, const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a> &amp;cell1, const unsigned int degree, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim0, spacedim &gt; &amp;mapping0=(<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceReferenceCells.html#a6dcaf877381d5bc2639da69a586ee9d4">ReferenceCells::get_hypercube</a>&lt; dim0 &gt;() .template <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8cc.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>&lt; dim0, spacedim &gt;()), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim1, spacedim &gt; &amp;mapping1=(<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceReferenceCells.html#a6dcaf877381d5bc2639da69a586ee9d4">ReferenceCells::get_hypercube</a>&lt; dim1 &gt;() .template <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8cc.html#a37bc014c9df991ae1a0fd959ede60039">get_default_linear_mapping</a>&lt; dim1, spacedim &gt;()))</td></tr>
 <tr class="memdesc:a252578abf458e6edb6cdcdfbd70e70dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intersect <code>cell0</code> and <code>cell1</code> and construct a <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;spacedim&gt;</code> of degree <code>degree</code>` over the intersection, i.e.  <a href="namespace_non_matching.html#a252578abf458e6edb6cdcdfbd70e70dd">More...</a><br /></td></tr>
 <tr class="separator:a252578abf458e6edb6cdcdfbd70e70dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29c71f87383136d3f30c3a937752498e"><td class="memTemplParams" colspan="2">template&lt;int dim0, int dim1, int spacedim&gt; </td></tr>
-<tr class="memitem:a29c71f87383136d3f30c3a937752498e"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_non_matching.html#a29c71f87383136d3f30c3a937752498e">compute_intersection</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim0, spacedim &gt; &amp;space_cache, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim1, spacedim &gt; &amp;immersed_cache, const unsigned int degree)</td></tr>
-<tr class="memdesc:a29c71f87383136d3f30c3a937752498e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two triangulations cached inside <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a></code> objects, compute all intersections between the two and return a vector where each entry is a tuple containing iterators to the respective cells and a <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;spacedim&gt;</code> formula to integrate over the intersection.  <a href="namespace_non_matching.html#a29c71f87383136d3f30c3a937752498e">More...</a><br /></td></tr>
-<tr class="separator:a29c71f87383136d3f30c3a937752498e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ab796ce1156b2bdd6d006a4212ff32f"><td class="memTemplParams" colspan="2">template&lt;int dim0, int dim1, int spacedim, typename Sparsity , typename number  = double&gt; </td></tr>
-<tr class="memitem:a3ab796ce1156b2bdd6d006a4212ff32f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_non_matching.html#a3ab796ce1156b2bdd6d006a4212ff32f">create_coupling_sparsity_pattern_with_exact_intersections</a> (const std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&gt;&gt; &amp;intersections_info, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim0, spacedim &gt; &amp;space_dh, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim1, spacedim &gt; &amp;immersed_dh, Sparsity &amp;sparsity, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt; &amp;constraints=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt;(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;space_comps=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;immersed_comps=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt; &amp;immersed_constraints=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt;())</td></tr>
-<tr class="separator:a3ab796ce1156b2bdd6d006a4212ff32f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c5a84de15ee56ad54cbc7c4b2ee12d3"><td class="memTemplParams" colspan="2">template&lt;int dim0, int dim1, int spacedim&gt; </td></tr>
+<tr class="memitem:a9c5a84de15ee56ad54cbc7c4b2ee12d3"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt; &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_non_matching.html#a9c5a84de15ee56ad54cbc7c4b2ee12d3">compute_intersection</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim0, spacedim &gt; &amp;space_cache, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim1, spacedim &gt; &amp;immersed_cache, const unsigned int degree, const double tol=0.)</td></tr>
+<tr class="memdesc:a9c5a84de15ee56ad54cbc7c4b2ee12d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given two triangulations cached inside <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a></code> objects, compute all intersections between the two and return a vector where each entry is a tuple containing iterators to the respective cells and a <code><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;spacedim&gt;</code> formula to integrate over the intersection.  <a href="namespace_non_matching.html#a9c5a84de15ee56ad54cbc7c4b2ee12d3">More...</a><br /></td></tr>
+<tr class="separator:a9c5a84de15ee56ad54cbc7c4b2ee12d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63221fe9c6cf05df19f97562d2d01e9f"><td class="memTemplParams" colspan="2">template&lt;int dim0, int dim1, int spacedim, typename Sparsity , typename number  = double&gt; </td></tr>
+<tr class="memitem:a63221fe9c6cf05df19f97562d2d01e9f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_non_matching.html#a63221fe9c6cf05df19f97562d2d01e9f">create_coupling_sparsity_pattern_with_exact_intersections</a> (const std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&gt;&gt; &amp;intersections_info, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim0, spacedim &gt; &amp;space_dh, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim1, spacedim &gt; &amp;immersed_dh, Sparsity &amp;sparsity, const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt; &amp;constraints=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt;(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;space_comps=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;immersed_comps=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a>(), const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt; &amp;immersed_constraints=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; number &gt;())</td></tr>
+<tr class="separator:a63221fe9c6cf05df19f97562d2d01e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a4a4d267b9cbee1c5b9e43214252a2d6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4d267b9cbee1c5b9e43214252a2d6a">&#9670;&nbsp;</a></span>assemble_coupling_exact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim0, int dim1, int spacedim, typename Matrix &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void NonMatching::assemble_coupling_exact </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim0, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim1, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&gt;&gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Matrix &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">Matrix::value_type</a> &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim0, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a>&lt; dim1, spacedim &gt; &amp;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesViews_1_1Tensor_3_012_00_01dim_00_01spacedim_01_4_1_1OutputType.html#a3ace053d7fc569bacdd038b041d17d78">Matrix::value_type</a> &gt; &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create the coupling mass matrix for non-matching, overlapping grids in an "exact" way, i.e. </p>
+<p>by computing the local contributions \(\)M_{ij}:= \int_B v_i w_j dx \(\) as products of cellwise smooth functions on the intersection of the two grids. This information is described by a <code>std::vector&lt;std::tuple&gt;&gt;</code> where each tuple contains the two intersected cells and a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a> formula on their intersection.</p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">dim0</td><td>Intrinsic dimension of the first, space grid </td></tr>
+    <tr><td class="paramname">dim1</td><td>Intrinsic dimension of the second, embedded space </td></tr>
+    <tr><td class="paramname">spacedim</td><td>Ambient space intrinsic dimension </td></tr>
+    <tr><td class="paramname">Matrix</td><td>Matrix type you wish to use </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="assemble__coupling__exact_8cc_source.html#l00191">191</a> of file <a class="el" href="assemble__coupling__exact_8cc_source.html">assemble_coupling_exact.cc</a>.</p>
+
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
+
+</div>
+</div>
 <a id="a252578abf458e6edb6cdcdfbd70e70dd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a252578abf458e6edb6cdcdfbd70e70dd">&#9670;&nbsp;</a></span>compute_intersection() <span class="overload">[1/2]</span></h2>
 
@@ -237,14 +335,14 @@ template&lt;int dim0, int dim1, int spacedim&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Quadrature&lt;spacedim&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compute__intersections_8cc_source.html#l00302">302</a> of file <a class="el" href="compute__intersections_8cc_source.html">compute_intersections.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="compute__intersections_8cc_source.html#l00460">460</a> of file <a class="el" href="compute__intersections_8cc_source.html">compute_intersections.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
 
 </div>
 </div>
-<a id="a29c71f87383136d3f30c3a937752498e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29c71f87383136d3f30c3a937752498e">&#9670;&nbsp;</a></span>compute_intersection() <span class="overload">[2/2]</span></h2>
+<a id="a9c5a84de15ee56ad54cbc7c4b2ee12d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c5a84de15ee56ad54cbc7c4b2ee12d3">&#9670;&nbsp;</a></span>compute_intersection() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -252,7 +350,7 @@ template&lt;int dim0, int dim1, int spacedim&gt; </div>
 template&lt;int dim0, int dim1, int spacedim&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt; &gt; &gt; NonMatching::compute_intersection </td>
+          <td class="memname">std::vector&lt; std::tuple&lt;typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;dim0, spacedim&gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt;dim1, spacedim&gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt;spacedim&gt; &gt; &gt; NonMatching::compute_intersection </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a>&lt; dim0, spacedim &gt; &amp;&#160;</td>
           <td class="paramname"><em>space_cache</em>, </td>
@@ -267,7 +365,13 @@ template&lt;int dim0, int dim1, int spacedim&gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const unsigned int&#160;</td>
-          <td class="paramname"><em>degree</em>&#160;</td>
+          <td class="paramname"><em>degree</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>tol</em> = <code>0.</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -296,14 +400,10 @@ template&lt;int dim0, int dim1, int spacedim&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga08c836c1e503743e8073eb615603aab9">Triangulation&lt;dim0, spacedim&gt;::active_cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga08c836c1e503743e8073eb615603aab9">Triangulation&lt;dim1, spacedim&gt;::active_cell_iterator</a>, Quadrature&lt;spacedim&gt;&gt;&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="compute__intersections_8cc_source.html#l00289">289</a> of file <a class="el" href="compute__intersections_8cc_source.html">compute_intersections.cc</a>.</p>
-
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
-
 </div>
 </div>
-<a id="a3ab796ce1156b2bdd6d006a4212ff32f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ab796ce1156b2bdd6d006a4212ff32f">&#9670;&nbsp;</a></span>create_coupling_sparsity_pattern_with_exact_intersections()</h2>
+<a id="a63221fe9c6cf05df19f97562d2d01e9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63221fe9c6cf05df19f97562d2d01e9f">&#9670;&nbsp;</a></span>create_coupling_sparsity_pattern_with_exact_intersections()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +413,7 @@ template&lt;int dim0, int dim1, int spacedim, typename Sparsity , typename numbe
         <tr>
           <td class="memname">void NonMatching::create_coupling_sparsity_pattern_with_exact_intersections </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&gt;&gt; &amp;&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::tuple&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim0, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a>&lt; dim1, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a>&lt; spacedim &gt;&gt;&gt; &amp;&#160;</td>
           <td class="paramname"><em>intersections_info</em>, </td>
         </tr>
         <tr>
@@ -366,7 +466,7 @@ template&lt;int dim0, int dim1, int spacedim, typename Sparsity , typename numbe
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="create__coupling__sparsity__pattern__with__exact__intersections_8cc_source.html#l00142">142</a> of file <a class="el" href="create__coupling__sparsity__pattern__with__exact__intersections_8cc_source.html">create_coupling_sparsity_pattern_with_exact_intersections.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="create__coupling__sparsity__pattern__with__exact__intersections_8cc_source.html#l00180">180</a> of file <a class="el" href="create__coupling__sparsity__pattern__with__exact__intersections_8cc_source.html">create_coupling_sparsity_pattern_with_exact_intersections.cc</a>.</p>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>.</p>
 
@@ -378,7 +478,7 @@ template&lt;int dim0, int dim1, int spacedim, typename Sparsity , typename numbe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_non_matching.html">NonMatching</a></li>
-    <li class="footer">Generated on Wed Apr 6 2022 09:43:55 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Apr 7 2022 13:23:37 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
