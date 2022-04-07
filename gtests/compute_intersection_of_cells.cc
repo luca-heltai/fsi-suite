@@ -75,8 +75,8 @@ struct Test_function
 
 TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
 {
-  constexpr int dim0     = 1;
-  constexpr int dim1     = 2;
+  constexpr int dim0     = 2;
+  constexpr int dim1     = 1;
   constexpr int spacedim = 2;
 
   Triangulation<dim0, spacedim> tria0;
@@ -85,17 +85,17 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
   DoFHandler<dim0, spacedim> dh0(tria0);
   dh0.distribute_dofs(dummy_fe0);
   const auto &cell0 = dh0.begin_active();
-  cell0->vertex(0)  = Point<spacedim>(
-    -0.5, -0.9); // move the first grid a little bit just for testing purposes
-  cell0->vertex(1) = Point<spacedim>(+0.6, 0.8);
 
 
   Triangulation<dim1, spacedim> tria1;
-  GridGenerator::hyper_cube<spacedim>(tria1, -1., 1.);
+  GridGenerator::hyper_cube<dim1, spacedim>(tria1, -1., 1.);
   FE_Nothing<dim1, spacedim> dummy_fe1;
   DoFHandler<dim1, spacedim> dh1(tria1);
   dh1.distribute_dofs(dummy_fe1);
   const auto &cell1 = dh1.begin_active();
+  cell1->vertex(0)  = Point<spacedim>(
+    -0.5, -0.9); // move the grid a little bit just for testing purposes
+  cell1->vertex(1) = Point<spacedim>(+0.6, 0.8);
 
 
 
@@ -118,8 +118,8 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
   // Segment is inside the square, as expected the intersection is the segment
   // itself Therefore, the length of the intersection is the length of the
   // segment.
-  const auto &p = cell0->vertex(0);
-  const auto &q = cell0->vertex(1);
+  const auto &p = cell1->vertex(0);
+  const auto &q = cell1->vertex(1);
   ASSERT_DOUBLE_EQ(sum, (p - q).norm());
 }
 

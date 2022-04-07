@@ -66,7 +66,6 @@ namespace dealii::NonMatching
          .template get_default_linear_mapping<dim1, spacedim>()));
 
 
-
   /**
    * @brief Given two triangulations cached inside `GridTools::Cache` objects, compute all intersections between the two
    * and return a vector where each entry is a tuple containing iterators to the
@@ -85,13 +84,14 @@ namespace dealii::NonMatching
    * dealii::Quadrature<spacedim>>>
    */
   template <int dim0, int dim1, int spacedim>
-  std::vector<std::tuple<
-    typename dealii::Triangulation<dim0, spacedim>::active_cell_iterator,
-    typename dealii::Triangulation<dim1, spacedim>::active_cell_iterator,
-    dealii::Quadrature<spacedim>>>
+  std::vector<
+    std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
+               typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
+               dealii::Quadrature<spacedim>>>
   compute_intersection(const GridTools::Cache<dim0, spacedim> &space_cache,
                        const GridTools::Cache<dim1, spacedim> &immersed_cache,
-                       const unsigned int                      degree);
+                       const unsigned int                      degree,
+                       const double                            tol = 0.);
 
 
 
