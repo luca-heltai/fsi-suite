@@ -163,12 +163,12 @@ namespace internal
 
   template <>
   decltype(auto)
-  compute_intersection_of_cells<2, 4>(
-    const std::array<CGAL_Point, 2> &vertices_cell0,
-    const std::array<CGAL_Point, 4> &vertices_cell1)
+  compute_intersection_of_cells<4, 2>(
+    const std::array<CGAL_Point, 4> &vertices_cell0,
+    const std::array<CGAL_Point, 2> &vertices_cell1)
   {
-    const auto first  = CGAL_Segment(vertices_cell0[0], vertices_cell0[1]);
-    const auto second = CGAL_Rectangle(vertices_cell1[0], vertices_cell1[3]);
+    const auto first  = CGAL_Rectangle(vertices_cell0[0], vertices_cell0[3]);
+    const auto second = CGAL_Segment(vertices_cell1[0], vertices_cell1[1]);
     return CGAL::intersection(first, second);
   }
 } // namespace internal
@@ -318,12 +318,13 @@ namespace dealii::NonMatching
                  "Rectangle-Triangle intersection not yet implemented"));
       }
 
-    else if (n_vertices_cell0 == 2 && n_vertices_cell1 == 4)
+    else if (n_vertices_cell0 == 4 && n_vertices_cell1 == 2)
       { // segment-rectangle
 
-        std::array<CGAL_Point, 2> vertices_cell0;
 
-        for (unsigned int i = 0; i < 2; ++i)
+        std::array<CGAL_Point, 4> vertices_cell0;
+
+        for (unsigned int i = 0; i < 4; ++i)
           {
             vertices_cell0[i] = CGAL_Point(
               deformed_vertices_cell0[i][0],
@@ -333,17 +334,17 @@ namespace dealii::NonMatching
 
 
 
-        std::array<CGAL_Point, 4> vertices_cell1;
+        std::array<CGAL_Point, 2> vertices_cell1;
 
         const auto &deformed_vertices_cell1 = mapping1.get_vertices(cell1);
 
-        for (unsigned int i = 0; i < 4; ++i)
+        for (unsigned int i = 0; i < 2; ++i)
           {
             vertices_cell1[i] = CGAL_Point(deformed_vertices_cell1[i][0],
                                            deformed_vertices_cell1[i][1]);
           }
         const auto inters =
-          ::internal::compute_intersection_of_cells<2, 4>(vertices_cell0,
+          ::internal::compute_intersection_of_cells<4, 2>(vertices_cell0,
                                                           vertices_cell1);
 
         if (inters)
@@ -358,8 +359,8 @@ namespace dealii::NonMatching
 
                 return (s->is_degenerate()) ?
                          dealii::Quadrature<spacedim>() :
-                         compute_linear_transformation<dim0, spacedim, 2>(
-                           dealii::QGauss<dim0>(degree),
+                         compute_linear_transformation<dim1, spacedim, 2>(
+                           dealii::QGauss<dim1>(degree),
                            vertices_array); // 2 points
               }
             else
