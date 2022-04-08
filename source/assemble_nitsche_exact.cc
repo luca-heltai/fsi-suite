@@ -28,7 +28,6 @@
 #include <deal.II/grid/grid_tools_cache.h>
 #include <deal.II/grid/tria.h>
 
-#include <deal.II/lac/sparse_matrix.h>
 
 #ifdef DEAL_II_WITH_CGAL
 

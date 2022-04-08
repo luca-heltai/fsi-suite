@@ -218,54 +218,86 @@ namespace dealii
 
 
     template void
-    assemble_coupling_exact(
+    dealii::NonMatching::assemble_coupling_exact(
+      const DoFHandler<1, 1> &,
+      const DoFHandler<1, 1> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
+                   typename dealii::Triangulation<1, 1>::cell_iterator,
+                   dealii::Quadrature<1>>> &,
+      dealii::SparseMatrix<double> &,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+      const ComponentMask &,
+      const ComponentMask &,
+      const Mapping<1, 1> &space_mapping,
+      const Mapping<1, 1> &immersed_mapping,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_exact(
       const DoFHandler<2, 2> &,
       const DoFHandler<1, 2> &,
-      const std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
-                                   typename Triangulation<1, 2>::cell_iterator,
-                                   Quadrature<2>>> &,
-      SparseMatrix<double> &,
-      const AffineConstraints<SparseMatrix<double>::value_type> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+                   typename dealii::Triangulation<1, 2>::cell_iterator,
+                   dealii::Quadrature<2>>> &,
+      dealii::SparseMatrix<double> &,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
       const ComponentMask &,
       const ComponentMask &,
       const Mapping<2, 2> &space_mapping,
       const Mapping<1, 2> &immersed_mapping,
-      const AffineConstraints<SparseMatrix<double>::value_type> &);
-
-
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &);
 
     template void
-    assemble_coupling_exact(
+    dealii::NonMatching::assemble_coupling_exact(
       const DoFHandler<2, 2> &,
       const DoFHandler<2, 2> &,
-      const std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
-                                   typename Triangulation<2, 2>::cell_iterator,
-                                   Quadrature<2>>> &,
-      SparseMatrix<double> &,
-      const AffineConstraints<SparseMatrix<double>::value_type> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+                   typename dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Quadrature<2>>> &,
+      dealii::SparseMatrix<double> &,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
       const ComponentMask &,
       const ComponentMask &,
       const Mapping<2, 2> &space_mapping,
       const Mapping<2, 2> &immersed_mapping,
-      const AffineConstraints<SparseMatrix<double>::value_type> &);
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &);
 
 
 
     template void
-    assemble_coupling_exact(
+    dealii::NonMatching::assemble_coupling_exact(
+      const DoFHandler<3, 3> &,
+      const DoFHandler<1, 3> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                   typename dealii::Triangulation<1, 3>::cell_iterator,
+                   dealii::Quadrature<3>>> &,
+      dealii::SparseMatrix<double> &,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+      const ComponentMask &,
+      const ComponentMask &,
+      const Mapping<3, 3> &space_mapping,
+      const Mapping<1, 3> &immersed_mapping,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_exact(
       const DoFHandler<3, 3> &,
       const DoFHandler<2, 3> &,
-      const std::vector<std::tuple<typename Triangulation<3, 3>::cell_iterator,
-                                   typename Triangulation<2, 3>::cell_iterator,
-                                   Quadrature<3>>> &,
-      SparseMatrix<double> &,
-      const AffineConstraints<SparseMatrix<double>::value_type> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                   typename dealii::Triangulation<2, 3>::cell_iterator,
+                   dealii::Quadrature<3>>> &,
+      dealii::SparseMatrix<double> &,
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
       const ComponentMask &,
       const ComponentMask &,
       const Mapping<3, 3> &space_mapping,
       const Mapping<2, 3> &immersed_mapping,
-      const AffineConstraints<SparseMatrix<double>::value_type> &);
-
+      const AffineConstraints<dealii::SparseMatrix<double>::value_type> &);
 
 
     template void

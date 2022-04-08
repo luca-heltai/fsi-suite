@@ -527,11 +527,32 @@ namespace dealii
                          const Mapping<3, 3> &,
                          const Mapping<3, 3> &);
 
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
+                 typename dealii::Triangulation<1, 1>::cell_iterator,
+                 Quadrature<1>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<1, 1> &space_cache,
+      const GridTools::Cache<1, 1> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
+
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                 typename dealii::Triangulation<1, 3>::cell_iterator,
+                 Quadrature<3>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<3, 3> &space_cache,
+      const GridTools::Cache<1, 3> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
 
 
-    template std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
-                                    typename Triangulation<1, 2>::cell_iterator,
-                                    Quadrature<2>>>
+
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+                 typename dealii::Triangulation<1, 2>::cell_iterator,
+                 Quadrature<2>>>
     NonMatching::compute_intersection(
       const GridTools::Cache<2, 2> &space_cache,
       const GridTools::Cache<1, 2> &immersed_cache,

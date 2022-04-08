@@ -32,7 +32,8 @@
 #include <deal.II/grid/grid_tools_cache.h>
 #include <deal.II/grid/tria.h>
 
-#include <set>
+#include <deal.II/lac/sparse_matrix.h>
+
 #include <tuple>
 #include <vector>
 
