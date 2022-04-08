@@ -32,9 +32,9 @@ using namespace dealii;
 
 TYPED_TEST(DimSpacedimTester, SerialNonMatchingCoupling)
 {
-  constexpr int dim0     = this->spacedim;
-  constexpr int dim1     = this->dim;
-  constexpr int spacedim = this->spacedim;
+  constexpr int dim0     = TestFixture::spacedim;
+  constexpr int dim1     = TestFixture::dim;
+  constexpr int spacedim = TestFixture::spacedim;
 
   Triangulation<dim0, spacedim> tria0;
   Triangulation<dim1, spacedim> tria1;
