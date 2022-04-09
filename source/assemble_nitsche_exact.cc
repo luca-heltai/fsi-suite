@@ -48,7 +48,8 @@ namespace dealii::NonMatching
     Matrix &                                              matrix,
     const AffineConstraints<typename Matrix::value_type> &space_constraints,
     const ComponentMask &                                 space_comps,
-    const Mapping<dim0, spacedim> &                       space_mapping)
+    const Mapping<dim0, spacedim> &                       space_mapping,
+    const double                                          penalty)
   {
     AssertDimension(matrix.m(), space_dh.n_dofs());
     AssertDimension(matrix.n(), space_dh.n_dofs());
@@ -88,7 +89,7 @@ namespace dealii::NonMatching
 
 
     // Loop over vector of tuples, and gather everything together
-
+    double h;
     for (const auto &infos : cells_and_quads)
       {
         const auto &[first_cell, second_cell, quad_formula] = infos;
@@ -100,11 +101,17 @@ namespace dealii::NonMatching
         const unsigned int           n_quad_pts = quad_formula.size();
         const auto &                 real_qpts  = quad_formula.get_points();
         std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
+        std::cout << "SIZE: " << ref_pts_space.size() << '\n';
 
+
+        std::cout << "SIZE: " << real_qpts.size() << '\n';
+
+        // std::cout << "SIZE: " << first_cell. <<'\n';
         space_mapping.transform_points_real_to_unit_cell(first_cell,
                                                          real_qpts,
                                                          ref_pts_space);
 
+        h               = first_cell->diameter();
         const auto &JxW = quad_formula.get_weights();
         for (unsigned int q = 0; q < n_quad_pts; ++q)
           {
@@ -122,6 +129,7 @@ namespace dealii::NonMatching
                         if (space_gtl[comp_i] == space_gtl[comp_j])
                           {
                             local_cell_matrix(i, j) +=
+                              (penalty / h) *
                               space_fe.shape_value(i, q_ref_point) *
                               space_fe.shape_value(j, q_ref_point) * JxW[q];
                           }
@@ -181,7 +189,8 @@ dealii::NonMatching::assemble_nitsche_exact<2, 1, 2>(
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
-  const Mapping<2, 2> &);
+  const Mapping<2, 2> &,
+  const double);
 
 template void
 dealii::NonMatching::assemble_nitsche_exact<2, 2, 2>(
@@ -193,7 +202,8 @@ dealii::NonMatching::assemble_nitsche_exact<2, 2, 2>(
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
-  const Mapping<2, 2> &);
+  const Mapping<2, 2> &,
+  const double);
 
 
 
@@ -207,7 +217,8 @@ dealii::NonMatching::assemble_nitsche_exact<3, 2, 3>(
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
-  const Mapping<3, 3> &);
+  const Mapping<3, 3> &,
+  const double);
 
 
 
@@ -221,4 +232,5 @@ dealii::NonMatching::assemble_nitsche_exact<3, 3, 3>(
   dealii::SparseMatrix<double> &,
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
-  const Mapping<3, 3> &);
+  const Mapping<3, 3> &,
+  const double);

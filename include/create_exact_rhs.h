@@ -67,7 +67,8 @@ namespace dealii
       VectorType &vector,
       const AffineConstraints<typename VectorType::value_type> &,
       const Function<spacedim, typename VectorType::value_type> &,
-      const Mapping<dim0, spacedim> &);
+      const Mapping<dim0, spacedim> &,
+      const double penalty);
   } // namespace NonMatching
 } // namespace dealii
 

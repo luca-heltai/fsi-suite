@@ -37,7 +37,8 @@ namespace dealii
       const AffineConstraints<typename VectorType::value_type>
         &space_constraints,
       const Function<spacedim, typename VectorType::value_type> &rhs_function,
-      const Mapping<dim0, spacedim> &                            space_mapping)
+      const Mapping<dim0, spacedim> &                            space_mapping,
+      const double                                               penalty)
     {
       AssertDimension(rhs.size(), space_dh.n_dofs());
       Assert(dim1 <= dim0,
@@ -59,12 +60,13 @@ namespace dealii
 
       // Loop over vector of tuples, and gather everything together
 
+      double h;
       for (const auto &infos : cells_and_quads)
         {
           const auto &[first_cell, second_cell, quad_formula] = infos;
 
 
-
+          h         = first_cell->diameter();
           local_rhs = typename VectorType::value_type();
 
 
@@ -84,7 +86,8 @@ namespace dealii
               const auto &q_ref_point = ref_pts_space[q];
               for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
                 {
-                  local_rhs(i) += space_fe.shape_value(i, q_ref_point) *
+                  local_rhs(i) += (penalty / h) *
+                                  space_fe.shape_value(i, q_ref_point) *
                                   rhs_function_values[q] * JxW[q];
                 }
             }
@@ -138,7 +141,8 @@ create_exact_rhs(
       Vector<double> &vector,
       const AffineConstraints<double> &,
       const dealii::Function<2, double> &,
-      const Mapping<2, 2> &);
+      const Mapping<2, 2> &,
+      const double);
 
 
 
@@ -152,7 +156,8 @@ create_exact_rhs(
       Vector<double> &vector,
       const AffineConstraints<double> &,
       const dealii::Function<2, double> &,
-      const Mapping<2, 2> &);
+      const Mapping<2, 2> &,
+      const double);
 
 
   } // namespace NonMatching

@@ -64,7 +64,8 @@ namespace dealii::NonMatching
     Matrix &matrix,
     const AffineConstraints<typename Matrix::value_type> &,
     const ComponentMask &,
-    const Mapping<dim0, spacedim> &);
+    const Mapping<dim0, spacedim> &,
+    const double penalty = 1.);
 } // namespace dealii::NonMatching
 
 #endif
