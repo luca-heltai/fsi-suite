@@ -91,13 +91,14 @@ test()
   SparseMatrix<double> nitsche_matrix(sparsity_pattern);
 
 
-  NonMatching::assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
-    space_dh,
-    vec_info,
-    nitsche_matrix,
-    space_constraints,
-    ComponentMask(),
-    MappingQ1<spacedim>());
+  NonMatching::
+    assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
+      space_dh,
+      vec_info,
+      nitsche_matrix,
+      space_constraints,
+      ComponentMask(),
+      MappingQ1<spacedim>());
 
   Vector<double> ones(space_dh.n_dofs());
   ones                = 1.0;

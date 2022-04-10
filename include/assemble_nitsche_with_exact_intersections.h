@@ -46,8 +46,8 @@ namespace dealii
   {
     /**
      * @brief Given two non-matching, overlapping grids, this function computes the local contributions
-     *        $$M_{ij}:= \int_B \gamma v_i v_j dx$$ exactly, by integrating on the
-     *        intersection of the two grids. There's no need to change the sparsity
+     *        $$M_{ij}:= \int_B \gamma v_i v_j dx$$ exactly, by integrating on
+     * the intersection of the two grids. There's no need to change the sparsity
      *        pattern, as the DoFs are all living on the same cell.
      *
      * @tparam dim0 Intrinsic dimension of the first, space grid
