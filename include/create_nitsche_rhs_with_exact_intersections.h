@@ -58,7 +58,7 @@ namespace dealii
      */
     template <int dim0, int dim1, int spacedim, typename VectorType>
     void
-    create_exact_rhs(
+    create_nitsche_rhs_with_exact_intersections(
       const DoFHandler<dim0, spacedim> &,
       const std::vector<std::tuple<
         typename dealii::Triangulation<dim0, spacedim>::cell_iterator,

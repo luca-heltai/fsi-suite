@@ -17,7 +17,7 @@
 
 #ifdef DEAL_II_WITH_CGAL
 
-#  include "create_exact_rhs.h"
+#  include "create_nitsche_rhs_with_exact_intersections.h"
 
 using namespace dealii;
 
@@ -27,7 +27,7 @@ namespace dealii
   {
     template <int dim0, int dim1, int spacedim, typename VectorType>
     void
-    create_exact_rhs(
+    create_nitsche_rhs_with_exact_intersections(
       const DoFHandler<dim0, spacedim> &space_dh,
       const std::vector<std::tuple<
         typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
@@ -86,7 +86,7 @@ namespace dealii
               const auto &q_ref_point = ref_pts_space[q];
               for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
                 {
-                  local_rhs(i) += (penalty / h) *
+                  local_rhs(i) += (2. * penalty / h) *
                                   space_fe.shape_value(i, q_ref_point) *
                                   rhs_function_values[q] * JxW[q];
                 }
@@ -109,7 +109,7 @@ namespace dealii
 
 template <int dim0, int dim1, int spacedim, typename VectorType>
 void
-create_exact_rhs(
+create_nitsche_rhs_with_exact_intersections(
   const DoFHandler<dim0, spacedim> &,
   const std::vector<
     std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
@@ -132,7 +132,7 @@ create_exact_rhs(
 
 
     template void
-    create_exact_rhs<2, 2, 2>(
+    create_nitsche_rhs_with_exact_intersections<2, 2, 2>(
       const DoFHandler<2, 2> &,
       const std::vector<
         std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
@@ -147,7 +147,7 @@ create_exact_rhs(
 
 
     template void
-    create_exact_rhs<2, 1, 2>(
+    create_nitsche_rhs_with_exact_intersections<2, 1, 2>(
       const DoFHandler<2, 2> &,
       const std::vector<
         std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,

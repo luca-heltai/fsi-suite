@@ -22,7 +22,7 @@
 
 #include <deal.II/lac/sparse_matrix.h>
 
-#include "assemble_nitsche_exact.h"
+#include "assemble_nitsche_with_exact_intersections.h"
 #include "compute_intersections.h"
 #include "tests.h"
 using namespace dealii;
@@ -44,7 +44,7 @@ test()
     {
       GridGenerator::hyper_sphere(embedded_tria, {.2, .2}, radius);
       space_tria.refine_global(2);
-      embedded_tria.refine_global(5);
+      embedded_tria.refine_global(6);
     }
   else if constexpr (dim == 2 && spacedim == 2)
     {
@@ -91,7 +91,7 @@ test()
   SparseMatrix<double> nitsche_matrix(sparsity_pattern);
 
 
-  NonMatching::assemble_nitsche_exact<spacedim, dim, spacedim>(
+  NonMatching::assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
     space_dh,
     vec_info,
     nitsche_matrix,

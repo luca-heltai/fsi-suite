@@ -59,15 +59,15 @@ namespace ParsedTools
                 //                            // formulas on the embedded domain
                 //                            to drive the
                 //                            // projection.
-      exact_L2 = 1 << 3 //< Exact L2-projection, using
-                        // quadratures on the
-                        // intersection to drive the
-                        //  projection
-                        //   exact_H1 = 1 << 4,       //< Exact H1-projection,
-                        //   using quadratures on the
-                        //                            // intersection to drive
-                        //                            the projection
-                        //
+      exact_L2 = 1 << 3, //< Exact L2-projection, using
+                         // quadratures on the
+                         // intersection to drive the
+                         //  projection
+                         //   exact_H1 = 1 << 4,       //< Exact H1-projection,
+                         //   using quadratures on the
+                         //                            // intersection to drive
+                         //                            the projection
+                         //
     };
 
     /**
