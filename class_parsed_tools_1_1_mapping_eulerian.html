@@ -277,7 +277,7 @@ class ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</h3>
 <p>This class is used in the following way: </p><div class="fragment"><div class="line"><a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian&lt;dim, spacedim&gt;</a> <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">mapping</a>(<span class="stringliteral">&quot;/&quot;</span>,</div>
 <div class="line">                                                   <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>,</div>
 <div class="line">                                                   <span class="stringliteral">&quot;2*x; .5*y&quot;</span>);</div>
-<div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt;double&gt;</a> position(<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>.n_dofs());</div>
+<div class="line"><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt;double&gt;</a> position(<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">dof_handler</a>.n_dofs());</div>
 <div class="line"><a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">mapping</a>.initialize(position);</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// using mapping, now you can initialize an FEValues object which will see</span></div>
@@ -553,16 +553,16 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassLinearAlgebra_1_1distributed_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aa85329e29bb855eb77ee1c1cdf0dabd0"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian::dof_handler</a></div><div class="ttdeci">const SmartPointer&lt; const DoFHandler&lt; dim, spacedim &gt; &gt; dof_handler</div><div class="ttdoc">A pointer to the dof handler.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00110">mapping_eulerian.h:110</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6d22bbb6cfec918be9d909e8739cb67a"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">ParsedTools::MappingEulerian::mapping</a></div><div class="ttdeci">std::unique_ptr&lt; Mapping&lt; dim, spacedim &gt; &gt; mapping</div><div class="ttdoc">The actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00130">mapping_eulerian.h:130</a></div></div>
 <div class="ttc" id="aclassFEValues_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a></div><div class="ttdoc">A wrapper class for MappingFEField or MappingQEulerian.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00074">mapping_eulerian.h:74</a></div></div>
-<div class="ttc" id="astructDataPostprocessorInputs_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">MappingEulerian</a></li>
-    <li class="footer">Generated on Thu Apr 7 2022 13:23:37 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Apr 10 2022 10:48:16 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

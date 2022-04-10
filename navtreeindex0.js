@@ -40,9 +40,14 @@ var NAVTREEINDEX0 =
 "apps_2serial_2stokes_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627":[6,0,0,1,4,0],
 "apps_2serial_2stokes_8cc_source.html":[6,0,0,1,4],
 "assemble__coupling__exact_8cc.html":[6,0,3,2],
+"assemble__coupling__exact_8cc.html#a2a82ea1c36c08e638fc1d5c76af730f5":[6,0,3,2,0],
+"assemble__coupling__exact_8cc.html#a4e2b523995d8ff67cbbd42ea814bb3cf":[6,0,3,2,1],
+"assemble__coupling__exact_8cc.html#a5f4eea0f66c9c2d519c4c5f19cb74ad7":[6,0,3,2,3],
+"assemble__coupling__exact_8cc.html#a9ca954dcf872d03bef7b8c2468cb997d":[6,0,3,2,2],
+"assemble__coupling__exact_8cc.html#af4215da997205e9e8d95f7d2992f1612":[6,0,3,2,4],
 "assemble__coupling__exact_8cc_source.html":[6,0,3,2],
 "assemble__coupling__exact_8h.html":[6,0,2,3],
-"assemble__coupling__exact_8h.html#a4a4d267b9cbee1c5b9e43214252a2d6a":[6,0,2,3,0],
+"assemble__coupling__exact_8h.html#a2a82ea1c36c08e638fc1d5c76af730f5":[6,0,2,3,0],
 "assemble__coupling__exact_8h_source.html":[6,0,2,3],
 "boundary__conditions_8cc.html":[6,0,3,3],
 "boundary__conditions_8cc_source.html":[6,0,3,3],
@@ -244,10 +249,5 @@ var NAVTREEINDEX0 =
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#abbed8c7d1b4a8986721a0a491b8ad79e":[5,0,4,1,2,62],
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ac3bab7d8718032164f04280db04837ca":[5,0,4,1,2,18],
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ac87690bbb09948a7b341e1de408ce09e":[5,0,4,1,2,13],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acaa4ceb153e8fa4cc97397246f2dc6f6":[5,0,4,1,2,2],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acaf58d6fb67dc9a26f615705221066bb":[5,0,4,1,2,63],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acb17326f8b7a2a42d7bb2fe1c829dddb":[5,0,4,1,2,44],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ace3b220cba23e186fdb068edad248471":[5,0,4,1,2,48],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ad195456ee0e031b56b74d51489fdc4f5":[5,0,4,1,2,66],
-"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#ad1c27f407d88aad014afb5c8dbb9d1b4":[5,0,4,1,2,60]
+"class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acaa4ceb153e8fa4cc97397246f2dc6f6":[5,0,4,1,2,2]
 };

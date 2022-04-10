@@ -352,7 +352,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2reduced__lagrang
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">void</span></div>
 <div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a308bbafcf85187b836d3ff19f2cc40a7">  248</a></span>&#160;    <a class="code" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a308bbafcf85187b836d3ff19f2cc40a7">ReducedLagrange&lt;dim, spacedim&gt;::update_basis_functions</a>()</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      basis_functions.resize(n_basis, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt;double&gt;</a>(embedded_dh.n_dofs()));</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      basis_functions.resize(n_basis, <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt;double&gt;</a>(embedded_dh.n_dofs()));</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <span class="keywordflow">if</span> (n_basis &gt; 0)</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        basis_functions[0] = 1.0;</div>
@@ -606,7 +606,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2reduced__lagrang
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;      <span class="keywordflow">if</span> (n_basis &gt; 0)</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        {</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a> &lt;&lt; <span class="stringliteral">&quot;Solving Reduced order system&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt;double&gt;</a> reduced(n_basis);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt;double&gt;</a> reduced(n_basis);</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;          std::vector&lt;std::reference_wrapper&lt;const Vector&lt;double&gt;&gt;&gt; basis(</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            basis_functions.begin(), basis_functions.end());</div>
 <div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
@@ -757,6 +757,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2reduced__lagrang
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="aboost__adaptors_2bounding__box_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/boost__adaptors_2bounding__box_8h.html">bounding_box.h</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_reduced_lagrange_html_a4e7f42072a431612215b7513935c9c41"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a4e7f42072a431612215b7513935c9c41">PDEs::Serial::ReducedLagrange::coupling_quadrature_order</a></div><div class="ttdeci">unsigned int coupling_quadrature_order</div><div class="ttdef"><b>Definition:</b> <a href="reduced__lagrange_8h_source.html#l00081">reduced_lagrange.h:81</a></div></div>
+<div class="ttc" id="aclassLinearAlgebra_1_1distributed_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <div class="ttc" id="aprojection__operator_8h_html"><div class="ttname"><a href="projection__operator_8h.html">projection_operator.h</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_reduced_lagrange_html"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html">PDEs::Serial::ReducedLagrange</a></div><div class="ttdef"><b>Definition:</b> <a href="reduced__lagrange_8h_source.html#l00053">reduced_lagrange.h:53</a></div></div>
 <div class="ttc" id="anamespacePhysics_1_1Elasticity_1_1Kinematics_html_a09916360abaee5f1fb31994dbc96787b"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a09916360abaee5f1fb31994dbc96787b">C</a></div><div class="ttdeci">SymmetricTensor&lt; 2, dim, Number &gt; C(const Tensor&lt; 2, dim, Number &gt; &amp;F)</div></div>
@@ -828,7 +829,6 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2reduced__lagrang
 <div class="ttc" id="aclassFESystem_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFESystem.html">FESystem</a></div></div>
 <div class="ttc" id="anamespace_parsed_tools_1_1_components_html_a28994869c8ecfdd8ff43806bdc25fbba"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#a28994869c8ecfdd8ff43806bdc25fbba">ParsedTools::Components::get_lagrangian_finite_element</a></div><div class="ttdeci">std::unique_ptr&lt; FiniteElement&lt; dim, spacedim &gt; &gt; get_lagrangian_finite_element(const Triangulation&lt; dim, spacedim &gt; &amp;tria, const unsigned int degree=1, const int continuity=0)</div><div class="ttdoc">Get a Lagrangian FiniteElement object compatible with the given Triangulation object.</div></div>
 <div class="ttc" id="aclassFunctionParser_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html">FunctionParser&lt; spacedim &gt;</a></div></div>
-<div class="ttc" id="astructDataPostprocessorInputs_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structDataPostprocessorInputs_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_serial_1_1_reduced_lagrange_html_a3f3bd57bcc11a27efdd9b6fa56a04043"><div class="ttname"><a href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a3f3bd57bcc11a27efdd9b6fa56a04043">PDEs::Serial::ReducedLagrange::setup_coupling</a></div><div class="ttdeci">void setup_coupling()</div><div class="ttdef"><b>Definition:</b> <a href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00347">reduced_lagrange.cc:347</a></div></div>
 <div class="ttc" id="aenum_8h_html"><div class="ttname"><a href="enum_8h.html">enum.h</a></div></div>
 <div class="ttc" id="aclassLogStream_html_a2c96e3aac9651858a66bae33a544ac18"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#a2c96e3aac9651858a66bae33a544ac18">LogStream::push</a></div><div class="ttdeci">void push(const std::string &amp;text)</div></div>
@@ -836,7 +836,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2reduced__lagrang
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="dir_50f223c273824013943d646bc691d39f.html">serial</a></li><li class="navelem"><a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc.html">reduced_lagrange.cc</a></li>
-    <li class="footer">Generated on Thu Apr 7 2022 13:23:37 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Apr 10 2022 10:48:16 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -117,83 +117,84 @@ $(document).ready(function(){initNavTree('compute__intersections_8h_source.html'
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// distribution.</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// ---------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#ifndef compute_intersections_h</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define compute_intersections_h</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifndef compute_intersections_h</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define compute_intersections_h</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">deal.II/base/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">deal.II/base/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">deal.II/base/function_lib.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">deal.II/base/quadrature.h</a>&gt;</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">deal.II/base/function_lib.h</a>&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">deal.II/base/quadrature.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html">deal.II/fe/mapping.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">deal.II/fe/mapping_q1.h</a>&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html">deal.II/fe/mapping.h</a>&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">deal.II/fe/mapping_q1.h</a>&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">deal.II/grid/grid_tools.h</a>&gt;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">deal.II/grid/grid_tools_cache.h</a>&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">deal.II/grid/tria.h</a>&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>dealii::NonMatching</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0, <span class="keywordtype">int</span> dim1, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  dealii::Quadrature&lt;spacedim&gt;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="namespace_non_matching.html#a9c5a84de15ee56ad54cbc7c4b2ee12d3">compute_intersection</a>(</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim0, spacedim&gt;::cell_iterator</a> &amp;cell0,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim1, spacedim&gt;::cell_iterator</a> &amp;cell1,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                                                   degree,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim0, spacedim&gt; &amp;mapping0 =</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      (dealii::ReferenceCells::get_hypercube&lt;dim0&gt;()</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;         .<span class="keyword">template</span> get_default_linear_mapping&lt;dim0, spacedim&gt;()),</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">const</span> dealii::Mapping&lt;dim1, spacedim&gt; &amp;mapping1 =</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      (dealii::ReferenceCells::get_hypercube&lt;dim1&gt;()</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;         .<span class="keyword">template</span> get_default_linear_mapping&lt;dim1, spacedim&gt;()));</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0, <span class="keywordtype">int</span> dim1, <span class="keywordtype">int</span> spacedim&gt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  std::vector&lt;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">std::tuple&lt;typename dealii::Triangulation&lt;dim0, spacedim&gt;::cell_iterator</a>,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;               <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim1, spacedim&gt;::cell_iterator</a>,</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;               dealii::Quadrature&lt;spacedim&gt;&gt;&gt;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="namespace_non_matching.html#a9c5a84de15ee56ad54cbc7c4b2ee12d3">compute_intersection</a>(<span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache&lt;dim0, spacedim&gt;</a> &amp;space_cache,</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                       <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache&lt;dim1, spacedim&gt;</a> &amp;immersed_cache,</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                      degree,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span>                            tol = 0.);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">deal.II/grid/grid_tools.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">deal.II/grid/grid_tools_cache.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">deal.II/grid/tria.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacedealii.html">dealii</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keyword">namespace </span><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html">NonMatching</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0, <span class="keywordtype">int</span> dim1, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    dealii::Quadrature&lt;spacedim&gt;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="namespacedealii_1_1_non_matching.html#a10758f0e18e2e0940304c9ac91945200">compute_intersection</a>(</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim0, spacedim&gt;::cell_iterator</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        &amp;cell0,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim1, spacedim&gt;::cell_iterator</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        &amp;                                    cell1,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                     degree,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <span class="keyword">const</span> dealii::Mapping&lt;dim0, spacedim&gt; &amp;mapping0 =</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        (dealii::ReferenceCells::get_hypercube&lt;dim0&gt;()</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;           .<span class="keyword">template</span> get_default_linear_mapping&lt;dim0, spacedim&gt;()),</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keyword">const</span> dealii::Mapping&lt;dim1, spacedim&gt; &amp;mapping1 =</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        (dealii::ReferenceCells::get_hypercube&lt;dim1&gt;()</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;           .<span class="keyword">template</span> get_default_linear_mapping&lt;dim1, spacedim&gt;()));</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0, <span class="keywordtype">int</span> dim1, <span class="keywordtype">int</span> spacedim&gt;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::vector&lt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">std::tuple&lt;typename dealii::Triangulation&lt;dim0, spacedim&gt;::cell_iterator</a>,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                 <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim1, spacedim&gt;::cell_iterator</a>,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                 dealii::Quadrature&lt;spacedim&gt;&gt;&gt;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="namespacedealii_1_1_non_matching.html#a10758f0e18e2e0940304c9ac91945200">compute_intersection</a>(<span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache&lt;dim0, spacedim&gt;</a> &amp;space_cache,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                         <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache&lt;dim1, spacedim&gt;</a> &amp;immersed_cache,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                      degree,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">double</span>                            tol = 0.);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <span class="comment">// namespace dealii::NonMatching</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  } <span class="comment">// namespace NonMatching</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <span class="comment">// namespace dealii</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="agrid_2tria_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">tria.h</a></div></div>
 <div class="ttc" id="amapping__q1_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">mapping_q1.h</a></div></div>
-<div class="ttc" id="anamespace_non_matching_html_a252578abf458e6edb6cdcdfbd70e70dd"><div class="ttname"><a href="namespace_non_matching.html#a252578abf458e6edb6cdcdfbd70e70dd">NonMatching::compute_intersection</a></div><div class="ttdeci">Quadrature&lt; spacedim &gt; compute_intersection(const typename Triangulation&lt; dim0, spacedim &gt;::cell_iterator &amp;cell0, const typename Triangulation&lt; dim1, spacedim &gt;::cell_iterator &amp;cell1, const unsigned int degree, const Mapping&lt; dim0, spacedim &gt; &amp;mapping0=(ReferenceCells::get_hypercube&lt; dim0 &gt;() .template get_default_linear_mapping&lt; dim0, spacedim &gt;()), const Mapping&lt; dim1, spacedim &gt; &amp;mapping1=(ReferenceCells::get_hypercube&lt; dim1 &gt;() .template get_default_linear_mapping&lt; dim1, spacedim &gt;()))</div><div class="ttdoc">Intersect cell0 and cell1 and construct a Quadrature&lt;spacedim&gt; of degree degree` over the intersectio...</div><div class="ttdef"><b>Definition:</b> <a href="compute__intersections_8cc_source.html#l00460">compute_intersections.cc:460</a></div></div>
 <div class="ttc" id="afunction__lib_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">function_lib.h</a></div></div>
 <div class="ttc" id="aclassMapping_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a></div></div>
-<div class="ttc" id="anamespace_non_matching_html"><div class="ttname"><a href="namespace_non_matching.html">NonMatching</a></div></div>
+<div class="ttc" id="anamespacedealii_1_1_non_matching_html_a10758f0e18e2e0940304c9ac91945200"><div class="ttname"><a href="namespacedealii_1_1_non_matching.html#a10758f0e18e2e0940304c9ac91945200">dealii::NonMatching::compute_intersection</a></div><div class="ttdeci">Quadrature&lt; spacedim &gt; compute_intersection(const typename Triangulation&lt; dim0, spacedim &gt;::cell_iterator &amp;cell0, const typename Triangulation&lt; dim1, spacedim &gt;::cell_iterator &amp;cell1, const unsigned int degree, const Mapping&lt; dim0, spacedim &gt; &amp;mapping0=(ReferenceCells::get_hypercube&lt; dim0 &gt;() .template get_default_linear_mapping&lt; dim0, spacedim &gt;()), const Mapping&lt; dim1, spacedim &gt; &amp;mapping1=(ReferenceCells::get_hypercube&lt; dim1 &gt;() .template get_default_linear_mapping&lt; dim1, spacedim &gt;()))</div><div class="ttdoc">Intersect cell0 and cell1 and construct a Quadrature&lt;spacedim&gt; of degree degreeover the intersection,...</div><div class="ttdef"><b>Definition:</b> <a href="compute__intersections_8cc_source.html#l00460">compute_intersections.cc:460</a></div></div>
 <div class="ttc" id="agrid__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">grid_tools.h</a></div></div>
 <div class="ttc" id="aclassGridTools_1_1Cache_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classGridTools_1_1Cache.html">GridTools::Cache</a></div></div>
+<div class="ttc" id="anamespaceNonMatching_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html">NonMatching</a></div></div>
 <div class="ttc" id="amapping_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html">mapping.h</a></div></div>
 <div class="ttc" id="agroup__Iterators_html_ga48cef91f67c38d6ec17912922de00f90"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a></div><div class="ttdeci">typename ::Triangulation&lt; dim, spacedim &gt;::cell_iterator cell_iterator</div></div>
 <div class="ttc" id="agrid__tools__cache_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">grid_tools_cache.h</a></div></div>
 <div class="ttc" id="ainclude_2deal_8II_2base_2quadrature_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">quadrature.h</a></div></div>
 <div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
-<div class="ttc" id="anamespace_non_matching_html_a9c5a84de15ee56ad54cbc7c4b2ee12d3"><div class="ttname"><a href="namespace_non_matching.html#a9c5a84de15ee56ad54cbc7c4b2ee12d3">NonMatching::compute_intersection</a></div><div class="ttdeci">std::vector&lt; std::tuple&lt; typename Triangulation&lt; dim0, spacedim &gt;::cell_iterator, typename Triangulation&lt; dim1, spacedim &gt;::cell_iterator, Quadrature&lt; spacedim &gt; &gt; &gt; compute_intersection(const GridTools::Cache&lt; dim0, spacedim &gt; &amp;space_cache, const GridTools::Cache&lt; dim1, spacedim &gt; &amp;immersed_cache, const unsigned int degree, const double tol=0.)</div><div class="ttdoc">Given two triangulations cached inside GridTools::Cache objects, compute all intersections between th...</div></div>
 <div class="ttc" id="aclassQuadrature_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a></div></div>
 <div class="ttc" id="aclassTriaIterator_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriaIterator.html">TriaIterator</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="compute__intersections_8h.html">compute_intersections.h</a></li>
-    <li class="footer">Generated on Thu Apr 7 2022 13:23:36 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Apr 10 2022 10:48:15 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
