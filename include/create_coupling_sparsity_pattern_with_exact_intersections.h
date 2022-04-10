@@ -43,47 +43,50 @@
 
 #include <boost/geometry.hpp>
 
-
-/**
- * @brief Create a coupling sparsity pattern of two non-matching, overlapped grids.
- *        As it relies on `compute_intersection`, the "small" intersections do
- * not enter in the sparsity pattern.
- * @param intersections_info A vector of tuples where the i-th entry contains two `active_cell_iterator`s to the intersected cells
- * @param space_dh `DoFHandler` object for the space grid
- * @param immersed_dh `DoFHandler` object for the embedded grid
- * @param sparsity The sparsity pattern to be filled
- * @param constraints `AffineConstraints` for the space grid
- * @param space_comps Mask for the space space components of the finite element
- * @param immersed_comps Mask for the embedded components of the finite element
- * @param immersed_constraints `AffineConstraints` for the embedded grid
- *
- *
- */
-using namespace dealii;
-namespace dealii::NonMatching
+namespace dealii
 {
-  template <int dim0,
-            int dim1,
-            int spacedim,
-            typename Sparsity,
-            typename number = double>
-  void
-  create_coupling_sparsity_pattern_with_exact_intersections(
-    const std::vector<
-      std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
-                 typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
-                 dealii::Quadrature<spacedim>>> &intersections_info,
-    const DoFHandler<dim0, spacedim> &           space_dh,
-    const DoFHandler<dim1, spacedim> &           immersed_dh,
-    Sparsity &                                   sparsity,
-    const AffineConstraints<number> &constraints = AffineConstraints<number>(),
-    const ComponentMask &            space_comps = ComponentMask(),
-    const ComponentMask &            immersed_comps = ComponentMask(),
-    const AffineConstraints<number> &immersed_constraints =
-      AffineConstraints<number>());
+  namespace NonMatching
+  {
+    /**
+     * @brief Create a coupling sparsity pattern of two non-matching, overlapped
+     *        grids. As it relies on `compute_intersection`, the "small"
+     *        intersections do not enter in the sparsity pattern.
+     * @param intersections_info A vector of tuples where the i-th entry
+     * contains two `active_cell_iterator`s to the intersected cells
+     * @param space_dh `DoFHandler` object for the space grid
+     * @param immersed_dh `DoFHandler` object for the embedded grid
+     * @param sparsity The sparsity pattern to be filled
+     * @param constraints `AffineConstraints` for the space grid
+     * @param space_comps Mask for the space space components of the finite
+     * element
+     * @param immersed_comps Mask for the embedded components of the finite
+     * element
+     * @param immersed_constraints `AffineConstraints` for the embedded grid
+     *
+     *
+     */
+    template <int dim0,
+              int dim1,
+              int spacedim,
+              typename Sparsity,
+              typename number = double>
+    void
+    create_coupling_sparsity_pattern_with_exact_intersections(
+      const std::vector<std::tuple<
+        typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
+        typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
+        dealii::Quadrature<spacedim>>> &intersections_info,
+      const DoFHandler<dim0, spacedim> &space_dh,
+      const DoFHandler<dim1, spacedim> &immersed_dh,
+      Sparsity &                        sparsity,
+      const AffineConstraints<number> & constraints =
+        AffineConstraints<number>(),
+      const ComponentMask &            space_comps    = ComponentMask(),
+      const ComponentMask &            immersed_comps = ComponentMask(),
+      const AffineConstraints<number> &immersed_constraints =
+        AffineConstraints<number>());
 
-}
-
-
+  } // namespace NonMatching
+} // namespace dealii
 
 #endif
