@@ -29,7 +29,7 @@
 
 #include <deal.II/non_matching/coupling.h>
 
-#include "assemble_coupling_exact.h"
+#include "assemble_coupling_mass_matrix_with_exact_intersections.h"
 #include "compute_intersections.h"
 
 namespace ParsedTools
@@ -296,16 +296,18 @@ namespace ParsedTools
         const auto &cells_and_quads = dealii::NonMatching::compute_intersection(
           *space_cache, *embedded_cache, this->quadrature_order, tol);
 
-        dealii::NonMatching::assemble_coupling_exact(*space_dh,
-                                                     *embedded_dh,
-                                                     cells_and_quads,
-                                                     matrix,
-                                                     *space_constraints,
-                                                     space_mask,
-                                                     embedded_mask,
-                                                     space_mapping,
-                                                     embedded_mapping,
-                                                     *embedded_constraints);
+        dealii::NonMatching::
+          assemble_coupling_mass_matrix_with_exact_intersections(
+            *space_dh,
+            *embedded_dh,
+            cells_and_quads,
+            matrix,
+            *space_constraints,
+            space_mask,
+            embedded_mask,
+            space_mapping,
+            embedded_mapping,
+            *embedded_constraints);
       }
   }
 #endif

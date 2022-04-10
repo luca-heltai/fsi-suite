@@ -18,7 +18,7 @@
 
 #include <boost/geometry.hpp>
 
-#include "assemble_coupling_exact.h"
+#include "assemble_coupling_mass_matrix_with_exact_intersections.h"
 #include "compute_intersections.h"
 #include "create_coupling_sparsity_pattern_with_exact_intersections.h"
 #include "lac.h"
