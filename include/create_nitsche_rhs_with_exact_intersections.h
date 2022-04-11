@@ -66,9 +66,10 @@ namespace dealii
         dealii::Quadrature<spacedim>>> &,
       VectorType &vector,
       const AffineConstraints<typename VectorType::value_type> &,
-      const Function<spacedim, typename VectorType::value_type> &,
       const Mapping<dim0, spacedim> &,
-      const double penalty);
+      const Function<spacedim, typename VectorType::value_type> &,
+      const Function<spacedim, typename VectorType::value_type> &,
+      const double penalty = 1.);
   } // namespace NonMatching
 } // namespace dealii
 

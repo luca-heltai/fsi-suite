@@ -35,9 +35,10 @@ namespace dealii
         dealii::Quadrature<spacedim>>> &cells_and_quads,
       VectorType &                      rhs,
       const AffineConstraints<typename VectorType::value_type>
-        &space_constraints,
+        &                            space_constraints,
+      const Mapping<dim0, spacedim> &space_mapping,
       const Function<spacedim, typename VectorType::value_type> &rhs_function,
-      const Mapping<dim0, spacedim> &                            space_mapping,
+      const Function<spacedim, typename VectorType::value_type> &coefficient,
       const double                                               penalty)
     {
       AssertDimension(rhs.size(), space_dh.n_dofs());
@@ -65,39 +66,44 @@ namespace dealii
         {
           const auto &[first_cell, second_cell, quad_formula] = infos;
 
-
-          h         = first_cell->diameter();
-          local_rhs = typename VectorType::value_type();
-
-
-          const unsigned int           n_quad_pts = quad_formula.size();
-          const auto &                 real_qpts  = quad_formula.get_points();
-          std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
-          std::vector<double>          rhs_function_values(n_quad_pts);
-
-          space_mapping.transform_points_real_to_unit_cell(first_cell,
-                                                           real_qpts,
-                                                           ref_pts_space);
-          rhs_function.value_list(real_qpts, rhs_function_values);
-
-          const auto &JxW = quad_formula.get_weights();
-          for (unsigned int q = 0; q < n_quad_pts; ++q)
+          if (first_cell->is_active())
             {
-              const auto &q_ref_point = ref_pts_space[q];
-              for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
-                {
-                  local_rhs(i) += (2. * penalty / h) *
-                                  space_fe.shape_value(i, q_ref_point) *
-                                  rhs_function_values[q] * JxW[q];
-                }
-            }
-          typename DoFHandler<dim0, spacedim>::cell_iterator space_cell_dh(
-            *first_cell, &space_dh);
+              h         = first_cell->diameter();
+              local_rhs = typename VectorType::value_type();
 
-          space_cell_dh->get_dof_indices(local_space_dof_indices);
-          space_constraints.distribute_local_to_global(local_rhs,
-                                                       local_space_dof_indices,
-                                                       rhs);
+
+              const unsigned int n_quad_pts = quad_formula.size();
+              const auto &       real_qpts  = quad_formula.get_points();
+              std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
+              std::vector<double>          rhs_function_values(n_quad_pts);
+              rhs_function.value_list(real_qpts, rhs_function_values);
+
+
+              std::vector<double> coefficient_values(n_quad_pts);
+              coefficient.value_list(real_qpts, coefficient_values);
+
+              space_mapping.transform_points_real_to_unit_cell(first_cell,
+                                                               real_qpts,
+                                                               ref_pts_space);
+
+              const auto &JxW = quad_formula.get_weights();
+              for (unsigned int q = 0; q < n_quad_pts; ++q)
+                {
+                  const auto &q_ref_point = ref_pts_space[q];
+                  for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
+                    {
+                      local_rhs(i) += coefficient_values[q] * (penalty / h) *
+                                      space_fe.shape_value(i, q_ref_point) *
+                                      rhs_function_values[q] * JxW[q];
+                    }
+                }
+              typename DoFHandler<dim0, spacedim>::cell_iterator space_cell_dh(
+                *first_cell, &space_dh);
+
+              space_cell_dh->get_dof_indices(local_space_dof_indices);
+              space_constraints.distribute_local_to_global(
+                local_rhs, local_space_dof_indices, rhs);
+            }
         }
     }
 
@@ -140,8 +146,9 @@ create_nitsche_rhs_with_exact_intersections(
                    dealii::Quadrature<2>>> &,
       Vector<double> &vector,
       const AffineConstraints<double> &,
-      const dealii::Function<2, double> &,
       const Mapping<2, 2> &,
+      const Function<2, double> &,
+      const Function<2, double> &,
       const double);
 
 
@@ -155,8 +162,24 @@ create_nitsche_rhs_with_exact_intersections(
                    dealii::Quadrature<2>>> &,
       Vector<double> &vector,
       const AffineConstraints<double> &,
-      const dealii::Function<2, double> &,
       const Mapping<2, 2> &,
+      const Function<2, double> &,
+      const Function<2, double> &,
+      const double);
+
+
+    template void
+    create_nitsche_rhs_with_exact_intersections<3, 3, 3>(
+      const DoFHandler<3, 3> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                   typename dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Quadrature<3>>> &,
+      Vector<double> &vector,
+      const AffineConstraints<double> &,
+      const Mapping<3, 3> &,
+      const Function<3, double> &,
+      const Function<3, double> &,
       const double);
 
 

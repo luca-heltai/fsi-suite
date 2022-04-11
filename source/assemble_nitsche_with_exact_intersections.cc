@@ -51,12 +51,15 @@ namespace dealii
       const AffineConstraints<typename Matrix::value_type> &space_constraints,
       const ComponentMask &                                 space_comps,
       const Mapping<dim0, spacedim> &                       space_mapping,
-      const double                                          penalty)
+      const Function<spacedim, typename Matrix::value_type>
+        &          nitsche_coefficient,
+      const double penalty)
     {
       AssertDimension(matrix.m(), space_dh.n_dofs());
       AssertDimension(matrix.n(), space_dh.n_dofs());
       Assert(dim1 <= dim0,
              ExcMessage("This function can only work if dim1<=dim0"));
+
 
 
       const auto &space_fe = space_dh.get_fe();
@@ -95,54 +98,60 @@ namespace dealii
       for (const auto &infos : cells_and_quads)
         {
           const auto &[first_cell, second_cell, quad_formula] = infos;
-
-
-
-          local_cell_matrix = typename Matrix::value_type();
-
-          const unsigned int           n_quad_pts = quad_formula.size();
-          const auto &                 real_qpts  = quad_formula.get_points();
-          std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
-
-          space_mapping.transform_points_real_to_unit_cell(first_cell,
-                                                           real_qpts,
-                                                           ref_pts_space);
-
-          h               = first_cell->diameter();
-          const auto &JxW = quad_formula.get_weights();
-          for (unsigned int q = 0; q < n_quad_pts; ++q)
+          if (first_cell->is_active())
             {
-              const auto &q_ref_point = ref_pts_space[q];
-              for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
+              local_cell_matrix = typename Matrix::value_type();
+
+              const unsigned int  n_quad_pts = quad_formula.size();
+              const auto &        real_qpts  = quad_formula.get_points();
+              std::vector<double> nitsche_coefficient_values(n_quad_pts);
+              nitsche_coefficient.value_list(real_qpts,
+                                             nitsche_coefficient_values);
+
+              std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
+
+              space_mapping.transform_points_real_to_unit_cell(first_cell,
+                                                               real_qpts,
+                                                               ref_pts_space);
+
+              h               = first_cell->diameter();
+              const auto &JxW = quad_formula.get_weights();
+              for (unsigned int q = 0; q < n_quad_pts; ++q)
                 {
-                  const unsigned int comp_i =
-                    space_dh.get_fe().system_to_component_index(i).first;
-                  if (comp_i != numbers::invalid_unsigned_int)
+                  const auto &q_ref_point = ref_pts_space[q];
+                  for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
                     {
-                      for (unsigned int j = 0; j < n_dofs_per_space_cell; ++j)
+                      const unsigned int comp_i =
+                        space_dh.get_fe().system_to_component_index(i).first;
+                      if (comp_i != numbers::invalid_unsigned_int)
                         {
-                          const unsigned int comp_j =
-                            space_dh.get_fe()
-                              .system_to_component_index(j)
-                              .first;
-                          if (space_gtl[comp_i] == space_gtl[comp_j])
+                          for (unsigned int j = 0; j < n_dofs_per_space_cell;
+                               ++j)
                             {
-                              local_cell_matrix(i, j) +=
-                                (2. * penalty / h) *
-                                space_fe.shape_value(i, q_ref_point) *
-                                space_fe.shape_value(j, q_ref_point) * JxW[q];
+                              const unsigned int comp_j =
+                                space_dh.get_fe()
+                                  .system_to_component_index(j)
+                                  .first;
+                              if (space_gtl[comp_i] == space_gtl[comp_j])
+                                {
+                                  local_cell_matrix(i, j) +=
+                                    nitsche_coefficient_values[q] *
+                                    (penalty / h) *
+                                    space_fe.shape_value(i, q_ref_point) *
+                                    space_fe.shape_value(j, q_ref_point) *
+                                    JxW[q];
+                                }
                             }
                         }
                     }
                 }
-            }
-          typename DoFHandler<dim0, spacedim>::cell_iterator space_cell_dh(
-            *first_cell, &space_dh);
+              typename DoFHandler<dim0, spacedim>::cell_iterator space_cell_dh(
+                *first_cell, &space_dh);
 
-          space_cell_dh->get_dof_indices(local_space_dof_indices);
-          space_constraints.distribute_local_to_global(local_cell_matrix,
-                                                       local_space_dof_indices,
-                                                       matrix);
+              space_cell_dh->get_dof_indices(local_space_dof_indices);
+              space_constraints.distribute_local_to_global(
+                local_cell_matrix, local_space_dof_indices, matrix);
+            }
         }
     }
 
@@ -180,19 +189,6 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections(
 
 
 template void
-dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 1, 2>(
-  const DoFHandler<2, 2> &,
-  const std::vector<
-    std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
-               typename dealii::Triangulation<1, 2>::cell_iterator,
-               dealii::Quadrature<2>>> &,
-  dealii::SparseMatrix<double> &,
-  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
-  const ComponentMask &,
-  const Mapping<2, 2> &,
-  const double);
-
-template void
 dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 2>(
   const DoFHandler<2, 2> &,
   const std::vector<
@@ -203,6 +199,7 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 2>(
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
   const Mapping<2, 2> &,
+  const Function<2, double> &nitsche_coefficient,
   const double);
 
 
@@ -218,6 +215,7 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections<3, 2, 3>(
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
   const Mapping<3, 3> &,
+  const Function<3, double> &nitsche_coefficient,
   const double);
 
 
@@ -233,4 +231,5 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections<3, 3, 3>(
   const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
   const ComponentMask &,
   const Mapping<3, 3> &,
+  const Function<3, double> &nitsche_coefficient,
   const double);

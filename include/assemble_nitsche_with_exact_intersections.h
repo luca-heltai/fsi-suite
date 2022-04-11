@@ -47,8 +47,8 @@ namespace dealii
     /**
      * @brief Given two non-matching, overlapping grids, this function computes the local contributions
      *        $$M_{ij}:= \int_B \gamma v_i v_j dx$$ exactly, by integrating on
-     * the intersection of the two grids. There's no need to change the sparsity
-     *        pattern, as the DoFs are all living on the same cell.
+     *        the intersection of the two grids. There's no need to change the
+     * sparsity pattern, as the DoFs are all living on the same cell.
      *
      * @tparam dim0 Intrinsic dimension of the first, space grid
      * @tparam dim1 Intrinsic dimension of the second, embedded space
@@ -67,7 +67,9 @@ namespace dealii
       const AffineConstraints<typename Matrix::value_type> &,
       const ComponentMask &,
       const Mapping<dim0, spacedim> &,
-      const double penalty = 1.);
+      const Function<spacedim, typename Matrix::value_type>
+        &          nitsche_coefficient = ConstantFunction<spacedim>(1.0),
+      const double penalty             = 1.);
   } // namespace NonMatching
 } // namespace dealii
 
