@@ -101,15 +101,6 @@ namespace PDEs
     class PoissonNitscheInterface : public ParameterAcceptor
     {
     public:
-      /**
-       * At construction time, we need to initialize all member functions that
-       * are derived from ParameterAcceptor.
-       *
-       * The general design principle of each of these classes is to take as
-       * first argument the name of section where you want store the parameters
-       * for the given class, and then the default values that you want to store
-       * in the parameter file when you create it the first time.
-       */
       PoissonNitscheInterface();
 
 
@@ -147,29 +138,7 @@ namespace PDEs
       void
       output_results(const unsigned cycle) const;
 
-      /**
-       * How we identify the component names.
-       *
-       * Many of the classes in the ParsedTools namespace use a string to define
-       * their behaviour in terms of the components of a problem. For example,
-       * for a scalar problem, one usually needs only to specify the name of the
-       * solution with a single component. This is what happens in this program:
-       * we use "u" as an identification for the name of the solution, and pass
-       * this string around to any class that needs information about
-       * components. In general our codes in the FSI-suite will use the
-       * functions defined in the ParsedTools::Components namespace to process
-       * information about components.
-       *
-       * In the scalar case of this program, we have only one component, so this
-       * string is not very informative, however, in a more complex case like
-       * the PDEs::Serial::Stokes case, we would have spacedim+1 components,
-       * spacedim components for the velocity and one component for the
-       * pressure. In that case, this string would be "u,u,p" in the two
-       * dimensional case, and "u,u,u,p" in the three dimensional case. This
-       * string gives information about how we want to group variables, and how
-       * we want to treat them in the output as well as how many components our
-       * finite element spaces must have.
-       */
+
       const std::string component_names = "u";
 
 
@@ -251,21 +220,7 @@ namespace PDEs
       ParsedTools::Constants constants;
 
       /**
-       * The actual function to use as a forcing term. This is a wrapper around
-       * the dealii::ParsedFunction class, which allows you to define a function
-       * through a symbolic expression (a string) in a parameter file.
-       *
-       * The action of this class is driven by the section `Functions`, with the
-       * parameter `Forcing term`:
-       * @code{.sh}
-       * subsection Functions
-       *  set Forcing term = kappa*8*PI^2*sin(2*PI*x)*sin(2*PI*y)
-       * end
-       * @endcode
-       *
-       * You can use any of the numerical constants that are defined in the
-       * dealii::numbers namespace, such as PI, E, etc, as well as the constants
-       * defined at construction time in the ParsedTools::Constants class.
+       * The actual function to use as a forcing term.
        */
       ParsedTools::Function<spacedim> forcing_term;
 
@@ -286,87 +241,12 @@ namespace PDEs
 
       /**
        * The actual function to use as a exact solution when computing the
-       * errors. This is a wrapper around the dealii::ParsedFunction class,
-       * which allows you to define a function through a symbolic expression (a
-       * string) in a parameter file.
-       *
-       * The action of this class is driven by the section `Functions`, with the
-       * parameter `Exact solution`:
-       * @code{.sh}
-       * subsection Functions
-       *  set Exact solution = sin(2*PI*x)*sin(2*PI*y)
-       * end
-       * @endcode
-       *
-       * You can use any of the numerical constants that are defined in the
-       * dealii::numbers namespace, such as PI, E, etc, as well as the constants
-       * defined at construction time in the ParsedTools::Constants class.
-       */
+       * errors.
+       * */
       ParsedTools::Function<spacedim> exact_solution;
 
-      /**
-       * Boundary conditions used in this class.
-       *
-       * The action of this class is driven by the section `Boundary conditions`
-       * of the parameter file:
-       * @code{.sh}
-       * subsection Boundary conditions
-       *   set Boundary condition types (u) = dirichlet
-       *   set Boundary id sets (u)         = -1
-       *   set Expressions (u)              = 0
-       *   set Selected components (u)      = u
-       * end
-       * @endcode
-       *
-       * The way ParsedTools::BoundaryConditions works in the FSI-suite is the
-       * following: for every set of boundary ids of the triangulation, you need
-       * to specify what boundary conditions are assumed to be imposed on that
-       * set. If you only want to specify one type of boundary condition
-       * (`dirichlet` or `neumann`) on all of the boundary, you can do so by
-       * specifying `-1` as the boundary id set.
-       *
-       * Multiple boundary conditions can be specified, but the same id should
-       * should appear only once in the parameter file (i.e., you cannot apply
-       * different types of boundary conditions on the same boundary id).
-       *
-       * Keep in mind the following caveats:
-       * - Boundary conditions are specified as comma separated strings, so you
-       *   can specify "set Boundary condition types (u) = neumann, dirichlet"
-       *   for two different sets of boundary ids.
-       * - Following the previous example, different boundary id sets are
-       *   separated by a semicolumn, and in each set, different boundary ids
-       *   are separated by a column, so, for example, if you specify as
-       *   `set Boundary id sets (u) = 0, 1; 2, 3`, then boundary ids 0 and 1
-       *   will get Neumann boundary conditions, while boundary ids 2 and 3 will
-       *   get Dirichlet boundary conditions.
-       * - Since an expression can contain a `,` character, then expression for
-       *   each component are separated by a semicolumn, and for each boundary
-       *   id set, are separated by the `%` character. For example, if you want
-       *   to specify homogeneous Neumann boundary conditions, and constant
-       *   Dirichlet boundary conditions you can set the following parameter:
-       *   `set Expressions (u) = 0 % 1`.
-       * - The selected components, again can be `all`, a component name, or
-       *   `u.n`, or `u.t` to select normal component, or tangential component
-       *   in a vector valued problem. For scalar problems, only the name of the
-       *   component makes sense. This field allows you to control which
-       *   components the given boundary condition refers to.
-       *
-       * To summarize, the following is a valid section for the example above:
-       * @code{.sh}
-       * subsection Boundary conditions
-       *   set Boundary condition types (u) = dirichlet, neumann
-       *   set Boundary id sets (u)         = 0, 1 ; 2, 3
-       *   set Expressions (u)              = 0 % 1
-       *   set Selected components (u)      = u; u
-       * end
-       * @endcode
-       *
-       * This would apply Dirichlet boundary conditions on the boundary ids 2
-       * and 3, and homogeneous Neumann boundary conditions on the boundary ids
-       * 0 and 1.
-       */
+
       ParsedTools::BoundaryConditions<spacedim> boundary_conditions;
-      /** @} */
 
       /**
        * \name Output and postprocessing
@@ -389,14 +269,7 @@ namespace PDEs
 
       /**
        * Level of log verbosity.
-       *
-       * This is the only "native" parameter of this class. All other parameters
-       * are set through the constructors of the classes that inherit from
-       * ParameterAcceptor.
-       *
-       * The console_level is used to setup the dealii::LogStream class, and
-       * allows dealii clases to print messages to the console at different
-       * level of detail and verbosity.
+
        */
       unsigned int console_level = 1;
 
