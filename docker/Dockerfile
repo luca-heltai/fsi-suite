@@ -8,6 +8,7 @@ USER root
 RUN apt-get update \
     && apt-get install -y \
     biber \
+    cmake-curses-gui \
     doxygen \
     gdb \
     graphviz \
@@ -31,3 +32,17 @@ ENV HOME /root
 RUN mkdir /root/.ssh
 
 ADD dotgdbinit.py /root/.gdbinit
+
+RUN mv /usr/local/bin/clang-format /usr/bin/clang-format
+
+# Now install parmoonlith
+RUN cd /usr/src/ && \
+    git clone https://bitbucket.org/zulianp/par_moonolith.git && \
+    cd par_moonolith && \
+    mkdir build && \
+    cd build && \
+    cmake .. -G Ninja \
+        -DBUILD_SHARED_LIBS=ON && \
+    ninja && \
+    ninja install && \
+    cd ../ && rm -rf build
