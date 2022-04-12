@@ -32,10 +32,10 @@ template <int dim, int spacedim>
 void
 test()
 {
-  constexpr int                     degree = 3;
+  constexpr int                     degree = 4;
   constexpr double                  radius = .5;
   constexpr double                  left   = -.45;
-  constexpr double                  right  = .25;
+  constexpr double                  right  = .55;
   Triangulation<spacedim, spacedim> space_tria;
   Triangulation<dim, spacedim>      embedded_tria;
 
@@ -48,9 +48,10 @@ test()
     }
   else if constexpr (dim == 2 && spacedim == 2)
     {
-      GridGenerator::hyper_cube(embedded_tria, -.45, .25);
-      space_tria.refine_global(2);
-      embedded_tria.refine_global(5);
+      GridGenerator::hyper_cube(embedded_tria, left, right);
+      GridTools::rotate(M_PI_4 / 2., embedded_tria);
+      space_tria.refine_global(4);
+      embedded_tria.refine_global(2);
     }
 
 
@@ -91,6 +92,9 @@ test()
   SparseMatrix<double> nitsche_matrix(sparsity_pattern);
 
 
+
+  const double h = space_dh.begin_active()->diameter();
+  deallog << "h = " << h << '\n';
   NonMatching::
     assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
       space_dh,
@@ -98,7 +102,8 @@ test()
       nitsche_matrix,
       space_constraints,
       ComponentMask(),
-      MappingQ1<spacedim>());
+      MappingQ1<spacedim>(),
+      ConstantFunction<spacedim>(h));
 
   Vector<double> ones(space_dh.n_dofs());
   ones                = 1.0;
