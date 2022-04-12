@@ -1,12 +1,13 @@
 <map id="include/parsed_lac/inverse_operator.h" name="include/parsed_lac/inverse_operator.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1633,5,1781,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1811,5,1959,47"/>
 <area shape="rect" id="node2" href="$linear__problem_8h.html" title=" " alt="" coords="1077,95,1223,136"/>
 <area shape="rect" id="node10" href="$distributed__lagrange_8h.html" title=" " alt="" coords="1155,184,1327,225"/>
 <area shape="rect" id="node13" href="$stokes_8h.html" title=" " alt="" coords="1351,191,1514,218"/>
-<area shape="rect" id="node17" href="$serial_2poisson_8h.html" title=" " alt="" coords="1635,95,1779,136"/>
-<area shape="rect" id="node20" href="$reduced__lagrange_8h.html" title=" " alt="" coords="1890,95,2045,136"/>
-<area shape="rect" id="node23" href="$serial_2stokes_8h.html" title=" " alt="" coords="2162,95,2306,136"/>
-<area shape="rect" id="node26" href="$inverse__operator_8cc.html" title=" " alt="" coords="2331,95,2521,136"/>
+<area shape="rect" id="node17" href="$serial_2poisson_8h.html" title=" " alt="" coords="1713,95,1857,136"/>
+<area shape="rect" id="node20" href="$poisson__nitsche__interface_8h.html" title=" " alt="" coords="1881,95,2088,136"/>
+<area shape="rect" id="node23" href="$reduced__lagrange_8h.html" title=" " alt="" coords="2310,95,2465,136"/>
+<area shape="rect" id="node26" href="$serial_2stokes_8h.html" title=" " alt="" coords="2582,95,2726,136"/>
+<area shape="rect" id="node29" href="$inverse__operator_8cc.html" title=" " alt="" coords="2751,95,2941,136"/>
 <area shape="rect" id="node3" href="$linear__elasticity_8h.html" title=" " alt="" coords="312,184,457,225"/>
 <area shape="rect" id="node7" href="$mpi_2poisson_8h.html" title=" " alt="" coords="765,191,964,218"/>
 <area shape="rect" id="node16" href="$linear__problem_8cc.html" title=" " alt="" coords="989,184,1130,225"/>
@@ -21,8 +22,10 @@
 <area shape="rect" id="node15" href="$apps_2mpi_2stokes_8cc.html" title=" " alt="" coords="1361,281,1507,307"/>
 <area shape="rect" id="node18" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="1728,184,1868,225"/>
 <area shape="rect" id="node19" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="1538,191,1703,218"/>
-<area shape="rect" id="node21" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2066,184,2226,225"/>
-<area shape="rect" id="node22" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="1893,184,2042,225"/>
-<area shape="rect" id="node24" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="2432,184,2572,225"/>
-<area shape="rect" id="node25" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="2250,191,2407,218"/>
+<area shape="rect" id="node21" href="$source_2pdes_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="2075,184,2289,225"/>
+<area shape="rect" id="node22" href="$apps_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="1892,184,2051,225"/>
+<area shape="rect" id="node24" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2486,184,2646,225"/>
+<area shape="rect" id="node25" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2313,184,2462,225"/>
+<area shape="rect" id="node27" href="$source_2pdes_2serial_2stokes_8cc.html" title=" " alt="" coords="2852,184,2992,225"/>
+<area shape="rect" id="node28" href="$apps_2serial_2stokes_8cc.html" title=" " alt="" coords="2670,191,2827,218"/>
 </map>

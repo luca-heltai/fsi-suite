@@ -1,4 +1,8 @@
 <map id="include/create_coupling_sparsity_pattern_with_exact_intersections.h" name="include/create_coupling_sparsity_pattern_with_exact_intersections.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,181,61"/>
-<area shape="rect" id="node2" href="$create__coupling__sparsity__pattern__with__exact__intersections_8cc.html" title=" " alt="" coords="6,109,181,165"/>
+<area shape="rect" id="node1" title=" " alt="" coords="344,5,520,61"/>
+<area shape="rect" id="node2" href="$poisson__nitsche__interface_8h.html" title=" " alt="" coords="114,117,321,158"/>
+<area shape="rect" id="node5" href="$create__coupling__sparsity__pattern__with__exact__intersections_8cc.html" title=" " alt="" coords="345,109,519,165"/>
+<area shape="rect" id="node6" href="$non__matching__coupling_8cc.html" title=" " alt="" coords="543,117,705,158"/>
+<area shape="rect" id="node3" href="$source_2pdes_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="5,213,219,255"/>
+<area shape="rect" id="node4" href="$apps_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="243,213,402,255"/>
 </map>

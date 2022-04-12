@@ -1,7 +1,8 @@
 var class_parsed_tools_1_1_non_matching_coupling =
 [
     [ "CouplingType", "class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9", [
-      [ "approximate_L2", "class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9a8d75f8449d6288784fd61e54568845c2", null ]
+      [ "approximate_L2", "class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9a8d75f8449d6288784fd61e54568845c2", null ],
+      [ "exact_L2", "class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9af04e1e066ef2310b261b109ee43f52cb", null ]
     ] ],
     [ "RefinementStrategy", "class_parsed_tools_1_1_non_matching_coupling.html#a9e27184531dedb4d5ec52e4b8b023ad7", [
       [ "none", "class_parsed_tools_1_1_non_matching_coupling.html#a9e27184531dedb4d5ec52e4b8b023ad7a334c4a4c42fdb79d7ebc3e73b517e6f8", null ],

@@ -124,7 +124,8 @@ Inheritance diagram for ParsedTools::NonMatchingCoupling&lt; dim, spacedim &gt;:
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a4f08390349ce33237990cf348bfa63a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9">CouplingType</a> { <a class="el" href="class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9a8d75f8449d6288784fd61e54568845c2">CouplingType::approximate_L2</a>
+<tr class="memitem:a4f08390349ce33237990cf348bfa63a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9">CouplingType</a> { <a class="el" href="class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9a8d75f8449d6288784fd61e54568845c2">CouplingType::approximate_L2</a>, 
+<a class="el" href="class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9af04e1e066ef2310b261b109ee43f52cb">CouplingType::exact_L2</a> = 1 &lt;&lt; 3
  }</td></tr>
 <tr class="memdesc:a4f08390349ce33237990cf348bfa63a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Types of coupling that can used in non-matching coupling.  <a href="class_parsed_tools_1_1_non_matching_coupling.html#a4f08390349ce33237990cf348bfa63a9">More...</a><br /></td></tr>
 <tr class="separator:a4f08390349ce33237990cf348bfa63a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -354,7 +355,7 @@ class ParsedTools::NonMatchingCoupling&lt; dim, spacedim &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00042">42</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00045">45</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a4f08390349ce33237990cf348bfa63a9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f08390349ce33237990cf348bfa63a9">&#9670;&nbsp;</a></span>CouplingType</h2>
@@ -381,9 +382,10 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Types of coupling that can used in non-matching coupling. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a4f08390349ce33237990cf348bfa63a9a8d75f8449d6288784fd61e54568845c2"></a>approximate_L2&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a4f08390349ce33237990cf348bfa63a9af04e1e066ef2310b261b109ee43f52cb"></a>exact_L2&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00048">48</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00051">51</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -419,7 +421,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00073">73</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00076">76</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -502,7 +504,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00031">31</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00034">34</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
 
 </div>
 </div>
@@ -561,7 +563,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Initialize the class and return a linear operator representing the coupling matrix. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00088">88</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00091">91</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
 
 </div>
 </div>
@@ -642,7 +644,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <p>Get the coupling type object. </p>
 <dl class="section return"><dt>Returns</dt><dd>const CouplingType </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00079">79</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00082">82</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
 
 </div>
 </div>
@@ -682,7 +684,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Adjust grid refinements according to the selected strategy. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00145">145</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00169">169</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
 
 </div>
 </div>
@@ -710,7 +712,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Build a dynamic sparsity pattern. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00113">113</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8cc_source.html#l00116">116</a> of file <a class="el" href="non__matching__coupling_8cc_source.html">non_matching_coupling.cc</a>.</p>
 
 </div>
 </div>
@@ -731,7 +733,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Signals that embedded grid has been just refined. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00149">149</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00152">152</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -751,7 +753,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Signals that the space grid has been just refined. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00154">154</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00157">157</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -779,7 +781,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Embedded component mask. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00166">166</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00169">169</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -807,7 +809,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Space component mask. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00171">171</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00174">174</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -835,7 +837,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Embedded quadrature rule. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00176">176</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00179">179</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -863,7 +865,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Coupling type. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00181">181</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00184">184</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -891,7 +893,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Refinement strategy. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00186">186</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00189">189</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -919,7 +921,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Pre refinement to apply on the space mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00191">191</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00194">194</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -947,7 +949,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Post refinement to apply on the embedded mesh. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00196">196</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00199">199</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -975,7 +977,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Embedded quadrature type. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00201">201</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00204">204</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1003,7 +1005,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Order of the base embedded quadrature. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00206">206</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00209">209</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1033,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Number of iterations of the base embedded quadrature. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00211">211</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00214">214</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1059,7 +1061,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Space cache. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00218">218</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00221">221</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1087,7 +1089,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Space dof handler. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00225">225</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00228">228</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +1117,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Space constraints. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00232">232</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00235">235</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1143,7 +1145,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Embedded cache. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00239">239</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00242">242</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1171,7 +1173,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Embedded dof handler. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00246">246</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00249">249</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1199,7 +1201,7 @@ template&lt;int dim, int spacedim&gt; </div>
 
 <p>Embedded constraints. </p>
 
-<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00253">253</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="non__matching__coupling_8h_source.html#l00256">256</a> of file <a class="el" href="non__matching__coupling_8h_source.html">non_matching_coupling.h</a>.</p>
 
 </div>
 </div>
@@ -1213,7 +1215,7 @@ template&lt;int dim, int spacedim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_non_matching_coupling.html">NonMatchingCoupling</a></li>
-    <li class="footer">Generated on Sun Apr 10 2022 10:48:16 for Fluid structure interaction suite by
+    <li class="footer">Generated on Tue Apr 12 2022 13:05:59 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

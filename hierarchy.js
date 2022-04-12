@@ -83,6 +83,7 @@ var hierarchy =
         [ "PDEs::LinearProblem< dim, spacedim, LacType >", "class_p_d_es_1_1_linear_problem.html", null ],
         [ "PDEs::Serial::DistributedLagrange< dim, spacedim, LacType >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
+        [ "PDEs::Serial::PoissonNitscheInterface< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson_nitsche_interface.html", null ],
         [ "PDEs::Serial::ReducedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", null ],
         [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ]
       ] ],

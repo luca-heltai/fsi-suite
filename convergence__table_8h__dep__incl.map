@@ -1,8 +1,9 @@
 <map id="include/parsed_tools/convergence_table.h" name="include/parsed_tools/convergence_table.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1702,5,1863,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1898,5,2059,47"/>
 <area shape="rect" id="node2" href="$linear__problem_8h.html" title=" " alt="" coords="1185,95,1330,136"/>
-<area shape="rect" id="node17" href="$serial_2poisson_8h.html" title=" " alt="" coords="1711,95,1855,136"/>
-<area shape="rect" id="node20" href="$reduced__lagrange_8h.html" title=" " alt="" coords="1981,95,2136,136"/>
+<area shape="rect" id="node17" href="$serial_2poisson_8h.html" title=" " alt="" coords="1800,95,1944,136"/>
+<area shape="rect" id="node20" href="$poisson__nitsche__interface_8h.html" title=" " alt="" coords="1982,95,2189,136"/>
+<area shape="rect" id="node23" href="$reduced__lagrange_8h.html" title=" " alt="" coords="2403,95,2557,136"/>
 <area shape="rect" id="node3" href="$linear__elasticity_8h.html" title=" " alt="" coords="299,184,445,225"/>
 <area shape="rect" id="node7" href="$mpi_2poisson_8h.html" title=" " alt="" coords="765,191,963,218"/>
 <area shape="rect" id="node10" href="$distributed__lagrange_8h.html" title=" " alt="" coords="1075,184,1247,225"/>
@@ -19,6 +20,8 @@
 <area shape="rect" id="node15" href="$apps_2mpi_2stokes_8cc.html" title=" " alt="" coords="1548,281,1695,307"/>
 <area shape="rect" id="node18" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="1625,184,1765,225"/>
 <area shape="rect" id="node19" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="1789,191,1955,218"/>
-<area shape="rect" id="node21" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="1979,184,2139,225"/>
-<area shape="rect" id="node22" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2163,184,2312,225"/>
+<area shape="rect" id="node21" href="$source_2pdes_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="1979,184,2192,225"/>
+<area shape="rect" id="node22" href="$apps_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="2217,184,2375,225"/>
+<area shape="rect" id="node24" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2400,184,2560,225"/>
+<area shape="rect" id="node25" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2584,184,2733,225"/>
 </map>

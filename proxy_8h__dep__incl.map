@@ -1,9 +1,10 @@
 <map id="include/parsed_tools/proxy.h" name="include/parsed_tools/proxy.h">
-<area shape="rect" id="node1" title=" " alt="" coords="1705,5,1861,47"/>
-<area shape="rect" id="node2" href="$convergence__table_8h.html" title=" " alt="" coords="1702,95,1863,136"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1901,5,2057,47"/>
+<area shape="rect" id="node2" href="$convergence__table_8h.html" title=" " alt="" coords="1898,95,2059,136"/>
 <area shape="rect" id="node3" href="$linear__problem_8h.html" title=" " alt="" coords="1185,184,1330,225"/>
-<area shape="rect" id="node18" href="$serial_2poisson_8h.html" title=" " alt="" coords="1711,184,1855,225"/>
-<area shape="rect" id="node21" href="$reduced__lagrange_8h.html" title=" " alt="" coords="1981,184,2136,225"/>
+<area shape="rect" id="node18" href="$serial_2poisson_8h.html" title=" " alt="" coords="1800,184,1944,225"/>
+<area shape="rect" id="node21" href="$poisson__nitsche__interface_8h.html" title=" " alt="" coords="1982,184,2189,225"/>
+<area shape="rect" id="node24" href="$reduced__lagrange_8h.html" title=" " alt="" coords="2403,184,2557,225"/>
 <area shape="rect" id="node4" href="$linear__elasticity_8h.html" title=" " alt="" coords="299,273,445,315"/>
 <area shape="rect" id="node8" href="$mpi_2poisson_8h.html" title=" " alt="" coords="765,281,963,307"/>
 <area shape="rect" id="node11" href="$distributed__lagrange_8h.html" title=" " alt="" coords="1075,273,1247,315"/>
@@ -20,6 +21,8 @@
 <area shape="rect" id="node16" href="$apps_2mpi_2stokes_8cc.html" title=" " alt="" coords="1548,370,1695,397"/>
 <area shape="rect" id="node19" href="$source_2pdes_2serial_2poisson_8cc.html" title=" " alt="" coords="1625,273,1765,315"/>
 <area shape="rect" id="node20" href="$apps_2serial_2poisson_8cc.html" title=" " alt="" coords="1789,281,1955,307"/>
-<area shape="rect" id="node22" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="1979,273,2139,315"/>
-<area shape="rect" id="node23" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2163,273,2312,315"/>
+<area shape="rect" id="node22" href="$source_2pdes_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="1979,273,2192,315"/>
+<area shape="rect" id="node23" href="$apps_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="2217,273,2375,315"/>
+<area shape="rect" id="node25" href="$source_2pdes_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2400,273,2560,315"/>
+<area shape="rect" id="node26" href="$apps_2serial_2reduced__lagrange_8cc.html" title=" " alt="" coords="2584,273,2733,315"/>
 </map>
