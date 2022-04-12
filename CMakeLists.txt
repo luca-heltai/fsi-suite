@@ -22,6 +22,14 @@ else()
 MESSAGE("-- DEAL_II_WITH_CGAL = OFF")
 ENDIF(CGAL_FOUND)
 
+# ParMoonolith
+find_package(ParMoonolith HINTS /usr/local/lib/cmake)
+if(ParMoonolith_FOUND)
+ADD_COMPILE_DEFINITIONS(DEAL_II_WITH_PARMOONOLITH)
+MESSAGE("-- DEAL_II_WITH_PARMOONOLITH = ON")
+else()
+MESSAGE("-- DEAL_II_WITH_PARMOONOLITH = OFF")
+ENDIF(ParMoonolith_FOUND)
 
 # Gather files, libraries, and apps
 file(GLOB LIB_SOURCES source/*.cc source/*/*.cc source/*/*/*.cc)
@@ -54,6 +62,11 @@ FOREACH(_build_type ${_d2_build_types})
       if(CGAL_FOUND)
       target_link_libraries(${_lib} CGAL::CGAL)
       endif()
+
+      if(ParMoonolith_FOUND)
+      target_link_libraries(${_lib} ParMoonolith::par_moonolith)
+      endif()
+
       DEAL_II_SETUP_TARGET(${_lib} ${_BUILD_TYPE})
       INSTALL(TARGETS ${_lib})
       SET(TEST_LIBRARIES_${_BUILD_TYPE} ${_lib})
