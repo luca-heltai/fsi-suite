@@ -7,9 +7,9 @@ subsection Space
     set Arguments                 = 0: 1: false
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 4
+    set Initial grid refinement   = 5
     subsection Refinement
-      set Number of refinement cycles = 5
+      set Number of refinement cycles = 3
       subsection Marking strategy
         set Refinement strategy                    = global
         set Refinement parameter                   = 0.3
@@ -26,24 +26,26 @@ subsection Space
   end
   subsection Solver
     set Solver name            = cg
-    set Solver control type    = reduction
+    set Solver control type    = tolerance
     set Maximum iterations     = 1000
     set Consecutive iterations = 2
     set Absolute tolerance     = 1e-12
-    set Relative tolerance     = 1e-08
+    set Relative tolerance     = 1e-06
     set Log history            = false
     set Log result             = false
     subsection AMG preconditioner
-      set Elliptic              = true
-      set High Order Elements   = false
-      set Number of cycles      = 1
-      set w-cycle               = false
-      set Aggregation threshold = 0.0001
-      set Smoother sweeps       = 2
-      set Smoother overlap      = 0
-      set Output details        = false
-      set Smoother type         = Chebyshev
-      set Coarse type           = Amesos-KLU
+      set Symmetric operator               = false
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = false
+      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
     end
   end
   subsection Functions
@@ -73,19 +75,19 @@ subsection Space
     set Output format          = vtu
     set Subdivisions           = 0
     set Write high order cells = true
-    set Curved cells region    = curved_inner_cells
+    set Curved cells region    = no_curved_cells| curved_inner_cells
   end
 end
 subsection Embedded
-  set Finite element space (w) = FESystem[FE_DGQ(0)^1]
-  set n_threads                = -1
+  set Finite element space (w) = FESystem[FE_Q(1)^1]
+  set n_threads                = 1
   set verbosity                = 4
   subsection Grid
     set Input name                = hyper_sphere
-    set Arguments                 = 0.3, 0.3 : 0.2
+    set Arguments                 = 0.3, 0.3: 0.2
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 0
+    set Initial grid refinement   = 1
     subsection Refinement
       set Number of refinement cycles = 1
       subsection Marking strategy
@@ -103,36 +105,38 @@ subsection Embedded
     end
   end
   subsection Solver
-    set Solver name            = minres
-    set Solver control type    = reduction
+    set Solver name            = cg
+    set Solver control type    = tolerance
     set Maximum iterations     = 1000
     set Consecutive iterations = 2
     set Absolute tolerance     = 1e-12
-    set Relative tolerance     = 1e-08
+    set Relative tolerance     = 1e-06
     set Log history            = false
     set Log result             = true
     subsection AMG preconditioner
-      set Elliptic              = true
-      set High Order Elements   = false
-      set Number of cycles      = 1
-      set w-cycle               = false
-      set Aggregation threshold = 0.0001
-      set Smoother sweeps       = 2
-      set Smoother overlap      = 0
-      set Output details        = false
-      set Smoother type         = Chebyshev
-      set Coarse type           = Amesos-KLU
+      set Symmetric operator               = false
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = false
+      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
     end
   end
   subsection Functions
     set Forcing term   = -ln(.2)
-    set Exact solution = 1.0/0.2
+    set Exact solution = 1/0.2
   end
   subsection Boundary conditions
-    set Boundary id sets (w)         = 
-    set Selected components (w)      = 
-    set Boundary condition types (w) = 
-    set Expressions (w)              = 
+    set Boundary id sets (w)         = -1
+    set Selected components (w)      = all
+    set Boundary condition types (w) = dirichlet
+    set Expressions (w)              = 0
   end
   subsection Error
     set Enable computation of the errors = true
@@ -145,7 +149,7 @@ subsection Embedded
     set Rate mode                        = reduction_rate_log2
   end
   subsection Output
-    set Problem base name      = distributed_lagrange_output/embedded
+    set Problem base name      = solution
     set Output partitioning    = true
     set Output material ids    = true
     set Output format          = vtu
@@ -171,8 +175,7 @@ subsection Mass solver
   set Absolute tolerance     = 1e-12
   set Relative tolerance     = 1e-06
   set Log history            = false
-  set Log result             = false
+  set Log result             = true
 end
 subsection Distributed Lagrange
-  set Use direct solver = true
 end

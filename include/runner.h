@@ -288,32 +288,36 @@ namespace Runner
  * Body of the main function for a program that runs a simulation in dimension
  * dim only using the ParameterAcceptor class, dimensions 1, 2, and 3.
  */
-#define RUNNER_DIM(Class, argc, argv)                                          \
-  try                                                                          \
-    {                                                                          \
-      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
-      const auto [dim, spacedim, in_file, out_file] =                          \
-        Runner::get_dimensions_and_parameter_files(argv);                      \
-      RUN_DIM(Class, dim, spacedim, in_file, out_file)                         \
-      else AssertThrow(false,                                                  \
-                       dealii::ExcImpossibleInDimSpacedim(dim, spacedim));     \
-    }                                                                          \
+#define RUNNER_DIM(Class, argc, argv)                                      \
+  try                                                                      \
+    {                                                                      \
+      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc,    \
+                                                                  argv,    \
+                                                                  1);      \
+      const auto [dim, spacedim, in_file, out_file] =                      \
+        Runner::get_dimensions_and_parameter_files(argv);                  \
+      RUN_DIM(Class, dim, spacedim, in_file, out_file)                     \
+      else AssertThrow(false,                                              \
+                       dealii::ExcImpossibleInDimSpacedim(dim, spacedim)); \
+    }                                                                      \
   STANDARD_CATCH()
 
 /**
  * Body of the main function for a program that runs a simulation in dimension
  * dim only using the ParameterAcceptor class, dimensions 1, 2, and 3.
  */
-#define RUNNER_DIM_NO_ONE(Class, argc, argv)                                   \
-  try                                                                          \
-    {                                                                          \
-      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
-      const auto [dim, spacedim, in_file, out_file] =                          \
-        Runner::get_dimensions_and_parameter_files(argv);                      \
-      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \
-      else AssertThrow(false,                                                  \
-                       dealii::ExcImpossibleInDimSpacedim(dim, spacedim));     \
-    }                                                                          \
+#define RUNNER_DIM_NO_ONE(Class, argc, argv)                               \
+  try                                                                      \
+    {                                                                      \
+      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc,    \
+                                                                  argv,    \
+                                                                  1);      \
+      const auto [dim, spacedim, in_file, out_file] =                      \
+        Runner::get_dimensions_and_parameter_files(argv);                  \
+      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)              \
+      else AssertThrow(false,                                              \
+                       dealii::ExcImpossibleInDimSpacedim(dim, spacedim)); \
+    }                                                                      \
   STANDARD_CATCH()
 
 
@@ -321,22 +325,24 @@ namespace Runner
  * Body of the main function for a program that runs a simulation in dimension
  * dim only using the ParameterAcceptor class, dimensions 1, 2, and 3.
  */
-#define RUNNER(Class, argc, argv)                                              \
-  try                                                                          \
-    {                                                                          \
-      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
-      const auto [dim, spacedim, in_file, out_file] =                          \
-        Runner::get_dimensions_and_parameter_files(argv);                      \
-      RUN_DIM(Class, dim, spacedim, in_file, out_file)                         \
-      else RUN_CODIM(                                                          \
-        Class,                                                                 \
-        dim,                                                                   \
-        spacedim,                                                              \
-        in_file,                                                               \
-        out_file) else AssertThrow(false,                                      \
-                                   dealii::ExcImpossibleInDimSpacedim(         \
-                                     dim, spacedim));                          \
-    }                                                                          \
+#define RUNNER(Class, argc, argv)                                       \
+  try                                                                   \
+    {                                                                   \
+      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, \
+                                                                  argv, \
+                                                                  1);   \
+      const auto [dim, spacedim, in_file, out_file] =                   \
+        Runner::get_dimensions_and_parameter_files(argv);               \
+      RUN_DIM(Class, dim, spacedim, in_file, out_file)                  \
+      else RUN_CODIM(                                                   \
+        Class,                                                          \
+        dim,                                                            \
+        spacedim,                                                       \
+        in_file,                                                        \
+        out_file) else AssertThrow(false,                               \
+                                   dealii::ExcImpossibleInDimSpacedim(  \
+                                     dim, spacedim));                   \
+    }                                                                   \
   STANDARD_CATCH()
 
 
@@ -345,22 +351,24 @@ namespace Runner
  * two or three using the ParameterAcceptor class. Not instantiated for
  * dimension one.
  */
-#define RUNNER_NO_ONE(Class, argc, argv)                                       \
-  try                                                                          \
-    {                                                                          \
-      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
-      const auto [dim, spacedim, in_file, out_file] =                          \
-        Runner::get_dimensions_and_parameter_files(argv);                      \
-      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \
-      else RUN_CODIM_NO_ONE(                                                   \
-        Class,                                                                 \
-        dim,                                                                   \
-        spacedim,                                                              \
-        in_file,                                                               \
-        out_file) else AssertThrow(false,                                      \
-                                   dealii::ExcImpossibleInDimSpacedim(         \
-                                     dim, spacedim));                          \
-    }                                                                          \
+#define RUNNER_NO_ONE(Class, argc, argv)                                \
+  try                                                                   \
+    {                                                                   \
+      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, \
+                                                                  argv, \
+                                                                  1);   \
+      const auto [dim, spacedim, in_file, out_file] =                   \
+        Runner::get_dimensions_and_parameter_files(argv);               \
+      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)           \
+      else RUN_CODIM_NO_ONE(                                            \
+        Class,                                                          \
+        dim,                                                            \
+        spacedim,                                                       \
+        in_file,                                                        \
+        out_file) else AssertThrow(false,                               \
+                                   dealii::ExcImpossibleInDimSpacedim(  \
+                                     dim, spacedim));                   \
+    }                                                                   \
   STANDARD_CATCH()
 
 
@@ -370,21 +378,23 @@ namespace Runner
  * two or three and codimension one or zero using the ParameterAcceptor class.
  * Not instantiated for dimensions one/one.
  */
-#define RUNNER_CODIM(Class, argc, argv)                                        \
-  try                                                                          \
-    {                                                                          \
-      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, argv); \
-      const auto [dim, spacedim, in_file, out_file] =                          \
-        Runner::get_dimensions_and_parameter_files(argv);                      \
-      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)                  \
-      else RUN_CODIM(                                                          \
-        Class,                                                                 \
-        dim,                                                                   \
-        spacedim,                                                              \
-        in_file,                                                               \
-        out_file) else AssertThrow(false,                                      \
-                                   dealii::ExcImpossibleInDimSpacedim(         \
-                                     dim, spacedim));                          \
-    }                                                                          \
+#define RUNNER_CODIM(Class, argc, argv)                                 \
+  try                                                                   \
+    {                                                                   \
+      dealii::Utilities::MPI::MPI_InitFinalize mpi_initialization(argc, \
+                                                                  argv, \
+                                                                  1);   \
+      const auto [dim, spacedim, in_file, out_file] =                   \
+        Runner::get_dimensions_and_parameter_files(argv);               \
+      RUN_DIM_NO_ONE(Class, dim, spacedim, in_file, out_file)           \
+      else RUN_CODIM(                                                   \
+        Class,                                                          \
+        dim,                                                            \
+        spacedim,                                                       \
+        in_file,                                                        \
+        out_file) else AssertThrow(false,                               \
+                                   dealii::ExcImpossibleInDimSpacedim(  \
+                                     dim, spacedim));                   \
+    }                                                                   \
   STANDARD_CATCH()
 #endif

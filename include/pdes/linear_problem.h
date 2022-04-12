@@ -337,7 +337,7 @@ namespace PDEs
     /**
      * Number of threads to use for multi-threaded assembly.
      */
-    int number_of_threads = -1;
+    int number_of_threads = 1;
 
     /**
      * Verbosity level of deallog.
@@ -443,6 +443,17 @@ namespace PDEs
      * This is a unique pointer to allow creation via parameter files.
      */
     std::unique_ptr<Mapping<dim, spacedim>> mapping;
+
+    /**
+     * A quadrature used for cell integration.
+     */
+    Quadrature<dim> cell_quadrature;
+
+    /**
+     * A quadrature used for face integration.
+     */
+    Quadrature<dim - 1> face_quadrature;
+
 
     /**
      * Handler of degrees of freedom.

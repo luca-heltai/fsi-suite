@@ -49,48 +49,61 @@
 using namespace dealii;
 namespace PDEs
 {
+  template <int dim, int spacedim = dim, typename LacType = LAC::LAdealii>
+  class DistributedLagrange : public dealii::ParameterAcceptor
+  {
+  public:
+    DistributedLagrange();
+
+    void
+    run();
+
+  private:
+    void
+    generate_grids();
+
+    void
+    setup_system();
+
+    void
+    assemble_system();
+
+    void
+    solve();
+
+    void
+    output_results(const unsigned int cycle);
+
+    bool use_direct_solver;
+
+    PDEs::LinearProblem<spacedim, spacedim, LacType> space;
+    GridTools::Cache<spacedim, spacedim>             space_cache;
+
+    PDEs::LinearProblem<dim, spacedim, LacType> embedded;
+    GridTools::Cache<dim, spacedim>             embedded_cache;
+
+    ParsedTools::NonMatchingCoupling<dim, spacedim> coupling;
+
+    typename LacType::SparsityPattern coupling_sparsity;
+    typename LacType::SparseMatrix    coupling_matrix;
+
+    ParsedLAC::InverseOperator mass_solver;
+  };
+
   namespace Serial
   {
-    template <int dim, int spacedim = dim, typename LacType = LAC::LAdealii>
-    class DistributedLagrange : public dealii::ParameterAcceptor
-    {
-    public:
-      DistributedLagrange();
+    template <int dim, int spacedim = dim>
+    using DistributedLagrange =
+      PDEs::DistributedLagrange<dim, spacedim, LAC::LAdealii>;
+  }
 
-      void
-      run();
+  namespace MPI
+  {
+    template <int dim, int spacedim = dim>
+    using DistributedLagrange =
+      PDEs::DistributedLagrange<dim, spacedim, LAC::LAPETSc>;
+  }
 
-    private:
-      void
-      generate_grids();
-
-      void
-      setup_system();
-
-      void
-      assemble_system();
-
-      void
-      solve();
-
-      void
-      output_results(const unsigned int cycle);
-
-      bool use_direct_solver;
-
-      PDEs::LinearProblem<spacedim, spacedim, LacType> space;
-      GridTools::Cache<spacedim, spacedim>             space_cache;
-
-      PDEs::LinearProblem<dim, spacedim, LacType> embedded;
-      GridTools::Cache<dim, spacedim>             embedded_cache;
-
-      ParsedTools::NonMatchingCoupling<dim, spacedim> coupling;
-
-      typename LacType::SparsityPattern coupling_sparsity;
-      typename LacType::SparseMatrix    coupling_matrix;
-    };
-
-  } // namespace Serial
 } // namespace PDEs
 
 #endif
