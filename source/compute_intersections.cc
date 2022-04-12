@@ -264,7 +264,8 @@ namespace dealii
                      Point<spacedim>(CGAL::to_double(poly.vertex(2).x()),
                                      CGAL::to_double(poly.vertex(2).y()))}};
                   return compute_linear_transformation<dim0, spacedim, 3>(
-                    QGauss<dim0>(degree), vertices_array); // 3 points
+                    QGaussSimplex<dim0>(degree),
+                    vertices_array); // 3 points => use Quadrature for simplices
                 }
               else if (size_poly > 4)
                 {
@@ -282,7 +283,7 @@ namespace dealii
                   for (Face_handle f : cdt.finite_face_handles())
                     {
                       if (f->info().in_domain() &&
-                          CGAL::to_double(cdt.triangle(f).area()) > 1e-10)
+                          CGAL::to_double(cdt.triangle(f).area()) > 1e-6)
                         {
                           for (unsigned int i = 0; i < 3; ++i)
                             {
@@ -296,8 +297,10 @@ namespace dealii
                           const auto &linear_transf =
                             compute_linear_transformation<dim0, spacedim, 3>(
                               QGaussSimplex<dim0>(degree), vertices);
-                          collection.first  = linear_transf.get_points();
-                          collection.second = linear_transf.get_weights();
+                          for (const auto &pts : linear_transf.get_points())
+                            collection.first.push_back(pts);
+                          for (const auto &wts : linear_transf.get_weights())
+                            collection.second.push_back(wts);
                         }
                     }
 
@@ -527,11 +530,32 @@ namespace dealii
                          const Mapping<3, 3> &,
                          const Mapping<3, 3> &);
 
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
+                 typename dealii::Triangulation<1, 1>::cell_iterator,
+                 Quadrature<1>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<1, 1> &space_cache,
+      const GridTools::Cache<1, 1> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
+
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                 typename dealii::Triangulation<1, 3>::cell_iterator,
+                 Quadrature<3>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<3, 3> &space_cache,
+      const GridTools::Cache<1, 3> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
 
 
-    template std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
-                                    typename Triangulation<1, 2>::cell_iterator,
-                                    Quadrature<2>>>
+
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+                 typename dealii::Triangulation<1, 2>::cell_iterator,
+                 Quadrature<2>>>
     NonMatching::compute_intersection(
       const GridTools::Cache<2, 2> &space_cache,
       const GridTools::Cache<1, 2> &immersed_cache,

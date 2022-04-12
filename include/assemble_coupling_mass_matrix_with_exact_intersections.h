@@ -54,7 +54,7 @@ namespace dealii
      */
     template <int dim0, int dim1, int spacedim, typename Matrix>
     void
-    assemble_coupling_exact(
+    assemble_coupling_mass_matrix_with_exact_intersections(
       const dealii::DoFHandler<dim0, spacedim> &,
       const dealii::DoFHandler<dim1, spacedim> &,
       const std::vector<std::tuple<

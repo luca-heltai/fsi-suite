@@ -211,11 +211,40 @@ namespace dealii
     template void
     create_coupling_sparsity_pattern_with_exact_intersections(
       const std::vector<
+        std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
+                   typename dealii::Triangulation<1, 1>::cell_iterator,
+                   dealii::Quadrature<1>>> &intersections_info,
+      const DoFHandler<1, 1> &              space_dh,
+      const DoFHandler<1, 1> &              immersed_dh,
+      DynamicSparsityPattern &              sparsity,
+      const AffineConstraints<double> &     constraints,
+      const ComponentMask &                 space_comps,
+      const ComponentMask &                 immersed_comps,
+      const AffineConstraints<double> &     immersed_constraint);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections(
+      const std::vector<
         std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
                    typename dealii::Triangulation<1, 2>::cell_iterator,
                    dealii::Quadrature<2>>> &intersections_info,
       const DoFHandler<2, 2> &              space_dh,
       const DoFHandler<1, 2> &              immersed_dh,
+      DynamicSparsityPattern &              sparsity,
+      const AffineConstraints<double> &     constraints,
+      const ComponentMask &                 space_comps,
+      const ComponentMask &                 immersed_comps,
+      const AffineConstraints<double> &     immersed_constraint);
+
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections(
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                   typename dealii::Triangulation<1, 3>::cell_iterator,
+                   dealii::Quadrature<3>>> &intersections_info,
+      const DoFHandler<3, 3> &              space_dh,
+      const DoFHandler<1, 3> &              immersed_dh,
       DynamicSparsityPattern &              sparsity,
       const AffineConstraints<double> &     constraints,
       const ComponentMask &                 space_comps,

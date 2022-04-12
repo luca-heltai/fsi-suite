@@ -18,6 +18,9 @@
 
 #include <boost/geometry.hpp>
 
+#include "assemble_coupling_mass_matrix_with_exact_intersections.h"
+#include "compute_intersections.h"
+#include "create_coupling_sparsity_pattern_with_exact_intersections.h"
 #include "lac.h"
 #include "parsed_tools/enum.h"
 
@@ -130,6 +133,27 @@ namespace ParsedTools
                                                       embedded_mask,
                                                       embedded_mapping,
                                                       *embedded_constraints);
+        return dsp;
+      }
+    else if (coupling_type == CouplingType::exact_L2)
+      {
+        auto dsp = std::make_unique<dealii::DynamicSparsityPattern>(
+          space_dh->n_dofs(), embedded_dh->n_dofs());
+
+
+        const auto &cells_and_quads =
+          NonMatching::compute_intersection(*space_cache,
+                                            *embedded_cache,
+                                            this->quadrature_order);
+        NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
+          cells_and_quads,
+          *space_dh,
+          *embedded_dh,
+          *dsp,
+          *space_constraints,
+          space_mask,
+          embedded_mask,
+          *embedded_constraints);
         return dsp;
       }
     else

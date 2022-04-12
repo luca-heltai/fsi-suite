@@ -29,6 +29,9 @@
 
 #include <deal.II/non_matching/coupling.h>
 
+#include "assemble_coupling_mass_matrix_with_exact_intersections.h"
+#include "compute_intersections.h"
+
 namespace ParsedTools
 {
   /**
@@ -56,15 +59,15 @@ namespace ParsedTools
                 //                            // formulas on the embedded domain
                 //                            to drive the
                 //                            // projection.
-                //   exact_L2 = 1 << 3,       //< Exact L2-projection, using
-                //   quadratures on the
-                //                            // intersection to drive the
-                //                            projection
-                //   exact_H1 = 1 << 4,       //< Exact H1-projection, using
-                //   quadratures on the
-                //                            // intersection to drive the
-                //                            projection
-                //
+      exact_L2 = 1 << 3, //< Exact L2-projection, using
+                         // quadratures on the
+                         // intersection to drive the
+                         //  projection
+                         //   exact_H1 = 1 << 4,       //< Exact H1-projection,
+                         //   using quadratures on the
+                         //                            // intersection to drive
+                         //                            the projection
+                         //
     };
 
     /**
@@ -272,17 +275,40 @@ namespace ParsedTools
   void
   NonMatchingCoupling<dim, spacedim>::assemble_matrix(MatrixType &matrix) const
   {
+    const auto &space_mapping    = space_cache->get_mapping();
     const auto &embedded_mapping = embedded_cache->get_mapping();
-    dealii::NonMatching::create_coupling_mass_matrix(*space_cache,
-                                                     *space_dh,
-                                                     *embedded_dh,
-                                                     embedded_quadrature,
-                                                     matrix,
-                                                     *space_constraints,
-                                                     space_mask,
-                                                     embedded_mask,
-                                                     embedded_mapping,
-                                                     *embedded_constraints);
+    if (coupling_type == CouplingType::approximate_L2)
+      {
+        dealii::NonMatching::create_coupling_mass_matrix(*space_cache,
+                                                         *space_dh,
+                                                         *embedded_dh,
+                                                         embedded_quadrature,
+                                                         matrix,
+                                                         *space_constraints,
+                                                         space_mask,
+                                                         embedded_mask,
+                                                         embedded_mapping,
+                                                         *embedded_constraints);
+      }
+    else if (coupling_type == CouplingType::exact_L2)
+      {
+        const double tol            = 1e-9;
+        const auto &cells_and_quads = dealii::NonMatching::compute_intersection(
+          *space_cache, *embedded_cache, this->quadrature_order, tol);
+
+        dealii::NonMatching::
+          assemble_coupling_mass_matrix_with_exact_intersections(
+            *space_dh,
+            *embedded_dh,
+            cells_and_quads,
+            matrix,
+            *space_constraints,
+            space_mask,
+            embedded_mask,
+            space_mapping,
+            embedded_mapping,
+            *embedded_constraints);
+      }
   }
 #endif
 
