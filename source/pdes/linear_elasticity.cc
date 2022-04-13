@@ -26,8 +26,7 @@ namespace PDEs
   template <int dim, int spacedim, class LacType>
   LinearElasticity<dim, spacedim, LacType>::LinearElasticity()
     : LinearProblem<dim, spacedim, LacType>(
-        ParsedTools::Components::join(std::vector<std::string>(spacedim, "u"),
-                                      ","),
+        ParsedTools::Components::blocks_to_names({"W"}, {spacedim}),
         "LinearElasticity")
     , lambda("/LinearElasticity/Lame coefficients", "1.0", "lambda")
     , mu("/LinearElasticity/Lame coefficients", "1.0", "mu")
