@@ -55,6 +55,8 @@
 #include <deal.II/numerics/matrix_tools.h>
 #include <deal.II/numerics/vector_tools.h>
 
+#include <deal.II/sundials/arkode.h>
+
 #include <boost/signals2.hpp>
 
 #include <fstream>
@@ -170,6 +172,8 @@ namespace PDEs
      * Block matrix type.
      */
     using BlockMatrixType = typename LacType::BlockSparseMatrix;
+
+    using ARKode = typename SUNDIALS::ARKode<typename LacType::BlockVector>;
 
     /**
      * Assemble the local system matrix on `cell`, using `scratch` for
@@ -692,6 +696,18 @@ namespace PDEs
      * How often to output the solution.
      */
     unsigned int output_frequency = 1;
+
+    /**
+     * Configuration used to setup transient simulations.
+     */
+    ParsedTools::Proxy<
+      typename SUNDIALS::ARKode<typename LacType::BlockVector>::AdditionalData>
+      ark_ode_data;
+
+    /**
+     * Signal that is triggered after creating the arkode object.
+     */
+    boost::signals2::signal<void(ARKode &)> setup_arkode_call_back;
   };
 } // namespace PDEs
 #endif

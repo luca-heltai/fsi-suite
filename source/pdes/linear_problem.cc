@@ -81,6 +81,7 @@ namespace PDEs
                     ParsedTools::Components::n_blocks(component_names),
                     {VectorTools::H1_norm, VectorTools::L2_norm}))
     , data_out(section_name + "/Output")
+    , ark_ode_data(section_name + "/ARKode")
   {
     add_parameter("n_threads",
                   number_of_threads,
@@ -91,11 +92,13 @@ namespace PDEs
     add_parameter("evolution type",
                   evolution_type,
                   "The type of time evolution to use in the linear problem.");
+    enter_subsection("Quasi-static");
     add_parameter("start time", start_time, "Start time of the simulation");
     add_parameter("end time", end_time, "End time of the simulation");
     add_parameter("initial time step",
                   desired_start_step_size,
                   "Initial time step of the simulation");
+    leave_subsection();
 
     advance_time_call_back.connect(
       [&](const auto &time, const auto &, const auto &) {
@@ -103,6 +106,20 @@ namespace PDEs
         forcing_term.set_time(time);
         exact_solution.set_time(time);
       });
+
+    setup_arkode_call_back.connect([&](auto &arkode) {
+      arkode.output_step =
+        [&](const double, const auto &vector, const auto step) {
+          locally_relevant_solution = vector;
+          output_results(step);
+        };
+
+      arkode.implicit_function = [&](const double, const auto &y, auto &res) {
+        matrix.vmult(res, y);
+        res -= rhs;
+        return 0;
+      };
+    });
   }
 
 
@@ -443,8 +460,22 @@ namespace PDEs
   void
   LinearProblem<dim, spacedim, LacType>::run_transient()
   {
-    deallog << "Solving transient problem" << std::endl;
     print_system_info();
+    deallog << "Solving transient problem" << std::endl;
+    grid_generator.generate(triangulation);
+    setup_system();
+    assemble_system();
+
+    ARKode arkode(ark_ode_data, mpi_communicator);
+    setup_arkode_call_back(arkode);
+
+    // Just start the solver.
+    auto res = arkode.solve_ode(solution);
+
+    // Check the result.
+    AssertThrow(res != 0,
+                ExcMessage("ARKode solver failed with error code " +
+                           std::to_string(res)));
   }
 
 
