@@ -156,8 +156,8 @@ namespace PDEs
         const auto n_modes = std::count_if(constant_modes[0].begin(),
                                            constant_modes[0].end(),
                                            [](const bool &b) { return b; });
-        this->pcout << "Constant modes: " << n_modes << "/"
-                    << constant_modes[0].size() << std::endl;
+        deallog << "Constant modes: " << n_modes << "/"
+                << constant_modes[0].size() << std::endl;
       }
     // auto AA = block_operator<BVec>(m);
     // AA.block(1, 1) *= 0;

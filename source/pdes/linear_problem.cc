@@ -16,6 +16,7 @@
 
 #include "pdes/linear_problem.h"
 
+#include <deal.II/base/discrete_time.h>
 #include <deal.II/base/work_stream.h>
 
 #include <deal.II/dofs/dof_renumbering.h>
@@ -45,8 +46,10 @@ namespace PDEs
     , mpi_communicator(MPI_COMM_WORLD)
     , mpi_rank(Utilities::MPI::this_mpi_process(mpi_communicator))
     , mpi_size(Utilities::MPI::n_mpi_processes(mpi_communicator))
-    , pcout(std::cout, mpi_rank == 0)
-    , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
+    , timer(deallog.get_console(),
+            TimerOutput::summary,
+            TimerOutput::cpu_and_wall_times)
+    , evolution_type(EvolutionType::steady_state)
     , grid_generator(section_name + "/Grid")
     , grid_refinement(section_name + "/Grid/Refinement")
     , triangulation(mpi_communicator)
@@ -85,6 +88,21 @@ namespace PDEs
     add_parameter("verbosity",
                   verbosity_level,
                   "Verbosity level used with deallog");
+    add_parameter("evolution type",
+                  evolution_type,
+                  "The type of time evolution to use in the linear problem.");
+    add_parameter("start time", start_time, "Start time of the simulation");
+    add_parameter("end time", end_time, "End time of the simulation");
+    add_parameter("initial time step",
+                  desired_start_step_size,
+                  "Initial time step of the simulation");
+
+    advance_time_call_back.connect(
+      [&](const auto &time, const auto &, const auto &) {
+        boundary_conditions.set_time(time);
+        forcing_term.set_time(time);
+        exact_solution.set_time(time);
+      });
   }
 
 
@@ -94,7 +112,7 @@ namespace PDEs
   LinearProblem<dim, spacedim, LacType>::setup_system()
   {
     TimerOutput::Scope timer_section(timer, "setup_system");
-    pcout << "System setup" << std::endl;
+    deallog << "System setup" << std::endl;
     const auto ref_cells = triangulation.get_reference_cells();
     AssertThrow(
       ref_cells.size() == 1,
@@ -113,7 +131,7 @@ namespace PDEs
     // this code we actually use a linear mapping, independently on the order
     // of the finite element space.
     mapping = get_default_linear_mapping(triangulation).clone();
-    pcout << "Number of dofs " << dof_handler.n_dofs() << std::endl;
+    deallog << "Number of dofs " << dof_handler.n_dofs() << std::endl;
 
     const auto blocks =
       ParsedTools::Components::block_indices(component_names, component_names);
@@ -130,8 +148,8 @@ namespace PDEs
     locally_relevant_dofs =
       non_blocked_locally_relevant_dofs.split_by_block(dofs_per_block);
 
-    pcout << "Number of degrees of freedom: " << dof_handler.n_dofs() << " ("
-          << Patterns::Tools::to_string(dofs_per_block) << ")" << std::endl;
+    deallog << "Number of degrees of freedom: " << dof_handler.n_dofs() << " ("
+            << Patterns::Tools::to_string(dofs_per_block) << ")" << std::endl;
 
     constraints.clear();
     constraints.reinit(non_blocked_locally_relevant_dofs);
@@ -355,13 +373,13 @@ namespace PDEs
       MultithreadInfo::set_thread_limit(
         static_cast<unsigned int>(number_of_threads));
 
-    pcout << "Running " << problem_name << std::endl
-          << "Number of cores         : " << MultithreadInfo::n_cores()
-          << std::endl
-          << "Number of threads       : " << MultithreadInfo::n_threads()
-          << std::endl
-          << "Number of MPI processes : " << mpi_size << std::endl
-          << "MPI rank of this process: " << mpi_rank << std::endl;
+    deallog << "Running " << problem_name << std::endl
+            << "Number of cores         : " << MultithreadInfo::n_cores()
+            << std::endl
+            << "Number of threads       : " << MultithreadInfo::n_threads()
+            << std::endl
+            << "Number of MPI processes : " << mpi_size << std::endl
+            << "MPI rank of this process: " << mpi_rank << std::endl;
   }
 
 
@@ -371,10 +389,76 @@ namespace PDEs
   LinearProblem<dim, spacedim, LacType>::run()
   {
     print_system_info();
+    switch (evolution_type)
+      {
+        case EvolutionType::steady_state:
+          run_steady_state();
+          break;
+        case EvolutionType::quasi_static:
+          run_quasi_static();
+          break;
+        case EvolutionType::transient:
+          run_transient();
+          break;
+        default:
+          Assert(false, ExcNotImplemented());
+      }
+  }
+
+
+
+  template <int dim, int spacedim, class LacType>
+  void
+  LinearProblem<dim, spacedim, LacType>::run_quasi_static()
+  {
+    print_system_info();
+    deallog << "Solving quasi-static problem" << std::endl;
+    grid_generator.generate(triangulation);
+    DiscreteTime time(start_time, end_time, desired_start_step_size);
+    unsigned int output_cycle = 0;
+    while (time.is_at_end() == false)
+      {
+        const auto cycle = time.get_step_number();
+        const auto t     = time.get_next_time();
+        const auto dt    = time.get_next_step_size();
+
+        deallog << "Timestep " << cycle << ", time = " << t
+                << " , step size = " << dt << std::endl;
+
+        setup_system();
+        assemble_system();
+        solve();
+        if (cycle % output_frequency == 0)
+          output_results(output_cycle++);
+        time.advance_time();
+        advance_time_call_back(time.get_current_time(),
+                               time.get_previous_step_size(),
+                               cycle);
+      }
+  }
+
+
+
+  template <int dim, int spacedim, class LacType>
+  void
+  LinearProblem<dim, spacedim, LacType>::run_transient()
+  {
+    deallog << "Solving transient problem" << std::endl;
+    print_system_info();
+  }
+
+
+
+  template <int dim, int spacedim, class LacType>
+  void
+  LinearProblem<dim, spacedim, LacType>::run_steady_state()
+  {
+    print_system_info();
+    deallog << "Solving steady state problem" << std::endl;
     grid_generator.generate(triangulation);
     for (const auto &cycle : grid_refinement.get_refinement_cycles())
       {
-        pcout << "Cycle " << cycle << std::endl;
+        deallog << "Cycle " << cycle << std::endl;
         setup_system();
         assemble_system();
         solve();
@@ -386,7 +470,7 @@ namespace PDEs
             refine();
           }
       }
-    if (pcout.is_active())
+    if (this->mpi_rank == 0)
       error_table.output_table(std::cout);
   }
 

@@ -177,9 +177,9 @@ namespace PDEs
                           MeshWorker::assemble_boundary_faces,
                           face_integrator);
 
-    this->pcout << "Forces: " << std::endl;
+    deallog << "Forces: " << std::endl;
     for (const auto &[id, force] : forces)
-      this->pcout << "ID " << id << ": " << force << std::endl;
+      deallog << "ID " << id << ": " << force << std::endl;
   }
 
 

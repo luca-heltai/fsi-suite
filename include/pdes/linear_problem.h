@@ -83,6 +83,17 @@ namespace LA
 namespace PDEs
 {
   using namespace dealii;
+
+  /**
+   * Describe the dependencies of the linear problem w.r.t. time.
+   */
+  enum class EvolutionType
+  {
+    steady_state = 1 << 0, //< Steady state problem
+    quasi_static = 1 << 1, //< Quasi static problem
+    transient    = 1 << 2, //< Transient problem
+  };
+
   /**
    * Construct a LinearProblem.
    */
@@ -106,6 +117,24 @@ namespace PDEs
      */
     virtual void
     run();
+
+    /**
+     * Solve a steady state problem.
+     */
+    void
+    run_steady_state();
+
+    /**
+     * Solve a quasi static problem.
+     */
+    void
+    run_quasi_static();
+
+    /**
+     * Solve a dynamic problem.
+     */
+    void
+    run_transient();
 
     /**
      * Make sure we can run also in 1d, where parallel distributed
@@ -249,6 +278,15 @@ namespace PDEs
       add_data_vector;
 
     /**
+     * Connect to this signal to receive time information.
+     */
+    boost::signals2::signal<void(const double &      time,
+                                 const double &      time_step,
+                                 const unsigned int &time_step_number)>
+      advance_time_call_back;
+
+
+    /**
      * Comma seperated names of components.
      */
     const std::string component_names;
@@ -294,14 +332,14 @@ namespace PDEs
     unsigned int verbosity_level = 4;
 
     /**
-     * Output only on processor zero.
-     */
-    ConditionalOStream pcout;
-
-    /**
      * Timing information.
      */
     mutable TimerOutput timer;
+
+    /**
+     * Describe the type of time evolution of the problem.
+     */
+    EvolutionType evolution_type;
 
     /**
      * A wrapper around GridIn, GridOut, and
@@ -634,6 +672,26 @@ namespace PDEs
      * @image html poisson_solution.png
      */
     mutable ParsedTools::DataOut<dim, spacedim> data_out;
+
+    /**
+     * Initial time for transient and quasi stati simulations.
+     */
+    double start_time = 0.0;
+
+    /**
+     * Final time for transient and quasi-static simulations.
+     */
+    double end_time = 1.0;
+
+    /**
+     * Initial step size for transient and quasi-static simulations.
+     */
+    double desired_start_step_size = .0625;
+
+    /**
+     * How often to output the solution.
+     */
+    unsigned int output_frequency = 1;
   };
 } // namespace PDEs
 #endif
