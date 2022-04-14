@@ -14,7 +14,7 @@
 #  include <iostream>
 #  include <sstream>
 
-#  include "deal_moon_conversion.hpp"
+#  include "deal_moon_conversion.h"
 #  include "dim_spacedim_tester.h"
 #  include "moonolith_convex_decomposition.hpp"
 #  include "moonolith_intersect_polyhedra.hpp"
