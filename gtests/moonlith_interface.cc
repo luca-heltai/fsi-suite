@@ -26,6 +26,24 @@ TYPED_TEST(DimTester, CheckMoonoLithConversions)
 }
 
 
+
+TYPED_TEST(DimTester, CheckMoonoLithQuadConversions)
+{
+  constexpr auto dim = TestFixture::dim;
+
+  moonolith::Quadrature<Real, dim> ref_quad;
+  const auto                       dealii_quad = to_dealii(ref_quad);
+  const auto                       pts         = dealii_quad.get_points();
+  const auto                       wts         = dealii_quad.get_weights();
+  for (unsigned int i = 0; i < dealii_quad.size(); ++i)
+    {
+      ASSERT_EQ(pts[i], to_dealii(ref_quad.points[i]));
+      ASSERT_EQ(wts[i], ref_quad.weights[i]);
+    }
+}
+
+
+
 TYPED_TEST(DimTester, MoonolithLines)
 {
   constexpr auto dim = TestFixture::dim;
