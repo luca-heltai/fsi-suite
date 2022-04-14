@@ -126,6 +126,10 @@ namespace ParsedLAC
      * Create an inverse operator according to the parameters given in the
      * parameter file.
      *
+     * You can create many solvers using the same call, by specifying different
+     * prefixes each time. If you specify the same prefix, the previous solver
+     * stored with that prefix will be destroied.
+     *
      * @param op The operator to invert.
      * @param preconditioner The preconditioner to use.
      */
@@ -135,7 +139,48 @@ namespace ParsedLAC
               typename Range = Domain>
     dealii::LinearOperator<Domain, Range, Payload>
     operator()(const dealii::LinearOperator<Range, Domain, Payload> &op,
-               const PreconditionerType &prec) const;
+               const PreconditionerType &                            prec,
+               const double       abs_tol = 0.0,
+               const std::string &prefix  = "") const;
+
+    /**
+     * Create a solver. The solver will use all parameters specified in the
+     * parameter file. If abs_tol is non-zero, then a ReductionControl will be
+     * used. You can create many solvers using the same call, by specifying
+     * different prefixes each time.
+     *
+     * If you specify the same prefix, the previous solver stored with that
+     * prefix will be destroied.
+     */
+    template <typename Range,
+              typename Payload =
+                dealii::internal::LinearOperatorImplementation::EmptyPayload,
+              typename Domain = Range,
+              typename MatrixType,
+              typename PreconditionerType>
+    dealii::LinearOperator<Range, Domain, Payload>
+    solver(const MatrixType &        op,
+           const PreconditionerType &prec,
+           const double              abs_tol = 0.0,
+           const std::string &       prefix  = "") const;
+
+
+    /**
+     * Solve using the specified solver, preconditioner, and tolerance. If the
+     * tolerance is non-zero, then a ReductionControl will be used with the
+     * given argument, otherwise the parameter file is used to determine all the
+     * solver and control parameters.
+     */
+    template <typename MatrixType,
+              typename PreconditionerType,
+              typename VectorType>
+    void
+    solve(const MatrixType &        matrix,
+          const PreconditionerType &preconditioner,
+          const VectorType &        src,
+          VectorType &              dst,
+          const double              abs_tol = 0.0) const;
+
 
     /**
      * Get the solver name.
@@ -144,10 +189,21 @@ namespace ParsedLAC
     get_solver_name() const;
 
     /**
-     * Create a new solver control according to the parameters
+     * Create a new solver control according to the parameters. If the user
+     * supplies a @p abs_tol parameter, the generated SolverControl is a
+     * SolverControl with this tolerance.
      */
     std::unique_ptr<dealii::SolverControl>
-    setup_new_solver_control() const;
+    setup_new_solver_control(const double abs_tol = 0.0) const;
+
+    /**
+     * Create a new solver according to the parameters. If the user supplies a
+     * @p abs_tol parameter, the used SolverControl is a SolverControl with
+     * this tolerance.
+     */
+    template <typename Range, typename Payload>
+    std::shared_ptr<dealii::SolverBase<Range>>
+    setup_new_solver(const double abs_tol = 0.0) const;
 
   private:
     /**
@@ -209,25 +265,81 @@ namespace ParsedLAC
   // ============================================================
   // Explicit template instantiation
   // ============================================================
-  template <typename Domain,
-            typename Payload,
+  template <typename MatrixType,
             typename PreconditionerType,
-            typename Range>
-  dealii::LinearOperator<Domain, Range, Payload>
-  InverseOperator::operator()(
-    const dealii::LinearOperator<Range, Domain, Payload> &op,
-    const PreconditionerType &                            prec) const
+            typename VectorType>
+  void
+  InverseOperator::solve(const MatrixType &        matrix,
+                         const PreconditionerType &preconditioner,
+                         const VectorType &        src,
+                         VectorType &              dst,
+                         const double              abs_tol) const
   {
-    control = setup_new_solver_control();
+    control = setup_new_solver_control(abs_tol);
+    if (solver_name == "cg")
+      {
+        dealii::SolverCG<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else if (solver_name == "bicgstab")
+      {
+        dealii::SolverBicgstab<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else if (solver_name == "gmres")
+      {
+        dealii::SolverGMRES<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else if (solver_name == "fgmres")
+      {
+        dealii::SolverFGMRES<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else if (solver_name == "minres")
+      {
+        dealii::SolverMinRes<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else if (solver_name == "qmrs")
+      {
+        dealii::SolverQMRS<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else if (solver_name == "richardson")
+      {
+        dealii::SolverRichardson<VectorType> solver(*control);
+        solver.solve(matrix, dst, src, preconditioner);
+      }
+    else
+      {
+        Assert(false,
+               dealii::ExcInternalError("Solver should not be unknonw."));
+      }
+  }
 
-    // Make sure the solver itself is left around until the object is destroyed
-    // we need a general storage class, since we have no idea what types are
-    // used when calling this function.
+
+  template <typename Range,
+            typename Payload,
+            typename Domain,
+            typename MatrixType,
+            typename PreconditionerType>
+  dealii::LinearOperator<Range, Domain, Payload>
+  InverseOperator::solver(const MatrixType &        op,
+                          const PreconditionerType &prec,
+                          const double              abs_tol,
+                          const std::string &       prefix) const
+  {
+    control = setup_new_solver_control(abs_tol);
+
+    // Make sure the solver itself is left around until the object is
+    // destroyed we need a general storage class, since we have no
+    // idea what types are used when calling this function.
     using SolverType = std::shared_ptr<dealii::SolverBase<Range>>;
-    auto &solver =
-      storage.template get_or_add_object_with_name<SolverType>("solver");
+    auto &solver     = storage.template get_or_add_object_with_name<SolverType>(
+      prefix + "solver");
 
-    dealii::LinearOperator<Domain, Range, Payload> inverse;
+    dealii::LinearOperator<Range, Domain, Payload> inverse;
 
     auto initialize_solver = [&](auto *s) {
       solver.reset(s);
@@ -268,6 +380,22 @@ namespace ParsedLAC
                dealii::ExcInternalError("Solver should not be unknonw."));
       }
     return inverse;
+  }
+
+
+
+  template <typename Domain,
+            typename Payload,
+            typename PreconditionerType,
+            typename Range>
+  dealii::LinearOperator<Domain, Range, Payload>
+  InverseOperator::operator()(
+    const dealii::LinearOperator<Range, Domain, Payload> &op,
+    const PreconditionerType &                            prec,
+    const double                                          abs_tol,
+    const std::string &                                   prefix) const
+  {
+    return solver<Range, Payload>(op, prec, abs_tol, prefix);
   }
 #endif
 } // namespace ParsedLAC
