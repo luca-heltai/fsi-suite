@@ -107,6 +107,11 @@ namespace PDEs
     virtual ~LinearProblem() = default;
 
     /**
+     * Check consistency of the problem.
+     */
+    boost::signals2::signal<void()> check_consistency_call_back;
+
+    /**
      * Main entry point of the problem.
      *
      * The role of this function is simply to call one of run_steady_state(),

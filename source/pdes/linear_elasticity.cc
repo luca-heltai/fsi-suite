@@ -33,6 +33,13 @@ namespace PDEs
     , displacement(0)
   {
     this->output_results_call_back.connect([&]() { postprocess(); });
+    this->check_consistency_call_back.connect([&]() {
+      AssertThrow(
+        this->evolution_type != EvolutionType::transient,
+        ExcMessage(
+          "This code won't produce correct results in transient simulations. "
+          "Run the wave_equation code instead."));
+    });
   }
 
 
