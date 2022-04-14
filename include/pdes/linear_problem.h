@@ -14,8 +14,8 @@
 // ---------------------------------------------------------------------
 
 // Make sure we don't redefine things
-#ifndef base_linear_problem_include_file
-#define base_linear_problem_include_file
+#ifndef pdes_linear_problem_h
+#define pdes_linear_problem_h
 
 #include <deal.II/base/convergence_table.h>
 #include <deal.II/base/function.h>
@@ -63,14 +63,6 @@
 #include <iostream>
 
 #include "lac.h"
-
-#define FORCE_USE_OF_TRILINOS
-
-namespace LA
-{
-  using namespace dealii::LinearAlgebraDealII;
-} // namespace LA
-
 #include "parsed_lac/amg.h"
 #include "parsed_lac/inverse_operator.h"
 #include "parsed_tools/boundary_conditions.h"
@@ -116,6 +108,9 @@ namespace PDEs
 
     /**
      * Main entry point of the problem.
+     *
+     * The role of this function is simply to call one of run_steady_state(),
+     * run_quasi_static() or run_transient().
      */
     virtual void
     run();
@@ -137,6 +132,17 @@ namespace PDEs
      */
     void
     run_transient();
+
+    /**
+     * SUNDIALS time integrator.
+     */
+    using ARKode = typename SUNDIALS::ARKode<typename LacType::BlockVector>;
+
+    /**
+     * Setup the transient problem.
+     */
+    virtual void
+    setup_transient(ARKode &arkode);
 
     /**
      * Make sure we can run also in 1d, where parallel distributed
@@ -172,8 +178,6 @@ namespace PDEs
      * Block matrix type.
      */
     using BlockMatrixType = typename LacType::BlockSparseMatrix;
-
-    using ARKode = typename SUNDIALS::ARKode<typename LacType::BlockVector>;
 
     /**
      * Assemble the local system matrix on `cell`, using `scratch` for
@@ -471,6 +475,11 @@ namespace PDEs
     typename LacType::BlockSparseMatrix matrix;
 
     /**
+     * System matrix.
+     */
+    typename LacType::BlockSparseMatrix mass_matrix;
+
+    /**
      * A read only copy of the solution vector used for output and error
      * estimation.
      */
@@ -504,6 +513,16 @@ namespace PDEs
      * Preconditioner.
      */
     typename LacType::AMG preconditioner;
+
+    /**
+     * Inverse operator for the mass matrix.
+     */
+    ParsedLAC::InverseOperator mass_inverse_operator;
+
+    /**
+     * Preconditioner for the mass matrix.
+     */
+    typename LacType::AMG mass_preconditioner;
 
     /**
      * The actual function to use as a forcing term. This is a wrapper
@@ -546,6 +565,11 @@ namespace PDEs
      * class.
      */
     ParsedTools::Function<spacedim> exact_solution;
+
+    /**
+     * Only used for transient problems.
+     */
+    ParsedTools::Function<spacedim> initial_value;
 
     /**
      * Boundary conditions used in this class.
@@ -705,7 +729,8 @@ namespace PDEs
       ark_ode_data;
 
     /**
-     * Signal that is triggered after creating the arkode object.
+     * Signal that is triggered after creating the arkode object. Only used in
+     * transient simulations.
      */
     boost::signals2::signal<void(ARKode &)> setup_arkode_call_back;
   };

@@ -1,8 +1,8 @@
 subsection Poisson
   set Finite element space (u) = FESystem[FE_Q(1)^1]
-  set n_threads                = 1
+  set n_threads                = -1
   set verbosity                = 4
-  set evolution type           = quasi_static
+  set evolution type           = transient
   subsection Grid
     set Input name                = hyper_cube
     set Arguments                 = 0: 1: false
@@ -10,7 +10,7 @@ subsection Poisson
     set Transform to simplex grid = false
     set Initial grid refinement   = 5
     subsection Refinement
-      set Number of refinement cycles = 4
+      set Number of refinement cycles = 1
       subsection Marking strategy
         set Refinement strategy                    = global
         set Refinement parameter                   = 0.3
@@ -72,8 +72,8 @@ subsection Poisson
     end
   end
   subsection Functions
-    set Forcing term          = 8*PI^2*sin(2*PI*x)*sin(2*PI*y)*sin(2*PI*t)
-    set Exact solution        = sin(2*PI*x)*sin(2*PI*y)*sin(2*PI*t)
+    set Forcing term          = 1
+    set Exact solution        = 0
     set Initial value         = 0
     set Diffusion coefficient = 1
   end
@@ -81,7 +81,7 @@ subsection Poisson
     set Boundary id sets (u)         = -1
     set Selected components (u)      = all
     set Boundary condition types (u) = dirichlet
-    set Expressions (u)              = sin(2*PI*x)*sin(2*PI*y)
+    set Expressions (u)              = 0
   end
   subsection Error
     set Enable computation of the errors = true
@@ -94,9 +94,9 @@ subsection Poisson
     set Rate mode                        = reduction_rate_log2
   end
   subsection Output
-    set Problem base name      = mpi_poisson_output/quasi_static
+    set Problem base name      = mpi_heat_equation/transient
     set Output partitioning    = true
-    set Output material ids    = false
+    set Output material ids    = true
     set Output format          = vtu
     set Subdivisions           = 0
     set Write high order cells = true
@@ -105,20 +105,20 @@ subsection Poisson
   subsection ARKode
     set Initial time                      = 0
     set Final time                        = 1
-    set Time interval between each output = 0.1
+    set Time interval between each output = 0.01
     subsection Running parameters
       set Initial step size                      = 0.01
       set Minimum step size                      = 1e-06
       set Maximum order of ARK                   = 5
       set Maximum number of nonlinear iterations = 10
-      set Implicit function is linear            = false
-      set Implicit function is time independent  = false
-      set Mass is time independent               = false
+      set Implicit function is linear            = true
+      set Implicit function is time independent  = true
+      set Mass is time independent               = true
       set Anderson-acceleration subspace         = 3
     end
     subsection Error control
-      set Absolute error tolerance = 1e-06
-      set Relative error tolerance = 1e-05
+      set Absolute error tolerance = 1e-12
+      set Relative error tolerance = 1e-8
     end
   end
   subsection Quasi-static
