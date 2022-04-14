@@ -129,7 +129,7 @@ mark_domains(CDT &cdt)
 
 using namespace dealii;
 
-TEST(DimTester, BooleanOperationsPolygons)
+TEST(CGAL, BooleanOperationsPolygons)
 {
   constexpr int      dim0     = 2;
   constexpr int      dim1     = 2;
