@@ -383,7 +383,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 : <a class="el" href="class_parsed_tools_1_1_symbolic_function.html#a8cc5af8aeb1dbbff75bf38d6d382f8a7">ParsedTools::SymbolicFunction&lt; dim &gt;</a>
 </li>
 <li>operator()()
-: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1afbf077c1c6b380ce5c5230dd2ef152">ParsedLAC::InverseOperator</a>
+: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a98dfbf48270cb6d343a5addbc89c783e">ParsedLAC::InverseOperator</a>
 , <a class="el" href="class_parsed_tools_1_1_finite_element.html#a4c5ba19a216725ac587bf0928bdbd15f">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_symbolic_function.html#adc35d9edf3ce1a885c89f15c95d0b905">ParsedTools::SymbolicFunction&lt; dim &gt;</a>
@@ -448,6 +448,15 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#acaa4ceb153e8fa4cc97397246f2dc6f6">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a1a0aeaa6efc59827a785a914866734df">PDEs::Serial::Stokes&lt; dim &gt;</a>
 </li>
+<li>run_quasi_static()
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a95750fa6c0b2fa6e5f4ec150770eeb3c">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
+<li>run_steady_state()
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a004fc95031a8c63b90b32d1668247b4b">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
+<li>run_transient()
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#ae7cde9344817c7f7a23bc045817805e0">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
 </ul>
 
 
@@ -470,8 +479,11 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <li>setup_dofs()
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#aee058f5d5e2340a4c49dc11f740f57fb">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 </li>
+<li>setup_new_solver()
+: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#ac50f805c3b7999e7f3481e41d3ee8510">ParsedLAC::InverseOperator</a>
+</li>
 <li>setup_new_solver_control()
-: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1d9405b169e9384cd16c72e62a83cfca">ParsedLAC::InverseOperator</a>
+: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#aaf98c0454aef04a83bb66f6be98a4f0d">ParsedLAC::InverseOperator</a>
 </li>
 <li>setup_system()
 : <a class="el" href="class_p_d_es_1_1_linear_problem.html#a3f3c7385541c6124fa34e8db481e11d0">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
@@ -480,8 +492,12 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson_nitsche_interface.html#ad2fa70e65be006ec83ee69992a1a78e0">PDEs::Serial::PoissonNitscheInterface&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#afe77aa111703af6c68b567ce8247d194">PDEs::Serial::Stokes&lt; dim &gt;</a>
 </li>
+<li>setup_transient()
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#aa78ff1b17e2ce8f10b76839b053dc71c">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
 <li>solve()
-: <a class="el" href="class_p_d_es_1_1_linear_elasticity.html#a3b1f6baf955cd878fc7ecfa3dc5c8abe">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;</a>
+: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1b409857398bfe0338814ab28fb65f5a">ParsedLAC::InverseOperator</a>
+, <a class="el" href="class_p_d_es_1_1_linear_elasticity.html#a3b1f6baf955cd878fc7ecfa3dc5c8abe">PDEs::LinearElasticity&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_linear_problem.html#ab9c8359e791b72a935fde5910c2665df">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#a67f1ec4143fb59b04495e87ac6c8b8fb">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a3220e33483197a9ffe567db6d560b91a">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
@@ -490,6 +506,9 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a74ab18066f5641def80a80c88b1db547">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#af95d95a15c72d8ee38924cf26b11ec5b">PDEs::Serial::Stokes&lt; dim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_stokes.html#a009374dd79c7340761380abbc53f7017">PDEs::Stokes&lt; dim, LacType &gt;</a>
+</li>
+<li>solver()
+: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#aaa354a80f775b8320d145c3a19387a91">ParsedLAC::InverseOperator</a>
 </li>
 <li>Stokes()
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_stokes.html#a91676ba4a922c5115c48f365f43359f3">PDEs::Serial::Stokes&lt; dim &gt;</a>
@@ -574,7 +593,7 @@ $(document).ready(function(){initNavTree('functions_func.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 15 2022 16:23:33 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Apr 15 2022 16:24:13 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

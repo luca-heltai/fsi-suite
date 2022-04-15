@@ -1,5 +1,10 @@
 var hierarchy =
 [
+    [ "AdditionalData", null, [
+      [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LAC::LAdealii ::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ],
+      [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LAC::LATrilinos ::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ],
+      [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LacType::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ]
+    ] ],
     [ "dealii::Patterns::Tools::Convert< Differentiation::SD::Expression >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4.html", null ],
     [ "dealii::Patterns::Tools::Convert< ReferenceCell >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_reference_cell_01_4.html", null ],
     [ "dealii::Patterns::Tools::Convert< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html", null ],
@@ -85,7 +90,10 @@ var hierarchy =
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
         [ "PDEs::Serial::PoissonNitscheInterface< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson_nitsche_interface.html", null ],
         [ "PDEs::Serial::ReducedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", null ],
-        [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ]
+        [ "PDEs::Serial::Stokes< dim >", "class_p_d_es_1_1_serial_1_1_stokes.html", null ],
+        [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LAC::LAdealii ::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ],
+        [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LAC::LATrilinos ::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ],
+        [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LacType::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ]
       ] ],
       [ "PETScWrappers::PreconditionBase", "http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1PreconditionBase.html", [
         [ "PETScWrappers::PreconditionBoomerAMG", "http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1PreconditionBoomerAMG.html", [

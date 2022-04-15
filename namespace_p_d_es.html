@@ -101,7 +101,8 @@ $(document).ready(function(){initNavTree('namespace_p_d_es.html',''); initResiza
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">PDEs Namespace Reference</div>  </div>
 </div><!--header-->
@@ -127,6 +128,15 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_stokes.html">Stokes</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve the <a class="el" href="class_p_d_es_1_1_stokes.html" title="Solve the Stokes problem, in parallel.">Stokes</a> problem, in parallel.  <a href="class_p_d_es_1_1_stokes.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:af3942bfa83d6b02f459d96d219c5c19f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19f">EvolutionType</a> { <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c">EvolutionType::steady_state</a> = 1 &lt;&lt; 0, 
+<a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa8f22e172e06e0f2539baea662c3c275e">EvolutionType::quasi_static</a> = 1 &lt;&lt; 1, 
+<a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19faf15455eb297257c3414c2e6959a92e60">EvolutionType::transient</a> = 1 &lt;&lt; 2
+ }</td></tr>
+<tr class="memdesc:af3942bfa83d6b02f459d96d219c5c19f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describe the dependencies of the linear problem w.r.t.  <a href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19f">More...</a><br /></td></tr>
+<tr class="separator:af3942bfa83d6b02f459d96d219c5c19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>We collect in this namespace all <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> that are relevant to Fluid Structure Interaction Problems. </p>
@@ -137,13 +147,46 @@ Relationship between PDEs</h1>
 Relationship between PDEs</div>
 </div>
  </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="af3942bfa83d6b02f459d96d219c5c19f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3942bfa83d6b02f459d96d219c5c19f">&#9670;&nbsp;</a></span>EvolutionType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19f">PDEs::EvolutionType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Describe the dependencies of the linear problem w.r.t. </p>
+<p>time. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c"></a>steady_state&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af3942bfa83d6b02f459d96d219c5c19fa8f22e172e06e0f2539baea662c3c275e"></a>quasi_static&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af3942bfa83d6b02f459d96d219c5c19faf15455eb297257c3414c2e6959a92e60"></a>transient&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00084">84</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li>
-    <li class="footer">Generated on Fri Apr 15 2022 16:23:33 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Apr 15 2022 16:24:12 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -124,16 +124,28 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a78c98a09d109613874ecbaa0763184e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a78c98a09d109613874ecbaa0763184e8">InverseOperator</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;, const std::string &amp;default_solver=&quot;cg&quot;, const <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7">SolverControlType</a> &amp;<a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a9c311ea47c3753ccab40ade8c0746115">control_type</a>=<a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a8d2ace945d8277adf132dce9235e632b">SolverControlType::tolerance</a>, const unsigned int <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#ac8485b1acc1674793681cea9ce9290e2">max_iterations</a>=1000, const double <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a21a03816979a4a9dd635029ae30d4493">tolerance</a>=1<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a9587d5229555daa5b1fa1ba2f8a40adb">e</a>-12, const double <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a8c223c1c555693544e58564ea34d2fe5">reduction</a>=1<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#a9587d5229555daa5b1fa1ba2f8a40adb">e</a>-6, const unsigned int <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a79e2503fbd499f40d6c5b539a17cf5fc">consecutive_iterations</a>=2, const bool &amp;<a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a83939c7aad11397e744a182750601ee4">log_history</a>=false, const bool &amp;<a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a0a0a56ff3d1db54ea9581332a58afe03">log_result</a>=false)</td></tr>
 <tr class="memdesc:a78c98a09d109613874ecbaa0763184e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store and parse the parameters that will be needed to create a linear operator that computes the inverse of a matrix via an iterative solver.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#a78c98a09d109613874ecbaa0763184e8">More...</a><br /></td></tr>
 <tr class="separator:a78c98a09d109613874ecbaa0763184e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1afbf077c1c6b380ce5c5230dd2ef152"><td class="memTemplParams" colspan="2">template&lt;typename Domain , typename Payload , typename PreconditionerType , typename Range  = Domain&gt; </td></tr>
-<tr class="memitem:a1afbf077c1c6b380ce5c5230dd2ef152"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt; Domain, Range, Payload &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1afbf077c1c6b380ce5c5230dd2ef152">operator()</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt; Range, Domain, Payload &gt; &amp;op, const PreconditionerType &amp;prec) const</td></tr>
-<tr class="memdesc:a1afbf077c1c6b380ce5c5230dd2ef152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an inverse operator according to the parameters given in the parameter file.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#a1afbf077c1c6b380ce5c5230dd2ef152">More...</a><br /></td></tr>
-<tr class="separator:a1afbf077c1c6b380ce5c5230dd2ef152"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98dfbf48270cb6d343a5addbc89c783e"><td class="memTemplParams" colspan="2">template&lt;typename Domain , typename Payload , typename PreconditionerType , typename Range  = Domain&gt; </td></tr>
+<tr class="memitem:a98dfbf48270cb6d343a5addbc89c783e"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt; Domain, Range, Payload &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a98dfbf48270cb6d343a5addbc89c783e">operator()</a> (const <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt; Range, Domain, Payload &gt; &amp;op, const PreconditionerType &amp;prec, const double abs_tol=0.0, const std::string &amp;prefix=&quot;&quot;) const</td></tr>
+<tr class="memdesc:a98dfbf48270cb6d343a5addbc89c783e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an inverse operator according to the parameters given in the parameter file.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#a98dfbf48270cb6d343a5addbc89c783e">More...</a><br /></td></tr>
+<tr class="separator:a98dfbf48270cb6d343a5addbc89c783e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa354a80f775b8320d145c3a19387a91"><td class="memTemplParams" colspan="2">template&lt;typename Range , typename Payload  = internal::LinearOperatorImplementation::EmptyPayload, typename Domain  = Range, typename MatrixType , typename PreconditionerType &gt; </td></tr>
+<tr class="memitem:aaa354a80f775b8320d145c3a19387a91"><td class="memTemplItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt; Range, Domain, Payload &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#aaa354a80f775b8320d145c3a19387a91">solver</a> (const MatrixType &amp;op, const PreconditionerType &amp;prec, const double abs_tol=0.0, const std::string &amp;prefix=&quot;&quot;) const</td></tr>
+<tr class="memdesc:aaa354a80f775b8320d145c3a19387a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a solver.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#aaa354a80f775b8320d145c3a19387a91">More...</a><br /></td></tr>
+<tr class="separator:aaa354a80f775b8320d145c3a19387a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b409857398bfe0338814ab28fb65f5a"><td class="memTemplParams" colspan="2">template&lt;typename MatrixType , typename PreconditionerType , typename VectorType &gt; </td></tr>
+<tr class="memitem:a1b409857398bfe0338814ab28fb65f5a"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1b409857398bfe0338814ab28fb65f5a">solve</a> (const MatrixType &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>, const PreconditionerType &amp;preconditioner, const VectorType &amp;src, VectorType &amp;dst, const double abs_tol=0.0) const</td></tr>
+<tr class="memdesc:a1b409857398bfe0338814ab28fb65f5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve using the specified solver, preconditioner, and tolerance.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#a1b409857398bfe0338814ab28fb65f5a">More...</a><br /></td></tr>
+<tr class="separator:a1b409857398bfe0338814ab28fb65f5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58e11ba39955880152529c4e79fcff2a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a58e11ba39955880152529c4e79fcff2a">get_solver_name</a> () const</td></tr>
 <tr class="memdesc:a58e11ba39955880152529c4e79fcff2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the solver name.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#a58e11ba39955880152529c4e79fcff2a">More...</a><br /></td></tr>
 <tr class="separator:a58e11ba39955880152529c4e79fcff2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d9405b169e9384cd16c72e62a83cfca"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a1d9405b169e9384cd16c72e62a83cfca">setup_new_solver_control</a> () const</td></tr>
-<tr class="memdesc:a1d9405b169e9384cd16c72e62a83cfca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new solver control according to the parameters.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#a1d9405b169e9384cd16c72e62a83cfca">More...</a><br /></td></tr>
-<tr class="separator:a1d9405b169e9384cd16c72e62a83cfca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf98c0454aef04a83bb66f6be98a4f0d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#aaf98c0454aef04a83bb66f6be98a4f0d">setup_new_solver_control</a> (const double abs_tol=0.0) const</td></tr>
+<tr class="memdesc:aaf98c0454aef04a83bb66f6be98a4f0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new solver control according to the parameters.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#aaf98c0454aef04a83bb66f6be98a4f0d">More...</a><br /></td></tr>
+<tr class="separator:aaf98c0454aef04a83bb66f6be98a4f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac50f805c3b7999e7f3481e41d3ee8510"><td class="memTemplParams" colspan="2">template&lt;typename Range , typename Payload &gt; </td></tr>
+<tr class="memitem:ac50f805c3b7999e7f3481e41d3ee8510"><td class="memTemplItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverBase.html">SolverBase</a>&lt; Range &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#ac50f805c3b7999e7f3481e41d3ee8510">setup_new_solver</a> (const double abs_tol=0.0) const</td></tr>
+<tr class="memdesc:ac50f805c3b7999e7f3481e41d3ee8510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new solver according to the parameters.  <a href="class_parsed_l_a_c_1_1_inverse_operator.html#ac50f805c3b7999e7f3481e41d3ee8510">More...</a><br /></td></tr>
+<tr class="separator:ac50f805c3b7999e7f3481e41d3ee8510"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a7bf9ccbc4d618a248324748a41f625cf">ParameterAcceptor</a> (const std::string &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>=&quot;&quot;)</td></tr>
 <tr class="separator:a7bf9ccbc4d618a248324748a41f625cf inherit pub_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -398,8 +410,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a1afbf077c1c6b380ce5c5230dd2ef152"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1afbf077c1c6b380ce5c5230dd2ef152">&#9670;&nbsp;</a></span>operator()()</h2>
+<a id="a98dfbf48270cb6d343a5addbc89c783e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98dfbf48270cb6d343a5addbc89c783e">&#9670;&nbsp;</a></span>operator()()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -416,7 +428,19 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const PreconditionerType &amp;&#160;</td>
-          <td class="paramname"><em>prec</em>&#160;</td>
+          <td class="paramname"><em>prec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>abs_tol</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>prefix</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -427,6 +451,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 </div><div class="memdoc">
 
 <p>Create an inverse operator according to the parameters given in the parameter file. </p>
+<p>You can create many solvers using the same call, by specifying different prefixes each time. If you specify the same prefix, the previous solver stored with that prefix will be destroied.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">op</td><td>The operator to invert. </td></tr>
@@ -434,6 +459,103 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aaa354a80f775b8320d145c3a19387a91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa354a80f775b8320d145c3a19387a91">&#9670;&nbsp;</a></span>solver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Range , typename Payload  = internal::LinearOperatorImplementation::EmptyPayload, typename Domain  = Range, typename MatrixType , typename PreconditionerType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a>&lt;Range, Domain, Payload&gt; ParsedLAC::InverseOperator::solver </td>
+          <td>(</td>
+          <td class="paramtype">const MatrixType &amp;&#160;</td>
+          <td class="paramname"><em>op</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PreconditionerType &amp;&#160;</td>
+          <td class="paramname"><em>prec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>abs_tol</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>prefix</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a solver. </p>
+<p>The solver will use all parameters specified in the parameter file. If abs_tol is non-zero, then a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReductionControl.html">ReductionControl</a> will be used. You can create many solvers using the same call, by specifying different prefixes each time.</p>
+<p>If you specify the same prefix, the previous solver stored with that prefix will be destroied. </p>
+
+</div>
+</div>
+<a id="a1b409857398bfe0338814ab28fb65f5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b409857398bfe0338814ab28fb65f5a">&#9670;&nbsp;</a></span>solve()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MatrixType , typename PreconditionerType , typename VectorType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void ParsedLAC::InverseOperator::solve </td>
+          <td>(</td>
+          <td class="paramtype">const MatrixType &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const PreconditionerType &amp;&#160;</td>
+          <td class="paramname"><em>preconditioner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const VectorType &amp;&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VectorType &amp;&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>abs_tol</em> = <code>0.0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solve using the specified solver, preconditioner, and tolerance. </p>
+<p>If the tolerance is non-zero, then a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classReductionControl.html">ReductionControl</a> will be used with the given argument, otherwise the parameter file is used to determine all the solver and control parameters. </p>
 
 </div>
 </div>
@@ -456,12 +578,12 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p class="definition">Definition at line <a class="el" href="inverse__operator_8cc_source.html#l00061">61</a> of file <a class="el" href="inverse__operator_8cc_source.html">inverse_operator.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="inverse__operator_8h_source.html#l00166">solver_name</a>.</p>
+<p class="reference">References <a class="el" href="inverse__operator_8h_source.html#l00222">solver_name</a>.</p>
 
 </div>
 </div>
-<a id="a1d9405b169e9384cd16c72e62a83cfca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d9405b169e9384cd16c72e62a83cfca">&#9670;&nbsp;</a></span>setup_new_solver_control()</h2>
+<a id="aaf98c0454aef04a83bb66f6be98a4f0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf98c0454aef04a83bb66f6be98a4f0d">&#9670;&nbsp;</a></span>setup_new_solver_control()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,17 +591,42 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
         <tr>
           <td class="memname">std::unique_ptr&lt; <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> &gt; ParsedLAC::InverseOperator::setup_new_solver_control </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>abs_tol</em> = <code>0.0</code></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Create a new solver control according to the parameters. </p>
+<p>If the user supplies a <code>abs_tol</code> parameter, the generated <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> is a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> with this tolerance. </p>
 
 <p class="definition">Definition at line <a class="el" href="inverse__operator_8cc_source.html#l00068">68</a> of file <a class="el" href="inverse__operator_8cc_source.html">inverse_operator.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7ae03ed45812bf44d1550d20ccd152dd4e">ParsedLAC::consecutive_iterations</a>, <a class="el" href="inverse__operator_8h_source.html#l00177">consecutive_iterations</a>, <a class="el" href="inverse__operator_8h_source.html#l00156">control_type</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga31978c026b8b6b5116df30b8e748f6b7">ExcInternalError()</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a348164a01b156ac0ce716d671f0ee050">ParsedLAC::iteration_number</a>, <a class="el" href="inverse__operator_8h_source.html#l00194">log_history</a>, <a class="el" href="inverse__operator_8h_source.html#l00199">log_result</a>, <a class="el" href="inverse__operator_8h_source.html#l00172">max_iterations</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a9477e24c78f1ca8ee9b03111f6227fc2">ParsedLAC::reduction</a>, <a class="el" href="inverse__operator_8h_source.html#l00189">reduction</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a8d2ace945d8277adf132dce9235e632b">ParsedLAC::tolerance</a>, and <a class="el" href="inverse__operator_8h_source.html#l00183">tolerance</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7ae03ed45812bf44d1550d20ccd152dd4e">ParsedLAC::consecutive_iterations</a>, <a class="el" href="inverse__operator_8h_source.html#l00233">consecutive_iterations</a>, <a class="el" href="inverse__operator_8h_source.html#l00217">control</a>, <a class="el" href="inverse__operator_8h_source.html#l00212">control_type</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga31978c026b8b6b5116df30b8e748f6b7">ExcInternalError()</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a348164a01b156ac0ce716d671f0ee050">ParsedLAC::iteration_number</a>, <a class="el" href="inverse__operator_8h_source.html#l00250">log_history</a>, <a class="el" href="inverse__operator_8h_source.html#l00255">log_result</a>, <a class="el" href="inverse__operator_8h_source.html#l00228">max_iterations</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a9477e24c78f1ca8ee9b03111f6227fc2">ParsedLAC::reduction</a>, <a class="el" href="inverse__operator_8h_source.html#l00245">reduction</a>, <a class="el" href="namespace_parsed_l_a_c.html#af2ee974cc058a3a69d2828d90138b3d7a8d2ace945d8277adf132dce9235e632b">ParsedLAC::tolerance</a>, and <a class="el" href="inverse__operator_8h_source.html#l00239">tolerance</a>.</p>
+
+</div>
+</div>
+<a id="ac50f805c3b7999e7f3481e41d3ee8510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac50f805c3b7999e7f3481e41d3ee8510">&#9670;&nbsp;</a></span>setup_new_solver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Range , typename Payload &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverBase.html">SolverBase</a>&lt;Range&gt; &gt; ParsedLAC::InverseOperator::setup_new_solver </td>
+          <td>(</td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>abs_tol</em> = <code>0.0</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a new solver according to the parameters. </p>
+<p>If the user supplies a <code>abs_tol</code> parameter, the used <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> is a <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSolverControl.html">SolverControl</a> with this tolerance. </p>
 
 </div>
 </div>
@@ -506,7 +653,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Defines the behaviour of the solver control. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00156">156</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00212">212</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -534,7 +681,9 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Used internally by the solver. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00161">161</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00217">217</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
 </div>
 </div>
@@ -560,7 +709,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Solver name. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00166">166</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00222">222</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00061">get_solver_name()</a>.</p>
 
@@ -588,7 +737,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Default number of maximum iterations required to succesfully complete a solution step. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00172">172</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00228">228</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -616,7 +765,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Number of consecutive iterations (used only for <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classConsecutiveControl.html">ConsecutiveControl</a>). </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00177">177</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00233">233</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -644,7 +793,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Default reduction required to succesfully complete a solution step. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00183">183</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00239">239</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -672,7 +821,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Default reduction required to succesfully complete a solution step. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00189">189</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00245">245</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -700,7 +849,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Log the solver history. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00194">194</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00250">250</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -728,7 +877,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Log the final result. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00199">199</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00255">255</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="inverse__operator_8cc_source.html#l00068">setup_new_solver_control()</a>.</p>
 
@@ -756,7 +905,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 
 <p>Local storage for the actual solver object. </p>
 
-<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00204">204</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="inverse__operator_8h_source.html#l00260">260</a> of file <a class="el" href="inverse__operator_8h_source.html">inverse_operator.h</a>.</p>
 
 </div>
 </div>
@@ -773,7 +922,7 @@ template&lt;typename Domain , typename Payload , typename PreconditionerType , t
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_l_a_c.html">ParsedLAC</a></li><li class="navelem"><a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html">InverseOperator</a></li>
-    <li class="footer">Generated on Fri Apr 15 2022 16:23:33 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Apr 15 2022 16:24:12 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -325,7 +325,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2distributed__lag
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            }</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLogStream.html#af78c5e0f0f0d929ce997543f4579f5c5">pop</a>();</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        }</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="keywordflow">if</span> (space.pcout.is_active())</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;      <span class="keywordflow">if</span> (space.mpi_rank == 0)</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;          space.error_table.output_table(std::cout);</div>
 <div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;          embedded.error_table.output_table(std::cout);</div>
@@ -378,7 +378,7 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2distributed__lag
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="dir_50f223c273824013943d646bc691d39f.html">serial</a></li><li class="navelem"><a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc.html">distributed_lagrange.cc</a></li>
-    <li class="footer">Generated on Fri Apr 15 2022 16:23:32 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Apr 15 2022 16:24:11 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

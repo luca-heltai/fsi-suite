@@ -102,7 +102,7 @@ $(document).ready(function(){initNavTree('linear__problem_8h.html',''); initResi
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a>  </div>
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">linear_problem.h File Reference</div>  </div>
 </div><!--header-->
@@ -137,6 +137,7 @@ $(document).ready(function(){initNavTree('linear__problem_8h.html',''); initResi
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/numerics_2data__out_8h.html">deal.II/numerics/data_out.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/matrix__tools_8h.html">deal.II/numerics/matrix_tools.h</a>&gt;</code><br />
 <code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/arkode_8h.html">deal.II/sundials/arkode.h</a>&gt;</code><br />
 <code>#include &lt;boost/signals2.hpp&gt;</code><br />
 <code>#include &lt;fstream&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
@@ -154,7 +155,7 @@ $(document).ready(function(){initNavTree('linear__problem_8h.html',''); initResi
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for linear_problem.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="linear__problem_8h__incl.svg" width="4658" height="738"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="linear__problem_8h__incl.svg" width="4663" height="663"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -174,41 +175,26 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespace_l_a"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_l_a.html">LA</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_p_d_es"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es.html">PDEs</a></td></tr>
 <tr class="memdesc:namespace_p_d_es"><td class="mdescLeft">&#160;</td><td class="mdescRight">We collect in this namespace all <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> that are relevant to Fluid Structure Interaction Problems. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-Macros</h2></td></tr>
-<tr class="memitem:a68c9ebb48889d54523bff3c6dc3870c4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="linear__problem_8h.html#a68c9ebb48889d54523bff3c6dc3870c4">FORCE_USE_OF_TRILINOS</a></td></tr>
-<tr class="separator:a68c9ebb48889d54523bff3c6dc3870c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:af3942bfa83d6b02f459d96d219c5c19f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19f">PDEs::EvolutionType</a> { <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c">PDEs::EvolutionType::steady_state</a> = 1 &lt;&lt; 0, 
+<a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa8f22e172e06e0f2539baea662c3c275e">PDEs::EvolutionType::quasi_static</a> = 1 &lt;&lt; 1, 
+<a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19faf15455eb297257c3414c2e6959a92e60">PDEs::EvolutionType::transient</a> = 1 &lt;&lt; 2
+ }</td></tr>
+<tr class="memdesc:af3942bfa83d6b02f459d96d219c5c19f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describe the dependencies of the linear problem w.r.t.  <a href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19f">More...</a><br /></td></tr>
+<tr class="separator:af3942bfa83d6b02f459d96d219c5c19f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a68c9ebb48889d54523bff3c6dc3870c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68c9ebb48889d54523bff3c6dc3870c4">&#9670;&nbsp;</a></span>FORCE_USE_OF_TRILINOS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FORCE_USE_OF_TRILINOS</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00065">65</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="linear__problem_8h.html">linear_problem.h</a></li>
-    <li class="footer">Generated on Fri Apr 15 2022 16:23:32 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Apr 15 2022 16:24:12 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
