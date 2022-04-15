@@ -19,23 +19,11 @@
 #  include "moonolith_intersect_polyhedra.hpp"
 #  include "moonolith_mesh_io.hpp"
 #  include "moonolith_par_l2_transfer.hpp"
+#  include "moonolith_tools.h"
 #  include "par_moonolith.hpp"
 
 using namespace dealii;
 using namespace moonolith;
-
-
-template <int spacedim, int dim, class T1, class T2>
-Quadrature<double, spacedim>
-compute_intersection(const Quadrature<double, dim> &ref_quad,
-                     const T1 &                     t1,
-                     const T2 &                     t2)
-{
-  BuildQuadrature<T1, T2>      intersect;
-  Quadrature<double, spacedim> out;
-  intersect.apply(ref_quad, t1, t2, out);
-  return out;
-}
 
 TEST(MoonoLith, CheckSquare)
 {
@@ -54,7 +42,7 @@ TEST(MoonoLith, CheckSquare)
   // int spacedim = 2;
 
   // BuildQuadrature<poly1,>
-  Quadrature<Real, 2> ref_quad;
+  moonolith::Quadrature<Real, 2> ref_quad;
 
   ASSERT_TRUE(moonolith::Gauss::get(2, ref_quad));
   auto refintergral = moonolith::measure(
@@ -116,7 +104,7 @@ TEST(MoonoLith, CheckTetra)
   plot.plot(inter);
   plot.save("Test1.m");
 
-  Quadrature<Real, 3> ref_quad;
+  moonolith::Quadrature<Real, 3> ref_quad;
 
   ASSERT_TRUE(moonolith::Gauss::get(2, ref_quad));
 
@@ -170,7 +158,7 @@ TEST(MoonoLith, CheckNonTrivialTetraInt)
   const auto vol_inter = moonolith::measure(inter);
   ASSERT_NEAR(vol_inter, 1. / 32., 1e-10);
 
-  Quadrature<Real, 3> ref_quad;
+  moonolith::Quadrature<Real, 3> ref_quad;
 
   ASSERT_TRUE(moonolith::Gauss::get(1, ref_quad));
 
@@ -251,7 +239,7 @@ TEST(MoonoLith, CheckExahedra)
   plot.plot(inter);
   plot.save("ExaTest.m");
 
-  Quadrature<Real, 3> ref_quad;
+  moonolith::Quadrature<Real, 3> ref_quad;
   moonolith::Gauss::get(1, ref_quad);
   auto quad     = compute_intersection<3>(ref_quad, poly1, poly2);
   auto integral = moonolith::measure(quad);
@@ -291,7 +279,7 @@ TEST(MoonoLith, DISABLED_CheckExahedraNonPlanar)
   plot.plot(inter);
   plot.save("ExaTest.m");
 
-  Quadrature<Real, 3> ref_quad;
+  moonolith::Quadrature<Real, 3> ref_quad;
   moonolith::Gauss::get(1, ref_quad);
   auto quad     = compute_intersection<3>(ref_quad, poly1, poly2);
   auto integral = moonolith::measure(quad);

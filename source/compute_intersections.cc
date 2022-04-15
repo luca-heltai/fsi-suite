@@ -24,7 +24,7 @@
 #include <deal.II/grid/grid_tools.h>
 #include <deal.II/grid/grid_tools_cache.h>
 
-
+#include "moonolith_tools.h"
 
 using namespace dealii;
 
@@ -32,7 +32,7 @@ using namespace dealii;
 #include <tuple>
 #include <vector>
 
-#ifdef DEAL_II_WITH_CGAL
+#if defined DEAL_II_WITH_CGAL && defined DEAL_II_PREFER_CGAL_OVER_PARMOONOLITH
 
 #  include <CGAL/Boolean_set_operations_2.h>
 #  include <CGAL/Constrained_Delaunay_triangulation_2.h>
@@ -377,7 +377,61 @@ namespace dealii
       return Quadrature<spacedim>();
     }
 
+#elif defined DEAL_II_WITH_PARMOONOLITH
 
+namespace dealii
+{
+  namespace NonMatching
+  {
+    template <int dim0, int dim1, int spacedim>
+    dealii::Quadrature<spacedim>
+    compute_intersection(
+      const typename Triangulation<dim0, spacedim>::cell_iterator &cell0,
+      const typename Triangulation<dim1, spacedim>::cell_iterator &cell1,
+      const unsigned int                                           degree,
+      const Mapping<dim0, spacedim> &                              mapping0,
+      const Mapping<dim1, spacedim> &                              mapping1)
+    {
+      if constexpr ((dim0 == 1 && dim1 == 3) || (dim0 == 3 && dim1 == 1) ||
+                    (dim0 == 1 && dim1 == 1))
+        {
+          (void)cell0;
+          (void)cell1;
+          (void)degree;
+          (void)mapping0;
+          (void)mapping1;
+          AssertThrow(false, ExcNotImplemented());
+          return dealii::Quadrature<spacedim>();
+        }
+      else
+        {
+          return moonolith::compute_intersection(
+            cell0, cell1, degree, mapping0, mapping1);
+        }
+    }
+#else
+
+namespace dealii
+{
+  namespace NonMatching
+  {
+    template <int dim0, int dim1, int spacedim>
+    Quadrature<spacedim>
+    compute_intersection(
+      const typename Triangulation<dim0, spacedim>::cell_iterator &,
+      const typename Triangulation<dim1, spacedim>::cell_iterator &,
+      const unsigned int,
+      const Mapping<dim0, spacedim> &,
+      const Mapping<dim1, spacedim> &)
+    {
+      Assert(false,
+             ExcMessage(
+               "This function needs CGAL or PARMOONOLITH to be installed, "
+               "but cmake could not find any of them."));
+      return Quadrature<spacedim>();
+    }
+
+#endif
 
     template <int dim0, int dim1, int spacedim>
     std::vector<
@@ -422,7 +476,7 @@ namespace dealii
               // if (test_intersection.get_points().size() !=
               const auto & weights = test_intersection.get_weights();
               const double area =
-                std::accumulate(weights.begin(), weights.end(), area);
+                std::accumulate(weights.begin(), weights.end(), 0.0);
               if (area > tol) // non-trivial intersection
                 {
                   cells_with_quads.push_back(std::make_tuple(
@@ -433,49 +487,6 @@ namespace dealii
 
       return cells_with_quads;
     }
-
-#else
-
-namespace dealii
-{
-  namespace NonMatching
-  {
-    template <int dim0, int dim1, int spacedim>
-    std::vector<
-      std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
-                 typename Triangulation<dim1, spacedim>::cell_iterator,
-                 Quadrature<spacedim>>>
-    compute_intersection(const GridTools::Cache<dim0, spacedim> &,
-                         const GridTools::Cache<dim1, spacedim> &,
-                         const unsigned int,
-                         const double)
-    {
-      Assert(false,
-             ExcMessage("This function needs CGAL to be installed, "
-                        "but cmake could not find it."));
-      return {};
-    }
-
-
-
-    template <int dim0, int dim1, int spacedim>
-    Quadrature<spacedim>
-    compute_intersection(
-      const typename Triangulation<dim0, spacedim>::cell_iterator &,
-      const typename Triangulation<dim1, spacedim>::cell_iterator &,
-      const unsigned int,
-      const Mapping<dim0, spacedim> &,
-      const Mapping<dim1, spacedim> &)
-    {
-      Assert(false,
-             ExcMessage("This function needs CGAL to be installed, "
-                        "but cmake could not find it."));
-      return Quadrature<spacedim>();
-    }
-
-
-
-#endif
 
 
     template Quadrature<1>
@@ -503,7 +514,12 @@ namespace dealii
                          const Mapping<1, 2> &,
                          const Mapping<2, 2> &);
 
-
+    template Quadrature<2>
+    compute_intersection(const Triangulation<2, 2>::cell_iterator &,
+                         const Triangulation<1, 2>::cell_iterator &,
+                         const unsigned int,
+                         const Mapping<2, 2> &,
+                         const Mapping<1, 2> &);
 
     template Quadrature<2>
     compute_intersection(const Triangulation<2, 2>::cell_iterator &,
@@ -512,8 +528,6 @@ namespace dealii
                          const Mapping<2, 2> &,
                          const Mapping<2, 2> &);
 
-
-
     template Quadrature<3>
     compute_intersection(const Triangulation<2, 3>::cell_iterator &,
                          const Triangulation<3, 3>::cell_iterator &,
@@ -521,7 +535,12 @@ namespace dealii
                          const Mapping<2, 3> &,
                          const Mapping<3, 3> &);
 
-
+    template Quadrature<3>
+    compute_intersection(const Triangulation<3, 3>::cell_iterator &,
+                         const Triangulation<2, 3>::cell_iterator &,
+                         const unsigned int,
+                         const Mapping<3, 3> &,
+                         const Mapping<2, 3> &);
 
     template Quadrature<3>
     compute_intersection(const Triangulation<3, 3>::cell_iterator &,
@@ -550,7 +569,15 @@ namespace dealii
       const unsigned int            degree,
       const double                  tol);
 
-
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<1, 3>::cell_iterator,
+                 typename dealii::Triangulation<3, 3>::cell_iterator,
+                 Quadrature<3>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<1, 3> &space_cache,
+      const GridTools::Cache<3, 3> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
 
     template std::vector<
       std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
@@ -559,6 +586,17 @@ namespace dealii
     NonMatching::compute_intersection(
       const GridTools::Cache<2, 2> &space_cache,
       const GridTools::Cache<1, 2> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
+
+
+    template std::vector<
+      std::tuple<typename dealii::Triangulation<1, 2>::cell_iterator,
+                 typename dealii::Triangulation<2, 2>::cell_iterator,
+                 Quadrature<2>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<1, 2> &space_cache,
+      const GridTools::Cache<2, 2> &immersed_cache,
       const unsigned int            degree,
       const double                  tol);
 
@@ -581,6 +619,16 @@ namespace dealii
     NonMatching::compute_intersection(
       const GridTools::Cache<3, 3> &space_cache,
       const GridTools::Cache<2, 3> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
+
+
+    template std::vector<std::tuple<typename Triangulation<2, 3>::cell_iterator,
+                                    typename Triangulation<3, 3>::cell_iterator,
+                                    Quadrature<3>>>
+    NonMatching::compute_intersection(
+      const GridTools::Cache<2, 3> &space_cache,
+      const GridTools::Cache<3, 3> &immersed_cache,
       const unsigned int            degree,
       const double                  tol);
 

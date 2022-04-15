@@ -73,7 +73,7 @@ struct Test_function
   }
 };
 
-TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
+TEST(Intersection, QuadratureOver1DSimpleIntersection)
 {
   constexpr int dim0     = 2;
   constexpr int dim1     = 1;
@@ -120,12 +120,12 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
   // segment.
   const auto &p = cell1->vertex(0);
   const auto &q = cell1->vertex(1);
-  ASSERT_DOUBLE_EQ(sum, (p - q).norm());
+  ASSERT_NEAR(sum, (p - q).norm(), 1e-10);
 }
 
 
 
-TEST(DimTester, Area_Test_Codimension0)
+TEST(CGAL, AreaTestCodimension0)
 {
   constexpr int      dim0     = 2;
   constexpr int      dim1     = 2;
