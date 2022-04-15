@@ -77,8 +77,8 @@ var NAVTREEINDEX =
 "amg_8cc.html",
 "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a4d47694ed8b4b90870e159ae5e9709f7",
 "class_parsed_tools_1_1_finite_element.html#a8aea91b800e29c10fa193a84cff1857e",
-"functions_func.html",
-"structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4.html#ab241bd8a1a7528f4ca9c8b17920a527a"
+"functions_enum.html",
+"struct_parsed_tools_1_1_grid_info.html#aecbc273bb1d67810570ac04b5492965c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
