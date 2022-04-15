@@ -23,5 +23,6 @@
 int
 main(int argc, char **argv)
 {
-  RUNNER_DIM_NO_ONE(PDEs::Serial::PoissonNitscheInterface, argc, argv);
+  RUNNER_CODIM(PDEs::Serial::PoissonNitscheInterface, argc, argv);
+
 }

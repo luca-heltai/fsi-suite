@@ -58,8 +58,6 @@ namespace PDEs
       , data_out("/PoissonNitscheInterface/Output")
     {
       add_parameter("Console level", this->console_level);
-      Assert(dim != 3 || spacedim != 3,
-             ExcNotImplemented("3D case is not implemented!"));
     }
 
 
@@ -74,7 +72,8 @@ namespace PDEs
       // will be necessary to compute the the Quadrature formulas on the
       // intersection of the cells.
       space_cache =
-        std::make_unique<GridTools::Cache<dim, spacedim>>(space_triangulation);
+        std::make_unique<GridTools::Cache<std::max(dim, spacedim), spacedim>>(
+          space_triangulation);
       embedded_cache = std::make_unique<GridTools::Cache<dim, spacedim>>(
         embedded_triangulation);
     }
@@ -141,17 +140,17 @@ namespace PDEs
       const ReferenceCell cell_type = space_fe().reference_cell();
 
 
-      const Quadrature<dim> quadrature_formula =
-        cell_type.get_gauss_type_quadrature<dim>(space_fe().tensor_degree() +
-                                                 1);
+      const Quadrature<std::max(dim, spacedim)> quadrature_formula =
+        cell_type.get_gauss_type_quadrature<std::max(dim, spacedim)>(
+          space_fe().tensor_degree() + 1);
 
 
-      FEValues<dim, spacedim> fe_values(*mapping,
-                                        space_fe,
-                                        quadrature_formula,
-                                        update_values | update_gradients |
-                                          update_quadrature_points |
-                                          update_JxW_values);
+      FEValues<std::max(dim, spacedim), spacedim> fe_values(
+        *mapping,
+        space_fe,
+        quadrature_formula,
+        update_values | update_gradients | update_quadrature_points |
+          update_JxW_values);
 
       const unsigned int dofs_per_cell = space_fe().n_dofs_per_cell();
       FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
@@ -195,13 +194,13 @@ namespace PDEs
       // that multiplies the inner product is equal to 2.0, and the penalty is
       // set to 100.0.
       NonMatching::
-        assemble_nitsche_with_exact_intersections<dim, dim, spacedim>(
+        assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
           space_dh,
           cells_and_quads,
           system_matrix,
           space_constraints,
           ComponentMask(),
-          MappingQ1<dim, spacedim>(),
+          MappingQ1<std::max(dim, spacedim), spacedim>(),
           nitsche_coefficient,
           penalty);
 
@@ -211,12 +210,12 @@ namespace PDEs
       // penalty parameter as before.
       deallog << "Assemble Nitsche rhs" << '\n';
       NonMatching::
-        create_nitsche_rhs_with_exact_intersections<dim, dim, spacedim>(
+        create_nitsche_rhs_with_exact_intersections<spacedim, dim, spacedim>(
           space_dh,
           cells_and_quads,
           system_rhs,
           space_constraints,
-          MappingQ1<dim, spacedim>(),
+          MappingQ1<std::max(dim, spacedim), spacedim>(),
           embedded_value,
           ConstantFunction<spacedim>(2.0),
           penalty);
@@ -254,8 +253,10 @@ namespace PDEs
       data_out.attach_dof_handler(space_dh, suffix);
       data_out.add_data_vector(solution, component_names);
       data_out.write_data_and_clear(*mapping);
-      // Save the embedded grid
+      // Save the grids
       {
+        std::ofstream output_test_space("space_grid.vtk");
+        GridOut().write_vtk(space_triangulation, output_test_space);
         std::ofstream output_test_embedded("embedded_grid.vtk");
         GridOut().write_vtk(embedded_triangulation, output_test_embedded);
       }
@@ -303,12 +304,15 @@ namespace PDEs
         }
       // Make sure we output the error table after the last cycle
       error_table.output_table(std::cout);
+      std::cout << "Run in dim= " << dim << " and spacedim=" << spacedim
+                << '\n';
     }
 
     // We explicitly instantiate all of the different combinations of dim and
     // spacedim, so that users can run this in different dimension in the tests
-    // template class PoissonNitscheInterface<1, 2>;
+    template class PoissonNitscheInterface<1, 2>;
     template class PoissonNitscheInterface<2, 2>;
+    template class PoissonNitscheInterface<2, 3>;
     template class PoissonNitscheInterface<3, 3>;
 
   } // namespace Serial

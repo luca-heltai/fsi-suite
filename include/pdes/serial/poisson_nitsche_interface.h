@@ -142,7 +142,7 @@ namespace PDEs
       const std::string component_names = "u";
 
 
-      ParsedTools::GridGenerator<dim, spacedim> grid_generator;
+      ParsedTools::GridGenerator<std::max(dim,spacedim), spacedim> grid_generator;
 
       ParsedTools::GridGenerator<dim, spacedim> embedded_grid_generator;
 
@@ -155,7 +155,7 @@ namespace PDEs
        * impose a constraint.
        *
        */
-      Triangulation<dim, spacedim> space_triangulation;
+      Triangulation<std::max(dim,spacedim), spacedim> space_triangulation;
       Triangulation<dim, spacedim> embedded_triangulation;
 
       /**
@@ -164,7 +164,7 @@ namespace PDEs
        * Boxes, etc.
        *
        */
-      std::unique_ptr<GridTools::Cache<dim, spacedim>> space_cache;
+      std::unique_ptr<GridTools::Cache<std::max(dim,spacedim), spacedim>> space_cache;
       std::unique_ptr<GridTools::Cache<dim, spacedim>> embedded_cache;
 
       /**
@@ -177,25 +177,25 @@ namespace PDEs
        *
        */
       std::vector<
-        std::tuple<typename dealii::Triangulation<dim, spacedim>::cell_iterator,
+        std::tuple<typename dealii::Triangulation<std::max(dim,spacedim), spacedim>::cell_iterator,
                    typename dealii::Triangulation<dim, spacedim>::cell_iterator,
                    dealii::Quadrature<spacedim>>>
         cells_and_quads;
 
 
-      ParsedTools::FiniteElement<dim, spacedim> space_fe;
+      ParsedTools::FiniteElement<std::max(dim,spacedim), spacedim> space_fe;
 
       /**
        * The actual DoFHandler class.
        */
-      DoFHandler<dim, spacedim> space_dh;
+      DoFHandler<std::max(dim,spacedim), spacedim> space_dh;
 
       /**
        * According to the Triangulation type, we use a MappingFE or a MappingQ,
        * to make sure we can run the program both on a tria/tetra grid and on
        * quad/hex grids.
        */
-      std::unique_ptr<Mapping<dim, spacedim>> mapping;
+      std::unique_ptr<Mapping<std::max(dim,spacedim), spacedim>> mapping;
       /** @} */
 
       /**
@@ -265,7 +265,7 @@ namespace PDEs
        * @image html Poisson_1_interface.png
        *
        */
-      mutable ParsedTools::DataOut<dim, spacedim> data_out;
+      mutable ParsedTools::DataOut<std::max(dim,spacedim), spacedim> data_out;
 
       /**
        * Level of log verbosity.
@@ -290,3 +290,4 @@ namespace PDEs
   } // namespace Serial
 } // namespace PDEs
 #endif
+

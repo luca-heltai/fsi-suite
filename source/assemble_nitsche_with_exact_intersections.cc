@@ -108,7 +108,8 @@ namespace dealii
               nitsche_coefficient.value_list(real_qpts,
                                              nitsche_coefficient_values);
 
-              std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
+              std::vector<Point<std::min(dim0, spacedim)>> ref_pts_space(
+                n_quad_pts);
 
               space_mapping.transform_points_real_to_unit_cell(first_cell,
                                                                real_qpts,
@@ -189,6 +190,20 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections(
 
 
 template void
+dealii::NonMatching::assemble_nitsche_with_exact_intersections<1, 1, 2>(
+  const DoFHandler<1, 2> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<1, 2>::cell_iterator,
+               typename dealii::Triangulation<1, 2>::cell_iterator,
+               dealii::Quadrature<2>>> &,
+  dealii::SparseMatrix<double> &,
+  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+  const ComponentMask &,
+  const Mapping<1, 2> &,
+  const Function<2, double> &nitsche_coefficient,
+  const double);
+
+template void
 dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 2>(
   const DoFHandler<2, 2> &,
   const std::vector<
@@ -202,6 +217,36 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 2>(
   const Function<2, double> &nitsche_coefficient,
   const double);
 
+
+template void
+dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 1, 2>(
+  const DoFHandler<2, 2> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+               typename dealii::Triangulation<1, 2>::cell_iterator,
+               dealii::Quadrature<2>>> &,
+  dealii::SparseMatrix<double> &,
+  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+  const ComponentMask &,
+  const Mapping<2, 2> &,
+  const Function<2, double> &nitsche_coefficient,
+  const double);
+
+
+
+template void
+dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 3>(
+  const DoFHandler<2, 3> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<2, 3>::cell_iterator,
+               typename dealii::Triangulation<2, 3>::cell_iterator,
+               dealii::Quadrature<3>>> &,
+  dealii::SparseMatrix<double> &,
+  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+  const ComponentMask &,
+  const Mapping<2, 3> &,
+  const Function<3, double> &nitsche_coefficient,
+  const double);
 
 
 template void
@@ -233,3 +278,4 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections<3, 3, 3>(
   const Mapping<3, 3> &,
   const Function<3, double> &nitsche_coefficient,
   const double);
+
