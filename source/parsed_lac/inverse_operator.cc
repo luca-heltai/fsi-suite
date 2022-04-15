@@ -65,14 +65,17 @@ namespace ParsedLAC
 
 
   std::unique_ptr<dealii::SolverControl>
-  InverseOperator::setup_new_solver_control() const
+  InverseOperator::setup_new_solver_control(const double abs_tol) const
   {
     std::unique_ptr<dealii::SolverControl> result;
-    switch (control_type)
+    auto control = abs_tol == 0.0 ? control_type : SolverControlType::tolerance;
+    switch (control)
       {
         case SolverControlType::tolerance:
-          result.reset(new SolverControl(
-            max_iterations, tolerance, log_history, log_result));
+          result.reset(new SolverControl(max_iterations,
+                                         abs_tol == 0.0 ? tolerance : abs_tol,
+                                         log_history,
+                                         log_result));
           break;
         case SolverControlType::reduction:
           result.reset(new ReductionControl(

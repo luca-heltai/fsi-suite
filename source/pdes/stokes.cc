@@ -28,8 +28,7 @@ namespace PDEs
   template <int dim, class LacType>
   Stokes<dim, LacType>::Stokes()
     : LinearProblem<dim, dim, LacType>(
-        ParsedTools::Components::join(std::vector<std::string>(dim, "u"), ",") +
-          ",p",
+        ParsedTools::Components::blocks_to_names({"u", "p"}, {dim, 1}),
         "Stokes")
     , constants("/Stokes/Constants", {"eta"}, {1.0}, {"Viscosity"})
     , schur_preconditioner("/Stokes/Solver/Schur preconditioner")
@@ -156,8 +155,8 @@ namespace PDEs
         const auto n_modes = std::count_if(constant_modes[0].begin(),
                                            constant_modes[0].end(),
                                            [](const bool &b) { return b; });
-        this->pcout << "Constant modes: " << n_modes << "/"
-                    << constant_modes[0].size() << std::endl;
+        deallog << "Constant modes: " << n_modes << "/"
+                << constant_modes[0].size() << std::endl;
       }
     // auto AA = block_operator<BVec>(m);
     // AA.block(1, 1) *= 0;

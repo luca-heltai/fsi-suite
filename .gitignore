@@ -19,3 +19,17 @@ doc/html
 deal.tag*
 .DS_Store
 lab
+*.vtu
+*.pvd
+*.pvtu
+target*json
+cache*json
+index*json
+query*json
+codemodel*json
+toolchain*json
+directory*json
+*.g
+*.so
+used_*prm
+*DS_Store

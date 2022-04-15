@@ -1,0 +1,117 @@
+set Console level                          = 8
+set Coupling quadrature order              = 3
+set Delta refinement                       = 1
+set Finite element degree (ambient space)  = 1
+set Finite element degree (configuration)  = 1
+set Finite element degree (embedded space) = 1
+subsection Boundary conditions
+  set Boundary condition types (u) = dirichlet
+  set Boundary id sets (u)         = -1
+  set Expressions (u)              = -ln(x^2+y^2)/2
+  set Selected components (u)      = u
+end
+subsection Data out
+  subsection Embedded
+    set Curved cells region    = curved_inner_cells
+    set Output format          = vtu
+    set Output material ids    = true
+    set Output partitioning    = true
+    set Problem base name      = output/embedded
+    set Subdivisions           = 0
+    set Write high order cells = true
+  end
+  subsection Space
+    set Curved cells region    = curved_inner_cells
+    set Output format          = vtu
+    set Output material ids    = false
+    set Output partitioning    = false
+    set Problem base name      = output/solution
+    set Subdivisions           = 0
+    set Write high order cells = true
+  end
+end
+subsection Error table
+  set Enable computation of the errors = true
+  set Error file name                  = 
+  set Error precision                  = 3
+  set Exponent for p-norms             = 2
+  set Extra columns                    = cells, dofs
+  set List of error norms to compute   = L2_norm, Linfty_norm, H1_norm
+  set Rate key                         = dofs
+  set Rate mode                        = reduction_rate_log2
+end
+subsection Functions
+  set Embedded value = -ln(.2)
+  set Exact solution = -ln(max(x^2+y^2, .2^2))/2
+  set Forcing term   = 0
+end
+subsection Grid
+  subsection Ambient
+    set Arguments                 = -1: 1: false
+    set Initial grid refinement   = 3
+    set Input name                = hyper_cube
+    set Output name               = 
+    set Transform to simplex grid = false
+  end
+  subsection Embedded
+    set Arguments                 = 0, 0: 0.2
+    set Initial grid refinement   = 1
+    set Input name                = hyper_sphere
+    set Output name               = 
+    set Transform to simplex grid = false
+    subsection Mapping
+      set Initial configuration or displacement = 
+      set Use displacement                      = false
+    end
+  end
+  subsection Refinement
+    set Number of refinement cycles = 4
+    subsection Error estimator
+      set Component mask = 
+      set Estimator type = kelly
+    end
+    subsection Marking strategy
+      set Coarsening parameter                   = 0.1
+      set Maximum level                          = 0
+      set Maximum number of cells (if available) = 0
+      set Minimum level                          = 0
+      set Refinement parameter                   = 0.3
+      set Refinement strategy                    = global
+    end
+  end
+end
+subsection Solver
+  subsection Schur
+    set Absolute tolerance     = 1e-8
+    set Consecutive iterations = 2
+    set Log history            = false
+    set Log result             = true
+    set Maximum iterations     = 100
+    set Relative tolerance     = 1e-08
+    set Solver control type    = iteration_number
+    set Solver name            = gmres
+  end
+  subsection Stiffness
+    set Absolute tolerance     = 1e-10
+    set Consecutive iterations = 2
+    set Log history            = false
+    set Log result             = false
+    set Maximum iterations     = 100
+    set Relative tolerance     = 1e-8
+    set Solver control type    = tolerance
+    set Solver name            = cg
+    set Use direct solver      = true
+  end
+  subsection Stiffness AMG
+    set Aggregation threshold = 0.0001
+    set Coarse type           = Amesos-KLU
+    set Elliptic              = true
+    set High Order Elements   = false
+    set Number of cycles      = 1
+    set Output details        = false
+    set Smoother overlap      = 0
+    set Smoother sweeps       = 2
+    set Smoother type         = Chebyshev
+    set w-cycle               = false
+  end
+end

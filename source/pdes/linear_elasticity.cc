@@ -26,14 +26,20 @@ namespace PDEs
   template <int dim, int spacedim, class LacType>
   LinearElasticity<dim, spacedim, LacType>::LinearElasticity()
     : LinearProblem<dim, spacedim, LacType>(
-        ParsedTools::Components::join(std::vector<std::string>(spacedim, "u"),
-                                      ","),
+        ParsedTools::Components::blocks_to_names({"W"}, {spacedim}),
         "LinearElasticity")
     , lambda("/LinearElasticity/Lame coefficients", "1.0", "lambda")
     , mu("/LinearElasticity/Lame coefficients", "1.0", "mu")
     , displacement(0)
   {
     this->output_results_call_back.connect([&]() { postprocess(); });
+    this->check_consistency_call_back.connect([&]() {
+      AssertThrow(
+        this->evolution_type != EvolutionType::transient,
+        ExcMessage(
+          "This code won't produce correct results in transient simulations. "
+          "Run the wave_equation code instead."));
+    });
   }
 
 
@@ -177,9 +183,9 @@ namespace PDEs
                           MeshWorker::assemble_boundary_faces,
                           face_integrator);
 
-    this->pcout << "Forces: " << std::endl;
+    deallog << "Forces: " << std::endl;
     for (const auto &[id, force] : forces)
-      this->pcout << "ID " << id << ": " << force << std::endl;
+      deallog << "ID " << id << ": " << force << std::endl;
   }
 
 

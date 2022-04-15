@@ -220,7 +220,7 @@ namespace PDEs
             }
           deallog.pop();
         }
-      if (space.pcout.is_active())
+      if (space.mpi_rank == 0)
         {
           space.error_table.output_table(std::cout);
           embedded.error_table.output_table(std::cout);
