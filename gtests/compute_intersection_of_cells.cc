@@ -73,11 +73,7 @@ struct Test_function
   }
 };
 
-#  ifdef DEAL_II_PREFER_CGAL_OVER_PARMOONOLITH
-TEST(CGAL, QuadratureOver1DSimpleIntersection)
-#  else
-TEST(CGAL, DISABLED_QuadratureOver1DSimpleIntersection)
-#  endif
+TEST(Intersection, QuadratureOver1DSimpleIntersection)
 {
   constexpr int dim0     = 2;
   constexpr int dim1     = 1;
@@ -124,7 +120,7 @@ TEST(CGAL, DISABLED_QuadratureOver1DSimpleIntersection)
   // segment.
   const auto &p = cell1->vertex(0);
   const auto &q = cell1->vertex(1);
-  ASSERT_DOUBLE_EQ(sum, (p - q).norm());
+  ASSERT_NEAR(sum, (p - q).norm(), 1e-10);
 }
 
 
