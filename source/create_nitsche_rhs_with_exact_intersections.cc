@@ -139,20 +139,6 @@ create_nitsche_rhs_with_exact_intersections(
 
 
     template void
-    create_nitsche_rhs_with_exact_intersections<1, 1, 2>(
-      const DoFHandler<1, 2> &,
-      const std::vector<
-        std::tuple<typename dealii::Triangulation<1, 2>::cell_iterator,
-                   typename dealii::Triangulation<1, 2>::cell_iterator,
-                   dealii::Quadrature<2>>> &,
-      Vector<double> &vector,
-      const AffineConstraints<double> &,
-      const Mapping<1, 2> &,
-      const Function<2, double> &,
-      const Function<2, double> &,
-      const double);
-
-    template void
     create_nitsche_rhs_with_exact_intersections<2, 2, 2>(
       const DoFHandler<2, 2> &,
       const std::vector<
@@ -182,20 +168,6 @@ create_nitsche_rhs_with_exact_intersections(
       const Function<2, double> &,
       const double);
 
-
-    template void
-    create_nitsche_rhs_with_exact_intersections<2, 2, 3>(
-      const DoFHandler<2, 3> &,
-      const std::vector<
-        std::tuple<typename dealii::Triangulation<2, 3>::cell_iterator,
-                   typename dealii::Triangulation<2, 3>::cell_iterator,
-                   dealii::Quadrature<3>>> &,
-      Vector<double> &vector,
-      const AffineConstraints<double> &,
-      const Mapping<2, 3> &,
-      const Function<3, double> &,
-      const Function<3, double> &,
-      const double);
 
 
     template void
@@ -229,4 +201,3 @@ create_nitsche_rhs_with_exact_intersections(
 
   } // namespace NonMatching
 } // namespace dealii
-

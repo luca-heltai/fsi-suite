@@ -54,6 +54,9 @@ namespace PDEs
                        "sin(2*PI*x)*sin(2*PI*y)",
                        "Exact solution")
       , boundary_conditions("/PoissonNitscheInterface/Boundary conditions")
+      , timer(deallog.get_console(),
+              TimerOutput::summary,
+              TimerOutput::cpu_and_wall_times)
       , error_table("/PoissonNitscheInterface/Error table")
       , data_out("/PoissonNitscheInterface/Output")
     {
@@ -66,14 +69,14 @@ namespace PDEs
     void
     PoissonNitscheInterface<dim, spacedim>::generate_grids()
     {
+      TimerOutput::Scope timer_section(timer, "Generate grids");
       grid_generator.generate(space_triangulation);
       embedded_grid_generator.generate(embedded_triangulation);
       // We create unique pointers to cached triangulations. This This objects
       // will be necessary to compute the the Quadrature formulas on the
       // intersection of the cells.
-      space_cache =
-        std::make_unique<GridTools::Cache<std::max(dim, spacedim), spacedim>>(
-          space_triangulation);
+      space_cache = std::make_unique<GridTools::Cache<spacedim, spacedim>>(
+        space_triangulation);
       embedded_cache = std::make_unique<GridTools::Cache<dim, spacedim>>(
         embedded_triangulation);
     }
@@ -84,6 +87,7 @@ namespace PDEs
     void
     PoissonNitscheInterface<dim, spacedim>::setup_system()
     {
+      TimerOutput::Scope timer_section(timer, "Setup system");
       deallog << "System setup" << std::endl;
       // No mixed grids
       const auto ref_cells = space_triangulation.get_reference_cells();
@@ -136,89 +140,95 @@ namespace PDEs
     void
     PoissonNitscheInterface<dim, spacedim>::assemble_system()
     {
-      deallog << "Assemble system" << std::endl;
-      const ReferenceCell cell_type = space_fe().reference_cell();
+      {
+        TimerOutput::Scope timer_section(timer, "Assemble system");
+        deallog << "Assemble system" << std::endl;
+        const ReferenceCell cell_type = space_fe().reference_cell();
 
 
-      const Quadrature<std::max(dim, spacedim)> quadrature_formula =
-        cell_type.get_gauss_type_quadrature<std::max(dim, spacedim)>(
-          space_fe().tensor_degree() + 1);
+        const Quadrature<spacedim> quadrature_formula =
+          cell_type.get_gauss_type_quadrature<spacedim>(
+            space_fe().tensor_degree() + 1);
 
 
-      FEValues<std::max(dim, spacedim), spacedim> fe_values(
-        *mapping,
-        space_fe,
-        quadrature_formula,
-        update_values | update_gradients | update_quadrature_points |
-          update_JxW_values);
+        FEValues<spacedim, spacedim> fe_values(*mapping,
+                                               space_fe,
+                                               quadrature_formula,
+                                               update_values |
+                                                 update_gradients |
+                                                 update_quadrature_points |
+                                                 update_JxW_values);
 
-      const unsigned int dofs_per_cell = space_fe().n_dofs_per_cell();
-      FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
-      Vector<double>     cell_rhs(dofs_per_cell);
-      std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
-      for (const auto &cell : space_dh.active_cell_iterators())
-        {
-          fe_values.reinit(cell);
-          cell_matrix = 0;
-          cell_rhs    = 0;
-          for (const unsigned int q_index :
-               fe_values.quadrature_point_indices())
-            {
-              for (const unsigned int i : fe_values.dof_indices())
-                for (const unsigned int j : fe_values.dof_indices())
-                  cell_matrix(i, j) +=
-                    (constants["kappa"] *
-                     fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
-                     fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
-                     fe_values.JxW(q_index));           // dx
-              for (const unsigned int i : fe_values.dof_indices())
-                cell_rhs(i) +=
-                  (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                   forcing_term.value(
-                     fe_values.quadrature_point(q_index)) * // f(x_q)
-                   fe_values.JxW(q_index));                 // dx
-            }
+        const unsigned int dofs_per_cell = space_fe().n_dofs_per_cell();
+        FullMatrix<double> cell_matrix(dofs_per_cell, dofs_per_cell);
+        Vector<double>     cell_rhs(dofs_per_cell);
+        std::vector<types::global_dof_index> local_dof_indices(dofs_per_cell);
+        for (const auto &cell : space_dh.active_cell_iterators())
+          {
+            fe_values.reinit(cell);
+            cell_matrix = 0;
+            cell_rhs    = 0;
+            for (const unsigned int q_index :
+                 fe_values.quadrature_point_indices())
+              {
+                for (const unsigned int i : fe_values.dof_indices())
+                  for (const unsigned int j : fe_values.dof_indices())
+                    cell_matrix(i, j) +=
+                      (constants["kappa"] *
+                       fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
+                       fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
+                       fe_values.JxW(q_index));           // dx
+                for (const unsigned int i : fe_values.dof_indices())
+                  cell_rhs(i) +=
+                    (fe_values.shape_value(i, q_index) * // phi_i(x_q)
+                     forcing_term.value(
+                       fe_values.quadrature_point(q_index)) * // f(x_q)
+                     fe_values.JxW(q_index));                 // dx
+              }
 
-          cell->get_dof_indices(local_dof_indices);
-          space_constraints.distribute_local_to_global(cell_matrix,
-                                                       cell_rhs,
-                                                       local_dof_indices,
-                                                       system_matrix,
-                                                       system_rhs);
-        }
+            cell->get_dof_indices(local_dof_indices);
+            space_constraints.distribute_local_to_global(cell_matrix,
+                                                         cell_rhs,
+                                                         local_dof_indices,
+                                                         system_matrix,
+                                                         system_rhs);
+          }
+      }
 
 
+      deallog << "Assemble Nitsche contributions" << '\n';
+      {
+        TimerOutput::Scope timer_section(timer, "Assemble Nitsche terms");
 
-      deallog << "Assemble Nitsche contribution" << '\n';
-      // Add the Nitsche's contribution to the system matrix. The coefficient
-      // that multiplies the inner product is equal to 2.0, and the penalty is
-      // set to 100.0.
-      NonMatching::
-        assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
-          space_dh,
-          cells_and_quads,
-          system_matrix,
-          space_constraints,
-          ComponentMask(),
-          MappingQ1<std::max(dim, spacedim), spacedim>(),
-          nitsche_coefficient,
-          penalty);
+        // Add the Nitsche's contribution to the system matrix. The coefficient
+        // that multiplies the inner product is equal to 2.0, and the penalty is
+        // set to 100.0.
+        NonMatching::
+          assemble_nitsche_with_exact_intersections<spacedim, dim, spacedim>(
+            space_dh,
+            cells_and_quads,
+            system_matrix,
+            space_constraints,
+            ComponentMask(),
+            MappingQ1<spacedim, spacedim>(),
+            nitsche_coefficient,
+            penalty);
 
-      // Add the Nitsche's contribution to the rhs. The embedded value is parsed
-      // from the parameter file, while we have again the constant 2.0 in front
-      // of that term, parsed as above from command line. Finally, we have the
-      // penalty parameter as before.
-      deallog << "Assemble Nitsche rhs" << '\n';
-      NonMatching::
-        create_nitsche_rhs_with_exact_intersections<spacedim, dim, spacedim>(
-          space_dh,
-          cells_and_quads,
-          system_rhs,
-          space_constraints,
-          MappingQ1<std::max(dim, spacedim), spacedim>(),
-          embedded_value,
-          ConstantFunction<spacedim>(2.0),
-          penalty);
+        // Add the Nitsche's contribution to the rhs. The embedded value is
+        // parsed from the parameter file, while we have again the constant 2.0
+        // in front of that term, parsed as above from command line. Finally, we
+        // have the penalty parameter as before.
+        NonMatching::
+          create_nitsche_rhs_with_exact_intersections<spacedim, dim, spacedim>(
+            space_dh,
+            cells_and_quads,
+            system_rhs,
+            space_constraints,
+            MappingQ1<spacedim, spacedim>(),
+            embedded_value,
+            ConstantFunction<spacedim>(2.0),
+            penalty);
+      }
     }
 
 
@@ -227,6 +237,7 @@ namespace PDEs
     void
     PoissonNitscheInterface<dim, spacedim>::solve()
     {
+      TimerOutput::Scope timer_section(timer, "Solve system");
       deallog << "Solve system" << std::endl;
       preconditioner.initialize(system_matrix);
       const auto A    = linear_operator<Vector<double>>(system_matrix);
@@ -244,6 +255,7 @@ namespace PDEs
     PoissonNitscheInterface<dim, spacedim>::output_results(
       const unsigned cycle) const
     {
+      TimerOutput::Scope timer_section(timer, "Output results");
       deallog << "Output results" << std::endl;
       // Save each cycle in its own file
       const auto suffix =
@@ -304,8 +316,6 @@ namespace PDEs
         }
       // Make sure we output the error table after the last cycle
       error_table.output_table(std::cout);
-      std::cout << "Run in dim= " << dim << " and spacedim=" << spacedim
-                << '\n';
     }
 
     // We explicitly instantiate all of the different combinations of dim and

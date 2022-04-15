@@ -1,0 +1,197 @@
+# Listing of Parameters
+# ---------------------
+subsection PoissonNitscheInterface
+  set Console level            = 1
+  set Finite element space (u) = FE_Q(1)
+
+
+  subsection Boundary conditions
+    set Boundary condition types (u) = dirichlet
+    set Boundary id sets (u)         = -1
+    set Expressions (u)              = 0
+    set Selected components (u)      = u
+  end
+
+  subsection Constants
+    set Diffusion coefficient (kappa) = 1
+  end
+
+  subsection Error table
+    # When set to false, no computations are performed.
+    set Enable computation of the errors = true
+
+    # Set this to a filename with extension .txt, .gpl, .org, or .tex to
+    # enable writing the convergence table to a file.
+    set Error file name                  = 
+
+    # Number of digits to use when printing the error.
+    set Error precision                  = 3
+
+    # The exponent to use when computing p-norms.
+    set Exponent for p-norms             = 2
+
+    # Extra columns to add to the table. Available options are dofs and
+    # cells.
+    set Extra columns                    = cells, dofs
+
+    # Each component is separated by a semicolon and each norm by a comma. See
+    # the documentation of VectorTools::NormType for a list of implemented
+    # norms. If you want to skip a component, leave its entry empty.
+    set List of error norms to compute   = L2_norm, Linfty_norm, H1_norm
+
+    # Key to use when computing convergence rates. If this is set to a column
+    # that is not present, or to the empty string, then no error rates are
+    # computed.
+    set Rate key                         = dofs
+
+    # What type of error rate to compute. Available options are
+    # reduction_rate_log2, reduction_rate, and none.
+    set Rate mode                        = reduction_rate_log2
+  end
+
+  subsection Functions
+    # Embedded value, with input variables (x,y,z,t).
+    set Embedded value     = 1.0
+
+    # Exact solution, with input variables (x,y,z,t).
+    set Exact solution     = sin(2*PI*x)*sin(2*PI*y)
+
+    # Forcing term, with input variables (x,y,z,t).
+    set Forcing term       = 0. #kappa*8*PI^2*sin(2*PI*x)*sin(2*PI*y)
+
+    # Nitsche cofficient, with input variables (x,y,z,t).
+    set Nitsche cofficient = 2.0
+  end
+
+  subsection Grid
+    subsection Ambient
+      set Arguments                 = -1: 1: false
+      set Initial grid refinement   = 3
+      set Input name                = hyper_cube
+      set Output name               = 
+      set Transform to simplex grid = false
+    end
+
+    subsection Embedded
+      set Arguments                 = -.5 : .5 : false#0., 0. ,0. : .5
+      set Initial grid refinement   = 3
+      set Input name                = hyper_cube #hyper_sphere
+      set Output name               = 
+      set Transform to simplex grid = false
+    end
+
+    subsection Refinement
+      set Number of refinement cycles = 2
+
+
+      subsection Error estimator
+        set Component mask = 
+        set Estimator type = kelly
+      end
+
+      subsection Marking strategy
+        # Theta parameter, used to determine coearsening fraction.
+        set Coarsening parameter                   = 0.1
+
+        # Any cell at refinement level above this number will be marked for
+        # coarsening.
+        set Maximum level                          = 0
+
+        # Maximum number of cells.
+        set Maximum number of cells (if available) = 0
+
+        # Any cell at refinement level below this number will be marked for
+        # refinement.
+        set Minimum level                          = 0
+
+        # Theta parameter, used to determine refinement fraction.
+        set Refinement parameter                   = 0.3
+        set Refinement strategy                    = global
+      end
+
+    end
+
+  end
+
+  subsection Output
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+    set Output format          = vtu
+    set Output material ids    = false
+    set Output partitioning    = false
+    set Problem base name      = solution
+    set Subdivisions           = 0
+    set Write high order cells = true
+  end
+
+  subsection Solver
+    set Absolute tolerance     = 1e-12
+    set Consecutive iterations = 2
+    set Log history            = false
+    set Log result             = false
+    set Maximum iterations     = 1000
+    set Relative tolerance     = 1e-06
+    set Solver control type    = tolerance
+    # Name of the solver to use. One of cg,bicgstab,gmres,fgmres,minres,qmrs,
+    # or richardson.
+    set Solver name            = cg
+
+
+    subsection AMG Preconditioner
+      # This threshold tells the AMG setup how the coarsening should be
+      # performed. In the AMG used by ML, all points that strongly couple with
+      # the tentative coarse-level point form one aggregate. The term strong
+      # coupling is controlled by the variable aggregation_threshold, meaning
+      # that all elements that are not smaller than aggregation_threshold
+      # times the diagonal element do couple strongly.
+      set Aggregation threshold = 0.0001
+
+      # Determines which solver to use on the coarsest level. The same
+      # settings as for the smoother type are possible.
+      set Coarse type           = Amesos-KLU
+
+      # Determines whether the AMG preconditioner should be optimized for
+      # elliptic problems (ML option smoothed aggregation SA, using a
+      # Chebyshev smoother) or for non-elliptic problems (ML option
+      # non-symmetric smoothed aggregation NSSA, smoother is SSOR with
+      # underrelaxation
+      set Elliptic              = true
+
+      # Determines whether the matrix that the preconditioner is built upon is
+      # generated from linear or higher-order elements.
+      set High Order Elements   = false
+
+      # Defines how many multigrid cycles should be performed by the
+      # preconditioner.
+      set Number of cycles      = 1
+
+      # If this flag is set to true, then internal information from the ML
+      # preconditioner is printed to screen. This can be useful when debugging
+      # the preconditioner.
+      set Output details        = false
+
+      # Determines the overlap in the SSOR/Chebyshev error smoother when run
+      # in parallel.
+      set Smoother overlap      = 0
+
+      # Determines how many sweeps of the smoother should be performed. When
+      # the flag elliptic is set to true, i.e., for elliptic or almost
+      # elliptic problems, the polynomial degree of the Chebyshev smoother is
+      # set to smoother_sweeps. The term sweeps refers to the number of
+      # matrix-vector products performed in the Chebyshev case. In the
+      # non-elliptic case, smoother_sweeps sets the number of SSOR relaxation
+      # sweeps for post-smoothing to be performed.
+      set Smoother sweeps       = 2
+
+      # Determines which smoother to use for the AMG cycle.
+      set Smoother type         = Chebyshev
+
+      # defines whether a w-cycle should be used instead of the standard
+      # setting of a v-cycle.
+      set w-cycle               = false
+    end
+
+  end
+
+end
+
+

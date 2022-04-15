@@ -24,5 +24,4 @@ int
 main(int argc, char **argv)
 {
   RUNNER_CODIM(PDEs::Serial::PoissonNitscheInterface, argc, argv);
-
 }

@@ -499,22 +499,6 @@ namespace dealii
 
 
     template Quadrature<2>
-    compute_intersection(const Triangulation<1, 2>::cell_iterator &,
-                         const Triangulation<1, 2>::cell_iterator &,
-                         const unsigned int,
-                         const Mapping<1, 2> &,
-                         const Mapping<1, 2> &);
-
-
-
-    template Quadrature<2>
-    compute_intersection(const Triangulation<1, 2>::cell_iterator &,
-                         const Triangulation<2, 2>::cell_iterator &,
-                         const unsigned int,
-                         const Mapping<1, 2> &,
-                         const Mapping<2, 2> &);
-
-    template Quadrature<2>
     compute_intersection(const Triangulation<2, 2>::cell_iterator &,
                          const Triangulation<1, 2>::cell_iterator &,
                          const unsigned int,
@@ -528,12 +512,6 @@ namespace dealii
                          const Mapping<2, 2> &,
                          const Mapping<2, 2> &);
 
-    template Quadrature<3>
-    compute_intersection(const Triangulation<2, 3>::cell_iterator &,
-                         const Triangulation<3, 3>::cell_iterator &,
-                         const unsigned int,
-                         const Mapping<2, 3> &,
-                         const Mapping<3, 3> &);
 
     template Quadrature<3>
     compute_intersection(const Triangulation<3, 3>::cell_iterator &,
@@ -562,16 +540,6 @@ namespace dealii
 
 
     template std::vector<
-      std::tuple<typename dealii::Triangulation<1, 2>::cell_iterator,
-                 typename dealii::Triangulation<1, 2>::cell_iterator,
-                 Quadrature<2>>>
-    NonMatching::compute_intersection(
-      const GridTools::Cache<1, 2> &space_cache,
-      const GridTools::Cache<1, 2> &immersed_cache,
-      const unsigned int            degree,
-      const double                  tol);
-
-    template std::vector<
       std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
                  typename dealii::Triangulation<1, 3>::cell_iterator,
                  Quadrature<3>>>
@@ -581,15 +549,6 @@ namespace dealii
       const unsigned int            degree,
       const double                  tol);
 
-    template std::vector<
-      std::tuple<typename dealii::Triangulation<1, 3>::cell_iterator,
-                 typename dealii::Triangulation<3, 3>::cell_iterator,
-                 Quadrature<3>>>
-    NonMatching::compute_intersection(
-      const GridTools::Cache<1, 3> &space_cache,
-      const GridTools::Cache<3, 3> &immersed_cache,
-      const unsigned int            degree,
-      const double                  tol);
 
     template std::vector<
       std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
@@ -602,17 +561,6 @@ namespace dealii
       const double                  tol);
 
 
-    template std::vector<
-      std::tuple<typename dealii::Triangulation<1, 2>::cell_iterator,
-                 typename dealii::Triangulation<2, 2>::cell_iterator,
-                 Quadrature<2>>>
-    NonMatching::compute_intersection(
-      const GridTools::Cache<1, 2> &space_cache,
-      const GridTools::Cache<2, 2> &immersed_cache,
-      const unsigned int            degree,
-      const double                  tol);
-
-
 
     template std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
                                     typename Triangulation<2, 2>::cell_iterator,
@@ -620,15 +568,6 @@ namespace dealii
     NonMatching::compute_intersection(
       const GridTools::Cache<2, 2> &space_cache,
       const GridTools::Cache<2, 2> &immersed_cache,
-      const unsigned int            degree,
-      const double                  tol);
-
-    template std::vector<std::tuple<typename Triangulation<2, 3>::cell_iterator,
-                                    typename Triangulation<2, 3>::cell_iterator,
-                                    Quadrature<3>>>
-    NonMatching::compute_intersection(
-      const GridTools::Cache<2, 3> &space_cache,
-      const GridTools::Cache<2, 3> &immersed_cache,
       const unsigned int            degree,
       const double                  tol);
 
