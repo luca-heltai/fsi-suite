@@ -73,7 +73,11 @@ struct Test_function
   }
 };
 
+#  ifdef DEAL_II_PREFER_CGAL_OVER_PARMOONOLITH
 TEST(CGAL, QuadratureOver1DSimpleIntersection)
+#  else
+TEST(CGAL, DISABLED_QuadratureOver1DSimpleIntersection)
+#  endif
 {
   constexpr int dim0     = 2;
   constexpr int dim1     = 1;
