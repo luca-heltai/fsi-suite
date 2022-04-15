@@ -85,7 +85,8 @@
         "memory_resource": "cpp",
         "random": "cpp",
         "codecvt": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "*.ipp": "cpp"
     },
     "peacock.remoteColor": "#dd0531",
     "peacock.color": "#215732",

@@ -4,7 +4,7 @@
 
 #ifdef DEAL_II_WITH_PARMOONOLITH
 
-#  include <deal_moon_conversion.h>
+#  include <moonolith_tools.h>
 
 #  include "dim_spacedim_tester.h"
 

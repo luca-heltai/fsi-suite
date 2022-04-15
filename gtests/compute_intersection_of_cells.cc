@@ -73,7 +73,7 @@ struct Test_function
   }
 };
 
-TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
+TEST(CGAL, QuadratureOver1DSimpleIntersection)
 {
   constexpr int dim0     = 2;
   constexpr int dim1     = 1;
@@ -125,7 +125,7 @@ TEST(DimTester, Quadrature_Over_1D_Simple_Intersection)
 
 
 
-TEST(DimTester, Area_Test_Codimension0)
+TEST(CGAL, AreaTestCodimension0)
 {
   constexpr int      dim0     = 2;
   constexpr int      dim1     = 2;

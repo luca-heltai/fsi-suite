@@ -1,5 +1,7 @@
-#include <deal.II/base/config.h>
+#ifndef moonolith_tools_include_h
+#define moonolith_tools_include_h
 
+#include <deal.II/base/config.h>
 
 #ifdef DEAL_II_WITH_PARMOONOLITH
 
@@ -14,9 +16,14 @@
 #  include <deal.II/grid/tria.h>
 
 #  include <moonolith_build_quadrature.hpp>
+#  include <moonolith_convex_decomposition.hpp>
+#  include <moonolith_intersect_polyhedra.hpp>
 #  include <moonolith_map_quadrature.hpp>
+#  include <moonolith_mesh_io.hpp>
+#  include <moonolith_par_l2_transfer.hpp>
 #  include <moonolith_polygon.hpp>
 #  include <moonolith_vector.hpp>
+#  include <par_moonolith.hpp>
 
 #  include <array>
 #  include <cassert>
@@ -25,9 +32,12 @@
 #  include <iostream>
 #  include <sstream>
 
-using namespace dealii;
 namespace moonolith
 {
+  /**
+   * Convert a moonolith::Vector with dimension dim to a dealii::Point<dim>.
+   */
+  using namespace dealii;
   template <int dim, typename NumberType>
   inline dealii::Point<dim, NumberType>
   to_dealii(const moonolith::Vector<NumberType, dim> &p)
@@ -38,8 +48,9 @@ namespace moonolith
     return result;
   }
 
-
-
+  /**
+   * Convert a dealii::Point<dim> to a moonolith::Vector.
+   */
   template <int dim, typename NumberType>
   inline moonolith::Vector<NumberType, dim>
   to_moonolith(const dealii::Point<dim, NumberType> &p)
@@ -51,7 +62,9 @@ namespace moonolith
   }
 
 
-
+  /**
+   * Convert a moonolith::Quadrature<dim> to a dealii::Quadrature<dim>.
+   */
   template <int dim>
   inline dealii::Quadrature<dim>
   to_dealii(const moonolith::Quadrature<double, dim> &q)
@@ -70,9 +83,11 @@ namespace moonolith
   }
 
 
-
+  /**
+   * Convert a 1 dimensional cell to a moonolith::Line.
+   */
   template <int dim>
-  Line<double, dim>
+  inline Line<double, dim>
   to_moonolith(const typename Triangulation<1, dim>::cell_iterator &cell,
                const Mapping<1, dim> &                              mapping)
   {
@@ -84,9 +99,11 @@ namespace moonolith
   }
 
 
-
+  /**
+   * Convert a 2 dimensional cell to a moonolith::Polygon.
+   */
   template <int spacedim>
-  Polygon<double, spacedim>
+  inline Polygon<double, spacedim>
   to_moonolith(const typename Triangulation<2, spacedim>::cell_iterator &cell,
                const Mapping<2, spacedim> &mapping)
   {
@@ -109,13 +126,13 @@ namespace moonolith
     return poly;
   }
 
-
-  template <int spacedim>
-  Polyhedron<double>
-  to_moonolith(const typename Triangulation<3, spacedim>::cell_iterator &cell,
-               const Mapping<3, spacedim> &mapping)
+  /**
+   * Convert a three dimensional cell to a moonolith::Polyedron.
+   */
+  inline Polyhedron<double>
+  to_moonolith(const typename Triangulation<3, 3>::cell_iterator &cell,
+               const Mapping<3, 3> &                              mapping)
   {
-    static_assert(3 <= spacedim, "3 must be <= spacedim");
     const auto         vertices = mapping.get_vertices(cell);
     Polyhedron<double> poly;
 
@@ -171,10 +188,69 @@ namespace moonolith
 
         poly.fix_ordering();
       }
-
     return poly;
   }
 
+  /**
+   * Compute the intersection beetween two arbitrary shapes using the moonolith
+   * library.
+   *
+   * @tparam spacedim The dimension of the embedding space
+   * @tparam dim The minimum of the intrinsic dimensions of the two shapes
+   * @tparam T1 First shape type
+   * @tparam T2 Second shape type
+   * @param ref_quad A reference quadrature on simplices of dimension dim, used
+   * to integrate on a triangulation of the intersection
+   * @param t1 First shape
+   * @param t2 Second shape
+   * @return moonolith::Quadrature<double, spacedim>
+   */
+  template <int spacedim, int dim, class T1, class T2>
+  inline moonolith::Quadrature<double, spacedim>
+  compute_intersection(const moonolith::Quadrature<double, dim> &ref_quad,
+                       const T1 &                                t1,
+                       const T2 &                                t2)
+  {
+    BuildQuadrature<T1, T2>      intersect;
+    Quadrature<double, spacedim> out;
+    intersect.apply(ref_quad, t1, t2, out);
+    return out;
+  }
+
+
+  /**
+   * Compute the intersection beetween two arbitrary deal.II cells using the
+   * moonolith library, and return a quadrature formula which can be used to
+   * integrate exactly on the intersection.
+   *
+   * @tparam spacedim The dimension of the embedding space
+   * @tparam dim0 intrinsic dimension of the first shape
+   * @tparam dim1 intrinsic dimension of the second shape
+   * @tparam T1 First shape type
+   * @tparam T2 Second shape type
+   * @param cell0 First chell
+   * @param cell1 Second cell
+   * @param order Order of the reference quadrature on simplices of dimension
+   * min(dim0,dim1), used to integrate on a triangulation of the intersection
+   * @return Quadrature<spacedim>
+   */
+  template <int dim0, int dim1, int spacedim>
+  inline dealii::Quadrature<spacedim>
+  compute_intersection(
+    const typename Triangulation<dim0, spacedim>::cell_iterator &cell0,
+    const typename Triangulation<dim1, spacedim>::cell_iterator &cell1,
+    const unsigned int                                           degree,
+    const Mapping<dim0, spacedim> &                              mapping0,
+    const Mapping<dim1, spacedim> &                              mapping1)
+  {
+    const auto t0 = to_moonolith(cell0, mapping0);
+    const auto t1 = to_moonolith(cell1, mapping1);
+    moonolith::Quadrature<Real, std::min(dim0, dim1)> ref_quad;
+    moonolith::Gauss::get(degree, ref_quad);
+    auto mquad = compute_intersection<spacedim>(ref_quad, t0, t1);
+    return to_dealii(mquad);
+  }
 } // namespace moonolith
 
+#endif
 #endif

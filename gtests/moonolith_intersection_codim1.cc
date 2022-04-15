@@ -14,28 +14,15 @@
 #  include <iostream>
 #  include <sstream>
 
-#  include "deal_moon_conversion.h"
 #  include "dim_spacedim_tester.h"
 #  include "moonolith_convex_decomposition.hpp"
 #  include "moonolith_intersect_polyhedra.hpp"
 #  include "moonolith_mesh_io.hpp"
 #  include "moonolith_par_l2_transfer.hpp"
+#  include "moonolith_tools.h"
 #  include "par_moonolith.hpp"
 
 using namespace moonolith;
-
-
-template <int spacedim, int dim, class T1, class T2>
-moonolith::Quadrature<double, spacedim>
-compute_intersection(const moonolith::Quadrature<double, dim> &ref_quad,
-                     const T1 &                                t1,
-                     const T2 &                                t2)
-{
-  BuildQuadrature<T1, T2>                 intersect;
-  moonolith::Quadrature<double, spacedim> out;
-  intersect.apply(ref_quad, t1, t2, out);
-  return out;
-}
 
 TEST(MoonoLith, PolyLine)
 {
