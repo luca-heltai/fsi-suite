@@ -189,6 +189,35 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections(
 
 
 template void
+dealii::NonMatching::assemble_nitsche_with_exact_intersections<1, 1, 1>(
+  const DoFHandler<1, 1> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
+               typename dealii::Triangulation<1, 1>::cell_iterator,
+               dealii::Quadrature<1>>> &,
+  dealii::SparseMatrix<double> &,
+  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+  const ComponentMask &,
+  const Mapping<1, 1> &,
+  const Function<1, double> &nitsche_coefficient,
+  const double);
+
+template void
+dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 1, 2>(
+  const DoFHandler<2, 2> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
+               typename dealii::Triangulation<1, 2>::cell_iterator,
+               dealii::Quadrature<2>>> &,
+  dealii::SparseMatrix<double> &,
+  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+  const ComponentMask &,
+  const Mapping<2, 2> &,
+  const Function<2, double> &nitsche_coefficient,
+  const double);
+
+
+template void
 dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 2>(
   const DoFHandler<2, 2> &,
   const std::vector<
@@ -203,6 +232,19 @@ dealii::NonMatching::assemble_nitsche_with_exact_intersections<2, 2, 2>(
   const double);
 
 
+template void
+dealii::NonMatching::assemble_nitsche_with_exact_intersections<3, 1, 3>(
+  const DoFHandler<3, 3> &,
+  const std::vector<
+    std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+               typename dealii::Triangulation<1, 3>::cell_iterator,
+               dealii::Quadrature<3>>> &,
+  dealii::SparseMatrix<double> &,
+  const AffineConstraints<dealii::SparseMatrix<double>::value_type> &,
+  const ComponentMask &,
+  const Mapping<3, 3> &,
+  const Function<3, double> &nitsche_coefficient,
+  const double);
 
 template void
 dealii::NonMatching::assemble_nitsche_with_exact_intersections<3, 2, 3>(

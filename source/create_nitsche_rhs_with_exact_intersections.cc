@@ -74,8 +74,9 @@ namespace dealii
 
               const unsigned int n_quad_pts = quad_formula.size();
               const auto &       real_qpts  = quad_formula.get_points();
-              std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
-              std::vector<double>          rhs_function_values(n_quad_pts);
+              std::vector<Point<std::min(dim0, spacedim)>> ref_pts_space(
+                n_quad_pts);
+              std::vector<double> rhs_function_values(n_quad_pts);
               rhs_function.value_list(real_qpts, rhs_function_values);
 
 
@@ -168,12 +169,27 @@ create_nitsche_rhs_with_exact_intersections(
       const double);
 
 
+
     template void
     create_nitsche_rhs_with_exact_intersections<3, 3, 3>(
       const DoFHandler<3, 3> &,
       const std::vector<
         std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
                    typename dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Quadrature<3>>> &,
+      Vector<double> &vector,
+      const AffineConstraints<double> &,
+      const Mapping<3, 3> &,
+      const Function<3, double> &,
+      const Function<3, double> &,
+      const double);
+
+    template void
+    create_nitsche_rhs_with_exact_intersections<3, 2, 3>(
+      const DoFHandler<3, 3> &,
+      const std::vector<
+        std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
+                   typename dealii::Triangulation<2, 3>::cell_iterator,
                    dealii::Quadrature<3>>> &,
       Vector<double> &vector,
       const AffineConstraints<double> &,

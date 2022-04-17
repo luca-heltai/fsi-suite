@@ -21,6 +21,7 @@
 #include <deal.II/base/parameter_acceptor.h>
 #include <deal.II/base/parsed_convergence_table.h>
 #include <deal.II/base/quadrature_lib.h>
+#include <deal.II/base/timer.h>
 
 #include <deal.II/dofs/dof_handler.h>
 #include <deal.II/dofs/dof_tools.h>
@@ -89,12 +90,17 @@ namespace PDEs
      * done in step-70 tutorial. For an extended discussion see there and
      * references therein. All in all, what one gets using Lagrangian finite
      * elements in codimension 1 is to find $u \in H_0^1(\Omega)$ s.t.
-     * (\nabla u, \nabla v) + 2 \beta <u,v>_{\Gamma} = (f,v) + 2 \beta
-     * <g,v>_{\Gamma} for all test functions $v \in H_0^1(\Omega)$. Here $\Gamma
-     * = \partial B$. The contributions from Nitsche's method then have to be
-     * added both to the stiffness matrix and to the right hand side. The thing
-     * here is that they have to be computed on the embedded grid, while $u$ and
-     * $v$ live on the ambient space.
+     *
+     *
+     *
+     * @f{align*} (\nabla u, \nabla v) + 2 \beta \langle u,v \rangle_{\Gamma}
+     * =(f,v) + 2 \beta \langle g,v \rangle_{\Gamma}
+     * @f}
+     * for all test functions $v \in H_0^1(\Omega)$. Here $\Gamma
+     * = \partial B$ in codimension 1. The contributions from Nitsche's method
+     * then have to be added both to the stiffness matrix and to the right hand
+     * side. The thing here is that they have to be computed on the embedded
+     * grid, while $u$ and $v$ live on the ambient space.
      */
 
     template <int dim, int spacedim = dim>
@@ -142,7 +148,7 @@ namespace PDEs
       const std::string component_names = "u";
 
 
-      ParsedTools::GridGenerator<dim, spacedim> grid_generator;
+      ParsedTools::GridGenerator<spacedim, spacedim> grid_generator;
 
       ParsedTools::GridGenerator<dim, spacedim> embedded_grid_generator;
 
@@ -155,8 +161,8 @@ namespace PDEs
        * impose a constraint.
        *
        */
-      Triangulation<dim, spacedim> space_triangulation;
-      Triangulation<dim, spacedim> embedded_triangulation;
+      Triangulation<spacedim, spacedim> space_triangulation;
+      Triangulation<dim, spacedim>      embedded_triangulation;
 
       /**
        * GridTools::Cache objects are used to cache all the necessary
@@ -164,8 +170,8 @@ namespace PDEs
        * Boxes, etc.
        *
        */
-      std::unique_ptr<GridTools::Cache<dim, spacedim>> space_cache;
-      std::unique_ptr<GridTools::Cache<dim, spacedim>> embedded_cache;
+      std::unique_ptr<GridTools::Cache<spacedim, spacedim>> space_cache;
+      std::unique_ptr<GridTools::Cache<dim, spacedim>>      embedded_cache;
 
       /**
        * The coupling between the two grids is ultimately encoded in this
@@ -176,26 +182,26 @@ namespace PDEs
        *
        *
        */
-      std::vector<
-        std::tuple<typename dealii::Triangulation<dim, spacedim>::cell_iterator,
-                   typename dealii::Triangulation<dim, spacedim>::cell_iterator,
-                   dealii::Quadrature<spacedim>>>
+      std::vector<std::tuple<
+        typename dealii::Triangulation<spacedim, spacedim>::cell_iterator,
+        typename dealii::Triangulation<dim, spacedim>::cell_iterator,
+        dealii::Quadrature<spacedim>>>
         cells_and_quads;
 
 
-      ParsedTools::FiniteElement<dim, spacedim> space_fe;
+      ParsedTools::FiniteElement<spacedim, spacedim> space_fe;
 
       /**
        * The actual DoFHandler class.
        */
-      DoFHandler<dim, spacedim> space_dh;
+      DoFHandler<spacedim, spacedim> space_dh;
 
       /**
        * According to the Triangulation type, we use a MappingFE or a MappingQ,
        * to make sure we can run the program both on a tria/tetra grid and on
        * quad/hex grids.
        */
-      std::unique_ptr<Mapping<dim, spacedim>> mapping;
+      std::unique_ptr<Mapping<spacedim, spacedim>> mapping;
       /** @} */
 
       /**
@@ -253,6 +259,8 @@ namespace PDEs
        * @{
        */
 
+      mutable TimerOutput timer;
+
 
       ParsedTools::ConvergenceTable error_table;
 
@@ -264,8 +272,15 @@ namespace PDEs
        * function $g(x,y)=1$, this is what we get
        * @image html Poisson_1_interface.png
        *
+       *
+       * Taking a manufactured smooth solution $u=\sin(2 \pi x) \sin(2 \pi y)$,
+       * classical rates can be observed, as in the following table:
+       * cells dofs   u_L2_norm    u_Linfty_norm    u_H1_norm
+         256  289 5.851e-02    - 8.125e-02    - 2.015e+00    -
+        1024 1089 1.436e-02 2.12 2.160e-02 2.00 1.007e+00 1.05
+        4096 4225 3.605e-03 2.04 5.519e-03 2.01 5.037e-01 1.02
        */
-      mutable ParsedTools::DataOut<dim, spacedim> data_out;
+      mutable ParsedTools::DataOut<spacedim, spacedim> data_out;
 
       /**
        * Level of log verbosity.
