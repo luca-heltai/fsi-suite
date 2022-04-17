@@ -125,7 +125,7 @@ namespace PDEs
     else
       deallog.depth_console(0);
 
-    pcout << "System setup " << std::endl;
+    deallog << "System setup " << std::endl;
     const auto ref_cells = triangulation.get_reference_cells();
     AssertThrow(
       ref_cells.size() == 1,
@@ -305,7 +305,7 @@ namespace PDEs
         // Assemble also the mass matrix.
         ScratchData scratch(*mapping,
                             finite_element(),
-                            quadrature_formula,
+                            cell_quadrature,
                             update_values | update_JxW_values);
 
         CopyData copy(finite_element().n_dofs_per_cell());

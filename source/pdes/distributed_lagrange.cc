@@ -99,23 +99,6 @@ namespace PDEs
       typename LinearProblem<spacedim, spacedim, LacType>::CopyData copy(
         space.finite_element().n_dofs_per_cell());
 
-
-      FEInterfaceValues... fe_iv;
-      FEValuesExtractors::Scalar scalar(0);
-
-      std::vector<Tensor<1, dim>> gradient_jumps(face_quadrature.size());
-
-      auto cell_n        = cell->neighbor(f);
-      auto neighbor_face = cell->neighbor_of_neighbor(f);
-
-      const auto h = cell->face(f).diameter();
-
-      fe_iv.reinit(cell, f, -1, n_cell, neighbor_face, -1);
-      fe_iv[scalar].get_jump_in_function_gradients(solution, gradient_jumps);
-      const auto &qpoints = fe_iv.get_quadrature_points();
-
-      gradient_jumps[q] * coefficient.value(qpoints[q]);
-
       for (const auto &cell : space.dof_handler.active_cell_iterators())
         if (cell->is_locally_owned())
           {
@@ -301,7 +284,7 @@ namespace PDEs
           }
         deallog.pop();
       }
-    if (space.pcout.is_active())
+    if (space.mpi_rank == 0)
       {
         space.error_table.output_table(std::cout);
         embedded.error_table.output_table(std::cout);

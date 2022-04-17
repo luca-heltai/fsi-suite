@@ -13,8 +13,8 @@
 //
 // ---------------------------------------------------------------------
 
-#ifndef pdes_serial_distributed_lagrange_h
-#define pdes_serial_distributed_lagrange_h
+#ifndef pdes_distributed_lagrange_h
+#define pdes_distributed_lagrange_h
 
 #include <deal.II/base/config.h>
 
