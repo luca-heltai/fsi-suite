@@ -21,6 +21,9 @@
 #include <deal.II/base/function_lib.h>
 #include <deal.II/base/quadrature.h>
 
+#include <deal.II/distributed/shared_tria.h>
+#include <deal.II/distributed/tria.h>
+
 #include <deal.II/dofs/dof_handler.h>
 
 #include <deal.II/fe/mapping.h>
@@ -62,12 +65,11 @@ namespace dealii
       AssertDimension(matrix.n(), immersed_dh.n_dofs());
       Assert(dim1 <= dim0,
              ExcMessage("This function can only work if dim1<=dim0"));
-      // Assert((dynamic_cast<
-      //           const parallel::distributed::Triangulation<dim1, spacedim>
-      //           *>( &immersed_dh.get_triangulation()) == nullptr),
-      //        ExcNotImplemented());
-
-
+      Assert((dynamic_cast<
+                const parallel::distributed::Triangulation<dim1, spacedim> *>(
+                &immersed_dh.get_triangulation()) == nullptr),
+             ExcMessage("The immersed triangulation can only be a "
+                        "parallel::shared::triangulation"));
 
       const auto &space_fe    = space_dh.get_fe();
       const auto &immersed_fe = immersed_dh.get_fe();
@@ -118,7 +120,6 @@ namespace dealii
 
 
       // Loop over vector of tuples, and gather everything together
-
       for (const auto &infos : cells_and_quads)
         {
           const auto &[first_cell, second_cell, quad_formula] = infos;
@@ -127,10 +128,10 @@ namespace dealii
 
           local_cell_matrix = typename Matrix::value_type();
 
-          const unsigned int           n_quad_pts = quad_formula.size();
-          const auto &                 real_qpts  = quad_formula.get_points();
-          std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
-          std::vector<Point<dim1>>     ref_pts_immersed(n_quad_pts);
+          const unsigned int       n_quad_pts = quad_formula.size();
+          const auto &             real_qpts  = quad_formula.get_points();
+          std::vector<Point<dim0>> ref_pts_space(n_quad_pts);
+          std::vector<Point<dim1>> ref_pts_immersed(n_quad_pts);
 
           space_mapping.transform_points_real_to_unit_cell(first_cell,
                                                            real_qpts,
@@ -145,7 +146,7 @@ namespace dealii
                 {
                   const unsigned int comp_i =
                     space_dh.get_fe().system_to_component_index(i).first;
-                  if (comp_i != numbers::invalid_unsigned_int)
+                  if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
                     {
                       for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
                            ++j)
@@ -182,6 +183,7 @@ namespace dealii
             local_immersed_dof_indices,
             matrix);
         }
+      matrix.compress(VectorOperation::add);
     }
 
 

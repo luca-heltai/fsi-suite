@@ -141,6 +141,7 @@ namespace PDEs
     {
       TimerOutput::Scope timer_section(space.timer, "Assemble coupling system");
       coupling.assemble_matrix(coupling_matrix);
+      coupling_matrix.compress(VectorOperation::add);
     }
     {
       // Embedded mass matrix and rhs
@@ -196,6 +197,7 @@ namespace PDEs
       VectorTools::interpolate(embedded.dof_handler,
                                embedded.forcing_term,
                                embedded.solution);
+      embedded.solution.compress(VectorOperation::insert);
     }
   }
 

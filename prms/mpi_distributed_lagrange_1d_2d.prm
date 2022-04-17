@@ -2,92 +2,13 @@ subsection Space
   set Finite element space (u) = FESystem[FE_Q(1)^1]
   set n_threads                = 1
   set verbosity                = 4
+  set evolution type           = steady_state
   subsection Grid
     set Input name                = hyper_cube
     set Arguments                 = 0: 1: false
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 5
-    subsection Refinement
-      set Number of refinement cycles = 3
-      subsection Marking strategy
-        set Refinement strategy                    = global
-        set Refinement parameter                   = 0.3
-        set Coarsening parameter                   = 0.1
-        set Maximum number of cells (if available) = 0
-        set Minimum level                          = 0
-        set Maximum level                          = 0
-      end
-      subsection Error estimator
-        set Estimator type = kelly
-        set Component mask = 
-      end
-    end
-  end
-  subsection Solver
-    set Solver name            = cg
-    set Solver control type    = tolerance
-    set Maximum iterations     = 1000
-    set Consecutive iterations = 2
-    set Absolute tolerance     = 1e-12
-    set Relative tolerance     = 1e-06
-    set Log history            = false
-    set Log result             = false
-    subsection AMG preconditioner
-      set Symmetric operator               = false
-      set Strong threshold                 = 0.25
-      set Max row sum                      = 0.9
-      set Aggressive coarsening num levels = 0
-      set Output details                   = false
-      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
-      set Number of sweeps coarse          = 1
-      set Tolerance                        = 0
-      set Max iterations                   = 1
-      set W-cycle                          = false
-    end
-  end
-  subsection Functions
-    set Forcing term   = 0.0
-    set Exact solution = -ln(max((x-.3)^2+(y-.3)^2, .2^2))/2
-  end
-  subsection Boundary conditions
-    set Boundary id sets (u)         = -1
-    set Selected components (u)      = all
-    set Boundary condition types (u) = dirichlet
-    set Expressions (u)              = -ln(max((x-.3)^2+(y-.3)^2, .2^2))/2
-  end
-  subsection Error
-    set Enable computation of the errors = true
-    set Error precision                  = 3
-    set Error file name                  = 
-    set List of error norms to compute   = L2_norm, H1_norm
-    set Exponent for p-norms             = 2
-    set Extra columns                    = cells, dofs
-    set Rate key                         = dofs
-    set Rate mode                        = reduction_rate_log2
-  end
-  subsection Output
-    set Problem base name      = distributed_lagrange_output/space
-    set Output partitioning    = false
-    set Output material ids    = false
-    set Output format          = vtu
-    set Subdivisions           = 0
-    set Write high order cells = true
-    set Curved cells region    = no_curved_cells| curved_inner_cells
-  end
-end
-subsection Embedded
-  set Finite element space (w) = FESystem[FE_Q(1)^1]
-  set n_threads                = 1
-  set verbosity                = 4
-  subsection Grid
-    set Input name                = hyper_sphere
-    set Arguments                 = 0.3, 0.3: 0.2
-    set Output name               = 
-    set Transform to simplex grid = false
-    set Initial grid refinement   = 1
+    set Initial grid refinement   = 0
     subsection Refinement
       set Number of refinement cycles = 1
       subsection Marking strategy
@@ -105,15 +26,41 @@ subsection Embedded
     end
   end
   subsection Solver
-    set Solver name            = cg
-    set Solver control type    = tolerance
-    set Maximum iterations     = 1000
-    set Consecutive iterations = 2
-    set Absolute tolerance     = 1e-12
-    set Relative tolerance     = 1e-06
-    set Log history            = false
-    set Log result             = true
-    subsection AMG preconditioner
+    subsection System
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection System AMG preconditioner
+      set Symmetric operator               = false
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = false
+      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
+    end
+    subsection Mass
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection Mass AMG preconditioner
       set Symmetric operator               = false
       set Strong threshold                 = 0.25
       set Max row sum                      = 0.9
@@ -129,8 +76,141 @@ subsection Embedded
     end
   end
   subsection Functions
-    set Forcing term   = -ln(.2)
-    set Exact solution = 1/0.2
+    set Forcing term   = 0
+    set Exact solution = 0
+    set Initial value  = 0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u)         = -1
+    set Selected components (u)      = all
+    set Boundary condition types (u) = dirichlet
+    set Expressions (u)              = 0
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 3
+    set Error file name                  = 
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = solution
+    set Output partitioning    = false
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+  subsection ARKode
+    set Initial time                      = 0
+    set Final time                        = 1
+    set Time interval between each output = 0.1
+    subsection Running parameters
+      set Initial step size                      = 0.01
+      set Minimum step size                      = 1e-06
+      set Maximum order of ARK                   = 5
+      set Maximum number of nonlinear iterations = 10
+      set Implicit function is linear            = false
+      set Implicit function is time independent  = false
+      set Mass is time independent               = false
+      set Anderson-acceleration subspace         = 3
+    end
+    subsection Error control
+      set Absolute error tolerance = 1e-06
+      set Relative error tolerance = 1e-05
+    end
+  end
+  subsection Quasi-static
+    set start time        = 0
+    set end time          = 1
+    set initial time step = 0.0625
+  end
+end
+subsection Embedded
+  set Finite element space (w) = FESystem[FE_Q(1)^1]
+  set n_threads                = 1
+  set verbosity                = 4
+  set evolution type           = steady_state
+  subsection Grid
+    set Input name                = hyper_cube
+    set Arguments                 = 0: 1: false
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 0
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    subsection System
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection System AMG preconditioner
+      set Symmetric operator               = false
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = false
+      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
+    end
+    subsection Mass
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection Mass AMG preconditioner
+      set Symmetric operator               = false
+      set Strong threshold                 = 0.25
+      set Max row sum                      = 0.9
+      set Aggressive coarsening num levels = 0
+      set Output details                   = false
+      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
+      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
+      set Number of sweeps coarse          = 1
+      set Tolerance                        = 0
+      set Max iterations                   = 1
+      set W-cycle                          = false
+    end
+  end
+  subsection Functions
+    set Forcing term   = 0
+    set Exact solution = 0
+    set Initial value  = 0
   end
   subsection Boundary conditions
     set Boundary id sets (w)         = -1
@@ -157,6 +237,30 @@ subsection Embedded
     set Write high order cells = true
     set Curved cells region    = no_curved_cells| curved_inner_cells
   end
+  subsection ARKode
+    set Initial time                      = 0
+    set Final time                        = 1
+    set Time interval between each output = 0.1
+    subsection Running parameters
+      set Initial step size                      = 0.01
+      set Minimum step size                      = 1e-06
+      set Maximum order of ARK                   = 5
+      set Maximum number of nonlinear iterations = 10
+      set Implicit function is linear            = false
+      set Implicit function is time independent  = false
+      set Mass is time independent               = false
+      set Anderson-acceleration subspace         = 3
+    end
+    subsection Error control
+      set Absolute error tolerance = 1e-06
+      set Relative error tolerance = 1e-05
+    end
+  end
+  subsection Quasi-static
+    set start time        = 0
+    set end time          = 1
+    set initial time step = 0.0625
+  end
 end
 subsection Coupling
   set Coupling type                    = approximate_L2
@@ -164,7 +268,7 @@ subsection Coupling
   set Space pre-refinement             = 0
   set Embedded post-refinement         = 0
   set Embedded quadrature type         = gauss
-  set Embedded quadrature order        = 3
+  set Embedded quadrature order        = 2
   set Embedded quadrature retpetitions = 1
 end
 subsection Mass solver
@@ -175,7 +279,7 @@ subsection Mass solver
   set Absolute tolerance     = 1e-12
   set Relative tolerance     = 1e-06
   set Log history            = false
-  set Log result             = true
+  set Log result             = false
 end
 subsection Distributed Lagrange
 end

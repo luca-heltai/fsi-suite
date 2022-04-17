@@ -101,7 +101,7 @@ namespace PDEs
   {
     template <int dim, int spacedim = dim>
     using DistributedLagrange =
-      PDEs::DistributedLagrange<dim, spacedim, LAC::LAPETSc>;
+      PDEs::DistributedLagrange<dim, spacedim, LAC::LATrilinos>;
   }
 
 } // namespace PDEs
