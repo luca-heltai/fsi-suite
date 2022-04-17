@@ -16,8 +16,10 @@
 #include "runner.h"
 
 #include <deal.II/base/logstream.h>
+#include <deal.II/base/mpi.h>
 #include <deal.II/base/parameter_acceptor.h>
 #include <deal.II/base/parameter_handler.h>
+#include <deal.II/base/utilities.h>
 
 #include "argh.hpp"
 #include "text_flow.hpp"
@@ -202,6 +204,8 @@ namespace Runner
                "where the quotes are required only if an otpion contains spaces, "
                "or if a value contains separators, like commas, columns, etc.")
           << std::endl
+          << format("-pause", "Wait for a keypress to attach a debugger.")
+          << std::endl
           << std::endl;
         ParameterAcceptor::prm.print_parameters(std::cout,
                                                 ParameterHandler::Description);
@@ -217,7 +221,8 @@ namespace Runner
                                   "d",
                                   "dim",
                                   "s",
-                                  "spacedim"};
+                                  "spacedim",
+                                  "pause"};
     for (auto &p : cli.params())
       if (non_prm.find(p.first) == non_prm.end())
         {
@@ -249,6 +254,18 @@ namespace Runner
                                   output_parameter_file,
                                   ParameterHandler::Short |
                                     ParameterHandler::KeepDeclarationOrder);
+    // Check if we need to wait for input
+    if (cli["pause"] && Utilities::MPI::this_mpi_process(MPI_COMM_WORLD) == 0)
+      {
+        std::cout << "============================================" << std::endl
+                  << "PID: " << getpid() << std::endl
+                  << "============================================" << std::endl
+                  << "Press any key to continue..." << std::endl
+                  << "============================================"
+                  << std::endl;
+        std::cin.get();
+      }
+
     // Everything went fine, so return 0 or 1
     return ret;
   }

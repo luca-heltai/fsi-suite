@@ -5,17 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) mpi_poisson.g heat",
+            "name": "Attach to running process (gdb)",
             "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build-container/mpi_poisson.g",
-            "args": [
-                "../prms/mpi_heat.prm"
-            ],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "externalConsole": false,
+            "request": "attach",
+            "processId": "${command:pickProcess}",
+            "program": "${workspaceFolder}/build-container/mpi_distributed_lagrange.g",
             "MIMode": "gdb",
             "setupCommands": [
                 {
