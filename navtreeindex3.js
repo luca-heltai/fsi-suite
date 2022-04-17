@@ -1,6 +1,5 @@
 var NAVTREEINDEX3 =
 {
-"dof__plotter_8cc.html":[6,0,0,2],
 "dof__plotter_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627":[6,0,0,2,0],
 "dof__plotter_8cc_source.html":[6,0,0,2],
 "enum_8h.html":[6,0,2,1,5],
@@ -14,8 +13,8 @@ var NAVTREEINDEX3 =
 "function_8cc_source.html":[6,0,3,12],
 "function_8h.html":[6,0,2,1,7],
 "function_8h_source.html":[6,0,2,1,7],
-"functions.html":[5,3,0,0],
 "functions.html":[5,3,0],
+"functions.html":[5,3,0,0],
 "functions_b.html":[5,3,0,1],
 "functions_c.html":[5,3,0,2],
 "functions_d.html":[5,3,0,3],
@@ -144,16 +143,16 @@ var NAVTREEINDEX3 =
 "mpi_2poisson_8h_source.html":[6,0,2,2,0,0],
 "namespace_l_a_c.html":[5,0,1],
 "namespace_l_a_c.html":[4,0,1],
-"namespace_p_d_es.html":[5,0,4],
 "namespace_p_d_es.html":[4,0,4],
+"namespace_p_d_es.html":[5,0,4],
 "namespace_p_d_es_1_1_m_p_i.html":[5,0,4,0],
 "namespace_p_d_es_1_1_m_p_i.html":[4,0,4,0],
 "namespace_p_d_es_1_1_serial.html":[5,0,4,1],
 "namespace_p_d_es_1_1_serial.html":[4,0,4,1],
 "namespace_parsed_l_a_c.html":[5,0,2],
 "namespace_parsed_l_a_c.html":[4,0,2],
-"namespace_parsed_tools.html":[5,0,3],
 "namespace_parsed_tools.html":[4,0,3],
+"namespace_parsed_tools.html":[5,0,3],
 "namespace_parsed_tools_1_1_components.html":[4,0,3,0],
 "namespace_runner.html":[4,0,5],
 "namespacedealii.html":[4,0,0],
@@ -163,8 +162,8 @@ var NAVTREEINDEX3 =
 "namespacedealii_1_1_patterns.html":[5,0,0,0],
 "namespacedealii_1_1_patterns_1_1_tools.html":[4,0,0,1,0],
 "namespacedealii_1_1_patterns_1_1_tools.html":[5,0,0,0,0],
-"namespacedealii_1_1_patterns_1_1_tools_1_1internal.html":[4,0,0,1,0,0],
 "namespacedealii_1_1_patterns_1_1_tools_1_1internal.html":[5,0,0,0,0,0],
+"namespacedealii_1_1_patterns_1_1_tools_1_1internal.html":[4,0,0,1,0,0],
 "namespacemembers.html":[4,1,0],
 "namespacemembers_enum.html":[4,1,3],
 "namespacemembers_func.html":[4,1,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX3 =
 "struct_l_a_c_1_1_l_adealii.html#a2110bf5154a14e3552f497ab2491ee44":[5,0,1,0,3],
 "struct_l_a_c_1_1_l_adealii.html#a230f6fa341f759827ddbc0ab2bac424a":[5,0,1,0,0],
 "struct_l_a_c_1_1_l_adealii.html#a60886b76257f49584f0e111245880b8a":[5,0,1,0,6],
-"struct_l_a_c_1_1_l_adealii.html#a6c34aa35716d5de63116034b9a7a62a3":[5,0,1,0,2]
+"struct_l_a_c_1_1_l_adealii.html#a6c34aa35716d5de63116034b9a7a62a3":[5,0,1,0,2],
+"struct_l_a_c_1_1_l_adealii.html#a95139eff736a9dc8728ee87e259cd061":[5,0,1,0,7]
 };
