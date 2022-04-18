@@ -1,0 +1,7 @@
+
+DEAL::h = 0.707107
+Result with Nitsche matrix: 3.141513801
+DEAL::Expected : 3.141592654
+DEAL::h = 0.1767766953
+Result with Nitsche matrix: 1.000000000
+DEAL::Expected : 1.000000000
