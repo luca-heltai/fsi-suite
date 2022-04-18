@@ -70,12 +70,14 @@ namespace PDEs
   {
     space.setup_system();
     embedded.setup_system();
-    coupling.assemble_sparsity(coupling_sparsity);
 
     LAC::Initializer init(space.dof_handler.locally_owned_dofs(),
                           IndexSet(),
                           space.mpi_communicator,
                           embedded.dof_handler.locally_owned_dofs());
+    init(coupling_sparsity);
+    coupling.assemble_sparsity(coupling_sparsity);
+
     init(coupling_sparsity, coupling_matrix);
   }
 

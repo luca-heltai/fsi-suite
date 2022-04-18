@@ -282,6 +282,24 @@ namespace LAC
     /**
      * Initialize a Trilinos Sparsity Pattern.
      */
+    void
+    operator()(dealii::TrilinosWrappers::SparsityPattern &s)
+    {
+      s.reinit(owned_rows, owned_columns, comm);
+    }
+
+    /**
+     * Initialize a deal.II Sparsity Pattern.
+     */
+    void
+    operator()(dealii::SparsityPattern &s)
+    {
+      s.reinit(owned_rows.size(), owned_columns.size(), 0);
+    }
+
+    /**
+     * Initialize a Trilinos Sparsity Pattern.
+     */
     template <int dim, int spacedim>
     void
     operator()(dealii::TrilinosWrappers::SparsityPattern &         s,

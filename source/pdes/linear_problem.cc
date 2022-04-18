@@ -438,6 +438,9 @@ namespace PDEs
             << std::endl
             << "Number of MPI processes : " << mpi_size << std::endl
             << "MPI rank of this process: " << mpi_rank << std::endl;
+
+    AssertThrow((lac_is_dealii && mpi_size == 1) || (lac_is_dealii == false),
+                ExcMessage("deal.II LAC only works in serial"));
   }
 
 

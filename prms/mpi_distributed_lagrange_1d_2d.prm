@@ -8,7 +8,7 @@ subsection Space
     set Arguments                 = 0: 1: false
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 0
+    set Initial grid refinement   = 5
     subsection Refinement
       set Number of refinement cycles = 1
       subsection Marking strategy
@@ -31,25 +31,25 @@ subsection Space
       set Solver control type    = tolerance
       set Maximum iterations     = 1000
       set Consecutive iterations = 2
-      set Absolute tolerance     = 1e-12
+      set Absolute tolerance     = 1e-10
       set Relative tolerance     = 1e-06
       set Log history            = false
       set Log result             = false
     end
-    subsection System AMG preconditioner
-      set Symmetric operator               = false
-      set Strong threshold                 = 0.25
-      set Max row sum                      = 0.9
-      set Aggressive coarsening num levels = 0
-      set Output details                   = false
-      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
-      set Number of sweeps coarse          = 1
-      set Tolerance                        = 0
-      set Max iterations                   = 1
-      set W-cycle                          = false
-    end
+    # subsection System AMG preconditioner
+    #   set Symmetric operator               = false
+    #   set Strong threshold                 = 0.25
+    #   set Max row sum                      = 0.9
+    #   set Aggressive coarsening num levels = 0
+    #   set Output details                   = false
+    #   set Relaxation type up               = Jacobi
+    #   set Relaxation type down             = Jacobi
+    #   set Relaxation type coarse           = Jacobi
+    #   set Number of sweeps coarse          = 1
+    #   set Tolerance                        = 0
+    #   set Max iterations                   = 1
+    #   set W-cycle                          = false
+    # end
     subsection Mass
       set Solver name            = cg
       set Solver control type    = tolerance
@@ -60,20 +60,20 @@ subsection Space
       set Log history            = false
       set Log result             = false
     end
-    subsection Mass AMG preconditioner
-      set Symmetric operator               = false
-      set Strong threshold                 = 0.25
-      set Max row sum                      = 0.9
-      set Aggressive coarsening num levels = 0
-      set Output details                   = false
-      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
-      set Number of sweeps coarse          = 1
-      set Tolerance                        = 0
-      set Max iterations                   = 1
-      set W-cycle                          = false
-    end
+    # subsection Mass AMG preconditioner
+    #   set Symmetric operator               = false
+    #   set Strong threshold                 = 0.25
+    #   set Max row sum                      = 0.9
+    #   set Aggressive coarsening num levels = 0
+    #   set Output details                   = false
+    #   set Relaxation type up               = Jacobi
+    #   set Relaxation type down             = Jacobi
+    #   set Relaxation type coarse           = Jacobi
+    #   set Number of sweeps coarse          = 1
+    #   set Tolerance                        = 0
+    #   set Max iterations                   = 1
+    #   set W-cycle                          = false
+    # end
   end
   subsection Functions
     set Forcing term   = 0
@@ -97,7 +97,7 @@ subsection Space
     set Rate mode                        = reduction_rate_log2
   end
   subsection Output
-    set Problem base name      = solution
+    set Problem base name      = mpi_distributed_lagrange_output/space
     set Output partitioning    = false
     set Output material ids    = false
     set Output format          = vtu
@@ -136,11 +136,11 @@ subsection Embedded
   set verbosity                = 4
   set evolution type           = steady_state
   subsection Grid
-    set Input name                = hyper_cube
-    set Arguments                 = 0: 1: false
+    set Input name                = hyper_sphere
+    set Arguments                 = 0.3, 0.3: 0.2
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 0
+    set Initial grid refinement   = 4
     subsection Refinement
       set Number of refinement cycles = 1
       subsection Marking strategy
@@ -159,29 +159,29 @@ subsection Embedded
   end
   subsection Solver
     subsection System
-      set Solver name            = cg
+      set Solver name            = minres
       set Solver control type    = tolerance
       set Maximum iterations     = 1000
       set Consecutive iterations = 2
       set Absolute tolerance     = 1e-12
       set Relative tolerance     = 1e-06
       set Log history            = false
-      set Log result             = false
+      set Log result             = true
     end
-    subsection System AMG preconditioner
-      set Symmetric operator               = false
-      set Strong threshold                 = 0.25
-      set Max row sum                      = 0.9
-      set Aggressive coarsening num levels = 0
-      set Output details                   = false
-      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
-      set Number of sweeps coarse          = 1
-      set Tolerance                        = 0
-      set Max iterations                   = 1
-      set W-cycle                          = false
-    end
+    # subsection System AMG preconditioner
+    #   set Symmetric operator               = false
+    #   set Strong threshold                 = 0.25
+    #   set Max row sum                      = 0.9
+    #   set Aggressive coarsening num levels = 0
+    #   set Output details                   = false
+    #   set Relaxation type up               = Jacobi
+    #   set Relaxation type down             = Jacobi
+    #   set Relaxation type coarse           = Jacobi
+    #   set Number of sweeps coarse          = 1
+    #   set Tolerance                        = 0
+    #   set Max iterations                   = 1
+    #   set W-cycle                          = false
+    # end
     subsection Mass
       set Solver name            = cg
       set Solver control type    = tolerance
@@ -192,23 +192,23 @@ subsection Embedded
       set Log history            = false
       set Log result             = false
     end
-    subsection Mass AMG preconditioner
-      set Symmetric operator               = false
-      set Strong threshold                 = 0.25
-      set Max row sum                      = 0.9
-      set Aggressive coarsening num levels = 0
-      set Output details                   = false
-      set Relaxation type up               = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type down             = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi
-      set Relaxation type coarse           = Jacobi| sequentialGaussSeidel| seqboundaryGaussSeidel| SORJacobi| backwardSORJacobi| symmetricSORJacobi| l1scaledSORJacobi| GaussianElimination
-      set Number of sweeps coarse          = 1
-      set Tolerance                        = 0
-      set Max iterations                   = 1
-      set W-cycle                          = false
-    end
+    # subsection Mass AMG preconditioner
+    #   set Symmetric operator               = false
+    #   set Strong threshold                 = 0.25
+    #   set Max row sum                      = 0.9
+    #   set Aggressive coarsening num levels = 0
+    #   set Output details                   = false
+    #   set Relaxation type up               = Jacobi
+    #   set Relaxation type down             = Jacobi
+    #   set Relaxation type coarse           = Jacobi
+    #   set Number of sweeps coarse          = 1
+    #   set Tolerance                        = 0
+    #   set Max iterations                   = 1
+    #   set W-cycle                          = false
+    # end
   end
   subsection Functions
-    set Forcing term   = 0
+    set Forcing term   = 1
     set Exact solution = 0
     set Initial value  = 0
   end
@@ -229,13 +229,13 @@ subsection Embedded
     set Rate mode                        = reduction_rate_log2
   end
   subsection Output
-    set Problem base name      = solution
-    set Output partitioning    = true
-    set Output material ids    = true
+    set Problem base name      = mpi_distributed_lagrange_output/embedded
+    set Output partitioning    = false
+    set Output material ids    = false
     set Output format          = vtu
     set Subdivisions           = 0
     set Write high order cells = true
-    set Curved cells region    = no_curved_cells| curved_inner_cells
+    set Curved cells region    = curved_inner_cells
   end
   subsection ARKode
     set Initial time                      = 0
@@ -263,12 +263,12 @@ subsection Embedded
   end
 end
 subsection Coupling
-  set Coupling type                    = approximate_L2
+  set Coupling type                    = exact_L2
   set Refinement strategy              = refine_embedded
-  set Space pre-refinement             = 0
+  set Space pre-refinement             = 3
   set Embedded post-refinement         = 0
   set Embedded quadrature type         = gauss
-  set Embedded quadrature order        = 2
+  set Embedded quadrature order        = 3
   set Embedded quadrature retpetitions = 1
 end
 subsection Mass solver

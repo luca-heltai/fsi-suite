@@ -150,6 +150,24 @@ namespace PDEs
     setup_transient(ARKode &arkode);
 
     /**
+     * True if we are using deal.II Linear Algebra Classes.
+     */
+    static constexpr bool lac_is_dealii =
+      std::is_same<LAC::LAdealii, LacType>::value;
+
+    /**
+     * True if we are using PETSc Linear Algebra Classes.
+     */
+    static constexpr bool lac_is_petsc =
+      std::is_same<LAC::LAPETSc, LacType>::value;
+
+    /**
+     * True if we are using Trilinos Linear Algebra Classes.
+     */
+    static constexpr bool lac_is_trilinos =
+      std::is_same<LAC::LATrilinos, LacType>::value;
+
+    /**
      * Make sure we can run also in 1d, where parallel distributed
      * triangulations are not available, and we can only use parallel shared
      * ones.
