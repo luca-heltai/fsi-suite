@@ -83,9 +83,14 @@ namespace PDEs
     solve() override;
 
     /**
-     * Displacement field.
+     * Displacement field extractor.
      */
     const FEValuesExtractors::Vector displacement;
+
+    /**
+     * Velocity field extractor.
+     */
+    const FEValuesExtractors::Vector velocity;
 
     /**
      * Constants of the first material.
@@ -110,9 +115,7 @@ namespace PDEs
     /**
      * Mapping from reference configuration to deformed configuration.
      */
-    std::unique_ptr<
-      dealii::MappingQEulerian<dim, typename LacType::BlockVector, spacedim>>
-      eulerian_mapping;
+    ParsedTools::MappingEulerian<dim, spacedim> eulerian_mapping;
 
     /**
      * Time step.

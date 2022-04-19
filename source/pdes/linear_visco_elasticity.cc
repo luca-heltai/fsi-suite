@@ -45,6 +45,7 @@ namespace PDEs
                    "Shear viscosity",
                    "Bulk viscosity"})
     , material_ids_0({{0}})
+    , eulerian_mapping(this->dof_handler, "/LinearViscoElasticity/Mapping")
   {
     this->add_parameter("Material ids of region 0", material_ids_0);
     this->add_parameter("Material ids of region 1", material_ids_1);
@@ -76,17 +77,13 @@ namespace PDEs
 
     this->setup_system_call_back.connect([&]() {
       // Make sure we only setup the displacement vector once
-      if (!eulerian_mapping)
+      if (current_cycle == 0)
         {
           current_displacement_locally_relevant.reinit(
             this->locally_relevant_solution);
           current_displacement.reinit(this->solution);
-
-          eulerian_mapping = std::make_unique<
-            MappingQEulerian<dim, typename LacType::BlockVector, spacedim>>(
-            this->finite_element().degree,
-            this->dof_handler,
-            current_displacement_locally_relevant);
+          eulerian_mapping.initialize(current_displacement,
+                                      current_displacement_locally_relevant);
         }
     });
 
@@ -121,7 +118,7 @@ namespace PDEs
                         quadrature_formula,
                         update_gradients | update_JxW_values);
 
-    ScratchData mapped_scratch(*eulerian_mapping,
+    ScratchData mapped_scratch(eulerian_mapping(),
                                this->finite_element(),
                                quadrature_formula,
                                update_values | update_gradients |
@@ -211,7 +208,7 @@ namespace PDEs
                                               this->finite_element()
                                                 .system_to_component_index(i)
                                                 .first) * // f(x_q)
-                     mapped_fe_values.JxW(q_index));      // dx
+                     fe_values.JxW(q_index));             // dx
               }
           this->constraints.distribute_local_to_global(
             cell_matrix,
@@ -256,7 +253,7 @@ namespace PDEs
                         quadrature_formula,
                         update_gradients | update_JxW_values);
 
-    ScratchData mapped_scratch(*eulerian_mapping,
+    ScratchData mapped_scratch(eulerian_mapping(),
                                this->finite_element(),
                                quadrature_formula,
                                update_quadrature_points | update_values |

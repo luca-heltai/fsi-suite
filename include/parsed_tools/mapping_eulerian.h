@@ -91,6 +91,18 @@ namespace ParsedTools
     void
     initialize(VectorType &configuration_or_displacement);
 
+
+    /**
+     * Actually build the mapping from the given configuration or displacement.
+     * If the @p initial_configuration_or_displacement parameter is not empty,
+     * the input vector is modified to interpolate the given configuration or
+     * displacement, otherwise the identity configuration is used.
+     */
+    template <typename VectorType>
+    void
+    initialize(VectorType &configuration_or_displacement,
+               VectorType &locally_relevant_configuration_or_displacement);
+
     /**
      * Act as mapping.
      */
@@ -138,6 +150,18 @@ namespace ParsedTools
   void
   MappingEulerian<dim, spacedim>::initialize(
     VectorType &configuration_or_displacement)
+  {
+    initialize(configuration_or_displacement, configuration_or_displacement);
+  }
+
+
+
+  template <int dim, int spacedim>
+  template <typename VectorType>
+  void
+  MappingEulerian<dim, spacedim>::initialize(
+    VectorType &configuration_or_displacement,
+    VectorType &locally_relevant_configuration_or_displacement)
   {
     // Interpolate the user data
     if (initial_configuration_or_displacement_expression != "")
@@ -196,6 +220,9 @@ namespace ParsedTools
               }
           }
       }
+    // Copy to the locally relevant vector
+    locally_relevant_configuration_or_displacement =
+      configuration_or_displacement;
 
     if (use_displacement)
       // Finallly initialize the mapping with our own configuration
@@ -213,14 +240,16 @@ namespace ParsedTools
 
         const auto degree = dof_handler->get_fe().degree;
         mapping.reset(new dealii::MappingQEulerian<dim, VectorType, spacedim>(
-          degree, *dof_handler, configuration_or_displacement));
+          degree,
+          *dof_handler,
+          locally_relevant_configuration_or_displacement));
       }
     else
       {
         // Finallly initialize the mapping with our own configuration
         // vector.
         mapping.reset(new dealii::MappingFEField<dim, spacedim, VectorType>(
-          *dof_handler, configuration_or_displacement, mask));
+          *dof_handler, locally_relevant_configuration_or_displacement, mask));
       }
   }
 #endif
