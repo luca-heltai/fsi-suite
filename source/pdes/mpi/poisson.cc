@@ -15,6 +15,8 @@
 
 #include "pdes/mpi/poisson.h"
 
+#include <deal.II/meshworker/mesh_loop.h>
+
 using namespace dealii;
 
 namespace PDEs
@@ -76,6 +78,137 @@ namespace PDEs
       this->solution.block(0) = Ainv * this->rhs.block(0);
       this->constraints.distribute(this->solution);
       this->locally_relevant_solution = this->solution;
+    }
+
+
+
+    template <int dim, int spacedim>
+    void
+    Poisson<dim, spacedim>::custom_estimator(
+      dealii::Vector<float> &error_per_cell) const
+    {
+      TimerOutput::Scope timer_section(this->timer, "custom_estimator");
+      error_per_cell = 0;
+      Quadrature<dim> quadrature_formula =
+        ParsedTools::Components::get_cell_quadrature(
+          this->triangulation, this->finite_element().tensor_degree() + 1);
+
+      Quadrature<dim - 1> face_quadrature_formula =
+        ParsedTools::Components::get_face_quadrature(
+          this->triangulation, this->finite_element().tensor_degree() + 1);
+
+      ScratchData scratch(*this->mapping,
+                          this->finite_element(),
+                          quadrature_formula,
+                          update_quadrature_points | update_hessians |
+                            update_JxW_values,
+                          face_quadrature_formula,
+                          update_normal_vectors | update_gradients |
+                            update_quadrature_points | update_JxW_values);
+
+      // A copy data for error estimators for each cell, we store a cell
+      // indicator, and a face indicator (that's why the 2)
+      // togheter with the indices of the cell to which this belongs to
+      MeshWorker::CopyData<0, 1, 1> copy(2);
+
+      // I will use this FEValuesExtractor to leverage the capabilities of the
+      // ScratchData
+      FEValuesExtractors::Scalar scalar(0);
+
+      // This is called in each cell
+      auto cell_worker = [&](const auto &cell, auto &scratch, auto &copy) {
+        const auto &fe_v = scratch.reinit(cell);
+        const auto  H    = cell->diameter();
+
+        // Save the index of this cell
+        copy.local_dof_indices[0][0] = cell->index();
+
+        // At every call of this function, a new vector of dof values is
+        // generated and stored internally, so that you can later call
+        // scratch.get_values(...)
+        scratch.extract_local_dof_values("solution",
+                                         this->locally_relevant_solution);
+
+        // Get the values of the solution at the quadrature points
+        const auto &lap_u = scratch.get_laplacians("solution", scalar);
+
+        // Points and weights of the quadrature formula
+        const auto &q_points = scratch.get_quadrature_points();
+        const auto &JxW      = scratch.get_JxW_values();
+
+        // Reset vectors
+        copy.vectors[0] = 0;
+
+        // Now store the values of the residual square in the copy data
+        for (const auto q_index : fe_v.quadrature_point_indices())
+          {
+            const auto res =
+              lap_u[q_index] + this->forcing_term.value(q_points[q_index]);
+
+            copy.vectors[0][0] += (H * H * res * res * JxW[q_index]); // dx
+          }
+      };
+
+      // This is called in each face, refined or not.
+      auto face_worker = [&](const auto &cell,
+                             const auto &f,
+                             const auto &sf,
+                             const auto &ncell,
+                             const auto &nf,
+                             const auto &nsf,
+                             auto &      scratch,
+                             auto &      copy) {
+        // Here we intialize the inteface values
+        const auto &fe_iv = scratch.reinit(cell, f, sf, ncell, nf, nsf);
+
+        const auto h = cell->face(f)->diameter();
+
+        // Same as before. Extract local dof values of the solution
+        scratch.extract_local_dof_values("solution",
+                                         this->locally_relevant_solution);
+
+        // ...so that we can call scratch.get_(...)
+        const auto jump_grad =
+          scratch.get_jumps_in_gradients("solution", scalar);
+
+        const auto &JxW     = scratch.get_JxW_values();
+        const auto &normals = scratch.get_normal_vectors();
+
+        // Now store the values of the gradient jump in the copy data
+        for (const auto q_index : fe_iv.quadrature_point_indices())
+          {
+            const auto J = jump_grad[q_index] * normals[q_index];
+
+            copy.vectors[0][1] += (h * J * J * JxW[q_index]); // dx
+          }
+      };
+
+
+      auto copier = [&](const auto &copy) {
+        error_per_cell[copy.local_dof_indices[0][0]] =
+          copy.vectors[0][0] + copy.vectors[0][1];
+      };
+
+      using CellFilter = FilteredIterator<
+        typename DoFHandler<dim, spacedim>::active_cell_iterator>;
+
+      MeshWorker::mesh_loop(this->dof_handler.begin_active(),
+                            this->dof_handler.end(),
+                            cell_worker,
+                            copier,
+                            scratch,
+                            copy,
+                            MeshWorker::assemble_own_cells |
+                              MeshWorker::assemble_own_interior_faces_both,
+                            {},
+                            face_worker);
+
+      // Collect errors from the other processors
+      const double total_error =
+        Utilities::MPI::sum(this->error_per_cell.l1_norm(),
+                            this->mpi_communicator);
+
+      deallog << "Error estimator: " << total_error << std::endl;
     }
 
 

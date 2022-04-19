@@ -41,6 +41,12 @@ namespace PDEs
        */
       virtual ~Poisson() = default;
 
+      /**
+       * Build a custom error estimator.
+       */
+      virtual void
+      custom_estimator(dealii::Vector<float> &error_per_cell) const override;
+
       using ScratchData =
         typename LinearProblem<dim, spacedim, LAC::LATrilinos>::ScratchData;
 
