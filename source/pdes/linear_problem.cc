@@ -474,6 +474,7 @@ namespace PDEs
         const auto cycle = time.get_step_number();
         const auto t     = time.get_next_time();
         const auto dt    = time.get_next_step_size();
+        advance_time_call_back(t, dt, cycle);
 
         deallog << "Timestep " << cycle << ", time = " << t
                 << " , step size = " << dt << std::endl;

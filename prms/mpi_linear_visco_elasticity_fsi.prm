@@ -1,0 +1,142 @@
+subsection LinearViscoElasticity
+  set Finite element space (U, U) = FESystem[FE_Q(1)^2]
+  set n_threads                   = 1
+  set verbosity                   = 4
+  set evolution type              = quasi_static
+  set Material ids of region 0    = 1 # Fluid
+  set Material ids of region 1    = 2 # Solid
+  subsection Grid
+    set Input name                = ../grids/flow_around_finger.msh
+    set Arguments                 = 
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 2
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    subsection System
+      set Solver name            = cg
+      set Solver control type    = iteration_number
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-10
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = true
+    end
+    subsection System AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+    subsection Mass
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection Mass AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+  end
+  subsection Functions
+    set Forcing term   = 0;-1
+    set Exact solution = 0;0
+    set Initial value  = 0;0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (U, U)         = 1; 2,3
+    set Selected components (U, U)      = all; U.n
+    set Boundary condition types (U, U) = dirichlet, dirichlet
+    set Expressions (U, U)              = 0;0 % 0;0
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 3
+    set Error file name                  = 
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = linear_visco_elastic/quasi_static
+    set Output partitioning    = true
+    set Output material ids    = true
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+  subsection ARKode
+    set Initial time                      = 0
+    set Final time                        = 1
+    set Time interval between each output = 0.1
+    subsection Running parameters
+      set Initial step size                      = 0.01
+      set Minimum step size                      = 1e-06
+      set Maximum order of ARK                   = 5
+      set Maximum number of nonlinear iterations = 10
+      set Implicit function is linear            = false
+      set Implicit function is time independent  = false
+      set Mass is time independent               = false
+      set Anderson-acceleration subspace         = 3
+    end
+    subsection Error control
+      set Absolute error tolerance = 1e-06
+      set Relative error tolerance = 1e-05
+    end
+  end
+  subsection Quasi-static
+    set start time        = 0
+    set end time          = 20
+    set initial time step = 0.25
+  end
+  subsection Constants 0 # Fluid
+    set First Lame coefficient (mu)      = 0
+    set Second Lame coefficient (lambda) = 1000 # almost incompressible
+    set Shear viscosity (eta)            = 10
+    set Bulk viscosity (kappa)           = 10
+  end
+  subsection Constants 1 # Solid
+    set First Lame coefficient (mu)      = 200
+    set Second Lame coefficient (lambda) = 10
+    set Shear viscosity (eta)            = 0
+    set Bulk viscosity (kappa)           = 0
+  end
+end
