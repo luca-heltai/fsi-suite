@@ -106,10 +106,16 @@ namespace PDEs
                           update_normal_vectors | update_gradients |
                             update_quadrature_points | update_JxW_values);
 
-      // A copy data for error estimators for each cell, we store a cell
-      // indicator, and a face indicator (that's why the 2)
-      // togheter with the indices of the cell to which this belongs to
-      MeshWorker::CopyData<0, 1, 1> copy(2);
+      // A copy data for error estimators for each cell. We store the indices of
+      // the cells, and the values of the error estimator to be added to the
+      // cell indicators.
+      struct MyCopyData
+      {
+        std::vector<unsigned int> cell_indices;
+        std::vector<float>        indicators;
+      };
+
+      MyCopyData copy;
 
       // I will use this FEValuesExtractor to leverage the capabilities of the
       // ScratchData
@@ -120,8 +126,12 @@ namespace PDEs
         const auto &fe_v = scratch.reinit(cell);
         const auto  H    = cell->diameter();
 
+        // Reset the copy data
+        copy.cell_indices.resize(0);
+        copy.indicators.resize(0);
+
         // Save the index of this cell
-        copy.local_dof_indices[0][0] = cell->index();
+        copy.cell_indices.emplace_back(cell->active_cell_index());
 
         // At every call of this function, a new vector of dof values is
         // generated and stored internally, so that you can later call
@@ -137,7 +147,7 @@ namespace PDEs
         const auto &JxW      = scratch.get_JxW_values();
 
         // Reset vectors
-        copy.vectors[0] = 0;
+        float cell_indicator = 0;
 
         // Now store the values of the residual square in the copy data
         for (const auto q_index : fe_v.quadrature_point_indices())
@@ -145,8 +155,9 @@ namespace PDEs
             const auto res =
               lap_u[q_index] + this->forcing_term.value(q_points[q_index]);
 
-            copy.vectors[0][0] += (H * H * res * res * JxW[q_index]); // dx
+            cell_indicator += (H * H * res * res * JxW[q_index]); // dx
           }
+        copy.indicators.emplace_back(cell_indicator);
       };
 
       // This is called in each face, refined or not.
@@ -163,6 +174,9 @@ namespace PDEs
 
         const auto h = cell->face(f)->diameter();
 
+        // Add this cell to the copy data
+        copy.cell_indices.emplace_back(cell->active_cell_index());
+
         // Same as before. Extract local dof values of the solution
         scratch.extract_local_dof_values("solution",
                                          this->locally_relevant_solution);
@@ -175,18 +189,23 @@ namespace PDEs
         const auto &normals = scratch.get_normal_vectors();
 
         // Now store the values of the gradient jump in the copy data
+        float face_indicator = 0;
         for (const auto q_index : fe_iv.quadrature_point_indices())
           {
             const auto J = jump_grad[q_index] * normals[q_index];
 
-            copy.vectors[0][1] += (h * J * J * JxW[q_index]); // dx
+            face_indicator += (h * J * J * JxW[q_index]); // dx
           }
+        copy.indicators.emplace_back(face_indicator);
       };
 
 
       auto copier = [&](const auto &copy) {
-        error_per_cell[copy.local_dof_indices[0][0]] =
-          copy.vectors[0][0] + copy.vectors[0][1];
+        AssertDimension(copy.cell_indices.size(), copy.indicators.size());
+        for (unsigned int i = 0; i < copy.cell_indices.size(); ++i)
+          {
+            error_per_cell[copy.cell_indices[i]] += copy.indicators[i];
+          }
       };
 
       using CellFilter = FilteredIterator<
