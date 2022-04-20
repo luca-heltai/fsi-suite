@@ -51,7 +51,16 @@ namespace PDEs
             TimerOutput::cpu_and_wall_times)
     , evolution_type(EvolutionType::steady_state)
     , grid_generator(section_name + "/Grid")
-    , grid_refinement(section_name + "/Grid/Refinement")
+    , grid_refinement(section_name + "/Grid/Refinement",
+                      1,
+                      ParsedTools::RefinementStrategy::global,
+                      "kelly",
+                      0.3,
+                      0.1,
+                      0,
+                      0,
+                      0,
+                      {{"custom", [&](auto &v) { custom_estimator(v); }}})
     , triangulation(mpi_communicator)
     // typename Triangulation<dim, spacedim>::MeshSmoothing(
     //   Triangulation<dim, spacedim>::smoothing_on_refinement |
@@ -226,6 +235,16 @@ namespace PDEs
     const typename DoFHandler<dim, spacedim>::active_cell_iterator &,
     ScratchData &,
     CopyData &)
+  {
+    Assert(false, ExcPureFunctionCalled());
+  }
+
+
+
+  template <int dim, int spacedim, class LacType>
+  void
+  LinearProblem<dim, spacedim, LacType>::custom_estimator(
+    dealii::Vector<float> &) const
   {
     Assert(false, ExcPureFunctionCalled());
   }

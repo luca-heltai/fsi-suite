@@ -243,6 +243,14 @@ namespace PDEs
     setup_system();
 
     /**
+     * Overload this function to use a custom error estimator in the mesh
+     * refinement process. In order to trigger this estimator, you have to
+     * select `custom` in the `Error estimator` section of the parameter file.
+     */
+    virtual void
+    custom_estimator(dealii::Vector<float> &error_per_cell) const;
+
+    /**
      * A signal that is called at the end of setup_system()
      */
     boost::signals2::signal<void()> add_constraints_call_back;
