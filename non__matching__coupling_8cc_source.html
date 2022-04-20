@@ -305,7 +305,7 @@ $(document).ready(function(){initNavTree('non__matching__coupling_8cc_source.htm
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;          <span class="comment">// Bounding boxes of the embedded grid</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;          <span class="keyword">const</span> <span class="keyword">auto</span> &amp;embedded_tree =</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            embedded_cache-&gt;get_locally_owned_cell_bounding_boxes_rtree();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            embedded_cache-&gt;get_cell_bounding_boxes_rtree();</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;          <span class="comment">// Let&#39;s check all cells whose bounding box contains an embedded</span></div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;          <span class="comment">// bounding box</span></div>
@@ -379,7 +379,7 @@ $(document).ready(function(){initNavTree('non__matching__coupling_8cc_source.htm
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            space_cache-&gt;get_locally_owned_cell_bounding_boxes_rtree();</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;          <span class="keyword">const</span> <span class="keyword">auto</span> &amp;embedded_tree =</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            embedded_cache-&gt;get_locally_owned_cell_bounding_boxes_rtree();</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            embedded_cache-&gt;get_cell_bounding_boxes_rtree();</div>
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;          <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[embedded_box, embedded_cell] : embedded_tree)</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;[space_box, space_cell] :</div>
@@ -460,7 +460,7 @@ $(document).ready(function(){initNavTree('non__matching__coupling_8cc_source.htm
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="non__matching__coupling_8cc.html">non_matching_coupling.cc</a></li>
-    <li class="footer">Generated on Wed Apr 20 2022 13:17:46 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Apr 20 2022 13:19:00 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

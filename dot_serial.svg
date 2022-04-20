@@ -358,7 +358,7 @@
 <!-- DistributedLagrange -->
 <g id="node23" class="node">
 <title>DistributedLagrange</title>
-<g id="a_node23"><a xlink:href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html" target="_top" xlink:title="DistributedLagrange">
+<g id="a_node23"><a xlink:href="namespace_p_d_es_1_1_serial.html#aea83b4a27ebd670b8c20c459a0928c16" target="_top" xlink:title="DistributedLagrange">
 <path fill="#5d8aa8" stroke="#5d8aa8" d="M414,-43C414,-43 308,-43 308,-43 302,-43 296,-37 296,-31 296,-31 296,-12 296,-12 296,-6 302,0 308,0 308,0 414,0 414,0 420,0 426,-6 426,-12 426,-12 426,-31 426,-31 426,-37 420,-43 414,-43"/>
 <text text-anchor="middle" x="361" y="-17.8" font-family="Times,serif" font-size="14.00">DistributedLagrange</text>
 </a>

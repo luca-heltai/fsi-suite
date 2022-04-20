@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fluid structure interaction suite: include/pdes/serial/distributed_lagrange.h File Reference</title>
+<title>Fluid structure interaction suite: include/pdes/distributed_lagrange.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -101,7 +101,8 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h.html',''); in
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">distributed_lagrange.h File Reference</div>  </div>
 </div><!--header-->
@@ -139,7 +140,7 @@ Include dependency graph for distributed_lagrange.h:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="distributed__lagrange_8h__dep__incl.svg" width="382" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="distributed__lagrange_8h__dep__incl.svg" width="556" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -147,7 +148,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -157,14 +158,25 @@ Namespaces</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespace_p_d_es_1_1_serial"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_serial.html">PDEs::Serial</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:namespace_p_d_es_1_1_m_p_i"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_m_p_i.html">PDEs::MPI</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aea83b4a27ebd670b8c20c459a0928c16"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim = dim&gt; </td></tr>
+<tr class="memitem:aea83b4a27ebd670b8c20c459a0928c16"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_serial.html#aea83b4a27ebd670b8c20c459a0928c16">PDEs::Serial::DistributedLagrange</a> = <a class="el" href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange</a>&lt; dim, spacedim, <a class="el" href="struct_l_a_c_1_1_l_adealii.html">LAC::LAdealii</a> &gt;</td></tr>
+<tr class="separator:aea83b4a27ebd670b8c20c459a0928c16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af71f1c07bbe780f976616c3669746d09"><td class="memTemplParams" colspan="2">template&lt;int dim, int spacedim = dim&gt; </td></tr>
+<tr class="memitem:af71f1c07bbe780f976616c3669746d09"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_m_p_i.html#af71f1c07bbe780f976616c3669746d09">PDEs::MPI::DistributedLagrange</a> = <a class="el" href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange</a>&lt; dim, spacedim, <a class="el" href="struct_l_a_c_1_1_l_a_trilinos.html">LAC::LATrilinos</a> &gt;</td></tr>
+<tr class="separator:af71f1c07bbe780f976616c3669746d09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="dir_0d1c0d82d2331d1d942d7c7f0084aeb2.html">serial</a></li><li class="navelem"><a class="el" href="distributed__lagrange_8h.html">distributed_lagrange.h</a></li>
-    <li class="footer">Generated on Wed Apr 20 2022 13:17:47 for Fluid structure interaction suite by
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="distributed__lagrange_8h.html">distributed_lagrange.h</a></li>
+    <li class="footer">Generated on Wed Apr 20 2022 13:19:00 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

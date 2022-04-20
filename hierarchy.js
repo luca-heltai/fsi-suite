@@ -5,6 +5,7 @@ var hierarchy =
       [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LAC::LATrilinos ::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ],
       [ "ParsedTools::Proxy< typename SUNDIALS::ARKode< typename LacType::BlockVector >::AdditionalData >", "class_parsed_tools_1_1_proxy.html", null ]
     ] ],
+    [ "LAC::BlockInitializer", "class_l_a_c_1_1_block_initializer.html", null ],
     [ "dealii::Patterns::Tools::Convert< Differentiation::SD::Expression >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_differentiation_1_1_s_d_1_1_expression_01_4.html", null ],
     [ "dealii::Patterns::Tools::Convert< ReferenceCell >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_reference_cell_01_4.html", null ],
     [ "dealii::Patterns::Tools::Convert< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html", null ],
@@ -31,6 +32,7 @@ var hierarchy =
       [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ]
     ] ],
     [ "ParsedTools::GridInfo", "struct_parsed_tools_1_1_grid_info.html", null ],
+    [ "LAC::Initializer", "class_l_a_c_1_1_initializer.html", null ],
     [ "LAC::LAdealii", "struct_l_a_c_1_1_l_adealii.html", null ],
     [ "LAC::LAPETSc", "struct_l_a_c_1_1_l_a_p_e_t_sc.html", null ],
     [ "LAC::LATrilinos", "struct_l_a_c_1_1_l_a_trilinos.html", null ],
@@ -38,7 +40,6 @@ var hierarchy =
       [ "dealii::Patterns::UnsignedInteger", "classdealii_1_1_patterns_1_1_unsigned_integer.html", null ]
     ] ],
     [ "dealii::Patterns::Tools::internal::RankInfo< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1internal_1_1_rank_info_3_01std_1_1unique__ptr_3_01_functi11c60eae726f69eabee4870ce9a9b25d.html", null ],
-    [ "ScopedLACInitializer", "class_scoped_l_a_c_initializer.html", null ],
     [ "SourceClass", "http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html", [
       [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ]
     ] ],
@@ -86,8 +87,8 @@ var hierarchy =
         [ "ParsedTools::NonMatchingCoupling< dim, spacedim >", "class_parsed_tools_1_1_non_matching_coupling.html", null ],
         [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ],
         [ "ParsedTools::SymbolicFunction< dim >", "class_parsed_tools_1_1_symbolic_function.html", null ],
+        [ "PDEs::DistributedLagrange< dim, spacedim, LacType >", "class_p_d_es_1_1_distributed_lagrange.html", null ],
         [ "PDEs::LinearProblem< dim, spacedim, LacType >", "class_p_d_es_1_1_linear_problem.html", null ],
-        [ "PDEs::Serial::DistributedLagrange< dim, spacedim, LacType >", "class_p_d_es_1_1_serial_1_1_distributed_lagrange.html", null ],
         [ "PDEs::Serial::Poisson< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson.html", null ],
         [ "PDEs::Serial::PoissonNitscheInterface< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_poisson_nitsche_interface.html", null ],
         [ "PDEs::Serial::ReducedLagrange< dim, spacedim >", "class_p_d_es_1_1_serial_1_1_reduced_lagrange.html", null ],

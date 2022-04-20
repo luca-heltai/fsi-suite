@@ -10,7 +10,9 @@ digraph "include/parsed_lac/amg_petsc.h"
   Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node3 [label="include/lac_initializer.h",height=0.2,width=0.4,color="black",URL="$lac__initializer_8h.html",tooltip=" "];
   Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node4 [label="source/pdes/linear\l_problem.cc",height=0.2,width=0.4,color="black",URL="$linear__problem_8cc.html",tooltip=" "];
-  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node5 [label="source/parsed_lac/amg\l_petsc.cc",height=0.2,width=0.4,color="black",URL="$amg__petsc_8cc.html",tooltip=" "];
+  Node4 [label="source/pdes/distributed\l_lagrange.cc",height=0.2,width=0.4,color="black",URL="$source_2pdes_2distributed__lagrange_8cc.html",tooltip=" "];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="source/pdes/linear\l_problem.cc",height=0.2,width=0.4,color="black",URL="$linear__problem_8cc.html",tooltip=" "];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="source/parsed_lac/amg\l_petsc.cc",height=0.2,width=0.4,color="black",URL="$amg__petsc_8cc.html",tooltip=" "];
 }

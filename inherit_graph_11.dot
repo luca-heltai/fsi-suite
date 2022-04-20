@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="ScopedLACInitializer",height=0.2,width=0.4,color="black",URL="$class_scoped_l_a_c_initializer.html",tooltip="General class, used to initialize different types of Vectors, Matrices and Sparsity Patterns using a ..."];
+  Node0 [label="LAC::LATrilinos",height=0.2,width=0.4,color="black",URL="$struct_l_a_c_1_1_l_a_trilinos.html",tooltip="Parallel linear algebra, using Trilinos."];
 }

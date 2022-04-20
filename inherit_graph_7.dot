@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="LAC::LAdealii",height=0.2,width=0.4,color="black",URL="$struct_l_a_c_1_1_l_adealii.html",tooltip="Serial linear algebra, natively defined in deal.II."];
+  Node0 [label="LAC::BlockInitializer",height=0.2,width=0.4,color="black",URL="$class_l_a_c_1_1_block_initializer.html",tooltip="General class, used to initialize different types of block vectors, block atrices and block sparsity ..."];
 }

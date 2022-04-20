@@ -15,7 +15,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
       [ "LATrilinos", "struct_l_a_c_1_1_l_a_trilinos.html", "struct_l_a_c_1_1_l_a_trilinos" ]
     ] ],
     [ "lac_initializer.h", "lac__initializer_8h.html", [
-      [ "ScopedLACInitializer", "class_scoped_l_a_c_initializer.html", "class_scoped_l_a_c_initializer" ]
+      [ "BlockInitializer", "class_l_a_c_1_1_block_initializer.html", "class_l_a_c_1_1_block_initializer" ],
+      [ "Initializer", "class_l_a_c_1_1_initializer.html", "class_l_a_c_1_1_initializer" ]
     ] ],
     [ "mesh_handler.h", "mesh__handler_8h.html", null ],
     [ "moonolith_tools.h", "moonolith__tools_8h.html", null ],

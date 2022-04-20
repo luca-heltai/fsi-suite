@@ -1,9 +1,10 @@
 <map id="include/assemble_coupling_mass_matrix_with_exact_intersections.h" name="include/assemble_coupling_mass_matrix_with_exact_intersections.h">
-<area shape="rect" id="node1" title=" " alt="" coords="285,5,483,61"/>
-<area shape="rect" id="node2" href="$non__matching__coupling_8h.html" title=" " alt="" coords="155,117,347,158"/>
-<area shape="rect" id="node6" href="$non__matching__coupling_8cc.html" title=" " alt="" coords="303,213,465,255"/>
-<area shape="rect" id="node7" href="$assemble__coupling__mass__matrix__with__exact__intersections_8cc.html" title=" " alt="" coords="421,109,616,165"/>
-<area shape="rect" id="node3" href="$distributed__lagrange_8h.html" title=" " alt="" coords="107,213,279,255"/>
-<area shape="rect" id="node4" href="$source_2pdes_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="5,303,184,344"/>
-<area shape="rect" id="node5" href="$apps_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="209,303,375,344"/>
+<area shape="rect" id="node1" title=" " alt="" coords="377,5,576,61"/>
+<area shape="rect" id="node2" href="$non__matching__coupling_8h.html" title=" " alt="" coords="247,117,439,158"/>
+<area shape="rect" id="node7" href="$non__matching__coupling_8cc.html" title=" " alt="" coords="396,213,557,255"/>
+<area shape="rect" id="node8" href="$assemble__coupling__mass__matrix__with__exact__intersections_8cc.html" title=" " alt="" coords="514,109,709,165"/>
+<area shape="rect" id="node3" href="$distributed__lagrange_8h.html" title=" " alt="" coords="193,213,371,255"/>
+<area shape="rect" id="node4" href="$source_2pdes_2distributed__lagrange_8cc.html" title=" " alt="" coords="5,303,180,344"/>
+<area shape="rect" id="node5" href="$apps_2mpi_2distributed__lagrange_8cc.html" title=" " alt="" coords="204,303,360,344"/>
+<area shape="rect" id="node6" href="$apps_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="384,303,551,344"/>
 </map>

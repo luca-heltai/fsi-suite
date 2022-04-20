@@ -102,6 +102,9 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
 &#160;
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>cell_quadrature
+: <a class="el" href="class_p_d_es_1_1_linear_problem.html#ad7c3bbdf98e1743368aae255a8537001">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
+</li>
 <li>cells_and_quads
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson_nitsche_interface.html#afbdc524b5d0f6d31adf38aa102147218">PDEs::Serial::PoissonNitscheInterface&lt; dim, spacedim &gt;</a>
 </li>
@@ -125,8 +128,9 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
 : <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html#ab146a1032ed5309ad7a7844118d9bb0b">PDEs::MPI::Poisson&lt; dim, spacedim &gt;</a>
 </li>
 <li>comm
-: <a class="el" href="class_parsed_tools_1_1_data_out.html#aab584e6ed10eb89a3e35cb109ca2fc0a">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
-, <a class="el" href="class_scoped_l_a_c_initializer.html#a6a58bff090c05e11ea6ffb734e193064">ScopedLACInitializer</a>
+: <a class="el" href="class_l_a_c_1_1_block_initializer.html#a91a878f4457af54357773bda0f7a249d">LAC::BlockInitializer</a>
+, <a class="el" href="class_l_a_c_1_1_initializer.html#a97c134197d6194f6b51171223865a312">LAC::Initializer</a>
+, <a class="el" href="class_parsed_tools_1_1_data_out.html#aab584e6ed10eb89a3e35cb109ca2fc0a">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
 </li>
 <li>component_blocks
 : <a class="el" href="class_parsed_tools_1_1_finite_element.html#a4f5dc1204618f5cdfc3da8c428fbbb48">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
@@ -193,17 +197,17 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
 : <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a9c311ea47c3753ccab40ade8c0746115">ParsedLAC::InverseOperator</a>
 </li>
 <li>coupling
-: <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a00740515124e4a94c911441e7249b6eb">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_distributed_lagrange.html#a1c6059b3ca3fd434d6af7c4d195b51a8">PDEs::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
 </li>
 <li>coupling_matrix
-: <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a76cdd003b137580780ae5dbc7141d5f7">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_distributed_lagrange.html#a2c2cba9c6e1f8343d1997f023a9ed8ce">PDEs::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a69da7c1ab66bb01b46095147473d941c">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 </li>
 <li>coupling_quadrature_order
 : <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a4e7f42072a431612215b7513935c9c41">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 </li>
 <li>coupling_sparsity
-: <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#a7aba1e7decfe8b9db6dd7a3685beb903">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_distributed_lagrange.html#aadc8c6f028d748fd8424237f550fea63">PDEs::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a4d05e3a0f814742393486e738d177139">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
 </li>
 <li>coupling_type
@@ -239,7 +243,7 @@ $(document).ready(function(){initNavTree('functions_vars_c.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Apr 20 2022 13:17:48 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Apr 20 2022 13:19:01 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

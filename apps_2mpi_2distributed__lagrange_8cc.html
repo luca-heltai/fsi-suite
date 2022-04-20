@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Fluid structure interaction suite: source/pdes/serial/distributed_lagrange.cc File Reference</title>
+<title>Fluid structure interaction suite: apps/mpi/distributed_lagrange.cc File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -80,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('source_2pdes_2serial_2distributed__lagrange_8cc.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('apps_2mpi_2distributed__lagrange_8cc.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -100,42 +100,70 @@ $(document).ready(function(){initNavTree('source_2pdes_2serial_2distributed__lag
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">distributed_lagrange.cc File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="distributed__lagrange_8h_source.html">pdes/serial/distributed_lagrange.h</a>&quot;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html">deal.II/base/logstream.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/linear__operator__tools_8h.html">deal.II/lac/linear_operator_tools.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/matrix__tools_8h.html">deal.II/numerics/matrix_tools.h</a>&gt;</code><br />
-<code>#include &lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/vector__tools_8h.html">deal.II/numerics/vector_tools.h</a>&gt;</code><br />
-<code>#include &lt;fstream&gt;</code><br />
-<code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="distributed__lagrange_8h_source.html">pdes/distributed_lagrange.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="runner_8h_source.html">runner.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for distributed_lagrange.cc:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="source_2pdes_2serial_2distributed__lagrange_8cc__incl.svg" width="4119" height="916"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="apps_2mpi_2distributed__lagrange_8cc__incl.svg" width="3744" height="1126"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
-<p><a href="source_2pdes_2serial_2distributed__lagrange_8cc_source.html">Go to the source code of this file.</a></p>
+<p><a href="apps_2mpi_2distributed__lagrange_8cc_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:namespace_p_d_es"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es.html">PDEs</a></td></tr>
-<tr class="memdesc:namespace_p_d_es"><td class="mdescLeft">&#160;</td><td class="mdescRight">We collect in this namespace all <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> that are relevant to Fluid Structure Interaction Problems. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespace_p_d_es_1_1_serial"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_p_d_es_1_1_serial.html">PDEs::Serial</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="apps_2mpi_2distributed__lagrange_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parallel distributed Lagrange finite element method.  <a href="apps_2mpi_2distributed__lagrange_8cc.html#a3c04138a5bfe5d72780bb7e82a18e627">More...</a><br /></td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parallel distributed Lagrange finite element method. </p>
+
+<p class="definition">Definition at line <a class="el" href="apps_2mpi_2distributed__lagrange_8cc_source.html#l00024">24</a> of file <a class="el" href="apps_2mpi_2distributed__lagrange_8cc_source.html">distributed_lagrange.cc</a>.</p>
+
+<p class="reference">References <a class="el" href="runner_8h_source.html#l00381">RUNNER_CODIM</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="dir_863924b7d266e6f7561da03323982265.html">pdes</a></li><li class="navelem"><a class="el" href="dir_50f223c273824013943d646bc691d39f.html">serial</a></li><li class="navelem"><a class="el" href="source_2pdes_2serial_2distributed__lagrange_8cc.html">distributed_lagrange.cc</a></li>
-    <li class="footer">Generated on Wed Apr 20 2022 13:17:47 for Fluid structure interaction suite by
+    <li class="navelem"><a class="el" href="dir_9654b8d08f4bba4e84b362c5fd320bee.html">apps</a></li><li class="navelem"><a class="el" href="dir_bed2a4a0c7c4050f61e346100395c310.html">mpi</a></li><li class="navelem"><a class="el" href="apps_2mpi_2distributed__lagrange_8cc.html">distributed_lagrange.cc</a></li>
+    <li class="footer">Generated on Wed Apr 20 2022 13:19:00 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

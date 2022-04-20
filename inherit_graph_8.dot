@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="LAC::LAPETSc",height=0.2,width=0.4,color="black",URL="$struct_l_a_c_1_1_l_a_p_e_t_sc.html",tooltip="Parallel linear algebra, using PETSc."];
+  Node0 [label="LAC::Initializer",height=0.2,width=0.4,color="black",URL="$class_l_a_c_1_1_initializer.html",tooltip="General class, used to initialize different types of block vectors, block atrices and block sparsity ..."];
 }

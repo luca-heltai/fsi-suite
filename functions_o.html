@@ -124,11 +124,12 @@ $(document).ready(function(){initNavTree('functions_o.html',''); initResizable()
 : <a class="el" href="class_parsed_tools_1_1_symbolic_function.html#a8cc5af8aeb1dbbff75bf38d6d382f8a7">ParsedTools::SymbolicFunction&lt; dim &gt;</a>
 </li>
 <li>operator()()
-: <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a98dfbf48270cb6d343a5addbc89c783e">ParsedLAC::InverseOperator</a>
+: <a class="el" href="class_l_a_c_1_1_block_initializer.html#ab543e26528c7f89fef5e9afc73872356">LAC::BlockInitializer</a>
+, <a class="el" href="class_l_a_c_1_1_initializer.html#a5b11119fa9bf81b3b36b6ccfa2485124">LAC::Initializer</a>
+, <a class="el" href="class_parsed_l_a_c_1_1_inverse_operator.html#a98dfbf48270cb6d343a5addbc89c783e">ParsedLAC::InverseOperator</a>
 , <a class="el" href="class_parsed_tools_1_1_finite_element.html#a4c5ba19a216725ac587bf0928bdbd15f">ParsedTools::FiniteElement&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1">ParsedTools::MappingEulerian&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_parsed_tools_1_1_symbolic_function.html#adc35d9edf3ce1a885c89f15c95d0b905">ParsedTools::SymbolicFunction&lt; dim &gt;</a>
-, <a class="el" href="class_scoped_l_a_c_initializer.html#a22e5f511c52bb9c7814faf449c2cc106">ScopedLACInitializer</a>
 </li>
 <li>operator[]()
 : <a class="el" href="class_parsed_tools_1_1_constants.html#aef9a7b93329c80943d7af8a1d1fd1fdd">ParsedTools::Constants</a>
@@ -160,8 +161,8 @@ $(document).ready(function(){initNavTree('functions_o.html',''); initResizable()
 : <a class="el" href="class_parsed_tools_1_1_data_out.html#a7756be343ccb49ea0da0832f0fca4823">ParsedTools::DataOut&lt; dim, spacedim &gt;</a>
 </li>
 <li>output_results()
-: <a class="el" href="class_p_d_es_1_1_linear_problem.html#a652eba3d0ff72ef1155466d447b13f92">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
-, <a class="el" href="class_p_d_es_1_1_serial_1_1_distributed_lagrange.html#af7991503af67523835e94a806705cc9c">PDEs::Serial::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
+: <a class="el" href="class_p_d_es_1_1_distributed_lagrange.html#af7772cbe38388e15fbff9529ac857d13">PDEs::DistributedLagrange&lt; dim, spacedim, LacType &gt;</a>
+, <a class="el" href="class_p_d_es_1_1_linear_problem.html#a652eba3d0ff72ef1155466d447b13f92">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson.html#abb2797101eade145baa969d5bed723ae">PDEs::Serial::Poisson&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_poisson_nitsche_interface.html#a6c05bf38dd906dd206c0ec06f41a1696">PDEs::Serial::PoissonNitscheInterface&lt; dim, spacedim &gt;</a>
 , <a class="el" href="class_p_d_es_1_1_serial_1_1_reduced_lagrange.html#a3eca8fe1822c2f5b3226622f2a362113">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;</a>
@@ -174,7 +175,13 @@ $(document).ready(function(){initNavTree('functions_o.html',''); initResizable()
 : <a class="el" href="class_parsed_l_a_c_1_1_i_l_u_preconditioner.html#a7ccb1e545e48455761f6d478d1297828">ParsedLAC::ILUPreconditioner</a>
 </li>
 <li>owned
-: <a class="el" href="class_scoped_l_a_c_initializer.html#aefc43facec030ba26433ada24aa534f4">ScopedLACInitializer</a>
+: <a class="el" href="class_l_a_c_1_1_block_initializer.html#ad626adb2cdee29f626f6fc0d18fb2689">LAC::BlockInitializer</a>
+</li>
+<li>owned_columns
+: <a class="el" href="class_l_a_c_1_1_initializer.html#a51ba31d1360b9114a841985535a83df3">LAC::Initializer</a>
+</li>
+<li>owned_rows
+: <a class="el" href="class_l_a_c_1_1_initializer.html#aa5e9b776c14ba8b83a61b06d67b96cb6">LAC::Initializer</a>
 </li>
 </ul>
 </div><!-- contents -->
@@ -182,7 +189,7 @@ $(document).ready(function(){initNavTree('functions_o.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Apr 20 2022 13:17:48 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Apr 20 2022 13:19:01 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
