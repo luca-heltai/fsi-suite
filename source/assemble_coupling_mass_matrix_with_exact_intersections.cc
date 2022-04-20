@@ -21,6 +21,9 @@
 #include <deal.II/base/function_lib.h>
 #include <deal.II/base/quadrature.h>
 
+#include <deal.II/distributed/shared_tria.h>
+#include <deal.II/distributed/tria.h>
+
 #include <deal.II/dofs/dof_handler.h>
 
 #include <deal.II/fe/mapping.h>
@@ -30,14 +33,15 @@
 #include <deal.II/grid/grid_tools_cache.h>
 #include <deal.II/grid/tria.h>
 
-#include <deal.II/lac/sparse_matrix.h>
+#include "lac.h"
+
 using namespace dealii;
 
 namespace dealii
 {
   namespace NonMatching
   {
-#ifdef DEAL_II_WITH_CGAL
+#if defined DEAL_II_WITH_CGAL || defined DEAL_II_WITH_PARMOONOLITH
 
     template <int dim0, int dim1, int spacedim, typename Matrix>
     void
@@ -61,12 +65,11 @@ namespace dealii
       AssertDimension(matrix.n(), immersed_dh.n_dofs());
       Assert(dim1 <= dim0,
              ExcMessage("This function can only work if dim1<=dim0"));
-      // Assert((dynamic_cast<
-      //           const parallel::distributed::Triangulation<dim1, spacedim>
-      //           *>( &immersed_dh.get_triangulation()) == nullptr),
-      //        ExcNotImplemented());
-
-
+      Assert((dynamic_cast<
+                const parallel::distributed::Triangulation<dim1, spacedim> *>(
+                &immersed_dh.get_triangulation()) == nullptr),
+             ExcMessage("The immersed triangulation can only be a "
+                        "parallel::shared::triangulation"));
 
       const auto &space_fe    = space_dh.get_fe();
       const auto &immersed_fe = immersed_dh.get_fe();
@@ -142,7 +145,6 @@ namespace dealii
 
 
       // Loop over vector of tuples, and gather everything together
-
       for (const auto &infos : cells_and_quads)
         {
           const auto &[first_cell, second_cell, quad_formula] = infos;
@@ -169,7 +171,7 @@ namespace dealii
                 {
                   const unsigned int comp_i =
                     space_dh.get_fe().system_to_component_index(i).first;
-                  if (comp_i != numbers::invalid_unsigned_int)
+                  if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
                     {
                       for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
                            ++j)
@@ -234,6 +236,7 @@ namespace dealii
                 matrix);
             }
         }
+      matrix.compress(VectorOperation::add);
     }
 
 
@@ -260,8 +263,9 @@ namespace dealii
       const AffineConstraints<typename Matrix::value_type> &)
     {
       Assert(false,
-             ExcMessage("This function needs CGAL to be installed, "
-                        "but cmake could not find it."));
+             ExcMessage(
+               "This function needs CGAL or PARMOONOLITH to be installed, "
+               "but cmake could not either."));
     }
 
 
@@ -352,7 +356,6 @@ namespace dealii
       const Mapping<2, 3> &immersed_mapping,
       const AffineConstraints<dealii::SparseMatrix<double>::value_type> &);
 
-
     template void
     assemble_coupling_mass_matrix_with_exact_intersections(
       const DoFHandler<3, 3> &,
@@ -367,5 +370,205 @@ namespace dealii
       const Mapping<3, 3> &space_mapping,
       const Mapping<3, 3> &immersed_mapping,
       const AffineConstraints<typename SparseMatrix<double>::value_type> &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      2,
+      1,
+      2,
+      dealii::TrilinosWrappers::SparseMatrix>(
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<1, 2> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<1, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<1, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::TrilinosWrappers::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<2, 2> const &,
+      dealii::Mapping<1, 2> const &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      2,
+      2,
+      2,
+      dealii::TrilinosWrappers::SparseMatrix>(
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<2, 2> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::TrilinosWrappers::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<2, 2> const &,
+      dealii::Mapping<2, 2> const &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      3,
+      2,
+      3,
+      dealii::TrilinosWrappers::SparseMatrix>(
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<2, 3> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<2, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<2, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::TrilinosWrappers::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<3, 3> const &,
+      dealii::Mapping<2, 3> const &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      3,
+      3,
+      3,
+      dealii::TrilinosWrappers::SparseMatrix>(
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<3, 3> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::TrilinosWrappers::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<3, 3> const &,
+      dealii::Mapping<3, 3> const &,
+      dealii::AffineConstraints<
+        dealii::TrilinosWrappers::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      2,
+      1,
+      2,
+      dealii::PETScWrappers::MPI::SparseMatrix>(
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<1, 2> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<1, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<1, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::PETScWrappers::MPI::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<2, 2> const &,
+      dealii::Mapping<1, 2> const &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      2,
+      2,
+      2,
+      dealii::PETScWrappers::MPI::SparseMatrix>(
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<2, 2> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::PETScWrappers::MPI::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<2, 2> const &,
+      dealii::Mapping<2, 2> const &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      3,
+      2,
+      3,
+      dealii::PETScWrappers::MPI::SparseMatrix>(
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<2, 3> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<2, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<2, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::PETScWrappers::MPI::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<3, 3> const &,
+      dealii::Mapping<2, 3> const &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &);
+
+    template void
+    dealii::NonMatching::assemble_coupling_mass_matrix_with_exact_intersections<
+      3,
+      3,
+      3,
+      dealii::PETScWrappers::MPI::SparseMatrix>(
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<3, 3> const &,
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::PETScWrappers::MPI::SparseMatrix &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::Mapping<3, 3> const &,
+      dealii::Mapping<3, 3> const &,
+      dealii::AffineConstraints<
+        dealii::PETScWrappers::MPI::SparseMatrix::value_type> const &);
   } // namespace NonMatching
 } // namespace dealii

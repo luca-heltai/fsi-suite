@@ -1,26 +1,15 @@
-subsection Distributed Lagrange
-  set Use direct solver = false
-end
 subsection Space
   set Finite element space (u) = FESystem[FE_Q(1)^1]
   set n_threads                = 1
   set verbosity                = 4
-  subsection Functions
-    set Forcing term   = 1.0
-    set Exact solution = -ln(max((x-.3)^2+(y-.3)^2, .1^2))/2
-  end
-  subsection Boundary conditions
-    set Boundary id sets (u)         = -1
-    set Selected components (u)      = all
-    set Boundary condition types (u) = dirichlet
-    set Expressions (u)              = -ln(max((x-.3)^2+(y-.3)^2, .1^2))/2
-  end
   subsection Grid
     set Input name                = hyper_cube
     set Arguments                 = 0: 1: false
+    set Output name               = 
+    set Transform to simplex grid = false
     set Initial grid refinement   = 4
     subsection Refinement
-      set Number of refinement cycles = 3
+      set Number of refinement cycles = 5
       subsection Marking strategy
         set Refinement strategy                    = global
         set Refinement parameter                   = 0.3
@@ -57,6 +46,16 @@ subsection Space
       set Coarse type           = Amesos-KLU
     end
   end
+  subsection Functions
+    set Forcing term   = 0.0
+    set Exact solution = -ln(max((x-.3)^2+(y-.3)^2, .2^2))/2
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u)         = -1
+    set Selected components (u)      = all
+    set Boundary condition types (u) = dirichlet
+    set Expressions (u)              = -ln(max((x-.3)^2+(y-.3)^2, .2^2))/2
+  end
   subsection Error
     set Enable computation of the errors = true
     set Error precision                  = 3
@@ -74,19 +73,19 @@ subsection Space
     set Output format          = vtu
     set Subdivisions           = 0
     set Write high order cells = true
-    set Curved cells region    = no_curved_cells| curved_inner_cells
+    set Curved cells region    = curved_inner_cells
   end
 end
 subsection Embedded
-  set Finite element space (w) = FESystem[FE_Q(1)^1]
+  set Finite element space (w) = FESystem[FE_DGQ(0)^1]
   set n_threads                = -1
-  set verbosity                = 1
+  set verbosity                = 4
   subsection Grid
     set Input name                = hyper_sphere
-    set Arguments                 = 0.3, 0.3 : 0.1
+    set Arguments                 = 0.3, 0.3 : 0.2
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 4
+    set Initial grid refinement   = 0
     subsection Refinement
       set Number of refinement cycles = 1
       subsection Marking strategy
@@ -126,8 +125,8 @@ subsection Embedded
     end
   end
   subsection Functions
-    set Forcing term   = -ln(.1)
-    set Exact solution = 10.0
+    set Forcing term   = -ln(.2)
+    set Exact solution = 1.0/0.2
   end
   subsection Boundary conditions
     set Boundary id sets (w)         = 
@@ -160,7 +159,20 @@ subsection Coupling
   set Refinement strategy              = refine_embedded
   set Space pre-refinement             = 0
   set Embedded post-refinement         = 0
-  set Embedded quadrature type         = gauss_lobatto
+  set Embedded quadrature type         = gauss
   set Embedded quadrature order        = 3
   set Embedded quadrature retpetitions = 1
+end
+subsection Mass solver
+  set Solver name            = cg
+  set Solver control type    = tolerance
+  set Maximum iterations     = 1000
+  set Consecutive iterations = 2
+  set Absolute tolerance     = 1e-12
+  set Relative tolerance     = 1e-06
+  set Log history            = false
+  set Log result             = false
+end
+subsection Distributed Lagrange
+  set Use direct solver = true
 end

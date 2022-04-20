@@ -200,7 +200,7 @@ namespace ParsedTools
 
           // Bounding boxes of the embedded grid
           const auto &embedded_tree =
-            embedded_cache->get_locally_owned_cell_bounding_boxes_rtree();
+            embedded_cache->get_cell_bounding_boxes_rtree();
 
           // Let's check all cells whose bounding box contains an embedded
           // bounding box
@@ -274,7 +274,7 @@ namespace ParsedTools
             space_cache->get_locally_owned_cell_bounding_boxes_rtree();
 
           const auto &embedded_tree =
-            embedded_cache->get_locally_owned_cell_bounding_boxes_rtree();
+            embedded_cache->get_cell_bounding_boxes_rtree();
 
           for (const auto &[embedded_box, embedded_cell] : embedded_tree)
             for (const auto &[space_box, space_cell] :

@@ -454,8 +454,11 @@ namespace dealii
 
       const auto &space_tree =
         space_cache.get_locally_owned_cell_bounding_boxes_rtree();
+
+      // The immersed tree *must* contain all cells, also the non-locally owned
+      // ones.
       const auto &immersed_tree =
-        immersed_cache.get_locally_owned_cell_bounding_boxes_rtree();
+        immersed_cache.get_cell_bounding_boxes_rtree();
 
       // references to triangulations' info (cp cstrs marked as delete)
       const auto &mapping0 = space_cache.get_mapping();

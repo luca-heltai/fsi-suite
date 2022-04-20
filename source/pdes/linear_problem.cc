@@ -129,7 +129,12 @@ namespace PDEs
   LinearProblem<dim, spacedim, LacType>::setup_system()
   {
     TimerOutput::Scope timer_section(timer, "setup_system");
-    deallog << "System setup" << std::endl;
+    if (mpi_rank == 0)
+      deallog.depth_console(verbosity_level);
+    else
+      deallog.depth_console(0);
+
+    deallog << "System setup " << std::endl;
     const auto ref_cells = triangulation.get_reference_cells();
     AssertThrow(
       ref_cells.size() == 1,
@@ -148,7 +153,9 @@ namespace PDEs
     // this code we actually use a linear mapping, independently on the order
     // of the finite element space.
     mapping = get_default_linear_mapping(triangulation).clone();
-    deallog << "Number of dofs " << dof_handler.n_dofs() << std::endl;
+
+    const auto [block_names, block_multiplicities] =
+      ParsedTools::Components::names_to_blocks(component_names);
 
     const auto blocks =
       ParsedTools::Components::block_indices(component_names, component_names);
@@ -165,8 +172,10 @@ namespace PDEs
     locally_relevant_dofs =
       non_blocked_locally_relevant_dofs.split_by_block(dofs_per_block);
 
-    deallog << "Number of degrees of freedom: " << dof_handler.n_dofs() << " ("
-            << Patterns::Tools::to_string(dofs_per_block) << ")" << std::endl;
+    deallog << "Number of degrees of freedom [total / ("
+            << Patterns::Tools::to_string(block_names) << ")] : ["
+            << dof_handler.n_dofs() << " / ("
+            << Patterns::Tools::to_string(dofs_per_block) << ")]" << std::endl;
 
     constraints.clear();
     constraints.reinit(non_blocked_locally_relevant_dofs);
@@ -197,10 +206,10 @@ namespace PDEs
     add_constraints_call_back();
     constraints.close();
 
-    ScopedLACInitializer initializer(dofs_per_block,
-                                     locally_owned_dofs,
-                                     locally_relevant_dofs,
-                                     mpi_communicator);
+    LAC::BlockInitializer initializer(dofs_per_block,
+                                      locally_owned_dofs,
+                                      locally_relevant_dofs,
+                                      mpi_communicator);
 
     Table<2, DoFTools::Coupling> coupling(n_components, n_components);
     for (unsigned int i = 0; i < n_components; ++i)
@@ -222,6 +231,13 @@ namespace PDEs
     // Update functions with standard constants
     exact_solution.update_constants({});
     forcing_term.update_constants({});
+
+    // Setup the quadrature formulas
+    cell_quadrature = ParsedTools::Components::get_cell_quadrature(
+      triangulation, finite_element().tensor_degree() + 1);
+
+    face_quadrature = ParsedTools::Components::get_face_quadrature(
+      triangulation, finite_element().tensor_degree() + 1);
 
     // Now call anything else that may be needed from the user side
     setup_system_call_back();
@@ -269,20 +285,13 @@ namespace PDEs
   LinearProblem<dim, spacedim, LacType>::assemble_system()
   {
     TimerOutput::Scope timer_section(timer, "assemble_system");
-    Quadrature<dim>    quadrature_formula =
-      ParsedTools::Components::get_cell_quadrature(
-        triangulation, finite_element().tensor_degree() + 1);
-
-    Quadrature<dim - 1> face_quadrature_formula =
-      ParsedTools::Components::get_face_quadrature(
-        triangulation, finite_element().tensor_degree() + 1);
 
     ScratchData scratch(*mapping,
                         finite_element(),
-                        quadrature_formula,
+                        cell_quadrature,
                         update_values | update_gradients |
                           update_quadrature_points | update_JxW_values,
-                        face_quadrature_formula,
+                        face_quadrature,
                         update_values | update_quadrature_points |
                           update_JxW_values);
 
@@ -315,7 +324,7 @@ namespace PDEs
         // Assemble also the mass matrix.
         ScratchData scratch(*mapping,
                             finite_element(),
-                            quadrature_formula,
+                            cell_quadrature,
                             update_values | update_JxW_values);
 
         CopyData copy(finite_element().n_dofs_per_cell());
@@ -414,7 +423,7 @@ namespace PDEs
     const unsigned cycle) const
   {
     TimerOutput::Scope timer_section(timer, "output_results");
-    deallog << "Output results" << std::endl;
+    deallog << "Output results (" << component_names << ")" << std::endl;
     // Save each cycle in its own file
     const auto suffix =
       Utilities::int_to_string(cycle,
@@ -437,11 +446,6 @@ namespace PDEs
   void
   LinearProblem<dim, spacedim, LacType>::print_system_info() const
   {
-    if (mpi_rank == 0)
-      deallog.depth_console(verbosity_level);
-    else
-      deallog.depth_console(0);
-
     if (number_of_threads != -1 && number_of_threads > 0)
       MultithreadInfo::set_thread_limit(
         static_cast<unsigned int>(number_of_threads));
@@ -453,6 +457,9 @@ namespace PDEs
             << std::endl
             << "Number of MPI processes : " << mpi_size << std::endl
             << "MPI rank of this process: " << mpi_rank << std::endl;
+
+    AssertThrow((lac_is_dealii && mpi_size == 1) || (lac_is_dealii == false),
+                ExcMessage("deal.II LAC only works in serial"));
   }
 
 

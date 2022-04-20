@@ -150,6 +150,24 @@ namespace PDEs
     setup_transient(ARKode &arkode);
 
     /**
+     * True if we are using deal.II Linear Algebra Classes.
+     */
+    static constexpr bool lac_is_dealii =
+      std::is_same<LAC::LAdealii, LacType>::value;
+
+    /**
+     * True if we are using PETSc Linear Algebra Classes.
+     */
+    static constexpr bool lac_is_petsc =
+      std::is_same<LAC::LAPETSc, LacType>::value;
+
+    /**
+     * True if we are using Trilinos Linear Algebra Classes.
+     */
+    static constexpr bool lac_is_trilinos =
+      std::is_same<LAC::LATrilinos, LacType>::value;
+
+    /**
      * Make sure we can run also in 1d, where parallel distributed
      * triangulations are not available, and we can only use parallel shared
      * ones.
@@ -345,7 +363,7 @@ namespace PDEs
     /**
      * Number of threads to use for multi-threaded assembly.
      */
-    int number_of_threads = -1;
+    int number_of_threads = 1;
 
     /**
      * Verbosity level of deallog.
@@ -451,6 +469,17 @@ namespace PDEs
      * This is a unique pointer to allow creation via parameter files.
      */
     std::unique_ptr<Mapping<dim, spacedim>> mapping;
+
+    /**
+     * A quadrature used for cell integration.
+     */
+    Quadrature<dim> cell_quadrature;
+
+    /**
+     * A quadrature used for face integration.
+     */
+    Quadrature<dim - 1> face_quadrature;
+
 
     /**
      * Handler of degrees of freedom.
