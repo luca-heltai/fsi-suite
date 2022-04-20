@@ -24,15 +24,18 @@
 #include <deal.II/grid/grid_tools.h>
 #include <deal.II/grid/grid_tools_cache.h>
 
-#include "moonolith_tools.h"
-
-using namespace dealii;
-
 #include <set>
 #include <tuple>
 #include <vector>
 
+#include "cgal/wrappers.h"
+#include "moonolith_tools.h"
+
+using namespace dealii;
+
 #if defined DEAL_II_WITH_CGAL && defined DEAL_II_PREFER_CGAL_OVER_PARMOONOLITH
+
+using namespace CGALWrappers;
 
 #  include <CGAL/Boolean_set_operations_2.h>
 #  include <CGAL/Constrained_Delaunay_triangulation_2.h>
@@ -173,8 +176,6 @@ namespace internal
   }
 } // namespace internal
 
-
-
 namespace dealii
 {
   namespace NonMatching
@@ -208,9 +209,8 @@ namespace dealii
 
           for (unsigned int i = 0; i < 4; ++i)
             {
-              vertices_cell0[i] = CGAL_Point(
-                deformed_vertices_cell0[i][0],
-                deformed_vertices_cell0[i][1]); // get x,y coords of the
+              vertices_cell0[i] = to_cgal<CGAL_Point>(
+                deformed_vertices_cell0[i])); // get x,y coords of the
                                                 // deformed vertices
             }
 
@@ -221,15 +221,13 @@ namespace dealii
 
           for (unsigned int i = 0; i < n_vertices_cell1; ++i)
             {
-              vertices_cell1[i] = CGAL_Point(deformed_vertices_cell1[i][0],
-                                             deformed_vertices_cell1[i][1]);
+              vertices_cell1[i] = to_cgal<CGAL_Point>(deformed_vertices_cell1[i]));
             }
 
-
-
+          // to be consistent with dealii
           std::swap(vertices_cell0[2], vertices_cell0[3]);
-          std::swap(vertices_cell1[2],
-                    vertices_cell1[3]); // to be consistent with dealii
+          std::swap(vertices_cell1[2], vertices_cell1[3]);
+
           const auto inters =
             ::internal::compute_intersection_of_cells<4, 4>(vertices_cell0,
                                                             vertices_cell1);
@@ -243,26 +241,19 @@ namespace dealii
               if (size_poly == 4)
                 {
                   std::array<Point<spacedim>, 4> vertices_array{
-                    {Point<spacedim>(CGAL::to_double(poly.vertex(0).x()),
-                                     CGAL::to_double(poly.vertex(0).y())),
-                     Point<spacedim>(CGAL::to_double(poly.vertex(1).x()),
-                                     CGAL::to_double(poly.vertex(1).y())),
-                     Point<spacedim>(CGAL::to_double(poly.vertex(3).x()),
-                                     CGAL::to_double(poly.vertex(3).y())),
-                     Point<spacedim>(CGAL::to_double(poly.vertex(2).x()),
-                                     CGAL::to_double(poly.vertex(2).y()))}};
+                    {to_dealii<spacedim>(poly.vertex(0)),
+                     to_dealii<spacedim>(poly.vertex(1)),
+                     to_dealii<spacedim>(poly.vertex(3)),
+                     to_dealii<spacedim>(poly.vertex(2))}};
                   return compute_linear_transformation<dim0, spacedim, 4>(
                     QGauss<dim0>(degree), vertices_array); // 4 points
                 }
               else if (size_poly == 3)
                 {
                   std::array<Point<spacedim>, 3> vertices_array{
-                    {Point<spacedim>(CGAL::to_double(poly.vertex(0).x()),
-                                     CGAL::to_double(poly.vertex(0).y())),
-                     Point<spacedim>(CGAL::to_double(poly.vertex(1).x()),
-                                     CGAL::to_double(poly.vertex(1).y())),
-                     Point<spacedim>(CGAL::to_double(poly.vertex(2).x()),
-                                     CGAL::to_double(poly.vertex(2).y()))}};
+                    {to_dealii<spacedim>(poly.vertex(0)),
+                     to_dealii<spacedim>(poly.vertex(1)),
+                     to_dealii<spacedim>(poly.vertex(2))}};
                   return compute_linear_transformation<dim0, spacedim, 3>(
                     QGaussSimplex<dim0>(degree),
                     vertices_array); // 3 points => use Quadrature for simplices
@@ -287,12 +278,9 @@ namespace dealii
                         {
                           for (unsigned int i = 0; i < 3; ++i)
                             {
-                              vertices[i] = Point<spacedim>{
-                                CGAL::to_double(cdt.triangle(f).vertex(i).x()),
-                                CGAL::to_double(cdt.triangle(f).vertex(i).y())};
+                              vertices[i] =
+                                to_dealii<spacedim>(cdt.triangle(f).vertex(i));
                             }
-
-
 
                           const auto &linear_transf =
                             compute_linear_transformation<dim0, spacedim, 3>(
@@ -328,13 +316,10 @@ namespace dealii
 
           for (unsigned int i = 0; i < 4; ++i)
             {
-              vertices_cell0[i] = CGAL_Point(
-                deformed_vertices_cell0[i][0],
-                deformed_vertices_cell0[i][1]); // get x,y coords of the
-                                                // deformed vertices
+              vertices_cell0[i] = to_cal<CGAL_Point>(
+                deformed_vertices_cell0[i]); // get x,y coords of the
+                                             // deformed vertices
             }
-
-
 
           std::array<CGAL_Point, 2> vertices_cell1;
 
@@ -342,8 +327,8 @@ namespace dealii
 
           for (unsigned int i = 0; i < 2; ++i)
             {
-              vertices_cell1[i] = CGAL_Point(deformed_vertices_cell1[i][0],
-                                             deformed_vertices_cell1[i][1]);
+              vertices_cell1[i] =
+                to_cal<CGAL_Point>(deformed_vertices_cell1[i]);
             }
           const auto inters =
             ::internal::compute_intersection_of_cells<4, 2>(vertices_cell0,
@@ -354,10 +339,8 @@ namespace dealii
               if (const auto *s = boost::get<CGAL_Segment>(&*inters))
                 {
                   std::array<Point<spacedim>, 2> vertices_array{
-                    {Point<spacedim>(CGAL::to_double(s->vertex(0).x()),
-                                     CGAL::to_double(s->vertex(0).y())),
-                     Point<spacedim>(CGAL::to_double(s->vertex(1).x()),
-                                     CGAL::to_double(s->vertex(1).y()))}};
+                    {to_dealii<spacedim>(s->vertex(0).y())),
+                     to_dealii<spacedim>(s->vertex(1).y()))}};
 
                   return (s->is_degenerate()) ?
                            Quadrature<spacedim>() :
