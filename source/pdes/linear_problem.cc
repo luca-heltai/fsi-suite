@@ -472,21 +472,30 @@ namespace PDEs
     while (time.is_at_end() == false)
       {
         const auto cycle = time.get_step_number();
-        const auto t     = time.get_next_time();
+        const auto t     = time.get_current_time();
         const auto dt    = time.get_next_step_size();
-
-        deallog << "Timestep " << cycle << ", time = " << t
+        deallog << "Timestep " << cycle << ", current time = " << t
                 << " , step size = " << dt << std::endl;
 
+        advance_time_call_back(t, dt, cycle);
+
         setup_system();
-        assemble_system();
-        solve();
+        // Before actually solving, output the current solution if required
         if (cycle % output_frequency == 0)
           output_results(output_cycle++);
+
+        assemble_system();
+        solve();
         time.advance_time();
-        advance_time_call_back(time.get_current_time(),
-                               time.get_previous_step_size(),
-                               cycle);
+        // Check if we need to output one last time
+        if (time.is_at_end())
+          {
+            advance_time_call_back(time.get_current_time(),
+                                   time.get_previous_step_size(),
+                                   time.get_step_number());
+            if (time.get_step_number() % output_frequency == 0)
+              output_results(output_cycle++);
+          }
       }
   }
 
