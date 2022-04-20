@@ -127,6 +127,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aecbda13eb03064bf9700507e9156ae5c"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">initialize</a> (VectorType &amp;configuration_or_displacement)</td></tr>
 <tr class="memdesc:aecbda13eb03064bf9700507e9156ae5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually build the mapping from the given configuration or displacement.  <a href="class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c">More...</a><br /></td></tr>
 <tr class="separator:aecbda13eb03064bf9700507e9156ae5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abef4950a08b77333dd3496bc3d216877"><td class="memTemplParams" colspan="2">template&lt;typename VectorType &gt; </td></tr>
+<tr class="memitem:abef4950a08b77333dd3496bc3d216877"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#abef4950a08b77333dd3496bc3d216877">initialize</a> (VectorType &amp;configuration_or_displacement, VectorType &amp;locally_relevant_configuration_or_displacement)</td></tr>
+<tr class="memdesc:abef4950a08b77333dd3496bc3d216877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actually build the mapping from the given configuration or displacement.  <a href="class_parsed_tools_1_1_mapping_eulerian.html#abef4950a08b77333dd3496bc3d216877">More...</a><br /></td></tr>
+<tr class="separator:abef4950a08b77333dd3496bc3d216877"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a106deaef3246ae5be76c11d4d4060286"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html#a106deaef3246ae5be76c11d4d4060286">operator const Mapping&lt; dim, spacedim &gt; &amp;</a> () const</td></tr>
 <tr class="memdesc:a106deaef3246ae5be76c11d4d4060286"><td class="mdescLeft">&#160;</td><td class="mdescRight">Act as mapping.  <a href="class_parsed_tools_1_1_mapping_eulerian.html#a106deaef3246ae5be76c11d4d4060286">More...</a><br /></td></tr>
 <tr class="separator:a106deaef3246ae5be76c11d4d4060286"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -342,7 +346,7 @@ template&lt;int dim, int spacedim&gt; </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aecbda13eb03064bf9700507e9156ae5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aecbda13eb03064bf9700507e9156ae5c">&#9670;&nbsp;</a></span>initialize()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aecbda13eb03064bf9700507e9156ae5c">&#9670;&nbsp;</a></span>initialize() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -357,6 +361,41 @@ template&lt;typename VectorType &gt; </div>
           <td class="paramtype">VectorType &amp;&#160;</td>
           <td class="paramname"><em>configuration_or_displacement</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actually build the mapping from the given configuration or displacement. </p>
+<p>If the <code>initial_configuration_or_displacement</code> parameter is not empty, the input vector is modified to interpolate the given configuration or displacement, otherwise the identity configuration is used. </p>
+
+</div>
+</div>
+<a id="abef4950a08b77333dd3496bc3d216877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abef4950a08b77333dd3496bc3d216877">&#9670;&nbsp;</a></span>initialize() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int dim, int spacedim = dim&gt; </div>
+<div class="memtemplate">
+template&lt;typename VectorType &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a>&lt; dim, spacedim &gt;::initialize </td>
+          <td>(</td>
+          <td class="paramtype">VectorType &amp;&#160;</td>
+          <td class="paramname"><em>configuration_or_displacement</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VectorType &amp;&#160;</td>
+          <td class="paramname"><em>locally_relevant_configuration_or_displacement</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -431,7 +470,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>A pointer to the dof handler. </p>
 
-<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00110">110</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00122">122</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
 </div>
 </div>
@@ -459,7 +498,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>What components should be interpreted as the displacement. </p>
 
-<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00115">115</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00127">127</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
 </div>
 </div>
@@ -487,7 +526,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>Switch from displacement to configuration. </p>
 
-<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00120">120</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00132">132</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
 </div>
 </div>
@@ -515,7 +554,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>What configuration to store when the mapping is initialized. </p>
 
-<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00125">125</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00137">137</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
 </div>
 </div>
@@ -543,7 +582,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 
 <p>The actual mapping. </p>
 
-<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00130">130</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="mapping__eulerian_8h_source.html#l00142">142</a> of file <a class="el" href="mapping__eulerian_8h_source.html">mapping_eulerian.h</a>.</p>
 
 </div>
 </div>
@@ -554,15 +593,15 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassLinearAlgebra_1_1distributed_1_1Vector_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearAlgebra_1_1distributed_1_1Vector.html">Vector&lt; double &gt;</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aa85329e29bb855eb77ee1c1cdf0dabd0"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian::dof_handler</a></div><div class="ttdeci">const SmartPointer&lt; const DoFHandler&lt; dim, spacedim &gt; &gt; dof_handler</div><div class="ttdoc">A pointer to the dof handler.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00110">mapping_eulerian.h:110</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6d22bbb6cfec918be9d909e8739cb67a"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">ParsedTools::MappingEulerian::mapping</a></div><div class="ttdeci">std::unique_ptr&lt; Mapping&lt; dim, spacedim &gt; &gt; mapping</div><div class="ttdoc">The actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00130">mapping_eulerian.h:130</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_aa85329e29bb855eb77ee1c1cdf0dabd0"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0">ParsedTools::MappingEulerian::dof_handler</a></div><div class="ttdeci">const SmartPointer&lt; const DoFHandler&lt; dim, spacedim &gt; &gt; dof_handler</div><div class="ttdoc">A pointer to the dof handler.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00122">mapping_eulerian.h:122</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html_a6d22bbb6cfec918be9d909e8739cb67a"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html#a6d22bbb6cfec918be9d909e8739cb67a">ParsedTools::MappingEulerian::mapping</a></div><div class="ttdeci">std::unique_ptr&lt; Mapping&lt; dim, spacedim &gt; &gt; mapping</div><div class="ttdoc">The actual mapping.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00142">mapping_eulerian.h:142</a></div></div>
 <div class="ttc" id="aclassFEValues_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a></div></div>
 <div class="ttc" id="aclass_parsed_tools_1_1_mapping_eulerian_html"><div class="ttname"><a href="class_parsed_tools_1_1_mapping_eulerian.html">ParsedTools::MappingEulerian</a></div><div class="ttdoc">A wrapper class for MappingFEField or MappingQEulerian.</div><div class="ttdef"><b>Definition:</b> <a href="mapping__eulerian_8h_source.html#l00074">mapping_eulerian.h:74</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_mapping_eulerian.html">MappingEulerian</a></li>
-    <li class="footer">Generated on Mon Apr 18 2022 07:30:57 for Fluid structure interaction suite by
+    <li class="footer">Generated on Wed Apr 20 2022 13:16:21 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

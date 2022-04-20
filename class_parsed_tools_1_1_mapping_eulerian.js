@@ -2,6 +2,7 @@ var class_parsed_tools_1_1_mapping_eulerian =
 [
     [ "MappingEulerian", "class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527", null ],
     [ "initialize", "class_parsed_tools_1_1_mapping_eulerian.html#aecbda13eb03064bf9700507e9156ae5c", null ],
+    [ "initialize", "class_parsed_tools_1_1_mapping_eulerian.html#abef4950a08b77333dd3496bc3d216877", null ],
     [ "operator const Mapping< dim, spacedim > &", "class_parsed_tools_1_1_mapping_eulerian.html#a106deaef3246ae5be76c11d4d4060286", null ],
     [ "operator()", "class_parsed_tools_1_1_mapping_eulerian.html#a7dfe82f8f76cabe1373454a6b4e096c1", null ],
     [ "dof_handler", "class_parsed_tools_1_1_mapping_eulerian.html#aa85329e29bb855eb77ee1c1cdf0dabd0", null ],
