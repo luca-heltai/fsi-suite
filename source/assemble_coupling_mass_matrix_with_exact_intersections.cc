@@ -116,6 +116,31 @@ namespace dealii
 
 
 
+      Table<2, bool> dof_mask(n_dofs_per_space_cell, n_dofs_per_immersed_cell);
+      dof_mask.fill(false); // start off by assuming they don't couple
+
+      for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
+        {
+          const auto comp_i = space_fe.system_to_component_index(i).first;
+          if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
+            {
+              for (unsigned int j = 0; j < n_dofs_per_immersed_cell; ++j)
+                {
+                  const auto comp_j =
+                    immersed_fe.system_to_component_index(j).first;
+                  if (immersed_gtl[comp_j] == space_gtl[comp_i])
+                    {
+                      dof_mask(i, j) = true;
+                    }
+                }
+            }
+        }
+
+      const bool dof_mask_is_active =
+        dof_mask.n_rows() == n_dofs_per_space_cell &&
+        dof_mask.n_cols() == n_dofs_per_immersed_cell;
+
+
       // Loop over vector of tuples, and gather everything together
 
       for (const auto &infos : cells_and_quads)
@@ -126,10 +151,10 @@ namespace dealii
 
           local_cell_matrix = typename Matrix::value_type();
 
-          const unsigned int           n_quad_pts = quad_formula.size();
-          const auto &                 real_qpts  = quad_formula.get_points();
-          std::vector<Point<spacedim>> ref_pts_space(n_quad_pts);
-          std::vector<Point<dim1>>     ref_pts_immersed(n_quad_pts);
+          const unsigned int       n_quad_pts = quad_formula.size();
+          const auto &             real_qpts  = quad_formula.get_points();
+          std::vector<Point<dim0>> ref_pts_space(n_quad_pts);
+          std::vector<Point<dim1>> ref_pts_immersed(n_quad_pts);
 
           space_mapping.transform_points_real_to_unit_cell(first_cell,
                                                            real_qpts,
@@ -174,12 +199,40 @@ namespace dealii
 
 
 
-          space_constraints.distribute_local_to_global(
-            local_cell_matrix,
-            local_space_dof_indices,
-            immersed_constraints,
-            local_immersed_dof_indices,
-            matrix);
+          if (dof_mask_is_active)
+            {
+              for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
+                {
+                  const unsigned int comp_i =
+                    space_dh.get_fe().system_to_component_index(i).first;
+                  if (comp_i != numbers::invalid_unsigned_int)
+                    {
+                      for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
+                           ++j)
+                        {
+                          const unsigned int comp_j =
+                            immersed_dh.get_fe()
+                              .system_to_component_index(j)
+                              .first;
+                          if (space_gtl[comp_i] == immersed_gtl[comp_j])
+                            {
+                              matrix.add(local_space_dof_indices[i],
+                                         local_immersed_dof_indices[j],
+                                         local_cell_matrix(i, j));
+                            }
+                        }
+                    }
+                }
+            }
+          else
+            {
+              space_constraints.distribute_local_to_global(
+                local_cell_matrix,
+                local_space_dof_indices,
+                immersed_constraints,
+                local_immersed_dof_indices,
+                matrix);
+            }
         }
     }
 
