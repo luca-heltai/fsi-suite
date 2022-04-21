@@ -37,10 +37,10 @@
 #  include <CGAL/Triangulation_2.h>
 #  include <gtest/gtest.h>
 
+#  include "cgal/wrappers.h"
 #  include "compute_intersections.h"
 #  include "compute_linear_transformation.h"
 #  include "dim_spacedim_tester.h"
-
 
 
 // CGAL typedefs
@@ -63,6 +63,7 @@ typedef CGAL::Delaunay_mesh_size_criteria_2<CDT>                    Criteria;
 typedef CDT::Vertex_handle Vertex_handle;
 
 using namespace dealii;
+using namespace CGALWrappers;
 
 struct Test_function
 {
@@ -147,10 +148,10 @@ TEST(CGAL, AreaTestCodimension0)
   // Create first polygon
 
   std::vector<CGAL_Point> pts0;
-  pts0.emplace_back(cell0->vertex(0)[0], cell0->vertex(0)[1]); // 0
-  pts0.emplace_back(cell0->vertex(1)[0], cell0->vertex(1)[1]); // 1
-  pts0.emplace_back(cell0->vertex(3)[0], cell0->vertex(3)[1]); // 3
-  pts0.emplace_back(cell0->vertex(2)[0], cell0->vertex(2)[1]); // 2
+  pts0.emplace_back(to_cgal<CGAL_Point>(cell0->vertex(0))); // 0
+  pts0.emplace_back(to_cgal<CGAL_Point>(cell0->vertex(1))); // 1
+  pts0.emplace_back(to_cgal<CGAL_Point>(cell0->vertex(3))); // 3
+  pts0.emplace_back(to_cgal<CGAL_Point>(cell0->vertex(2))); // 2
 
   const CGAL_Polygon p1(pts0.begin(), pts0.end()); // create first Polygon
 
@@ -163,10 +164,10 @@ TEST(CGAL, AreaTestCodimension0)
   const auto &cell1 = dh1.begin_active();
 
   std::vector<CGAL_Point> pts1;
-  pts1.emplace_back(cell1->vertex(0)[0], cell1->vertex(0)[1]); // 0
-  pts1.emplace_back(cell1->vertex(1)[0], cell1->vertex(1)[1]); // 1
-  pts1.emplace_back(cell1->vertex(3)[0], cell1->vertex(3)[1]); // 3
-  pts1.emplace_back(cell1->vertex(2)[0], cell1->vertex(2)[1]); // 2
+  pts1.emplace_back(to_cgal<CGAL_Point>(cell1->vertex(0))); // 0
+  pts1.emplace_back(to_cgal<CGAL_Point>(cell1->vertex(1))); // 1
+  pts1.emplace_back(to_cgal<CGAL_Point>(cell1->vertex(3))); // 3
+  pts1.emplace_back(to_cgal<CGAL_Point>(cell1->vertex(2))); // 2
 
   const CGAL_Polygon p2(pts1.begin(), pts1.end()); // second Polygon
 
@@ -194,20 +195,12 @@ TEST(CGAL, AreaTestCodimension0)
 
   std::array<Point<dim0>, 3> vertices;
   for (unsigned int i = 0; i < 3; ++i)
-    {
-      vertices[i] =
-        Point<dim0>{CGAL::to_double(cdt.triangle(it).vertex(i).x()),
-                    CGAL::to_double(cdt.triangle(it).vertex(i).y())};
-    }
-
-
+    vertices[i] = to_dealii<dim0>(cdt.triangle(it).vertex(i));
 
   // Now construct real quadrature formula over there
   const auto quad_rule_over_triangle =
     compute_linear_transformation<dim0, dim1, 3>(QGaussSimplex<dim0>(degree),
                                                  vertices);
-
-
 
   // actual integration test
   const auto &       JxW     = quad_rule_over_triangle.get_weights();
@@ -217,7 +210,6 @@ TEST(CGAL, AreaTestCodimension0)
     {
       sum += 1.0 * JxW[q];
     }
-
 
   EXPECT_NEAR(sum, correct_result, 1e-12);
 }
