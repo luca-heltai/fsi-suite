@@ -112,59 +112,6 @@ namespace ParsedTools
 
 
   template <int dim, int spacedim>
-  std::unique_ptr<dealii::DynamicSparsityPattern>
-  NonMatchingCoupling<dim, spacedim>::assemble_dynamic_sparsity() const
-  {
-    Assert(space_dh, ExcNotInitialized());
-
-    if (coupling_type == CouplingType::approximate_L2)
-      {
-        auto dsp = std::make_unique<dealii::DynamicSparsityPattern>(
-          space_dh->n_dofs(), embedded_dh->n_dofs());
-        const auto &embedded_mapping = embedded_cache->get_mapping();
-
-        NonMatching::create_coupling_sparsity_pattern(*space_cache,
-                                                      *space_dh,
-                                                      *embedded_dh,
-                                                      embedded_quadrature,
-                                                      *dsp,
-                                                      *space_constraints,
-                                                      space_mask,
-                                                      embedded_mask,
-                                                      embedded_mapping,
-                                                      *embedded_constraints);
-        return dsp;
-      }
-    else if (coupling_type == CouplingType::exact_L2)
-      {
-        auto dsp = std::make_unique<dealii::DynamicSparsityPattern>(
-          space_dh->n_dofs(), embedded_dh->n_dofs());
-
-
-        const auto &cells_and_quads =
-          NonMatching::compute_intersection(*space_cache,
-                                            *embedded_cache,
-                                            this->quadrature_order);
-        NonMatching::create_coupling_sparsity_pattern_with_exact_intersections(
-          cells_and_quads,
-          *space_dh,
-          *embedded_dh,
-          *dsp,
-          *space_constraints,
-          space_mask,
-          embedded_mask,
-          *embedded_constraints);
-        return dsp;
-      }
-    else
-      {
-        AssertThrow(
-          false, ExcMessage("The requested coupling type is not implemented."));
-      }
-  }
-
-
-  template <int dim, int spacedim>
   void
   NonMatchingCoupling<dim, spacedim>::adjust_grid_refinements(
     Triangulation<spacedim, spacedim> &space_tria,

@@ -46,9 +46,8 @@ namespace PDEs
     , mpi_communicator(MPI_COMM_WORLD)
     , mpi_rank(Utilities::MPI::this_mpi_process(mpi_communicator))
     , mpi_size(Utilities::MPI::n_mpi_processes(mpi_communicator))
-    , timer(deallog.get_console(),
-            TimerOutput::summary,
-            TimerOutput::cpu_and_wall_times)
+    , pcout(std::cout, mpi_rank == 0)
+    , timer(pcout, TimerOutput::summary, TimerOutput::cpu_and_wall_times)
     , evolution_type(EvolutionType::steady_state)
     , grid_generator(section_name + "/Grid")
     , grid_refinement(section_name + "/Grid/Refinement",

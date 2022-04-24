@@ -31,6 +31,7 @@
 
 #include "assemble_coupling_mass_matrix_with_exact_intersections.h"
 #include "compute_intersections.h"
+#include "create_coupling_sparsity_pattern_with_exact_intersections.h"
 
 namespace ParsedTools
 {
@@ -158,12 +159,6 @@ namespace ParsedTools
 
   protected:
     /**
-     * Build a dynamic sparsity pattern.
-     */
-    std::unique_ptr<dealii::DynamicSparsityPattern>
-    assemble_dynamic_sparsity() const;
-
-    /**
      * Embedded component mask.
      */
     const dealii::ComponentMask embedded_mask;
@@ -259,17 +254,6 @@ namespace ParsedTools
 
 #ifndef DOXYGEN
   // Template instantiations
-
-  template <int dim, int spacedim>
-  template <typename SparsityType>
-  void
-  NonMatchingCoupling<dim, spacedim>::assemble_sparsity(
-    SparsityType &sparsity) const
-  {
-    const auto dsp = assemble_dynamic_sparsity();
-    sparsity.copy_from(*dsp);
-  }
-
   template <int dim, int spacedim>
   template <typename MatrixType>
   void
@@ -310,6 +294,57 @@ namespace ParsedTools
             *embedded_constraints);
       }
   }
+
+
+
+  template <int dim, int spacedim>
+  template <typename SparsityType>
+  void
+  NonMatchingCoupling<dim, spacedim>::assemble_sparsity(SparsityType &dsp) const
+  {
+    Assert(space_dh, dealii::ExcNotInitialized());
+
+    if (coupling_type == CouplingType::approximate_L2)
+      {
+        const auto &embedded_mapping = embedded_cache->get_mapping();
+
+        dealii::NonMatching::create_coupling_sparsity_pattern(
+          *space_cache,
+          *space_dh,
+          *embedded_dh,
+          embedded_quadrature,
+          dsp,
+          *space_constraints,
+          space_mask,
+          embedded_mask,
+          embedded_mapping,
+          *embedded_constraints);
+      }
+    else if (coupling_type == CouplingType::exact_L2)
+      {
+        const auto &cells_and_quads =
+          dealii::NonMatching::compute_intersection(*space_cache,
+                                                    *embedded_cache,
+                                                    this->quadrature_order);
+        dealii::NonMatching::
+          create_coupling_sparsity_pattern_with_exact_intersections(
+            cells_and_quads,
+            *space_dh,
+            *embedded_dh,
+            dsp,
+            *space_constraints,
+            space_mask,
+            embedded_mask,
+            *embedded_constraints);
+      }
+    else
+      {
+        AssertThrow(false,
+                    dealii::ExcMessage(
+                      "The requested coupling type is not implemented."));
+      }
+  }
+
 #endif
 
 } // namespace ParsedTools

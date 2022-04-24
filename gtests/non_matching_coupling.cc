@@ -100,7 +100,11 @@ TYPED_TEST(DimSpacedimTester, SerialNonMatchingCoupling)
   coupling.initialize(cache0, dh0, constraints0, cache1, dh1, constraints1);
 
   SparsityPattern sparsity;
-  coupling.assemble_sparsity(sparsity);
+  {
+    DynamicSparsityPattern dsp(dh0.n_dofs(), dh1.n_dofs());
+    coupling.assemble_sparsity(dsp);
+    sparsity.copy_from(dsp);
+  }
   SparseMatrix<double> coupling_matrix(sparsity);
   coupling.assemble_matrix(coupling_matrix);
 

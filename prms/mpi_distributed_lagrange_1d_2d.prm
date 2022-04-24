@@ -8,9 +8,9 @@ subsection Space
     set Arguments                 = 0: 1: false
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 5
+    set Initial grid refinement   = 2
     subsection Refinement
-      set Number of refinement cycles = 1
+      set Number of refinement cycles = 3
       subsection Marking strategy
         set Refinement strategy                    = global
         set Refinement parameter                   = 0.3
@@ -58,7 +58,7 @@ subsection Space
       set Absolute tolerance     = 1e-12
       set Relative tolerance     = 1e-06
       set Log history            = false
-      set Log result             = false
+      set Log result             = true
     end
     # subsection Mass AMG preconditioner
     #   set Symmetric operator               = false
@@ -77,14 +77,14 @@ subsection Space
   end
   subsection Functions
     set Forcing term   = 0
-    set Exact solution = 0
+    set Exact solution = -ln(max((x-.3)^2+(y-.3)^2, .2^2))/2
     set Initial value  = 0
   end
   subsection Boundary conditions
     set Boundary id sets (u)         = -1
     set Selected components (u)      = all
     set Boundary condition types (u) = dirichlet
-    set Expressions (u)              = 0
+    set Expressions (u)              = -ln(max((x-.3)^2+(y-.3)^2, .2^2))/2
   end
   subsection Error
     set Enable computation of the errors = true
@@ -160,12 +160,12 @@ subsection Embedded
   subsection Solver
     subsection System
       set Solver name            = minres
-      set Solver control type    = tolerance
+      set Solver control type    = iteration_number
       set Maximum iterations     = 1000
       set Consecutive iterations = 2
-      set Absolute tolerance     = 1e-12
+      set Absolute tolerance     = 1e-08
       set Relative tolerance     = 1e-06
-      set Log history            = false
+      set Log history            = true
       set Log result             = true
     end
     # subsection System AMG preconditioner
@@ -208,15 +208,15 @@ subsection Embedded
     # end
   end
   subsection Functions
-    set Forcing term   = 1
-    set Exact solution = 0
+    set Forcing term   = -ln(.2)
+    set Exact solution = -ln(.2)
     set Initial value  = 0
   end
   subsection Boundary conditions
-    set Boundary id sets (w)         = -1
-    set Selected components (w)      = all
-    set Boundary condition types (w) = dirichlet
-    set Expressions (w)              = 0
+    set Boundary id sets (w)         = 
+    set Selected components (w)      = 
+    set Boundary condition types (w) = 
+    set Expressions (w)              = 
   end
   subsection Error
     set Enable computation of the errors = true
@@ -263,7 +263,7 @@ subsection Embedded
   end
 end
 subsection Coupling
-  set Coupling type                    = exact_L2
+  set Coupling type                    = approximate_L2
   set Refinement strategy              = refine_embedded
   set Space pre-refinement             = 3
   set Embedded post-refinement         = 0
@@ -276,7 +276,7 @@ subsection Mass solver
   set Solver control type    = tolerance
   set Maximum iterations     = 1000
   set Consecutive iterations = 2
-  set Absolute tolerance     = 1e-12
+  set Absolute tolerance     = 1e-08
   set Relative tolerance     = 1e-06
   set Log history            = false
   set Log result             = false

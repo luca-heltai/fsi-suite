@@ -90,12 +90,19 @@ namespace PDEs
     ParsedLAC::InverseOperator mass_solver;
   };
 
-  namespace Serial
-  {
-    template <int dim, int spacedim = dim>
-    using DistributedLagrange =
-      PDEs::DistributedLagrange<dim, spacedim, LAC::LAdealii>;
-  }
+  // namespace Serial
+  // {
+  //   template <int dim, int spacedim = dim>
+  //   using DistributedLagrange =
+  //     PDEs::DistributedLagrange<dim, spacedim, LAC::LAdealii>;
+  // }
+
+  // namespace MPI
+  // {
+  //   template <int dim, int spacedim = dim>
+  //   using DistributedLagrange =
+  //     PDEs::DistributedLagrange<dim, spacedim, LAC::LAPETSc>;
+  // }
 
   namespace MPI
   {

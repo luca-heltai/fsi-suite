@@ -75,10 +75,50 @@ namespace PDEs
                           IndexSet(),
                           space.mpi_communicator,
                           embedded.dof_handler.locally_owned_dofs());
-    init(coupling_sparsity);
-    coupling.assemble_sparsity(coupling_sparsity);
 
-    init(coupling_sparsity, coupling_matrix);
+    // init(coupling_sparsity);
+    // coupling_sparsity.reinit(space.locally_owned_dofs[0],
+    //                          embedded.locally_owned_dofs[0],
+    //                          space.mpi_communicator);
+
+    // deallog << "Sparsity index sets:" << std::endl;
+    // coupling_sparsity.locally_owned_range_indices().print(deallog);
+    // coupling_sparsity.locally_owned_domain_indices().print(deallog);
+
+    DynamicSparsityPattern dsp(space.dof_handler.n_dofs(),
+                               embedded.dof_handler.n_dofs(),
+                               space.locally_owned_dofs[0]);
+
+    coupling.assemble_sparsity(dsp);
+    SparsityTools::distribute_sparsity_pattern(dsp,
+                                               space.locally_owned_dofs[0],
+                                               space.mpi_communicator,
+                                               space.locally_relevant_dofs[0]);
+
+    // coupling_sparsity.copy_from(dsp);
+
+    deallog << "Index sets: " << std::endl;
+    space.locally_owned_dofs[0].print(deallog);
+    embedded.locally_owned_dofs[0].print(deallog);
+
+    // deallog << "Sparsity index sets:" << std::endl;
+    // coupling_sparsity.locally_owned_range_indices().print(deallog);
+    // coupling_sparsity.locally_owned_domain_indices().print(deallog);
+
+    coupling_matrix.reinit(space.locally_owned_dofs[0],
+                           embedded.locally_owned_dofs[0],
+                           dsp,
+                           space.mpi_communicator);
+
+    deallog << "Sparsity index sets:" << std::endl;
+    coupling_matrix.locally_owned_range_indices().print(deallog);
+    coupling_matrix.locally_owned_domain_indices().print(deallog);
+
+    // init(coupling_sparsity, coupling_matrix);
+
+    // deallog << "Sparsity index sets:" << std::endl;
+    // coupling_sparsity.locally_owned_range_indices().print(deallog);
+    // coupling_sparsity.locally_owned_domain_indices().print(deallog);
   }
 
 
@@ -234,13 +274,11 @@ namespace PDEs
     auto &embedded_rhs = embedded.rhs.block(0);
     auto &solution     = space.solution.block(0);
     auto &rhs          = space.rhs.block(0);
-
-    auto S      = B * A_inv * Bt;
-    auto S_prec = identity_operator(S);
-    auto S_inv  = embedded.inverse_operator(S, M_inv);
-    lambda      = S_inv * (B * A_inv * rhs - embedded_rhs);
-    solution    = A_inv * (rhs - Bt * lambda);
-
+    auto  S            = B * A_inv * Bt;
+    auto  S_prec       = identity_operator(S);
+    auto  S_inv        = embedded.inverse_operator(S, M_inv);
+    lambda             = S_inv * (B * A_inv * rhs - embedded_rhs);
+    solution           = A_inv * (rhs - Bt * lambda);
     // Distribute all constraints.
     embedded.constraints.distribute(lambda);
     embedded.locally_relevant_solution = embedded.solution;
@@ -280,8 +318,7 @@ namespace PDEs
           {
             space.mark(space.error_per_cell);
             space.refine();
-            embedded.mark(embedded.error_per_cell);
-            embedded.refine();
+            embedded.triangulation.refine_global(1);
             coupling.adjust_grid_refinements(space.triangulation,
                                              embedded.triangulation,
                                              false);
@@ -295,18 +332,18 @@ namespace PDEs
       }
   }
 
-  template class DistributedLagrange<1, 2>;
-  template class DistributedLagrange<2, 2>;
-  template class DistributedLagrange<2, 3>;
-  template class DistributedLagrange<3, 3>;
+  // template class DistributedLagrange<1, 2>;
+  // template class DistributedLagrange<2, 2>;
+  // template class DistributedLagrange<2, 3>;
+  // template class DistributedLagrange<3, 3>;
 
   template class DistributedLagrange<1, 2, LAC::LATrilinos>;
   template class DistributedLagrange<2, 2, LAC::LATrilinos>;
   template class DistributedLagrange<2, 3, LAC::LATrilinos>;
   template class DistributedLagrange<3, 3, LAC::LATrilinos>;
 
-  template class DistributedLagrange<1, 2, LAC::LAPETSc>;
-  template class DistributedLagrange<2, 2, LAC::LAPETSc>;
-  template class DistributedLagrange<2, 3, LAC::LAPETSc>;
-  template class DistributedLagrange<3, 3, LAC::LAPETSc>;
+  // template class DistributedLagrange<1, 2, LAC::LAPETSc>;
+  // template class DistributedLagrange<2, 2, LAC::LAPETSc>;
+  // template class DistributedLagrange<2, 3, LAC::LAPETSc>;
+  // template class DistributedLagrange<3, 3, LAC::LAPETSc>;
 } // namespace PDEs
