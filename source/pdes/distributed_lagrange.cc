@@ -182,6 +182,7 @@ namespace PDEs
     }
     {
       TimerOutput::Scope timer_section(space.timer, "Assemble coupling system");
+      coupling_matrix = 0.0;
       coupling.assemble_matrix(coupling_matrix);
       coupling_matrix.compress(VectorOperation::add);
     }
@@ -263,7 +264,6 @@ namespace PDEs
     auto M     = linear_operator<Vec>(embedded.matrix.block(0, 0));
     auto M_inv = M;
 
-
     space.preconditioner.initialize(space.matrix.block(0, 0));
     A_inv = space.inverse_operator(A, space.preconditioner);
 
@@ -274,11 +274,14 @@ namespace PDEs
     auto &embedded_rhs = embedded.rhs.block(0);
     auto &solution     = space.solution.block(0);
     auto &rhs          = space.rhs.block(0);
-    auto  S            = B * A_inv * Bt;
-    auto  S_prec       = identity_operator(S);
-    auto  S_inv        = embedded.inverse_operator(S, M_inv);
-    lambda             = S_inv * (B * A_inv * rhs - embedded_rhs);
-    solution           = A_inv * (rhs - Bt * lambda);
+
+    auto S      = B * A_inv * Bt;
+    auto S_prec = identity_operator(S);
+    auto S_inv  = embedded.inverse_operator(S, M);
+
+    lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
+    solution = A_inv * (rhs - Bt * lambda);
+
     // Distribute all constraints.
     embedded.constraints.distribute(lambda);
     embedded.locally_relevant_solution = embedded.solution;
@@ -342,8 +345,8 @@ namespace PDEs
   template class DistributedLagrange<2, 3, LAC::LATrilinos>;
   template class DistributedLagrange<3, 3, LAC::LATrilinos>;
 
-  // template class DistributedLagrange<1, 2, LAC::LAPETSc>;
-  // template class DistributedLagrange<2, 2, LAC::LAPETSc>;
-  // template class DistributedLagrange<2, 3, LAC::LAPETSc>;
-  // template class DistributedLagrange<3, 3, LAC::LAPETSc>;
+  template class DistributedLagrange<1, 2, LAC::LAPETSc>;
+  template class DistributedLagrange<2, 2, LAC::LAPETSc>;
+  template class DistributedLagrange<2, 3, LAC::LAPETSc>;
+  template class DistributedLagrange<3, 3, LAC::LAPETSc>;
 } // namespace PDEs
