@@ -1,5 +1,5 @@
 subsection Space
-  set Finite element space (u) = FESystem[FE_Q(1)^1]
+  set Finite element space (u) = FESystem[FE_Q(2)^1]
   set n_threads                = 1
   set verbosity                = 4
   set evolution type           = steady_state
@@ -12,7 +12,7 @@ subsection Space
     subsection Refinement
       set Number of refinement cycles = 4
       subsection Marking strategy
-        set Refinement strategy                    = global
+        set Refinement strategy                    = fixed_number
         set Refinement parameter                   = 0.3
         set Coarsening parameter                   = 0.1
         set Maximum number of cells (if available) = 0
@@ -159,7 +159,7 @@ subsection Embedded
   end
   subsection Solver
     subsection System
-      set Solver name            = fgmres
+      set Solver name            = minres
       set Solver control type    = iteration_number
       set Maximum iterations     = 5000
       set Consecutive iterations = 2
@@ -265,10 +265,10 @@ end
 subsection Coupling
   set Coupling type                    = approximate_L2
   set Refinement strategy              = refine_embedded
-  set Space pre-refinement             = 0
+  set Space pre-refinement             = 2
   set Embedded post-refinement         = 0
   set Embedded quadrature type         = gauss
-  set Embedded quadrature order        = 3
+  set Embedded quadrature order        = 2
   set Embedded quadrature retpetitions = 1
 end
 subsection Mass solver

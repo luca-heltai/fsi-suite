@@ -76,15 +76,6 @@ namespace PDEs
                           space.mpi_communicator,
                           embedded.dof_handler.locally_owned_dofs());
 
-    // init(coupling_sparsity);
-    // coupling_sparsity.reinit(space.locally_owned_dofs[0],
-    //                          embedded.locally_owned_dofs[0],
-    //                          space.mpi_communicator);
-
-    // deallog << "Sparsity index sets:" << std::endl;
-    // coupling_sparsity.locally_owned_range_indices().print(deallog);
-    // coupling_sparsity.locally_owned_domain_indices().print(deallog);
-
     DynamicSparsityPattern dsp(space.dof_handler.n_dofs(),
                                embedded.dof_handler.n_dofs(),
                                space.locally_owned_dofs[0]);
@@ -268,7 +259,8 @@ namespace PDEs
     A_inv = space.inverse_operator(A, space.preconditioner);
 
     embedded.preconditioner.initialize(embedded.matrix.block(0, 0));
-    M_inv = mass_solver(M, embedded.preconditioner);
+    auto M_prec = linear_operator<Vec>(M, embedded.preconditioner);
+    M_inv       = mass_solver(M, M_prec);
 
     auto &lambda       = embedded.solution.block(0);
     auto &embedded_rhs = embedded.rhs.block(0);
@@ -277,7 +269,7 @@ namespace PDEs
 
     auto S      = B * A_inv * Bt;
     auto S_prec = identity_operator(S);
-    auto S_inv  = embedded.inverse_operator(S, M);
+    auto S_inv  = embedded.inverse_operator(S, M_prec);
 
     lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
     solution = A_inv * (rhs - Bt * lambda);

@@ -322,10 +322,9 @@ namespace ParsedTools
       }
     else if (coupling_type == CouplingType::exact_L2)
       {
-        const auto &cells_and_quads =
-          dealii::NonMatching::compute_intersection(*space_cache,
-                                                    *embedded_cache,
-                                                    this->quadrature_order);
+        const double tol            = 1e-9;
+        const auto &cells_and_quads = dealii::NonMatching::compute_intersection(
+          *space_cache, *embedded_cache, this->quadrature_order, tol);
         dealii::NonMatching::
           create_coupling_sparsity_pattern_with_exact_intersections(
             cells_and_quads,
