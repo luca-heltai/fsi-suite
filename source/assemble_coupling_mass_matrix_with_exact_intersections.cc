@@ -201,40 +201,43 @@ namespace dealii
 
 
 
-          if (dof_mask_is_active)
-            {
-              for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
-                {
-                  const unsigned int comp_i =
-                    space_dh.get_fe().system_to_component_index(i).first;
-                  if (comp_i != numbers::invalid_unsigned_int)
-                    {
-                      for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
-                           ++j)
-                        {
-                          const unsigned int comp_j =
-                            immersed_dh.get_fe()
-                              .system_to_component_index(j)
-                              .first;
-                          if (space_gtl[comp_i] == immersed_gtl[comp_j])
-                            {
-                              matrix.add(local_space_dof_indices[i],
-                                         local_immersed_dof_indices[j],
-                                         local_cell_matrix(i, j));
-                            }
-                        }
-                    }
-                }
-            }
-          else
-            {
-              space_constraints.distribute_local_to_global(
-                local_cell_matrix,
-                local_space_dof_indices,
-                immersed_constraints,
-                local_immersed_dof_indices,
-                matrix);
-            }
+          // if (dof_mask_is_active)
+          //   {
+          //     for (unsigned int i = 0; i < n_dofs_per_space_cell; ++i)
+          //       {
+          //         const unsigned int comp_i =
+          //           space_dh.get_fe().system_to_component_index(i).first;
+          //         if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
+          //           {
+          //             for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
+          //                  ++j)
+          //               {
+          //                 const unsigned int comp_j =
+          //                   immersed_dh.get_fe()
+          //                     .system_to_component_index(j)
+          //                     .first;
+          //                 if (space_gtl[comp_i] == immersed_gtl[comp_j])
+          //                   {
+          //                     space_constraints.distribute_local_to_global(
+          //                       local_cell_matrix,
+          //                       {local_space_dof_indices[i]},
+          //                       immersed_constraints,
+          //                       {local_immersed_dof_indices[j]},
+          //                       matrix);
+          //                   }
+          //               }
+          //           }
+          //       }
+          //   }
+          // else
+          //   {
+          space_constraints.distribute_local_to_global(
+            local_cell_matrix,
+            local_space_dof_indices,
+            immersed_constraints,
+            local_immersed_dof_indices,
+            matrix);
+          // }
         }
       matrix.compress(VectorOperation::add);
     }

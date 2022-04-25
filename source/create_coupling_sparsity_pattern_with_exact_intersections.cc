@@ -143,7 +143,7 @@ namespace dealii
                 {
                   const unsigned int comp_i =
                     space_dh.get_fe().system_to_component_index(i).first;
-                  if (comp_i != numbers::invalid_unsigned_int)
+                  if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
                     {
                       for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
                            ++j)
@@ -155,7 +155,12 @@ namespace dealii
                           if (space_gtl[comp_i] == immersed_gtl[comp_j])
                             {
                               // local_cell_matrix(i, j) +=
-                              sparsity.add(space_dofs[i], immersed_dofs[j]);
+                              constraints.add_entries_local_to_global(
+                                {space_dofs[i]},
+                                immersed_constraints,
+                                {immersed_dofs[j]},
+                                sparsity,
+                                true);
                             }
                         }
                     }

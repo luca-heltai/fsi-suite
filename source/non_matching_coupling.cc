@@ -42,7 +42,8 @@ namespace ParsedTools
     const unsigned int embedded_post_refinement,
     const std::string &quadrature_type,
     const unsigned int quadrature_order,
-    const unsigned int quadrature_repetitions)
+    const unsigned int quadrature_repetitions,
+    double             quadrature_tolerance)
     : ParameterAcceptor(section_name)
     , embedded_mask(embedded_mask)
     , space_mask(space_mask)
@@ -53,6 +54,7 @@ namespace ParsedTools
     , embedded_quadrature_type(quadrature_type)
     , quadrature_order(quadrature_order)
     , embedded_quadrature_repetitions(quadrature_repetitions)
+    , quadrature_tolerance(quadrature_tolerance)
   {
     add_parameter("Coupling type", this->coupling_type);
 
@@ -73,6 +75,12 @@ namespace ParsedTools
 
     add_parameter("Embedded quadrature retpetitions",
                   this->embedded_quadrature_repetitions);
+
+    add_parameter(
+      "Quadrature tolerance",
+      this->quadrature_tolerance,
+      "If an intersection integrates to a value smaller than this tolerance, "
+      "it is discarded during exact intersection.");
   }
 
 

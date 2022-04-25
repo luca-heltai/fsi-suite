@@ -17,6 +17,8 @@
 
 #include <deal.II/base/config.h>
 
+#include <deal.II/algorithms/general_data_storage.h>
+
 #include <deal.II/base/parameter_acceptor.h>
 #include <deal.II/base/quadrature.h>
 
@@ -98,7 +100,8 @@ namespace ParsedTools
       const unsigned int embedded_post_refinement = 0,
       const std::string &quadrature_type          = "gauss",
       const unsigned int quadrature_order         = 2,
-      const unsigned int quadrature_repetitions   = 1);
+      const unsigned int quadrature_repetitions   = 1,
+      double             quadrature_tolerance     = 1e-9);
 
 
     /**
@@ -249,6 +252,23 @@ namespace ParsedTools
     dealii::SmartPointer<const dealii::AffineConstraints<double>,
                          NonMatchingCoupling<dim, spacedim>>
       embedded_constraints;
+
+    /**
+     * Quadrature tolerance.
+     *
+     * If an intersection integrates to a value smaller than this tolerance, it
+     * is discarded during exact intersection.
+     */
+    double quadrature_tolerance;
+
+    /**
+     * Store cache information.
+     */
+    mutable std::vector<std::tuple<
+      typename dealii::Triangulation<spacedim, spacedim>::cell_iterator,
+      typename dealii::Triangulation<dim, spacedim>::cell_iterator,
+      dealii::Quadrature<spacedim>>>
+      cells_and_quads;
   };
 
 
@@ -276,9 +296,12 @@ namespace ParsedTools
       }
     else if (coupling_type == CouplingType::exact_L2)
       {
-        const double tol            = 1e-9;
-        const auto &cells_and_quads = dealii::NonMatching::compute_intersection(
-          *space_cache, *embedded_cache, this->quadrature_order, tol);
+        if (cells_and_quads.empty() == true)
+          cells_and_quads = dealii::NonMatching::compute_intersection(
+            *space_cache,
+            *embedded_cache,
+            this->quadrature_order,
+            this->quadrature_tolerance);
 
         dealii::NonMatching::
           assemble_coupling_mass_matrix_with_exact_intersections(
@@ -322,9 +345,12 @@ namespace ParsedTools
       }
     else if (coupling_type == CouplingType::exact_L2)
       {
-        const double tol            = 1e-9;
-        const auto &cells_and_quads = dealii::NonMatching::compute_intersection(
-          *space_cache, *embedded_cache, this->quadrature_order, tol);
+        cells_and_quads.clear();
+        cells_and_quads =
+          dealii::NonMatching::compute_intersection(*space_cache,
+                                                    *embedded_cache,
+                                                    this->quadrature_order,
+                                                    this->quadrature_tolerance);
         dealii::NonMatching::
           create_coupling_sparsity_pattern_with_exact_intersections(
             cells_and_quads,

@@ -1,5 +1,5 @@
 subsection Space
-  set Finite element space (u) = FESystem[FE_Q(2)^1]
+  set Finite element space (u) = FESystem[FE_Q(1)^1]
   set n_threads                = 1
   set verbosity                = 4
   set evolution type           = steady_state
@@ -8,7 +8,7 @@ subsection Space
     set Arguments                 = 0: 1: false
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 3
+    set Initial grid refinement   = 4
     subsection Refinement
       set Number of refinement cycles = 4
       subsection Marking strategy
@@ -26,9 +26,10 @@ subsection Space
     end
   end
   subsection Solver
+    # Solver for the A_inv
     subsection System
       set Solver name            = cg
-      set Solver control type    = tolerance
+      set Solver control type    = iteration_number
       set Maximum iterations     = 1000
       set Consecutive iterations = 2
       set Absolute tolerance     = 1e-10
@@ -36,44 +37,6 @@ subsection Space
       set Log history            = false
       set Log result             = false
     end
-    # subsection System AMG preconditioner
-    #   set Symmetric operator               = false
-    #   set Strong threshold                 = 0.25
-    #   set Max row sum                      = 0.9
-    #   set Aggressive coarsening num levels = 0
-    #   set Output details                   = false
-    #   set Relaxation type up               = Jacobi
-    #   set Relaxation type down             = Jacobi
-    #   set Relaxation type coarse           = Jacobi
-    #   set Number of sweeps coarse          = 1
-    #   set Tolerance                        = 0
-    #   set Max iterations                   = 1
-    #   set W-cycle                          = false
-    # end
-    subsection Mass
-      set Solver name            = cg
-      set Solver control type    = tolerance
-      set Maximum iterations     = 1000
-      set Consecutive iterations = 2
-      set Absolute tolerance     = 1e-12
-      set Relative tolerance     = 1e-06
-      set Log history            = false
-      set Log result             = true
-    end
-    # subsection Mass AMG preconditioner
-    #   set Symmetric operator               = false
-    #   set Strong threshold                 = 0.25
-    #   set Max row sum                      = 0.9
-    #   set Aggressive coarsening num levels = 0
-    #   set Output details                   = false
-    #   set Relaxation type up               = Jacobi
-    #   set Relaxation type down             = Jacobi
-    #   set Relaxation type coarse           = Jacobi
-    #   set Number of sweeps coarse          = 1
-    #   set Tolerance                        = 0
-    #   set Max iterations                   = 1
-    #   set W-cycle                          = false
-    # end
   end
   subsection Functions
     set Forcing term   = 0
@@ -98,36 +61,12 @@ subsection Space
   end
   subsection Output
     set Problem base name      = mpi_distributed_lagrange_output/space
-    set Output partitioning    = false
-    set Output material ids    = false
+    set Output partitioning    = true
+    set Output material ids    = true
     set Output format          = vtu
     set Subdivisions           = 0
     set Write high order cells = true
     set Curved cells region    = no_curved_cells| curved_inner_cells
-  end
-  subsection ARKode
-    set Initial time                      = 0
-    set Final time                        = 1
-    set Time interval between each output = 0.1
-    subsection Running parameters
-      set Initial step size                      = 0.01
-      set Minimum step size                      = 1e-06
-      set Maximum order of ARK                   = 5
-      set Maximum number of nonlinear iterations = 10
-      set Implicit function is linear            = false
-      set Implicit function is time independent  = false
-      set Mass is time independent               = false
-      set Anderson-acceleration subspace         = 3
-    end
-    subsection Error control
-      set Absolute error tolerance = 1e-06
-      set Relative error tolerance = 1e-05
-    end
-  end
-  subsection Quasi-static
-    set start time        = 0
-    set end time          = 1
-    set initial time step = 0.0625
   end
 end
 subsection Embedded
@@ -140,24 +79,10 @@ subsection Embedded
     set Arguments                 = 0.3, 0.3: 0.2
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 4
-    subsection Refinement
-      set Number of refinement cycles = 1
-      subsection Marking strategy
-        set Refinement strategy                    = global
-        set Refinement parameter                   = 0.3
-        set Coarsening parameter                   = 0.1
-        set Maximum number of cells (if available) = 0
-        set Minimum level                          = 0
-        set Maximum level                          = 0
-      end
-      subsection Error estimator
-        set Estimator type = kelly
-        set Component mask = 
-      end
-    end
+    set Initial grid refinement   = 1
   end
   subsection Solver
+    # Solver for Schur complement
     subsection System
       set Solver name            = minres
       set Solver control type    = iteration_number
@@ -165,58 +90,14 @@ subsection Embedded
       set Consecutive iterations = 2
       set Absolute tolerance     = 1e-10
       set Relative tolerance     = 1e-08
-      set Log history            = true
+      set Log history            = false
       set Log result             = true
     end
-    # subsection System AMG preconditioner
-    #   set Symmetric operator               = false
-    #   set Strong threshold                 = 0.25
-    #   set Max row sum                      = 0.9
-    #   set Aggressive coarsening num levels = 0
-    #   set Output details                   = false
-    #   set Relaxation type up               = Jacobi
-    #   set Relaxation type down             = Jacobi
-    #   set Relaxation type coarse           = Jacobi
-    #   set Number of sweeps coarse          = 1
-    #   set Tolerance                        = 0
-    #   set Max iterations                   = 1
-    #   set W-cycle                          = false
-    # end
-    subsection Mass
-      set Solver name            = cg
-      set Solver control type    = tolerance
-      set Maximum iterations     = 1000
-      set Consecutive iterations = 2
-      set Absolute tolerance     = 1e-12
-      set Relative tolerance     = 1e-06
-      set Log history            = false
-      set Log result             = false
-    end
-    # subsection Mass AMG preconditioner
-    #   set Symmetric operator               = false
-    #   set Strong threshold                 = 0.25
-    #   set Max row sum                      = 0.9
-    #   set Aggressive coarsening num levels = 0
-    #   set Output details                   = false
-    #   set Relaxation type up               = Jacobi
-    #   set Relaxation type down             = Jacobi
-    #   set Relaxation type coarse           = Jacobi
-    #   set Number of sweeps coarse          = 1
-    #   set Tolerance                        = 0
-    #   set Max iterations                   = 1
-    #   set W-cycle                          = false
-    # end
   end
   subsection Functions
     set Forcing term   = -ln(.2)
     set Exact solution = -ln(.2)
     set Initial value  = 0
-  end
-  subsection Boundary conditions
-    set Boundary id sets (w)         = 
-    set Selected components (w)      = 
-    set Boundary condition types (w) = 
-    set Expressions (w)              = 
   end
   subsection Error
     set Enable computation of the errors = true
@@ -230,56 +111,43 @@ subsection Embedded
   end
   subsection Output
     set Problem base name      = mpi_distributed_lagrange_output/embedded
-    set Output partitioning    = false
-    set Output material ids    = false
+    set Output partitioning    = true
+    set Output material ids    = true
     set Output format          = vtu
     set Subdivisions           = 0
     set Write high order cells = true
     set Curved cells region    = curved_inner_cells
   end
-  subsection ARKode
-    set Initial time                      = 0
-    set Final time                        = 1
-    set Time interval between each output = 0.1
-    subsection Running parameters
-      set Initial step size                      = 0.01
-      set Minimum step size                      = 1e-06
-      set Maximum order of ARK                   = 5
-      set Maximum number of nonlinear iterations = 10
-      set Implicit function is linear            = false
-      set Implicit function is time independent  = false
-      set Mass is time independent               = false
-      set Anderson-acceleration subspace         = 3
-    end
-    subsection Error control
-      set Absolute error tolerance = 1e-06
-      set Relative error tolerance = 1e-05
-    end
-  end
-  subsection Quasi-static
-    set start time        = 0
-    set end time          = 1
-    set initial time step = 0.0625
-  end
 end
 subsection Coupling
   set Coupling type                    = approximate_L2
   set Refinement strategy              = refine_embedded
-  set Space pre-refinement             = 2
+  set Space pre-refinement             = 0
   set Embedded post-refinement         = 0
   set Embedded quadrature type         = gauss
   set Embedded quadrature order        = 2
   set Embedded quadrature retpetitions = 1
 end
-subsection Mass solver
-  set Solver name            = cg
-  set Solver control type    = tolerance
-  set Maximum iterations     = 1000
-  set Consecutive iterations = 2
-  set Absolute tolerance     = 1e-08
-  set Relative tolerance     = 1e-06
-  set Log history            = false
-  set Log result             = false
-end
-subsection Distributed Lagrange
-end
+
+# DEAL:Cycle 3::Output results (w)
+# cells dofs   u_L2_norm      u_H1_norm    
+#   256  289 2.028e-02    - 5.614e-01    - 
+#   469  536 1.092e-02 2.00 3.918e-01 1.16 
+#   904 1027 5.896e-03 1.90 2.879e-01 0.95 
+#  1798 2031 2.815e-03 2.17 1.956e-01 1.13 
+# cells dofs   w_L2_norm       w_H1_norm    
+#    16   16 8.047e+00    - 8.690e+01     - 
+#    32   32 7.716e+00 0.12 9.199e+01 -0.16 
+#    64   64 7.713e+00 0.00 2.716e+02 -3.12 
+#   128  128 7.602e+00 0.04 4.584e+02 -1.51 
+
+# cells dofs   u_L2_norm      u_H1_norm    
+#   256  289 2.046e-02    - 5.645e-01    - 
+#   472  533 1.067e-02 2.13 3.917e-01 1.19 
+#   901 1022 5.758e-03 1.90 2.885e-01 0.94 
+#  1789 2020 2.859e-03 2.06 1.962e-01 1.13 
+# cells dofs   w_L2_norm       w_H1_norm    
+#    16   16 8.059e+00    - 8.908e+01     - 
+#    32   32 7.699e+00 0.13 8.485e+01  0.14 
+#    64   64 7.696e+00 0.00 2.568e+02 -3.20 
+#   128  128 7.596e+00 0.04 4.360e+02 -1.53 

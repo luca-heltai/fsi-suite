@@ -71,45 +71,29 @@ namespace PDEs
     space.setup_system();
     embedded.setup_system();
 
-    LAC::Initializer init(space.dof_handler.locally_owned_dofs(),
+    const auto row_indices = space.dof_handler.locally_owned_dofs();
+    const auto col_indices = embedded.dof_handler.locally_owned_dofs();
+
+    LAC::Initializer init(row_indices,
                           IndexSet(),
                           space.mpi_communicator,
-                          embedded.dof_handler.locally_owned_dofs());
+                          col_indices);
 
     DynamicSparsityPattern dsp(space.dof_handler.n_dofs(),
                                embedded.dof_handler.n_dofs(),
-                               space.locally_owned_dofs[0]);
+                               row_indices);
 
     coupling.assemble_sparsity(dsp);
+
     SparsityTools::distribute_sparsity_pattern(dsp,
-                                               space.locally_owned_dofs[0],
+                                               row_indices,
                                                space.mpi_communicator,
                                                space.locally_relevant_dofs[0]);
 
-    // coupling_sparsity.copy_from(dsp);
-
-    deallog << "Index sets: " << std::endl;
-    space.locally_owned_dofs[0].print(deallog);
-    embedded.locally_owned_dofs[0].print(deallog);
-
-    // deallog << "Sparsity index sets:" << std::endl;
-    // coupling_sparsity.locally_owned_range_indices().print(deallog);
-    // coupling_sparsity.locally_owned_domain_indices().print(deallog);
-
-    coupling_matrix.reinit(space.locally_owned_dofs[0],
-                           embedded.locally_owned_dofs[0],
+    coupling_matrix.reinit(row_indices,
+                           col_indices,
                            dsp,
                            space.mpi_communicator);
-
-    deallog << "Sparsity index sets:" << std::endl;
-    coupling_matrix.locally_owned_range_indices().print(deallog);
-    coupling_matrix.locally_owned_domain_indices().print(deallog);
-
-    // init(coupling_sparsity, coupling_matrix);
-
-    // deallog << "Sparsity index sets:" << std::endl;
-    // coupling_sparsity.locally_owned_range_indices().print(deallog);
-    // coupling_sparsity.locally_owned_domain_indices().print(deallog);
   }
 
 
@@ -269,7 +253,7 @@ namespace PDEs
 
     auto S      = B * A_inv * Bt;
     auto S_prec = identity_operator(S);
-    auto S_inv  = embedded.inverse_operator(S, M_prec);
+    auto S_inv  = embedded.inverse_operator(S, M_inv);
 
     lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
     solution = A_inv * (rhs - Bt * lambda);
