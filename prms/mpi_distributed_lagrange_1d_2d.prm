@@ -79,7 +79,7 @@ subsection Embedded
     set Arguments                 = 0.3, 0.3: 0.2
     set Output name               = 
     set Transform to simplex grid = false
-    set Initial grid refinement   = 1
+    set Initial grid refinement   = 4
   end
   subsection Solver
     # Solver for Schur complement
@@ -123,7 +123,7 @@ subsection Coupling
   set Coupling type                    = approximate_L2
   set Refinement strategy              = refine_embedded
   set Space pre-refinement             = 0
-  set Embedded post-refinement         = 0
+  set Embedded post-refinement         = 3
   set Embedded quadrature type         = gauss
   set Embedded quadrature order        = 2
   set Embedded quadrature retpetitions = 1

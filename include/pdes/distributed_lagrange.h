@@ -97,19 +97,19 @@ namespace PDEs
   //     PDEs::DistributedLagrange<dim, spacedim, LAC::LAdealii>;
   // }
 
-  namespace MPI
-  {
-    template <int dim, int spacedim = dim>
-    using DistributedLagrange =
-      PDEs::DistributedLagrange<dim, spacedim, LAC::LAPETSc>;
-  }
-
   // namespace MPI
   // {
   //   template <int dim, int spacedim = dim>
   //   using DistributedLagrange =
-  //     PDEs::DistributedLagrange<dim, spacedim, LAC::LATrilinos>;
+  //     PDEs::DistributedLagrange<dim, spacedim, LAC::LAPETSc>;
   // }
+
+  namespace MPI
+  {
+    template <int dim, int spacedim = dim>
+    using DistributedLagrange =
+      PDEs::DistributedLagrange<dim, spacedim, LAC::LATrilinos>;
+  }
 
 } // namespace PDEs
 
