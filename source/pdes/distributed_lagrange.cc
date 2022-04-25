@@ -71,14 +71,29 @@ namespace PDEs
     space.setup_system();
     embedded.setup_system();
 
-    LAC::Initializer init(space.dof_handler.locally_owned_dofs(),
+    const auto row_indices = space.dof_handler.locally_owned_dofs();
+    const auto col_indices = embedded.dof_handler.locally_owned_dofs();
+
+    LAC::Initializer init(row_indices,
                           IndexSet(),
                           space.mpi_communicator,
-                          embedded.dof_handler.locally_owned_dofs());
-    init(coupling_sparsity);
-    coupling.assemble_sparsity(coupling_sparsity);
+                          col_indices);
 
-    init(coupling_sparsity, coupling_matrix);
+    DynamicSparsityPattern dsp(space.dof_handler.n_dofs(),
+                               embedded.dof_handler.n_dofs(),
+                               row_indices);
+
+    coupling.assemble_sparsity(dsp);
+
+    SparsityTools::distribute_sparsity_pattern(dsp,
+                                               row_indices,
+                                               space.mpi_communicator,
+                                               space.locally_relevant_dofs[0]);
+
+    coupling_matrix.reinit(row_indices,
+                           col_indices,
+                           dsp,
+                           space.mpi_communicator);
   }
 
 
@@ -142,6 +157,7 @@ namespace PDEs
     }
     {
       TimerOutput::Scope timer_section(space.timer, "Assemble coupling system");
+      coupling_matrix = 0.0;
       coupling.assemble_matrix(coupling_matrix);
       coupling_matrix.compress(VectorOperation::add);
     }
@@ -223,12 +239,12 @@ namespace PDEs
     auto M     = linear_operator<Vec>(embedded.matrix.block(0, 0));
     auto M_inv = M;
 
-
     space.preconditioner.initialize(space.matrix.block(0, 0));
     A_inv = space.inverse_operator(A, space.preconditioner);
 
     embedded.preconditioner.initialize(embedded.matrix.block(0, 0));
-    M_inv = mass_solver(M, embedded.preconditioner);
+    auto M_prec = linear_operator<Vec>(M, embedded.preconditioner);
+    M_inv       = mass_solver(M, M_prec);
 
     auto &lambda       = embedded.solution.block(0);
     auto &embedded_rhs = embedded.rhs.block(0);
@@ -238,8 +254,9 @@ namespace PDEs
     auto S      = B * A_inv * Bt;
     auto S_prec = identity_operator(S);
     auto S_inv  = embedded.inverse_operator(S, M_inv);
-    lambda      = S_inv * (B * A_inv * rhs - embedded_rhs);
-    solution    = A_inv * (rhs - Bt * lambda);
+
+    lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
+    solution = A_inv * (rhs - Bt * lambda);
 
     // Distribute all constraints.
     embedded.constraints.distribute(lambda);
@@ -280,8 +297,7 @@ namespace PDEs
           {
             space.mark(space.error_per_cell);
             space.refine();
-            embedded.mark(embedded.error_per_cell);
-            embedded.refine();
+            embedded.triangulation.refine_global(1);
             coupling.adjust_grid_refinements(space.triangulation,
                                              embedded.triangulation,
                                              false);
@@ -295,10 +311,10 @@ namespace PDEs
       }
   }
 
-  template class DistributedLagrange<1, 2>;
-  template class DistributedLagrange<2, 2>;
-  template class DistributedLagrange<2, 3>;
-  template class DistributedLagrange<3, 3>;
+  // template class DistributedLagrange<1, 2>;
+  // template class DistributedLagrange<2, 2>;
+  // template class DistributedLagrange<2, 3>;
+  // template class DistributedLagrange<3, 3>;
 
   template class DistributedLagrange<1, 2, LAC::LATrilinos>;
   template class DistributedLagrange<2, 2, LAC::LATrilinos>;

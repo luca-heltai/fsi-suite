@@ -17,6 +17,7 @@
 #ifndef pdes_linear_problem_h
 #define pdes_linear_problem_h
 
+#include <deal.II/base/conditional_ostream.h>
 #include <deal.II/base/convergence_table.h>
 #include <deal.II/base/function.h>
 #include <deal.II/base/function_parser.h>
@@ -369,6 +370,11 @@ namespace PDEs
      * Verbosity level of deallog.
      */
     unsigned int verbosity_level = 4;
+
+    /**
+     * Output stream, only active on process 0.
+     */
+    dealii::ConditionalOStream pcout;
 
     /**
      * Timing information.

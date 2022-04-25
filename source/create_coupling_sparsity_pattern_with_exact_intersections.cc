@@ -143,7 +143,7 @@ namespace dealii
                 {
                   const unsigned int comp_i =
                     space_dh.get_fe().system_to_component_index(i).first;
-                  if (comp_i != numbers::invalid_unsigned_int)
+                  if (space_gtl[comp_i] != numbers::invalid_unsigned_int)
                     {
                       for (unsigned int j = 0; j < n_dofs_per_immersed_cell;
                            ++j)
@@ -155,7 +155,12 @@ namespace dealii
                           if (space_gtl[comp_i] == immersed_gtl[comp_j])
                             {
                               // local_cell_matrix(i, j) +=
-                              sparsity.add(space_dofs[i], immersed_dofs[j]);
+                              constraints.add_entries_local_to_global(
+                                {space_dofs[i]},
+                                immersed_constraints,
+                                {immersed_dofs[j]},
+                                sparsity,
+                                true);
                             }
                         }
                     }
@@ -293,5 +298,223 @@ namespace dealii
       const ComponentMask &                 space_comps,
       const ComponentMask &                 immersed_comps,
       const AffineConstraints<double> &     immersed_constraint);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      2,
+      1,
+      2,
+      dealii::TrilinosWrappers::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<1, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<1, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<1, 2> const &,
+      dealii::TrilinosWrappers::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      2,
+      2,
+      2,
+      dealii::TrilinosWrappers::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<2, 2> const &,
+      dealii::TrilinosWrappers::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      3,
+      2,
+      3,
+      dealii::TrilinosWrappers::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<2, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<2, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<2, 3> const &,
+      dealii::TrilinosWrappers::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      3,
+      3,
+      3,
+      dealii::TrilinosWrappers::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::TrilinosWrappers::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      3,
+      2,
+      3,
+      dealii::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<2, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<2, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<2, 3> const &,
+      dealii::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      2,
+      2,
+      2,
+      dealii::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<2, 2> const &,
+      dealii::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      1,
+      1,
+      1,
+      dealii::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<1, 1>::cell_iterator,
+                   dealii::Triangulation<1, 1>::cell_iterator,
+                   dealii::Quadrature<1>>,
+        std::allocator<std::tuple<dealii::Triangulation<1, 1>::cell_iterator,
+                                  dealii::Triangulation<1, 1>::cell_iterator,
+                                  dealii::Quadrature<1>>>> const &,
+      dealii::DoFHandler<1, 1> const &,
+      dealii::DoFHandler<1, 1> const &,
+      dealii::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      3,
+      1,
+      3,
+      dealii::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<1, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<1, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<1, 3> const &,
+      dealii::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      2,
+      1,
+      2,
+      dealii::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                   dealii::Triangulation<1, 2>::cell_iterator,
+                   dealii::Quadrature<2>>,
+        std::allocator<std::tuple<dealii::Triangulation<2, 2>::cell_iterator,
+                                  dealii::Triangulation<1, 2>::cell_iterator,
+                                  dealii::Quadrature<2>>>> const &,
+      dealii::DoFHandler<2, 2> const &,
+      dealii::DoFHandler<1, 2> const &,
+      dealii::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
+
+    template void
+    create_coupling_sparsity_pattern_with_exact_intersections<
+      3,
+      3,
+      3,
+      dealii::SparsityPattern,
+      double>(
+      std::vector<
+        std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Triangulation<3, 3>::cell_iterator,
+                   dealii::Quadrature<3>>,
+        std::allocator<std::tuple<dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Triangulation<3, 3>::cell_iterator,
+                                  dealii::Quadrature<3>>>> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::DoFHandler<3, 3> const &,
+      dealii::SparsityPattern &,
+      dealii::AffineConstraints<double> const &,
+      dealii::ComponentMask const &,
+      dealii::ComponentMask const &,
+      dealii::AffineConstraints<double> const &);
   } // namespace NonMatching
 } // namespace dealii
