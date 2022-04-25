@@ -23,6 +23,7 @@
 #  include <CGAL/Polyhedron_3.h>
 #  include <CGAL/Polyhedron_incremental_builder_3.h>
 #  include <CGAL/Simple_cartesian.h>
+#  include <CGAL/Surface_mesh.h>
 
 
 namespace CGALWrappers
@@ -249,6 +250,77 @@ namespace CGALWrappers
       cell_builder(cell, mapping);
     poly.delegate(cell_builder);
   }
+
+
+
+  /**
+   * @brief Create a CGAL::Surface_mesh starting from a deal.II cell
+   *
+   * @tparam CGALPointType
+   * @tparam dim
+   * @tparam spacedim
+   * @param cell
+   * @param mapping
+   * @param surface_mesh Surface_mesh to be filled
+   */
+  template <typename CGALPointType, int dim, int spacedim>
+  void
+  to_cgal(
+    const typename dealii::Triangulation<dim, spacedim>::cell_iterator &cell,
+    const dealii::Mapping<dim, spacedim> &                              mapping,
+    CGAL::Surface_mesh<CGALPointType> &surface_mesh)
+  {
+    typedef CGAL::Surface_mesh<CGALPointType> Mesh;
+    typedef typename Mesh::Vertex_index       Vertex;
+    const unsigned int                        n_vertices = cell->n_vertices();
+    const auto &        vertices = mapping.get_vertices(cell);
+    std::vector<Vertex> v_descriptors(n_vertices);
+
+    auto add_vertices = [&]() {
+      for (unsigned int i = 0; i < n_vertices; ++i)
+        {
+          v_descriptors[i] = surface_mesh.add_vertex(
+            CGALWrappers::to_cgal<CGALPointType>(vertices[i]));
+        }
+    };
+
+    auto reorder_vertices =
+      [&v_descriptors](const std::vector<unsigned int> &facet) {
+        std::vector<Vertex> ordered_vertices(facet.size());
+        for (unsigned int i = 0; i < facet.size(); ++i)
+          {
+            ordered_vertices[i] = v_descriptors[facet[i]];
+          }
+        return ordered_vertices;
+      };
+
+    auto add_facet = [&](const std::vector<unsigned int> &facet) {
+      const auto &v = reorder_vertices(facet);
+      auto        f = surface_mesh.add_face(v);
+    };
+
+
+
+    switch (n_vertices)
+      {
+        case 8:
+          add_vertices();
+          add_facet({0, 1, 3, 2});
+          add_facet({1, 0, 4, 5});
+          add_facet({3, 1, 5, 7});
+          add_facet({2, 3, 7, 6});
+          add_facet({4, 0, 2, 6});
+          add_facet({5, 4, 6, 7});
+          break;
+
+        default:
+          dealii::ExcInternalError();
+          break;
+      }
+
+  }
+
+
 #  endif
 
 } // namespace CGALWrappers

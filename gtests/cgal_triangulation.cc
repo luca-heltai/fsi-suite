@@ -19,7 +19,6 @@
 using namespace dealii;
 
 // #ifdef DEAL_II_WIHT_CGAL
-
 #include <CGAL/Delaunay_triangulation_2.h>
 #include <CGAL/IO/PLY.h>
 #include <CGAL/IO/io.h>
@@ -33,7 +32,10 @@ using namespace dealii;
 #include <CGAL/Polyhedron_incremental_builder_3.h>
 #include <CGAL/Regular_triangulation_2.h>
 #include <CGAL/Simple_cartesian.h>
+#include <CGAL/Surface_mesh.h>
+#include <CGAL/Surface_mesh_approximation/approximate_triangle_mesh.h>
 #include <CGAL/boost/graph/helpers.h>
+#include <CGAL/boost/graph/io.h>
 #include <CGAL/make_mesh_3.h>
 #include <CGAL/point_generators_2.h>
 #include <CGAL/refine_mesh_3.h>
@@ -130,7 +132,9 @@ TYPED_TEST(DimSpacedimTester, CGALConversions)
       GridGenerator::reference_cell(tria, ref);
 
       const auto cell = tria.begin_active();
-      CGALWrappers::to_cgal(cell, *mapping, poly);
+      CGALWrappers::to_cgal(cell,
+                            *mapping,
+                            poly); // build CGAL Poly from deal.II cell
       ASSERT_TRUE(poly.is_valid() || dim == 1);
       if (dim == 3)
         {
@@ -139,49 +143,74 @@ TYPED_TEST(DimSpacedimTester, CGALConversions)
     }
 }
 
-// TEST(CGAL, IntersectCubes)
-// {
-//   typedef CGAL::Sequential_tag Concurrency_tag;
-//   // Triangulation
-//   typedef CGAL::
-//     Mesh_triangulation_3<Mesh_domain, CGAL::Default, Concurrency_tag>::type
-//     Tr;
-//   typedef CGAL::Mesh_complex_3_in_triangulation_3<Tr> C3t3;
-//   // Criteria
-//   typedef CGAL::Mesh_criteria_3<Tr> Mesh_criteria;
 
-//   Triangulation<3> tria;
-//   GridGenerator::hyper_cube(tria, -1, 1);
-//   const auto &mapping = get_default_linear_mapping(tria);
+TEST(CGAL, SurfaceMesh)
+{
+  Triangulation<3> tria;
+  const auto       ref     = ReferenceCell::n_vertices_to_type(3, 8);
+  const auto       mapping = ref.template get_default_mapping<3, 3>(1);
+  GridGenerator::reference_cell(tria, ref);
 
-//   Polyhedron poly;
-//   CGALWrappers::to_cgal(tria.begin_active(), mapping, poly);
-//   CGAL::Polygon_mesh_processing::triangulate_faces(poly);
+  typedef CGAL::Surface_mesh<K::Point_3> Mesh_surface;
+  Mesh_surface                           surf;
+  CGALWrappers::to_cgal(tria.begin_active(), *mapping, surf);
+  ASSERT_TRUE(surf.is_valid());
+}
 
-//   Mesh_domain domain1(poly);
 
-//   // Mesh criteria (no cell_size set)
-//   Mesh_criteria criteria(facet_angle            = 25,
-//                          facet_size             = 0.15,
-//                          facet_distance         = 0.008,
-//                          cell_radius_edge_ratio = 3);
-//   // Mesh generation
-//   C3t3 c3t31 =
-//     CGAL::make_mesh_3<C3t3>(domain1, criteria, no_perturb(), no_exude());
 
-//   GridTools::rotate(numbers::PI_4, 0, tria);
-//   GridTools::rotate(numbers::PI_4, 2, tria);
-//   Polyhedron poly2;
-//   CGALWrappers::to_cgal(tria.begin_active(), mapping, poly2);
-//   CGAL::Polygon_mesh_processing::triangulate_faces(poly2);
+TEST(CGAL, IntersectCubes)
+{
+  typedef CGAL::Surface_mesh<K::Point_3> Mesh_surface;
+  namespace params = CGAL::Polygon_mesh_processing::parameters;
 
-//   Mesh_domain domain2(poly2);
-//   C3t3        c3t32 =
-//     CGAL::make_mesh_3<C3t3>(domain2, criteria, no_perturb(), no_exude());
+  Triangulation<3> tria;
+  GridGenerator::hyper_cube(tria, -1., 1.);
+  const auto &mapping = get_default_linear_mapping(tria);
 
-//   const std::array<boost::optional<C3t3 *>, 4> boolean_operations;
-//   CGAL::Polygon_mesh_processing::corefine_and_compute_boolean_operations(
-//     c3t31, c3t32, boolean_operations);
-// }
+  Mesh_surface surf1;
+  assert(surf1.is_valid());
 
-// #endif
+  CGALWrappers::to_cgal(tria.begin_active(), mapping, surf1);
+  CGAL::Polygon_mesh_processing::triangulate_faces(surf1);
+
+
+
+  GridTools::rotate(numbers::PI_4, 0, tria);
+  // GridTools::rotate(numbers::PI_4, 2, tria);
+  Mesh_surface surf2;
+  assert(surf2.is_valid());
+  CGALWrappers::to_cgal(tria.begin_active(), mapping, surf2);
+  CGAL::Polygon_mesh_processing::triangulate_faces(surf2);
+
+
+  std::array<boost::optional<Mesh_surface *>, 4> boolean_operations;
+
+  Mesh_surface out_intersection, out_union;
+
+  boolean_operations
+    [CGAL::Polygon_mesh_processing::Corefinement::INTERSECTION] =
+      &out_intersection;
+  boolean_operations[CGAL::Polygon_mesh_processing::Corefinement::UNION] =
+    &out_union;
+
+
+
+  auto res =
+    CGAL::Polygon_mesh_processing::corefine_and_compute_boolean_operations(
+      surf1,
+      surf2,
+      boolean_operations,
+      params::all_default(), // mesh1 named parameters
+      params::all_default(), // mesh2 named parameters
+      std::make_tuple(
+        params::vertex_point_map(get(
+          boost::vertex_point, out_union)), // named parameters for out_union
+        params::vertex_point_map(
+          get(boost::vertex_point,
+              out_intersection)), // named parameters for out_intersection
+        params::all_default(),    // named parameters for mesh1-mesh2 not used
+        params::all_default())    // named parameters for mesh2-mesh1 not used)
+    );
+  ASSERT_TRUE(res[CGAL::Polygon_mesh_processing::Corefinement::INTERSECTION]);
+}
