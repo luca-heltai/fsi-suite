@@ -33,12 +33,6 @@ namespace ParsedTools
     , initial_configuration_or_displacement_expression(
         initial_configuration_or_displacement)
   {
-    AssertThrow(mask == ComponentMask() ||
-                  spacedim ==
-                    mask.n_selected_components(dh.get_fe().n_components()),
-                ExcMessage("The number of selected components in the "
-                           "mask  must be " +
-                           std::to_string(spacedim)));
     add_parameter("Initial configuration or displacement",
                   this->initial_configuration_or_displacement_expression,
                   "The initial configuration of the mapping. If empty, the "

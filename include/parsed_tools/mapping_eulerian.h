@@ -163,6 +163,17 @@ namespace ParsedTools
     VectorType &configuration_or_displacement,
     VectorType &locally_relevant_configuration_or_displacement)
   {
+    // Check that the dofhandler is ok.
+    AssertThrow(mask == dealii::ComponentMask() ||
+                  spacedim == mask.n_selected_components(
+                                dof_handler->get_fe().n_components()),
+                dealii::ExcMessage("The number of selected components in the "
+                                   "mask  must be " +
+                                   std::to_string(spacedim) +
+                                   ", it is instead " +
+                                   std::to_string(mask.n_selected_components(
+                                     dof_handler->get_fe().n_components()))));
+
     // Interpolate the user data
     if (initial_configuration_or_displacement_expression != "")
       {
