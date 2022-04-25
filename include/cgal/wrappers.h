@@ -317,7 +317,6 @@ namespace CGALWrappers
           dealii::ExcInternalError();
           break;
       }
-
   }
 
 
