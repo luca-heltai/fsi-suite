@@ -225,14 +225,16 @@ namespace CGALWrappers
   inline dealii::Point<dim>
   to_dealii(const CGALPointType &p)
   {
+    constexpr int cdim = CGALPointType::Ambient_dimension::value;
     if constexpr (dim == 1)
       return dealii::Point<dim>(CGAL::to_double(p.x()));
     else if constexpr (dim == 2)
-      return dealii::Point<dim>(CGAL::to_double(p.x()), CGAL::to_double(p.y()));
+      return dealii::Point<dim>(CGAL::to_double(p.x()),
+                                cdim > 1 ? CGAL::to_double(p.y()) : 0);
     else if constexpr (dim == 3)
       return dealii::Point<dim>(CGAL::to_double(p.x()),
-                                CGAL::to_double(p.y()),
-                                CGAL::to_double(p.z()));
+                                cdim > 1 ? CGAL::to_double(p.y()) : 0,
+                                cdim > 2 ? CGAL::to_double(p.z()) : 0);
     else
       Assert(false, dealii::ExcNotImplemented());
   }
@@ -296,7 +298,7 @@ namespace CGALWrappers
 
     auto add_facet = [&](const std::vector<unsigned int> &facet) {
       const auto &v = reorder_vertices(facet);
-      auto        f = surface_mesh.add_face(v);
+      surface_mesh.add_face(v);
     };
 
 
