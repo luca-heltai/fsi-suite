@@ -1,8 +1,13 @@
 <map id="include/create_coupling_sparsity_pattern_with_exact_intersections.h" name="include/create_coupling_sparsity_pattern_with_exact_intersections.h">
-<area shape="rect" id="node1" title=" " alt="" coords="344,5,520,61"/>
-<area shape="rect" id="node2" href="$poisson__nitsche__interface_8h.html" title=" " alt="" coords="114,117,321,158"/>
-<area shape="rect" id="node5" href="$create__coupling__sparsity__pattern__with__exact__intersections_8cc.html" title=" " alt="" coords="345,109,519,165"/>
-<area shape="rect" id="node6" href="$non__matching__coupling_8cc.html" title=" " alt="" coords="543,117,705,158"/>
-<area shape="rect" id="node3" href="$source_2pdes_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="5,213,219,255"/>
-<area shape="rect" id="node4" href="$apps_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="243,213,402,255"/>
+<area shape="rect" id="node1" title=" " alt="" coords="530,5,706,61"/>
+<area shape="rect" id="node2" href="$non__matching__coupling_8h.html" title=" " alt="" coords="318,117,510,158"/>
+<area shape="rect" id="node7" href="$non__matching__coupling_8cc.html" title=" " alt="" coords="396,213,557,255"/>
+<area shape="rect" id="node8" href="$poisson__nitsche__interface_8h.html" title=" " alt="" coords="585,117,792,158"/>
+<area shape="rect" id="node11" href="$create__coupling__sparsity__pattern__with__exact__intersections_8cc.html" title=" " alt="" coords="816,109,991,165"/>
+<area shape="rect" id="node3" href="$distributed__lagrange_8h.html" title=" " alt="" coords="193,213,371,255"/>
+<area shape="rect" id="node4" href="$source_2pdes_2distributed__lagrange_8cc.html" title=" " alt="" coords="5,303,180,344"/>
+<area shape="rect" id="node5" href="$apps_2mpi_2distributed__lagrange_8cc.html" title=" " alt="" coords="204,303,360,344"/>
+<area shape="rect" id="node6" href="$apps_2serial_2distributed__lagrange_8cc.html" title=" " alt="" coords="384,303,551,344"/>
+<area shape="rect" id="node9" href="$source_2pdes_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="582,213,795,255"/>
+<area shape="rect" id="node10" href="$apps_2serial_2poisson__nitsche__interface_8cc.html" title=" " alt="" coords="820,213,979,255"/>
 </map>

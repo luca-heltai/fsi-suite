@@ -195,28 +195,35 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h_source.html',
 <div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_distributed_lagrange.html#ac86185423adbd29a11dd64b6ac24496f">   90</a></span>&#160;    <a class="code" href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a> <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html#ac86185423adbd29a11dd64b6ac24496f">mass_solver</a>;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  };</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_serial.html">   93</a></span>&#160;  <span class="keyword">namespace </span>Serial</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim = dim&gt;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html">DistributedLagrange</a> =</div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_serial.html#aea83b4a27ebd670b8c20c459a0928c16">   97</a></span>&#160;      <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange&lt;dim, spacedim, LAC::LAdealii&gt;</a>;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="comment">// namespace Serial</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="comment">// {</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="comment">//   template &lt;int dim, int spacedim = dim&gt;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="comment">//   using DistributedLagrange =</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="comment">//     PDEs::DistributedLagrange&lt;dim, spacedim, LAC::LAdealii&gt;;</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="comment">// }</span></div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_m_p_i.html">  100</a></span>&#160;  <span class="keyword">namespace </span>MPI</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim = dim&gt;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html">DistributedLagrange</a> =</div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_m_p_i.html#af71f1c07bbe780f976616c3669746d09">  104</a></span>&#160;      <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange&lt;dim, spacedim, LAC::LATrilinos&gt;</a>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">// namespace MPI</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="comment">// {</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="comment">//   template &lt;int dim, int spacedim = dim&gt;</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="comment">//   using DistributedLagrange =</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="comment">//     PDEs::DistributedLagrange&lt;dim, spacedim, LAC::LAPETSc&gt;;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="comment">// }</span></div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">// namespace PDEs</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_m_p_i.html">  107</a></span>&#160;  <span class="keyword">namespace </span>MPI</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim, <span class="keywordtype">int</span> spacedim = dim&gt;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keyword">using</span> <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html">DistributedLagrange</a> =</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_m_p_i.html#af71f1c07bbe780f976616c3669746d09">  111</a></span>&#160;      <a class="code" href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange&lt;dim, spacedim, LAC::LATrilinos&gt;</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;} <span class="comment">// namespace PDEs</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="asparse__matrix_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">sparse_matrix.h</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_distributed_lagrange_html_a2c2cba9c6e1f8343d1997f023a9ed8ce"><div class="ttname"><a href="class_p_d_es_1_1_distributed_lagrange.html#a2c2cba9c6e1f8343d1997f023a9ed8ce">PDEs::DistributedLagrange::coupling_matrix</a></div><div class="ttdeci">LacType::SparseMatrix coupling_matrix</div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00088">distributed_lagrange.h:88</a></div></div>
-<div class="ttc" id="aclass_p_d_es_1_1_linear_problem_html"><div class="ttname"><a href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a></div><div class="ttdoc">Construct a LinearProblem.</div><div class="ttdef"><b>Definition:</b> <a href="linear__problem_8h_source.html#l00095">linear_problem.h:95</a></div></div>
+<div class="ttc" id="aclass_p_d_es_1_1_linear_problem_html"><div class="ttname"><a href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a></div><div class="ttdoc">Construct a LinearProblem.</div><div class="ttdef"><b>Definition:</b> <a href="linear__problem_8h_source.html#l00096">linear_problem.h:96</a></div></div>
 <div class="ttc" id="aclass_parsed_l_a_c_1_1_inverse_operator_html"><div class="ttname"><a href="class_parsed_l_a_c_1_1_inverse_operator.html">ParsedLAC::InverseOperator</a></div><div class="ttdoc">A factory that can generate inverse operators according to parameter files.</div><div class="ttdef"><b>Definition:</b> <a href="inverse__operator_8h_source.html#l00089">inverse_operator.h:89</a></div></div>
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_distributed_lagrange_html_aab882f9bb6760e0ecafac4b0db7498b5"><div class="ttname"><a href="class_p_d_es_1_1_distributed_lagrange.html#aab882f9bb6760e0ecafac4b0db7498b5">PDEs::DistributedLagrange::space_cache</a></div><div class="ttdeci">GridTools::Cache&lt; spacedim, spacedim &gt; space_cache</div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00080">distributed_lagrange.h:80</a></div></div>
@@ -227,7 +234,7 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h_source.html',
 <div class="ttc" id="amapping__eulerian_8h_html"><div class="ttname"><a href="mapping__eulerian_8h.html">mapping_eulerian.h</a></div></div>
 <div class="ttc" id="aamg_8h_html"><div class="ttname"><a href="amg_8h.html">amg.h</a></div></div>
 <div class="ttc" id="anon__matching__coupling_8h_html"><div class="ttname"><a href="non__matching__coupling_8h.html">non_matching_coupling.h</a></div></div>
-<div class="ttc" id="anamespace_p_d_es_1_1_m_p_i_html_af71f1c07bbe780f976616c3669746d09"><div class="ttname"><a href="namespace_p_d_es_1_1_m_p_i.html#af71f1c07bbe780f976616c3669746d09">PDEs::MPI::DistributedLagrange</a></div><div class="ttdeci">PDEs::DistributedLagrange&lt; dim, spacedim, LAC::LATrilinos &gt; DistributedLagrange</div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00104">distributed_lagrange.h:104</a></div></div>
+<div class="ttc" id="anamespace_p_d_es_1_1_m_p_i_html_af71f1c07bbe780f976616c3669746d09"><div class="ttname"><a href="namespace_p_d_es_1_1_m_p_i.html#af71f1c07bbe780f976616c3669746d09">PDEs::MPI::DistributedLagrange</a></div><div class="ttdeci">PDEs::DistributedLagrange&lt; dim, spacedim, LAC::LATrilinos &gt; DistributedLagrange</div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00111">distributed_lagrange.h:111</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_distributed_lagrange_html"><div class="ttname"><a href="class_p_d_es_1_1_distributed_lagrange.html">PDEs::DistributedLagrange</a></div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00053">distributed_lagrange.h:53</a></div></div>
 <div class="ttc" id="afinite__element_8h_html"><div class="ttname"><a href="finite__element_8h.html">finite_element.h</a></div></div>
 <div class="ttc" id="aparameter__acceptor_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html">parameter_acceptor.h</a></div></div>
@@ -248,7 +255,7 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h_source.html',
 <div class="ttc" id="agrid__tools__cache_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">grid_tools_cache.h</a></div></div>
 <div class="ttc" id="agrid__generator_8h_html"><div class="ttname"><a href="grid__generator_8h.html">grid_generator.h</a></div></div>
 <div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
-<div class="ttc" id="aclass_parsed_tools_1_1_non_matching_coupling_html"><div class="ttname"><a href="class_parsed_tools_1_1_non_matching_coupling.html">ParsedTools::NonMatchingCoupling</a></div><div class="ttdoc">Wrapper around several functions in the NonMatching namespace.</div><div class="ttdef"><b>Definition:</b> <a href="non__matching__coupling_8h_source.html#l00045">non_matching_coupling.h:45</a></div></div>
+<div class="ttc" id="aclass_parsed_tools_1_1_non_matching_coupling_html"><div class="ttname"><a href="class_parsed_tools_1_1_non_matching_coupling.html">ParsedTools::NonMatchingCoupling</a></div><div class="ttdoc">Wrapper around several functions in the NonMatching namespace.</div><div class="ttdef"><b>Definition:</b> <a href="non__matching__coupling_8h_source.html#l00048">non_matching_coupling.h:48</a></div></div>
 <div class="ttc" id="aclass_p_d_es_1_1_distributed_lagrange_html_a853bd22dcd1fd3f54e539696e58a27cb"><div class="ttname"><a href="class_p_d_es_1_1_distributed_lagrange.html#a853bd22dcd1fd3f54e539696e58a27cb">PDEs::DistributedLagrange::space</a></div><div class="ttdeci">PDEs::LinearProblem&lt; spacedim, spacedim, LacType &gt; space</div><div class="ttdef"><b>Definition:</b> <a href="distributed__lagrange_8h_source.html#l00079">distributed_lagrange.h:79</a></div></div>
 <div class="ttc" id="anamespace_runner_html_aaed149dffa73f0cdbfccc2ea84373909"><div class="ttname"><a href="namespace_runner.html#aaed149dffa73f0cdbfccc2ea84373909">Runner::run</a></div><div class="ttdeci">void run(char **argv, const std::string &amp;input_parameter_file, const std::string &amp;output_parameter_file)</div><div class="ttdoc">Setup parameters from the command line, and call the Class::run() method.</div><div class="ttdef"><b>Definition:</b> <a href="runner_8h_source.html#l00219">runner.h:219</a></div></div>
 <div class="ttc" id="aclassParameterAcceptor_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></div></div>
@@ -260,7 +267,7 @@ $(document).ready(function(){initNavTree('distributed__lagrange_8h_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="distributed__lagrange_8h.html">distributed_lagrange.h</a></li>
-    <li class="footer">Generated on Thu Apr 21 2022 07:39:09 for Fluid structure interaction suite by
+    <li class="footer">Generated on Mon Apr 25 2022 18:01:07 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
