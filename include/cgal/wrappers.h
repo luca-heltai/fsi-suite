@@ -7,6 +7,9 @@
 
 #include <deal.II/fe/mapping.h>
 
+#include <deal.II/grid/grid_generator.h>
+#include <deal.II/grid/grid_out.h>
+#include <deal.II/grid/grid_tools.h>
 #include <deal.II/grid/tria.h>
 
 #ifdef DEAL_II_WITH_CGAL
@@ -303,8 +306,48 @@ namespace CGALWrappers
 
 
 
-    switch (n_vertices)
+    switch (cell->n_vertices())
       {
+        case 2:
+          add_vertices();
+          add_facet({0, 1, 0});
+
+          break;
+        case 3:
+          add_vertices();
+          add_facet({0, 1, 2});
+          break;
+        case 4:
+          if constexpr (dim == 2)
+            {
+              add_vertices();
+              add_facet({0, 1, 3, 2});
+            }
+          else
+            {
+              add_vertices();
+              add_facet({0, 1, 2});
+              add_facet({1, 0, 3});
+              add_facet({2, 1, 3});
+              add_facet({0, 2, 3});
+            }
+          break;
+        case 5:
+          add_vertices();
+          add_facet({0, 1, 3, 2});
+          add_facet({1, 0, 4});
+          add_facet({3, 1, 4});
+          add_facet({2, 3, 4});
+          add_facet({0, 2, 4});
+          break;
+        case 6:
+          add_vertices();
+          add_facet({0, 1, 2});
+          add_facet({1, 0, 3, 4});
+          add_facet({1, 4, 5, 2});
+          add_facet({3, 0, 2, 5});
+          add_facet({4, 3, 5});
+          break;
         case 8:
           add_vertices();
           add_facet({0, 1, 3, 2});
@@ -314,11 +357,61 @@ namespace CGALWrappers
           add_facet({4, 0, 2, 6});
           add_facet({5, 4, 6, 7});
           break;
-
         default:
           dealii::ExcInternalError();
-          break;
       }
+  }
+
+  /**
+   * @brief Convert a CGAL::Surface_mesh to a deal.II triangulation.
+   *
+   * @param surf_mesh
+   * @param tria
+   * @return * template <typename CGALPointType, dim, int spacedim>
+   */
+  template <typename CGALPointType, int dim, int spacedim>
+  void
+  to_dealii(CGAL::Surface_mesh<CGALPointType> &   surf_mesh,
+            dealii::Triangulation<dim, spacedim> &tria)
+  {
+    Assert(tria.n_cells() == 0,
+           dealii::ExcMessage("Triangulation must be empty."));
+    Assert(dim == 2 && spacedim == 3,
+           dealii::ExcNotImplemented("Works for dim=2 and spacedim=3"));
+    std::vector<dealii::Point<3>>    vertices;
+    std::vector<dealii::CellData<2>> cells;
+    dealii::SubCellData              subcells;
+
+    vertices.reserve(surf_mesh.num_vertices());
+    for (const auto &v : surf_mesh.points())
+      {
+        vertices.emplace_back(CGALWrappers::to_dealii<3>(v));
+      }
+
+
+
+    const unsigned int vertices_per_face =
+      CGAL::vertices_around_face(
+        surf_mesh.halfedge(*(surf_mesh.faces().begin())), surf_mesh)
+        .size();
+
+    for (const auto &face : surf_mesh.faces())
+      {
+        dealii::CellData<2> c(vertices_per_face);
+        auto                it = c.vertices.begin();
+        for (const auto v :
+             CGAL::vertices_around_face(surf_mesh.halfedge(face), surf_mesh))
+          {
+            *(it++) = v;
+          }
+
+        if (vertices_per_face == 4)
+          {
+            std::swap(c.vertices[3], c.vertices[2]);
+          }
+        cells.emplace_back(c);
+      }
+    tria.create_triangulation(vertices, cells, subcells);
   }
 
 

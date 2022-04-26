@@ -171,25 +171,28 @@ TEST(CGAL, IntersectCubes)
   GridGenerator::hyper_cube(tria, -1., 1.);
   const auto &mapping = get_default_linear_mapping(tria);
 
+  Polyhedron poly1;
+  CGALWrappers::to_cgal(tria.begin_active(), mapping, poly1);
+  CGAL::Polygon_mesh_processing::triangulate_faces(poly1);
+  ASSERT_TRUE(poly1.is_valid());
+
   Mesh_surface surf1;
-  assert(surf1.is_valid());
-
-  CGALWrappers::to_cgal(tria.begin_active(), mapping, surf1);
-  CGAL::Polygon_mesh_processing::triangulate_faces(surf1);
-
-
+  CGAL::copy_face_graph(poly1, surf1);
 
   GridTools::rotate(numbers::PI_4, 0, tria);
-  // GridTools::rotate(numbers::PI_4, 2, tria);
-  Mesh_surface surf2;
-  assert(surf2.is_valid());
-  CGALWrappers::to_cgal(tria.begin_active(), mapping, surf2);
-  CGAL::Polygon_mesh_processing::triangulate_faces(surf2);
+  // GridTools::rotate(numbers::PI_4, 1, tria);
 
+
+  Polyhedron poly2;
+  CGALWrappers::to_cgal(tria.begin_active(), mapping, poly2);
+  CGAL::Polygon_mesh_processing::triangulate_faces(poly2);
+
+  Mesh_surface surf2;
+  CGAL::copy_face_graph(poly2, surf2);
+  ASSERT_TRUE(poly2.is_valid());
 
   std::array<boost::optional<Mesh_surface *>, 4> boolean_operations;
-
-  Mesh_surface out_intersection, out_union;
+  Mesh_surface                                   out_intersection, out_union;
 
   boolean_operations
     [CGAL::Polygon_mesh_processing::Corefinement::INTERSECTION] =
@@ -216,6 +219,7 @@ TEST(CGAL, IntersectCubes)
         params::all_default())    // named parameters for mesh2-mesh1 not used)
     );
   ASSERT_TRUE(res[CGAL::Polygon_mesh_processing::Corefinement::INTERSECTION]);
+  ASSERT_TRUE(res[CGAL::Polygon_mesh_processing::Corefinement::UNION]);
 }
 
 
@@ -239,6 +243,7 @@ TEST(CGAL, IntersectPolyhedrons)
   ASSERT_TRUE(mesh1.is_valid());
 
   GridTools::rotate(numbers::PI_4, 0, tria);
+  // GridTools::rotate(numbers::PI_4, 1, tria);
 
   Polyhedron poly2;
   CGALWrappers::to_cgal(tria.begin_active(), mapping, poly2);
@@ -282,27 +287,10 @@ TEST(CGAL, SurfaceMesh2dealiiTriangles)
   CGAL::copy_face_graph(poly, mesh);
   ASSERT_TRUE(mesh.is_valid());
 
-  // TOD: move next secition into a function
-  std::vector<Point<3>>    vertices;
-  std::vector<CellData<2>> cells;
-  SubCellData              subcells;
 
-  vertices.reserve(mesh.num_vertices());
-  for (const auto &v : mesh.points())
-    vertices.emplace_back(CGALWrappers::to_dealii<3>(v));
-
-  for (const auto &face : mesh.faces())
-    {
-      CellData<2> c(3);
-      auto        it = c.vertices.begin();
-      for (const auto v : CGAL::vertices_around_face(mesh.halfedge(face), mesh))
-        *(it++) = v;
-
-      cells.emplace_back(c);
-    }
 
   Triangulation<2, 3> tria2;
-  tria2.create_triangulation(vertices, cells, subcells);
+  CGALWrappers::to_dealii(mesh, tria2);
   GridOut       go;
   std::ofstream out("tria2.vtk");
   go.write_vtk(tria2, out);
@@ -329,30 +317,8 @@ TEST(CGAL, SurfaceMesh2dealiiQuads)
   CGAL::copy_face_graph(poly, mesh);
   ASSERT_TRUE(mesh.is_valid());
 
-  // TOD: move next secition into a function
-  std::vector<Point<3>>    vertices;
-  std::vector<CellData<2>> cells;
-  SubCellData              subcells;
-
-  vertices.reserve(mesh.num_vertices());
-  for (const auto &v : mesh.points())
-    vertices.emplace_back(CGALWrappers::to_dealii<3>(v));
-
-  for (const auto &face : mesh.faces())
-    {
-      CellData<2> c(4);
-      auto        it = c.vertices.begin();
-
-      for (const auto v : CGAL::vertices_around_face(mesh.halfedge(face), mesh))
-        *(it++) = v;
-
-      std::swap(c.vertices[3], c.vertices[2]);
-
-      cells.emplace_back(c);
-    }
-
   Triangulation<2, 3> tria2;
-  tria2.create_triangulation(vertices, cells, subcells);
+  CGALWrappers::to_dealii(mesh, tria2);
   GridOut       go;
   std::ofstream out("tria2.vtk");
   go.write_vtk(tria2, out);
