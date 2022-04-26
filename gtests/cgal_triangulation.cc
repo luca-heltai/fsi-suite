@@ -47,14 +47,14 @@ using namespace dealii;
 #include "cgal/wrappers.h"
 
 // typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
-typedef CGAL::Simple_cartesian<double>                K;
-typedef CGAL::Delaunay_triangulation_2<K>             Delaunay;
-typedef Delaunay::Point                               DPoint;
-typedef CGAL::Polyhedron_3<K>                         Polyhedron;
-typedef Polyhedron::HalfedgeDS                        HalfedgeDS;
-typedef CGAL::Polyhedral_mesh_domain_3<Polyhedron, K> Mesh_domain;
-typedef K::Point_3                                    Point_3;
-typedef CGAL::Surface_mesh<Point_3>                   Surface_mesh;
+typedef CGAL::Exact_predicates_inexact_constructions_kernel K;
+typedef CGAL::Delaunay_triangulation_2<K>                   Delaunay;
+typedef Delaunay::Point                                     DPoint;
+typedef CGAL::Polyhedron_3<K>                               Polyhedron;
+typedef Polyhedron::HalfedgeDS                              HalfedgeDS;
+typedef CGAL::Polyhedral_mesh_domain_3<Polyhedron, K>       Mesh_domain;
+typedef K::Point_3                                          Point_3;
+typedef CGAL::Surface_mesh<Point_3>                         Surface_mesh;
 
 
 #ifdef CGAL_CONCURRENT_MESH_3
@@ -70,6 +70,7 @@ typedef CGAL::Mesh_complex_3_in_triangulation_3<Tr>                       C3t3;
 typedef CGAL::Mesh_criteria_3<Tr> Mesh_criteria;
 // To avoid verbose function and named parameters call
 using namespace CGAL::parameters;
+
 
 
 TEST(CGAL, Delaunay2D)
@@ -111,6 +112,7 @@ TEST(CGAL, Delaunay2D)
   ASSERT_EQ(tria.n_active_cells(), cgal_tria.number_of_faces());
   ASSERT_EQ(tria.n_vertices(), cgal_tria.number_of_vertices());
 }
+
 
 
 TYPED_TEST(DimSpacedimTester, CGALConversions)
@@ -165,7 +167,8 @@ TEST(CGAL, IntersectCubes)
   CGAL::Polygon_mesh_processing::triangulate_faces(surf1);
 
   GridTools::rotate(numbers::PI_4, 0, tria);
-  // GridTools::rotate(numbers::PI_4, 2, tria);
+  GridTools::rotate(numbers::PI_4, 2, tria);
+
   Mesh_surface surf2;
   CGALWrappers::to_cgal_mesh(tria.begin_active(), mapping, surf2);
   CGAL::Polygon_mesh_processing::triangulate_faces(surf2);
@@ -220,7 +223,7 @@ TEST(CGAL, IntersectPolyhedrons)
   ASSERT_TRUE(mesh1.is_valid());
 
   GridTools::rotate(numbers::PI_4, 0, tria);
-  // GridTools::rotate(numbers::PI_4, 1, tria);
+  GridTools::rotate(numbers::PI_4, 1, tria);
 
   Polyhedron poly2;
   CGALWrappers::to_cgal_poly(tria.begin_active(), mapping, poly2);
@@ -302,7 +305,8 @@ TEST(CGAL, SurfaceMesh2dealiiQuads)
 }
 
 
-TEST(CGAL, PolygonSoup)
+
+TEST(CGAL, DISABLED_PolygonSoup)
 {
   Triangulation<2, 3> tria;
   GridGenerator::hyper_sphere(tria);
@@ -332,7 +336,38 @@ TEST(CGAL, PolygonSoup)
   CGAL::Polygon_mesh_processing::polygon_soup_to_polygon_mesh(points,
                                                               polygons,
                                                               mesh);
+  CGAL::Polygon_mesh_processing::stitch_borders(mesh);
+
   Triangulation<2, 3> tria2;
   CGALWrappers::to_dealii(mesh, tria2);
-  ASSERT_EQ(tria.n_vertices(), tria2.n_vertices());
+
+  GridOut       go;
+  std::ofstream out("tria_soup.vtk");
+  go.write_vtk(tria2, out);
+}
+
+
+
+TYPED_TEST(DimSpacedimTester, SurfaceMesh)
+{
+  constexpr auto                         dim      = TestFixture::dim;
+  constexpr auto                         spacedim = TestFixture::spacedim;
+  std::vector<std::vector<unsigned int>> d2t = {{}, {2}, {3, 4}, {4, 5, 6, 8}};
+
+  for (const auto nv : d2t[dim])
+    {
+      Triangulation<dim, spacedim> tria;
+      Surface_mesh                 mesh;
+
+      const auto ref     = ReferenceCell::n_vertices_to_type(dim, nv);
+      const auto mapping = ref.template get_default_mapping<dim, spacedim>(1);
+
+      GridGenerator::reference_cell(tria, ref);
+
+      const auto cell = tria.begin_active();
+      CGALWrappers::to_cgal_mesh(cell,
+                                 *mapping,
+                                 mesh); // build CGAL Poly from deal.II cell
+      ASSERT_TRUE(mesh.is_valid() || dim == 1);
+    }
 }
