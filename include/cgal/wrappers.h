@@ -23,7 +23,6 @@
 #  include <CGAL/IO/io.h>
 #  include <CGAL/Origin.h>
 #  include <CGAL/Polygon_mesh_processing/repair_polygon_soup.h>
-#  include <CGAL/Polygon_mesh_processing/stitch_borders.h>
 #  include <CGAL/Polyhedron_3.h>
 #  include <CGAL/Polyhedron_incremental_builder_3.h>
 #  include <CGAL/Simple_cartesian.h>
@@ -56,83 +55,39 @@ namespace CGALWrappers
   to_dealii(const CGALPointType &p);
 
   /**
-   * Build a CGAL Surface_mesh from a deal.II cell.
-   *
-   * @tparam CGALPointType A point compatible with CGAL
-   * @tparam dim Dimension of the cell
-   * @tparam spacedim Dimension of the embedding space
-   * @param mesh The output surface mesh
-   * @param cell The input deal.II cell
-   */
-  template <typename CGALPointType, int dim, int spacedim>
-  void
-  to_cgal_mesh(
-    const typename dealii::Triangulation<dim, spacedim>::cell_iterator &cell,
-    const dealii::Mapping<dim, spacedim> &                              mapping,
-    CGAL::Surface_mesh<CGALPointType> &                                 mesh);
-
-  /**
-   * @brief Create a CGAL::Surface_mesh starting from a deal.II triangulation.
-   *
-   * @param[in] tria Input triangulation
-   * @param surface_mesh Surface_mesh to be filled
-   */
-  template <typename CGALPointType, int dim, int spacedim>
-  void
-  to_cgal_mesh(const dealii::Triangulation<dim, spacedim> &tria,
-               const dealii::Mapping<dim, spacedim> &      mapping,
-               CGAL::Surface_mesh<CGALPointType> &         surface_mesh);
-
-  /**
    * Build a CGAL Polyhedron from a deal.II cell.
    *
    * If the @p poly argument is not null, the cell is appended to the existing
    * polyhedrons in @p poly.
    *
+   * @tparam PolyhedronType A compatible with CGAL polyhedron
+   * @tparam dim Dimension of the cell
+   * @tparam spacedim Dimension of the embedding space
    * @param poly The output polyhedron
    * @param cell The input deal.II cell
    */
-  template <class PolyhedronType, int dim, int spacedim>
+  template <typename PolyhedronType, int dim, int spacedim>
   void
-  to_cgal_poly(
+  to_cgal(
     const typename dealii::Triangulation<dim, spacedim>::cell_iterator &cell,
     const dealii::Mapping<dim, spacedim> &                              mapping,
     PolyhedronType &                                                    poly);
 
   /**
-   * Given a deal.II Triangulation, return a CGAL Polyhedron mesh.
+   * Given a deal.II Triangulation, return the corresponding CGAL Polyhedron.
    *
-   * Technically speacking, CGAL supports only surface meshes. This function
-   * will generate a collection of disjoing polyhedron surface meshes from each
-   * cell of the triangulation. Beware of the fact that the resulting mesh may
-   * not be a valid CGAL polyhedral mesh, especially if you have a triangulation
-   * that contains non-planar surfaces.
-   *
-   * If you want to work with the resulting polyhedral mesh you may want to call
-   * the free function CGAL::Polygon_mesh_processing::triangulate_faces() on the
-   * resulting @p poly object.
-   *
-   * @param[in] tria  Input dealii Triangulation
-   * @param[in] mapping The mapping used to map the vertices of the
-   * triangulation
-   * @param[out] poly Output CGAL polyhedron
+   * @tparam PolyhedronType
+   * @tparam dim
+   * @tparam spacedim
+   * @param tria
+   * @param mapping
+   * @param poly
    */
   template <typename PolyhedronType, int dim, int spacedim>
   void
-  to_cgal_poly(const typename dealii::Triangulation<dim, spacedim> &tria,
-               const dealii::Mapping<dim, spacedim> &               mapping,
-               PolyhedronType &                                     poly);
-
-  /**
-   * @brief Create a Triangulation starting from a cgal surface_mesh.
-   *
-   * @param[in] surface_mesh Input surface mesh
-   * @param[out] tria Surface_mesh to be filled
-   */
-  template <typename CGALPointType, int spacedim>
-  void
-  to_dealii(const CGAL::Surface_mesh<CGALPointType> &surface_mesh,
-            dealii::Triangulation<2, spacedim> &     tria);
+  to_cgal(const typename dealii::Triangulation<dim, spacedim> &tria,
+          const dealii::Mapping<dim, spacedim> &               mapping,
+          PolyhedronType &                                     poly);
 
   namespace internal
   {
@@ -146,16 +101,6 @@ namespace CGALWrappers
     class BuildCell : public CGAL::Modifier_base<HDS>
     {
     public:
-      /**
-       * Construct a polyhedron modifier from a dealii cell iterator.
-       *
-       * This class is used to add to a halfedge data structure the vertices and
-       * the faces of a dealii cell.
-       *
-       * @param[in] cell The input deal.II cell iterator
-       * @param[in] mapping The mapping used to map the vertices of the
-       * triangulation
-       */
       BuildCell(
         const typename dealii::Triangulation<dim, spacedim>::cell_iterator
           &                                   cell,
@@ -163,12 +108,6 @@ namespace CGALWrappers
         : cell(cell)
         , mapping(mapping)
       {}
-
-      /**
-       * Apply the modifier to the halfedge data structure.
-       *
-       * @param hds The halfedge data structure to modify.
-       */
       void
       operator()(HDS &hds)
       {
@@ -259,14 +198,7 @@ namespace CGALWrappers
       }
 
     private:
-      /**
-       * A const reference to the input cell.
-       */
       const typename dealii::Triangulation<dim, spacedim>::cell_iterator &cell;
-
-      /**
-       * A const reference to the input mapping.
-       */
       const dealii::Mapping<dim, spacedim> &mapping;
     };
   } // namespace internal
@@ -314,7 +246,7 @@ namespace CGALWrappers
 
   template <typename PolyhedronType, int dim, int spacedim>
   void
-  to_cgal_poly(
+  to_cgal(
     const typename dealii::Triangulation<dim, spacedim>::cell_iterator &cell,
     const dealii::Mapping<dim, spacedim> &                              mapping,
     PolyhedronType &                                                    poly)
@@ -326,92 +258,163 @@ namespace CGALWrappers
 
 
 
-  template <typename PolyhedronType, int dim, int spacedim>
-  void
-  to_cgal_poly(const dealii::Triangulation<dim, spacedim> &tria,
-               const dealii::Mapping<dim, spacedim> &      mapping,
-               PolyhedronType &                            poly)
-  {
-    for (const auto &cell : tria.active_cell_iterators())
-      to_cgal_poly(cell, mapping, poly);
-    CGAL::Polygon_mesh_processing::stitch_borders(poly);
-  }
-
-
-
+  /**
+   * @brief Create a CGAL::Surface_mesh starting from a deal.II cell
+   *
+   * @tparam CGALPointType
+   * @tparam dim
+   * @tparam spacedim
+   * @param cell
+   * @param mapping
+   * @param surface_mesh Surface_mesh to be filled
+   */
   template <typename CGALPointType, int dim, int spacedim>
   void
-  to_cgal_mesh(
+  to_cgal(
     const typename dealii::Triangulation<dim, spacedim>::cell_iterator &cell,
     const dealii::Mapping<dim, spacedim> &                              mapping,
     CGAL::Surface_mesh<CGALPointType> &surface_mesh)
   {
-    AssertThrow(CGALPointType::Ambient_dimension::value >= spacedim,
-                dealii::ExcMessage("The CGAL mesh must be able to store " +
-                                   std::to_string(spacedim) +
-                                   "-dimensional points"));
+    typedef CGAL::Surface_mesh<CGALPointType> Mesh;
+    typedef typename Mesh::Vertex_index       Vertex;
+    const unsigned int                        n_vertices = cell->n_vertices();
+    const auto &        vertices = mapping.get_vertices(cell);
+    std::vector<Vertex> v_descriptors(n_vertices);
 
-    CGAL::Polyhedron_3<CGAL::Simple_cartesian<double>> poly;
-    to_cgal_poly(cell, mapping, poly);
-    CGAL::copy_face_graph(poly, surface_mesh);
+    auto add_vertices = [&]() {
+      for (unsigned int i = 0; i < n_vertices; ++i)
+        {
+          v_descriptors[i] = surface_mesh.add_vertex(
+            CGALWrappers::to_cgal<CGALPointType>(vertices[i]));
+        }
+    };
+
+    auto reorder_vertices =
+      [&v_descriptors](const std::vector<unsigned int> &facet) {
+        std::vector<Vertex> ordered_vertices(facet.size());
+        for (unsigned int i = 0; i < facet.size(); ++i)
+          {
+            ordered_vertices[i] = v_descriptors[facet[i]];
+          }
+        return ordered_vertices;
+      };
+
+    auto add_facet = [&](const std::vector<unsigned int> &facet) {
+      const auto &v = reorder_vertices(facet);
+      surface_mesh.add_face(v);
+    };
+
+
+
+    switch (cell->n_vertices())
+      {
+        case 2:
+          add_vertices();
+          add_facet({0, 1, 0});
+
+          break;
+        case 3:
+          add_vertices();
+          add_facet({0, 1, 2});
+          break;
+        case 4:
+          if constexpr (dim == 2)
+            {
+              add_vertices();
+              add_facet({0, 1, 3, 2});
+            }
+          else
+            {
+              add_vertices();
+              add_facet({0, 1, 2});
+              add_facet({1, 0, 3});
+              add_facet({2, 1, 3});
+              add_facet({0, 2, 3});
+            }
+          break;
+        case 5:
+          add_vertices();
+          add_facet({0, 1, 3, 2});
+          add_facet({1, 0, 4});
+          add_facet({3, 1, 4});
+          add_facet({2, 3, 4});
+          add_facet({0, 2, 4});
+          break;
+        case 6:
+          add_vertices();
+          add_facet({0, 1, 2});
+          add_facet({1, 0, 3, 4});
+          add_facet({1, 4, 5, 2});
+          add_facet({3, 0, 2, 5});
+          add_facet({4, 3, 5});
+          break;
+        case 8:
+          add_vertices();
+          add_facet({0, 1, 3, 2});
+          add_facet({1, 0, 4, 5});
+          add_facet({3, 1, 5, 7});
+          add_facet({2, 3, 7, 6});
+          add_facet({4, 0, 2, 6});
+          add_facet({5, 4, 6, 7});
+          break;
+        default:
+          dealii::ExcInternalError();
+      }
   }
 
-
-
+  /**
+   * @brief Convert a CGAL::Surface_mesh to a deal.II triangulation.
+   *
+   * @param surf_mesh
+   * @param tria
+   * @return * template <typename CGALPointType, dim, int spacedim>
+   */
   template <typename CGALPointType, int dim, int spacedim>
   void
-  to_cgal_mesh(const typename dealii::Triangulation<dim, spacedim> &tria,
-               const dealii::Mapping<dim, spacedim> &               mapping,
-               CGAL::Surface_mesh<CGALPointType> &surface_mesh)
+  to_dealii(CGAL::Surface_mesh<CGALPointType> &   surf_mesh,
+            dealii::Triangulation<dim, spacedim> &tria)
   {
-    AssertThrow(CGALPointType::Ambient_dimension::value >= spacedim,
-                dealii::ExcMessage("The CGAL mesh must be able to store " +
-                                   std::to_string(spacedim) +
-                                   "-dimensional points"));
+    Assert(tria.n_cells() == 0,
+           dealii::ExcMessage("Triangulation must be empty."));
+    Assert(dim == 2 && spacedim == 3,
+           dealii::ExcNotImplemented("Works for dim=2 and spacedim=3"));
+    std::vector<dealii::Point<3>>    vertices;
+    std::vector<dealii::CellData<2>> cells;
+    dealii::SubCellData              subcells;
 
-    CGAL::Polyhedron_3<CGAL::Simple_cartesian<double>> poly;
-    to_cgal_poly(tria, mapping, poly);
-    CGAL::copy_face_graph(poly, surface_mesh);
-  }
-
-
-
-  template <typename CGALPointType, int spacedim>
-  void
-  to_dealii(const CGAL::Surface_mesh<CGALPointType> &surface_mesh,
-            dealii::Triangulation<2, spacedim> &     tria)
-  {
-    AssertThrow(CGALPointType::Ambient_dimension::value <= spacedim,
-                dealii::ExcMessage(
-                  "The dealii mesh must be able to store " +
-                  std::to_string(CGALPointType::Ambient_dimension::value) +
-                  "-dimensional points"));
-
-    std::vector<dealii::Point<spacedim>> vertices;
-    std::vector<dealii::CellData<2>>     cells;
-    dealii::SubCellData                  subcells;
-
-    vertices.reserve(surface_mesh.num_vertices());
-    for (const auto &v : surface_mesh.points())
-      vertices.emplace_back(CGALWrappers::to_dealii<spacedim>(v));
-
-    for (const auto &face : surface_mesh.faces())
+    vertices.reserve(surf_mesh.num_vertices());
+    for (const auto &v : surf_mesh.points())
       {
-        std::vector<unsigned int> cell_vertices;
+        vertices.emplace_back(CGALWrappers::to_dealii<3>(v));
+      }
+
+
+
+    const unsigned int vertices_per_face =
+      CGAL::vertices_around_face(
+        surf_mesh.halfedge(*(surf_mesh.faces().begin())), surf_mesh)
+        .size();
+
+    for (const auto &face : surf_mesh.faces())
+      {
+        dealii::CellData<2> c(vertices_per_face);
+        auto                it = c.vertices.begin();
         for (const auto v :
-             CGAL::vertices_around_face(surface_mesh.halfedge(face),
-                                        surface_mesh))
-          cell_vertices.push_back(v);
+             CGAL::vertices_around_face(surf_mesh.halfedge(face), surf_mesh))
+          {
+            *(it++) = v;
+          }
 
-        if (cell_vertices.size() == 4)
-          std::swap(cell_vertices[3], cell_vertices[2]);
-
-        dealii::CellData<2> c(cell_vertices.size());
-        std::swap(c.vertices, cell_vertices);
+        if (vertices_per_face == 4)
+          {
+            std::swap(c.vertices[3], c.vertices[2]);
+          }
         cells.emplace_back(c);
       }
     tria.create_triangulation(vertices, cells, subcells);
   }
+
+
 #  endif
 
 } // namespace CGALWrappers
