@@ -17,6 +17,7 @@ RUN apt-get update \
     linux-tools-generic \
     valgrind \
     vim \
+    wdiff \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -32,6 +33,8 @@ ENV HOME /root
 RUN mkdir /root/.ssh
 
 ADD dotgdbinit.py /root/.gdbinit
+
+ADD  build.sh copy_test.sh copy_output.sh d2check.sh cwdiff /usr/bin/
 
 RUN mv /usr/local/bin/clang-format /usr/bin/clang-format
 
