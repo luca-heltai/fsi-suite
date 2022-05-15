@@ -13,42 +13,46 @@
 //
 // ---------------------------------------------------------------------
 
-#include "pdes/distributed_lagrange.h"
 #include "pdes/distributed_lagrange_elasticity.h"
 
 #include <deal.II/base/logstream.h>
 
 #include <deal.II/lac/linear_operator_tools.h>
+#include <deal.II/lac/petsc_precondition.h>
 
 #include <deal.II/numerics/matrix_tools.h>
 #include <deal.II/numerics/vector_tools.h>
-
-#include <deal.II/lac/petsc_precondition.h>
 
 #include <fstream>
 #include <iostream>
 
 #include "lac_initializer.h"
+#include "pdes/distributed_lagrange.h"
 
 using namespace dealii;
 
 namespace PDEs
 {
   template <int dim, int spacedim, typename LacType>
-  DistributedLagrangeElasticity<dim, spacedim, LacType>::DistributedLagrangeElasticity()
+  DistributedLagrangeElasticity<dim, spacedim, LacType>::
+    DistributedLagrangeElasticity()
     : ParameterAcceptor("Distributed Lagrange")
-    , space("u,u","Space") //space("u", "Space")
+    , space("u,u", "Space") // space("u", "Space")
     , space_cache(space.triangulation)
-    , embedded("w,w,lambda,lambda","Embedded") //embedded("w", "Embedded")
+    , embedded("w,w,lambda,lambda", "Embedded") // embedded("w", "Embedded")
     , embedded_cache(embedded.triangulation)
-    , coupling("/Coupling",ComponentMask(),ComponentMask({0,0,1,1})) //tutte le coponenti della prima con la seconda della seconda var.
+    , coupling("/Coupling",
+               ComponentMask(),
+               ComponentMask({0, 0, 1, 1})) // tutte le coponenti della prima
+                                            // con la seconda della seconda var.
     //, mass_solver("/Mass solver")
     , lambda("/LinearElasticity/Lame coefficients", "1.0", "lambda")
     , mu("/LinearElasticity/Lame coefficients", "1.0", "mu")
-    , spacedisplacement(0) // abbiamo un solo elemento finito per entrambi - un oggetto con due componenti
+    , spacedisplacement(0) // abbiamo un solo elemento finito per entrambi - un
+                           // oggetto con due componenti
     , embdisplacement(0)
     , embdlm(spacedim)
-    // aggiungere nel .h come per linear_elasticity
+  // aggiungere nel .h come per linear_elasticity
   {}
 
 
@@ -75,14 +79,15 @@ namespace PDEs
                                      true);
   }
 
-  /* da ora in poi commento tutte le cose di accoppiamento perche' per ora non servono */
+  /* da ora in poi commento tutte le cose di accoppiamento perche' per ora non
+   * servono */
 
   template <int dim, int spacedim, typename LacType>
   void
   DistributedLagrangeElasticity<dim, spacedim, LacType>::setup_system()
   {
-
-    /* Qui si fa il set up del sistema, pero' devo capire come trattare le due componenti di u */
+    /* Qui si fa il set up del sistema, pero' devo capire come trattare le due
+     * componenti di u */
 
     space.setup_system();
     embedded.setup_system();
@@ -96,7 +101,7 @@ namespace PDEs
                           col_indices);
 
     BlockDynamicSparsityPattern dsp(space.dofs_per_block,
-                                embedded.dofs_per_block);
+                                    embedded.dofs_per_block);
 
     coupling.assemble_sparsity(dsp);
 
@@ -132,7 +137,8 @@ namespace PDEs
         space.finite_element().n_dofs_per_cell());
 
       for (const auto &cell : space.dof_handler.active_cell_iterators())
-        // questo e' un loop sulle celle, per cui qui dentro faccio l'assemblaggio di una cella
+        // questo e' un loop sulle celle, per cui qui dentro faccio
+        // l'assemblaggio di una cella
         if (cell->is_locally_owned())
           {
             auto &cell_matrix     = copy.matrices[0];
@@ -147,45 +153,51 @@ namespace PDEs
               {
                 for (const unsigned int i : fe_values.dof_indices())
                   {
-
                     const auto  x = fe_values.quadrature_point(q_index);
                     const auto &eps_v =
-                    fe_values[spacedisplacement].symmetric_gradient(i, q_index);
-                    const auto &div_v = fe_values[spacedisplacement].divergence(i, q_index);
-                    // = 
+                      fe_values[spacedisplacement].symmetric_gradient(i,
+                                                                      q_index);
+                    const auto &div_v =
+                      fe_values[spacedisplacement].divergence(i, q_index);
+                    // =
 
                     for (const unsigned int j : fe_values.dof_indices())
-                    {
+                      {
+                        /*
+                          cell_matrix(i, j) +=
+                            (fe_values.shape_grad(i, q_index) * // grad
+                        phi_i(x_q) fe_values.shape_grad(j, q_index) * // grad
+                        phi_j(x_q) fe_values.JxW(q_index));           // dx
+                        cell_rhs(i) +=
+                          (fe_values.shape_value(i, q_index) * // phi_i(x_q)
+                           space.forcing_term.value(
+                             fe_values.quadrature_point(q_index)) * // f(x_q)
+                           fe_values.JxW(q_index));                 // dx
+                        */
 
-                    /*
-                      cell_matrix(i, j) +=
-                        (fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
-                         fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
-                         fe_values.JxW(q_index));           // dx
+                        const auto &eps_u =
+                          fe_values[spacedisplacement].symmetric_gradient(
+                            j, q_index);
+                        const auto &div_u =
+                          fe_values[spacedisplacement].divergence(j, q_index);
+                        cell_matrix(i, j) +=
+                          (2 * mu.value(x) * eps_v * eps_u +
+                           lambda.value(x) * div_v * div_u) *
+                          fe_values.JxW(
+                            q_index); // dx mu.value(x),lambda.value(x)
+                      }
+
                     cell_rhs(i) +=
                       (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                       space.forcing_term.value(
-                         fe_values.quadrature_point(q_index)) * // f(x_q)
-                       fe_values.JxW(q_index));                 // dx
-                    */
-
-                      const auto &eps_u = fe_values[spacedisplacement].symmetric_gradient(j, q_index);
-                      const auto &div_u =
-                      fe_values[spacedisplacement].divergence(j, q_index);
-                      cell_matrix(i, j) += (2 * mu.value(x) * eps_v * eps_u +
-                                          lambda.value(x) * div_v * div_u) *
-                                          fe_values.JxW(q_index); // dx mu.value(x),lambda.value(x)
-                    }
-
-                  cell_rhs(i) +=
-                    (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                      this->space.forcing_term.value(x,
-                      this->space.finite_element() //space.finite_element(), embedded.finite_element()
-                      .system_to_component_index(i)
-                      .first) * // f(x_q)
-                      fe_values.JxW(q_index));             // dx
+                       this->space.forcing_term.value(
+                         x,
+                         this->space
+                           .finite_element() // space.finite_element(),
+                                             // embedded.finite_element()
+                           .system_to_component_index(i)
+                           .first) *            // f(x_q)
+                       fe_values.JxW(q_index)); // dx
                   }
-
               }
 
             space.constraints.distribute_local_to_global(
@@ -232,50 +244,57 @@ namespace PDEs
               {
                 for (const unsigned int i : fe_values.dof_indices())
                   {
-
                     // = parte elasticity senza "displacement" come argomento
                     const auto  x = fe_values.quadrature_point(q_index);
                     const auto &eps_v =
-                    fe_values[embdisplacement].symmetric_gradient(i, q_index);
-                    const auto &div_v = fe_values[embdisplacement].divergence(i, q_index);
-                    const auto &v = fe_values[embdisplacement].value(i,q_index); // test for displ
-                    const auto &q = fe_values[embdlm].value(i,q_index); // test for dlm
-                    // = 
+                      fe_values[embdisplacement].symmetric_gradient(i, q_index);
+                    const auto &div_v =
+                      fe_values[embdisplacement].divergence(i, q_index);
+                    const auto &v = fe_values[embdisplacement].value(
+                      i, q_index); // test for displ
+                    const auto &q =
+                      fe_values[embdlm].value(i, q_index); // test for dlm
+                    // =
 
                     for (const unsigned int j : fe_values.dof_indices())
-                    {
+                      {
+                        /*
+                          cell_matrix(i, j) +=
+                            (fe_values.shape_grad(i, q_index) * // grad
+                        phi_i(x_q) fe_values.shape_grad(j, q_index) * // grad
+                        phi_j(x_q) fe_values.JxW(q_index));           // dx
+                        cell_rhs(i) +=
+                          (fe_values.shape_value(i, q_index) * // phi_i(x_q)
+                           space.forcing_term.value(
+                             fe_values.quadrature_point(q_index)) * // f(x_q)
+                           fe_values.JxW(q_index));                 // dx
+                        */
 
-                    /*
-                      cell_matrix(i, j) +=
-                        (fe_values.shape_grad(i, q_index) * // grad phi_i(x_q)
-                         fe_values.shape_grad(j, q_index) * // grad phi_j(x_q)
-                         fe_values.JxW(q_index));           // dx
+                        const auto &eps_u =
+                          fe_values[embdisplacement].symmetric_gradient(
+                            j, q_index);
+                        const auto &div_u =
+                          fe_values[embdisplacement].divergence(j, q_index);
+                        const auto &u = fe_values[embdisplacement].value(
+                          j, q_index); // test for displ
+                        const auto &dlm =
+                          fe_values[embdlm].value(j, q_index); // test for dlm
+                        cell_matrix(i, j) +=
+                          (2 * mu.value(x) * eps_v * eps_u +
+                           lambda.value(x) * div_v * div_u + dlm * u + v * q) *
+                          fe_values.JxW(
+                            q_index); // dx mu.value(x),lambda.value(x)
+                      }
+
                     cell_rhs(i) +=
                       (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                       space.forcing_term.value(
-                         fe_values.quadrature_point(q_index)) * // f(x_q)
-                       fe_values.JxW(q_index));                 // dx
-                    */
-
-                      const auto &eps_u = fe_values[embdisplacement].symmetric_gradient(j, q_index);
-                      const auto &div_u =
-                      fe_values[embdisplacement].divergence(j, q_index);
-                      const auto &u = fe_values[embdisplacement].value(j,q_index); // test for displ
-                      const auto &dlm = fe_values[embdlm].value(j,q_index); // test for dlm
-                      cell_matrix(i, j) += (2 * mu.value(x) * eps_v * eps_u +
-                                          lambda.value(x) * div_v * div_u + dlm*u + v*q) *
-                                          fe_values.JxW(q_index); // dx mu.value(x),lambda.value(x)
-                    }
-
-                  cell_rhs(i) +=
-                    (fe_values.shape_value(i, q_index) * // phi_i(x_q)
-                      this->embedded.forcing_term.value(x,
-                      this->embedded.finite_element()
-                      .system_to_component_index(i)
-                      .first) * // f(x_q)
-                      fe_values.JxW(q_index));             // dx
+                       this->embedded.forcing_term.value(
+                         x,
+                         this->embedded.finite_element()
+                           .system_to_component_index(i)
+                           .first) *            // f(x_q)
+                       fe_values.JxW(q_index)); // dx
                   }
-
               }
 
             embedded.constraints.distribute_local_to_global(
@@ -296,7 +315,7 @@ namespace PDEs
     }
   }
 
-  
+
   // da studiare dopo aver capito l'asssemblaggio
   template <int dim, int spacedim, typename LacType>
   void
@@ -338,18 +357,18 @@ namespace PDEs
     */
 
     // Solution of the system with block-tri preconditioner
-    auto A     = linear_operator<Vec>(space.matrix.block(0,0));
-    auto Ct    = linear_operator<Vec>(coupling_matrix.block(0,1));
-    auto C     = transpose_operator(Ct);
-    auto B     = linear_operator<Vec>(embedded.matrix.block(0,0));
+    auto A  = linear_operator<Vec>(space.matrix.block(0, 0));
+    auto Ct = linear_operator<Vec>(coupling_matrix.block(0, 1));
+    auto C  = transpose_operator(Ct);
+    auto B  = linear_operator<Vec>(embedded.matrix.block(0, 0));
 
-    //auto A_inv = 
-    //auto B_inv = 
+    // auto A_inv =
+    // auto B_inv =
     // --------
 
     /*
     // *** Solution of the system in the non-coupling case ***
-    auto &A1 = space.matrix.block(0,0); 
+    auto &A1 = space.matrix.block(0,0);
     auto &A2 = embedded.matrix.block(0,0);
 
     auto &f1 = space.rhs.block(0);
@@ -365,7 +384,7 @@ namespace PDEs
     embedded.preconditioner.initialize(A2);
     cg.solve(A2, u2, f2, embedded.preconditioner);
     // ***  ***
-    
+
 
     // Distribute all constraints.
     embedded.constraints.distribute(u2);
@@ -388,7 +407,8 @@ namespace PDEs
 
 
   /* Questo e' il metodo che fa partire il programma sostanzialmente,
-  quindi richiama tutte le funzioni precedenti e poi fa un po' di post-processing */
+  quindi richiama tutte le funzioni precedenti e poi fa un po' di
+  post-processing */
 
   template <int dim, int spacedim, typename LacType>
   void

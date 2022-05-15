@@ -87,14 +87,14 @@ namespace PDEs
     typename LacType::BlockSparsityPattern coupling_sparsity;
     typename LacType::BlockSparseMatrix    coupling_matrix;
 
-    ParsedTools::Function<spacedim>  lambda;
-    ParsedTools::Function<spacedim>  mu;
+    ParsedTools::Function<spacedim> lambda;
+    ParsedTools::Function<spacedim> mu;
 
     const FEValuesExtractors::Vector spacedisplacement;
     const FEValuesExtractors::Vector embdisplacement;
     const FEValuesExtractors::Vector embdlm;
 
-    //ParsedLAC::InverseOperator mass_solver;
+    // ParsedLAC::InverseOperator mass_solver;
   };
 
   // namespace Serial
