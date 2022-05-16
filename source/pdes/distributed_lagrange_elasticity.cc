@@ -323,38 +323,39 @@ namespace PDEs
   {
     TimerOutput::Scope timer_section(space.timer, "Solve system");
 
-    /*
+
     using BVec       = typename LacType::BlockVector;
     using Vec        = typename BVec::BlockType;
     using LinOp      = LinearOperator<Vec>;
     using BlockLinOp = BlockLinearOperator<BVec>;
 
-    auto A     = linear_operator<Vec>(space.matrix.block(0, 0));
-    auto Bt    = linear_operator<Vec>(coupling_matrix);
-    auto B     = transpose_operator(Bt);
-    auto A_inv = A;
-    auto M     = linear_operator<Vec>(embedded.matrix.block(0, 0));
-    auto M_inv = M;
+    /*
+        auto A     = linear_operator<Vec>(space.matrix.block(0, 0));
+        auto Bt    = linear_operator<Vec>(coupling_matrix);
+        auto B     = transpose_operator(Bt);
+        auto A_inv = A;
+        auto M     = linear_operator<Vec>(embedded.matrix.block(0, 0));
+        auto M_inv = M;
 
-    space.preconditioner.initialize(space.matrix.block(0, 0));
-    A_inv = space.inverse_operator(A, space.preconditioner);
+        space.preconditioner.initialize(space.matrix.block(0, 0));
+        A_inv = space.inverse_operator(A, space.preconditioner);
 
-    embedded.preconditioner.initialize(embedded.matrix.block(0, 0));
-    auto M_prec = linear_operator<Vec>(M, embedded.preconditioner);
-    M_inv       = mass_solver(M, M_prec);
+        embedded.preconditioner.initialize(embedded.matrix.block(0, 0));
+        auto M_prec = linear_operator<Vec>(M, embedded.preconditioner);
+        M_inv       = mass_solver(M, M_prec);
 
-    auto &lambda       = embedded.solution.block(0);
-    auto &embedded_rhs = embedded.rhs.block(0);
-    auto &solution     = space.solution.block(0);
-    auto &rhs          = space.rhs.block(0);
+        auto &lambda       = embedded.solution.block(0);
+        auto &embedded_rhs = embedded.rhs.block(0);
+        auto &solution     = space.solution.block(0);
+        auto &rhs          = space.rhs.block(0);
 
-    auto S      = B * A_inv * Bt;
-    auto S_prec = identity_operator(S);
-    auto S_inv  = embedded.inverse_operator(S, M_inv);
+        auto S      = B * A_inv * Bt;
+        auto S_prec = identity_operator(S);
+        auto S_inv  = embedded.inverse_operator(S, M_inv);
 
-    lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
-    solution = A_inv * (rhs - Bt * lambda);
-    */
+        lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
+        solution = A_inv * (rhs - Bt * lambda);
+        */
 
     // Solution of the system with block-tri preconditioner
     auto A  = linear_operator<Vec>(space.matrix.block(0, 0));
