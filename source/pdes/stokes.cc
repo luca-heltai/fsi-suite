@@ -162,17 +162,17 @@ namespace PDEs
     // AA.block(1, 1) *= 0;
 
 
-    this->preconditioner.initialize(m.block(0, 0));
+    this->preconditioner.initialize(m.block(0, 0));//"mumps"
     schur_preconditioner.initialize(m.block(1, 1));
 
-    auto precA = linear_operator<Vec>(A, this->preconditioner);
+    auto precA = linear_operator<Vec>(A, this->preconditioner);// scritto di la'
 
     const auto S     = -1.0 * B * precA * Bt;
     auto       precM = linear_operator<Vec>(Mp, schur_preconditioner);
     // auto       precS = schur_solver(S, precM);
     auto precS = schur_solver(Mp, precM);
 
-    std::array<LinOp, 2> diag_ops = {{precA, precS}};
+    std::array<LinOp, 2> diag_ops = {{precA, precS}}; //costruisco prec. block-diag
     auto diagprecAA               = block_diagonal_operator<2, BVec>(diag_ops);
 
     deallog << "Preconditioners initialized" << std::endl;
@@ -180,13 +180,13 @@ namespace PDEs
     // If we use gmres or another non symmetric solver, use a non-symmetric
     // preconditioner
     if (this->inverse_operator.get_solver_name() != "minres")
-      {
+      {//block-tri
         const auto precAA = block_forward_substitution(AA, diagprecAA);
         const auto inv    = this->inverse_operator(AA, precAA);
         this->solution    = inv * this->rhs;
       }
     else
-      {
+      {//block-diag
         const auto inv = this->inverse_operator(AA, diagprecAA);
         this->solution = inv * this->rhs;
       }

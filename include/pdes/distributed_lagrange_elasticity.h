@@ -84,8 +84,8 @@ namespace PDEs
 
     ParsedTools::NonMatchingCoupling<dim, spacedim> coupling;
 
-    typename LacType::BlockSparsityPattern coupling_sparsity;
-    typename LacType::BlockSparseMatrix    coupling_matrix;
+    typename LacType::SparsityPattern coupling_sparsity;
+    typename LacType::SparseMatrix    coupling_matrix;
 
     ParsedTools::Function<spacedim> lambda;
     ParsedTools::Function<spacedim> mu;

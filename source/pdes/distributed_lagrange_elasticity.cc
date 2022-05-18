@@ -39,11 +39,11 @@ namespace PDEs
     : ParameterAcceptor("Distributed Lagrange")
     , space("u,u", "Space") // space("u", "Space")
     , space_cache(space.triangulation)
-    , embedded("w,w,lambda,lambda", "Embedded") // embedded("w", "Embedded")
+    , embedded("w,w,lambda,lambda", "Embedded") // embedded("w", "Embedded") qui non sto usando 4 volte "w" .. ?!?
     , embedded_cache(embedded.triangulation)
     , coupling("/Coupling",
-               ComponentMask(),
-               ComponentMask({0, 0, 1, 1})) // tutte le coponenti della prima
+               ComponentMask({0, 0, 1, 1}), 
+               ComponentMask()) // tutte le coponenti della prima
                                             // con la seconda della seconda var.
     //, mass_solver("/Mass solver")
     , lambda("/LinearElasticity/Lame coefficients", "1.0", "lambda")
@@ -100,8 +100,9 @@ namespace PDEs
                           space.mpi_communicator,
                           col_indices);
 
-    BlockDynamicSparsityPattern dsp(space.dofs_per_block,
-                                    embedded.dofs_per_block);
+    DynamicSparsityPattern dsp(space.dof_handler.n_dofs(),
+                               embedded.dof_handler.n_dofs(),
+                               row_indices);
 
     coupling.assemble_sparsity(dsp);
 
@@ -110,8 +111,8 @@ namespace PDEs
                                                space.mpi_communicator,
                                                space.locally_relevant_dofs[0]);
 
-    coupling_matrix.reinit(space.locally_owned_dofs,
-                           embedded.locally_owned_dofs,
+    coupling_matrix.reinit(row_indices,
+                           col_indices,
                            dsp,
                            space.mpi_communicator);
   }
@@ -358,14 +359,53 @@ namespace PDEs
         */
 
     // Solution of the system with block-tri preconditioner
-    auto A  = linear_operator<Vec>(space.matrix.block(0, 0));
-    auto Ct = linear_operator<Vec>(coupling_matrix.block(0, 1));
-    auto C  = transpose_operator(Ct);
-    auto B  = linear_operator<Vec>(embedded.matrix.block(0, 0));
+    // auto A  = linear_operator<Vec>(space.matrix.block(0, 0));
+    // auto Ct = linear_operator<Vec>(coupling_matrix); //la matrice e' intera
+    // auto C  = transpose_operator(Ct);
+    // auto B  = linear_operator<Vec>(embedded.matrix.block(0, 0));
 
-    // auto A_inv =
-    // auto B_inv =
-    // --------
+    //usare sparse direct mumps per invertire B e Ct,
+    //va fatto sulla matrice e non sul linear operator, che costruisco dopo
+    // auto Ainv = linear_operator<Vec>(A,mumpsA) creo un operatore 'uguale' ad A,
+    // ma con dentro mumpsA, invertita come sopra 
+    // vedere precondizionatore diagonale che c'e' in stokes
+
+    //SolverControl cn;
+    //PETScWrappers::SparseDirectMUMPS solver(cn, space.mpi_communicator);
+    // Inverto la matrice A con MUMPS
+    //solver.solve(space.matrix,space.solution,space.rhs);
+    // // Inverto la matrice B - same
+    // auto mumpsB = solver.solve()
+    // // Linear Operators
+    // auto Ainv = linear_operator<Vec>(A,mumpsA);
+    // auto Binv = linear_operator<Vec>(B,mumpsB)
+
+    auto A     = linear_operator<Vec>(space.matrix.block(0,0));
+    auto A_inv = A;
+    space.preconditioner.initialize(space.matrix.block(0, 0));
+    A_inv = space.inverse_operator(A, space.preconditioner);
+
+    auto B     = linear_operator<Vec>(embedded.matrix.block(0, 0));
+    auto B_inv = B;
+    embedded.preconditioner.initialize(embedded.matrix.block(0, 0));
+    B_inv = space.inverse_operator(B, embedded.preconditioner);
+
+    auto rhs          = space.rhs.block(0);
+
+    std::array<LinOp, 2> diag_ops = {{A_inv, B_inv}}; //costruisco prec. block-diag
+    auto diagprecAA               = block_diagonal_operator<2, BVec>(diag_ops);
+
+    auto Ct = linear_operator<Vec>(coupling_matrix); //la matrice e' intera
+    auto C  = transpose_operator(Ct);
+    //auto CC = block_operator<1, 2, BVec>({{{ZeroC, C}}});
+    //auto CCt  = transpose_operator(CC);
+
+    auto AA = block_operator<2, 2, BVec>({{{{A, Ct}}, {{C, B}}}});
+
+    // +++ fino qua compila e non si rompe +++
+
+    const auto inv = inverse_operator(AA, diagprecAA);
+    auto solution = inv * rhs;
 
     /*
     // *** Solution of the system in the non-coupling case ***
