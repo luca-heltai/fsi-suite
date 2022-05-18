@@ -176,7 +176,7 @@ namespace PDEs
     using Triangulation = typename std::conditional<
       dim == 1,
       dealii::parallel::shared::Triangulation<dim, spacedim>,
-      dealii::parallel::distributed::Triangulation<dim, spacedim>>::type;
+      dealii::parallel::shared::Triangulation<dim, spacedim>>::type;
 
     /**
      * Default CopyData object, used in the WorkStream class.

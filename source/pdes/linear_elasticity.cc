@@ -30,7 +30,9 @@ namespace PDEs
         "LinearElasticity")
     , lambda("/LinearElasticity/Lame coefficients", "1.0", "lambda")
     , mu("/LinearElasticity/Lame coefficients", "1.0", "mu")
-    , displacement(0)
+    , displacement(
+        0) // prima componente vettoriale che e' associata al displacement
+  // manca l'estrattore
   {
     this->output_results_call_back.connect([&]() { postprocess(); });
     this->check_consistency_call_back.connect([&]() {
@@ -59,6 +61,7 @@ namespace PDEs
     const auto &fe_values = scratch.reinit(cell);
     cell_matrix           = 0;
     cell_rhs              = 0;
+
 
     for (const unsigned int q_index : fe_values.quadrature_point_indices())
       {
