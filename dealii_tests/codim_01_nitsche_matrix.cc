@@ -103,7 +103,7 @@ test()
       space_constraints,
       ComponentMask(),
       MappingQ1<spacedim>(),
-      ConstantFunction<spacedim>(h));
+      Functions::ConstantFunction<spacedim>(h));
 
   Vector<double> ones(space_dh.n_dofs());
   ones                = 1.0;

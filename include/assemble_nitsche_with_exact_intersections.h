@@ -68,8 +68,8 @@ namespace dealii
       const ComponentMask &,
       const Mapping<dim0, spacedim> &,
       const Function<spacedim, typename Matrix::value_type>
-        &          nitsche_coefficient = ConstantFunction<spacedim>(1.0),
-      const double penalty             = 1.);
+        &nitsche_coefficient = Functions::ConstantFunction<spacedim>(1.0),
+      const double penalty   = 1.);
   } // namespace NonMatching
 } // namespace dealii
 

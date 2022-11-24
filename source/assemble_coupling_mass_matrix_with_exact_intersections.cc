@@ -139,17 +139,15 @@ namespace dealii
             }
         }
 
-      const bool dof_mask_is_active =
-        dof_mask.n_rows() == n_dofs_per_space_cell &&
-        dof_mask.n_cols() == n_dofs_per_immersed_cell;
+      // const bool dof_mask_is_active =
+      //   dof_mask.n_rows() == n_dofs_per_space_cell &&
+      //   dof_mask.n_cols() == n_dofs_per_immersed_cell;
 
 
       // Loop over vector of tuples, and gather everything together
       for (const auto &infos : cells_and_quads)
         {
           const auto &[first_cell, second_cell, quad_formula] = infos;
-
-
 
           local_cell_matrix = typename Matrix::value_type();
 
