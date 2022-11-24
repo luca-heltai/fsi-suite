@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('assemble__nitsche__with__exact__inters
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">deal.II/base/function_lib.h</a>&gt;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">deal.II/base/quadrature.h</a>&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">deal.II/dofs/dof_handler.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/dof__handler_8h.html">deal.II/dofs/dof_handler.h</a>&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html">deal.II/fe/mapping.h</a>&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">deal.II/fe/mapping_q1.h</a>&gt;</span></div>
@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('assemble__nitsche__with__exact__inters
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim0, <span class="keywordtype">int</span> dim1, <span class="keywordtype">int</span> spacedim, <span class="keyword">typename</span> Matrix&gt;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="namespacedealii_1_1_non_matching.html#a064649929f19dba99606086eb3579fcc">assemble_nitsche_with_exact_intersections</a>(</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="namespacedealii_1_1_non_matching.html#a1e37a333656510261b145bc8503bceb4">assemble_nitsche_with_exact_intersections</a>(</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim0, spacedim&gt;</a> &amp;,</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keyword">const</span> std::vector&lt;std::tuple&lt;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">dealii::Triangulation&lt;dim0, spacedim&gt;::cell_iterator</a>,</div>
@@ -162,42 +162,42 @@ $(document).ready(function(){initNavTree('assemble__nitsche__with__exact__inters
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a> &amp;,</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping&lt;dim0, spacedim&gt;</a> &amp;,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunction.html">Function&lt;spacedim, typename Matrix::value_type&gt;</a></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        &amp;          nitsche_coefficient = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1ConstantFunction.html">ConstantFunction&lt;spacedim&gt;</a>(1.0),</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">double</span> penalty             = 1.);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        &amp;nitsche_coefficient = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1ConstantFunction.html">Functions::ConstantFunction&lt;spacedim&gt;</a>(1.0),</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">double</span> penalty   = 1.);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  } <span class="comment">// namespace NonMatching</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;} <span class="comment">// namespace dealii</span></div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="asparse__matrix_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">sparse_matrix.h</a></div></div>
 <div class="ttc" id="acompute__intersections_8h_html"><div class="ttname"><a href="compute__intersections_8h.html">compute_intersections.h</a></div></div>
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
-<div class="ttc" id="agrid_2tria_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">tria.h</a></div></div>
-<div class="ttc" id="amapping__q1_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">mapping_q1.h</a></div></div>
+<div class="ttc" id="aconfig_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="amapping__q1_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q1_8h.html">mapping_q1.h</a></div></div>
+<div class="ttc" id="adof__handler_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dof__handler_8h.html">dof_handler.h</a></div></div>
 <div class="ttc" id="aclassFunctions_1_1ConstantFunction_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFunctions_1_1ConstantFunction.html">Functions::ConstantFunction</a></div></div>
 <div class="ttc" id="aclassComponentMask_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classComponentMask.html">ComponentMask</a></div></div>
 <div class="ttc" id="aclassDoFHandler_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a></div></div>
-<div class="ttc" id="afunction__lib_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">function_lib.h</a></div></div>
 <div class="ttc" id="aclassMapping_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classMapping.html">Mapping</a></div></div>
-<div class="ttc" id="agrid__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">grid_tools.h</a></div></div>
+<div class="ttc" id="asparse__matrix_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">sparse_matrix.h</a></div></div>
+<div class="ttc" id="agrid_2tria_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">tria.h</a></div></div>
+<div class="ttc" id="agrid__tools_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools_8h.html">grid_tools.h</a></div></div>
+<div class="ttc" id="amapping_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html">mapping.h</a></div></div>
 <div class="ttc" id="anamespaceNonMatching_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceNonMatching.html">NonMatching</a></div></div>
-<div class="ttc" id="anamespacedealii_1_1_non_matching_html_a064649929f19dba99606086eb3579fcc"><div class="ttname"><a href="namespacedealii_1_1_non_matching.html#a064649929f19dba99606086eb3579fcc">dealii::NonMatching::assemble_nitsche_with_exact_intersections</a></div><div class="ttdeci">void assemble_nitsche_with_exact_intersections(const DoFHandler&lt; dim0, spacedim &gt; &amp;, const std::vector&lt; std::tuple&lt; typename Triangulation&lt; dim0, spacedim &gt;::cell_iterator, typename Triangulation&lt; dim1, spacedim &gt;::cell_iterator, Quadrature&lt; spacedim &gt;&gt;&gt; &amp;, Matrix &amp;matrix, const AffineConstraints&lt; typename Matrix::value_type &gt; &amp;, const ComponentMask &amp;, const Mapping&lt; dim0, spacedim &gt; &amp;, const Function&lt; spacedim, typename Matrix::value_type &gt; &amp;nitsche_coefficient=ConstantFunction&lt; spacedim &gt;(1.0), const double penalty=1.)</div><div class="ttdoc">Given two non-matching, overlapping grids, this function computes the local contributions M_{ij}:= \i...</div></div>
 <div class="ttc" id="aclassAffineConstraints_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classAffineConstraints.html">AffineConstraints</a></div></div>
-<div class="ttc" id="amapping_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping_8h.html">mapping.h</a></div></div>
 <div class="ttc" id="agroup__Iterators_html_ga48cef91f67c38d6ec17912922de00f90"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#ga48cef91f67c38d6ec17912922de00f90">cell_iterator</a></div><div class="ttdeci">typename ::Triangulation&lt; dim, spacedim &gt;::cell_iterator cell_iterator</div></div>
-<div class="ttc" id="adofs_2dof__handler_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dofs_2dof__handler_8h.html">dof_handler.h</a></div></div>
-<div class="ttc" id="agrid__tools__cache_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">grid_tools_cache.h</a></div></div>
-<div class="ttc" id="ainclude_2deal_8II_2base_2quadrature_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">quadrature.h</a></div></div>
-<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
 <div class="ttc" id="aclassFunction_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classFunction.html">Function</a></div></div>
 <div class="ttc" id="aclassQuadrature_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classQuadrature.html">Quadrature</a></div></div>
+<div class="ttc" id="afunction__lib_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/function__lib_8h.html">function_lib.h</a></div></div>
 <div class="ttc" id="aclassTriaIterator_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriaIterator.html">TriaIterator</a></div></div>
+<div class="ttc" id="ainclude_2deal_8II_2base_2quadrature_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">quadrature.h</a></div></div>
+<div class="ttc" id="anamespacedealii_1_1_non_matching_html_a1e37a333656510261b145bc8503bceb4"><div class="ttname"><a href="namespacedealii_1_1_non_matching.html#a1e37a333656510261b145bc8503bceb4">dealii::NonMatching::assemble_nitsche_with_exact_intersections</a></div><div class="ttdeci">void assemble_nitsche_with_exact_intersections(const DoFHandler&lt; dim0, spacedim &gt; &amp;, const std::vector&lt; std::tuple&lt; typename Triangulation&lt; dim0, spacedim &gt;::cell_iterator, typename Triangulation&lt; dim1, spacedim &gt;::cell_iterator, Quadrature&lt; spacedim &gt;&gt;&gt; &amp;, Matrix &amp;matrix, const AffineConstraints&lt; typename Matrix::value_type &gt; &amp;, const ComponentMask &amp;, const Mapping&lt; dim0, spacedim &gt; &amp;, const Function&lt; spacedim, typename Matrix::value_type &gt; &amp;nitsche_coefficient=Functions::ConstantFunction&lt; spacedim &gt;(1.0), const double penalty=1.)</div><div class="ttdoc">Given two non-matching, overlapping grids, this function computes the local contributions M_{ij}:= \i...</div></div>
+<div class="ttc" id="agrid__tools__cache_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid__tools__cache_8h.html">grid_tools_cache.h</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="assemble__nitsche__with__exact__intersections_8h.html">assemble_nitsche_with_exact_intersections.h</a></li>
-    <li class="footer">Generated on Wed Apr 27 2022 12:07:47 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Nov 24 2022 13:19:39 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

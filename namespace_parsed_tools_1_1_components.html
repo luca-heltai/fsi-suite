@@ -259,7 +259,7 @@ template&lt;int dim, int spacedim&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;FiniteElement&lt;dim, spacedim&gt;&gt; </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::unique_ptr&lt;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFiniteElement.html">FiniteElement&lt;dim, spacedim&gt;</a>&gt; </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="source_2pdes_2serial_2reduced__lagrange_8cc_source.html#l00106">PDEs::Serial::ReducedLagrange&lt; dim, spacedim &gt;::generate_grids_and_fes()</a>.</p>
 
@@ -745,7 +745,7 @@ template&lt;typename Container &gt; </div>
 
 <p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00170">component_to_indices()</a>, <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a0a2b9ceded96f25b47eccd7c177dc67e">Utilities::split_string_list()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="data__out_8h_source.html#l00181">ParsedTools::DataOut&lt; dim &gt;::add_data_vector()</a>, and <a class="el" href="boundary__conditions_8cc_source.html#l00030">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="data__out_8h_source.html#l00183">ParsedTools::DataOut&lt; dim &gt;::add_data_vector()</a>, and <a class="el" href="boundary__conditions_8cc_source.html#l00030">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
 
 </div>
 </div>
@@ -779,9 +779,9 @@ template&lt;typename Container &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="components_8cc_source.html#l00226">226</a> of file <a class="el" href="components_8cc_source.html">components.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00156">component_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMappingFEField_3_01dim_00_01spacedim_00_01VectorType_00_01void_01_4_1_1InternalData.html#ac423aa5e1211ba2cd230a778c8df0b0d">mask</a>, <a class="el" href="components_8cc_source.html#l00032">n_components()</a>, and <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacePhysics_1_1Elasticity_1_1Kinematics.html#ae880749870e5b45fbb6a441fd96c1a07">b()</a>, <a class="el" href="components_8cc_source.html#l00134">block_indices()</a>, <a class="el" href="components_8cc_source.html#l00156">component_indices()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities.html#a6195c5f009ea8c7c536c6ffdf108c32f">Utilities::int_to_string()</a>, <a class="el" href="components_8cc_source.html#l00226">mask()</a>, <a class="el" href="components_8cc_source.html#l00032">n_components()</a>, and <a class="el" href="components_8cc_source.html#l00056">names_to_blocks()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="boundary__conditions_8cc_source.html#l00030">ParsedTools::BoundaryConditions&lt; dim &gt;::BoundaryConditions()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="components_8cc_source.html#l00226">mask()</a>.</p>
 
 </div>
 </div>
@@ -795,7 +795,7 @@ template&lt;typename Container &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="namespace_parsed_tools_1_1_components.html">Components</a></li>
-    <li class="footer">Generated on Wed Apr 27 2022 12:07:49 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Nov 24 2022 13:19:40 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

@@ -11,31 +11,27 @@ var hierarchy =
     [ "dealii::Patterns::Tools::Convert< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html", null ],
     [ "dealii::Patterns::Tools::Convert< T, typename std::enable_if< std::is_enum< T >::value >::type >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_t_00_01typename_01std_1_1enable__if_3_01std2b5d6a398d4624a6eb59ef399db80e09.html", null ],
     [ "dealii::Patterns::Tools::Convert< types::manifold_id >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01types_1_1manifold__id_01_4.html", null ],
-    [ "DataOutInterface< patch_dim, patch_spacedim >", "http://www.dealii.org/developer/doxygen/deal.II/classDataOutInterface.html", [
-      [ "DataOut_DoFData< dim, dim, dim, dim >", "http://www.dealii.org/developer/doxygen/deal.II/classDataOut__DoFData.html", [
-        [ "ParsedTools::DataOut< dim >", "class_parsed_tools_1_1_data_out.html", null ]
-      ] ]
-    ] ],
     [ "FiniteElementData< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFiniteElementData.html", [
-      [ "ParsedTools::FiniteElement< dim >", "class_parsed_tools_1_1_finite_element.html", null ],
       [ "ParsedTools::FiniteElement< dim, dim >", "class_parsed_tools_1_1_finite_element.html", null ]
     ] ],
-    [ "FunctionTime< Number >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionTime.html", [
-      [ "Function< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", [
+    [ "FunctionTime< numbers::NumberTraits< double >::real_type >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionTime.html", [
+      [ "Function< dim, class >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", [
         [ "AutoDerivativeFunction< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classAutoDerivativeFunction.html", [
           [ "FunctionParser< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html", [
             [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
             [ "ParsedTools::Function< dim >", "class_parsed_tools_1_1_function.html", null ]
           ] ]
         ] ]
-      ] ],
-      [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ]
+      ] ]
     ] ],
     [ "ParsedTools::GridInfo", "struct_parsed_tools_1_1_grid_info.html", null ],
     [ "LAC::Initializer", "class_l_a_c_1_1_initializer.html", null ],
     [ "LAC::LAdealii", "struct_l_a_c_1_1_l_adealii.html", null ],
     [ "LAC::LAPETSc", "struct_l_a_c_1_1_l_a_p_e_t_sc.html", null ],
     [ "LAC::LATrilinos", "struct_l_a_c_1_1_l_a_trilinos.html", null ],
+    [ "ParserImplementation< dim, double >", "http://www.dealii.org/developer/doxygen/deal.II/classinternal_1_1FunctionParser_1_1ParserImplementation.html", [
+      [ "FunctionParser< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html", null ]
+    ] ],
     [ "PatternBase", null, [
       [ "dealii::Patterns::UnsignedInteger", "classdealii_1_1_patterns_1_1_unsigned_integer.html", null ]
     ] ],
@@ -44,10 +40,8 @@ var hierarchy =
       [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ]
     ] ],
     [ "Subscriptor", "http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html", [
-      [ "ParsedTools::FiniteElement< dim >", "class_parsed_tools_1_1_finite_element.html", null ],
       [ "ParsedTools::FiniteElement< dim, dim >", "class_parsed_tools_1_1_finite_element.html", null ],
-      [ "Function< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", null ],
-      [ "ParsedTools::Function< spacedim >", "class_parsed_tools_1_1_function.html", null ],
+      [ "Function< dim, class >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", null ],
       [ "ParameterAcceptor", "http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html", [
         [ "ParsedTools::BoundaryConditions< dim >", "class_parsed_tools_1_1_boundary_conditions.html", null ],
         [ "ParsedTools::DataOut< dim >", "class_parsed_tools_1_1_data_out.html", null ],

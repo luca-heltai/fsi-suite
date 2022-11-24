@@ -201,7 +201,7 @@ $(document).ready(function(){initNavTree('boundary__conditions_8cc_source.html',
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html">types</a>.clear();</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      for (<span class="keyword">const</span> <span class="keyword">auto</span> &amp;comp : this-&gt;selected_components)</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          masks.push_back(<a class="code" href="namespace_parsed_tools_1_1_components.html#ac8c056bb7fbded2e979016d6a2519570">Components::mask</a>(this-&gt;component_names, comp));</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;          masks.push_back(Components::mask(this-&gt;component_names, comp));</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html">types</a>.push_back(<a class="code" href="namespace_parsed_tools_1_1_components.html#a6e6a1f22ae28a6e7a8a9c5f6f5c87a01">Components::type</a>(this-&gt;component_names, comp));</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
@@ -405,7 +405,6 @@ $(document).ready(function(){initNavTree('boundary__conditions_8cc_source.html',
 <div class="ttc" id="anamespacetypes_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespacetypes.html">types</a></div></div>
 <div class="ttc" id="anamespacenumbers_html_a1745778880e38cde9ef045471f4757fd"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a1745778880e38cde9ef045471f4757fd">numbers::invalid_boundary_id</a></div><div class="ttdeci">const types::boundary_id invalid_boundary_id</div></div>
 <div class="ttc" id="acomponents_8h_html"><div class="ttname"><a href="components_8h.html">components.h</a></div></div>
-<div class="ttc" id="anamespace_parsed_tools_1_1_components_html_ac8c056bb7fbded2e979016d6a2519570"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#ac8c056bb7fbded2e979016d6a2519570">ParsedTools::Components::mask</a></div><div class="ttdeci">ComponentMask mask(const std::string &amp;component_names, const std::string &amp;selected_component)</div><div class="ttdoc">Return a component mask corresponding to a given selected component, from a list of comma separated c...</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00226">components.cc:226</a></div></div>
 <div class="ttc" id="anamespacenumbers_html_a7f90588abd23542c3855a4a3e59766f1"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespacenumbers.html#a7f90588abd23542c3855a4a3e59766f1">numbers::SQRT2</a></div><div class="ttdeci">static constexpr double SQRT2</div></div>
 <div class="ttc" id="anamespace_parsed_tools_1_1_components_html_aeba21d2bf70c7483ead7c117fcda11df"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">ParsedTools::Components::n_components</a></div><div class="ttdeci">unsigned int n_components(const std::string &amp;component_names)</div><div class="ttdoc">Count the number of components in the given list of comma separated components.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00032">components.cc:32</a></div></div>
 <div class="ttc" id="agrid__info_8h_html"><div class="ttname"><a href="grid__info_8h.html">grid_info.h</a></div></div>
@@ -425,7 +424,7 @@ $(document).ready(function(){initNavTree('boundary__conditions_8cc_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html">source</a></li><li class="navelem"><a class="el" href="boundary__conditions_8cc.html">boundary_conditions.cc</a></li>
-    <li class="footer">Generated on Wed Apr 27 2022 12:07:48 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Nov 24 2022 13:19:39 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

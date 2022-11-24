@@ -131,13 +131,13 @@ $(document).ready(function(){initNavTree('projection__operator_8h_source.html','
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">template</span> &lt;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">typename</span> Range,</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">typename</span> Domain,</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">typename</span> Payload = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classinternal_1_1LinearOperatorImplementation_1_1EmptyPayload.html">internal::LinearOperatorImplementation::EmptyPayload</a>&gt;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPayload.html">Payload</a> = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classinternal_1_1LinearOperatorImplementation_1_1EmptyPayload.html">internal::LinearOperatorImplementation::EmptyPayload</a>&gt;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator&lt;Range, Domain, Payload&gt;</a></div>
 <div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">   77</a></span>&#160;  <a class="code" href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">projection_operator</a>(</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">const</span> Range &amp;                                            range_exemplar,</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">const</span> std::vector&lt;std::reference_wrapper&lt;const Domain&gt;&gt; &amp;local_basis,</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> Domain * domain_exemplar = <span class="keyword">nullptr</span>,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">const</span> Payload &amp;payload         = Payload())</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPayload.html">Payload</a> &amp;payload         = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPayload.html">Payload</a>())</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  {</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator&lt;Range, Domain, Payload&gt;</a> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>(payload);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a>.vmult = [range_exemplar, local_basis](Range &amp;       dst,</div>
@@ -205,24 +205,25 @@ $(document).ready(function(){initNavTree('projection__operator_8h_source.html','
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="asparse__matrix_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">sparse_matrix.h</a></div></div>
 <div class="ttc" id="anamespacedealii_html"><div class="ttname"><a href="namespacedealii.html">dealii</a></div></div>
+<div class="ttc" id="aconfig_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="aclassPayload_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classPayload.html">Payload</a></div></div>
 <div class="ttc" id="aclassinternal_1_1LinearOperatorImplementation_1_1EmptyPayload_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classinternal_1_1LinearOperatorImplementation_1_1EmptyPayload.html">internal::LinearOperatorImplementation::EmptyPayload</a></div></div>
 <div class="ttc" id="agroup__TrilinosWrappers_html_gaeb42ff68e1c4df1b45d95a1e3fa7f2c4"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__TrilinosWrappers.html#gaeb42ff68e1c4df1b45d95a1e3fa7f2c4">linear_operator</a></div><div class="ttdeci">LinearOperator&lt; Range, Domain, TrilinosWrappers::internal::LinearOperatorImplementation::TrilinosPayload &gt; linear_operator(const TrilinosWrappers::SparseMatrix &amp;operator_exemplar, const Matrix &amp;matrix)</div></div>
+<div class="ttc" id="asparse__matrix_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html">sparse_matrix.h</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_gae9a45f517af1401c50811a11083f9114"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
 <div class="ttc" id="astructVectorOperation_html_a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/structVectorOperation.html#a40c50779cd14ba89bbf0bd9b4561964cae1077e8dbf4afea5d2df8c8b723c0708">VectorOperation::add</a></div><div class="ttdeci">add</div></div>
+<div class="ttc" id="alinear__operator__tools_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/linear__operator__tools_8h.html">linear_operator_tools.h</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga9442b63275c9ef3fab29bc222831c49c"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga9442b63275c9ef3fab29bc222831c49c">AssertDimension</a></div><div class="ttdeci">#define AssertDimension(dim1, dim2)</div></div>
-<div class="ttc" id="alinear__operator__tools_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/linear__operator__tools_8h.html">linear_operator_tools.h</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga70a0bb353656e704acf927945277bbc6"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a></div><div class="ttdeci">#define Assert(cond, exc)</div></div>
-<div class="ttc" id="avector_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/vector_8h.html">vector.h</a></div></div>
-<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
 <div class="ttc" id="anamespacedealii_html_abd4e50e30f64abeaa4ec50743212cbcb"><div class="ttname"><a href="namespacedealii.html#abd4e50e30f64abeaa4ec50743212cbcb">dealii::projection_operator</a></div><div class="ttdeci">LinearOperator&lt; Range, Domain, Payload &gt; projection_operator(const Range &amp;range_exemplar, const std::vector&lt; std::reference_wrapper&lt; const Domain &gt;&gt; &amp;local_basis, const Domain *domain_exemplar=nullptr, const Payload &amp;payload=Payload())</div><div class="ttdoc">Construct a LinearOperator object that projects a vector onto a basis.</div><div class="ttdef"><b>Definition:</b> <a href="projection__operator_8h_source.html#l00077">projection_operator.h:77</a></div></div>
+<div class="ttc" id="avector_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/vector_8h.html">vector.h</a></div></div>
 <div class="ttc" id="aclassLinearOperator_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classLinearOperator.html">LinearOperator</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="projection__operator_8h.html">projection_operator.h</a></li>
-    <li class="footer">Generated on Wed Apr 27 2022 12:07:48 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Nov 24 2022 13:19:39 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

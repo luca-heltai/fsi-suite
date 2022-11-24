@@ -308,7 +308,7 @@ Output name</h2>
 <dl class="section warning"><dt>Warning</dt><dd>The newly generated grid is written within the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597" title="Fill a triangulation according to the parsed parameters.">generate()</a> function, before any refinement occurs. This allows you to write a grid to file, and then use the same file to read it back in as a coarse mesh, <em>irrespective</em> of the <code>Initial grid refinement</code> parameter. If you want to output explicitly the refined version of the grid, you should call the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method with the grid you want to output.</dd></dl>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Transform to simplex grid</h2>
-<p>If this is set to true, the class assumes you have read or generated a hex grid, and want to transform it to a simplex grid, i.e. the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#ac7515d2b17c025dddc0e37286fb8d216">GridGenerator::convert_hypercube_to_simplex_mesh()</a> is called with the grid that has been generated using <code>Input name</code> and <code>Arguments</code>.</p>
+<p>If this is set to true, the class assumes you have read or generated a hex grid, and want to transform it to a simplex grid, i.e. the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a01c9d0d7ff5858b45531b626c3a94c2e">GridGenerator::convert_hypercube_to_simplex_mesh()</a> is called with the grid that has been generated using <code>Input name</code> and <code>Arguments</code>.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Examples</h2>
 <p>In the following examples we assume that the class was instantiated with section name equal to "/". We report the example input parameter file, and show a plot of the resulting grid <b>after</b> refinement, i.e., we call the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method ourselves. In order to regenerate the following examples, just place this somwhere in your code:</p>
@@ -614,14 +614,14 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassTriangulation_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation</a></div></div>
+<div class="ttc" id="aclassTriangulation_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html">Triangulation&lt; dim, spacedim &gt;</a></div></div>
 <div class="ttc" id="atria__description_8cc_html_ab695339a227bd369fcea767631247cff"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a></div><div class="ttdeci">const ::Triangulation&lt; dim, spacedim &gt; &amp; tria</div></div>
 <div class="ttc" id="aclassParameterAcceptor_html_a8c735525d2865112e5d67f9ba697224e"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a8c735525d2865112e5d67f9ba697224e">ParameterAcceptor::initialize</a></div><div class="ttdeci">static void initialize(const std::string &amp;filename=&quot;&quot;, const std::string &amp;output_filename=&quot;&quot;, const ParameterHandler::OutputStyle output_style_for_output_filename=ParameterHandler::Short, ParameterHandler &amp;prm=ParameterAcceptor::prm, const ParameterHandler::OutputStyle output_style_for_filename=ParameterHandler::DefaultStyle)</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator</a></li>
-    <li class="footer">Generated on Wed Apr 27 2022 12:07:49 for Fluid structure interaction suite by
+    <li class="footer">Generated on Thu Nov 24 2022 13:19:40 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
