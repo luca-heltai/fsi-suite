@@ -226,7 +226,7 @@ namespace PDEs
             space_constraints,
             MappingQ1<spacedim, spacedim>(),
             embedded_value,
-            ConstantFunction<spacedim>(2.0),
+            Functions::ConstantFunction<spacedim>(2.0),
             penalty);
       }
     }
