@@ -45,7 +45,7 @@
 </g>
 </g>
 <!-- Node1&#45;&gt;Node3 -->
-<g id="edge16" class="edge">
+<g id="edge17" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <path fill="none" stroke="midnightblue" d="M486.66,-296.99C435.21,-292.38 372.61,-280.95 322.5,-254 284.69,-233.66 253.7,-191.93 239.26,-170.07"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="486.54,-300.49 496.8,-297.82 487.12,-293.52 486.54,-300.49"/>
@@ -61,7 +61,7 @@
 </g>
 </g>
 <!-- Node1&#45;&gt;Node8 -->
-<g id="edge18" class="edge">
+<g id="edge19" class="edge">
 <title>Node1&#45;&gt;Node8</title>
 <path fill="none" stroke="midnightblue" d="M570.26,-282.34C563.84,-274.21 556.59,-264.02 551.5,-254 526.18,-204.12 553.08,-173.54 513.5,-134 487.23,-107.75 447.44,-95.12 414.11,-89.06"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="567.7,-284.74 576.74,-290.27 573.12,-280.31 567.7,-284.74"/>
@@ -98,10 +98,10 @@
 <path fill="none" stroke="midnightblue" d="M625.27,-287.63C664.77,-276.61 724.77,-259.87 767.21,-248.03"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="624.13,-284.31 615.44,-290.37 626.01,-291.05 624.13,-284.31"/>
 </g>
-<!-- Node15 -->
-<g id="node15" class="node">
-<title>Node15</title>
-<g id="a_node15"><a xlink:href="create__coupling__sparsity__pattern__with__exact__intersections_8cc.html" target="_top" xlink:title=" ">
+<!-- Node16 -->
+<g id="node16" class="node">
+<title>Node16</title>
+<g id="a_node16"><a xlink:href="create__coupling__sparsity__pattern__with__exact__intersections_8cc.html" target="_top" xlink:title=" ">
 <polygon fill="none" stroke="black" points="922,-212.5 922,-253.5 1053,-253.5 1053,-212.5 922,-212.5"/>
 <text text-anchor="start" x="930" y="-241.5" font-family="Helvetica,sans-Serif" font-size="10.00">source/create_coupling</text>
 <text text-anchor="start" x="930" y="-230.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sparsity_pattern_with</text>
@@ -109,9 +109,9 @@
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node15 -->
-<g id="edge17" class="edge">
-<title>Node1&#45;&gt;Node15</title>
+<!-- Node1&#45;&gt;Node16 -->
+<g id="edge18" class="edge">
+<title>Node1&#45;&gt;Node16</title>
 <path fill="none" stroke="midnightblue" d="M678.82,-289.35C744.89,-281.79 835.04,-269.9 913.5,-254 916.24,-253.44 919.03,-252.85 921.84,-252.22"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="678.38,-285.87 668.84,-290.47 679.17,-292.83 678.38,-285.87"/>
 </g>
@@ -218,17 +218,17 @@
 <g id="node11" class="node">
 <title>Node11</title>
 <g id="a_node11"><a xlink:href="poisson__nitsche__interface_8h.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="608,-140 608,-170 763,-170 763,-140 608,-140"/>
-<text text-anchor="start" x="616" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00">include/pdes/serial</text>
-<text text-anchor="middle" x="685.5" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">/poisson_nitsche_interface.h</text>
+<polygon fill="none" stroke="black" points="561,-140 561,-170 716,-170 716,-140 561,-140"/>
+<text text-anchor="start" x="569" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00">include/pdes/serial</text>
+<text text-anchor="middle" x="638.5" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">/poisson_nitsche_interface.h</text>
 </a>
 </g>
 </g>
 <!-- Node10&#45;&gt;Node11 -->
 <g id="edge11" class="edge">
 <title>Node10&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M651.28,-209.07C659.43,-196.44 669.29,-181.15 676.32,-170.23"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="648.19,-207.4 645.72,-217.7 654.08,-211.2 648.19,-207.4"/>
+<path fill="none" stroke="midnightblue" d="M637.14,-207.59C637.47,-195.26 637.85,-180.72 638.13,-170.23"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="633.64,-207.62 636.88,-217.7 640.64,-207.8 633.64,-207.62"/>
 </g>
 <!-- Node12 -->
 <g id="node12" class="node">
@@ -243,8 +243,8 @@
 <!-- Node11&#45;&gt;Node12 -->
 <g id="edge12" class="edge">
 <title>Node11&#45;&gt;Node12</title>
-<path fill="none" stroke="midnightblue" d="M654.95,-134.42C636.7,-122.72 613.94,-108.13 597.46,-97.57"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="653.2,-137.45 663.5,-139.9 656.97,-131.56 653.2,-137.45"/>
+<path fill="none" stroke="midnightblue" d="M618.88,-132.04C608.88,-120.86 597.02,-107.58 588.23,-97.75"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="616.48,-134.61 625.75,-139.73 621.7,-129.94 616.48,-134.61"/>
 </g>
 <!-- Node13 -->
 <g id="node13" class="node">
@@ -259,14 +259,30 @@
 <!-- Node11&#45;&gt;Node13 -->
 <g id="edge13" class="edge">
 <title>Node11&#45;&gt;Node13</title>
-<path fill="none" stroke="midnightblue" d="M700.9,-131.39C708.42,-120.34 717.23,-107.39 723.8,-97.75"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="697.95,-129.5 695.21,-139.73 703.73,-133.44 697.95,-129.5"/>
+<path fill="none" stroke="midnightblue" d="M665.98,-133.61C681.58,-122.03 700.72,-107.83 714.63,-97.5"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="663.67,-130.96 657.72,-139.73 667.84,-136.58 663.67,-130.96"/>
 </g>
 <!-- Node14&#45;&gt;Node11 -->
 <g id="edge15" class="edge">
 <title>Node14&#45;&gt;Node11</title>
-<path fill="none" stroke="midnightblue" d="M784.19,-212.82C761.07,-199.51 730.78,-182.07 709.89,-170.04"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="782.57,-215.93 792.98,-217.88 786.06,-209.86 782.57,-215.93"/>
+<path fill="none" stroke="midnightblue" d="M774.81,-213.87C743.16,-200.44 700.65,-182.39 671.57,-170.04"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="773.68,-217.2 784.25,-217.88 776.41,-210.75 773.68,-217.2"/>
+</g>
+<!-- Node15 -->
+<g id="node15" class="node">
+<title>Node15</title>
+<g id="a_node15"><a xlink:href="create__nitsche__rhs__with__exact__intersections_8cc.html" target="_top" xlink:title=" ">
+<polygon fill="none" stroke="black" points="734,-140 734,-170 911,-170 911,-140 734,-140"/>
+<text text-anchor="start" x="742" y="-158" font-family="Helvetica,sans-Serif" font-size="10.00">source/create_nitsche</text>
+<text text-anchor="middle" x="822.5" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">_rhs_with_exact_intersections.cc</text>
+</a>
+</g>
+</g>
+<!-- Node14&#45;&gt;Node15 -->
+<g id="edge16" class="edge">
+<title>Node14&#45;&gt;Node15</title>
+<path fill="none" stroke="midnightblue" d="M819.11,-207.59C819.92,-195.26 820.87,-180.72 821.56,-170.23"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="815.6,-207.5 818.44,-217.7 822.59,-207.96 815.6,-207.5"/>
 </g>
 </g>
 </svg>

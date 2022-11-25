@@ -65,7 +65,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -77,8 +76,8 @@ var NAVTREEINDEX =
 "amg_8cc.html",
 "class_p_d_es_1_1_linear_visco_elasticity.html#ab93b20a3d4f31a2bab2e7e9d21560e64",
 "class_parsed_l_a_c_1_1_inverse_operator.html#a794bc7b2207abb5e49afbf5e23344a84",
-"compute__intersections_8cc.html#ad8997b392191aae00268054a6bdc2540",
-"namespace_p_d_es.html"
+"compute__intersections_8cc.html#a804154ff221eec394054331d2b0d6f51",
+"namespace_p_d_es_1_1_m_p_i.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

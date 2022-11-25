@@ -1,0 +1,58 @@
+digraph "source/create_nitsche_rhs_with_exact_intersections.cc"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="source/create_nitsche\l_rhs_with_exact_intersections.cc",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="create_nitsche_rhs\l_with_exact_intersections.h",height=0.2,width=0.4,color="black",URL="$create__nitsche__rhs__with__exact__intersections_8h.html",tooltip=" "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="deal.II/base/config.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$config_8h.html.html",tooltip=" "];
+  Node2 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="deal.II/base/function.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$function_8h.html.html",tooltip=" "];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="deal.II/base/function\l_lib.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$function__lib_8h.html.html",tooltip=" "];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="deal.II/base/function.h",height=0.2,width=0.4,color="black",URL="$function_8h.html",tooltip=" "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="deal.II/base/function\l_parser.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$function__parser_8h.html.html",tooltip=" "];
+  Node6 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="deal.II/base/parameter\l_acceptor.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$parameter__acceptor_8h.html.html",tooltip=" "];
+  Node2 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="deal.II/base/quadrature.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$include_2deal_8II_2base_2quadrature_8h.html.html",tooltip=" "];
+  Node2 -> Node10 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="deal.II/dofs/dof_handler.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$dof__handler_8h.html.html",tooltip=" "];
+  Node10 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="deal.II/fe/mapping.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$mapping_8h.html.html",tooltip=" "];
+  Node2 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="deal.II/fe/mapping_q1.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$mapping__q1_8h.html.html",tooltip=" "];
+  Node2 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="deal.II/grid/grid_tools.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$grid__tools_8h.html.html",tooltip=" "];
+  Node2 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="deal.II/grid/grid_tools\l_cache.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$grid__tools__cache_8h.html.html",tooltip=" "];
+  Node2 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="deal.II/grid/tria.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$grid_2tria_8h.html.html",tooltip=" "];
+  Node2 -> Node16 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="deal.II/lac/vector.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$vector_8h.html.html",tooltip=" "];
+  Node2 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="set",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node2 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="tuple",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node2 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="vector",height=0.2,width=0.4,color="grey75",tooltip=" "];
+  Node2 -> Node20 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="compute_intersections.h",height=0.2,width=0.4,color="black",URL="$compute__intersections_8h.html",tooltip=" "];
+  Node20 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node11 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node12 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node13 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node14 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node15 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node17 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node18 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 -> Node19 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

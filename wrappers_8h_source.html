@@ -127,11 +127,11 @@ $(document).ready(function(){initNavTree('wrappers_8h_source.html',''); initResi
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  to_cgal(<span class="keyword">const</span> dealii::Point&lt;dim&gt; &amp;p)</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  {</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> constexpr (dim == 1)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      <a class="code" href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> CGALPointType(p[0]);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;      return CGALPointType(p[0]);</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    else if constexpr (dim == 2)</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      <a class="code" href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> CGALPointType(p[0], p[1]);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      return CGALPointType(p[0], p[1]);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    else if constexpr (dim == 3)</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      <a class="code" href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> CGALPointType(p[0], p[1], p[2]);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;      return CGALPointType(p[0], p[1], p[2]);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    else</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      Assert(false, <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a>());</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  }</div>
@@ -141,11 +141,11 @@ $(document).ready(function(){initNavTree('wrappers_8h_source.html',''); initResi
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  to_dealii(const CGALPointType &amp;p)</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  {</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> constexpr (dim == 1)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <a class="code" href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point</a>&lt;dim&gt;(CGAL::to_double(p.x()));</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      return <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point</a>&lt;dim&gt;(CGAL::to_double(p.x()));</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    else if constexpr (dim == 2)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point</a>&lt;dim&gt;(CGAL::to_double(p.x()), CGAL::to_double(p.y()));</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      return <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point</a>&lt;dim&gt;(CGAL::to_double(p.x()), CGAL::to_double(p.y()));</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    else if constexpr (dim == 3)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <a class="code" href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a> <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point</a>&lt;dim&gt;(CGAL::to_double(p.x()),</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      return <a class="code" href="namespacedealii.html">dealii</a>::<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point</a>&lt;dim&gt;(CGAL::to_double(p.x()),</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                                CGAL::to_double(p.y()),</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                CGAL::to_double(p.z()));</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    else</div>
@@ -160,14 +160,13 @@ $(document).ready(function(){initNavTree('wrappers_8h_source.html',''); initResi
 <div class="ttc" id="aconfig_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga7b52b286796c23ef9ff178faf7a4b68f"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcNotImplemented()</div></div>
 <div class="ttc" id="abase_2point_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/base_2point_8h.html">point.h</a></div></div>
-<div class="ttc" id="acreate__nitsche__rhs__with__exact__intersections_8cc_html_a9717e7bbecb906637e86cef6da3d83c2"><div class="ttname"><a href="create__nitsche__rhs__with__exact__intersections_8cc.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></div><div class="ttdeci">return</div><div class="ttdef"><b>Definition:</b> <a href="create__nitsche__rhs__with__exact__intersections_8cc_source.html#l00133">create_nitsche_rhs_with_exact_intersections.cc:133</a></div></div>
 <div class="ttc" id="anamespaceCGALWrappers_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/namespaceCGALWrappers.html">CGALWrappers</a></div></div>
 <div class="ttc" id="aclassPoint_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classPoint.html">Point&lt; dim &gt;</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_36dea0a1374c25b9210852470047e626.html">cgal</a></li><li class="navelem"><a class="el" href="wrappers_8h.html">wrappers.h</a></li>
-    <li class="footer">Generated on Thu Nov 24 2022 13:19:39 for Fluid structure interaction suite by
+    <li class="footer">Generated on Fri Nov 25 2022 10:15:02 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>

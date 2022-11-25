@@ -16,7 +16,7 @@ digraph "source/compute_intersections.cc"
   Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node6 [label="deal.II/base/parameter\l_acceptor.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$parameter__acceptor_8h.html.html",tooltip=" "];
   Node1 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node7 [label="deal.II/base/quadrature.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$include_2deal_8II_2base_2quadrature_8h.html.html",tooltip=" "];
+  Node7 [label="deal.II/base/quadrature\l_lib.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$quadrature__lib_8h.html.html",tooltip=" "];
   Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node8 [label="deal.II/fe/mapping_q1.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$mapping__q1_8h.html.html",tooltip=" "];
   Node1 -> Node9 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
