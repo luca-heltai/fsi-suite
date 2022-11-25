@@ -29,7 +29,7 @@ using namespace moonolith;
 
 TYPED_TEST(DimTester, CheckMoonoLithConversions)
 {
-  constexpr auto dim = TestFixture::dim;
+  constexpr unsigned int dim = TestFixture::dim;
 
   dealii::Point<dim> p;
   for (unsigned int i = 0; i < dim; ++i)
@@ -44,7 +44,7 @@ TYPED_TEST(DimTester, CheckMoonoLithConversions)
 
 TYPED_TEST(DimTester, CheckMoonoLithQuadConversions)
 {
-  constexpr auto dim = TestFixture::dim;
+  constexpr unsigned int dim = TestFixture::dim;
 
   moonolith::Quadrature<Real, dim> ref_quad;
   const auto                       dealii_quad = to_dealii(ref_quad);
@@ -61,7 +61,7 @@ TYPED_TEST(DimTester, CheckMoonoLithQuadConversions)
 
 TYPED_TEST(DimTester, MoonolithLines)
 {
-  constexpr auto dim = TestFixture::dim;
+  constexpr unsigned int dim = TestFixture::dim;
 
 
   Triangulation<1, dim> tria;
@@ -78,7 +78,7 @@ TYPED_TEST(DimTester, MoonolithLines)
 
 TEST(Moonolith3, MoonolithTetra)
 {
-  constexpr auto dim = 3; // TestFixture::dim;
+  constexpr unsigned int dim = 3; // TestFixture::dim;
 
   Triangulation<3> tria;
   const auto       ref     = ReferenceCell::n_vertices_to_type(3, 4);
@@ -94,7 +94,7 @@ TEST(Moonolith3, MoonolithTetra)
 
 TEST(Moonolith3, MoonolithExa)
 {
-  constexpr auto dim = 3; // TestFixture::dim;
+  constexpr unsigned int dim = 3; // TestFixture::dim;
 
   Triangulation<3> tria;
   const auto       ref     = ReferenceCell::n_vertices_to_type(3, 8);
@@ -114,7 +114,7 @@ TEST(Moonolith3, MoonolithExa)
 
 TEST(Moonolith3, MoonolithPiramid)
 {
-  constexpr auto dim = 3; // TestFixture::dim;
+  constexpr unsigned int dim = 3; // TestFixture::dim;
 
   Triangulation<3> tria;
   const auto       ref     = ReferenceCell::n_vertices_to_type(3, 5);
@@ -134,7 +134,7 @@ TEST(Moonolith3, MoonolithPiramid)
 
 TEST(Moonolith3, MoonolithWedge)
 {
-  constexpr auto dim = 3; // TestFixture::dim;
+  constexpr unsigned int dim = 3; // TestFixture::dim;
 
   Triangulation<3> tria;
   const auto       ref     = ReferenceCell::n_vertices_to_type(3, 6);
@@ -154,8 +154,8 @@ TEST(Moonolith3, MoonolithWedge)
 
 TYPED_TEST(DimSpacedimTester, AllMoonolithConversions)
 {
-  constexpr auto dim      = TestFixture::dim;
-  constexpr auto spacedim = TestFixture::spacedim;
+  constexpr unsigned int dim      = TestFixture::dim;
+  constexpr auto         spacedim = TestFixture::spacedim;
 
   std::vector<std::vector<unsigned int>> d2t = {{}, {2}, {3, 4}, {4, 5, 6, 8}};
   std::vector<std::vector<double>>       measures = {{},
@@ -182,8 +182,8 @@ TYPED_TEST(DimSpacedimTester, AllMoonolithConversions)
 
 TYPED_TEST(DimSpacedimTesterNoOne, AllMoonolithConversionsRotated)
 {
-  constexpr auto dim      = TestFixture::dim;
-  constexpr auto spacedim = TestFixture::spacedim;
+  constexpr unsigned int dim      = TestFixture::dim;
+  constexpr auto         spacedim = TestFixture::spacedim;
 
   std::vector<std::vector<unsigned int>> d2t = {{}, {2}, {3, 4}, {4, 5, 6, 8}};
   std::vector<std::vector<double>>       measures = {{},
@@ -205,7 +205,7 @@ TYPED_TEST(DimSpacedimTesterNoOne, AllMoonolithConversionsRotated)
         }
       else if constexpr (spacedim == 3)
         {
-          GridTools::rotate(numbers::PI_4, 0, tria);
+          GridTools::rotate(Tensor<1, 3>({1., 0., 0.}), numbers::PI_4, tria);
         }
 
       const auto cell = tria.begin_active();

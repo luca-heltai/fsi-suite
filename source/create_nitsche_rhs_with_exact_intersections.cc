@@ -15,9 +15,7 @@
 
 
 
-#ifdef DEAL_II_WITH_CGAL
-
-#  include "create_nitsche_rhs_with_exact_intersections.h"
+#include "create_nitsche_rhs_with_exact_intersections.h"
 
 using namespace dealii;
 
@@ -107,34 +105,6 @@ namespace dealii
             }
         }
     }
-
-
-
-#else
-
-
-
-template <int dim0, int dim1, int spacedim, typename VectorType>
-void
-create_nitsche_rhs_with_exact_intersections(
-  const DoFHandler<dim0, spacedim> &,
-  const std::vector<
-    std::tuple<typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
-               typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
-               dealii::Quadrature<spacedim>>> &,
-  VectorType &vector,
-  const AffineConstraints<typename VectorType::value_type> &,
-  const Function<spacedim, typename VectorType::value_type> &,
-  const Mapping<dim0, spacedim> &);
-{
-  Assert(false,
-         ExcMessage("This function needs CGAL to be installed, "
-                    "but cmake could not find it."));
-  return {};
-}
-
-
-#endif
 
 
 
