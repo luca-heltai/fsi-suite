@@ -40,6 +40,10 @@ namespace dealii
 {
   namespace NonMatching
   {
+    /**
+     * Compute intersection between two deal.II cells, up to a user-defined
+     * treshold that defaults to 1e-9.
+     */
     template <int dim0, int dim1, int spacedim>
     dealii::Quadrature<spacedim>
     compute_cell_intersection(
@@ -47,7 +51,8 @@ namespace dealii
       const typename Triangulation<dim1, spacedim>::cell_iterator &cell1,
       const unsigned int                                           degree,
       const Mapping<dim0, spacedim> &                              mapping0,
-      const Mapping<dim1, spacedim> &                              mapping1)
+      const Mapping<dim1, spacedim> &                              mapping1,
+      const double                                                 tol = 1e-9)
     {
       if constexpr (dim0 == 1 && dim1 == 1)
         {
@@ -56,16 +61,15 @@ namespace dealii
           (void)degree;
           (void)mapping0;
           (void)mapping1;
+          (void)tol;
           AssertThrow(false, ExcNotImplemented());
           return dealii::Quadrature<spacedim>();
         }
       else
         {
           const auto &vec_arrays =
-            ::CGALWrappers::compute_intersection_of_cells(cell0,
-                                                          cell1,
-                                                          mapping0,
-                                                          mapping1);
+            ::CGALWrappers::compute_intersection_of_cells(
+              cell0, cell1, mapping0, mapping1, tol);
           return QGaussSimplex<dim1>(degree).mapped_quadrature(vec_arrays);
         }
     }
@@ -192,7 +196,8 @@ namespace dealii
                               const Triangulation<1, 1>::cell_iterator &,
                               const unsigned int,
                               const Mapping<1, 1> &,
-                              const Mapping<1, 1> &);
+                              const Mapping<1, 1> &,
+                              const double);
 
 
     template Quadrature<2>
@@ -200,14 +205,16 @@ namespace dealii
                               const Triangulation<1, 2>::cell_iterator &,
                               const unsigned int,
                               const Mapping<2, 2> &,
-                              const Mapping<1, 2> &);
+                              const Mapping<1, 2> &,
+                              const double);
 
     template Quadrature<2>
     compute_cell_intersection(const Triangulation<2, 2>::cell_iterator &,
                               const Triangulation<2, 2>::cell_iterator &,
                               const unsigned int,
                               const Mapping<2, 2> &,
-                              const Mapping<2, 2> &);
+                              const Mapping<2, 2> &,
+                              const double);
 
 
     template Quadrature<3>
@@ -215,14 +222,16 @@ namespace dealii
                               const Triangulation<2, 3>::cell_iterator &,
                               const unsigned int,
                               const Mapping<3, 3> &,
-                              const Mapping<2, 3> &);
+                              const Mapping<2, 3> &,
+                              const double);
 
     template Quadrature<3>
     compute_cell_intersection(const Triangulation<3, 3>::cell_iterator &,
                               const Triangulation<3, 3>::cell_iterator &,
                               const unsigned int,
                               const Mapping<3, 3> &,
-                              const Mapping<3, 3> &);
+                              const Mapping<3, 3> &,
+                              const double);
 
     template std::vector<
       std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
