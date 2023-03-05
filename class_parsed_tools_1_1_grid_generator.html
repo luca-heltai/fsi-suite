@@ -308,7 +308,7 @@ Output name</h2>
 <dl class="section warning"><dt>Warning</dt><dd>The newly generated grid is written within the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#a2bf9463a190983c0c3c1310e3158e597" title="Fill a triangulation according to the parsed parameters.">generate()</a> function, before any refinement occurs. This allows you to write a grid to file, and then use the same file to read it back in as a coarse mesh, <em>irrespective</em> of the <code>Initial grid refinement</code> parameter. If you want to output explicitly the refined version of the grid, you should call the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method with the grid you want to output.</dd></dl>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Transform to simplex grid</h2>
-<p>If this is set to true, the class assumes you have read or generated a hex grid, and want to transform it to a simplex grid, i.e. the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#a01c9d0d7ff5858b45531b626c3a94c2e">GridGenerator::convert_hypercube_to_simplex_mesh()</a> is called with the grid that has been generated using <code>Input name</code> and <code>Arguments</code>.</p>
+<p>If this is set to true, the class assumes you have read or generated a hex grid, and want to transform it to a simplex grid, i.e. the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridGenerator.html#ac7515d2b17c025dddc0e37286fb8d216">GridGenerator::convert_hypercube_to_simplex_mesh()</a> is called with the grid that has been generated using <code>Input name</code> and <code>Arguments</code>.</p>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Examples</h2>
 <p>In the following examples we assume that the class was instantiated with section name equal to "/". We report the example input parameter file, and show a plot of the resulting grid <b>after</b> refinement, i.e., we call the <a class="el" href="class_parsed_tools_1_1_grid_generator.html#aa0916dd4512a04185ed82f88da5c1ad2" title="Write the given Triangulation to the output file specified in Output file name, or in the optional fi...">write()</a> method ourselves. In order to regenerate the following examples, just place this somwhere in your code:</p>
@@ -621,7 +621,7 @@ template&lt;int dim, int spacedim = dim&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_parsed_tools.html">ParsedTools</a></li><li class="navelem"><a class="el" href="class_parsed_tools_1_1_grid_generator.html">GridGenerator</a></li>
-    <li class="footer">Generated on Fri Nov 25 2022 10:15:03 for Fluid structure interaction suite by
+    <li class="footer">Generated on Sun Mar 5 2023 20:57:37 for Fluid structure interaction suite by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
   </ul>
