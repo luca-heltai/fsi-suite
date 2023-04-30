@@ -12,7 +12,6 @@ RUN apt-get update \
     doxygen \
     gdb \
     graphviz \
-    libcgal-dev \
     linux-tools-common \
     linux-tools-generic \
     valgrind \
