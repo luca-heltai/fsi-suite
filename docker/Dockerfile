@@ -28,6 +28,7 @@ RUN cd /usr/src/ && \
     cd build && \
     cmake .. -G Ninja \
         -DBUILD_SHARED_LIBS=ON && \
+    sed -i '/#include <vector>/a #include <limits>' _deps/benchmark-src/src/benchmark_register.h &&\
     ninja && \
     ninja install && \
     cd ../ && rm -rf build
