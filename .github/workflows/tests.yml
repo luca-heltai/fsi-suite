@@ -15,7 +15,7 @@ jobs:
       options: --user root
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build debug
       run: |
          rm -rf build_linux_debug
@@ -38,7 +38,7 @@ jobs:
       options: --user root
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Build release
       run: |
           rm -rf build_linux_release
