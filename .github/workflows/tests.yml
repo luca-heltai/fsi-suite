@@ -10,7 +10,9 @@ jobs:
   debug:
 
     runs-on: ubuntu-latest
-    container: heltai/dealii:vscode
+    container: 
+      image: heltai/dealii:vscode
+      options: --user root
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +33,9 @@ jobs:
   release:
 
     runs-on: ubuntu-latest
-    container: heltai/dealii:vscode
+    container: 
+      image: heltai/dealii:vscode
+      options: --user root
 
     steps:
     - uses: actions/checkout@v2
