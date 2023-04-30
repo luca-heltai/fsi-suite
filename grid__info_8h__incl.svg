@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/patterns_8h.html.html" xlink:title=" ">
+<g id="a_node2"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/patterns_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="0,-6 0,-25 125,-25 125,-6 0,-6"/>
 <text text-anchor="middle" x="62.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/patterns.h</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html.html" xlink:title=" ">
+<g id="a_node3"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/reference__cell_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="143.5,-0.5 143.5,-30.5 261.5,-30.5 261.5,-0.5 143.5,-0.5"/>
 <text text-anchor="start" x="151.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/grid/reference</text>
 <text text-anchor="middle" x="202.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_cell.h</text>
@@ -52,7 +52,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html.html" xlink:title=" ">
+<g id="a_node4"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="280,-6 280,-25 377,-25 377,-6 280,-6"/>
 <text text-anchor="middle" x="328.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/grid/tria.h</text>
 </a>

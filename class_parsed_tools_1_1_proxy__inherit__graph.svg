@@ -12,8 +12,8 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="A proxy ParameterAcceptor wrapper for classes that have a member function add_parameters,...">
-<polygon fill="#bfbfbf" stroke="black" points="56,-0.5 56,-30.5 164,-30.5 164,-0.5 56,-0.5"/>
-<text text-anchor="start" x="64" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParsedTools::Proxy</text>
+<polygon fill="#bfbfbf" stroke="black" points="56.5,-0.5 56.5,-30.5 163.5,-30.5 163.5,-0.5 56.5,-0.5"/>
+<text text-anchor="start" x="64.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParsedTools::Proxy</text>
 <text text-anchor="middle" x="110" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">&lt; SourceClass &gt;</text>
 </a>
 </g>
@@ -21,7 +21,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
+<g id="a_node2"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="0,-67.5 0,-86.5 110,-86.5 110,-67.5 0,-67.5"/>
 <text text-anchor="middle" x="55" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterAcceptor</text>
 </a>
@@ -36,7 +36,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
+<g id="a_node3"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="19.5,-123.5 19.5,-142.5 90.5,-142.5 90.5,-123.5 19.5,-123.5"/>
 <text text-anchor="middle" x="55" y="-130.5" font-family="Helvetica,sans-Serif" font-size="10.00">Subscriptor</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html" xlink:title=" ">
+<g id="a_node4"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSourceClass.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="128,-67.5 128,-86.5 204,-86.5 204,-67.5 128,-67.5"/>
 <text text-anchor="middle" x="166" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">SourceClass</text>
 </a>

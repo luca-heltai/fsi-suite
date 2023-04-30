@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title="A parsed AMG preconditioner which uses parameter files to choose between different options.">
-<polygon fill="#bfbfbf" stroke="black" points="53.5,-0.5 53.5,-19.5 222.5,-19.5 222.5,-0.5 53.5,-0.5"/>
+<polygon fill="#bfbfbf" stroke="black" points="54,-0.5 54,-19.5 222,-19.5 222,-0.5 54,-0.5"/>
 <text text-anchor="middle" x="138" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParsedLAC::AMGPreconditioner</text>
 </a>
 </g>
@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
+<g id="a_node2"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="0,-56.5 0,-75.5 110,-75.5 110,-56.5 0,-56.5"/>
 <text text-anchor="middle" x="55" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterAcceptor</text>
 </a>
@@ -35,7 +35,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
+<g id="a_node3"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="102.5,-168.5 102.5,-187.5 173.5,-187.5 173.5,-168.5 102.5,-168.5"/>
 <text text-anchor="middle" x="138" y="-175.5" font-family="Helvetica,sans-Serif" font-size="10.00">Subscriptor</text>
 </a>
@@ -50,22 +50,22 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionBase.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="116.5,-112.5 116.5,-131.5 305.5,-131.5 305.5,-112.5 116.5,-112.5"/>
-<text text-anchor="middle" x="211" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">TrilinosWrappers::PreconditionBase</text>
+<g id="a_node5"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionBase.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="116,-112.5 116,-131.5 304,-131.5 304,-112.5 116,-112.5"/>
+<text text-anchor="middle" x="210" y="-119.5" font-family="Helvetica,sans-Serif" font-size="10.00">TrilinosWrappers::PreconditionBase</text>
 </a>
 </g>
 </g>
 <!-- Node3&#45;&gt;Node5 -->
 <g id="edge5" class="edge">
 <title>Node3&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M158.14,-162.1C171.28,-152.38 187.98,-140.03 199.06,-131.83"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="155.69,-159.56 149.73,-168.32 159.85,-165.19 155.69,-159.56"/>
+<path fill="none" stroke="midnightblue" d="M157.87,-162.1C170.82,-152.38 187.3,-140.03 198.22,-131.83"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="155.47,-159.52 149.57,-168.32 159.67,-165.12 155.47,-159.52"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionAMG.html" xlink:title=" ">
+<g id="a_node4"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classTrilinosWrappers_1_1PreconditionAMG.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="128,-56.5 128,-75.5 316,-75.5 316,-56.5 128,-56.5"/>
 <text text-anchor="middle" x="222" y="-63.5" font-family="Helvetica,sans-Serif" font-size="10.00">TrilinosWrappers::PreconditionAMG</text>
 </a>
@@ -80,8 +80,8 @@
 <!-- Node5&#45;&gt;Node4 -->
 <g id="edge4" class="edge">
 <title>Node5&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M214.85,-102.1C216.68,-93.14 218.77,-82.86 220.22,-75.75"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="211.38,-101.59 212.82,-112.08 218.24,-102.98 211.38,-101.59"/>
+<path fill="none" stroke="midnightblue" d="M214.2,-102.1C216.19,-93.14 218.48,-82.86 220.06,-75.75"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="210.73,-101.56 211.98,-112.08 217.57,-103.08 210.73,-101.56"/>
 </g>
 </g>
 </svg>

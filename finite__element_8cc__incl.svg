@@ -12,7 +12,7 @@
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="411,-134.5 411,-153.5 548,-153.5 548,-134.5 411,-134.5"/>
+<polygon fill="#bfbfbf" stroke="black" points="411.5,-134.5 411.5,-153.5 547.5,-153.5 547.5,-134.5 411.5,-134.5"/>
 <text text-anchor="middle" x="479.5" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">source/finite_element.cc</text>
 </a>
 </g>
@@ -36,7 +36,7 @@
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/patterns_8h.html.html" xlink:title=" ">
+<g id="a_node5"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/patterns_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="196,-73 196,-92 321,-92 321,-73 196,-73"/>
 <text text-anchor="middle" x="258.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/patterns.h</text>
 </a>
@@ -51,7 +51,7 @@
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/fe__simplex__p_8h.html.html" xlink:title=" ">
+<g id="a_node6"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/fe__simplex__p_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="339,-73 339,-92 476,-92 476,-73 339,-73"/>
 <text text-anchor="middle" x="407.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/fe/fe_simplex_p.h</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/fe__simplex__p__bubbles_8h.html.html" xlink:title=" ">
+<g id="a_node7"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/fe__simplex__p__bubbles_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="494.5,-67.5 494.5,-97.5 610.5,-97.5 610.5,-67.5 494.5,-67.5"/>
 <text text-anchor="start" x="502.5" y="-85.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/fe/fe_simplex</text>
 <text text-anchor="middle" x="552.5" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">_p_bubbles.h</text>
@@ -106,13 +106,13 @@
 <!-- Node1&#45;&gt;Node9 -->
 <g id="edge8" class="edge">
 <title>Node1&#45;&gt;Node9</title>
-<path fill="none" stroke="midnightblue" d="M548.1,-137.44C613.8,-131.18 715.41,-119.01 801.5,-98 804.73,-97.21 808.06,-96.27 811.36,-95.24"/>
+<path fill="none" stroke="midnightblue" d="M547.78,-137.47C613.48,-131.22 715.27,-119.05 801.5,-98 804.73,-97.21 808.06,-96.27 811.36,-95.24"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="812.67,-98.49 821.04,-92 810.45,-91.85 812.67,-98.49"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html.html" xlink:title=" ">
+<g id="a_node3"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="0,-0.5 0,-30.5 127,-30.5 127,-0.5 0,-0.5"/>
 <text text-anchor="start" x="8" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/parameter</text>
 <text text-anchor="middle" x="63.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_acceptor.h</text>
@@ -128,7 +128,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2fe_2fe_8h.html.html" xlink:title=" ">
+<g id="a_node4"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2fe_2fe_8h.html.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="145,-6 145,-25 226,-25 226,-6 145,-6"/>
 <text text-anchor="middle" x="185.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/fe/fe.h</text>
 </a>

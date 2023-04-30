@@ -133,7 +133,7 @@
 <g id="node35" class="node">
 <title>Node35</title>
 <g id="a_node35"><a xlink:href="dof__plotter_8cc.html" target="_top" xlink:title="Degrees of freedom plotter.">
-<polygon fill="none" stroke="black" points="2610.5,-140 2610.5,-159 2720.5,-159 2720.5,-140 2610.5,-140"/>
+<polygon fill="none" stroke="black" points="2611,-140 2611,-159 2720,-159 2720,-140 2611,-140"/>
 <text text-anchor="middle" x="2665.5" y="-147" font-family="Helvetica,sans-Serif" font-size="10.00">apps/dof_plotter.cc</text>
 </a>
 </g>

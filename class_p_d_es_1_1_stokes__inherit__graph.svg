@@ -37,7 +37,7 @@
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
+<g id="a_node3"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="9,-134.5 9,-153.5 119,-153.5 119,-134.5 9,-134.5"/>
 <text text-anchor="middle" x="64" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">ParameterAcceptor</text>
 </a>
@@ -52,7 +52,7 @@
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
+<g id="a_node4"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html" xlink:title=" ">
 <polygon fill="none" stroke="black" points="28.5,-190.5 28.5,-209.5 99.5,-209.5 99.5,-190.5 28.5,-190.5"/>
 <text text-anchor="middle" x="64" y="-197.5" font-family="Helvetica,sans-Serif" font-size="10.00">Subscriptor</text>
 </a>

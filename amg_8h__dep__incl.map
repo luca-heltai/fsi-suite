@@ -1,7 +1,7 @@
 <map id="include/parsed_lac/amg.h" name="include/parsed_lac/amg.h">
 <area shape="rect" id="node1" title=" " alt="" coords="2061,5,2204,47"/>
 <area shape="rect" id="node2" href="$lac_8h.html" title=" " alt="" coords="1094,102,1198,129"/>
-<area shape="rect" id="node6" href="$distributed__lagrange_8h.html" title=" " alt="" coords="365,184,543,225"/>
+<area shape="rect" id="node6" href="$distributed__lagrange_8h.html" title=" " alt="" coords="366,184,545,225"/>
 <area shape="rect" id="node9" href="$linear__problem_8h.html" title=" " alt="" coords="1396,95,1541,136"/>
 <area shape="rect" id="node21" href="$stokes_8h.html" title=" " alt="" coords="1789,191,1951,218"/>
 <area shape="rect" id="node24" href="$serial_2poisson_8h.html" title=" " alt="" coords="2061,95,2205,136"/>
@@ -9,7 +9,7 @@
 <area shape="rect" id="node30" href="$reduced__lagrange_8h.html" title=" " alt="" coords="2747,95,2902,136"/>
 <area shape="rect" id="node33" href="$serial_2stokes_8h.html" title=" " alt="" coords="3019,95,3163,136"/>
 <area shape="rect" id="node36" href="$amg_8cc.html" title=" " alt="" coords="3188,102,3379,129"/>
-<area shape="rect" id="node3" href="$lac__initializer_8h.html" title=" " alt="" coords="568,191,740,218"/>
+<area shape="rect" id="node3" href="$lac__initializer_8h.html" title=" " alt="" coords="569,191,739,218"/>
 <area shape="rect" id="node4" href="$source_2pdes_2distributed__lagrange_8cc.html" title=" " alt="" coords="376,273,551,315"/>
 <area shape="rect" id="node5" href="$linear__problem_8cc.html" title=" " alt="" coords="575,273,717,315"/>
 <area shape="rect" id="node7" href="$apps_2mpi_2distributed__lagrange_8cc.html" title=" " alt="" coords="5,273,161,315"/>

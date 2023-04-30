@@ -1,9 +1,9 @@
 <map id="include/parsed_tools/grid_info.h" name="include/parsed_tools/grid_info.h">
 <area shape="rect" id="node1" title=" " alt="" coords="2684,5,2840,47"/>
-<area shape="rect" id="node2" href="$mesh__handler_8h.html" title=" " alt="" coords="2031,102,2208,129"/>
+<area shape="rect" id="node2" href="$mesh__handler_8h.html" title=" " alt="" coords="2031,102,2207,129"/>
 <area shape="rect" id="node4" href="$boundary__conditions_8h.html" title=" " alt="" coords="2614,95,2787,136"/>
 <area shape="rect" id="node37" href="$boundary__conditions_8cc.html" title=" " alt="" coords="3271,191,3493,218"/>
-<area shape="rect" id="node38" href="$dof__plotter_8cc.html" title="Degrees of freedom plotter." alt="" coords="2862,102,3009,129"/>
+<area shape="rect" id="node38" href="$dof__plotter_8cc.html" title="Degrees of freedom plotter." alt="" coords="2863,102,3008,129"/>
 <area shape="rect" id="node3" href="$mesh__handler_8cc.html" title="Mesh generator and reader." alt="" coords="1504,191,1671,218"/>
 <area shape="rect" id="node5" href="$distributed__lagrange_8h.html" title=" " alt="" coords="378,273,557,315"/>
 <area shape="rect" id="node9" href="$linear__problem_8h.html" title=" " alt="" coords="1747,184,1892,225"/>

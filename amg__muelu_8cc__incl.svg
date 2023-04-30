@@ -5,16 +5,16 @@
  -->
 <!-- Title: source/parsed_lac/amg_muelu.cc Pages: 1 -->
 <svg width="538pt" height="173pt"
- viewBox="0.00 0.00 538.00 173.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ viewBox="0.00 0.00 537.50 173.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 169)">
 <title>source/parsed_lac/amg_muelu.cc</title>
 <!-- Node1 -->
 <g id="node1" class="node">
 <title>Node1</title>
 <g id="a_node1"><a xlink:title=" ">
-<polygon fill="#bfbfbf" stroke="black" points="284,-134.5 284,-164.5 413,-164.5 413,-134.5 284,-134.5"/>
-<text text-anchor="start" x="292" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">source/parsed_lac/amg</text>
-<text text-anchor="middle" x="348.5" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">_muelu.cc</text>
+<polygon fill="#bfbfbf" stroke="black" points="283.5,-134.5 283.5,-164.5 412.5,-164.5 412.5,-134.5 283.5,-134.5"/>
+<text text-anchor="start" x="291.5" y="-152.5" font-family="Helvetica,sans-Serif" font-size="10.00">source/parsed_lac/amg</text>
+<text text-anchor="middle" x="348" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">_muelu.cc</text>
 </a>
 </g>
 </g>
@@ -22,94 +22,94 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="amg__muelu_8h.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="127,-73 127,-92 266,-92 266,-73 127,-73"/>
-<text text-anchor="middle" x="196.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">parsed_lac/amg_muelu.h</text>
+<polygon fill="none" stroke="black" points="126.5,-73 126.5,-92 265.5,-92 265.5,-73 126.5,-73"/>
+<text text-anchor="middle" x="196" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">parsed_lac/amg_muelu.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node2 -->
 <g id="edge1" class="edge">
 <title>Node1&#45;&gt;Node2</title>
-<path fill="none" stroke="midnightblue" d="M315.52,-134.4C288.73,-122.94 251.31,-106.94 225.62,-95.95"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="226.96,-92.72 216.39,-92.01 224.21,-99.16 226.96,-92.72"/>
+<path fill="none" stroke="midnightblue" d="M315.02,-134.4C288.23,-122.94 250.81,-106.94 225.12,-95.95"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="226.46,-92.72 215.89,-92.01 223.71,-99.16 226.46,-92.72"/>
 </g>
 <!-- Node6 -->
 <g id="node6" class="node">
 <title>Node6</title>
-<g id="a_node6"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/dof__tools_8h.html.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="284.5,-73 284.5,-92 412.5,-92 412.5,-73 284.5,-73"/>
-<text text-anchor="middle" x="348.5" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/dofs/dof_tools.h</text>
+<g id="a_node6"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/dof__tools_8h.html.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="284,-73 284,-92 412,-92 412,-73 284,-73"/>
+<text text-anchor="middle" x="348" y="-80" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/dofs/dof_tools.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node6 -->
 <g id="edge5" class="edge">
 <title>Node1&#45;&gt;Node6</title>
-<path fill="none" stroke="midnightblue" d="M348.5,-134.4C348.5,-125.06 348.5,-112.71 348.5,-102.52"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="352,-102.19 348.5,-92.19 345,-102.19 352,-102.19"/>
+<path fill="none" stroke="midnightblue" d="M348,-134.4C348,-125.06 348,-112.71 348,-102.52"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="351.5,-102.19 348,-92.19 344.5,-102.19 351.5,-102.19"/>
 </g>
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="431,-67.5 431,-97.5 530,-97.5 530,-67.5 431,-67.5"/>
-<text text-anchor="start" x="439" y="-85.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/lac/sparse</text>
-<text text-anchor="middle" x="480.5" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">_matrix.h</text>
+<g id="a_node7"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/sparse__matrix_8h.html.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="430.5,-67.5 430.5,-97.5 529.5,-97.5 529.5,-67.5 430.5,-67.5"/>
+<text text-anchor="start" x="438.5" y="-85.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/lac/sparse</text>
+<text text-anchor="middle" x="480" y="-74.5" font-family="Helvetica,sans-Serif" font-size="10.00">_matrix.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge6" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M377.14,-134.4C396.34,-124.94 421.83,-112.39 442.69,-102.12"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="444.49,-105.13 451.91,-97.58 441.4,-98.85 444.49,-105.13"/>
+<path fill="none" stroke="midnightblue" d="M376.64,-134.4C395.84,-124.94 421.33,-112.39 442.19,-102.12"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="443.99,-105.13 451.41,-97.58 440.9,-98.85 443.99,-105.13"/>
 </g>
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="0,-6 0,-25 115,-25 115,-6 0,-6"/>
-<text text-anchor="middle" x="57.5" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/config.h</text>
+<g id="a_node3"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="0,-6 0,-25 114,-25 114,-6 0,-6"/>
+<text text-anchor="middle" x="57" y="-13" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/config.h</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node3 -->
 <g id="edge2" class="edge">
 <title>Node2&#45;&gt;Node3</title>
-<path fill="none" stroke="midnightblue" d="M178.04,-72.87C154.26,-61.75 112.71,-42.32 85.15,-29.43"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="86.58,-26.23 76.03,-25.17 83.61,-32.57 86.58,-26.23"/>
+<path fill="none" stroke="midnightblue" d="M177.54,-72.87C153.76,-61.75 112.21,-42.32 84.65,-29.43"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="86.08,-26.23 75.53,-25.17 83.11,-32.57 86.08,-26.23"/>
 </g>
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="133,-0.5 133,-30.5 260,-30.5 260,-0.5 133,-0.5"/>
-<text text-anchor="start" x="141" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/parameter</text>
-<text text-anchor="middle" x="196.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_acceptor.h</text>
+<g id="a_node4"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/parameter__acceptor_8h.html.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="132.5,-0.5 132.5,-30.5 259.5,-30.5 259.5,-0.5 132.5,-0.5"/>
+<text text-anchor="start" x="140.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/base/parameter</text>
+<text text-anchor="middle" x="196" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_acceptor.h</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node4 -->
 <g id="edge3" class="edge">
 <title>Node2&#45;&gt;Node4</title>
-<path fill="none" stroke="midnightblue" d="M196.5,-72.73C196.5,-64.54 196.5,-51.92 196.5,-40.71"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="200,-40.59 196.5,-30.59 193,-40.59 200,-40.59"/>
+<path fill="none" stroke="midnightblue" d="M196,-72.73C196,-64.54 196,-51.92 196,-40.71"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="199.5,-40.59 196,-30.59 192.5,-40.59 199.5,-40.59"/>
 </g>
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="http://www.dealii.org/developer/doxygen/deal.II/trilinos__precondition_8h.html.html" xlink:title=" ">
-<polygon fill="none" stroke="black" points="278,-0.5 278,-30.5 379,-30.5 379,-0.5 278,-0.5"/>
-<text text-anchor="start" x="286" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/lac/trilinos</text>
-<text text-anchor="middle" x="328.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_precondition.h</text>
+<g id="a_node5"><a target="_parent" xlink:href="http://www.dealii.org/developer/doxygen/deal.II/trilinos__precondition_8h.html.html" xlink:title=" ">
+<polygon fill="none" stroke="black" points="277.5,-0.5 277.5,-30.5 378.5,-30.5 378.5,-0.5 277.5,-0.5"/>
+<text text-anchor="start" x="285.5" y="-18.5" font-family="Helvetica,sans-Serif" font-size="10.00">deal.II/lac/trilinos</text>
+<text text-anchor="middle" x="328" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">_precondition.h</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node5 -->
 <g id="edge4" class="edge">
 <title>Node2&#45;&gt;Node5</title>
-<path fill="none" stroke="midnightblue" d="M214.03,-72.87C233.43,-63.31 265.29,-47.63 290.47,-35.22"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="292.34,-38.21 299.76,-30.65 289.24,-31.93 292.34,-38.21"/>
+<path fill="none" stroke="midnightblue" d="M213.53,-72.87C232.93,-63.31 264.79,-47.63 289.97,-35.22"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="291.84,-38.21 299.26,-30.65 288.74,-31.93 291.84,-38.21"/>
 </g>
 </g>
 </svg>

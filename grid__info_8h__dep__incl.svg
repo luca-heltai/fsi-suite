@@ -22,7 +22,7 @@
 <g id="node2" class="node">
 <title>Node2</title>
 <g id="a_node2"><a xlink:href="mesh__handler_8h.html" target="_top" xlink:title=" ">
-<polygon fill="none" stroke="black" points="1519,-207 1519,-226 1652,-226 1652,-207 1519,-207"/>
+<polygon fill="none" stroke="black" points="1519.5,-207 1519.5,-226 1651.5,-226 1651.5,-207 1519.5,-207"/>
 <text text-anchor="middle" x="1585.5" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00">include/mesh_handler.h</text>
 </a>
 </g>
@@ -68,7 +68,7 @@
 <g id="node38" class="node">
 <title>Node38</title>
 <g id="a_node38"><a xlink:href="dof__plotter_8cc.html" target="_top" xlink:title="Degrees of freedom plotter.">
-<polygon fill="none" stroke="black" points="2142.5,-207 2142.5,-226 2252.5,-226 2252.5,-207 2142.5,-207"/>
+<polygon fill="none" stroke="black" points="2143,-207 2143,-226 2252,-226 2252,-207 2143,-207"/>
 <text text-anchor="middle" x="2197.5" y="-214" font-family="Helvetica,sans-Serif" font-size="10.00">apps/dof_plotter.cc</text>
 </a>
 </g>
