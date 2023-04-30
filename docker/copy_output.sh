@@ -1,5 +1,10 @@
+#!/bin/bash
+snippetdir=$SNIPPET_DIR
+if [ -z "$snippetdir" ];  then
+        snippetdir=~/c++/snippets/
+fi
 echo copying 
-echo ~/c++/snippets/build/output
+echo `pwd`/output
 echo to 
-echo `cat /workspace/snippets/.dealii_output_file`
-sed  's/^JobId.*//g' ~/c++/snippets/build/output > `cat /workspace/snippets/.dealii_output_file`
+echo `cat $snippetdir/.dealii_output_file`
+sed  's/^JobId.*//g' `pwd`/output > `cat $snippetdir/.dealii_output_file`

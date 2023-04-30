@@ -126,7 +126,7 @@ namespace dealii
                  const dealii::Patterns::PatternBase &pattern =
                    *Convert<T>::to_pattern())
         {
-          return dealii::internal::ReferenceCell::make_reference_cell_from_int(
+          return dealii::internal::make_reference_cell_from_int(
             Convert<int>::to_value(s, pattern));
         }
       };
@@ -203,36 +203,36 @@ namespace ParsedTools
           reference_cell_types = tria.get_reference_cells();
 
           std::set<dealii::types::material_id> m_ids;
-          for (const auto cell : tria.active_cell_iterators())
+          for (const auto &cell : tria.active_cell_iterators())
             m_ids.insert(cell->material_id());
           material_ids.insert(material_ids.end(), m_ids.begin(), m_ids.end());
         }
 
       if (info_level > 2)
         {
-          for (const auto id : boundary_ids)
+          for (const auto &id : boundary_ids)
             faces_per_boundary_id[id] = 0;
 
-          for (const auto id : material_ids)
+          for (const auto &id : material_ids)
             cells_per_material_id[id] = 0;
 
-          for (const auto id : manifold_ids)
+          for (const auto &id : manifold_ids)
             {
               faces_per_manifold_id[id] = 0;
               cells_per_manifold_id[id] = 0;
             }
 
-          for (const auto id : reference_cell_types)
+          for (const auto &id : reference_cell_types)
             cells_per_reference_cell_type[id] = 0;
 
-          for (const auto cell : tria.active_cell_iterators())
+          for (const auto &cell : tria.active_cell_iterators())
             {
               ++cells_per_material_id[cell->material_id()];
               ++cells_per_manifold_id[cell->manifold_id()];
               ++cells_per_reference_cell_type[cell->reference_cell()];
             }
 
-          for (const auto f : tria.active_face_iterators())
+          for (const auto &f : tria.active_face_iterators())
             {
               if (f->at_boundary())
                 ++faces_per_boundary_id[f->boundary_id()];

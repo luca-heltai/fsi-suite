@@ -282,7 +282,7 @@ namespace ParsedTools
           }
       }
     else if (strategy == RefinementStrategy::global)
-      for (const auto cell : tria.active_cell_iterators())
+      for (const auto &cell : tria.active_cell_iterators())
         cell->set_refine_flag();
     else
       Assert(false, dealii::ExcInternalError());
@@ -338,7 +338,7 @@ namespace ParsedTools
       }
     else if (strategy == RefinementStrategy::global)
       {
-        for (const auto cell : tria.active_cell_iterators())
+        for (const auto &cell : tria.active_cell_iterators())
           if (cell->is_locally_owned())
             cell->set_refine_flag();
       }
@@ -354,7 +354,7 @@ namespace ParsedTools
   GridRefinement::limit_levels(dealii::Triangulation<dim, spacedim> &tria) const
   {
     if (min_level != 0 || max_level != 0)
-      for (const auto cell : tria.active_cell_iterators())
+      for (const auto &cell : tria.active_cell_iterators())
         if (cell->is_locally_owned())
           {
             if (min_level != 0 && cell->level() < min_level)

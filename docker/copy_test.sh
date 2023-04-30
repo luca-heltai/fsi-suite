@@ -1,7 +1,13 @@
+#!/bin/bash
 oldtestrel=$1
 newtestrel=$2
 oldtest="$(cd "$(dirname "$oldtestrel")"; pwd)/$(basename "$oldtestrel")"
 newtest="$(cd "$(dirname "$newtestrel")"; pwd)/$(basename "$newtestrel")"
+snippetdir=$SNIPPET_DIR
+if [ -z "$snippetdir" ];  then 
+	snippetdir=~/c++/snippets/
+fi
+echo Using snippet dir: $snippetdir
 if [ -f $oldtest ]; then 
   extension=""
   for option in "${@:3}"; do
@@ -19,8 +25,8 @@ if [ -f $oldtest ]; then
   touch $output
   git add $newtest
   git add $output
-  echo $output >  /workspace/snippets/.dealii_output_file
-  ln -sf $newtest /workspace/snippets/snippet.cc
+  echo $output > $SNIPPET_DIR/.dealii_output_file
+  ln -sf $newtest $SNIPPET_DIR/snippet.cc
 else
     echo File 
     echo $oldtest 
