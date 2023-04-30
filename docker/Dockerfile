@@ -1,5 +1,5 @@
 # This image is pushed to heltai/dealii:vscode
-FROM dealii/dealii:master-focal
+FROM dealii/dealii:master-jammy
 
 LABEL maintainer="luca.heltai@gmail.com"
 
@@ -39,10 +39,6 @@ RUN mkdir -p /root/.vscode-server/extensions \
 ENV OMPI_ALLOW_RUN_AS_ROOT 1
 
 ENV OMPI_ALLOW_RUN_AS_ROOT_CONFIRM 1
-
-ENV HOME /root
-
-RUN mkdir /root/.ssh
 
 ADD dotgdbinit.py /root/.gdbinit
 

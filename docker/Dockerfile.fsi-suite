@@ -9,3 +9,4 @@ RUN cd /usr/local/src \
     .. \  
     && ninja install \
     && cd ../ && rm -rf .git build
+
