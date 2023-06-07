@@ -177,7 +177,7 @@ namespace ParsedTools
           {
             static Vector<float> material_ids;
             material_ids.reinit(dh.get_triangulation().n_active_cells());
-            for (const auto cell : dh.active_cell_iterators())
+            for (const auto &cell : dh.active_cell_iterators())
               material_ids(cell->active_cell_index()) = cell->material_id();
             data_out->add_data_vector(
               material_ids,
