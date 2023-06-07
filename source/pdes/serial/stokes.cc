@@ -52,7 +52,14 @@ namespace PDEs
           ParsedTools::Components::join(std::vector<std::string>(dim + 1, "0"),
                                         ";"),
           "Exact solution")
-      , boundary_conditions("/Stokes/Boundary conditions", component_names)
+      , boundary_conditions(
+          "/Stokes/Boundary conditions",
+          component_names,
+          {{numbers::internal_face_boundary_id}},
+          {"u"},
+          {{ParsedTools::BoundaryConditionType::dirichlet}},
+          {ParsedTools::Components::join(std::vector<std::string>(dim + 1, "0"),
+                                         ";")})
       , error_table(Utilities::split_string_list(component_names),
                     {{VectorTools::H1_norm, VectorTools::L2_norm},
                      {VectorTools::L2_norm}})
@@ -60,7 +67,7 @@ namespace PDEs
       , velocity(0)
       , pressure(dim)
     {
-      enter_subsection("Error table");
+      enter_subsection("Error table (" + component_names + ")");
       enter_my_subsection(this->prm);
       error_table.add_parameters(this->prm);
       leave_my_subsection(this->prm);
