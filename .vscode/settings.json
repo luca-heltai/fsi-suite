@@ -132,7 +132,25 @@
             }
         ]
     },
-    "testMate.cpp.test.executables": "{build,Build,BUILD,out,Out,OUT}*/**/*{test,Test,TEST}*",
+    "testMate.cpp.test.executables": "{build,Build,BUILD,out,Out,OUT}*/**/*{test,Test,TEST,book}*",
+    "testMate.cpp.test.advancedExecutables": [
+        {
+            "name": "FSI Suite Tests - Debug",
+            "pattern": "{build,Build,BUILD,out,Out,OUT}*/fsi_test.g",
+        },
+        {
+            "name": "FSI Suite Tests - Release",
+            "pattern": "{build,Build,BUILD,out,Out,OUT}*/fsi_test",
+        },
+        {
+            "name": "Book Tests - Debug",
+            "pattern": "{build,Build,BUILD,out,Out,OUT}*/fsi_book.g",
+        },
+        {
+            "name": "Book Tests - Release",
+            "pattern": "{build,Build,BUILD,out,Out,OUT}*/fsi_book",
+        },
+    ],
     // "docker.host": "ssh://ovs"
     "doxygen_runner.configuration_file_override": "${workspaceFolder}/doc/Doxyfile",
 }
