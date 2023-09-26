@@ -1,0 +1,80 @@
+subsection Poisson
+  set Console level            = 1
+  set Finite element space (u) = FE_SimplexP(2)
+  subsection Boundary conditions
+    set Boundary condition types (u) = dirichlet
+    set Boundary id sets (u)         = -1
+    set Expressions (u)              = 0
+    set Selected components (u)      = u
+  end
+  subsection Constants
+    set Diffusion coefficient (kappa) = 1
+  end
+  subsection Error table
+    set Enable computation of the errors = true
+    set Error file name                  = book_output/chapter_1_example_1_2_p2_regular.txt
+    set Error precision                  = 6
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Rate key                         = 
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Functions
+    set Exact solution = sin(2*PI*x)*sin(2*PI*y)
+    set Forcing term   = kappa*8*PI^2*sin(2*PI*x)*sin(2*PI*y)
+  end
+  subsection Grid
+    set Arguments                 = 0: 1: false
+    set Initial grid refinement   = 2
+    set Input name                = hyper_cube
+    set Output name               = 
+    set Transform to simplex grid = true
+    subsection Refinement
+      set Number of refinement cycles = 7
+      subsection Error estimator
+        set Component mask = 
+        set Estimator type = kelly
+      end
+      subsection Marking strategy
+        set Coarsening parameter                   = 0.1
+        set Maximum level                          = 0
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Refinement parameter                   = 0.3
+        set Refinement strategy                    = global
+      end
+    end
+  end
+  subsection Output
+    set Curved cells region    = curved_inner_cells
+    set Output format          = vtu
+    set Output material ids    = false
+    set Output partitioning    = false
+    set Problem base name      = book_output/chapter_1_example_1_2_p2_regular
+    set Subdivisions           = 0
+    set Write high order cells = true
+  end
+  subsection Solver
+    set Absolute tolerance     = 1e-12
+    set Consecutive iterations = 2
+    set Log history            = false
+    set Log result             = false
+    set Maximum iterations     = 1000
+    set Relative tolerance     = 1e-06
+    set Solver control type    = tolerance
+    set Solver name            = cg
+    subsection AMG Preconditioner
+      set Aggregation threshold = 0.0001
+      set Coarse type           = Amesos-KLU
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set Output details        = false
+      set Smoother overlap      = 0
+      set Smoother sweeps       = 2
+      set Smoother type         = Chebyshev
+      set w-cycle               = false
+    end
+  end
+end

@@ -22,9 +22,15 @@ subsection Poisson
       set Minimum step size                      = 1e-06
     end
   end
+  subsection Boundary conditions
+    set Boundary condition types (u) = dirichlet
+    set Boundary id sets (u)         = -1
+    set Expressions (u)              = 1/4*(-x^2-y^2+.25^2)
+    set Selected components (u)      = all
+  end
   subsection Error
     set Enable computation of the errors = true
-    set Error file name                  = book_output/chapter_1_fig_01.txt
+    set Error file name                  = book_output/chapter_2_example_2_2_non_matching_balls.txt
     set Error precision                  = 6
     set Exponent for p-norms             = 2
     set Extra columns                    = cells, dofs
@@ -33,22 +39,16 @@ subsection Poisson
     set Rate mode                        = reduction_rate_log2
   end
   subsection Functions
-    set Diffusion coefficient = 1
-    set Exact solution        = sin(2*PI*x)*sin(2*PI*y)
-    set Forcing term          = 8*PI*PI*sin(2*PI*x)*sin(2*PI*y)
+    set Diffusion coefficient = x^2+y^2-.25^2 < 0 ? 10 : 1
+    set Exact solution        = x^2+y^2-.25^2 < 0 ? 1/40*(.25^2-x^2-y^2) : 1/4*(.25^2-x^2-y^2)
+    set Forcing term          = 1
     set Initial value         = 0
   end
-  subsection Boundary conditions
-    set Boundary condition types (u) = dirichlet
-    set Boundary id sets (u)         = -1
-    set Expressions (u)              = 0
-    set Selected components (u)      = all
-  end
   subsection Grid
-    set Arguments                 = 0: 1: false
+    set Arguments                 = -.5: .5: false
     set Initial grid refinement   = 3
     set Input name                = hyper_cube
-    set Output name               = 
+    set Output name               = book_output/chapter_2_example_2_2_non_matching_balls.vtk
     set Transform to simplex grid = false
     subsection Refinement
       set Number of refinement cycles = 8
@@ -71,7 +71,7 @@ subsection Poisson
     set Output format          = vtu
     set Output material ids    = true
     set Output partitioning    = true
-    set Problem base name      = book_output/chapter_1_fig_01
+    set Problem base name      = book_output/chapter_2_example_2_2_non_matching_balls
     set Subdivisions           = 0
     set Write high order cells = true
   end
