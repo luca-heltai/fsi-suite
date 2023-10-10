@@ -92,7 +92,23 @@ namespace dealii
     compute_intersection(const GridTools::Cache<dim0, spacedim> &space_cache,
                          const GridTools::Cache<dim1, spacedim> &immersed_cache,
                          const unsigned int                      degree,
-                         const double                            tol = 0.);
+                         const double                            tol = 1e-15);
+
+    template <int dim0, int dim1, int spacedim>
+    std::pair<
+      std::vector<
+        std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
+                   typename Triangulation<dim1, spacedim>::cell_iterator,
+                   Quadrature<spacedim>>>,
+      std::vector<
+        std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
+                   typename Triangulation<dim1, spacedim>::face_iterator,
+                   Quadrature<spacedim>>>>
+    compute_intersection_including_boundary(
+      const GridTools::Cache<dim0, spacedim> &space_cache,
+      const GridTools::Cache<dim1, spacedim> &immersed_cache,
+      const unsigned int                      degree,
+      const double                            tol = 1e-15);
 
 
 
