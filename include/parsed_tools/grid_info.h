@@ -126,7 +126,7 @@ namespace dealii
                  const dealii::Patterns::PatternBase &pattern =
                    *Convert<T>::to_pattern())
         {
-          return dealii::internal::make_reference_cell_from_int(
+          return dealii::internal::ReferenceCell::make_reference_cell_from_int(
             Convert<int>::to_value(s, pattern));
         }
       };
