@@ -18,7 +18,7 @@
 #include <fstream>
 #include <sstream>
 
-#include "pdes/mpi/mixed_poisson.h"
+#include "pdes/mixed_poisson.h"
 #include "pdes/serial/poisson.h"
 
 using namespace dealii;

@@ -13,7 +13,7 @@
 //
 // ---------------------------------------------------------------------
 
-#include "pdes/mpi/mixed_poisson.h"
+#include "pdes/mixed_poisson.h"
 
 #include <deal.II/meshworker/mesh_loop.h>
 
