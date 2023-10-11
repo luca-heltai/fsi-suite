@@ -18,6 +18,7 @@
 #include <fstream>
 #include <sstream>
 
+#include "pdes/mpi/mixed_poisson.h"
 #include "pdes/serial/poisson.h"
 
 using namespace dealii;
@@ -51,5 +52,16 @@ TEST(Chapter1, Example1_3_Q2_Regular)
   ParameterAcceptor::initialize(
     FSI_SUITE_SOURCE_DIR "/book_prms/chapter_1_example_1_3_q2_regular.prm",
     "chapter_1_example_1_3_q2_regular.prm");
+  poisson.run();
+}
+
+
+TEST(Chapter1, Example1_4_Mixed_Poisson)
+{
+  static const int             dim = 2;
+  PDEs::MPI::MixedPoisson<dim> poisson;
+  ParameterAcceptor::initialize(
+    FSI_SUITE_SOURCE_DIR "/book_prms/chapter_1_example_1_4_mixed_poisson.prm",
+    "chapter_1_example_1_4_mixed_poisson.prm");
   poisson.run();
 }

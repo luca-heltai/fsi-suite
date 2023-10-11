@@ -160,7 +160,8 @@ namespace PDEs
       ParsedTools::Components::block_indices(component_names, component_names);
     // renumber dofs in a blockwise manner.
     DoFRenumbering::component_wise(dof_handler, blocks);
-    dofs_per_block = DoFTools::count_dofs_per_fe_block(dof_handler, blocks);
+    dofs_per_block =
+      DoFTools::count_dofs_per_fe_component(dof_handler, true, blocks);
 
     locally_owned_dofs =
       dof_handler.locally_owned_dofs().split_by_block(dofs_per_block);
@@ -492,6 +493,7 @@ namespace PDEs
     print_system_info();
     deallog << "Solving quasi-static problem" << std::endl;
     grid_generator.generate(triangulation);
+    grid_generator_call_back(triangulation);
     DiscreteTime time(start_time, end_time, desired_start_step_size);
     unsigned int output_cycle = 0;
     while (time.is_at_end() == false)
@@ -596,6 +598,7 @@ namespace PDEs
     print_system_info();
     deallog << "Solving transient problem" << std::endl;
     grid_generator.generate(triangulation);
+    grid_generator_call_back(triangulation);
     setup_system();
     assemble_system();
 
@@ -623,6 +626,7 @@ namespace PDEs
     print_system_info();
     deallog << "Solving steady state problem" << std::endl;
     grid_generator.generate(triangulation);
+    grid_generator_call_back(triangulation);
     for (const auto &cycle : grid_refinement.get_refinement_cycles())
       {
         deallog << "Cycle " << cycle << std::endl;

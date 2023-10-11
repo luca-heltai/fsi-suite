@@ -44,7 +44,7 @@ namespace PDEs
                    "Second Lame coefficient",
                    "Shear viscosity",
                    "Bulk viscosity"})
-    , material_ids_0({{0}})
+    , material_ids_0({0})
     , eulerian_mapping(this->dof_handler, "/LinearViscoElasticity/Mapping")
   {
     this->add_parameter("Material ids of region 0", material_ids_0);

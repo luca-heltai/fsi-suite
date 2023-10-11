@@ -216,8 +216,8 @@ namespace PDEs
     virtual void
     assemble_system_one_cell(
       const typename DoFHandler<dim, spacedim>::active_cell_iterator &cell,
-      ScratchData &                                                   scratch,
-      CopyData &                                                      copy);
+      ScratchData                                                    &scratch,
+      CopyData                                                       &copy);
 
     /**
      * Distribute the data that has been assembled by
@@ -270,6 +270,12 @@ namespace PDEs
     custom_estimator(dealii::Vector<float> &error_per_cell) const;
 
     /**
+     * A signal that is called at the end of the grid generation process.
+     */
+    boost::signals2::signal<void(dealii::Triangulation<dim, spacedim> &)>
+      grid_generator_call_back;
+
+    /**
      * A signal that is called at the end of setup_system()
      */
     boost::signals2::signal<void()> add_constraints_call_back;
@@ -320,8 +326,8 @@ namespace PDEs
     /**
      * Connect to this signal to receive time information.
      */
-    boost::signals2::signal<void(const double &      time,
-                                 const double &      time_step,
+    boost::signals2::signal<void(const double       &time,
+                                 const double       &time_step,
                                  const unsigned int &time_step_number)>
       advance_time_call_back;
 
