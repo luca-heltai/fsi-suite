@@ -1,5 +1,5 @@
 subsection MixedPoisson
-  set Finite element space (u, u, p) = FESystem[FE_RaviartThomas(1)-FE_DGQ(1)]
+  set Finite element space (u, u, p) = FESystem[FE_RaviartThomas(0)-FE_DGQ(0)]
   set evolution type                 = steady_state
   set n_threads                      = 1
   set verbosity                      = 4
@@ -31,7 +31,7 @@ subsection MixedPoisson
   subsection Error
     set Enable computation of the errors = true
     set Error file name                  = book_output/chapter_1_example_1_4_mixed_poisson.txt
-    set Error precision                  = 3
+    set Error precision                  = 6
     set Exponent for p-norms             = 2
     set Extra columns                    = cells, dofs
     set List of error norms to compute   = L2_norm; L2_norm
@@ -41,19 +41,19 @@ subsection MixedPoisson
   subsection Functions
     set Diffusion coefficient = 1
     set Exact solution = 2*PI*sin(2*PI*y)*cos(2*PI*x); \
-                      2*PI*sin(2*PI*x)*cos(2*PI*y); \
-                      sin(2*PI*x)*sin(2*PI*y)
+                         2*PI*sin(2*PI*x)*cos(2*PI*y); \
+                         sin(2*PI*x)*sin(2*PI*y)
     set Forcing term = 0; 0; 8*PI^2*sin(2*PI*x)*sin(2*PI*y)
     set Initial value         = 0;0;0
   end
   subsection Grid
     set Arguments                 = 0: 1: false
-    set Initial grid refinement   = 3
+    set Initial grid refinement   = 5
     set Input name                = hyper_cube
     set Output name               = 
     set Transform to simplex grid = false
     subsection Refinement
-      set Number of refinement cycles = 3
+      set Number of refinement cycles = 6
       subsection Error estimator
         set Component mask = 
         set Estimator type = kelly
@@ -107,7 +107,7 @@ subsection MixedPoisson
     end
     subsection Schur
       set Absolute tolerance     = 1e-12
-      set Maximum iterations     = 10
+      set Maximum iterations     = 5
       set Consecutive iterations = 2
       set Log history            = false
       set Log result             = false
@@ -116,14 +116,14 @@ subsection MixedPoisson
       set Solver name            = cg
     end
     subsection System
-      set Absolute tolerance     = 1e-12
+      set Absolute tolerance     = 1e-8
       set Consecutive iterations = 2
       set Log history            = false
       set Log result             = true
-      set Maximum iterations     = 1000
+      set Maximum iterations     = 100000
       set Relative tolerance     = 1e-06
       set Solver control type    = tolerance
-      set Solver name            = gmres
+      set Solver name            = cg
     end
     subsection System AMG preconditioner
       set Aggregation threshold = 0.0001

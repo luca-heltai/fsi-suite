@@ -70,7 +70,7 @@ namespace PDEs
                 const auto &div_u = fe_v[velocity].divergence(j, qi);
                 const auto &p     = fe_v[pressure].value(j, qi);
 
-                cell_matrix(i, j) += (u * v - p * div_v - div_u * q) * //
+                cell_matrix(i, j) += (u * v + p * div_v + div_u * q) * //
                                      fe_v.JxW(qi);                     // dx
               }
             const auto gq =
