@@ -66,21 +66,20 @@ namespace ParsedTools
       });
     leave_my_subsection(this->prm);
 
-    // // Add some of the deal.II new FE classes.
-    // static bool fe_simplex_p_added = false;
-    // if (dim > 1 && fe_simplex_p_added == false)
-    //   {
-    //     FETools::add_fe_name<dim, spacedim>(
-    //       "FE_SimplexP", new FETools::FEFactory<FE_SimplexP<dim,
-    //       spacedim>>());
-    //     FETools::add_fe_name<dim, spacedim>(
-    //       "FE_SimplexDGP",
-    //       new FETools::FEFactory<FE_SimplexDGP<dim, spacedim>>());
-    //     FETools::add_fe_name<dim, spacedim>(
-    //       "FE_SimplexP_Bubbles",
-    //       new FETools::FEFactory<FE_SimplexP_Bubbles<dim, spacedim>>());
-    //     fe_simplex_p_added = true;
-    //   }
+    // Add some of the deal.II new FE classes.
+    static bool fe_simplex_p_added = false;
+    if (dim > 1 && fe_simplex_p_added == false)
+      {
+        FETools::add_fe_name<dim, spacedim>(
+          "FE_SimplexP", new FETools::FEFactory<FE_SimplexP<dim, spacedim>>());
+        FETools::add_fe_name<dim, spacedim>(
+          "FE_SimplexDGP",
+          new FETools::FEFactory<FE_SimplexDGP<dim, spacedim>>());
+        FETools::add_fe_name<dim, spacedim>(
+          "FE_SimplexP_Bubbles",
+          new FETools::FEFactory<FE_SimplexP_Bubbles<dim, spacedim>>());
+        fe_simplex_p_added = true;
+      }
   }
 
 

@@ -25,16 +25,16 @@ namespace LAC
 {
   /**
    * General class, used to initialize different types of block vectors, block
-   * atrices and block sparsity patterns using a common interface.
+   * matrices and block sparsity patterns using a common interface.
    */
   class BlockInitializer
   {
   public:
     BlockInitializer(
       const std::vector<dealii::types::global_dof_index> &dofs_per_block,
-      const std::vector<dealii::IndexSet> &               owned,
-      const std::vector<dealii::IndexSet> &               relevant,
-      const MPI_Comm &                                    comm = MPI_COMM_WORLD)
+      const std::vector<dealii::IndexSet>                &owned,
+      const std::vector<dealii::IndexSet>                &relevant,
+      const MPI_Comm                                     &comm = MPI_COMM_WORLD)
       : dofs_per_block(dofs_per_block)
       , owned(owned)
       , relevant(relevant)
@@ -104,19 +104,13 @@ namespace LAC
      */
     template <int dim, int spacedim>
     void
-    operator()(dealii::TrilinosWrappers::BlockSparsityPattern &    s,
-               const dealii::DoFHandler<dim, spacedim> &           dh,
-               const dealii::AffineConstraints<double> &           cm,
+    operator()(dealii::TrilinosWrappers::BlockSparsityPattern     &s,
+               const dealii::DoFHandler<dim, spacedim>            &dh,
+               const dealii::AffineConstraints<double>            &cm,
                const dealii::Table<2, dealii::DoFTools::Coupling> &coupling)
     {
       s.reinit(owned, owned, relevant, comm);
-      dealii::DoFTools::make_sparsity_pattern(
-        dh,
-        coupling,
-        s,
-        cm,
-        false,
-        dealii::Utilities::MPI::this_mpi_process(comm));
+      dealii::DoFTools::make_sparsity_pattern(dh, coupling, s, cm, false);
       s.compress();
     }
 
@@ -125,9 +119,9 @@ namespace LAC
      */
     template <int dim, int spacedim>
     void
-    operator()(dealii::BlockSparsityPattern &                      s,
-               const dealii::DoFHandler<dim, spacedim> &           dh,
-               const dealii::AffineConstraints<double> &           cm,
+    operator()(dealii::BlockSparsityPattern                       &s,
+               const dealii::DoFHandler<dim, spacedim>            &dh,
+               const dealii::AffineConstraints<double>            &cm,
                const dealii::Table<2, dealii::DoFTools::Coupling> &coupling)
     {
       dsp =
@@ -144,7 +138,7 @@ namespace LAC
      */
     void
     operator()(const LAdealii::BlockSparsityPattern &sparsity,
-               LAdealii::BlockSparseMatrix &         matrix)
+               LAdealii::BlockSparseMatrix          &matrix)
     {
       matrix.reinit(sparsity);
     };
@@ -155,7 +149,7 @@ namespace LAC
      */
     void
     operator()(const LATrilinos::BlockSparsityPattern &sparsity,
-               LATrilinos::BlockSparseMatrix &         matrix)
+               LATrilinos::BlockSparseMatrix          &matrix)
     {
       matrix.reinit(sparsity);
     };
@@ -210,7 +204,7 @@ namespace LAC
   public:
     Initializer(const dealii::IndexSet &owned_rows,
                 const dealii::IndexSet &relevant_rows,
-                const MPI_Comm &        comm             = MPI_COMM_WORLD,
+                const MPI_Comm         &comm             = MPI_COMM_WORLD,
                 const dealii::IndexSet &owned_columns    = dealii::IndexSet(),
                 const dealii::IndexSet &relevant_columns = dealii::IndexSet())
       : owned_rows(owned_rows)
@@ -302,9 +296,9 @@ namespace LAC
      */
     template <int dim, int spacedim>
     void
-    operator()(dealii::TrilinosWrappers::SparsityPattern &         s,
-               const dealii::DoFHandler<dim, spacedim> &           dh,
-               const dealii::AffineConstraints<double> &           cm,
+    operator()(dealii::TrilinosWrappers::SparsityPattern          &s,
+               const dealii::DoFHandler<dim, spacedim>            &dh,
+               const dealii::AffineConstraints<double>            &cm,
                const dealii::Table<2, dealii::DoFTools::Coupling> &coupling)
     {
       s.reinit(owned_rows, owned_columns, relevant_rows, comm);
@@ -323,9 +317,9 @@ namespace LAC
      */
     template <int dim, int spacedim>
     void
-    operator()(dealii::SparsityPattern &                           s,
-               const dealii::DoFHandler<dim, spacedim> &           dh,
-               const dealii::AffineConstraints<double> &           cm,
+    operator()(dealii::SparsityPattern                            &s,
+               const dealii::DoFHandler<dim, spacedim>            &dh,
+               const dealii::AffineConstraints<double>            &cm,
                const dealii::Table<2, dealii::DoFTools::Coupling> &coupling)
     {
       dsp =
@@ -342,7 +336,7 @@ namespace LAC
      */
     void
     operator()(const LAdealii::SparsityPattern &sparsity,
-               LAdealii::SparseMatrix &         matrix)
+               LAdealii::SparseMatrix          &matrix)
     {
       matrix.reinit(sparsity);
     };
@@ -353,7 +347,7 @@ namespace LAC
      */
     void
     operator()(const LATrilinos::SparsityPattern &sparsity,
-               LATrilinos::SparseMatrix &         matrix)
+               LATrilinos::SparseMatrix          &matrix)
     {
       matrix.reinit(sparsity);
     };
@@ -365,7 +359,7 @@ namespace LAC
      */
     void
     operator()(const LAPETSc::SparsityPattern &sparsity,
-               LAPETSc::SparseMatrix &         matrix)
+               LAPETSc::SparseMatrix          &matrix)
     {
       matrix.reinit(owned_rows, owned_columns, sparsity, comm);
     };

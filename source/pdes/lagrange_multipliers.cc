@@ -13,7 +13,7 @@
 //
 // ---------------------------------------------------------------------
 
-#include "pdes/distributed_lagrange.h"
+#include "pdes/lagrange_multipliers.h"
 
 #include <deal.II/base/logstream.h>
 
@@ -31,22 +31,36 @@ using namespace dealii;
 
 namespace PDEs
 {
-  template <int dim, int spacedim, typename LacType>
-  DistributedLagrange<dim, spacedim, LacType>::DistributedLagrange()
-    : ParameterAcceptor("Distributed Lagrange")
+  template <int spacedim, typename LacType>
+  LagrangeMultipliers<spacedim, LacType>::LagrangeMultipliers()
+    : ParameterAcceptor("Lagrange Multipliers")
     , space("u", "Space")
     , space_cache(space.triangulation)
     , embedded("w", "Embedded")
     , embedded_cache(embedded.triangulation)
     , coupling("/Coupling")
     , mass_solver("/Mass solver")
-  {}
+  {
+    add_parameter("System solver type",
+                  system_solver_type,
+                  "The algorithm use to solve the system. This can be either "
+                  "schur, direct, diagonal, back, or forward.",
+                  this->prm,
+                  Patterns::Selection("schur|direct|diagonal|back|forward"));
+    add_parameter("Filter space averages",
+                  filter_space_averages,
+                  "Filter constant modes in the space AMG preconditioner ");
+    // add_parameter("Filter embedded averages",
+    //               filter_embedded_averages,
+    //               "Filter constant modes in the embedded AMG preconditioner
+    //               ");
+  }
 
 
 
-  template <int dim, int spacedim, typename LacType>
+  template <int spacedim, typename LacType>
   void
-  DistributedLagrange<dim, spacedim, LacType>::generate_grids()
+  LagrangeMultipliers<spacedim, LacType>::generate_grids()
   {
     TimerOutput::Scope timer_section(space.timer, "generate_grids");
     space.grid_generator.generate(space.triangulation);
@@ -64,9 +78,9 @@ namespace PDEs
 
 
 
-  template <int dim, int spacedim, typename LacType>
+  template <int spacedim, typename LacType>
   void
-  DistributedLagrange<dim, spacedim, LacType>::setup_system()
+  LagrangeMultipliers<spacedim, LacType>::setup_system()
   {
     space.setup_system();
     embedded.setup_system();
@@ -98,9 +112,9 @@ namespace PDEs
 
 
 
-  template <int dim, int spacedim, typename LacType>
+  template <int spacedim, typename LacType>
   void
-  DistributedLagrange<dim, spacedim, LacType>::assemble_system()
+  LagrangeMultipliers<spacedim, LacType>::assemble_system()
   {
     {
       TimerOutput::Scope timer_section(space.timer,
@@ -221,9 +235,9 @@ namespace PDEs
 
 
 
-  template <int dim, int spacedim, typename LacType>
+  template <int spacedim, typename LacType>
   void
-  DistributedLagrange<dim, spacedim, LacType>::solve()
+  LagrangeMultipliers<spacedim, LacType>::solve()
   {
     TimerOutput::Scope timer_section(space.timer, "Solve system");
 
@@ -239,6 +253,16 @@ namespace PDEs
     auto M     = linear_operator<Vec>(embedded.matrix.block(0, 0));
     auto M_inv = M;
 
+    // Extract constant modes for the AMG preconditioner
+    std::vector<std::vector<bool>> space_constant_modes;
+    if constexpr (std::is_same_v<LacType, LAC::LATrilinos>)
+      if (filter_space_averages)
+        {
+          DoFTools::extract_constant_modes(space.dof_handler,
+                                           ComponentMask({true}),
+                                           space_constant_modes);
+          space.preconditioner.set_constant_modes(space_constant_modes);
+        }
     space.preconditioner.initialize(space.matrix.block(0, 0));
     A_inv = space.inverse_operator(A, space.preconditioner);
 
@@ -251,12 +275,52 @@ namespace PDEs
     auto &solution     = space.solution.block(0);
     auto &rhs          = space.rhs.block(0);
 
-    auto S      = B * A_inv * Bt;
-    auto S_prec = identity_operator(S);
-    auto S_inv  = embedded.inverse_operator(S, M_inv);
+    if (system_solver_type == "schur")
+      {
+        auto S      = B * A_inv * Bt;
+        auto S_prec = identity_operator(S);
+        auto S_inv  = embedded.inverse_operator(S, M_inv);
 
-    lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
-    solution = A_inv * (rhs - Bt * lambda);
+        lambda   = S_inv * (B * A_inv * rhs - embedded_rhs);
+        solution = A_inv * (rhs - Bt * lambda);
+      }
+    else if (system_solver_type == "diagonal" || system_solver_type == "back" ||
+             system_solver_type == "forward")
+      {
+        auto ZeroM = null_operator(M);
+
+        const auto AA =
+          block_operator<2, 2, BVec, BVec>({{{{A, Bt}}, {{B, ZeroM}}}});
+
+        const auto AA_diag_inv = block_diagonal_operator<2, BVec, BVec>(
+          std::array<LinOp, 2>{{A_inv, M_inv}});
+
+        BVec temp_rhs, temp_sol;
+        AA.reinit_domain_vector(temp_sol, true);
+        AA.reinit_range_vector(temp_rhs, true);
+
+        temp_rhs.block(0) = rhs;
+        temp_rhs.block(1) = embedded_rhs;
+        if (system_solver_type == "diagonal")
+          {
+            auto AA_inv = embedded.inverse_operator(AA, AA_diag_inv);
+            temp_sol    = AA_inv * temp_rhs;
+          }
+        else if (system_solver_type == "back")
+          {
+            auto tri_back = block_back_substitution(AA, AA_diag_inv);
+            auto AA_inv   = embedded.inverse_operator(AA, tri_back);
+            temp_sol      = AA_inv * temp_rhs;
+          }
+        else if (system_solver_type == "forward")
+          {
+            auto tri_for = block_forward_substitution(AA, AA_diag_inv);
+            auto AA_inv  = embedded.inverse_operator(AA, tri_for);
+            temp_sol     = AA_inv * temp_rhs;
+          }
+        solution = temp_sol.block(0);
+        lambda   = temp_sol.block(1);
+      }
 
     // Distribute all constraints.
     embedded.constraints.distribute(lambda);
@@ -267,9 +331,9 @@ namespace PDEs
 
 
 
-  template <int dim, int spacedim, typename LacType>
+  template <int spacedim, typename LacType>
   void
-  DistributedLagrange<dim, spacedim, LacType>::output_results(
+  LagrangeMultipliers<spacedim, LacType>::output_results(
     const unsigned int cycle)
   {
     space.output_results(cycle);
@@ -278,9 +342,9 @@ namespace PDEs
 
 
 
-  template <int dim, int spacedim, typename LacType>
+  template <int spacedim, typename LacType>
   void
-  DistributedLagrange<dim, spacedim, LacType>::run()
+  LagrangeMultipliers<spacedim, LacType>::run()
   {
     deallog.depth_console(space.verbosity_level);
     generate_grids();
@@ -311,18 +375,11 @@ namespace PDEs
       }
   }
 
-  // template class DistributedLagrange<1, 2>;
-  // template class DistributedLagrange<2, 2>;
-  // template class DistributedLagrange<2, 3>;
-  // template class DistributedLagrange<3, 3>;
+  // template class LagrangeMultipliers<2>;
+  // template class LagrangeMultipliers<3>;
 
-  template class DistributedLagrange<1, 2, LAC::LATrilinos>;
-  template class DistributedLagrange<2, 2, LAC::LATrilinos>;
-  template class DistributedLagrange<2, 3, LAC::LATrilinos>;
-  template class DistributedLagrange<3, 3, LAC::LATrilinos>;
-
-  template class DistributedLagrange<1, 2, LAC::LAPETSc>;
-  template class DistributedLagrange<2, 2, LAC::LAPETSc>;
-  template class DistributedLagrange<2, 3, LAC::LAPETSc>;
-  template class DistributedLagrange<3, 3, LAC::LAPETSc>;
+  template class LagrangeMultipliers<2, LAC::LATrilinos>;
+  template class LagrangeMultipliers<3, LAC::LATrilinos>;
+  template class LagrangeMultipliers<2, LAC::LAPETSc>;
+  template class LagrangeMultipliers<3, LAC::LAPETSc>;
 } // namespace PDEs

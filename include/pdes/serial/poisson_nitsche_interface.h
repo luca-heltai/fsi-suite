@@ -91,8 +91,6 @@ namespace PDEs
      * references therein. All in all, what one gets using Lagrangian finite
      * elements in codimension 1 is to find $u \in H_0^1(\Omega)$ s.t.
      *
-     *
-     *
      * @f{align*} (\nabla u, \nabla v) + 2 \beta \langle u,v \rangle_{\Gamma}
      * =(f,v) + 2 \beta \langle g,v \rangle_{\Gamma}
      * @f}

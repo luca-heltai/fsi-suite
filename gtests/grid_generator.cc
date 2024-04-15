@@ -102,3 +102,28 @@ TYPED_TEST(DimTesterNoOne, GenerateHyperL)
   ASSERT_TRUE(std::ifstream(grid_name));
   std::remove(grid_name.c_str());
 }
+
+
+TEST(ParsedToolsGridGenerator, CopyBoundaryToManifoldIds)
+{
+  ParsedTools::GridGenerator<2, 2> pgg("/");
+  Triangulation<2, 2>              tria;
+
+  parse(R"(
+    set Input name = hyper_cube
+    set Arguments = 0: 1: true
+    set Transform to simplex grid     = false
+    set Copy boundary to manifold ids = true
+    set Output name = grid_2_2.msh
+  )",
+        pgg);
+
+  // After this, we should have a file grid_2_2.msh
+  pgg.generate(tria);
+  ASSERT_TRUE(std::ifstream("grid_2_2.msh"));
+  std::remove("grid_2_2.msh");
+
+  // Since we copied manifold ids, we must have four ids + flat manifold.
+  auto manifold_ids = tria.get_manifold_ids();
+  ASSERT_EQ(manifold_ids.size(), 5);
+}

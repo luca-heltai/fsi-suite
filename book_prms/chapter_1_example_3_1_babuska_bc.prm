@@ -1,0 +1,282 @@
+subsection Space
+  set Finite element space (u) = FESystem[FE_Q(1)^1]
+  set n_threads                = 1
+  set verbosity                = 4
+  set evolution type           = steady_state
+  subsection Grid
+    set Input name                    = hyper_ball
+    set Arguments                     = 0,0 : 1 : false
+    set Output name                   = 
+    set Transform to simplex grid     = false
+    set Initial grid refinement       = 5
+    set Copy boundary to manifold ids = false
+    subsection Refinement
+      set Number of refinement cycles = 3
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    subsection System
+      set Solver name            = minres
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection System AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+    subsection Mass
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection Mass AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+  end
+  subsection Functions
+    set Forcing term   = 8*PI*PI*sin(2*PI*x)*sin(2*PI*y)
+    set Exact solution = sin(2*PI*x)*sin(2*PI*y)+2
+    set Initial value  = 0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u)         = 
+    set Selected components (u)      = 
+    set Boundary condition types (u) = 
+    set Expressions (u)              = 
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 6
+    set Error file name                  = book_output/chapter_1_example_3_1_space.txt
+    set List of error norms to compute   = L2_norm, H1_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = 
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = outdir/solution
+    set Output partitioning    = false
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+  subsection ARKode
+    set Initial time                      = 0
+    set Final time                        = 1
+    set Time interval between each output = 0.1
+    subsection Running parameters
+      set Initial step size                      = 0.01
+      set Minimum step size                      = 1e-06
+      set Maximum order of ARK                   = 5
+      set Maximum number of nonlinear iterations = 10
+      set Implicit function is linear            = false
+      set Implicit function is time independent  = false
+      set Mass is time independent               = false
+      set Anderson-acceleration subspace         = 3
+    end
+    subsection Error control
+      set Absolute error tolerance = 1e-06
+      set Relative error tolerance = 1e-05
+    end
+  end
+  subsection Quasi-static
+    set start time        = 0
+    set end time          = 1
+    set initial time step = 0.0625
+  end
+end
+subsection Embedded
+  set Finite element space (w) = FESystem[FE_Q(1)^1]
+  set n_threads                = 1
+  set verbosity                = 4
+  set evolution type           = steady_state
+  subsection Grid
+    set Input name                    = hyper_sphere
+    set Arguments                     = 0,0 : 1
+    set Output name                   = 
+    set Transform to simplex grid     = false
+    set Initial grid refinement       = 5
+    set Copy boundary to manifold ids = false
+    subsection Refinement
+      set Number of refinement cycles = 1
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    subsection System
+      set Solver name            = gmres
+      set Solver control type    = tolerance
+      set Maximum iterations     = 10000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = true
+    end
+    subsection System AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+    subsection Mass
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection Mass AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+  end
+  subsection Functions
+    set Forcing term   = sin(2*PI*x)*sin(2*PI*y)+2
+    set Exact solution = sin(2*PI*x)*sin(2*PI*y)+2
+    set Initial value  = 0
+  end
+  subsection Boundary conditions
+    set Boundary id sets (w)         = -1
+    set Selected components (w)      = all
+    set Boundary condition types (w) = dirichlet
+    set Expressions (w)              = 0
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 6
+    set Error file name                  = book_output/chapter_1_example_3_1_embedded.txt
+    set List of error norms to compute   = L2_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = 
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = outdir/embedded_solution
+    set Output partitioning    = false
+    set Output material ids    = false
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = no_curved_cells| curved_inner_cells
+  end
+  subsection ARKode
+    set Initial time                      = 0
+    set Final time                        = 1
+    set Time interval between each output = 0.1
+    subsection Running parameters
+      set Initial step size                      = 0.01
+      set Minimum step size                      = 1e-06
+      set Maximum order of ARK                   = 5
+      set Maximum number of nonlinear iterations = 10
+      set Implicit function is linear            = false
+      set Implicit function is time independent  = false
+      set Mass is time independent               = false
+      set Anderson-acceleration subspace         = 3
+    end
+    subsection Error control
+      set Absolute error tolerance = 1e-06
+      set Relative error tolerance = 1e-05
+    end
+  end
+  subsection Quasi-static
+    set start time        = 0
+    set end time          = 1
+    set initial time step = 0.0625
+  end
+end
+subsection Coupling
+  set Coupling type                    = approximate_L2
+  set Refinement strategy              = none
+  set Space pre-refinement             = 0
+  set Embedded post-refinement         = 0
+  set Embedded quadrature type         = gauss
+  set Embedded quadrature order        = 2
+  set Embedded quadrature retpetitions = 1
+  set Quadrature tolerance             = 1e-09
+end
+subsection Mass solver
+  set Solver name            = cg
+  set Solver control type    = tolerance
+  set Maximum iterations     = 1000
+  set Consecutive iterations = 2
+  set Absolute tolerance     = 1e-12
+  set Relative tolerance     = 1e-06
+  set Log history            = false
+  set Log result             = false
+end
+subsection Lagrange Multipliers
+  set System solver type    = diagonal
+  set Filter space averages = true
+end

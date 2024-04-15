@@ -49,7 +49,7 @@ namespace ParsedTools
   {
   public:
     /**
-     * Types of coupling that can used in non-matching coupling.
+     * Types of coupling that can be used in non-matching coupling.
      */
     enum class CouplingType
     {
@@ -90,7 +90,7 @@ namespace ParsedTools
      * Constructor.
      */
     NonMatchingCoupling(
-      const std::string &          section_name  = "",
+      const std::string           &section_name  = "",
       const dealii::ComponentMask &embedded_mask = dealii::ComponentMask(),
       const dealii::ComponentMask &space_mask    = dealii::ComponentMask(),
       const CouplingType           coupling_type = CouplingType::approximate_L2,
@@ -110,10 +110,10 @@ namespace ParsedTools
      */
     void
     initialize(const dealii::GridTools::Cache<spacedim, spacedim> &space_cache,
-               const dealii::DoFHandler<spacedim, spacedim> &      space_dh,
-               const dealii::AffineConstraints<double> &      space_constraints,
+               const dealii::DoFHandler<spacedim, spacedim>       &space_dh,
+               const dealii::AffineConstraints<double>       &space_constraints,
                const dealii::GridTools::Cache<dim, spacedim> &embedded_cache,
-               const dealii::DoFHandler<dim, spacedim> &      embedded_dh,
+               const dealii::DoFHandler<dim, spacedim>       &embedded_dh,
                const dealii::AffineConstraints<double> &embedded_constraints);
 
     /**
@@ -147,7 +147,7 @@ namespace ParsedTools
     void
     adjust_grid_refinements(
       dealii::Triangulation<spacedim, spacedim> &space_tria,
-      dealii::Triangulation<dim, spacedim> &     embedded_tria,
+      dealii::Triangulation<dim, spacedim>      &embedded_tria,
       const bool apply_delta_refinements = true) const;
 
     /**

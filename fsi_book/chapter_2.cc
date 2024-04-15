@@ -21,10 +21,71 @@
 #include <sstream>
 
 #include "pdes/mpi/poisson.h"
+#include "pdes/serial/poisson.h"
 
 using namespace dealii;
 
-TEST(Chapter2, Example2_1_Matching_Interface)
+TEST(Chapter2, Example2_1_Pacman_0)
+{
+  static const int           dim = 2;
+  PDEs::Serial::Poisson<dim> poisson;
+  ParameterAcceptor::initialize(FSI_SUITE_SOURCE_DIR
+                                "/book_prms/chapter_2_example_2_1_pacman_0.prm",
+                                "chapter_2_example_2_1_pacman_0.prm");
+  poisson.run();
+}
+
+
+
+TEST(Chapter2, Example2_1_Pacman_1)
+{
+  static const int           dim = 2;
+  PDEs::Serial::Poisson<dim> poisson;
+  ParameterAcceptor::initialize(FSI_SUITE_SOURCE_DIR
+                                "/book_prms/chapter_2_example_2_1_pacman_1.prm",
+                                "chapter_2_example_2_1_pacman_1.prm");
+  poisson.run();
+}
+
+
+
+TEST(Chapter2, Example2_1_Pacman_2)
+{
+  static const int           dim = 2;
+  PDEs::Serial::Poisson<dim> poisson;
+  ParameterAcceptor::initialize(FSI_SUITE_SOURCE_DIR
+                                "/book_prms/chapter_2_example_2_1_pacman_2.prm",
+                                "chapter_2_example_2_1_pacman_2.prm");
+  poisson.run();
+}
+
+
+
+TEST(Chapter2, Example2_1_Pacman_3)
+{
+  static const int           dim = 2;
+  PDEs::Serial::Poisson<dim> poisson;
+  ParameterAcceptor::initialize(FSI_SUITE_SOURCE_DIR
+                                "/book_prms/chapter_2_example_2_1_pacman_3.prm",
+                                "chapter_2_example_2_1_pacman_3.prm");
+  poisson.run();
+}
+
+
+
+TEST(Chapter2, Example2_1_Pacman_4)
+{
+  static const int           dim = 2;
+  PDEs::Serial::Poisson<dim> poisson;
+  ParameterAcceptor::initialize(FSI_SUITE_SOURCE_DIR
+                                "/book_prms/chapter_2_example_2_1_pacman_4.prm",
+                                "chapter_2_example_2_1_pacman_4.prm");
+  poisson.run();
+}
+
+
+
+TEST(Chapter2, Example2_1_Matching_Interface_MPI)
 {
   static const int        dim = 2;
   PDEs::MPI::Poisson<dim> poisson;
@@ -63,7 +124,7 @@ TEST(Chapter2, Example2_1_Matching_Interface)
 }
 
 
-TEST(Chapter2, Example2_2_Non_Matching_Interface)
+TEST(Chapter2, Example2_2_Non_Matching_Interface_MPI)
 {
   static const int        dim = 2;
   PDEs::MPI::Poisson<dim> poisson;

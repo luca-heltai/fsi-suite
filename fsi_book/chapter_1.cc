@@ -18,8 +18,11 @@
 #include <fstream>
 #include <sstream>
 
+#include "pdes/babuska_bc.h"
+#include "pdes/lagrange_multipliers.h"
 #include "pdes/mixed_poisson.h"
 #include "pdes/serial/poisson.h"
+#include "pdes/stokes.h"
 
 using namespace dealii;
 
@@ -56,7 +59,7 @@ TEST(Chapter1, Example1_3_Q2_Regular)
 }
 
 
-TEST(Chapter1, Example1_4_Mixed_Poisson)
+TEST(Chapter1, Example1_4_Mixed_Poisson_MPI)
 {
   static const int             dim = 2;
   PDEs::MPI::MixedPoisson<dim> poisson;
@@ -64,4 +67,38 @@ TEST(Chapter1, Example1_4_Mixed_Poisson)
     FSI_SUITE_SOURCE_DIR "/book_prms/chapter_1_example_1_4_mixed_poisson.prm",
     "chapter_1_example_1_4_mixed_poisson.prm");
   poisson.run();
+}
+
+
+TEST(Chapter1, Example1_5_Stokes_MPI)
+{
+  static const int       dim = 2;
+  PDEs::MPI::Stokes<dim> stokes;
+  ParameterAcceptor::initialize(FSI_SUITE_SOURCE_DIR
+                                "/book_prms/chapter_1_example_1_5_stokes.prm",
+                                "chapter_1_example_1_5_stokes.prm");
+  stokes.run();
+}
+
+
+TEST(Chapter1, Example1_6_Stokes_Q2P1_MPI)
+{
+  static const int       dim = 2;
+  PDEs::MPI::Stokes<dim> stokes;
+  ParameterAcceptor::initialize(
+    FSI_SUITE_SOURCE_DIR "/book_prms/chapter_1_example_1_6_stokes_q2p1.prm",
+    "chapter_1_example_1_6_stokes_q2p1.prm");
+  stokes.run();
+}
+
+
+
+TEST(Chapter1, Example3_1_Babuska_BC_MPI)
+{
+  static const int                    dim = 2;
+  PDEs::MPI::LagrangeMultipliers<dim> coupled;
+  ParameterAcceptor::initialize(
+    FSI_SUITE_SOURCE_DIR "/book_prms/chapter_1_example_3_1_babuska_bc.prm",
+    "chapter_1_example_3_1_babuska_bc.prm");
+  coupled.run();
 }

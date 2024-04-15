@@ -32,36 +32,32 @@ namespace ParsedTools
    * GridGenerator class.
    *
    * This is an interface, derived from ParameterAcceptor, for the deal.II
-   * function GridGenerator::generate_from_name_and_arguments(), for the
-   * classes GridIn and GridOut, and for the OpenCASCADE
+   * function GridGenerator::generate_from_name_and_arguments(), for the classes
+   * GridIn and GridOut, and for the OpenCASCADE
    * ArclengthProjectionLineManifold, NormalToMeshProjectionManifold, and
    * NURBSPatchManifold classes.
    *
    * Example usage:
    * @code
-   * GridGenerator<dim, spacedim> pgg("/Grid");
-   * Triangulation<dim,spacedim> tria;
+   * GridGenerator<dim, spacedim> pgg("/Grid"); Triangulation<dim,spacedim>
+   * tria;
    *
    * ParameterAcceptor::initialize("parameters.prm");
    *
-   * pgg.generate(tria);
-   * pgg.write(tria);
+   * pgg.generate(tria); pgg.write(tria);
    * @endcode
    *
    * This class follows the design of the ParameterAcceptor class to handle
    * parameter files and section names.
    *
    * The default set of parameters usad to drive this class is given by:
-   * @code{.sh}
-   * set Input name                = hyper_cube
-   * set Arguments                 = 0: 1: false
-   * set Initial grid refinement   = 1
-   * set Output name               = grid_out.msh
-   * set Transform to simplex grid = false
+   * @code{.sh} set Input name                = hyper_cube set Arguments
+   * = 0: 1: false set Initial grid refinement   = 1 set Output name
+   * = grid_out.msh set Transform to simplex grid = false
    * @endcode
    *
-   * The above example allows you to generate() a hypercube with side 1,
-   * lower left corner at the origin, and with all boundary ids set to zero by
+   * The above example allows you to generate() a hypercube with side 1, lower
+   * left corner at the origin, and with all boundary ids set to zero by
    * default. See GridGenerator::hyper_cube() for an explanation of all the
    * arguments.
    *
@@ -102,7 +98,7 @@ namespace ParsedTools
    * 1. wires/edges and lines are fed to an ArclengthProjectionLineManifold, and
    *    can be used as manifolds for edges, both in two and three dimensions;
    * 2. surfaces and faces when `spacedim` is equal to two are fed to a
-   *    NURBSPatchManifold, and can be used as a manifold for cell in two
+   *    NURBSPatchManifold, and can be used as a manifold for cells in two
    *    dimensions;
    * 3. surfaces and faces when `spacedim` is equal to three are fed to a
    *    NormalToMeshProjectionManifold, and can be used as a manifold for faces
@@ -128,6 +124,11 @@ namespace ParsedTools
    * GridGenerator::convert_hypercube_to_simplex_mesh() is called with the grid
    * that has been generated using `Input name` and `Arguments`.
    *
+   * ## Copy boundary to manifold ids
+   *
+   * If you have read the mesh from a file format that does not support manifold
+   * ids, you can copy boundary ids to manifold ids using this option.
+   *
    * ## Examples
    *
    * In the following examples we assume that the class was instantiated with
@@ -136,32 +137,27 @@ namespace ParsedTools
    * write() method ourselves. In order to regenerate the following examples,
    * just place this somwhere in your code:
    *
-   * @code{.cpp}
-   * Triangulation<dim, spacedim> tria;
-   * GridGenerator<dim, spacedim> pgg("/");
-   * ParameterAcceptor::initialize("parameters.prm");
-   * pgg.generate(tria);
-   * pgg.write(tria);
+   * @code{.cpp} Triangulation<dim, spacedim> tria; GridGenerator<dim, spacedim>
+   * pgg("/"); ParameterAcceptor::initialize("parameters.prm");
+   * pgg.generate(tria); pgg.write(tria);
    * @endcode
    *
    * ### Hyper shell
    *
    * Parameter file:
-   * @code{.sh}
-   * set Arguments                 = 0,0: .5: 1: 5: true
-   * set Initial grid refinement   = 4
-   * set Input name                = hyper_shell
-   * set Output name               = hyper_shell.vtk
-   * set Transform to simplex grid = false
+   * @code{.sh} set Arguments                 = 0,0: .5: 1: 5: true set Initial
+   * grid refinement   = 4 set Input name                = hyper_shell set
+   * Output name               = hyper_shell.vtk set Transform to simplex grid =
+   * false
    * @endcode
    *
    * This will generate a hyper shell with center in the point `0,0`, inner
    * radius `.5`, outer radius `1`, and with `5` cells the angular direction,
    * colorizing the boundary ids to 0 and 1. The output grid will look like the
    * following:
-   * @image html hyper_shell.png
-   * and the **coarse** grid (before any refinement takes place) will also be
-   * written to `hyper_shell.vtk` as soon as the grid is generated.
+   * @image html hyper_shell.png and the **coarse** grid (before any refinement
+   * takes place) will also be written to `hyper_shell.vtk` as soon as the grid
+   * is generated.
    *
    * If you later call again the write() method with another Triangulation as
    * input parameter, then the argument of the write() method will overwrite the
@@ -185,7 +181,8 @@ namespace ParsedTools
                   const std::string &grid_generator_arguments  = "0: 1: false",
                   const std::string &output_file_name          = "",
                   const bool         transform_to_simplex_grid = false,
-                  const unsigned int initial_grid_refinement   = 0);
+                  const unsigned int initial_grid_refinement   = 0,
+                  const bool         copy_boundary_to_manifold_ids = false);
 
     /**
      * Fill a triangulation according to the parsed parameters. If the
@@ -218,7 +215,7 @@ namespace ParsedTools
      */
     void
     write(const dealii::Triangulation<dim, spacedim> &tria,
-          const std::string &                         filename = "") const;
+          const std::string                          &filename = "") const;
 
   private:
     /**
@@ -245,6 +242,9 @@ namespace ParsedTools
 
     /** Transform quad and hex grids to simplex grids. */
     bool transform_to_simplex_grid;
+
+    /** Copy boundary to manifold ids. */
+    bool copy_boundary_to_manifold_ids;
 
     /** Initial global refinement of the grid. */
     unsigned int initial_grid_refinement;

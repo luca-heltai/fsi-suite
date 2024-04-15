@@ -166,4 +166,16 @@ TYPED_TEST_SUITE(DimTester, DimTypes, );
 TYPED_TEST_SUITE(DimSpacedimTesterNoOne, DimSpacedimTypesNoOne, );
 TYPED_TEST_SUITE(DimTesterNoOne, DimTypesNoOne, );
 
+// Generic testers for PDEs and PDEs::MPI
+namespace PDEs
+{
+  class PDETest : public ::testing::Test
+  {};
+  namespace MPI
+  {
+    class PDETest : public ::testing::Test
+    {};
+  } // namespace MPI
+} // namespace PDEs
+
 #endif // fsi_dim_spacedim_tester_h

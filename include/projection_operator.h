@@ -57,7 +57,7 @@ namespace dealii
    * auto A_reduced = Pt*A*P;
    * @endcode
    *
-   * @param range_exemplar An exmeplar vector of the range space. We'll make a
+   * @param range_exemplar An exemplar vector of the range space. We'll make a
    * few copies of this vector to allow the operator to be used with
    * intermediate storage.
    * @param local_basis A vector of references to the locally owned basis
@@ -75,13 +75,13 @@ namespace dealii
     typename Payload = internal::LinearOperatorImplementation::EmptyPayload>
   LinearOperator<Range, Domain, Payload>
   projection_operator(
-    const Range &                                            range_exemplar,
+    const Range                                             &range_exemplar,
     const std::vector<std::reference_wrapper<const Domain>> &local_basis,
-    const Domain * domain_exemplar = nullptr,
+    const Domain  *domain_exemplar = nullptr,
     const Payload &payload         = Payload())
   {
     LinearOperator<Range, Domain, Payload> linear_operator(payload);
-    linear_operator.vmult = [range_exemplar, local_basis](Range &       dst,
+    linear_operator.vmult = [range_exemplar, local_basis](Range        &dst,
                                                           const Domain &src) {
       static const auto id = range_exemplar.locally_owned_elements();
       AssertDimension(local_basis.size(), id.n_elements());
@@ -99,7 +99,7 @@ namespace dealii
         dst[j] += local_basis[i++].get() * src;
     };
 
-    linear_operator.Tvmult = [range_exemplar, local_basis](Domain &     dst,
+    linear_operator.Tvmult = [range_exemplar, local_basis](Domain      &dst,
                                                            const Range &src) {
       static const auto id = range_exemplar.locally_owned_elements();
       AssertDimension(local_basis.size(), id.n_elements());

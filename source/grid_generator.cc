@@ -17,6 +17,7 @@
 
 #include <deal.II/grid/grid_in.h>
 #include <deal.II/grid/grid_out.h>
+#include <deal.II/grid/grid_tools.h>
 
 #include <deal.II/opencascade/manifold_lib.h>
 #include <deal.II/opencascade/utilities.h>
@@ -43,12 +44,14 @@ namespace ParsedTools
     const std::string &grid_generator_arguments,
     const std::string &output_file_name,
     const bool         transform_to_simplex_grid,
-    const unsigned int initial_grid_refinement)
+    const unsigned int initial_grid_refinement,
+    const bool         copy_boundary_to_manifold_ids)
     : ParameterAcceptor(prm_section_path)
     , grid_generator_function(grid_generator_function)
     , grid_generator_arguments(grid_generator_arguments)
     , output_file_name(output_file_name)
     , transform_to_simplex_grid(transform_to_simplex_grid)
+    , copy_boundary_to_manifold_ids(copy_boundary_to_manifold_ids)
     , initial_grid_refinement(initial_grid_refinement)
   {
     add_parameter("Input name", this->grid_generator_function);
@@ -56,6 +59,8 @@ namespace ParsedTools
     add_parameter("Output name", this->output_file_name);
     add_parameter("Transform to simplex grid", this->transform_to_simplex_grid);
     add_parameter("Initial grid refinement", this->initial_grid_refinement);
+    add_parameter("Copy boundary to manifold ids",
+                  this->copy_boundary_to_manifold_ids);
   }
 
 
@@ -82,12 +87,12 @@ namespace ParsedTools
         GridIn<dim, spacedim> gi(tria);
         try
           {
-            // Use gmsh api by default
-            if (ext == "msh")
-              gi.read_msh(grid_generator_function);
-            // Otherwise try deal.II stdandard way of reading grids
-            else
-              gi.read(grid_generator_function); // Try default ways
+            // // Use gmsh api by default
+            // if (ext == "msh")
+            //   gi.read_msh(grid_generator_function);
+            // // Otherwise try deal.II standard way of reading grids
+            // else
+            gi.read(grid_generator_function); // Try default ways
           }
         catch (std::exception &exc)
           {
@@ -210,6 +215,9 @@ namespace ParsedTools
             tria.set_manifold(i, tmp.get_manifold(i));
       }
 
+    if (copy_boundary_to_manifold_ids == true)
+      GridTools::copy_boundary_to_manifold_id(tria);
+
 
     // Write the grid before refining it.
     write(tria);
@@ -222,7 +230,7 @@ namespace ParsedTools
   void
   GridGenerator<dim, spacedim>::write(
     const dealii::Triangulation<dim, spacedim> &tria,
-    const std::string &                         filename) const
+    const std::string                          &filename) const
   {
     const std::string outname = filename != "" ? filename : output_file_name;
     if (outname != "")
@@ -248,8 +256,6 @@ namespace ParsedTools
               go.write_vtu(tria, out);
             else if (ext == "ucd" || ext == "inp")
               go.write_ucd(tria, out);
-            else if (ext == "vtu")
-              go.write_vtu(tria, out);
             else if (ext == "ar")
               {
                 boost::archive::text_oarchive oa(out);

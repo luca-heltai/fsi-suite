@@ -1,0 +1,157 @@
+subsection Stokes
+  set Finite element space (u, u, p) = FESystem[FE_Q(2)^2-FE_Q(1)]
+  set n_threads                      = 1
+  set verbosity                      = 4
+  set evolution type                 = steady_state
+  subsection Grid
+    set Input name                = hyper_cube
+    set Arguments                 = 0: 1: false
+    set Output name               = 
+    set Transform to simplex grid = false
+    set Initial grid refinement   = 3
+    subsection Refinement
+      set Number of refinement cycles = 7
+      subsection Marking strategy
+        set Refinement strategy                    = global
+        set Refinement parameter                   = 0.3
+        set Coarsening parameter                   = 0.1
+        set Maximum number of cells (if available) = 0
+        set Minimum level                          = 0
+        set Maximum level                          = 0
+      end
+      subsection Error estimator
+        set Estimator type = kelly
+        set Component mask = 
+      end
+    end
+  end
+  subsection Solver
+    subsection System
+      set Solver name            = minres
+      set Solver control type    = tolerance
+      set Maximum iterations     = 10000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = true
+    end
+    subsection System AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+    subsection Mass
+      set Solver name            = cg
+      set Solver control type    = tolerance
+      set Maximum iterations     = 1000
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+    subsection Mass AMG preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+    subsection Schur preconditioner
+      set Elliptic              = true
+      set High Order Elements   = false
+      set Number of cycles      = 1
+      set w-cycle               = false
+      set Aggregation threshold = 0.0001
+      set Smoother sweeps       = 2
+      set Smoother overlap      = 0
+      set Output details        = false
+      set Smoother type         = Chebyshev
+      set Coarse type           = Amesos-KLU
+    end
+    subsection Schur solver
+      set Solver name            = cg
+      set Solver control type    = iteration_number
+      set Maximum iterations     = 3
+      set Consecutive iterations = 2
+      set Absolute tolerance     = 1e-12
+      set Relative tolerance     = 1e-06
+      set Log history            = false
+      set Log result             = false
+    end
+  end
+  subsection Functions
+    set Exact solution =  2*PI*sin(PI*x)^2*sin(PI*y)*cos(PI*y) ; -2*PI*sin(PI*x)*sin(PI*y)^2*cos(PI*x) ; sin(2*PI*x)*sin(2*PI*y) 
+    set Forcing term   =  4*PI^3*(sin(PI*x)^2 - cos(PI*x)^2)*sin(PI*y)*cos(PI*y) + \
+                          8*PI^3*sin(PI*x)^2*sin(PI*y)*cos(PI*y) \
+                          + 2*PI*sin(2*PI*y)*cos(2*PI*x) ; -4*PI^3*(sin(PI*y)^2 - cos(PI*y)^2)*sin(PI*x)*cos(PI*x) \
+                          - \
+                          8*PI^3*sin(PI*x)*sin(PI*y)^2*cos(PI*x) \
+                          + 2*PI*sin(2*PI*x)*cos(2*PI*y) ; 0 
+  end
+  subsection Boundary conditions
+    set Boundary id sets (u, u, p)         = -1
+    set Selected components (u, u, p)      = u
+    set Boundary condition types (u, u, p) = dirichlet
+    set Expressions (u, u, p)              = 2*PI*sin(PI*x)^2*sin(PI*y)*cos(PI*y) ; -2*PI*sin(PI*x)*sin(PI*y)^2*cos(PI*x) ; cos(2*PI*x)*cos(2*PI*y)
+  end
+  subsection Error
+    set Enable computation of the errors = true
+    set Error precision                  = 6
+    set Error file name                  = book_output/chapter_1_example_1_5_stokes.txt
+    set List of error norms to compute   = L2_norm, H1_norm; L2_norm
+    set Exponent for p-norms             = 2
+    set Extra columns                    = cells, dofs
+    set Rate key                         = dofs
+    set Rate mode                        = reduction_rate_log2
+  end
+  subsection Output
+    set Problem base name      = book_output/chapter_1_example_1_5_stokes
+    set Output partitioning    = true
+    set Output material ids    = true
+    set Output format          = vtu
+    set Subdivisions           = 0
+    set Write high order cells = true
+    set Curved cells region    = curved_inner_cells
+  end
+  subsection ARKode
+    set Initial time                      = 0
+    set Final time                        = 1
+    set Time interval between each output = 0.1
+    subsection Running parameters
+      set Initial step size                      = 0.01
+      set Minimum step size                      = 1e-06
+      set Maximum order of ARK                   = 5
+      set Maximum number of nonlinear iterations = 10
+      set Implicit function is linear            = false
+      set Implicit function is time independent  = false
+      set Mass is time independent               = false
+      set Anderson-acceleration subspace         = 3
+    end
+    subsection Error control
+      set Absolute error tolerance = 1e-06
+      set Relative error tolerance = 1e-05
+    end
+  end
+  subsection Quasi-static
+    set start time        = 0
+    set end time          = 1
+    set initial time step = 0.0625
+  end
+  subsection Constants
+    set Viscosity (eta) = 1
+  end
+end

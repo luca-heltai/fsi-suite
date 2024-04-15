@@ -74,8 +74,8 @@ namespace PDEs
   void
   Stokes<dim, LacType>::assemble_system_one_cell(
     const typename DoFHandler<dim>::active_cell_iterator &cell,
-    ScratchData &                                         scratch,
-    CopyData &                                            copy)
+    ScratchData                                          &scratch,
+    CopyData                                             &copy)
   {
     auto &cell_matrix = copy.matrices[0];
     auto &cell_rhs    = copy.vectors[0];
@@ -104,8 +104,8 @@ namespace PDEs
                 // We assemble also the mass matrix for the pressure, to be
                 // used as a preconditioner
                 cell_matrix(i, j) +=
-                  (constants["eta"] * scalar_product(eps_v, eps_u) - div_v * p -
-                   div_u * q + p * q / constants["eta"]) *
+                  (2 * constants["eta"] * scalar_product(eps_v, eps_u) -
+                   div_v * p - div_u * q + p * q / constants["eta"]) *
                   fe_values.JxW(q_index); // dx
               }
 
@@ -170,9 +170,9 @@ namespace PDEs
     const auto S     = -1.0 * B * precA * Bt;
     auto       precM = linear_operator<Vec>(Mp, schur_preconditioner);
     // auto       precS = schur_solver(S, precM);
-    auto precS = schur_solver(Mp, precM);
+    // auto precS = schur_solver(Mp, precM);
 
-    std::array<LinOp, 2> diag_ops = {{precA, precS}};
+    std::array<LinOp, 2> diag_ops = {{precA, precM}};
     auto diagprecAA               = block_diagonal_operator<2, BVec>(diag_ops);
 
     deallog << "Preconditioners initialized" << std::endl;

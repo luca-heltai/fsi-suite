@@ -225,6 +225,17 @@ namespace PDEs
       void
       run();
 
+      /**
+       * Triangulation getter.
+       *
+       * @return Triangulation<dim>&
+       */
+      Triangulation<dim, spacedim> &
+      get_triangulation()
+      {
+        return triangulation;
+      }
+
     protected:
       /**
        * Setup dofs, constraints, and matrices.
