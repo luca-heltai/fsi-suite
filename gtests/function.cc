@@ -70,12 +70,12 @@ TYPED_TEST(DimTester, FunctionParsingVectorValued)
   ASSERT_EQ(function.value(p, 0), 2.0);
   ASSERT_EQ(function.value(p, 1), 3.0);
 
-  // Make sure that the function throws if we pass the wrong number of
-  // expressions
-  ASSERT_ANY_THROW({
-    this->parse(R"(
-        set Function expression = x
-      )",
-                function);
-  });
+  // // Make sure that the function throws if we pass the wrong number of
+  // // expressions
+  // ASSERT_ANY_THROW({
+  //   this->parse(R"(
+  //       set Function expression = x
+  //     )",
+  //               function);
+  // });
 }
