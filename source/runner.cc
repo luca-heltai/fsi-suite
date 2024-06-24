@@ -102,6 +102,8 @@ namespace Runner
     cli({"i", "input_prm_file"}, input_parameter_file) >> input_parameter_file;
     cli(1, input_parameter_file) >> input_parameter_file;
 
+    const bool has_dim_or_spacedim =
+      cli[{"d", "dim"}] || cli[{"s", "spacedim"}];
     // Now read from command line the dimension and space dimension
     cli({"d", "dim"}) >> dim;
     // Make sure the default is to set spacedim = dim
@@ -115,14 +117,14 @@ namespace Runner
     // not agree. Notice that, if the file doees not exist, they will agree,
     // since the default values are the same.
     AssertThrow(
-      (dim == prm_dim) && (spacedim == prm_spacedim),
+      !has_dim_or_spacedim || (dim == prm_dim) && (spacedim == prm_spacedim),
       dealii::ExcMessage(
         "You have specified a parameter file that contains a specification "
         "of the dimension and of the space dimension, as <" +
         std::to_string(prm_dim) + ", " + std::to_string(prm_spacedim) +
         ">, but you also indicated a -d (--dim) = " + std::to_string(dim) +
         " or -s (--spacedim) = " + std::to_string(spacedim) +
-        "argument on the command line that do not match the content of the parameter file. "
+        " argument on the command line that do not match the content of the parameter file. "
         "Use only one of the two ways to select the dimension and the "
         "space dimension, or make sure that what you specify in the parameter file "
         "matches what you specify on the command line."));
@@ -150,8 +152,8 @@ namespace Runner
             << "Input parameter file: " << input_parameter_file << std::endl
             << "Output parameter file: " << output_parameter_file << std::endl;
 
-    return std::make_tuple(dim,
-                           spacedim,
+    return std::make_tuple(prm_dim,
+                           prm_spacedim,
                            input_parameter_file,
                            output_parameter_file);
   }
