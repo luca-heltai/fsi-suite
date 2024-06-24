@@ -143,7 +143,7 @@ namespace ParsedTools
 
 
     /**
-     * The documentation string used to parse the constants from thee parameter
+     * The documentation string used to parse the constants from the parameter
      * file.
      */
     std::map<std::string, std::string> constants_parameter_entries;
