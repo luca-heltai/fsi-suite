@@ -96,9 +96,9 @@ namespace ParsedTools
      *        use in the parameter file defintion.
      */
     Constants(
-      const std::string &             section_name                      = "",
+      const std::string              &section_name                      = "",
       const std::vector<std::string> &names                             = {},
-      const std::vector<double> &     default_values                    = {},
+      const std::vector<double>      &default_values                    = {},
       const std::vector<std::string> &optional_names_for_parameter_file = {},
       const std::vector<std::string> &optional_documentation_strings    = {});
 

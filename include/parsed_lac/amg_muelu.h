@@ -40,16 +40,16 @@ namespace ParsedLAC
     /**
      * Constructor. Build the preconditioner of a matrix using AMG.
      */
-    AMGMueLuPreconditioner(const std::string & name                  = "",
-                           const bool &        elliptic              = true,
+    AMGMueLuPreconditioner(const std::string  &name                  = "",
+                           const bool         &elliptic              = true,
                            const unsigned int &n_cycles              = 1,
-                           const bool &        w_cycle               = false,
-                           const double &      aggregation_threshold = 1e-4,
+                           const bool         &w_cycle               = false,
+                           const double       &aggregation_threshold = 1e-4,
                            const unsigned int &smoother_sweeps       = 2,
                            const unsigned int &smoother_overlap      = 0,
-                           const bool &        output_details        = false,
-                           const std::string & smoother_type = "Chebyshev",
-                           const std::string & coarse_type   = "Amesos-KLU");
+                           const bool         &output_details        = false,
+                           const std::string  &smoother_type = "Chebyshev",
+                           const std::string  &coarse_type   = "Amesos-KLU");
 
     /**
      * Initialize the preconditioner using @p matrix.

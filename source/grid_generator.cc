@@ -222,7 +222,7 @@ namespace ParsedTools
   void
   GridGenerator<dim, spacedim>::write(
     const dealii::Triangulation<dim, spacedim> &tria,
-    const std::string &                         filename) const
+    const std::string                          &filename) const
   {
     const std::string outname = filename != "" ? filename : output_file_name;
     if (outname != "")

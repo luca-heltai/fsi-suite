@@ -56,7 +56,7 @@ namespace dealii
          * Convert a Differentiation::SD::Expression expression to a string.
          */
         static std::string
-        to_string(const T &                            t,
+        to_string(const T                             &t,
                   const dealii::Patterns::PatternBase &pattern = *to_pattern())
         {
           std::stringstream ss;
@@ -73,7 +73,7 @@ namespace dealii
          * Convert a string to a Differentiation::SD::Expression expression.
          */
         static T
-        to_value(const std::string &                  s,
+        to_value(const std::string                   &s,
                  const dealii::Patterns::PatternBase &pattern = *to_pattern())
         {
           AssertThrow(pattern.match(s), ExcMessage("Invalid string."));
@@ -126,7 +126,7 @@ namespace dealii
          * @return std::string The string representation of the SymbolicFunction.
          */
         static std::string
-        to_string(const T &                            t,
+        to_string(const T                             &t,
                   const dealii::Patterns::PatternBase &pattern =
                     *Convert<T>::to_pattern())
         {
@@ -142,7 +142,7 @@ namespace dealii
          * @return T The SymbolicFunction.
          */
         static T
-        to_value(const std::string &                  s,
+        to_value(const std::string                   &s,
                  const dealii::Patterns::PatternBase &pattern =
                    *Convert<T>::to_pattern())
         {

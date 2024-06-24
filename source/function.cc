@@ -25,7 +25,7 @@ namespace ParsedTools
                           const std::string &expression,
                           const std::string &function_description,
                           const std::map<std::string, double> &constants,
-                          const std::string &                  variable_names,
+                          const std::string                   &variable_names,
                           const double                         h)
     : ParameterAcceptor(section_name)
     , FunctionParser<dim>(

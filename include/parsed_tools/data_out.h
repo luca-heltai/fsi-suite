@@ -51,12 +51,12 @@ namespace ParsedTools
      * @param output_high_order
      * @param comm
      */
-    DataOut(const std::string & section_name             = "",
-            const std::string & base_name                = "solution",
-            const std::string & output_format            = "vtu",
+    DataOut(const std::string  &section_name             = "",
+            const std::string  &base_name                = "solution",
+            const std::string  &output_format            = "vtu",
             const unsigned int &subdivisions             = 0,
-            const bool &        write_higher_order_cells = true,
-            const MPI_Comm &    comm                     = MPI_COMM_WORLD);
+            const bool         &write_higher_order_cells = true,
+            const MPI_Comm     &comm                     = MPI_COMM_WORLD);
 
     /**
      * Prepare to output data on the given file. This will initialize
@@ -66,7 +66,7 @@ namespace ParsedTools
      */
     void
     attach_dof_handler(const dealii::DoFHandler<dim, spacedim> &dh,
-                       const std::string &                      suffix = "");
+                       const std::string                       &suffix = "");
 
     /**
      * Add the given vector to the output file. Prior to calling this
@@ -80,7 +80,7 @@ namespace ParsedTools
     template <typename VECTOR>
     void
     add_data_vector(
-      const VECTOR &     data_vector,
+      const VECTOR      &data_vector,
       const std::string &desc,
       const typename dealii::DataOut<dim, spacedim>::DataVectorType &type =
         dealii::DataOut<dim, spacedim>::type_automatic);
@@ -90,7 +90,7 @@ namespace ParsedTools
      */
     template <typename VECTOR>
     void
-    add_data_vector(const VECTOR &                             data_vector,
+    add_data_vector(const VECTOR                              &data_vector,
                     const dealii::DataPostprocessor<spacedim> &postproc);
 
 
@@ -181,8 +181,8 @@ namespace ParsedTools
   template <typename VECTOR>
   void
   DataOut<dim, spacedim>::add_data_vector(
-    const VECTOR &                                                 data_vector,
-    const std::string &                                            desc,
+    const VECTOR                                                  &data_vector,
+    const std::string                                             &desc,
     const typename dealii::DataOut<dim, spacedim>::DataVectorType &type)
   {
     std::vector<std::string> dd = dealii::Utilities::split_string_list(desc);
@@ -231,7 +231,7 @@ namespace ParsedTools
   template <typename VECTOR>
   void
   DataOut<dim, spacedim>::add_data_vector(
-    const VECTOR &                             data_vector,
+    const VECTOR                              &data_vector,
     const dealii::DataPostprocessor<spacedim> &postproc)
   {
     data_out->add_data_vector(data_vector, postproc);

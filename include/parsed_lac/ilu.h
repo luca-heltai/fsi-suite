@@ -43,10 +43,10 @@ namespace ParsedLAC
     /**
      * Constructor. Build the preconditioner of a matrix using ILU.
      */
-    ILUPreconditioner(const std::string & name     = "",
+    ILUPreconditioner(const std::string  &name     = "",
                       const unsigned int &ilu_fill = 0,
-                      const double &      ilu_atol = 0.0,
-                      const double &      ilu_rtol = 1.0,
+                      const double       &ilu_atol = 0.0,
+                      const double       &ilu_rtol = 1.0,
                       const unsigned int &overlap  = 0);
 
     /**

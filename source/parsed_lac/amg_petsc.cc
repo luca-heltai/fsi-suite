@@ -30,7 +30,7 @@ using namespace dealii;
 namespace ParsedLAC
 {
   PETScAMGPreconditioner::PETScAMGPreconditioner(
-    const std::string &  name,
+    const std::string   &name,
     const bool           symmetric_operator,
     const double         strong_threshold,
     const double         max_row_sum,

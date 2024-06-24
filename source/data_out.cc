@@ -69,12 +69,12 @@ namespace
 namespace ParsedTools
 {
   template <int dim, int spacedim>
-  DataOut<dim, spacedim>::DataOut(const std::string & section_name,
-                                  const std::string & base_name,
-                                  const std::string & output_format,
+  DataOut<dim, spacedim>::DataOut(const std::string  &section_name,
+                                  const std::string  &base_name,
+                                  const std::string  &output_format,
                                   const unsigned int &subdivisions,
-                                  const bool &        write_higher_order_cells,
-                                  const MPI_Comm &    comm)
+                                  const bool         &write_higher_order_cells,
+                                  const MPI_Comm     &comm)
     : ParameterAcceptor(section_name)
     , comm(comm)
     , n_mpi_processes(Utilities::MPI::n_mpi_processes(comm))
@@ -118,7 +118,7 @@ namespace ParsedTools
   void
   DataOut<dim, spacedim>::attach_dof_handler(
     const DoFHandler<dim, spacedim> &dh,
-    const std::string &              suffix)
+    const std::string               &suffix)
   {
     data_out = std::make_unique<dealii::DataOut<dim, spacedim>>();
     data_out->set_default_format(

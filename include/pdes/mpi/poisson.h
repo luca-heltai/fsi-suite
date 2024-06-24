@@ -63,7 +63,7 @@ namespace PDEs
       virtual void
       assemble_system_one_cell(
         const typename DoFHandler<dim, spacedim>::active_cell_iterator &cell,
-        ScratchData &                                                   scratch,
+        ScratchData                                                    &scratch,
         CopyData &copy) override;
 
       /**

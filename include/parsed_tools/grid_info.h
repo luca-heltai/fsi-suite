@@ -55,7 +55,7 @@ namespace dealii
          * @return std::string The string representation of the manifold_id.
          */
         static std::string
-        to_string(const T &                            t,
+        to_string(const T                             &t,
                   const dealii::Patterns::PatternBase &pattern =
                     *Convert<T>::to_pattern())
         {
@@ -70,7 +70,7 @@ namespace dealii
          * @return T The manifold_id.
          */
         static T
-        to_value(const std::string &                  s,
+        to_value(const std::string                   &s,
                  const dealii::Patterns::PatternBase &pattern =
                    *Convert<T>::to_pattern())
         {
@@ -106,7 +106,7 @@ namespace dealii
          * @return std::string The string representation of the dealii::ReferenceCell.
          */
         static std::string
-        to_string(const T &                            t,
+        to_string(const T                             &t,
                   const dealii::Patterns::PatternBase &pattern =
                     *Convert<T>::to_pattern())
         {
@@ -122,7 +122,7 @@ namespace dealii
          * @return T The dealii::ReferenceCell.
          */
         static T
-        to_value(const std::string &                  s,
+        to_value(const std::string                   &s,
                  const dealii::Patterns::PatternBase &pattern =
                    *Convert<T>::to_pattern())
         {

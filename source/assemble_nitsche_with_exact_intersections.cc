@@ -42,17 +42,17 @@ namespace dealii
     template <int dim0, int dim1, int spacedim, typename Matrix>
     void
     assemble_nitsche_with_exact_intersections(
-      const DoFHandler<dim0, spacedim> &                    space_dh,
+      const DoFHandler<dim0, spacedim>                     &space_dh,
       const std::vector<std::tuple<
         typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
         typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
-        dealii::Quadrature<spacedim>>> &                    cells_and_quads,
-      Matrix &                                              matrix,
+        dealii::Quadrature<spacedim>>>                     &cells_and_quads,
+      Matrix                                               &matrix,
       const AffineConstraints<typename Matrix::value_type> &space_constraints,
-      const ComponentMask &                                 space_comps,
-      const Mapping<dim0, spacedim> &                       space_mapping,
+      const ComponentMask                                  &space_comps,
+      const Mapping<dim0, spacedim>                        &space_mapping,
       const Function<spacedim, typename Matrix::value_type>
-        &          nitsche_coefficient,
+                  &nitsche_coefficient,
       const double penalty)
     {
       AssertDimension(matrix.m(), space_dh.n_dofs());
@@ -103,7 +103,7 @@ namespace dealii
               local_cell_matrix = typename Matrix::value_type();
 
               const unsigned int  n_quad_pts = quad_formula.size();
-              const auto &        real_qpts  = quad_formula.get_points();
+              const auto         &real_qpts  = quad_formula.get_points();
               std::vector<double> nitsche_coefficient_values(n_quad_pts);
               nitsche_coefficient.value_list(real_qpts,
                                              nitsche_coefficient_values);

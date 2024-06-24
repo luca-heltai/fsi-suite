@@ -74,8 +74,8 @@ namespace PDEs
   void
   Stokes<dim, LacType>::assemble_system_one_cell(
     const typename DoFHandler<dim>::active_cell_iterator &cell,
-    ScratchData &                                         scratch,
-    CopyData &                                            copy)
+    ScratchData                                          &scratch,
+    CopyData                                             &copy)
   {
     auto &cell_matrix = copy.matrices[0];
     auto &cell_rhs    = copy.vectors[0];

@@ -112,15 +112,15 @@ namespace ParsedLAC
      * on deallog.
      */
     InverseOperator(
-      const std::string &      section_name   = "",
-      const std::string &      default_solver = "cg",
+      const std::string       &section_name   = "",
+      const std::string       &default_solver = "cg",
       const SolverControlType &control_type   = SolverControlType::tolerance,
       const unsigned int       max_iterations = 1000,
       const double             tolerance      = 1e-12,
       const double             reduction      = 1e-6,
       const unsigned int       consecutive_iterations = 2,
-      const bool &             log_history            = false,
-      const bool &             log_result             = false);
+      const bool              &log_history            = false,
+      const bool              &log_result             = false);
 
     /**
      * Create an inverse operator according to the parameters given in the
@@ -139,7 +139,7 @@ namespace ParsedLAC
               typename Range = Domain>
     dealii::LinearOperator<Domain, Range, Payload>
     operator()(const dealii::LinearOperator<Range, Domain, Payload> &op,
-               const PreconditionerType &                            prec,
+               const PreconditionerType                             &prec,
                const double       abs_tol = 0.0,
                const std::string &prefix  = "") const;
 
@@ -159,10 +159,10 @@ namespace ParsedLAC
               typename MatrixType,
               typename PreconditionerType>
     dealii::LinearOperator<Range, Domain, Payload>
-    solver(const MatrixType &        op,
+    solver(const MatrixType         &op,
            const PreconditionerType &prec,
            const double              abs_tol = 0.0,
-           const std::string &       prefix  = "") const;
+           const std::string        &prefix  = "") const;
 
 
     /**
@@ -175,10 +175,10 @@ namespace ParsedLAC
               typename PreconditionerType,
               typename VectorType>
     void
-    solve(const MatrixType &        matrix,
+    solve(const MatrixType         &matrix,
           const PreconditionerType &preconditioner,
-          const VectorType &        src,
-          VectorType &              dst,
+          const VectorType         &src,
+          VectorType               &dst,
           const double              abs_tol = 0.0) const;
 
 
@@ -269,10 +269,10 @@ namespace ParsedLAC
             typename PreconditionerType,
             typename VectorType>
   void
-  InverseOperator::solve(const MatrixType &        matrix,
+  InverseOperator::solve(const MatrixType         &matrix,
                          const PreconditionerType &preconditioner,
-                         const VectorType &        src,
-                         VectorType &              dst,
+                         const VectorType         &src,
+                         VectorType               &dst,
                          const double              abs_tol) const
   {
     control = setup_new_solver_control(abs_tol);
@@ -325,10 +325,10 @@ namespace ParsedLAC
             typename MatrixType,
             typename PreconditionerType>
   dealii::LinearOperator<Range, Domain, Payload>
-  InverseOperator::solver(const MatrixType &        op,
+  InverseOperator::solver(const MatrixType         &op,
                           const PreconditionerType &prec,
                           const double              abs_tol,
-                          const std::string &       prefix) const
+                          const std::string        &prefix) const
   {
     control = setup_new_solver_control(abs_tol);
 
@@ -391,9 +391,9 @@ namespace ParsedLAC
   dealii::LinearOperator<Domain, Range, Payload>
   InverseOperator::operator()(
     const dealii::LinearOperator<Range, Domain, Payload> &op,
-    const PreconditionerType &                            prec,
+    const PreconditionerType                             &prec,
     const double                                          abs_tol,
-    const std::string &                                   prefix) const
+    const std::string                                    &prefix) const
   {
     return solver<Range, Payload>(op, prec, abs_tol, prefix);
   }

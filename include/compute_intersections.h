@@ -58,7 +58,7 @@ namespace dealii
       const typename dealii::Triangulation<dim0, spacedim>::cell_iterator
         &cell0,
       const typename dealii::Triangulation<dim1, spacedim>::cell_iterator
-        &                                    cell1,
+                                            &cell1,
       const unsigned int                     degree,
       const dealii::Mapping<dim0, spacedim> &mapping0 =
         (dealii::ReferenceCells::get_hypercube<dim0>()

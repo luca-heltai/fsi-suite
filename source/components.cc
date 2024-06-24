@@ -37,7 +37,7 @@ namespace ParsedTools
 
 
     std::string
-    blocks_to_names(const std::vector<std::string> & components,
+    blocks_to_names(const std::vector<std::string>  &components,
                     const std::vector<unsigned int> &multiplicities)
     {
       AssertDimension(components.size(), multiplicities.size());

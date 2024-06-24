@@ -72,17 +72,17 @@ namespace ParsedTools
      * Constructor.
      */
     GridRefinement(
-      const std::string &       section_name        = "",
-      const unsigned int &      n_refinement_cycles = 1,
+      const std::string        &section_name        = "",
+      const unsigned int       &n_refinement_cycles = 1,
       const RefinementStrategy &strategy         = RefinementStrategy::global,
-      const std::string &       estimator_type   = "kelly",
-      const double &            top_parameter    = .3,
-      const double &            bottom_parameter = 0.1,
-      const unsigned int &      max_cells        = 0,
-      const int &               min_level        = 0,
-      const int &               max_level        = 0,
+      const std::string        &estimator_type   = "kelly",
+      const double             &top_parameter    = .3,
+      const double             &bottom_parameter = 0.1,
+      const unsigned int       &max_cells        = 0,
+      const int                &min_level        = 0,
+      const int                &max_level        = 0,
       const std::map<std::string, std::function<void(dealii::Vector<float> &)>>
-        &                          optional_estimators = {},
+                                  &optional_estimators = {},
       const dealii::ComponentMask &component_mask = dealii::ComponentMask());
 
     /**
@@ -96,7 +96,7 @@ namespace ParsedTools
      */
     template <int dim, int spacedim>
     void
-    mark_cells(const dealii::Vector<float> &         criteria,
+    mark_cells(const dealii::Vector<float>          &criteria,
                dealii::Triangulation<dim, spacedim> &tria) const;
 
 #ifdef DEAL_II_WITH_MPI
@@ -115,7 +115,7 @@ namespace ParsedTools
     template <int dim, int spacedim>
     void
     mark_cells(
-      const dealii::Vector<float> &                                criteria,
+      const dealii::Vector<float>                                 &criteria,
       dealii::parallel::distributed::Triangulation<dim, spacedim> &tria) const;
 #  endif
 #endif
@@ -126,14 +126,14 @@ namespace ParsedTools
     template <int dim, int spacedim, typename VectorType>
     void
     estimate_error(
-      const dealii::Mapping<dim, spacedim> &   mapping,
+      const dealii::Mapping<dim, spacedim>    &mapping,
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      const VectorType &                       solution,
-      dealii::Vector<float> &                  estimated_error_per_cell,
+      const VectorType                        &solution,
+      dealii::Vector<float>                   &estimated_error_per_cell,
       const std::map<
         dealii::types::boundary_id,
         const dealii::Function<spacedim, typename VectorType::value_type> *>
-        &                               neumann_bc   = {},
+                                       &neumann_bc   = {},
       const dealii::Function<spacedim> *coefficients = nullptr,
       const typename dealii::KellyErrorEstimator<dim, spacedim>::Strategy
         strategy =
@@ -148,12 +148,12 @@ namespace ParsedTools
     void
     estimate_error(
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      const VectorType &                       solution,
-      dealii::Vector<float> &                  estimated_error_per_cell,
+      const VectorType                        &solution,
+      dealii::Vector<float>                   &estimated_error_per_cell,
       const std::map<
         dealii::types::boundary_id,
         const dealii::Function<spacedim, typename VectorType::value_type> *>
-        &                               neumann_bc   = {},
+                                       &neumann_bc   = {},
       const dealii::Function<spacedim> *coefficients = nullptr,
       const typename dealii::KellyErrorEstimator<dim, spacedim>::Strategy
         strategy =
@@ -194,10 +194,10 @@ namespace ParsedTools
      */
     template <int dim, int spacedim, typename VectorType, typename Tria>
     void
-    estimate_mark_refine(const dealii::Mapping<dim, spacedim> &   mapping,
+    estimate_mark_refine(const dealii::Mapping<dim, spacedim>    &mapping,
                          const dealii::DoFHandler<dim, spacedim> &dof_handler,
-                         const VectorType &                       solution,
-                         Tria &                                   tria) const;
+                         const VectorType                        &solution,
+                         Tria                                    &tria) const;
 
     /**
      * Perform all the steps of the ESTIMATE-MARK-REFINE cycle.
@@ -205,8 +205,8 @@ namespace ParsedTools
     template <int dim, int spacedim, typename VectorType, typename Tria>
     void
     estimate_mark_refine(const dealii::DoFHandler<dim, spacedim> &dof_handler,
-                         const VectorType &                       solution,
-                         Tria &                                   tria) const;
+                         const VectorType                        &solution,
+                         Tria                                    &tria) const;
 
   private:
     /**
@@ -245,7 +245,7 @@ namespace ParsedTools
   template <int dim, int spacedim>
   void
   GridRefinement::mark_cells(
-    const dealii::Vector<float> &                                criteria,
+    const dealii::Vector<float>                                 &criteria,
     dealii::parallel::distributed::Triangulation<dim, spacedim> &tria) const
   {
     if (strategy == RefinementStrategy::fixed_number)
@@ -295,7 +295,7 @@ namespace ParsedTools
 
   template <int dim, int spacedim>
   void
-  GridRefinement::mark_cells(const dealii::Vector<float> &         criteria,
+  GridRefinement::mark_cells(const dealii::Vector<float>          &criteria,
                              dealii::Triangulation<dim, spacedim> &tria) const
   {
     if (strategy == RefinementStrategy::fixed_number)
@@ -373,14 +373,14 @@ namespace ParsedTools
   template <int dim, int spacedim, typename VectorType>
   void
   GridRefinement::estimate_error(
-    const dealii::Mapping<dim, spacedim> &   mapping,
+    const dealii::Mapping<dim, spacedim>    &mapping,
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    const VectorType &                       solution,
-    dealii::Vector<float> &                  estimated_error_per_cell,
+    const VectorType                        &solution,
+    dealii::Vector<float>                   &estimated_error_per_cell,
     const std::map<
       dealii::types::boundary_id,
       const dealii::Function<spacedim, typename VectorType::value_type> *>
-      &                               neumann_bc,
+                                     &neumann_bc,
     const dealii::Function<spacedim> *coefficients,
     const typename dealii::KellyErrorEstimator<dim, spacedim>::Strategy
       strategy) const
@@ -430,12 +430,12 @@ namespace ParsedTools
   void
   GridRefinement::estimate_error(
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    const VectorType &                       solution,
-    dealii::Vector<float> &                  estimated_error_per_cell,
+    const VectorType                        &solution,
+    dealii::Vector<float>                   &estimated_error_per_cell,
     const std::map<
       dealii::types::boundary_id,
       const dealii::Function<spacedim, typename VectorType::value_type> *>
-      &                               neumann_bc,
+                                     &neumann_bc,
     const dealii::Function<spacedim> *coefficients,
     const typename dealii::KellyErrorEstimator<dim, spacedim>::Strategy
       strategy) const
@@ -457,8 +457,8 @@ namespace ParsedTools
   void
   GridRefinement::estimate_mark_refine(
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    const VectorType &                       solution,
-    Tria &                                   tria) const
+    const VectorType                        &solution,
+    Tria                                    &tria) const
   {
     const auto &mapping =
       dealii::get_default_linear_mapping(dof_handler.get_triangulation());
@@ -470,10 +470,10 @@ namespace ParsedTools
   template <int dim, int spacedim, typename VectorType, typename Tria>
   void
   GridRefinement::estimate_mark_refine(
-    const dealii::Mapping<dim, spacedim> &   mapping,
+    const dealii::Mapping<dim, spacedim>    &mapping,
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    const VectorType &                       solution,
-    Tria &                                   tria) const
+    const VectorType                        &solution,
+    Tria                                    &tria) const
   {
     // No estimates to do in global refinement case
     if (strategy == RefinementStrategy::global)

@@ -125,7 +125,7 @@ namespace ParsedTools
      * Build component names from block names and multiplicities.
      */
     std::string
-    blocks_to_names(const std::vector<std::string> & components,
+    blocks_to_names(const std::vector<std::string>  &components,
                     const std::vector<unsigned int> &multiplicities);
 
     /**

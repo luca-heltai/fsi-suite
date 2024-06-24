@@ -50,8 +50,8 @@ namespace dealii
       const typename Triangulation<dim0, spacedim>::cell_iterator &cell0,
       const typename Triangulation<dim1, spacedim>::cell_iterator &cell1,
       const unsigned int                                           degree,
-      const Mapping<dim0, spacedim> &                              mapping0,
-      const Mapping<dim1, spacedim> &                              mapping1,
+      const Mapping<dim0, spacedim>                               &mapping0,
+      const Mapping<dim1, spacedim>                               &mapping1,
       const double                                                 tol = 1e-9)
     {
       if constexpr (dim0 == 1 && dim1 == 1)
@@ -88,8 +88,8 @@ namespace dealii
       const typename Triangulation<dim0, spacedim>::cell_iterator &cell0,
       const typename Triangulation<dim1, spacedim>::cell_iterator &cell1,
       const unsigned int                                           degree,
-      const Mapping<dim0, spacedim> &                              mapping0,
-      const Mapping<dim1, spacedim> &                              mapping1)
+      const Mapping<dim0, spacedim>                               &mapping0,
+      const Mapping<dim1, spacedim>                               &mapping1)
     {
       if constexpr ((dim0 == 1 && dim1 == 3) || (dim0 == 3 && dim1 == 1) ||
                     (dim0 == 1 && dim1 == 1))
@@ -176,7 +176,7 @@ namespace dealii
                   space_cell, immersed_cell, degree, mapping0, mapping1);
 
               // if (test_intersection.get_points().size() !=
-              const auto & weights = test_intersection.get_weights();
+              const auto  &weights = test_intersection.get_weights();
               const double area =
                 std::accumulate(weights.begin(), weights.end(), 0.0);
               if (area > tol) // non-trivial intersection

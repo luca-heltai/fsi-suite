@@ -48,8 +48,8 @@ namespace PDEs
   void
   LinearElasticity<dim, spacedim, LacType>::assemble_system_one_cell(
     const typename DoFHandler<dim, spacedim>::active_cell_iterator &cell,
-    ScratchData &                                                   scratch,
-    CopyData &                                                      copy)
+    ScratchData                                                    &scratch,
+    CopyData                                                       &copy)
   {
     auto &cell_matrix = copy.matrices[0];
     auto &cell_rhs    = copy.vectors[0];
@@ -117,8 +117,8 @@ namespace PDEs
 
     const auto face_integrator = [&](const auto &cell,
                                      const auto &face,
-                                     auto &      scratch,
-                                     auto &      data) {
+                                     auto       &scratch,
+                                     auto       &data) {
       data[cell->face(face)->boundary_id()] = Tensor<1, spacedim>();
 
       auto &f = data[cell->face(face)->boundary_id()];

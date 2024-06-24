@@ -35,8 +35,8 @@ namespace PDEs
     void
     Poisson<dim, spacedim>::assemble_system_one_cell(
       const typename DoFHandler<dim, spacedim>::active_cell_iterator &cell,
-      ScratchData &                                                   scratch,
-      CopyData &                                                      copy)
+      ScratchData                                                    &scratch,
+      CopyData                                                       &copy)
     {
       auto &cell_matrix = copy.matrices[0];
       auto &cell_rhs    = copy.vectors[0];
@@ -167,8 +167,8 @@ namespace PDEs
                              const auto &ncell,
                              const auto &nf,
                              const auto &nsf,
-                             auto &      scratch,
-                             auto &      copy) {
+                             auto       &scratch,
+                             auto       &copy) {
         // Here we intialize the inteface values
         const auto &fe_iv = scratch.reinit(cell, f, sf, ncell, nf, nsf);
 

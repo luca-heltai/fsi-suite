@@ -21,9 +21,9 @@ using namespace dealii;
 
 namespace ParsedLAC
 {
-  JacobiPreconditioner::JacobiPreconditioner(const std::string & name,
-                                             const double &      omega,
-                                             const double &      min_diagonal,
+  JacobiPreconditioner::JacobiPreconditioner(const std::string  &name,
+                                             const double       &omega,
+                                             const double       &min_diagonal,
                                              const unsigned int &n_sweeps)
     : ParameterAcceptor(name)
     , PreconditionJacobi()

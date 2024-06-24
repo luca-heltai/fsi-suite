@@ -31,9 +31,9 @@ namespace dealii
         typename dealii::Triangulation<dim0, spacedim>::cell_iterator,
         typename dealii::Triangulation<dim1, spacedim>::cell_iterator,
         dealii::Quadrature<spacedim>>> &cells_and_quads,
-      VectorType &                      rhs,
+      VectorType                       &rhs,
       const AffineConstraints<typename VectorType::value_type>
-        &                            space_constraints,
+                                    &space_constraints,
       const Mapping<dim0, spacedim> &space_mapping,
       const Function<spacedim, typename VectorType::value_type> &rhs_function,
       const Function<spacedim, typename VectorType::value_type> &coefficient,
@@ -71,7 +71,7 @@ namespace dealii
 
 
               const unsigned int n_quad_pts = quad_formula.size();
-              const auto &       real_qpts  = quad_formula.get_points();
+              const auto        &real_qpts  = quad_formula.get_points();
               std::vector<Point<std::min(dim0, spacedim)>> ref_pts_space(
                 n_quad_pts);
               std::vector<double> rhs_function_values(n_quad_pts);

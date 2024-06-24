@@ -28,12 +28,12 @@ namespace ParsedTools
 {
   template <int spacedim>
   BoundaryConditions<spacedim>::BoundaryConditions(
-    const std::string &                                      section_name,
-    const std::string &                                      component_names,
+    const std::string                                       &section_name,
+    const std::string                                       &component_names,
     const std::vector<std::set<dealii::types::boundary_id>> &ids,
-    const std::vector<std::string> &          selected_components,
+    const std::vector<std::string>           &selected_components,
     const std::vector<BoundaryConditionType> &bc_type,
-    const std::vector<std::string> &          expressions)
+    const std::vector<std::string>           &expressions)
     : ParameterAcceptor(section_name)
     , component_names(component_names)
     , n_components(Components::n_components(component_names))

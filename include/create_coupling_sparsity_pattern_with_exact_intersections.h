@@ -78,11 +78,11 @@ namespace dealii
         dealii::Quadrature<spacedim>>> &intersections_info,
       const DoFHandler<dim0, spacedim> &space_dh,
       const DoFHandler<dim1, spacedim> &immersed_dh,
-      Sparsity &                        sparsity,
-      const AffineConstraints<number> & constraints =
+      Sparsity                         &sparsity,
+      const AffineConstraints<number>  &constraints =
         AffineConstraints<number>(),
-      const ComponentMask &            space_comps    = ComponentMask(),
-      const ComponentMask &            immersed_comps = ComponentMask(),
+      const ComponentMask             &space_comps    = ComponentMask(),
+      const ComponentMask             &immersed_comps = ComponentMask(),
       const AffineConstraints<number> &immersed_constraints =
         AffineConstraints<number>());
 
