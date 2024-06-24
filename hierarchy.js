@@ -9,9 +9,9 @@ var hierarchy =
     [ "dealii::Patterns::Tools::Convert< std::unique_ptr< Functions::SymbolicFunction< dim > > >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01std_1_1unique__ptr_3_01_functions_1_1_symbolaf97eb1642a3a8b6af3f8c97489cdc44.html", null ],
     [ "dealii::Patterns::Tools::Convert< T, typename std::enable_if< std::is_enum< T >::value >::type >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01_t_00_01typename_01std_1_1enable__if_3_01std2b5d6a398d4624a6eb59ef399db80e09.html", null ],
     [ "dealii::Patterns::Tools::Convert< types::manifold_id >", "structdealii_1_1_patterns_1_1_tools_1_1_convert_3_01types_1_1manifold__id_01_4.html", null ],
-    [ "FunctionTime< numbers::NumberTraits< double >::real_type >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionTime.html", [
-      [ "Function< dim, class >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", [
-        [ "AutoDerivativeFunction< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classAutoDerivativeFunction.html", [
+    [ "FunctionTime< typename Number >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionTime.html", [
+      [ "Function< int dim, typename RangeNumberType >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", [
+        [ "AutoDerivativeFunction< int dim >", "http://www.dealii.org/developer/doxygen/deal.II/classAutoDerivativeFunction.html", [
           [ "FunctionParser< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html", [
             [ "ParsedTools::Function< dim >", "class_parsed_tools_1_1_function.html", null ]
           ] ]
@@ -23,7 +23,7 @@ var hierarchy =
     [ "LAC::LAdealii", "struct_l_a_c_1_1_l_adealii.html", null ],
     [ "LAC::LAPETSc", "struct_l_a_c_1_1_l_a_p_e_t_sc.html", null ],
     [ "LAC::LATrilinos", "struct_l_a_c_1_1_l_a_trilinos.html", null ],
-    [ "ParserImplementation< dim, double >", "http://www.dealii.org/developer/doxygen/deal.II/classinternal_1_1FunctionParser_1_1ParserImplementation.html", [
+    [ "ParserImplementation", null, [
       [ "FunctionParser< dim >", "http://www.dealii.org/developer/doxygen/deal.II/classFunctionParser.html", null ]
     ] ],
     [ "PatternBase", null, [
@@ -34,7 +34,7 @@ var hierarchy =
       [ "ParsedTools::Proxy< SourceClass >", "class_parsed_tools_1_1_proxy.html", null ]
     ] ],
     [ "Subscriptor", "http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html", [
-      [ "Function< dim, class >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", null ],
+      [ "Function< int dim, typename RangeNumberType >", "http://www.dealii.org/developer/doxygen/deal.II/classFunction.html", null ],
       [ "PETScWrappers::PreconditionBase", "http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1PreconditionBase.html", [
         [ "PETScWrappers::PreconditionBoomerAMG", "http://www.dealii.org/developer/doxygen/deal.II/classPETScWrappers_1_1PreconditionBoomerAMG.html", [
           [ "ParsedLAC::PETScAMGPreconditioner", "class_parsed_l_a_c_1_1_p_e_t_sc_a_m_g_preconditioner.html", null ]

@@ -143,8 +143,8 @@ $(document).ready(function(){initNavTree('mapping__eulerian_8h_source.html','');
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6617efa6a999856b1bb88e9568862527">MappingEulerian</a>(</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="keyword">const</span> dealii::DoFHandler&lt;dim, spacedim&gt; &amp;dh,</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keyword">const</span> std::string &amp;                      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>              = <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keyword">const</span> std::string &amp;          initial_configuration_or_displacement = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keyword">const</span> std::string                       &amp;<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a>              = <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keyword">const</span> std::string           &amp;initial_configuration_or_displacement = <span class="stringliteral">&quot;&quot;</span>,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">bool</span>                   <a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a6b2e6967bb74d33619f674f818210edf">use_displacement</a> = <span class="keyword">false</span>,</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keyword">const</span> dealii::ComponentMask &amp;<a class="code" href="class_parsed_tools_1_1_mapping_eulerian.html#a2b713d6fa0a43765aad589bcd0671dc4">mask</a>             = dealii::ComponentMask());</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
@@ -205,7 +205,7 @@ $(document).ready(function(){initNavTree('mapping__eulerian_8h_source.html','');
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(initial_configuration.n_components ==</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                      dof_handler-&gt;get_fe().n_components(),</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The number of components in the &quot;</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The number of components in the &quot;</span></div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                       <span class="stringliteral">&quot;configuration expression must be equal &quot;</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                       <span class="stringliteral">&quot;to the number of components in the &quot;</span></div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                       <span class="stringliteral">&quot;fe.&quot;</span>));</div>
@@ -264,11 +264,11 @@ $(document).ready(function(){initNavTree('mapping__eulerian_8h_source.html','');
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      {</div>
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;          dof_handler-&gt;get_triangulation().all_reference_cells_are_hyper_cube(),</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The displacement mapping is only &quot;</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(<span class="stringliteral">&quot;The displacement mapping is only &quot;</span></div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                             <span class="stringliteral">&quot;supported for hypercube grids.&quot;</span>));</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(mask == dealii::ComponentMask(),</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                      <span class="stringliteral">&quot;Using the displacement is only possible with default &quot;</span></div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                      <span class="stringliteral">&quot;component mask.&quot;</span>));</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
@@ -305,7 +305,7 @@ $(document).ready(function(){initNavTree('mapping__eulerian_8h_source.html','');
 <div class="ttc" id="adof__handler_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/dof__handler_8h.html">dof_handler.h</a></div></div>
 <div class="ttc" id="afunction__parser_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/function__parser_8h.html">function_parser.h</a></div></div>
 <div class="ttc" id="ageneral__data__storage_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/general__data__storage_8h.html">general_data_storage.h</a></div></div>
-<div class="ttc" id="agroup__Exceptions_html_gae9a45f517af1401c50811a11083f9114"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
+<div class="ttc" id="agroup__Exceptions_html_gaedfe9af00deb49f55d5fffc1724bb213"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">StandardExceptions::ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
 <div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
 <div class="ttc" id="amapping__fe__field_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__fe__field_8h.html">mapping_fe_field.h</a></div></div>
 <div class="ttc" id="amapping__q__eulerian_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/mapping__q__eulerian_8h.html">mapping_q_eulerian.h</a></div></div>
@@ -319,7 +319,7 @@ $(document).ready(function(){initNavTree('mapping__eulerian_8h_source.html','');
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_8e8448d9aef603b86753e7cb911804a9.html">parsed_tools</a></li><li class="navelem"><a class="el" href="mapping__eulerian_8h.html">mapping_eulerian.h</a></li>
-    <li class="footer">Generated on Sun Apr 30 2023 14:06:43 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 24 2024 23:50:43 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

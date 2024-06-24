@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['k_24782',['K',['http://www.dealii.org/developer/doxygen/deal.II/namespaceCGALWrappers.html#aaecbd6aec2448258e4683c53ef10411a',1,'CGALWrappers']]],
-  ['k_5fexact_24783',['K_exact',['http://www.dealii.org/developer/doxygen/deal.II/namespaceCGALWrappers.html#a9af5466f408f20c50dca6669d68999a8',1,'CGALWrappers']]],
-  ['k_5finexact_24784',['K_inexact',['http://www.dealii.org/developer/doxygen/deal.II/namespaceCGALWrappers.html#acbdb42d43ed8b01ae0351989f3535a4a',1,'CGALWrappers']]],
-  ['kokkos_5fspace_24785',['kokkos_space',['http://www.dealii.org/developer/doxygen/deal.II/structMemorySpace_1_1Default.html#ae01abbb11512c19589484acbc619f082',1,'MemorySpace::Default::kokkos_space()'],['http://www.dealii.org/developer/doxygen/deal.II/structMemorySpace_1_1Host.html#aa63d288307878e4cc6e91920e0c6f070',1,'MemorySpace::Host::kokkos_space()']]]
+  ['k_24873',['K',['http://www.dealii.org/developer/doxygen/deal.II/namespaceCGALWrappers.html#aaecbd6aec2448258e4683c53ef10411a',1,'CGALWrappers']]],
+  ['k_5fexact_24874',['K_exact',['http://www.dealii.org/developer/doxygen/deal.II/namespaceCGALWrappers.html#a9af5466f408f20c50dca6669d68999a8',1,'CGALWrappers']]],
+  ['kokkos_5fspace_24875',['kokkos_space',['http://www.dealii.org/developer/doxygen/deal.II/structMemorySpace_1_1Default.html#ae01abbb11512c19589484acbc619f082',1,'MemorySpace::Default::kokkos_space()'],['http://www.dealii.org/developer/doxygen/deal.II/structMemorySpace_1_1Host.html#aa63d288307878e4cc6e91920e0c6f070',1,'MemorySpace::Host::kokkos_space()']]]
 ];

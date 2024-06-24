@@ -121,14 +121,14 @@ interaction problems: mathematical modeling and numerical approximation"</b></p>
 Course Introduction</h1>
 <p>Fluid-structure interaction (FSI) refers to the multiphysics coupling between the laws that describe fluid dynamics and structural mechanics.</p>
 <p>This page collects the material that I have used for a course given at Kaust (<a href="https://www.kaust.edu.sa/en">https://www.kaust.edu.sa/en</a>) during the spring semester of 2022.</p>
-<p>The course covers three main topics: i) basics of continuum mechanics, ii) mathematical modeling of FSI problems, and iii) numerical implementations based on the finite element method. Theoretical lectures are backed up by applied laboratories based on the C++ language, using example codes developed with the open source finite element library deal.II (www.dealii.org). I cover basic principles of continuum mechanics, discuss Lagrangian, Eulerian, and Arbitrary Lagrangian-Eulerian formulations, and cover different coupling strategies, both from the theoretical point of view, and with the aid of computational laboratories.</p>
+<p>The course covers three main topics: i) basics of continuum mechanics, ii) mathematical modeling of FSI problems, and iii) numerical implementations based on the finite element method. Theoretical lectures are backed up by applied laboratories based on the C++ language, using example codes developed with the open source finite element library deal.II (&lt;www.dealii.org&gt;). I cover basic principles of continuum mechanics, discuss Lagrangian, Eulerian, and Arbitrary Lagrangian-Eulerian formulations, and cover different coupling strategies, both from the theoretical point of view, and with the aid of computational laboratories.</p>
 <p>The students will learn how to develop, use, and analyze state-of-the-art finite element approximations for the solution of continuum mechanics problems, including non-linear mechanics, computational fluid dynamics, and fluid-structure-interaction problems.</p>
 <p>A glimpse of the <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> that are discussed in the course is given by the following graph</p>
 <p><div class="dotgraph">
 <iframe scrolling="no" frameborder="0" src="dot_serial.svg" width="1508" height="490"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </p>
 <p><img src="./doc/dot_files/serial.svg" alt="" style="pointer-events: none;" class="inline"/></p>
-<p>The laboratory part should enable a PhD student working on numerical analysis of <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> to implement state-of-the-art adaptive finite element codes for FSI problems, that run in parallel, using modern C++ libraries. The implementation are based on the <code>deal.II</code> library (www.dealii.org).</p>
+<p>The laboratory part should enable a PhD student working on numerical analysis of <a class="el" href="namespace_p_d_es.html" title="We collect in this namespace all PDEs that are relevant to Fluid Structure Interaction Problems.">PDEs</a> to implement state-of-the-art adaptive finite element codes for FSI problems, that run in parallel, using modern C++ libraries. The implementation are based on the <code>deal.II</code> library (&lt;www.dealii.org&gt;).</p>
 <p>Main topics covered by these lectures:</p>
 <ul>
 <li>Advanced Finite Element theory</li>
@@ -157,7 +157,8 @@ Continuous Integration Status</h1>
 </table>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Useful links</h1>
-<p>One of my courses on theory and practice of finite elements:</p><ul>
+<p>One of my courses on theory and practice of finite elements:</p>
+<ul>
 <li><a href="https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods">https://www.math.sissa.it/course/phd-course/theory-and-practice-finite-element-methods</a></li>
 </ul>
 <p>Exceptional video lectures by Prof. Wolfgang Bangerth, that cover all the things you will ever need for finite element programming.</p>
@@ -174,18 +175,18 @@ chmod +x ./fsi-suite.sh
 Will run program-name with program-options, possibly via mpirun, passing -np N to mpirun.
 Here is a list of programs you can run:
 linear_elasticity.g  mpi_stokes.g
-distributed_lagrange    mesh_handler         poisson
-distributed_lagrange.g  mesh_handler.g       poisson.g
-dof_plotter     mpi_linear_elasticity    reduced_lagrange
-dof_plotter.g       mpi_linear_elasticity.g  reduced_lagrange.g
-fsi_test        mpi_poisson      stokes
-fsi_test.g      mpi_poisson.g        stokes.g
-linear_elasticity   mpi_stokes
+distributed_lagrange mesh_handler   poisson
+distributed_lagrange.g mesh_handler.g   poisson.g
+dof_plotter  mpi_linear_elasticity  reduced_lagrange
+dof_plotter.g  mpi_linear_elasticity.g  reduced_lagrange.g
+fsi_test  mpi_poisson   stokes
+fsi_test.g  mpi_poisson.g   stokes.g
+linear_elasticity mpi_stokes
 
 Programs ending with .g are compiled with debug symbols. To see help on how to run
 any of the programs, add a -h flag at the end.
 </pre><p> The above command will download the latest docker image from the <code>main</code> branch of this repository (which is built and uploaded to <a href="https://hub.docker.com/r/heltai/fsi-suite">https://hub.docker.com/r/heltai/fsi-suite</a> at every commit to master), mount the current directory, in a directory with the same path inside the container, and the program you selected. For example, </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g
-</pre><p> will run the (debug version of the) executable based on the <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html" title="Solve the Poisson problem, in parallel.">PDEs::MPI::Poisson</a> problem in parallel, using 4 processors. You can change grid, boundary conditions, forcing terms, finite element spaces, etc. by editing the configuration file which is created the first time you run the program, and then passing it as an argument to the program itself, i.e., in the example above, the parameter file that would be generated is <code>used_mpi_poisson.g_2d.prm</code>, which you can edit and then pass as input to the program itself: </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g used_mpi_poisson.g_2d.prm
+</pre><p> will run the (debug version of the) executable based on the <a class="el" href="class_p_d_es_1_1_m_p_i_1_1_poisson.html" title="Solve the Poisson problem, in parallel.">PDEs::MPI::Poisson</a> problem in parallel, using 4 processors. You can change grid, boundary conditions, forcing terms, finite element spaces, etc. by editing the configuration file which is created the first time you run the program, and then passing it as an argument to the program itself, i.e., in the example above, the parameter file that would be generated is <code>used_mpi_poisson.g.prm</code>, which you can edit and then pass as input to the program itself: </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g used_mpi_poisson.g.prm
 </pre><p> If you want to read some documentation of what each parameter does and how it works, you can call the program passing a non-existing parameter file : </p><pre class="fragment">./fsi-suite.sh -np 4 mpi_poisson.g my_test.prm
 
 ----------------------------------------------------
@@ -286,7 +287,7 @@ Course program</h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Apr 30 2023 14:06:44 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 24 2024 23:50:44 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

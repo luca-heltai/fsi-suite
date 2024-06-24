@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sum_25305',['sum',['http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html#a9b7cc79151e928ea71a124bdebc02833',1,'SparseMatrix::sum()'],['http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html#a9b7cc79151e928ea71a124bdebc02833',1,'SparseMatrix&lt; double &gt;::sum()']]]
+  ['sum_25401',['sum',['http://www.dealii.org/developer/doxygen/deal.II/classSparseMatrix.html#a3500e4b06ef59cd4b6e0eec5f4797c90',1,'SparseMatrix']]]
 ];

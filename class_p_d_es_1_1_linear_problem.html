@@ -123,7 +123,7 @@ Inheritance diagram for PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;:</di
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:af4aff48dfe7fde33f9d05e5c68e8e9bc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">ARKode</a> = typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a> &gt;</td></tr>
+<tr class="memitem:af4aff48dfe7fde33f9d05e5c68e8e9bc"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">ARKode</a> = typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt; typename LacType::BlockVector &gt;</td></tr>
 <tr class="memdesc:af4aff48dfe7fde33f9d05e5c68e8e9bc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceSUNDIALS.html">SUNDIALS</a> time integrator.  <a href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">More...</a><br /></td></tr>
 <tr class="separator:af4aff48dfe7fde33f9d05e5c68e8e9bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d2084b4da7447e3fee091ffe5ea8952"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a7d2084b4da7447e3fee091ffe5ea8952">Triangulation</a> = typename std::conditional&lt; dim==1, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classparallel_1_1shared_1_1Triangulation.html">parallel::shared::Triangulation</a>&lt; dim, spacedim &gt;, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classparallel_1_1distributed_1_1Triangulation.html">parallel::distributed::Triangulation</a>&lt; dim, spacedim &gt; &gt;::type</td></tr>
@@ -135,13 +135,13 @@ Public Types</h2></td></tr>
 <tr class="memitem:af7f00becf3ef2aecc6e68190bc20d6fe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#af7f00becf3ef2aecc6e68190bc20d6fe">ScratchData</a> = <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMeshWorker_1_1ScratchData.html">MeshWorker::ScratchData</a>&lt; dim, spacedim &gt;</td></tr>
 <tr class="memdesc:af7f00becf3ef2aecc6e68190bc20d6fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default ScratchData object, used in the workstream class.  <a href="class_p_d_es_1_1_linear_problem.html#af7f00becf3ef2aecc6e68190bc20d6fe">More...</a><br /></td></tr>
 <tr class="separator:af7f00becf3ef2aecc6e68190bc20d6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1e5921a82b93b76a6d39b6008d74cbf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ab1e5921a82b93b76a6d39b6008d74cbf">BlockVectorType</a> = typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a></td></tr>
+<tr class="memitem:ab1e5921a82b93b76a6d39b6008d74cbf"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ab1e5921a82b93b76a6d39b6008d74cbf">BlockVectorType</a> = typename LacType::BlockVector</td></tr>
 <tr class="memdesc:ab1e5921a82b93b76a6d39b6008d74cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block vector type.  <a href="class_p_d_es_1_1_linear_problem.html#ab1e5921a82b93b76a6d39b6008d74cbf">More...</a><br /></td></tr>
 <tr class="separator:ab1e5921a82b93b76a6d39b6008d74cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadfe18186f4705c625cff9c18f8daee8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#aadfe18186f4705c625cff9c18f8daee8">VectorType</a> = typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gab475913da276dbdb8fa74b0478c542cf">BlockVectorType::BlockType</a></td></tr>
+<tr class="memitem:aadfe18186f4705c625cff9c18f8daee8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#aadfe18186f4705c625cff9c18f8daee8">VectorType</a> = typename BlockVectorType::BlockType</td></tr>
 <tr class="memdesc:aadfe18186f4705c625cff9c18f8daee8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a> type.  <a href="class_p_d_es_1_1_linear_problem.html#aadfe18186f4705c625cff9c18f8daee8">More...</a><br /></td></tr>
 <tr class="separator:aadfe18186f4705c625cff9c18f8daee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf91dec87d3ac7077e04f6edb4802511"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511">BlockMatrixType</a> = typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#a46fafcc676e10b5445b01ea437eaf45e">LacType::BlockSparseMatrix</a></td></tr>
+<tr class="memitem:acf91dec87d3ac7077e04f6edb4802511"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511">BlockMatrixType</a> = typename LacType::BlockSparseMatrix</td></tr>
 <tr class="memdesc:acf91dec87d3ac7077e04f6edb4802511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Block matrix type.  <a href="class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511">More...</a><br /></td></tr>
 <tr class="separator:acf91dec87d3ac7077e04f6edb4802511"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -168,10 +168,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa78ff1b17e2ce8f10b76839b053dc71c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#aa78ff1b17e2ce8f10b76839b053dc71c">setup_transient</a> (<a class="el" href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">ARKode</a> &amp;arkode)</td></tr>
 <tr class="memdesc:aa78ff1b17e2ce8f10b76839b053dc71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setup the transient problem.  <a href="class_p_d_es_1_1_linear_problem.html#aa78ff1b17e2ce8f10b76839b053dc71c">More...</a><br /></td></tr>
 <tr class="separator:aa78ff1b17e2ce8f10b76839b053dc71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae591ecb42b46439de6a218d71d5bae12"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ae591ecb42b46439de6a218d71d5bae12">assemble_system_one_cell</a> (const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a> &amp;cell, <a class="el" href="class_p_d_es_1_1_linear_problem.html#af7f00becf3ef2aecc6e68190bc20d6fe">ScratchData</a> &amp;scratch, <a class="el" href="class_p_d_es_1_1_linear_problem.html#aa65f0738e2d8326db556a3988734a54c">CopyData</a> &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceSUNDIALS_1_1internal.html#a471fd17489807ca0d9f873fcd8798270">copy</a>)</td></tr>
+<tr class="memitem:ae591ecb42b46439de6a218d71d5bae12"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ae591ecb42b46439de6a218d71d5bae12">assemble_system_one_cell</a> (const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;::active_cell_iterator &amp;cell, <a class="el" href="class_p_d_es_1_1_linear_problem.html#af7f00becf3ef2aecc6e68190bc20d6fe">ScratchData</a> &amp;scratch, <a class="el" href="class_p_d_es_1_1_linear_problem.html#aa65f0738e2d8326db556a3988734a54c">CopyData</a> &amp;copy)</td></tr>
 <tr class="memdesc:ae591ecb42b46439de6a218d71d5bae12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assemble the local system matrix on <code>cell</code>, using <code>scratch</code> for <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFEValues.html">FEValues</a> and other expensive scratch objects, and store the result in the <code>copy</code> object.  <a href="class_p_d_es_1_1_linear_problem.html#ae591ecb42b46439de6a218d71d5bae12">More...</a><br /></td></tr>
 <tr class="separator:ae591ecb42b46439de6a218d71d5bae12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d78c959fa4edcec870a66e8cec387a8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a9d78c959fa4edcec870a66e8cec387a8">copy_one_cell</a> (const <a class="el" href="class_p_d_es_1_1_linear_problem.html#aa65f0738e2d8326db556a3988734a54c">CopyData</a> &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceSUNDIALS_1_1internal.html#a471fd17489807ca0d9f873fcd8798270">copy</a>)</td></tr>
+<tr class="memitem:a9d78c959fa4edcec870a66e8cec387a8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a9d78c959fa4edcec870a66e8cec387a8">copy_one_cell</a> (const <a class="el" href="class_p_d_es_1_1_linear_problem.html#aa65f0738e2d8326db556a3988734a54c">CopyData</a> &amp;copy)</td></tr>
 <tr class="memdesc:a9d78c959fa4edcec870a66e8cec387a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Distribute the data that has been assembled by assemble_system_on_cell() to the global matrix and rhs.  <a href="class_p_d_es_1_1_linear_problem.html#a9d78c959fa4edcec870a66e8cec387a8">More...</a><br /></td></tr>
 <tr class="separator:a9d78c959fa4edcec870a66e8cec387a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9c8359e791b72a935fde5910c2665df"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ab9c8359e791b72a935fde5910c2665df">solve</a> ()</td></tr>
@@ -304,9 +304,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a56b579d2feab1c3dfdeb24918f6080f7"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void(<a class="el" href="class_parsed_tools_1_1_data_out.html">ParsedTools::DataOut</a>&lt; dim, spacedim &gt; &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a56b579d2feab1c3dfdeb24918f6080f7">add_data_vector</a></td></tr>
 <tr class="memdesc:a56b579d2feab1c3dfdeb24918f6080f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to this signal to add data additional vectors to the output system.  <a href="class_p_d_es_1_1_linear_problem.html#a56b579d2feab1c3dfdeb24918f6080f7">More...</a><br /></td></tr>
 <tr class="separator:a56b579d2feab1c3dfdeb24918f6080f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0cebbade4b2cb23b7b9935d14e26611"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void(const double &amp;time, const double &amp;time_step, const unsigned int &amp;time_step_number)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ac0cebbade4b2cb23b7b9935d14e26611">advance_time_call_back</a></td></tr>
-<tr class="memdesc:ac0cebbade4b2cb23b7b9935d14e26611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to this signal to receive time information.  <a href="class_p_d_es_1_1_linear_problem.html#ac0cebbade4b2cb23b7b9935d14e26611">More...</a><br /></td></tr>
-<tr class="separator:ac0cebbade4b2cb23b7b9935d14e26611"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f5b1578a2c52a12d6f74cb2729574d6"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void(const double &amp;time, const double &amp;time_step, const unsigned int &amp;time_step_number)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a0f5b1578a2c52a12d6f74cb2729574d6">advance_time_call_back</a></td></tr>
+<tr class="memdesc:a0f5b1578a2c52a12d6f74cb2729574d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to this signal to receive time information.  <a href="class_p_d_es_1_1_linear_problem.html#a0f5b1578a2c52a12d6f74cb2729574d6">More...</a><br /></td></tr>
+<tr class="separator:a0f5b1578a2c52a12d6f74cb2729574d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61156c596f6ae94bbe08ce518f368222"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a61156c596f6ae94bbe08ce518f368222">component_names</a></td></tr>
 <tr class="memdesc:a61156c596f6ae94bbe08ce518f368222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comma seperated names of components.  <a href="class_p_d_es_1_1_linear_problem.html#a61156c596f6ae94bbe08ce518f368222">More...</a><br /></td></tr>
 <tr class="separator:a61156c596f6ae94bbe08ce518f368222"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -382,19 +382,19 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ab6763749158cdafd6c0f9205395fe678"><td class="memItemLeft" align="right" valign="top">LacType::BlockSparsityPattern&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ab6763749158cdafd6c0f9205395fe678">sparsity</a></td></tr>
 <tr class="memdesc:ab6763749158cdafd6c0f9205395fe678"><td class="mdescLeft">&#160;</td><td class="mdescRight">System sparsity pattern.  <a href="class_p_d_es_1_1_linear_problem.html#ab6763749158cdafd6c0f9205395fe678">More...</a><br /></td></tr>
 <tr class="separator:ab6763749158cdafd6c0f9205395fe678"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72831099179a95455f564178aad3871f"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#a46fafcc676e10b5445b01ea437eaf45e">LacType::BlockSparseMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a72831099179a95455f564178aad3871f">matrix</a></td></tr>
+<tr class="memitem:a72831099179a95455f564178aad3871f"><td class="memItemLeft" align="right" valign="top">LacType::BlockSparseMatrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a72831099179a95455f564178aad3871f">matrix</a></td></tr>
 <tr class="memdesc:a72831099179a95455f564178aad3871f"><td class="mdescLeft">&#160;</td><td class="mdescRight">System matrix.  <a href="class_p_d_es_1_1_linear_problem.html#a72831099179a95455f564178aad3871f">More...</a><br /></td></tr>
 <tr class="separator:a72831099179a95455f564178aad3871f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36d40367dff64fee5f30153311983ca2"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#a46fafcc676e10b5445b01ea437eaf45e">LacType::BlockSparseMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a36d40367dff64fee5f30153311983ca2">mass_matrix</a></td></tr>
+<tr class="memitem:a36d40367dff64fee5f30153311983ca2"><td class="memItemLeft" align="right" valign="top">LacType::BlockSparseMatrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a36d40367dff64fee5f30153311983ca2">mass_matrix</a></td></tr>
 <tr class="memdesc:a36d40367dff64fee5f30153311983ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">System matrix.  <a href="class_p_d_es_1_1_linear_problem.html#a36d40367dff64fee5f30153311983ca2">More...</a><br /></td></tr>
 <tr class="separator:a36d40367dff64fee5f30153311983ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae6ec7e1f5546097d6e01cd76d732723f"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ae6ec7e1f5546097d6e01cd76d732723f">locally_relevant_solution</a></td></tr>
+<tr class="memitem:ae6ec7e1f5546097d6e01cd76d732723f"><td class="memItemLeft" align="right" valign="top">LacType::BlockVector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#ae6ec7e1f5546097d6e01cd76d732723f">locally_relevant_solution</a></td></tr>
 <tr class="memdesc:ae6ec7e1f5546097d6e01cd76d732723f"><td class="mdescLeft">&#160;</td><td class="mdescRight">A read only copy of the solution vector used for output and error estimation.  <a href="class_p_d_es_1_1_linear_problem.html#ae6ec7e1f5546097d6e01cd76d732723f">More...</a><br /></td></tr>
 <tr class="separator:ae6ec7e1f5546097d6e01cd76d732723f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a275c0cdf218724ae473c2fb8bd8760a4"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a275c0cdf218724ae473c2fb8bd8760a4">solution</a></td></tr>
+<tr class="memitem:a275c0cdf218724ae473c2fb8bd8760a4"><td class="memItemLeft" align="right" valign="top">LacType::BlockVector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a275c0cdf218724ae473c2fb8bd8760a4">solution</a></td></tr>
 <tr class="memdesc:a275c0cdf218724ae473c2fb8bd8760a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solution vector.  <a href="class_p_d_es_1_1_linear_problem.html#a275c0cdf218724ae473c2fb8bd8760a4">More...</a><br /></td></tr>
 <tr class="separator:a275c0cdf218724ae473c2fb8bd8760a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abff00bdc2fe201a2898851301e262c1e"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#abff00bdc2fe201a2898851301e262c1e">rhs</a></td></tr>
+<tr class="memitem:abff00bdc2fe201a2898851301e262c1e"><td class="memItemLeft" align="right" valign="top">LacType::BlockVector&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#abff00bdc2fe201a2898851301e262c1e">rhs</a></td></tr>
 <tr class="memdesc:abff00bdc2fe201a2898851301e262c1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The system right hand side.  <a href="class_p_d_es_1_1_linear_problem.html#abff00bdc2fe201a2898851301e262c1e">More...</a><br /></td></tr>
 <tr class="separator:abff00bdc2fe201a2898851301e262c1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a7c6eab89db1e6287e6c9ee48bd7a08"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classVector.html">Vector</a>&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a1a7c6eab89db1e6287e6c9ee48bd7a08">error_per_cell</a></td></tr>
@@ -442,7 +442,7 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aea12251f3d99e7c1052ae07d7bcc5dea"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#aea12251f3d99e7c1052ae07d7bcc5dea">output_frequency</a> = 1</td></tr>
 <tr class="memdesc:aea12251f3d99e7c1052ae07d7bcc5dea"><td class="mdescLeft">&#160;</td><td class="mdescRight">How often to output the solution.  <a href="class_p_d_es_1_1_linear_problem.html#aea12251f3d99e7c1052ae07d7bcc5dea">More...</a><br /></td></tr>
 <tr class="separator:aea12251f3d99e7c1052ae07d7bcc5dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa18476554d51c2b8bf4b008d6a831c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_proxy.html">ParsedTools::Proxy</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a> &gt;::AdditionalData &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#afa18476554d51c2b8bf4b008d6a831c5">ark_ode_data</a></td></tr>
+<tr class="memitem:afa18476554d51c2b8bf4b008d6a831c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_parsed_tools_1_1_proxy.html">ParsedTools::Proxy</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt; typename LacType::BlockVector &gt;::AdditionalData &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#afa18476554d51c2b8bf4b008d6a831c5">ark_ode_data</a></td></tr>
 <tr class="memdesc:afa18476554d51c2b8bf4b008d6a831c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configuration used to setup transient simulations.  <a href="class_p_d_es_1_1_linear_problem.html#afa18476554d51c2b8bf4b008d6a831c5">More...</a><br /></td></tr>
 <tr class="separator:afa18476554d51c2b8bf4b008d6a831c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bb1840d0e3862231f1835d83a4462e7"><td class="memItemLeft" align="right" valign="top">boost::signals2::signal&lt; void(<a class="el" href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">ARKode</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_p_d_es_1_1_linear_problem.html#a5bb1840d0e3862231f1835d83a4462e7">setup_arkode_call_back</a></td></tr>
@@ -482,15 +482,15 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ac4b7044a9e1d53c401a50565d8996022 inherit pub_static_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3775ed960cf63c9ae88613925d226b11 inherit pub_static_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a3775ed960cf63c9ae88613925d226b11">declare_all_parameters</a> (<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterHandler.html">ParameterHandler</a> &amp;<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">prm</a>=<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a96081d4cc985b722c9841fcf0c0e54ec">ParameterAcceptor::prm</a>)</td></tr>
 <tr class="separator:a3775ed960cf63c9ae88613925d226b11 inherit pub_static_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac763df3ce17c4ff01be5887902c88cb5 inherit pub_static_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac763df3ce17c4ff01be5887902c88cb5">ExcInUse</a> (int arg1, std::string arg2, std::string arg3)</td></tr>
-<tr class="separator:gac763df3ce17c4ff01be5887902c88cb5 inherit pub_static_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga914cc7f7eb16630ed4b0afc37c233e2e inherit pub_static_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga914cc7f7eb16630ed4b0afc37c233e2e">ExcNoSubscriber</a> (std::string arg1, std::string arg2)</td></tr>
-<tr class="separator:ga914cc7f7eb16630ed4b0afc37c233e2e inherit pub_static_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga643dac21eccfb237ebddbda714d8d859 inherit pub_static_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga643dac21eccfb237ebddbda714d8d859">ExcInUse</a> (int arg1, std::string arg2, std::string arg3)</td></tr>
+<tr class="separator:ga643dac21eccfb237ebddbda714d8d859 inherit pub_static_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc3328ec1c1c378a9be1a1d93b3323cb inherit pub_static_methods_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gabc3328ec1c1c378a9be1a1d93b3323cb">ExcNoSubscriber</a> (std::string arg1, std::string arg2)</td></tr>
+<tr class="separator:gabc3328ec1c1c378a9be1a1d93b3323cb inherit pub_static_methods_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_static_methods_classSubscriptor"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classSubscriptor')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classSubscriptor.html">Subscriptor</a></td></tr>
-<tr class="memitem:gac763df3ce17c4ff01be5887902c88cb5 inherit pub_static_methods_classSubscriptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gac763df3ce17c4ff01be5887902c88cb5">ExcInUse</a> (int arg1, std::string arg2, std::string arg3)</td></tr>
-<tr class="separator:gac763df3ce17c4ff01be5887902c88cb5 inherit pub_static_methods_classSubscriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga914cc7f7eb16630ed4b0afc37c233e2e inherit pub_static_methods_classSubscriptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga914cc7f7eb16630ed4b0afc37c233e2e">ExcNoSubscriber</a> (std::string arg1, std::string arg2)</td></tr>
-<tr class="separator:ga914cc7f7eb16630ed4b0afc37c233e2e inherit pub_static_methods_classSubscriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga643dac21eccfb237ebddbda714d8d859 inherit pub_static_methods_classSubscriptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga643dac21eccfb237ebddbda714d8d859">ExcInUse</a> (int arg1, std::string arg2, std::string arg3)</td></tr>
+<tr class="separator:ga643dac21eccfb237ebddbda714d8d859 inherit pub_static_methods_classSubscriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabc3328ec1c1c378a9be1a1d93b3323cb inherit pub_static_methods_classSubscriptor"><td class="memItemLeft" align="right" valign="top">static ::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classExceptionBase.html">ExceptionBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gabc3328ec1c1c378a9be1a1d93b3323cb">ExcNoSubscriber</a> (std::string arg1, std::string arg2)</td></tr>
+<tr class="separator:gabc3328ec1c1c378a9be1a1d93b3323cb inherit pub_static_methods_classSubscriptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classParameterAcceptor"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classParameterAcceptor')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el"  href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html">ParameterAcceptor</a></td></tr>
 <tr class="memitem:a52134c59ec98830230c23e080c841705 inherit pro_attribs_classParameterAcceptor"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classParameterAcceptor.html#a52134c59ec98830230c23e080c841705">section_name</a></td></tr>
 <tr class="separator:a52134c59ec98830230c23e080c841705 inherit pro_attribs_classParameterAcceptor"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -514,7 +514,7 @@ class PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;</h3>
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">ARKode</a> =  typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt;typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a>&gt;</td>
+          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#af4aff48dfe7fde33f9d05e5c68e8e9bc">ARKode</a> =  typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt;typename LacType::BlockVector&gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -594,7 +594,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#ab1e5921a82b93b76a6d39b6008d74cbf">BlockVectorType</a> =  typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a></td>
+          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#ab1e5921a82b93b76a6d39b6008d74cbf">BlockVectorType</a> =  typename LacType::BlockVector</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -614,7 +614,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#aadfe18186f4705c625cff9c18f8daee8">VectorType</a> =  typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gab475913da276dbdb8fa74b0478c542cf">BlockVectorType::BlockType</a></td>
+          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#aadfe18186f4705c625cff9c18f8daee8">VectorType</a> =  typename BlockVectorType::BlockType</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -634,7 +634,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511">BlockMatrixType</a> =  typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#a46fafcc676e10b5445b01ea437eaf45e">LacType::BlockSparseMatrix</a></td>
+          <td class="memname">using <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::<a class="el" href="class_p_d_es_1_1_linear_problem.html#acf91dec87d3ac7077e04f6edb4802511">BlockMatrixType</a> =  typename LacType::BlockSparseMatrix</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -679,7 +679,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00038">38</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="el" href="linear__problem_8cc_source.html#l00261">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;::custom_estimator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#ac26de0c059200523177bb1d92cc25d00">n_mpi_processes()</a>, <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c">PDEs::steady_state</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceUtilities_1_1MPI.html#a895dcd8223a0ee6f0e6a80b80e2d5982">this_mpi_process()</a>.</p>
+<p class="reference">References <a class="el" href="linear__problem_8cc_source.html#l00261">PDEs::LinearProblem&lt; dim, spacedim, LacType &gt;::custom_estimator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/init__finalize_8h.html#afa0632b171b89c99789b77f976818df0a3b124f211648678733ce66a1b361f06c">MPI</a>, and <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c">PDEs::steady_state</a>.</p>
 
 </div>
 </div>
@@ -740,7 +740,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00468">468</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga7b52b286796c23ef9ff178faf7a4b68f">ExcNotImplemented()</a>, <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa8f22e172e06e0f2539baea662c3c275e">PDEs::quasi_static</a>, <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c">PDEs::steady_state</a>, and <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19faf15455eb297257c3414c2e6959a92e60">PDEs::transient</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga519a9882fa48812fd2eb09089df2f02d">StandardExceptions::ExcNotImplemented()</a>, <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa8f22e172e06e0f2539baea662c3c275e">PDEs::quasi_static</a>, <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19fa70d0c6de8c30807fca0c3fb0cd272e8c">PDEs::steady_state</a>, and <a class="el" href="namespace_p_d_es.html#af3942bfa83d6b02f459d96d219c5c19faf15455eb297257c3414c2e6959a92e60">PDEs::transient</a>.</p>
 
 </div>
 </div>
@@ -762,7 +762,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00621">621</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceGridRefinement.html#a1cf30058b31ce7f9b389e8310bb9fc54">refine()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
 </div>
 </div>
@@ -806,7 +806,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00594">594</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a761f008bdeb7d94a69205ae824deefad">VectorTools::interpolate()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">StandardExceptions::ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceVectorTools.html#a35950c839da51812962d41ee4075b3b8">VectorTools::interpolate()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/p4est__wrappers_8cc.html#ace00f2f80d9780ef9aa1007e1c22c6a4">triangulation</a>.</p>
 
 </div>
 </div>
@@ -840,7 +840,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00531">531</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLocalIntegrators_1_1L2.html#a1c15243765304a803037988b5561627d">mass_matrix()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__LAOperators.html#ga87e38fbde431397c069a88692bd24ae7">inverse_operator()</a>.</p>
 
 </div>
 </div>
@@ -858,7 +858,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::assemble_system_one_cell </td>
           <td>(</td>
-          <td class="paramtype">const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;::<a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Iterators.html#gaa80b689a21d72f777095aa12bbe01afa">active_cell_iterator</a> &amp;&#160;</td>
+          <td class="paramtype">const typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler</a>&lt; dim, spacedim &gt;::active_cell_iterator &amp;&#160;</td>
           <td class="paramname"><em>cell</em>, </td>
         </tr>
         <tr>
@@ -901,7 +901,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00249">249</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga5b4a67e76dffba7940c255e21b3391c8">ExcPureFunctionCalled()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaa99c185a192f17e164be98ffb031f279">StandardExceptions::ExcPureFunctionCalled()</a>.</p>
 
 </div>
 </div>
@@ -941,8 +941,6 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00271">271</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceinternal_1_1VectorOperations.html#a40c8daa0881cff0123fbaeb08929f5cb">copy()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLAPACKSupport.html#a1a9009db0d9a77923a7031b549b9b638a5bc7c54a9c20485772672825c6a73003">matrix</a>.</p>
-
 </div>
 </div>
 <a id="ab9c8359e791b72a935fde5910c2665df"></a>
@@ -973,7 +971,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00371">371</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga5b4a67e76dffba7940c255e21b3391c8">ExcPureFunctionCalled()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaa99c185a192f17e164be98ffb031f279">StandardExceptions::ExcPureFunctionCalled()</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1216,7 @@ template&lt;int dim, int spacedim, class LacType &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8cc_source.html#l00446">446</a> of file <a class="el" href="linear__problem_8cc_source.html">linear_problem.cc</a>.</p>
 
-<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ac9a6cd76978579168ab42256db8e4bec">MultithreadInfo::n_cores()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ad0b84ae105b385b88bdd4bfc0c530995">MultithreadInfo::n_threads()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ae253b8ff679c4119f9c5bff4439fe606">MultithreadInfo::set_thread_limit()</a>.</p>
+<p class="reference">References <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/logstream_8h.html#ac643e79bd992f1a9bd0dca5b9f2859fb">deallog</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">StandardExceptions::ExcMessage()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ac9a6cd76978579168ab42256db8e4bec">MultithreadInfo::n_cores()</a>, <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ad0b84ae105b385b88bdd4bfc0c530995">MultithreadInfo::n_threads()</a>, and <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classMultithreadInfo.html#ae253b8ff679c4119f9c5bff4439fe606">MultithreadInfo::set_thread_limit()</a>.</p>
 
 </div>
 </div>
@@ -1433,8 +1431,8 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 
 </div>
 </div>
-<a id="ac0cebbade4b2cb23b7b9935d14e26611"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0cebbade4b2cb23b7b9935d14e26611">&#9670;&nbsp;</a></span>advance_time_call_back</h2>
+<a id="a0f5b1578a2c52a12d6f74cb2729574d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f5b1578a2c52a12d6f74cb2729574d6">&#9670;&nbsp;</a></span>advance_time_call_back</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1442,7 +1440,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">boost::signals2::signal&lt;void(const double &amp; time, const double &amp; time_step, const unsigned int &amp;time_step_number)&gt; <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::advance_time_call_back</td>
+          <td class="memname">boost::signals2::signal&lt;void(const double &amp;time, const double &amp;time_step, const unsigned int &amp;time_step_number)&gt; <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::advance_time_call_back</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1807,7 +1805,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div class="line">  set Finite element space (u) = FE_Q(1)</div>
 <div class="line">end</div>
 </div><!-- fragment --><p>You should make sure that the type of finite element you specify matches the type of triangulation you are using, i.e., <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__Q.html">FE_Q</a> is supported only on quad/hex grids, while <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classFE__SimplexP.html">FE_SimplexP</a> is supported only on tri/tetra grids.</p>
-<p>The syntax used to specify the finite element type is the same used by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFETools.html#ad677362df1413e1ccc8a2cf7aff19d07">FETools::get_fe_by_name()</a> function. </p>
+<p>The syntax used to specify the finite element type is the same used by the <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceFETools.html#aa37367f0b2f4f5a6a7ca51afda496fc3">FETools::get_fe_by_name()</a> function. </p>
 
 <p class="definition">Definition at line <a class="el" href="linear__problem_8h_source.html#l00470">470</a> of file <a class="el" href="linear__problem_8h_source.html">linear_problem.h</a>.</p>
 
@@ -2003,7 +2001,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#a46fafcc676e10b5445b01ea437eaf45e">LacType::BlockSparseMatrix</a> <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::matrix</td>
+          <td class="memname">LacType::BlockSparseMatrix <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::matrix</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2023,7 +2021,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#a46fafcc676e10b5445b01ea437eaf45e">LacType::BlockSparseMatrix</a> <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::mass_matrix</td>
+          <td class="memname">LacType::BlockSparseMatrix <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::mass_matrix</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2043,7 +2041,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a> <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::locally_relevant_solution</td>
+          <td class="memname">LacType::BlockVector <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::locally_relevant_solution</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2063,7 +2061,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a> <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::solution</td>
+          <td class="memname">LacType::BlockVector <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::solution</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2083,7 +2081,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a> <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::rhs</td>
+          <td class="memname">LacType::BlockVector <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::rhs</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2487,7 +2485,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_parsed_tools_1_1_proxy.html">ParsedTools::Proxy</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt;typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/namespaceLinearAlgebraTrilinos_1_1MPI.html#af9e49257a5db4e069a8a198b43708ba8">LacType::BlockVector</a>&gt;::AdditionalData&gt; <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::ark_ode_data</td>
+          <td class="memname"><a class="el" href="class_parsed_tools_1_1_proxy.html">ParsedTools::Proxy</a>&lt; typename <a class="elRef" href="http://www.dealii.org/developer/doxygen/deal.II/classSUNDIALS_1_1ARKode.html">SUNDIALS::ARKode</a>&lt;typename LacType::BlockVector&gt;::AdditionalData&gt; <a class="el" href="class_p_d_es_1_1_linear_problem.html">PDEs::LinearProblem</a>&lt; dim, spacedim, LacType &gt;::ark_ode_data</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2529,7 +2527,7 @@ template&lt;int dim, int spacedim = dim, class LacType  = LAC::LAdealii&gt; </di
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_p_d_es.html">PDEs</a></li><li class="navelem"><a class="el" href="class_p_d_es_1_1_linear_problem.html">LinearProblem</a></li>
-    <li class="footer">Generated on Sun Apr 30 2023 14:06:44 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 24 2024 23:50:44 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

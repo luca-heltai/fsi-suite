@@ -148,8 +148,8 @@ $(document).ready(function(){initNavTree('stokes_8h_source.html',''); initResiza
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    assemble_system_one_cell(</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <span class="keyword">const</span> <span class="keyword">typename</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classDoFHandler.html">DoFHandler&lt;dim&gt;::active_cell_iterator</a> &amp;cell,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <a class="code" href="class_p_d_es_1_1_stokes.html#a90bf17cf70677e1af1636564d1431ec3">ScratchData</a> &amp;                                         scratch,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="code" href="class_p_d_es_1_1_stokes.html#a5e811b383394efa0f6137eb5992f7702">CopyData</a> &amp;                                            copy) <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <a class="code" href="class_p_d_es_1_1_stokes.html#a90bf17cf70677e1af1636564d1431ec3">ScratchData</a>                                          &amp;scratch,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="code" href="class_p_d_es_1_1_stokes.html#a5e811b383394efa0f6137eb5992f7702">CopyData</a>                                             &amp;copy) <span class="keyword">override</span>;</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    solve() <span class="keyword">override</span>;</div>
@@ -163,7 +163,7 @@ $(document).ready(function(){initNavTree('stokes_8h_source.html',''); initResiza
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_p_d_es_1_1_stokes.html#aa9b5be0390d8fa6a876268d3728e04a9">   74</a></span>&#160;    <span class="keyword">const</span> <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/structFEValuesExtractors_1_1Scalar.html">FEValuesExtractors::Scalar</a> <a class="code" href="class_p_d_es_1_1_stokes.html#aa9b5be0390d8fa6a876268d3728e04a9">pressure</a>;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  };</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">namespace </span>MPI</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">namespace </span><a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/init__finalize_8h.html#afa0632b171b89c99789b77f976818df0a3b124f211648678733ce66a1b361f06c">MPI</a></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">template</span> &lt;<span class="keywordtype">int</span> dim&gt;</div>
 <div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="namespace_p_d_es_1_1_m_p_i.html#a8f0466e417f28f4844d515d70ac37dec">   80</a></span>&#160;    <span class="keyword">using</span> <a class="code" href="class_p_d_es_1_1_stokes.html">Stokes</a> = <a class="code" href="class_p_d_es_1_1_stokes.html">PDEs::Stokes&lt;dim, LAC::LAPETSc&gt;</a>;</div>
@@ -194,6 +194,7 @@ $(document).ready(function(){initNavTree('stokes_8h_source.html',''); initResiza
 <div class="ttc" id="aclass_parsed_tools_1_1_constants_html"><div class="ttname"><a href="class_parsed_tools_1_1_constants.html">ParsedTools::Constants</a></div><div class="ttdoc">A wrapper for physical constants to be shared among functions and classes.</div><div class="ttdef"><b>Definition:</b> <a href="constants_8h_source.html#l00043">constants.h:44</a></div></div>
 <div class="ttc" id="aconstants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
 <div class="ttc" id="ailu_8h_html"><div class="ttname"><a href="ilu_8h.html">ilu.h</a></div></div>
+<div class="ttc" id="ainit__finalize_8h_html_afa0632b171b89c99789b77f976818df0a3b124f211648678733ce66a1b361f06c"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/init__finalize_8h.html#afa0632b171b89c99789b77f976818df0a3b124f211648678733ce66a1b361f06c">InitializeLibrary::MPI</a></div><div class="ttdeci">@ MPI</div></div>
 <div class="ttc" id="ainverse__operator_8h_html"><div class="ttname"><a href="inverse__operator_8h.html">inverse_operator.h</a></div></div>
 <div class="ttc" id="alinear__problem_8h_html"><div class="ttname"><a href="linear__problem_8h.html">linear_problem.h</a></div></div>
 <div class="ttc" id="anamespace_p_d_es_1_1_serial_html_ac1f044aacb41fd7ea8bf72267548ef58"><div class="ttname"><a href="namespace_p_d_es_1_1_serial.html#ac1f044aacb41fd7ea8bf72267548ef58">PDEs::Serial::Stokes</a></div><div class="ttdeci">PDEs::Stokes&lt; dim, LAC::LAdealii &gt; Stokes</div><div class="ttdef"><b>Definition:</b> <a href="stokes_8h_source.html#l00086">stokes.h:86</a></div></div>
@@ -207,7 +208,7 @@ $(document).ready(function(){initNavTree('stokes_8h_source.html',''); initResiza
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_60faf9a10d52b04582224b9116454383.html">pdes</a></li><li class="navelem"><a class="el" href="stokes_8h.html">stokes.h</a></li>
-    <li class="footer">Generated on Sun Apr 30 2023 14:06:43 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 24 2024 23:50:43 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>

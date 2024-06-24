@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    std::string</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="namespace_parsed_tools_1_1_components.html#a54e7fe3f31017316e724c2a5f712ee8e">blocks_to_names</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp; components,</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="namespace_parsed_tools_1_1_components.html#a54e7fe3f31017316e724c2a5f712ee8e">blocks_to_names</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;  &amp;components,</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <span class="keyword">const</span> std::vector&lt;unsigned int&gt; &amp;multiplicities);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::pair&lt;std::vector&lt;std::string&gt;, std::vector&lt;unsigned int&gt;&gt;</div>
@@ -236,13 +236,13 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                          degree,</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;      <span class="keyword">const</span> <span class="keywordtype">int</span>                                   continuity)</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#af4f08d0df83f6455dbdac86c1a0736b8">get_reference_cells</a>();</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = tria.get_reference_cells();</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        ref_cells.size() == 1,</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(</div>
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;          <span class="stringliteral">&quot;This function does nots support mixed simplx/hex grid types.&quot;</span>));</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(continuity == -1 || continuity == 0,</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                  <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(</div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    <span class="stringliteral">&quot;only -1 and 0 are supported for continuity&quot;</span>));</div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      std::unique_ptr&lt;dealii::FiniteElement&lt;dim, spacedim&gt;&gt; result;</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordflow">if</span> (ref_cells[0].is_simplex())</div>
@@ -255,7 +255,7 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;      <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        {</div>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a>(ref_cells[0].is_hyper_cube(),</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                 <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(</div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;                   <span class="stringliteral">&quot;Only simplex and hex cells are supported&quot;</span>));</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;          <span class="keywordflow">if</span> (continuity == 0)</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            result.reset(<span class="keyword">new</span> dealii::FE_Q&lt;dim, spacedim&gt;(degree));</div>
@@ -272,11 +272,11 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <a class="code" href="namespace_parsed_tools_1_1_components.html#abfd995fb831c2525c681af93c22c3574">get_cell_quadrature</a>(<span class="keyword">const</span> dealii::Triangulation&lt;dim, spacedim&gt; &amp;tria,</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>                          degree)</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    {</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#af4f08d0df83f6455dbdac86c1a0736b8">get_reference_cells</a>();</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = tria.get_reference_cells();</div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;      <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        ref_cells.size() == 1,</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;          <span class="stringliteral">&quot;This function does nots support mixed simplx/hex grid types.&quot;</span>));</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;      <span class="keywordflow">return</span> ref_cells[0].template get_gauss_type_quadrature&lt;dim&gt;(degree);</div>
 <div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    }</div>
@@ -294,11 +294,11 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;          <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a>.<a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#af4f08d0df83f6455dbdac86c1a0736b8">get_reference_cells</a>();</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;          <span class="keyword">const</span> <span class="keyword">auto</span> ref_cells = tria.get_reference_cells();</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;          <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a>(</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            ref_cells.size() == 1,</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">dealii::ExcMessage</a>(</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <a class="codeRef" href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">dealii::ExcMessage</a>(</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;              <span class="stringliteral">&quot;This function does nots support mixed simplx/hex grid types.&quot;</span>));</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;          <span class="keyword">const</span> dealii::ReferenceCell face_type =</div>
@@ -310,7 +310,6 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  } <span class="comment">// namespace Components</span></div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;} <span class="comment">// namespace ParsedTools</span></div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassTriangulation_html_af4f08d0df83f6455dbdac86c1a0736b8"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/classTriangulation.html#af4f08d0df83f6455dbdac86c1a0736b8">Triangulation&lt; dim, spacedim &gt;::get_reference_cells</a></div><div class="ttdeci">const std::vector&lt; ReferenceCell &gt; &amp; get_reference_cells() const</div></div>
 <div class="ttc" id="acomponent__mask_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/component__mask_8h.html">component_mask.h</a></div></div>
 <div class="ttc" id="aconfig_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/config_8h.html">config.h</a></div></div>
 <div class="ttc" id="aenum_8h_html"><div class="ttname"><a href="enum_8h.html">enum.h</a></div></div>
@@ -320,7 +319,7 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="ttc" id="afe__system_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/fe__system_8h.html">fe_system.h</a></div></div>
 <div class="ttc" id="agrid_2tria_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/grid_2tria_8h.html">tria.h</a></div></div>
 <div class="ttc" id="agroup__Exceptions_html_ga70a0bb353656e704acf927945277bbc6"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#ga70a0bb353656e704acf927945277bbc6">Assert</a></div><div class="ttdeci">#define Assert(cond, exc)</div></div>
-<div class="ttc" id="agroup__Exceptions_html_gae9a45f517af1401c50811a11083f9114"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gae9a45f517af1401c50811a11083f9114">ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
+<div class="ttc" id="agroup__Exceptions_html_gaedfe9af00deb49f55d5fffc1724bb213"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gaedfe9af00deb49f55d5fffc1724bb213">StandardExceptions::ExcMessage</a></div><div class="ttdeci">static ::ExceptionBase &amp; ExcMessage(std::string arg1)</div></div>
 <div class="ttc" id="agroup__Exceptions_html_gafc0ca7ad85b3ebd64e8e51689ac85caf"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/group__Exceptions.html#gafc0ca7ad85b3ebd64e8e51689ac85caf">AssertThrow</a></div><div class="ttdeci">#define AssertThrow(cond, exc)</div></div>
 <div class="ttc" id="ainclude_2deal_8II_2base_2quadrature_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2quadrature_8h.html">quadrature.h</a></div></div>
 <div class="ttc" id="ainclude_2deal_8II_2base_2utilities_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/include_2deal_8II_2base_2utilities_8h.html">utilities.h</a></div></div>
@@ -346,14 +345,13 @@ $(document).ready(function(){initNavTree('components_8h_source.html',''); initRe
 <div class="ttc" id="anamespace_parsed_tools_1_1_components_html_aeba21d2bf70c7483ead7c117fcda11df"><div class="ttname"><a href="namespace_parsed_tools_1_1_components.html#aeba21d2bf70c7483ead7c117fcda11df">ParsedTools::Components::n_components</a></div><div class="ttdeci">unsigned int n_components(const std::string &amp;component_names)</div><div class="ttdoc">Count the number of components in the given list of comma separated components.</div><div class="ttdef"><b>Definition:</b> <a href="components_8cc_source.html#l00032">components.cc:32</a></div></div>
 <div class="ttc" id="anamespace_parsed_tools_html"><div class="ttname"><a href="namespace_parsed_tools.html">ParsedTools</a></div><div class="ttdoc">We collect in this namespace some wrappers around commonly used deal.II classes, derived from the Par...</div><div class="ttdef"><b>Definition:</b> <a href="boundary__conditions_8h_source.html#l00037">boundary_conditions.h:38</a></div></div>
 <div class="ttc" id="aquadrature__lib_8h.html_html"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/quadrature__lib_8h.html">quadrature_lib.h</a></div></div>
-<div class="ttc" id="atria__description_8cc_html_ab695339a227bd369fcea767631247cff"><div class="ttname"><a href="http://www.dealii.org/developer/doxygen/deal.II/tria__description_8cc.html#ab695339a227bd369fcea767631247cff">tria</a></div><div class="ttdeci">const ::Triangulation&lt; dim, spacedim &gt; &amp; tria</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_8e8448d9aef603b86753e7cb911804a9.html">parsed_tools</a></li><li class="navelem"><a class="el" href="components_8h.html">components.h</a></li>
-    <li class="footer">Generated on Sun Apr 30 2023 14:06:43 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+    <li class="footer">Generated on Mon Jun 24 2024 23:50:43 for Fluid structure interaction suite by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
 </body>
