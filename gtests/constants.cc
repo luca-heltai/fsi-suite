@@ -48,11 +48,11 @@ TEST(Constants, CheckConstants)
 TEST(Constants, FunctionAndConstants)
 {
   ParsedTools::Constants   constants("/",
-                                   {"a", "b", "c"},
-                                   {1.0, 2.0, 3.0},
-                                   {"The constant a",
-                                    "The constant b",
-                                    "The constant c"});
+                                     {"a", "b", "c"},
+                                     {1.0, 2.0, 3.0},
+                                     {"The constant a",
+                                      "The constant b",
+                                      "The constant c"});
   ParsedTools::Function<1> function(
     "/", "a*x^2+b*x+c", "Function expression", constants, "x,y");
 

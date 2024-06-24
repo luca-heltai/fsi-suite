@@ -36,7 +36,7 @@ TEST(Runner, DimAndSpacedim)
     EXPECT_EQ(dim, 2);
     EXPECT_EQ(spacedim, 3);
     EXPECT_EQ(in_file, "");
-    EXPECT_EQ(out_file, "used_app_2d_3d.prm");
+    EXPECT_EQ(out_file, "used_app.prm");
   }
   {
     // use -d=1 to specify flag value, check default value for spacedim
@@ -46,7 +46,7 @@ TEST(Runner, DimAndSpacedim)
     EXPECT_EQ(dim, 1);
     EXPECT_EQ(spacedim, 1);
     EXPECT_EQ(in_file, "");
-    EXPECT_EQ(out_file, "used_app_1d.prm");
+    EXPECT_EQ(out_file, "used_app.prm");
   }
   {
     // use -d 3 to specify flag value, check default value for spacedim
@@ -56,7 +56,7 @@ TEST(Runner, DimAndSpacedim)
     EXPECT_EQ(dim, 3);
     EXPECT_EQ(spacedim, 3);
     EXPECT_EQ(in_file, "");
-    EXPECT_EQ(out_file, "used_app_3d.prm");
+    EXPECT_EQ(out_file, "used_app.prm");
   }
 }
 
@@ -74,40 +74,51 @@ TEST(Runner, PrmName)
     EXPECT_EQ(out_file, "used_input.prm");
   }
   {
-    // use filename for dim
+    // default dim and spacedim
     char *argv[] = {(char *)"./app",
                     (char *)"-i",
-                    (char *)"input_3d.prm",
-                    NULL};
-    auto [dim, spacedim, in_file, out_file] =
-      Runner::get_dimensions_and_parameter_files(argv);
-    EXPECT_EQ(dim, 3);
-    EXPECT_EQ(spacedim, 3);
-    EXPECT_EQ(in_file, "input_3d.prm");
-    EXPECT_EQ(out_file, "used_input_3d.prm");
-  }
-  {
-    // use filename for dim and spacedim
-    char *argv[] = {(char *)"./app",
-                    (char *)"-i",
-                    (char *)"input_1d_3d.prm",
+                    (char *)"input.prm",
+                    (char *)"-d",
+                    (char *)"1",
+                    (char *)"-s",
+                    (char *)"3",
                     NULL};
     auto [dim, spacedim, in_file, out_file] =
       Runner::get_dimensions_and_parameter_files(argv);
     EXPECT_EQ(dim, 1);
     EXPECT_EQ(spacedim, 3);
-    EXPECT_EQ(in_file, "input_1d_3d.prm");
-    EXPECT_EQ(out_file, "used_input_1d_3d.prm");
+    EXPECT_EQ(in_file, "input.prm");
+    EXPECT_EQ(out_file, "used_input.prm");
   }
   {
-    // check failure if file name and dimensions do not correspond
+    // pick only dim, let spacedim be default
     char *argv[] = {(char *)"./app",
-                    (char *)"-d",
-                    (char *)"2",
                     (char *)"-i",
-                    (char *)"input_1d_3d.prm",
+                    (char *)"input.prm",
+                    (char *)"-d",
+                    (char *)"1",
                     NULL};
-    EXPECT_ANY_THROW(Runner::get_dimensions_and_parameter_files(argv));
+    auto [dim, spacedim, in_file, out_file] =
+      Runner::get_dimensions_and_parameter_files(argv);
+    EXPECT_EQ(dim, 1);
+    EXPECT_EQ(spacedim, 1);
+    EXPECT_EQ(in_file, "input.prm");
+    EXPECT_EQ(out_file, "used_input.prm");
+  }
+  {
+    // pick only dim, let spacedim be default, d = 3
+    char *argv[] = {(char *)"./app",
+                    (char *)"-i",
+                    (char *)"input.prm",
+                    (char *)"-d",
+                    (char *)"3",
+                    NULL};
+    auto [dim, spacedim, in_file, out_file] =
+      Runner::get_dimensions_and_parameter_files(argv);
+    EXPECT_EQ(dim, 3);
+    EXPECT_EQ(spacedim, 3);
+    EXPECT_EQ(in_file, "input.prm");
+    EXPECT_EQ(out_file, "used_input.prm");
   }
 }
 

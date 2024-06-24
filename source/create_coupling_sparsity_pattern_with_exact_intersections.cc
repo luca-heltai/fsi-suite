@@ -37,11 +37,11 @@ namespace dealii
         dealii::Quadrature<spacedim>>> &intersections_info,
       const DoFHandler<dim0, spacedim> &space_dh,
       const DoFHandler<dim1, spacedim> &immersed_dh,
-      Sparsity &                        sparsity,
-      const AffineConstraints<number> & constraints,
-      const ComponentMask &             space_comps,
-      const ComponentMask &             immersed_comps,
-      const AffineConstraints<number> & immersed_constraints)
+      Sparsity                         &sparsity,
+      const AffineConstraints<number>  &constraints,
+      const ComponentMask              &space_comps,
+      const ComponentMask              &immersed_comps,
+      const AffineConstraints<number>  &immersed_constraints)
     {
       AssertDimension(sparsity.n_rows(), space_dh.n_dofs());
       AssertDimension(sparsity.n_cols(), immersed_dh.n_dofs());
@@ -54,8 +54,8 @@ namespace dealii
 
 
 
-      const auto &       space_fe              = space_dh.get_fe();
-      const auto &       immersed_fe           = immersed_dh.get_fe();
+      const auto        &space_fe              = space_dh.get_fe();
+      const auto        &immersed_fe           = immersed_dh.get_fe();
       const unsigned int n_dofs_per_space_cell = space_fe.n_dofs_per_cell();
       const unsigned int n_dofs_per_immersed_cell =
         immersed_fe.n_dofs_per_cell();
@@ -219,13 +219,13 @@ namespace dealii
         std::tuple<typename dealii::Triangulation<1, 1>::cell_iterator,
                    typename dealii::Triangulation<1, 1>::cell_iterator,
                    dealii::Quadrature<1>>> &intersections_info,
-      const DoFHandler<1, 1> &              space_dh,
-      const DoFHandler<1, 1> &              immersed_dh,
-      DynamicSparsityPattern &              sparsity,
-      const AffineConstraints<double> &     constraints,
-      const ComponentMask &                 space_comps,
-      const ComponentMask &                 immersed_comps,
-      const AffineConstraints<double> &     immersed_constraint);
+      const DoFHandler<1, 1>               &space_dh,
+      const DoFHandler<1, 1>               &immersed_dh,
+      DynamicSparsityPattern               &sparsity,
+      const AffineConstraints<double>      &constraints,
+      const ComponentMask                  &space_comps,
+      const ComponentMask                  &immersed_comps,
+      const AffineConstraints<double>      &immersed_constraint);
 
     template void
     create_coupling_sparsity_pattern_with_exact_intersections(
@@ -233,13 +233,13 @@ namespace dealii
         std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
                    typename dealii::Triangulation<1, 2>::cell_iterator,
                    dealii::Quadrature<2>>> &intersections_info,
-      const DoFHandler<2, 2> &              space_dh,
-      const DoFHandler<1, 2> &              immersed_dh,
-      DynamicSparsityPattern &              sparsity,
-      const AffineConstraints<double> &     constraints,
-      const ComponentMask &                 space_comps,
-      const ComponentMask &                 immersed_comps,
-      const AffineConstraints<double> &     immersed_constraint);
+      const DoFHandler<2, 2>               &space_dh,
+      const DoFHandler<1, 2>               &immersed_dh,
+      DynamicSparsityPattern               &sparsity,
+      const AffineConstraints<double>      &constraints,
+      const ComponentMask                  &space_comps,
+      const ComponentMask                  &immersed_comps,
+      const AffineConstraints<double>      &immersed_constraint);
 
 
     template void
@@ -248,13 +248,13 @@ namespace dealii
         std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
                    typename dealii::Triangulation<1, 3>::cell_iterator,
                    dealii::Quadrature<3>>> &intersections_info,
-      const DoFHandler<3, 3> &              space_dh,
-      const DoFHandler<1, 3> &              immersed_dh,
-      DynamicSparsityPattern &              sparsity,
-      const AffineConstraints<double> &     constraints,
-      const ComponentMask &                 space_comps,
-      const ComponentMask &                 immersed_comps,
-      const AffineConstraints<double> &     immersed_constraint);
+      const DoFHandler<3, 3>               &space_dh,
+      const DoFHandler<1, 3>               &immersed_dh,
+      DynamicSparsityPattern               &sparsity,
+      const AffineConstraints<double>      &constraints,
+      const ComponentMask                  &space_comps,
+      const ComponentMask                  &immersed_comps,
+      const AffineConstraints<double>      &immersed_constraint);
 
 
     template void
@@ -263,13 +263,13 @@ namespace dealii
         std::tuple<typename dealii::Triangulation<2, 2>::cell_iterator,
                    typename dealii::Triangulation<2, 2>::cell_iterator,
                    dealii::Quadrature<2>>> &intersections_info,
-      const DoFHandler<2, 2> &              space_dh,
-      const DoFHandler<2, 2> &              immersed_dh,
-      DynamicSparsityPattern &              sparsity,
-      const AffineConstraints<double> &     constraints,
-      const ComponentMask &                 space_comps,
-      const ComponentMask &                 immersed_comps,
-      const AffineConstraints<double> &     immersed_constraint);
+      const DoFHandler<2, 2>               &space_dh,
+      const DoFHandler<2, 2>               &immersed_dh,
+      DynamicSparsityPattern               &sparsity,
+      const AffineConstraints<double>      &constraints,
+      const ComponentMask                  &space_comps,
+      const ComponentMask                  &immersed_comps,
+      const AffineConstraints<double>      &immersed_constraint);
 
     template void
     create_coupling_sparsity_pattern_with_exact_intersections(
@@ -277,13 +277,13 @@ namespace dealii
         std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
                    typename dealii::Triangulation<2, 3>::cell_iterator,
                    dealii::Quadrature<3>>> &intersections_info,
-      const DoFHandler<3, 3> &              space_dh,
-      const DoFHandler<2, 3> &              immersed_dh,
-      DynamicSparsityPattern &              sparsity,
-      const AffineConstraints<double> &     constraints,
-      const ComponentMask &                 space_comps,
-      const ComponentMask &                 immersed_comps,
-      const AffineConstraints<double> &     immersed_constraint);
+      const DoFHandler<3, 3>               &space_dh,
+      const DoFHandler<2, 3>               &immersed_dh,
+      DynamicSparsityPattern               &sparsity,
+      const AffineConstraints<double>      &constraints,
+      const ComponentMask                  &space_comps,
+      const ComponentMask                  &immersed_comps,
+      const AffineConstraints<double>      &immersed_constraint);
 
     template void
     create_coupling_sparsity_pattern_with_exact_intersections(
@@ -291,13 +291,13 @@ namespace dealii
         std::tuple<typename dealii::Triangulation<3, 3>::cell_iterator,
                    typename dealii::Triangulation<3, 3>::cell_iterator,
                    dealii::Quadrature<3>>> &intersections_info,
-      const DoFHandler<3, 3> &              space_dh,
-      const DoFHandler<3, 3> &              immersed_dh,
-      DynamicSparsityPattern &              sparsity,
-      const AffineConstraints<double> &     constraints,
-      const ComponentMask &                 space_comps,
-      const ComponentMask &                 immersed_comps,
-      const AffineConstraints<double> &     immersed_constraint);
+      const DoFHandler<3, 3>               &space_dh,
+      const DoFHandler<3, 3>               &immersed_dh,
+      DynamicSparsityPattern               &sparsity,
+      const AffineConstraints<double>      &constraints,
+      const ComponentMask                  &space_comps,
+      const ComponentMask                  &immersed_comps,
+      const AffineConstraints<double>      &immersed_constraint);
 
     template void
     create_coupling_sparsity_pattern_with_exact_intersections<

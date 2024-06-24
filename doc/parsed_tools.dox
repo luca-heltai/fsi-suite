@@ -52,10 +52,10 @@
  * 3. you always need to keep the two functions syncronized.
  *
  * Nothing difficult, but for large programs, with hundreds of paramters, this
- * may become difficult. Building on top of \cite
- * SartoriGiulianiBardelloni-2018-a, deal.II offers an alternative framework for
- * the handling of parameter files and classes, based on the ParameterAcceptor
- * class.
+ * may become difficult. Building on top of
+ * \cite SartoriGiulianiBardelloni-2018-a, deal.II offers an alternative
+ * framework for the handling of parameter files and classes, based on the
+ * ParameterAcceptor class.
  *
  * ParameterAcceptor provides a global subscription mechanism. Whenever an
  * object of a class derived from ParameterAcceptor is constructed, a pointer to

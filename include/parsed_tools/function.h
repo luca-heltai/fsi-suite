@@ -63,7 +63,7 @@ namespace ParsedTools
              const std::string &expression           = "0",
              const std::string &function_description = "Function expression",
              const std::map<std::string, double> &constants = {},
-             const std::string &                  variable_names =
+             const std::string                   &variable_names =
                dealii::FunctionParser<dim>::default_variable_names() + ",t",
              const double h = 1e-8);
 

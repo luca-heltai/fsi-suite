@@ -1,4 +1,2 @@
 #!/bin/sh
-docker pull dealii/dealii:master-jammy
-docker build -t heltai/dealii:vscode .
-docker push heltai/dealii:vscode
+docker buildx build --push --platform linux/amd64,linux/arm64 -t heltai/dealii:vscode .

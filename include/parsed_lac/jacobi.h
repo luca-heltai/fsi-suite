@@ -41,9 +41,9 @@ namespace ParsedLAC
     /**
      * Constructor. Build the preconditioner of a matrix using Jacobi.
      */
-    JacobiPreconditioner(const std::string & name         = "",
-                         const double &      omega        = 1,
-                         const double &      min_diagonal = 0,
+    JacobiPreconditioner(const std::string  &name         = "",
+                         const double       &omega        = 1,
+                         const double       &min_diagonal = 0,
                          const unsigned int &n_sweeps     = 1);
 
     /**

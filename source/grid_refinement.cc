@@ -20,17 +20,17 @@ using namespace dealii;
 namespace ParsedTools
 {
   GridRefinement::GridRefinement(
-    const std::string &       section_name,
-    const unsigned int &      n_refinement_cycles,
+    const std::string        &section_name,
+    const unsigned int       &n_refinement_cycles,
     const RefinementStrategy &strategy,
-    const std::string &       estimator_type,
-    const double &            top_parameter,
-    const double &            bottom_parameter,
-    const unsigned int &      max_cells,
-    const int &               min_level,
-    const int &               max_level,
+    const std::string        &estimator_type,
+    const double             &top_parameter,
+    const double             &bottom_parameter,
+    const unsigned int       &max_cells,
+    const int                &min_level,
+    const int                &max_level,
     const std::map<std::string, std::function<void(dealii::Vector<float> &)>>
-      &                          optional_estimators,
+                                &optional_estimators,
     const dealii::ComponentMask &component_mask)
     : ParameterAcceptor(section_name)
     , n_refinement_cycles(n_refinement_cycles)

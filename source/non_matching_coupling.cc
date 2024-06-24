@@ -32,9 +32,9 @@ namespace ParsedTools
 {
   template <int dim, int spacedim>
   NonMatchingCoupling<dim, spacedim>::NonMatchingCoupling(
-    const std::string &                                    section_name,
-    const dealii::ComponentMask &                          embedded_mask,
-    const dealii::ComponentMask &                          space_mask,
+    const std::string                                     &section_name,
+    const dealii::ComponentMask                           &embedded_mask,
+    const dealii::ComponentMask                           &space_mask,
     const NonMatchingCoupling<dim, spacedim>::CouplingType coupling_type,
     const NonMatchingCoupling<dim, spacedim>::RefinementStrategy
                        refinement_strategy,
@@ -98,11 +98,11 @@ namespace ParsedTools
   void
   NonMatchingCoupling<dim, spacedim>::initialize(
     const GridTools::Cache<spacedim, spacedim> &space_cache,
-    const DoFHandler<spacedim, spacedim> &      space_dh,
-    const AffineConstraints<double> &           space_constraints,
-    const GridTools::Cache<dim, spacedim> &     embedded_cache,
-    const DoFHandler<dim, spacedim> &           embedded_dh,
-    const AffineConstraints<double> &           embedded_constraints)
+    const DoFHandler<spacedim, spacedim>       &space_dh,
+    const AffineConstraints<double>            &space_constraints,
+    const GridTools::Cache<dim, spacedim>      &embedded_cache,
+    const DoFHandler<dim, spacedim>            &embedded_dh,
+    const AffineConstraints<double>            &embedded_constraints)
   {
     this->space_cache          = &space_cache;
     this->space_dh             = &space_dh;
@@ -123,7 +123,7 @@ namespace ParsedTools
   void
   NonMatchingCoupling<dim, spacedim>::adjust_grid_refinements(
     Triangulation<spacedim, spacedim> &space_tria,
-    Triangulation<dim, spacedim> &     embedded_tria,
+    Triangulation<dim, spacedim>      &embedded_tria,
     const bool                         apply_delta_refinements) const
   {
     Assert(space_dh, ExcNotInitialized());

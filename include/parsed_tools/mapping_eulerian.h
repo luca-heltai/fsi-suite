@@ -76,8 +76,8 @@ namespace ParsedTools
   public:
     MappingEulerian(
       const dealii::DoFHandler<dim, spacedim> &dh,
-      const std::string &                      section_name              = "",
-      const std::string &          initial_configuration_or_displacement = "",
+      const std::string                       &section_name              = "",
+      const std::string           &initial_configuration_or_displacement = "",
       const bool                   use_displacement = false,
       const dealii::ComponentMask &mask             = dealii::ComponentMask());
 

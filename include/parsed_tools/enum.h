@@ -53,7 +53,7 @@ namespace dealii
         }
 
         static std::string
-        to_string(const T &                    value,
+        to_string(const T                     &value,
                   const Patterns::PatternBase &p = *Convert<T>::to_pattern())
         {
           namespace B                     = magic_enum::bitwise_operators;
@@ -66,7 +66,7 @@ namespace dealii
         }
 
         static T
-        to_value(const std::string &                  s,
+        to_value(const std::string                   &s,
                  const dealii::Patterns::PatternBase &p = *to_pattern())
         {
           namespace B = magic_enum::bitwise_operators;

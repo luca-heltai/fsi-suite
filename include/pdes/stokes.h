@@ -56,8 +56,8 @@ namespace PDEs
     virtual void
     assemble_system_one_cell(
       const typename DoFHandler<dim>::active_cell_iterator &cell,
-      ScratchData &                                         scratch,
-      CopyData &                                            copy) override;
+      ScratchData                                          &scratch,
+      CopyData                                             &copy) override;
 
     /**
      * Make sure we initialize the right type of linear solver.

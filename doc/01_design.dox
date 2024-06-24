@@ -26,8 +26,8 @@
  * library (https://github.com/mathLab/pi-DoMUS). After a couple of years of
  * intense development, that project was abandoned as it became more and more
  * difficult to maintain. That project relied eavily on a tool kit library,
- * which we named deal2lkit (https://github.com/mathLab/deal2lkit) \cite
- * SartoriGiulianiBardelloni-2018-a
+ * which we named deal2lkit (https://github.com/mathLab/deal2lkit)
+ * \cite SartoriGiulianiBardelloni-2018-a
  *
  * The deal2lkit library was a good starting point, but we quickly found out
  * that the development of the deal.II library itself runs way faster than we
@@ -36,8 +36,8 @@
  *
  * SymbolicFunction, FunctionParser, Manifold, ParameterAcceptor,
  * ParsedErrorTable, and the LinearOperator classes are some of the results of
- * this effort, and are currently used widely by the deal.II community \cite
- * HeltaiBangerthKronbichler-2021, \cite MaierBardelloniHeltai-2016-a.
+ * this effort, and are currently used widely by the deal.II community
+ * \cite HeltaiBangerthKronbichler-2021, \cite MaierBardelloniHeltai-2016-a.
  *
  * The task is not finished yet. It is painful to port code from user space into
  * a large library. The documentation requirements are stringent, proper testing
@@ -90,14 +90,16 @@
  *
  * The deal.II library should be installed with the following options:
  *
+ * - `DEAL_II_HAVE_CXX17=ON`
+ * - `DEAL_II_WITH_CGAL=ON`
  * - `DEAL_II_WITH_MPI=ON`
+ * - `DEAL_II_WITH_MU_PARSER=ON`
+ * - `DEAL_II_WITH_OPENCASCADE=ON`
  * - `DEAL_II_WITH_PETSC=ON`
  * - `DEAL_II_WITH_TRILINOS=ON`
- * - `DEAL_II_WITH_MU_PARSER=ON`
+ * - `DEAL_II_WITH_SUNDIALS=ON`
  * - `DEAL_II_WITH_SYMENGINE=ON`
  * - `DEAL_II_WITH_UMFPACK=ON`
- * - `DEAL_II_WITH_SUNDIALS=ON`
- * - `DEAL_II_HAVE_CXX17=ON`
  *
  * Once you have downloaded the code, you can configure and compile it using the
  * following:
@@ -164,7 +166,7 @@
  * The user entry point for each class is the method `run()`.
  *
  * The main functions in the @ref apps folder take care of parsing the command
- * line, deducing from the command line (or from the name of the paramter file)
+ * line, deducing from the command line (or from parameter file itself)
  * in what dimension and space dimension you want to run the code, and then they
  * instantiate the specific class for the specific dimension and spacedimension
  * combination, read parameters from the parameter file, and execute the `run()`
@@ -187,10 +189,7 @@
  * -o, --output_prm_file <filename>  Where to write the file containing the
  *                                   actual parameters used in this run of
  *                                   the program. It defaults to the string
- *                                   `used_./mesh_handler' followed by a
- *                                   string of the type '1d_2d' containing
- *                                   the dimension and the spacedimension at
- *                                   which the program was run if the input
+ *                                   `used_program_name.prm' if the input
  *                                   parameter file is not specified,
  *                                   otherwise it defaults to the string
  *                                   `used_' followed by the name of the
@@ -226,8 +225,8 @@
  * @section running Running a program of the FSI-suite
  *
  * Every program in the FSI-suite can be executed by calling it with
- * arguments specifying the dimension and space dimension, or can deduce these
- * numbers from the naming scheme of your parameter file. For example:
+ * arguments specifying the dimension and space dimension, or it can read these
+ * numbers from your parameter file. For example:
  * @code{.sh}
  * ./poisson -d=2 -s=3 -i=input.prm -o=output.prm
  * @endcode
@@ -235,26 +234,21 @@
  * options from the `input.prm` file in the current directory, and writing all
  * used options in the `output.prm` file in the current directory.
  *
- * The same effect can be obtained by naming your parameter file in such a way
- * that the filename contains the combination of dimension and spacedimension,
- * or just one if they are the same. For example, the above example could have
- * been achieved similarly by executing as:
+ * The same effect can be obtained by inserting in your parameter file the
+ * combination of dimension and spacedimension, i.e.,
+ *
  * @code{.sh}
- * ./poisson input_2d_3d.prm
- * @endcode
- * and an equivalent example running in two dimensions
- * @code{.sh}
- * ./poisson input_2d.prm
+ * # Listing of Parameters
+ * # ---------------------
+ * set dim      = 1
+ * set spacedim = 2
  * @endcode
  *
  * @warning If you specify the dimension (and/or the spacdimension) from the
- * command line, and provide a parameter file as input that is named with a
- * different combination, you will get an error message. Either do not name your
- * file with `1d_2d`, and use `-d 2` and `-s 2`, or make sure that they are
- * consistent:
- * @code{.sh}
- * ./poisson -d=2 input_2d.prm
- * @endcode
+ * command line, and provide a parameter file as input that contains a different
+ * combination, you will get an error message. Either do not put the combination
+ * in your parameter file, or make sure that they are consistent with the
+ * command line options
  *
  * Notice that `input.prm` does not need to exist prior to executing the
  * program. If it does not exist, the program will create it for you, print an
@@ -271,7 +265,6 @@
  *
  * Any parameter that you can change from the parameter files, can be changed
  * also from the command line. The opposite is also true, with the exception of
- * the dimension (`-d` or `-dim`), space dimension ('-s' or `-spacedim`), and
  * the input and output parameter files (`-i` and `-o`), which do not have, in
  * general, a correspondending entry in the parameter file itself.
  *

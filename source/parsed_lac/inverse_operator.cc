@@ -22,15 +22,15 @@ using namespace dealii;
 
 namespace ParsedLAC
 {
-  InverseOperator::InverseOperator(const std::string &      section_name,
-                                   const std::string &      solver_name,
+  InverseOperator::InverseOperator(const std::string       &section_name,
+                                   const std::string       &solver_name,
                                    const SolverControlType &control_type,
                                    const unsigned int       max_iterations,
                                    const double             tolerance,
                                    const double             reduction,
                                    const unsigned int consecutive_iterations,
-                                   const bool &       log_history,
-                                   const bool &       log_result)
+                                   const bool        &log_history,
+                                   const bool        &log_result)
     : ParameterAcceptor(section_name)
     , control_type(control_type)
     , solver_name(solver_name)

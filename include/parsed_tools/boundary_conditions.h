@@ -71,7 +71,7 @@ namespace ParsedTools
       const std::string &component_names = "u",
       const std::vector<std::set<dealii::types::boundary_id>> &ids =
         {{dealii::numbers::internal_face_boundary_id}},
-      const std::vector<std::string> &          selected_components = {"u"},
+      const std::vector<std::string>           &selected_components = {"u"},
       const std::vector<BoundaryConditionType> &bc_type =
         {BoundaryConditionType::dirichlet},
       const std::vector<std::string> &expressions = {"0"});
@@ -134,7 +134,7 @@ namespace ParsedTools
     void
     apply_essential_boundary_conditions(
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      dealii::AffineConstraints<double> &      constraints) const;
+      dealii::AffineConstraints<double>       &constraints) const;
 
     /**
      * Add the boundary conditions computed with this object to the
@@ -143,9 +143,9 @@ namespace ParsedTools
     template <int dim>
     void
     apply_essential_boundary_conditions(
-      const dealii::Mapping<dim, spacedim> &   mapping,
+      const dealii::Mapping<dim, spacedim>    &mapping,
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
-      dealii::AffineConstraints<double> &      constraints) const;
+      dealii::AffineConstraints<double>       &constraints) const;
 
     /**
      * Add natural boundary conditions computed with this object to the
@@ -163,8 +163,8 @@ namespace ParsedTools
     apply_natural_boundary_conditions(
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
       const dealii::AffineConstraints<double> &constraints,
-      MatrixType &                             matrix,
-      VectorType &                             rhs) const;
+      MatrixType                              &matrix,
+      VectorType                              &rhs) const;
 
     /**
      * Same as above for non standard mapping.
@@ -179,11 +179,11 @@ namespace ParsedTools
     template <int dim, typename MatrixType, typename VectorType>
     void
     apply_natural_boundary_conditions(
-      const dealii::Mapping<dim, spacedim> &   mapping,
+      const dealii::Mapping<dim, spacedim>    &mapping,
       const dealii::DoFHandler<dim, spacedim> &dof_handler,
       const dealii::AffineConstraints<double> &constraints,
-      MatrixType &                             matrix,
-      VectorType &                             rhs) const;
+      MatrixType                              &matrix,
+      VectorType                              &rhs) const;
 
     /**
      * Get all ids where we impose essential boundary conditions.
@@ -268,11 +268,11 @@ namespace ParsedTools
   template <int dim, typename MatrixType, typename VectorType>
   void
   BoundaryConditions<spacedim>::apply_natural_boundary_conditions(
-    const dealii::Mapping<dim, spacedim> &   mapping,
+    const dealii::Mapping<dim, spacedim>    &mapping,
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
     const dealii::AffineConstraints<double> &constraints,
-    MatrixType &                             matrix,
-    VectorType &                             rhs) const
+    MatrixType                              &matrix,
+    VectorType                              &rhs) const
   {
     for (unsigned int i = 0; i < n_boundary_conditions; ++i)
       if (bc_type[i] == BoundaryConditionType::neumann)
@@ -351,8 +351,8 @@ namespace ParsedTools
   BoundaryConditions<spacedim>::apply_natural_boundary_conditions(
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
     const dealii::AffineConstraints<double> &constraints,
-    MatrixType &                             matrix,
-    VectorType &                             rhs) const
+    MatrixType                              &matrix,
+    VectorType                              &rhs) const
   {
     const auto &mapping =
       get_default_linear_mapping(dof_handler.get_triangulation());
@@ -367,7 +367,7 @@ namespace ParsedTools
   void
   BoundaryConditions<spacedim>::apply_essential_boundary_conditions(
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    dealii::AffineConstraints<double> &      constraints) const
+    dealii::AffineConstraints<double>       &constraints) const
   {
     const auto &mapping =
       get_default_linear_mapping(dof_handler.get_triangulation());
@@ -380,9 +380,9 @@ namespace ParsedTools
   template <int dim>
   void
   BoundaryConditions<spacedim>::apply_essential_boundary_conditions(
-    const dealii::Mapping<dim, spacedim> &   mapping,
+    const dealii::Mapping<dim, spacedim>    &mapping,
     const dealii::DoFHandler<dim, spacedim> &dof_handler,
-    dealii::AffineConstraints<double> &      constraints) const
+    dealii::AffineConstraints<double>       &constraints) const
   {
     // Take care of boundary conditions that don't need anything else than
     // the constraints.

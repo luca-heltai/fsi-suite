@@ -28,12 +28,69 @@ using namespace dealii;
 
 namespace Runner
 {
+  /**
+   * \brief Retrieves the dimension and space dimension from a parameter file.
+   *
+   * This function reads a parameter file and retrieves the values of the
+   * "dimension" and "space dimension" parameters. If the reading of the input
+   * file fails, it returns the default values provided.
+   *
+   * @p prm_file The path to the parameter file. @p default_dim The
+   * default value for the dimension. @p default_spacedim The default value
+   * for the space dimension. \return A pair containing the dimension and space
+   * dimension.
+   *
+   * \throws std::exception If an error occurs while parsing the input file.
+   */
+  std::pair<unsigned int, unsigned int>
+  get_dimension_and_spacedimension(const std::string &prm_file,
+                                   const unsigned int default_dim      = 2,
+                                   const unsigned int default_spacedim = 2)
+  {
+    ParameterAcceptor::prm.declare_entry("dim",
+                                         std::to_string(default_dim),
+                                         Patterns::Integer(1, 3));
+    ParameterAcceptor::prm.declare_entry("spacedim",
+                                         std::to_string(default_spacedim),
+                                         Patterns::Integer(1, 3));
+    try
+      {
+        ParameterAcceptor::prm.parse_input(prm_file, "", true);
+        auto dim      = ParameterAcceptor::prm.get_integer("dim");
+        auto spacedim = ParameterAcceptor::prm.get_integer("spacedim");
+        return {dim, spacedim};
+      }
+    catch (std::exception &exc)
+      {
+        return {default_dim, default_spacedim};
+        throw;
+      }
+  }
+
+
+  /**
+   * Retrieves the dimensions and parameter files from the command line
+   * arguments.
+   *
+   * This function parses the command line arguments and extracts the dimensions
+   * and parameter file names. It supports both options and positional arguments
+   * for specifying the input parameter file. It also checks if the dimensions
+   * specified in the parameter file and the command line arguments match.
+   *
+   * @param argv The command line arguments.
+   * @return A tuple containing the dimensions and parameter file names.
+   *         The tuple elements are in the following order:
+   *         - int: The dimension.
+   *         - int: The space dimension.
+   *         - std::string: The input parameter file name.
+   *         - std::string: The output parameter file name.
+   */
   std::tuple<int, int, std::string, std::string>
   get_dimensions_and_parameter_files(char **argv)
   {
     argh::parser cli(argv, argh::parser::PREFER_PARAM_FOR_UNREG_OPTION);
-    int          dim                   = 2;
-    int          spacedim              = 2;
+    unsigned int dim                   = 2;
+    unsigned int spacedim              = 2;
     std::string  input_parameter_file  = "";
     std::string  output_parameter_file = "";
 
@@ -45,72 +102,32 @@ namespace Runner
     cli({"i", "input_prm_file"}, input_parameter_file) >> input_parameter_file;
     cli(1, input_parameter_file) >> input_parameter_file;
 
-    // Now the logic to deduce dim and spacedim from the parameter file name
-    bool file_contains_dim_spacedim = false;
-    if (input_parameter_file.find("1d_2d") != std::string::npos)
-      {
-        dim                        = 1;
-        spacedim                   = 2;
-        file_contains_dim_spacedim = true;
-      }
-    else if (input_parameter_file.find("1d_3d") != std::string::npos)
-      {
-        dim                        = 1;
-        spacedim                   = 3;
-        file_contains_dim_spacedim = true;
-      }
-    else if (input_parameter_file.find("2d_3d") != std::string::npos)
-      {
-        dim                        = 2;
-        spacedim                   = 3;
-        file_contains_dim_spacedim = true;
-      }
-    else if (input_parameter_file.find("1d") != std::string::npos)
-      {
-        dim                        = 1;
-        spacedim                   = 1;
-        file_contains_dim_spacedim = true;
-      }
-    else if (input_parameter_file.find("2d") != std::string::npos)
-      {
-        dim                        = 2;
-        spacedim                   = 2;
-        file_contains_dim_spacedim = true;
-      }
-    else if (input_parameter_file.find("3d") != std::string::npos)
-      {
-        dim                        = 3;
-        spacedim                   = 3;
-        file_contains_dim_spacedim = true;
-      }
+    const bool has_dim_or_spacedim =
+      cli[{"d", "dim"}] || cli[{"s", "spacedim"}];
+    // Now read from command line the dimension and space dimension
+    cli({"d", "dim"}) >> dim;
+    // Make sure the default is to set spacedim = dim
+    cli({"s", "spacedim"}, dim) >> spacedim;
 
-    // Make sure filename and command line arguments agree
-    if (file_contains_dim_spacedim == true)
-      {
-        int cli_dim      = dim;
-        int cli_spacedim = spacedim;
-        if ((cli({"d", "dim"}) >> cli_dim) ||
-            (cli({"s", "spacedim"}) >> cli_spacedim))
-          {
-            AssertThrow(
-              (dim == cli_dim) && (spacedim == cli_spacedim),
-              dealii::ExcMessage(
-                "You have specified a parameter filename that contains a "
-                "specification of the dimension and of the space dimension, "
-                "e.g., 1d_2d but you also indicated a -d or -s argument on the "
-                "command line that do not match the file name. Use only one of "
-                "the two ways to select the dimension and the space dimension, "
-                "or make sure that what you specify on the filename matches "
-                "what you specify on the command line."));
-          }
-      }
-    else
-      {
-        // get dim and spacedim from command line
-        cli({"d", "dim"}, dim) >> dim;
-        // By default spacedim is equal to dim
-        cli({"s", "spacedim"}, dim) >> spacedim;
-      }
+    // And do the same from the parameter file
+    const auto [prm_dim, prm_spacedim] =
+      get_dimension_and_spacedimension(input_parameter_file, dim, spacedim);
+
+    // Throw an exception if the inputer parameter file and the command line do
+    // not agree. Notice that, if the file doees not exist, they will agree,
+    // since the default values are the same.
+    AssertThrow(
+      !has_dim_or_spacedim || (dim == prm_dim) && (spacedim == prm_spacedim),
+      dealii::ExcMessage(
+        "You have specified a parameter file that contains a specification "
+        "of the dimension and of the space dimension, as <" +
+        std::to_string(prm_dim) + ", " + std::to_string(prm_spacedim) +
+        ">, but you also indicated a -d (--dim) = " + std::to_string(dim) +
+        " or -s (--spacedim) = " + std::to_string(spacedim) +
+        " argument on the command line that do not match the content of the parameter file. "
+        "Use only one of the two ways to select the dimension and the "
+        "space dimension, or make sure that what you specify in the parameter file "
+        "matches what you specify on the command line."));
 
     // Now the logic to deduce the output parameter file name. Make sure we
     // output in the current directory, even if the file is specified with a
@@ -121,35 +138,49 @@ namespace Runner
           input_parameter_file.find_last_of("/") + 1);
         output_parameter_file = "used_" + rel_name;
       }
-    else if (dim == spacedim)
-      {
-        output_parameter_file =
-          "used_" + exename + "_" + std::to_string(dim) + "d.prm";
-      }
     else
       {
-        output_parameter_file = "used_" + exename + "_" + std::to_string(dim) +
-                                "d_" + std::to_string(spacedim) + "d.prm";
+        output_parameter_file = "used_" + exename + ".prm";
       }
 
     // If you want to overwrite the output parameter file, use the -o option
     cli({"o", "output_prm_file"}, output_parameter_file) >>
       output_parameter_file;
 
-    deallog << "Will run in dimension " << dim << " and spacedimemsion "
+    deallog << "Will run in dimension " << dim << " and spacedimension "
             << spacedim << std::endl
             << "Input parameter file: " << input_parameter_file << std::endl
             << "Output parameter file: " << output_parameter_file << std::endl;
 
-    return std::make_tuple(dim,
-                           spacedim,
+    return std::make_tuple(prm_dim,
+                           prm_spacedim,
                            input_parameter_file,
                            output_parameter_file);
   }
 
 
+  /**
+   * @brief Sets up the program parameters from the command-line arguments.
+   *
+   * This function parses the command-line arguments using the `argh` library
+   * and sets up the program parameters accordingly. It initializes the
+   * `ParameterAcceptor` with the input and output parameter file paths. If the
+   * `-h` or `--help` option is provided, it prints the help message and the
+   * list of available options. The function also handles setting the values for
+   * options specified in the command-line arguments. It ignores any positional
+   * arguments other than the program name and the input parameter file. After
+   * setting up the parameters, it initializes the `ParameterAcceptor` again
+   * with the output parameter file path. If the `--pause` option is provided
+   * and the current MPI process is the root process, it waits for a keypress
+   * before continuing.
+   *
+   * @param argv The command-line arguments.
+   * @param input_parameter_file The path to the input parameter file.
+   * @param output_parameter_file The path to the output parameter file.
+   * @return Returns 0 if everything went fine, or 1 if there were any warnings or errors.
+   */
   int
-  setup_parameters_from_cli(char **            argv,
+  setup_parameters_from_cli(char             **argv,
                             const std::string &input_parameter_file,
                             const std::string &output_parameter_file)
   {
@@ -182,9 +213,7 @@ namespace Runner
                "Where to write the file containing the actual parameters "
                "used in this run of the program. It defaults to the string `used_" +
                  exename +
-                 "' followed by a string of the type '1d_2d' "
-                 "containing the dimension and the spacedimension at which the "
-                 "program was run if the input parameter file is not specified, "
+                 "' if the input parameter file is not specified, "
                  "otherwise it defaults to the string `used_' followed by the "
                  "name of the input parameter file.")
           << std::endl

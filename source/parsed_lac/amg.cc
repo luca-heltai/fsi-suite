@@ -26,16 +26,16 @@ using namespace dealii;
 namespace ParsedLAC
 {
   AMGPreconditioner::AMGPreconditioner(const std::string &name,
-                                       const bool &       elliptic,
-                                       const bool &       higher_order_elements,
+                                       const bool        &elliptic,
+                                       const bool        &higher_order_elements,
                                        const unsigned int &n_cycles,
-                                       const bool &        w_cycle,
+                                       const bool         &w_cycle,
                                        const double &aggregation_threshold,
                                        const unsigned int &smoother_sweeps,
                                        const unsigned int &smoother_overlap,
-                                       const bool &        output_details,
-                                       const std::string & smoother_type,
-                                       const std::string & coarse_type)
+                                       const bool         &output_details,
+                                       const std::string  &smoother_type,
+                                       const std::string  &coarse_type)
     : ParameterAcceptor(name)
     , PreconditionAMG()
     , elliptic(elliptic)

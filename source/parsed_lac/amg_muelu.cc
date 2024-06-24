@@ -26,16 +26,16 @@ using namespace dealii;
 namespace ParsedLAC
 {
   AMGMueLuPreconditioner::AMGMueLuPreconditioner(
-    const std::string & name,
-    const bool &        elliptic,
+    const std::string  &name,
+    const bool         &elliptic,
     const unsigned int &n_cycles,
-    const bool &        w_cycle,
-    const double &      aggregation_threshold,
+    const bool         &w_cycle,
+    const double       &aggregation_threshold,
     const unsigned int &smoother_sweeps,
     const unsigned int &smoother_overlap,
-    const bool &        output_details,
-    const std::string & smoother_type,
-    const std::string & coarse_type)
+    const bool         &output_details,
+    const std::string  &smoother_type,
+    const std::string  &coarse_type)
     : ParameterAcceptor(name)
     , PreconditionAMGMueLu()
     , elliptic(elliptic)

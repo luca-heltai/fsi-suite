@@ -43,7 +43,7 @@ namespace ParsedLAC
      * Constructor. Build the preconditioner of a matrix using AMG.
      */
     PETScAMGPreconditioner(
-      const std::string &  name                             = "",
+      const std::string   &name                             = "",
       const bool           symmetric_operator               = false,
       const double         strong_threshold                 = 0.25,
       const double         max_row_sum                      = 0.9,

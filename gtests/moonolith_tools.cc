@@ -159,9 +159,9 @@ TYPED_TEST(DimSpacedimTester, AllMoonolithConversions)
 
   std::vector<std::vector<unsigned int>> d2t = {{}, {2}, {3, 4}, {4, 5, 6, 8}};
   std::vector<std::vector<double>>       measures = {{},
-                                               {1},
-                                               {0.5, 1.0},
-                                               {1. / 6., 4. / 3., 0.5, 1}};
+                                                     {1},
+                                                     {0.5, 1.0},
+                                                     {1. / 6., 4. / 3., 0.5, 1}};
 
   unsigned int i = 0;
   for (const auto nv : d2t[dim])
@@ -187,9 +187,9 @@ TYPED_TEST(DimSpacedimTesterNoOne, AllMoonolithConversionsRotated)
 
   std::vector<std::vector<unsigned int>> d2t = {{}, {2}, {3, 4}, {4, 5, 6, 8}};
   std::vector<std::vector<double>>       measures = {{},
-                                               {1},
-                                               {0.5, 1.0},
-                                               {1. / 6., 4. / 3., 0.5, 1}};
+                                                     {1},
+                                                     {0.5, 1.0},
+                                                     {1. / 6., 4. / 3., 0.5, 1}};
 
   unsigned int i = 0;
   for (const auto nv : d2t[dim])

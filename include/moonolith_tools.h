@@ -104,7 +104,7 @@ namespace moonolith
   template <int dim>
   inline Line<double, dim>
   to_moonolith(const typename Triangulation<1, dim>::cell_iterator &cell,
-               const Mapping<1, dim> &                              mapping)
+               const Mapping<1, dim>                               &mapping)
   {
     const auto        vertices = mapping.get_vertices(cell);
     Line<double, dim> line;
@@ -146,7 +146,7 @@ namespace moonolith
    */
   inline Polyhedron<double>
   to_moonolith(const typename Triangulation<3, 3>::cell_iterator &cell,
-               const Mapping<3, 3> &                              mapping)
+               const Mapping<3, 3>                               &mapping)
   {
     const auto         vertices = mapping.get_vertices(cell);
     Polyhedron<double> poly;
@@ -223,8 +223,8 @@ namespace moonolith
   template <int spacedim, int dim, class T1, class T2>
   inline moonolith::Quadrature<double, spacedim>
   compute_intersection(const moonolith::Quadrature<double, dim> &ref_quad,
-                       const T1 &                                t1,
-                       const T2 &                                t2)
+                       const T1                                 &t1,
+                       const T2                                 &t2)
   {
     BuildQuadrature<T1, T2>      intersect;
     Quadrature<double, spacedim> out;
@@ -255,8 +255,8 @@ namespace moonolith
     const typename Triangulation<dim0, spacedim>::cell_iterator &cell0,
     const typename Triangulation<dim1, spacedim>::cell_iterator &cell1,
     const unsigned int                                           degree,
-    const Mapping<dim0, spacedim> &                              mapping0,
-    const Mapping<dim1, spacedim> &                              mapping1)
+    const Mapping<dim0, spacedim>                               &mapping0,
+    const Mapping<dim1, spacedim>                               &mapping1)
   {
     const auto t0 = to_moonolith(cell0, mapping0);
     const auto t1 = to_moonolith(cell1, mapping1);

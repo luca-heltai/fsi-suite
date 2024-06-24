@@ -51,13 +51,13 @@ namespace dealii
       const std::vector<
         std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
                    typename Triangulation<dim1, spacedim>::cell_iterator,
-                   Quadrature<spacedim>>> &                 cells_and_quads,
-      Matrix &                                              matrix,
+                   Quadrature<spacedim>>>                  &cells_and_quads,
+      Matrix                                               &matrix,
       const AffineConstraints<typename Matrix::value_type> &space_constraints,
-      const ComponentMask &                                 space_comps,
-      const ComponentMask &                                 immersed_comps,
-      const Mapping<dim0, spacedim> &                       space_mapping,
-      const Mapping<dim1, spacedim> &                       immersed_mapping,
+      const ComponentMask                                  &space_comps,
+      const ComponentMask                                  &immersed_comps,
+      const Mapping<dim0, spacedim>                        &space_mapping,
+      const Mapping<dim1, spacedim>                        &immersed_mapping,
       const AffineConstraints<typename Matrix::value_type>
         &immersed_constraints)
     {
@@ -152,7 +152,7 @@ namespace dealii
           local_cell_matrix = typename Matrix::value_type();
 
           const unsigned int       n_quad_pts = quad_formula.size();
-          const auto &             real_qpts  = quad_formula.get_points();
+          const auto              &real_qpts  = quad_formula.get_points();
           std::vector<Point<dim0>> ref_pts_space(n_quad_pts);
           std::vector<Point<dim1>> ref_pts_immersed(n_quad_pts);
 

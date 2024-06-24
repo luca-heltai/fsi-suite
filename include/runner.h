@@ -202,7 +202,7 @@ namespace Runner
    * @return 0: everything is fine, 1: unused parameters, -1: help printed
    */
   int
-  setup_parameters_from_cli(char **            argv,
+  setup_parameters_from_cli(char             **argv,
                             const std::string &input_parameter_file,
                             const std::string &output_parameter_file);
 
@@ -216,7 +216,7 @@ namespace Runner
    */
   template <typename Class>
   void
-  run(char **            argv,
+  run(char             **argv,
       const std::string &input_parameter_file,
       const std::string &output_parameter_file)
   {

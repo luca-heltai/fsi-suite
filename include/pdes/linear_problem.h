@@ -216,8 +216,8 @@ namespace PDEs
     virtual void
     assemble_system_one_cell(
       const typename DoFHandler<dim, spacedim>::active_cell_iterator &cell,
-      ScratchData &                                                   scratch,
-      CopyData &                                                      copy);
+      ScratchData                                                    &scratch,
+      CopyData                                                       &copy);
 
     /**
      * Distribute the data that has been assembled by
@@ -320,8 +320,8 @@ namespace PDEs
     /**
      * Connect to this signal to receive time information.
      */
-    boost::signals2::signal<void(const double &      time,
-                                 const double &      time_step,
+    boost::signals2::signal<void(const double       &time,
+                                 const double       &time_step,
                                  const unsigned int &time_step_number)>
       advance_time_call_back;
 

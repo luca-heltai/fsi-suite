@@ -218,7 +218,7 @@ namespace ParsedTools
      */
     void
     write(const dealii::Triangulation<dim, spacedim> &tria,
-          const std::string &                         filename = "") const;
+          const std::string                          &filename = "") const;
 
   private:
     /**

@@ -62,8 +62,8 @@ TEST(DimTester, IntegralOverLine)
 
   Test_function      fun{};
   double             sum            = 0.;
-  const auto &       quad_points    = real_quadrature.get_points();
-  const auto &       JxW            = real_quadrature.get_weights();
+  const auto        &quad_points    = real_quadrature.get_points();
+  const auto        &JxW            = real_quadrature.get_weights();
   const unsigned int size_quad_form = quad_points.size();
   for (unsigned int q = 0; q < size_quad_form; ++q)
     {
@@ -101,8 +101,8 @@ TEST(DimTester, IntegrationTestCodimension0)
   // exponent of the polynomial function to be integrated, and the exactness of
   // the quadrature formula
   Test_polynomial<degree> func;
-  const auto &            xq      = quad_rule_over_triangle.get_points();
-  const auto &            JxW     = quad_rule_over_triangle.get_weights();
+  const auto             &xq      = quad_rule_over_triangle.get_points();
+  const auto             &JxW     = quad_rule_over_triangle.get_weights();
   const unsigned int      n_q_pts = JxW.size();
   double                  sum     = 0.;
   for (unsigned int q = 0; q < n_q_pts; ++q)
