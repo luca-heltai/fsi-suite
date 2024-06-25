@@ -16,6 +16,7 @@
 #ifndef parsed_tools_grid_generator_h
 #define parsed_tools_grid_generator_h
 
+#include <deal.II/base/logstream.h>
 #include <deal.II/base/parameter_acceptor.h>
 
 #include <deal.II/distributed/grid_refinement.h>
