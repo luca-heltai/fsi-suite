@@ -33,3 +33,7 @@ directory*json
 *.so
 used_*prm
 *DS_Store
+.bash_history
+build
+build_container
+.ipynb_checkpoints
