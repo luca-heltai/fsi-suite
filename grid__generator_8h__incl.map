@@ -1,11 +1,12 @@
 <map id="include/parsed_tools/grid_generator.h" name="include/parsed_tools/grid_generator.h">
-<area shape="rect" id="node1" title=" " alt="" coords="268,5,424,47"/>
-<area shape="rect" id="node2" href="/__w/fsi-suite/fsi-suite/deal.tag$parameter__acceptor_8h.html.html" title=" " alt="" coords="129,259,299,300"/>
-<area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$distributed_2grid__refinement_8h.html.html" title=" " alt="" coords="31,95,173,136"/>
-<area shape="rect" id="node4" href="/__w/fsi-suite/fsi-suite/deal.tag$distributed_2tria_8h.html.html" title=" " alt="" coords="197,95,333,136"/>
-<area shape="rect" id="node5" href="/__w/fsi-suite/fsi-suite/deal.tag$mapping__q__generic_8h.html.html" title=" " alt="" coords="357,95,497,136"/>
-<area shape="rect" id="node6" href="/__w/fsi-suite/fsi-suite/deal.tag$grid__generator_8h.html.html" title=" " alt="" coords="521,102,723,129"/>
-<area shape="rect" id="node9" href="/__w/fsi-suite/fsi-suite/deal.tag$grid_2tria_8h.html.html" title=" " alt="" coords="747,102,876,129"/>
-<area shape="rect" id="node7" href="$function_8h.html" title=" " alt="" coords="428,184,595,211"/>
-<area shape="rect" id="node8" href="/__w/fsi-suite/fsi-suite/deal.tag$function__parser_8h.html.html" title=" " alt="" coords="434,259,589,300"/>
+<area shape="rect" id="node1" title=" " alt="" coords="414,5,570,47"/>
+<area shape="rect" id="node2" href="/__w/fsi-suite/fsi-suite/deal.tag$logstream_8h.html.html" title=" " alt="" coords="5,102,184,129"/>
+<area shape="rect" id="node3" href="/__w/fsi-suite/fsi-suite/deal.tag$parameter__acceptor_8h.html.html" title=" " alt="" coords="357,259,526,300"/>
+<area shape="rect" id="node4" href="/__w/fsi-suite/fsi-suite/deal.tag$distributed_2grid__refinement_8h.html.html" title=" " alt="" coords="259,95,400,136"/>
+<area shape="rect" id="node5" href="/__w/fsi-suite/fsi-suite/deal.tag$distributed_2tria_8h.html.html" title=" " alt="" coords="424,95,560,136"/>
+<area shape="rect" id="node6" href="/__w/fsi-suite/fsi-suite/deal.tag$mapping__q__generic_8h.html.html" title=" " alt="" coords="585,95,725,136"/>
+<area shape="rect" id="node7" href="/__w/fsi-suite/fsi-suite/deal.tag$grid__generator_8h.html.html" title=" " alt="" coords="749,102,950,129"/>
+<area shape="rect" id="node10" href="/__w/fsi-suite/fsi-suite/deal.tag$grid_2tria_8h.html.html" title=" " alt="" coords="974,102,1103,129"/>
+<area shape="rect" id="node8" href="$function_8h.html" title=" " alt="" coords="655,184,822,211"/>
+<area shape="rect" id="node9" href="/__w/fsi-suite/fsi-suite/deal.tag$function__parser_8h.html.html" title=" " alt="" coords="661,259,816,300"/>
 </map>

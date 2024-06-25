@@ -120,6 +120,7 @@ digraph "include/pdes/distributed_lagrange.h"
   Node1 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node59 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node59 [label="parsed_tools/grid_generator.h",height=0.2,width=0.4,color="red",URL="$grid__generator_8h.html",tooltip=" "];
+  Node59 -> Node51 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node59 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node59 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node1 -> Node64 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];

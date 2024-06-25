@@ -92,6 +92,7 @@ digraph "apps/dof_plotter.cc"
   Node40 [label="deal.II/fe/fe.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$include_2deal_8II_2fe_2fe_8h.html.html",tooltip=" "];
   Node1 -> Node41 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node41 [label="parsed_tools/grid_generator.h",height=0.2,width=0.4,color="black",URL="$grid__generator_8h.html",tooltip=" "];
+  Node41 -> Node33 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node41 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node41 -> Node42 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
   Node42 [label="deal.II/distributed\l/grid_refinement.h",height=0.2,width=0.4,color="black",URL="/__w/fsi-suite/fsi-suite/deal.tag$distributed_2grid__refinement_8h.html.html",tooltip=" "];
