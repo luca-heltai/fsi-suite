@@ -35,5 +35,5 @@ used_*prm
 *DS_Store
 .bash_history
 build
-build_container
+build-container
 .ipynb_checkpoints
