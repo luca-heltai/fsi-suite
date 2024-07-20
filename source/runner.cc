@@ -117,7 +117,7 @@ namespace Runner
     // not agree. Notice that, if the file doees not exist, they will agree,
     // since the default values are the same.
     AssertThrow(
-      !has_dim_or_spacedim || (dim == prm_dim) && (spacedim == prm_spacedim),
+      !has_dim_or_spacedim || ((dim == prm_dim) && (spacedim == prm_spacedim)),
       dealii::ExcMessage(
         "You have specified a parameter file that contains a specification "
         "of the dimension and of the space dimension, as <" +
