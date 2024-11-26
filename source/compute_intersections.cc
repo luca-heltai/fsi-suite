@@ -16,9 +16,12 @@
 
 #include <deal.II/base/config.h>
 
+#include "../include/compute_intersections.h"
+
 #include <deal.II/base/function_lib.h>
 #include <deal.II/base/quadrature_lib.h>
 
+#include <deal.II/fe/mapping.h>
 #include <deal.II/fe/mapping_q1.h>
 
 #include <deal.II/grid/grid_tools.h>
@@ -191,6 +194,120 @@ namespace dealii
     }
 
 
+    template <int dim0, int dim1, int spacedim>
+    std::pair<
+      std::vector<
+        std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
+                   typename Triangulation<dim1, spacedim>::cell_iterator,
+                   Quadrature<spacedim>>>,
+      std::vector<
+        std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
+                   typename Triangulation<dim1, spacedim>::face_iterator,
+                   Quadrature<spacedim>>>>
+    compute_intersection_including_boundary(
+      const GridTools::Cache<dim0, spacedim> &space_cache,
+      const GridTools::Cache<dim1, spacedim> &immersed_cache,
+      const unsigned int                      degree,
+      const double                            tol)
+    {
+      Assert(degree >= 1, ExcMessage("degree cannot be less than 1"));
+      static_assert(dim0 == 2 && dim1 == 2 && spacedim == dim0,
+                    "The present function can be used only in 2D (so far).");
+
+      std::pair<
+        std::vector<
+          std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
+                     typename Triangulation<dim1, spacedim>::cell_iterator,
+                     Quadrature<spacedim>>>,
+        std::vector<
+          std::tuple<typename Triangulation<dim0, spacedim>::cell_iterator,
+                     typename Triangulation<dim1, spacedim>::face_iterator,
+                     Quadrature<spacedim>>>>
+        cells_with_quads;
+
+
+      const auto &space_tree =
+        space_cache.get_locally_owned_cell_bounding_boxes_rtree();
+
+      // The immersed tree *must* contain all cells, also the non-locally owned
+      // ones.
+      const auto &immersed_tree =
+        immersed_cache.get_cell_bounding_boxes_rtree();
+
+      // references to triangulations' info (cp cstrs marked as delete)
+      const auto &mapping0 = space_cache.get_mapping();
+      const auto &mapping1 = immersed_cache.get_mapping();
+      namespace bgi        = boost::geometry::index;
+      // Whenever the BB space_cell intersects the BB of an embedded cell,
+      // store the space_cell in the set of intersected_cells
+      for (const auto &[immersed_box, immersed_cell] : immersed_tree)
+        {
+          for (const auto &[space_box, space_cell] :
+               space_tree |
+                 bgi::adaptors::queried(bgi::intersects(immersed_box)))
+            {
+              for (unsigned int f = 0; f < immersed_cell->n_faces(); ++f)
+                {
+                  if (immersed_cell->face(f)->at_boundary())
+                    {
+                      // This immersed cell has a boundary face cutting the
+                      // background element
+                      const auto space_cell_v =
+                        mapping0.get_vertices(space_cell);
+                      std::array<Point<spacedim>, 2 * spacedim>
+                        vertices_space_cell;
+                      vertices_space_cell[0] = space_cell->vertex(0);
+                      vertices_space_cell[1] = space_cell->vertex(1);
+                      vertices_space_cell[2] = space_cell->vertex(2);
+                      vertices_space_cell[3] = space_cell->vertex(3);
+
+                      std::array<Point<spacedim>, dim1>
+                        vertices_face_immersed_cell;
+                      vertices_face_immersed_cell[0] =
+                        immersed_cell->face(f)->vertex(0);
+                      vertices_face_immersed_cell[1] =
+                        immersed_cell->face(f)->vertex(1);
+
+                      // TODO: use this version
+                      // const auto vertices_face_immersed_cell =
+                      //   mapping1.get_vertices(immersed_cell,
+                      //                         f); // vertices of the f-th
+                      //                         face
+
+                      // intersection function working directly with vertices
+                      const auto &simplicial_subdivision = CGALWrappers::
+                        compute_intersection_of_cells<2, 2, 2, 4, 2>(
+                          vertices_space_cell,
+                          vertices_face_immersed_cell,
+                          tol);
+
+                      const auto &quad =
+                        QGaussSimplex<dim1>(degree).mapped_quadrature(
+                          simplicial_subdivision);
+                      cells_with_quads.second.push_back(std::make_tuple(
+                        space_cell, immersed_cell->face(f), quad));
+                    }
+                }
+              const auto &test_intersection =
+                compute_cell_intersection<dim0, dim1, spacedim>(
+                  space_cell, immersed_cell, degree, mapping0, mapping1);
+
+              // if (test_intersection.get_points().size() !=
+              const auto & weights = test_intersection.get_weights();
+              const double area =
+                std::accumulate(weights.begin(), weights.end(), 0.0);
+              if (area > tol) // non-trivial intersection
+                {
+                  cells_with_quads.first.push_back(std::make_tuple(
+                    space_cell, immersed_cell, test_intersection));
+                }
+            }
+        }
+
+      return cells_with_quads;
+    }
+
+
     template Quadrature<1>
     compute_cell_intersection(const Triangulation<1, 1>::cell_iterator &,
                               const Triangulation<1, 1>::cell_iterator &,
@@ -296,6 +413,19 @@ namespace dealii
     NonMatching::compute_intersection(
       const GridTools::Cache<3, 3> &space_cache,
       const GridTools::Cache<3, 3> &immersed_cache,
+      const unsigned int            degree,
+      const double                  tol);
+
+    template std::pair<
+      std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
+                             typename Triangulation<2, 2>::cell_iterator,
+                             Quadrature<2>>>,
+      std::vector<std::tuple<typename Triangulation<2, 2>::cell_iterator,
+                             typename Triangulation<2, 2>::face_iterator,
+                             Quadrature<2>>>>
+    NonMatching::compute_intersection_including_boundary(
+      const GridTools::Cache<2, 2> &space_cache,
+      const GridTools::Cache<2, 2> &immersed_cache,
       const unsigned int            degree,
       const double                  tol);
   }
